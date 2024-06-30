@@ -1,0 +1,272 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: User Domain
+  description: "Skoola User Service"
+  version: v1
+paths:
+  /v1/users:
+    get:
+      tags: [UserService]
+      summary: Get Current User's Detail
+      description: Get the login user's Skoola user detail
+      operationId: UserService_GetUser
+      parameters:
+        [
+          { name: id, in: query, schema: { type: string } },
+          { name: username, in: query, schema: { type: string } },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/serviceGetUserResponse"
+        "401":
+          description: Unauthorized JWT token. Invalid scopes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "404":
+          description: User is not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+      security: [{ OAuth2: [user.user.read] }]
+    post:
+      tags: [UserService]
+      summary: Create new user
+      description: Create new user for Skoola
+      operationId: UserService_CreateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/serviceCreateUserRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/serviceGetUserResponse"
+        "401":
+          description: Unauthorized JWT token. Invalid scopes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "422":
+          description: Unprocessable entity error. Invalid payload from client.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+      security: [{ OAuth2: [admin] }]
+  /v1/users/invite:
+    post:
+      tags: [UserService]
+      summary: Invite new user
+      description: Invite user by email and instance
+      operationId: UserService_InviteUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/serviceInviteUserRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/serviceInviteUserResponse"
+        "401":
+          description: Unauthorized JWT token. Invalid scopes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "422":
+          description: Unprocessable entity error. Invalid payload from client.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+      security: [{ OAuth2: [admin] }]
+  /v1/users/list:
+    get:
+      tags: [UserService]
+      summary: Get user list
+      description: Get user list with given parameters
+      operationId: UserService_GetUserList
+      parameters:
+        [
+          { name: instance, in: query, schema: { type: string } },
+          { name: name, in: query, schema: { type: string } },
+          { name: email, in: query, schema: { type: string } },
+          { name: sort, in: query, schema: { type: string } },
+          { name: limit, in: query, schema: { type: integer, format: uint32 } },
+          {
+            name: offset,
+            in: query,
+            schema: { type: integer, format: uint32 },
+          },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/serviceGetUserListResponse"
+        "401":
+          description: Unauthorized JWT token. Invalid scopes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "404":
+          description: User is not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+      security: [{ OAuth2: [user.user.read] }]
+"components":
+  "schemas":
+    v1CursorPagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: uint32
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+        curr_cursor:
+          type: string
+    v1OffsetPagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: uint32
+        offset:
+          type: integer
+          format: uint32
+        total:
+          type: integer
+          format: uint32
+    v1ResponseMetadata:
+      type: object
+      properties:
+        offset_pagination:
+          $ref: "#/components/schemas/v1OffsetPagination"
+        cursor_pagination:
+          $ref: "#/components/schemas/v1CursorPagination"
+    serviceCreateUserRequest:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/sharedUser"
+    serviceGetUserListResponse:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/sharedUser"
+        meta:
+          $ref: "#/components/schemas/v1ResponseMetadata"
+    serviceGetUserResponse:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/sharedUser"
+      description: "*\n Represents user's detail"
+    serviceInviteUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user email
+        instance:
+          type: string
+          description: user instance
+      description: Response body of Invite
+    serviceInviteUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: message for inviting result
+      description: Response body of Invite
+    sharedUser:
+      type: object
+      properties:
+        id:
+          example: 123
+          type: string
+          description: User ID
+        fullname:
+          example: John F. Doe
+          type: string
+          description: User full name
+        username:
+          example: JohnFD
+          type: string
+          description: User username
+        phone_number:
+          example: +628790909321
+          type: string
+          description: User phone number
+        email:
+          example: john.fd@gmail.com
+          type: string
+          description: User email
+        roles:
+          type: array
+          items:
+            enum: [ADMINISTRATOR, STAFF, TEACHER, PARENT, STUDENT]
+            type: string
+            format: enum
+          description: User roles
+        instance_id:
+          type: string
+          description: Represent school/instance
+        created_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when user is created
+          format: date-time
+        updated_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when user data updated
+          format: date-time
+      description: "*\n Represents user's detail"
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"

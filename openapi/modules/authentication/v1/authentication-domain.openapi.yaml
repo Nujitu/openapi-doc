@@ -1,0 +1,485 @@
+# Generated with gnostic protoc-gen-openapi
+{
+  openapi: 3.0.3,
+  info:
+    {
+      title: Authentication Domain,
+      description: "Skoola Identity Service, Skoola Auth Service",
+      version: v1,
+    },
+  paths:
+    {
+      /v1/identity:
+        {
+          post:
+            {
+              tags: [IdentityService],
+              summary: Register New User,
+              description: register new user.,
+              operationId: IdentityService_Register,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceRegisterRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceRegisterResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [authentication.identity.write] }],
+            },
+        },
+      "/v1/identity/{user_id}":
+        {
+          get:
+            {
+              tags: [IdentityService],
+              summary: Get user by the given user ID,
+              description: Get user by the given user ID,
+              operationId: IdentityService_GetUserById,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceGetUserByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [authentication.identity.read] }],
+            },
+          delete:
+            {
+              tags: [IdentityService],
+              summary: Delete user of given user ID,
+              description: Delete user of given user ID,
+              operationId: IdentityService_DeleteUser,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceDeleteUserResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [authentication.identity.write] }],
+            },
+          patch:
+            {
+              tags: [IdentityService],
+              summary: Update user attribute of given ID,
+              description: Update user atribute of given ID,
+              operationId: IdentityService_UpdateUser,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceUpdateUserRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceUpdateUserResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [authentication.identity.write] }],
+            },
+        },
+      /v1/auth/login:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Logging in User by supported Authentication Factor,
+              description: "Logging in User by supported Authentication Factor, 'password' for password login flow and 'otp_key' for passwordless login flow.",
+              operationId: AuthService_Login,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceLoginRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceLoginResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [authentication.auth.write] }],
+            },
+        },
+      /v1/auth/logout:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Logging out User,
+              description: Logging out User by invalidating provided access token. Only client that use the provided token will be logged out.,
+              operationId: AuthService_Logout,
+              parameters:
+                [
+                  {
+                    name: user_access_token,
+                    in: query,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceLogoutResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [authentication.auth.write] }],
+            },
+        },
+    },
+  "components":
+    {
+      "schemas":
+        {
+          serviceDeleteUserResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: additional message } },
+              description: Response body of DeleteUser,
+            },
+          serviceGetUserByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                },
+              description: Response body of GetUserById,
+            },
+          serviceRegisterRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                  login_challenge:
+                    {
+                      type: string,
+                      description: " login challenge from auth-server",
+                    },
+                },
+              description: Request body of Register new user,
+            },
+          serviceRegisterResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                  token:
+                    {
+                      type: string,
+                      description: generated token after registered,
+                    },
+                },
+              description: Response body of Register new user,
+            },
+          serviceUpdateUserRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id:
+                    {
+                      type: string,
+                      description: id of user that who made changes to information,
+                    },
+                  fullname: { type: string, description: new fullname },
+                  username: { type: string, description: new username },
+                  phone_number: { type: string, description: new phone number },
+                  email: { type: string, description: new email },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: new status,
+                      format: enum,
+                    },
+                  update_mask:
+                    {
+                      type: string,
+                      description: update_mask specify which field in order to be updated.,
+                      format: field-mask,
+                    },
+                },
+              description: Request body of UpdateUser,
+            },
+          serviceUpdateUserResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: additional message } },
+              description: Response body of UpdateUser,
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: id },
+                  phone_number:
+                    {
+                      type: string,
+                      description: phone number with E.163 format,
+                    },
+                  fullname: { type: string, description: full name },
+                  username: { type: string, description: user name },
+                  email: { type: string, description: email },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: status,
+                      format: enum,
+                    },
+                },
+              description: User entity,
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          serviceLoginRequest:
+            {
+              type: object,
+              properties:
+                {
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                },
+            },
+          serviceLoginResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                  login_entity:
+                    {
+                      $ref: "#/components/schemas/sharedLoginEntity",
+                    },
+                  redirect_to:
+                    {
+                      type: string,
+                      description: url redirection when login is success or fail,
+                    },
+                },
+              description: Response body of Login,
+            },
+          serviceLogoutResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message if logout is success },
+                },
+              description: Response body of Logout,
+            },
+          sharedLoginEntity:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedUser",
+                          },
+                        ],
+                      description: user data,
+                    },
+                  session_token: { type: string, description: session token },
+                },
+              description: Login entity,
+            },
+        },
+    },
+}
