@@ -12,6 +12,7 @@
   
 - [modules/authentication/v1/shared/permission.proto](#modules_authentication_v1_shared_permission-proto)
     - [Permission](#modules-authentication-v1-shared-Permission)
+    - [Role](#modules-authentication-v1-shared-Role)
     - [UserRole](#modules-authentication-v1-shared-UserRole)
   
     - [RoleType](#modules-authentication-v1-shared-RoleType)
@@ -129,6 +130,26 @@ Permission entity
 
 
 
+<a name="modules-authentication-v1-shared-Role"></a>
+
+### Role
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| role_id | [string](#string) |  | id |
+| domain_name | [string](#string) |  | domain name |
+| name | [string](#string) |  | role name |
+| role_type | [RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when role is created |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when role is updated |
+
+
+
+
+
+
 <a name="modules-authentication-v1-shared-UserRole"></a>
 
 ### UserRole
@@ -137,8 +158,9 @@ RoleWithUserId entity
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role_id | [RoleType](#modules-authentication-v1-shared-RoleType) |  | id |
+| role_id | [string](#string) |  | id |
 | user_id | [string](#string) |  | user_id |
+| domain_name | [string](#string) |  | domain name |
 | name | [string](#string) |  | role name |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when role is created |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when role is updated |
@@ -157,11 +179,12 @@ Enums of role possible value
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| ADMINISTRATOR | 0 |  |
-| STAFF | 1 |  |
+| STUDENT | 0 |  |
+| PARENT | 1 |  |
 | TEACHER | 2 |  |
-| PARENT | 3 |  |
-| STUDENT | 4 |  |
+| STAFF | 3 |  |
+| ADMINISTRATOR | 4 |  |
+| SUPERADMIN | 5 |  |
 
 
  

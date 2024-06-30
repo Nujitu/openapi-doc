@@ -1,4 +1,3 @@
-- [_sidebar](/_sidebar)
 - [common/v1](/common/v1/proto.common.v1)
 - [core/v1](/core/v1/proto.core.v1)
 - [modules/authentication/v1/service](/modules/authentication/v1/service/proto.modules.authentication.v1.service)

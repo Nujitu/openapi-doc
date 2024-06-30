@@ -35,38 +35,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [user.user.read] }]
-    post:
-      tags: [UserService]
-      summary: Create new user
-      description: Create new user for Skoola
-      operationId: UserService_CreateUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/serviceCreateUserRequest"
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/serviceGetUserResponse"
-        "401":
-          description: Unauthorized JWT token. Invalid scopes.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-        "422":
-          description: Unprocessable entity error. Invalid payload from client.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [admin] }]
   /v1/users/invite:
     post:
       tags: [UserService]
@@ -98,7 +66,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [admin] }]
   /v1/users/list:
     get:
       tags: [UserService]
@@ -137,7 +104,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [user.user.read] }]
 "components":
   "schemas":
     v1CursorPagination:
@@ -171,11 +137,6 @@ paths:
           $ref: "#/components/schemas/v1OffsetPagination"
         cursor_pagination:
           $ref: "#/components/schemas/v1CursorPagination"
-    serviceCreateUserRequest:
-      type: object
-      properties:
-        user:
-          $ref: "#/components/schemas/sharedUser"
     serviceGetUserListResponse:
       type: object
       properties:
@@ -232,7 +193,7 @@ paths:
         roles:
           type: array
           items:
-            enum: [ADMINISTRATOR, STAFF, TEACHER, PARENT, STUDENT]
+            enum: [STUDENT, PARENT, TEACHER, STAFF, ADMINISTRATOR, SUPERADMIN]
             type: string
             format: enum
           description: User roles

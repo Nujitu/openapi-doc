@@ -4,11 +4,508 @@
   info:
     {
       title: Authentication Domain,
-      description: "Skoola Identity Service, Skoola Auth Service",
+      description: "Skoola Permission Service, Skoola Auth Service, Skoola Identity Service",
       version: v1,
     },
   paths:
     {
+      /v1/permission/roles:
+        {
+          get:
+            {
+              tags: [PermissionService],
+              summary: Get List of Role in supplied Domain Name,
+              description: Get List of Role for domain_name in payload. Can be accessed by admin only.,
+              operationId: PermissionService_ListRole,
+              parameters:
+                [
+                  {
+                    name: domain_name,
+                    in: query,
+                    description: name of domain,
+                    schema: { type: string },
+                  },
+                  {
+                    name: limit,
+                    in: query,
+                    description: limit of role to return,
+                    schema: { type: integer, format: int32 },
+                  },
+                  {
+                    name: cursor,
+                    in: query,
+                    description: cursor of pagination,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceListRoleResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [PermissionService],
+              summary: "Create Role for supplied Domain Name, and Role Name",
+              description: "Create Role for domain_name, and role_name in payload. Can be accessed by internal service.",
+              operationId: PermissionService_CreateRole,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceCreateRoleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceCreateRoleResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/roles/{role_id}":
+        {
+          get:
+            {
+              tags: [PermissionService],
+              summary: Get Role by Role Id,
+              description: Get Role by Role Id. Can be accessed by admin only.,
+              operationId: PermissionService_GetRoleById,
+              parameters:
+                [
+                  {
+                    name: role_id,
+                    in: path,
+                    description: role id of the role,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceGetRoleByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "404":
+                    {
+                      description: Role not found,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [PermissionService],
+              summary: Delete Role for supplied Role ID,
+              description: Delete Role for role_id in payload. Can be accessed by admin only.,
+              operationId: PermissionService_DeleteRole,
+              parameters:
+                [
+                  {
+                    name: role_id,
+                    in: path,
+                    description: id of role,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceDeleteRoleResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/roles/{role_id}/permissions":
+        {
+          get:
+            {
+              tags: [PermissionService],
+              summary: Get List of Permission in supplied Role ID,
+              description: Get List of Permission for role_id in payload. Can be accessed by admin only.,
+              operationId: PermissionService_ListPermission,
+              parameters:
+                [
+                  {
+                    name: role_id,
+                    in: path,
+                    description: id of role,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: limit,
+                    in: query,
+                    description: limit of permission to return,
+                    schema: { type: integer, format: int32 },
+                  },
+                  {
+                    name: cursor,
+                    in: query,
+                    description: cursor of pagination,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceListPermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [PermissionService],
+              summary: "Create Permission for supplied Role ID, Action and Resource Name",
+              description: "Create Permission for role_id, action and resource_name in payload. Can be accessed by admin only.",
+              operationId: PermissionService_CreatePermission,
+              parameters:
+                [
+                  {
+                    name: role_id,
+                    in: path,
+                    description: id of role,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceCreatePermissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceCreatePermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/roles/{role_id}/permissions/{permission_id}":
+        {
+          delete:
+            {
+              tags: [PermissionService],
+              summary: "Delete Permission for supplied Role ID, Action and Resource Name",
+              description: "Delete Permission for role_id, action and resource_name in payload. Can be accessed by admin only.",
+              operationId: PermissionService_DeletePermission,
+              parameters:
+                [
+                  {
+                    name: role_id,
+                    in: path,
+                    description: id of role,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: permission_id,
+                    in: path,
+                    description: id of permission to delete,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceDeletePermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/roles/{user_id}/roles":
+        {
+          post:
+            {
+              tags: [PermissionService],
+              summary: Assign Role to User,
+              description: Assign Role to User. Can be accessed by admin only.,
+              operationId: PermissionService_AssignUserRole,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    description: id of user,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceAssignUserRoleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceAssignUserRoleResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/users/{user_id}/roles/{role_id}":
+        {
+          post:
+            {
+              tags: [PermissionService],
+              summary: Unassign Role from User,
+              description: Unassign Role from User. Can be accessed by admin only.,
+              operationId: PermissionService_UnassignUserRole,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    description: user of id,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: role_id,
+                    in: path,
+                    description: id of role to unassign,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceUnassignUserRoleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceUnassignUserRoleResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/login:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Logging in User by supported Authentication Factor,
+              description: "Logging in User by supported Authentication Factor, 'password' for password login flow and 'otp_key' for passwordless login flow.",
+              operationId: AuthService_Login,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/serviceLoginRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceLoginResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/logout:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Logging out User,
+              description: Logging out User by invalidating provided access token. Only client that use the provided token will be logged out.,
+              operationId: AuthService_Logout,
+              parameters:
+                [
+                  {
+                    name: user_access_token,
+                    in: query,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/serviceLogoutResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/identity:
         {
           post:
@@ -48,7 +545,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [authentication.identity.write] }],
             },
         },
       "/v1/identity/{user_id}":
@@ -85,7 +581,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [authentication.identity.read] }],
             },
           delete:
             {
@@ -119,7 +614,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [authentication.identity.write] }],
             },
           patch:
             {
@@ -167,85 +661,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [authentication.identity.write] }],
-            },
-        },
-      /v1/auth/login:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Logging in User by supported Authentication Factor,
-              description: "Logging in User by supported Authentication Factor, 'password' for password login flow and 'otp_key' for passwordless login flow.",
-              operationId: AuthService_Login,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/serviceLoginRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/serviceLoginResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-              security: [{ OAuth2: [authentication.auth.write] }],
-            },
-        },
-      /v1/auth/logout:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Logging out User,
-              description: Logging out User by invalidating provided access token. Only client that use the provided token will be logged out.,
-              operationId: AuthService_Logout,
-              parameters:
-                [
-                  {
-                    name: user_access_token,
-                    in: query,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/serviceLogoutResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-              security: [{ OAuth2: [authentication.auth.write] }],
             },
         },
     },
@@ -253,6 +668,435 @@
     {
       "schemas":
         {
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          serviceAssignUserRoleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: id of user },
+                  role_id:
+                    { type: string, description: id of rule to be assigned },
+                },
+              description: Request body of AssignRole,
+            },
+          serviceAssignUserRoleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message if role is assigned to user,
+                    },
+                },
+              description: Response body of AssignUserRole,
+            },
+          serviceCreatePermissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  role_id: { type: string, description: id of role },
+                  action: { type: string, description: action },
+                  resource_name: { type: string, description: resource name },
+                  display_name: { type: string, description: display name },
+                },
+              description: Request body of CreatePermission,
+            },
+          serviceCreatePermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  permission:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedPermission",
+                          },
+                        ],
+                      description: created permission data,
+                    },
+                },
+              description: Response body of CreatePermission,
+            },
+          serviceCreateRoleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  domain_name: { type: string, description: name of domain },
+                  role_name: { type: string, description: name of role },
+                  type:
+                    {
+                      enum:
+                        [
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMIN,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                },
+              description: Request body of CreateRole,
+            },
+          serviceCreateRoleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  role:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedRole",
+                          },
+                        ],
+                      description: role data,
+                    },
+                },
+              description: Response body of CreateRole,
+            },
+          serviceDeletePermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message if permission is successfully deleted from role,
+                    },
+                },
+              description: Response body of DeletePermission,
+            },
+          serviceDeleteRoleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message if role is successfully deleted,
+                    },
+                },
+              description: Response body of DeleteRole,
+            },
+          serviceGetRoleByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  role:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedRole",
+                          },
+                        ],
+                      description: Role detail,
+                    },
+                },
+              description: Response body of GetRoleById,
+            },
+          serviceListPermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  permission:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedPermission",
+                          },
+                        ],
+                      description: list of permission,
+                    },
+                  meta:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/v1ResponseMetadata",
+                          },
+                        ],
+                      description: metadata,
+                    },
+                },
+              description: Response body of ListPermission,
+            },
+          serviceListRoleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  role:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedRole",
+                        },
+                      description: role data,
+                    },
+                  meta:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/v1ResponseMetadata",
+                          },
+                        ],
+                      description: metadata,
+                    },
+                },
+              description: Response body of ListRole,
+            },
+          serviceUnassignUserRoleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: user of id },
+                  role_id:
+                    { type: string, description: id of role to unassign },
+                },
+              description: Request body of UnassignUserRole,
+            },
+          serviceUnassignUserRoleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message ig role is unassigned from user,
+                    },
+                },
+              description: Response body of UnassignUserRole,
+            },
+          sharedPermission:
+            {
+              type: object,
+              properties:
+                {
+                  role_id: { type: string, description: role id },
+                  action: { type: string, description: action },
+                  resource_name: { type: string, description: resource name },
+                  permission_id: { type: string, description: id },
+                  display_name: { type: string, description: display name },
+                  created_at:
+                    {
+                      type: string,
+                      description: when permission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: when permission is updated,
+                      format: date-time,
+                    },
+                },
+              description: Permission entity,
+            },
+          sharedRole:
+            {
+              type: object,
+              properties:
+                {
+                  role_id: { type: string, description: id },
+                  domain_name: { type: string, description: domain name },
+                  name: { type: string, description: role name },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMIN,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                  created_at:
+                    {
+                      type: string,
+                      description: when role is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: when role is updated,
+                      format: date-time,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          serviceLoginRequest:
+            {
+              type: object,
+              properties:
+                {
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                },
+            },
+          serviceLoginResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                  login_entity:
+                    {
+                      $ref: "#/components/schemas/sharedLoginEntity",
+                    },
+                  redirect_to:
+                    {
+                      type: string,
+                      description: url redirection when login is success or fail,
+                    },
+                },
+              description: Response body of Login,
+            },
+          serviceLogoutResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message if logout is success },
+                },
+              description: Response body of Logout,
+            },
+          sharedLoginEntity:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedUser",
+                          },
+                        ],
+                      description: user data,
+                    },
+                  session_token: { type: string, description: session token },
+                },
+              description: Login entity,
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: id },
+                  phone_number:
+                    {
+                      type: string,
+                      description: phone number with E.163 format,
+                    },
+                  fullname: { type: string, description: full name },
+                  username: { type: string, description: user name },
+                  email: { type: string, description: email },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: status,
+                      format: enum,
+                    },
+                },
+              description: User entity,
+            },
           serviceDeleteUserResponse:
             {
               type: object,
@@ -364,121 +1208,6 @@
               properties:
                 { message: { type: string, description: additional message } },
               description: Response body of UpdateUser,
-            },
-          sharedUser:
-            {
-              type: object,
-              properties:
-                {
-                  user_id: { type: string, description: id },
-                  phone_number:
-                    {
-                      type: string,
-                      description: phone number with E.163 format,
-                    },
-                  fullname: { type: string, description: full name },
-                  username: { type: string, description: user name },
-                  email: { type: string, description: email },
-                  status:
-                    {
-                      enum:
-                        [
-                          USER_STATUS_UNSPECIFIED,
-                          USER_STATUS_ACTIVE,
-                          USER_STATUS_INACTIVE,
-                        ],
-                      type: string,
-                      description: status,
-                      format: enum,
-                    },
-                },
-              description: User entity,
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
-          serviceLoginRequest:
-            {
-              type: object,
-              properties:
-                {
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                },
-            },
-          serviceLoginResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                  login_entity:
-                    {
-                      $ref: "#/components/schemas/sharedLoginEntity",
-                    },
-                  redirect_to:
-                    {
-                      type: string,
-                      description: url redirection when login is success or fail,
-                    },
-                },
-              description: Response body of Login,
-            },
-          serviceLogoutResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message if logout is success },
-                },
-              description: Response body of Logout,
-            },
-          sharedLoginEntity:
-            {
-              type: object,
-              properties:
-                {
-                  user:
-                    {
-                      allOf:
-                        [
-                          {
-                            $ref: "#/components/schemas/sharedUser",
-                          },
-                        ],
-                      description: user data,
-                    },
-                  session_token: { type: string, description: session token },
-                },
-              description: Login entity,
             },
         },
     },

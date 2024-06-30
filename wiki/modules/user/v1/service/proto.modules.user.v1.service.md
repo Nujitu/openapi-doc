@@ -152,7 +152,6 @@ Service for user related feature
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetUser | [GetUserRequest](#modules-user-v1-service-GetUserRequest) | [GetUserResponse](#modules-user-v1-service-GetUserResponse) |  |
-| CreateUser | [CreateUserRequest](#modules-user-v1-service-CreateUserRequest) | [GetUserResponse](#modules-user-v1-service-GetUserResponse) |  |
 | InviteUser | [InviteUserRequest](#modules-user-v1-service-InviteUserRequest) | [InviteUserResponse](#modules-user-v1-service-InviteUserResponse) |  |
 | GetUserList | [GetUserListRequest](#modules-user-v1-service-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-service-GetUserListResponse) |  |
 
