@@ -159,6 +159,11 @@ paths:
         instance:
           type: string
           description: user instance
+        role:
+          enum: [STUDENT, PARENT, TEACHER, STAFF, ADMINISTRATOR, SUPERADMIN]
+          type: string
+          description: user role
+          format: enum
       description: Response body of Invite
     serviceInviteUserResponse:
       type: object

@@ -117,6 +117,7 @@ Response body of Invite
 | ----- | ---- | ----- | ----------- |
 | email | [string](#string) |  |  |
 | instance | [string](#string) |  |  |
+| role | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
 
 
 
