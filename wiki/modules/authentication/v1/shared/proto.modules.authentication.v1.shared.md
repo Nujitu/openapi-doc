@@ -12,8 +12,7 @@
   
 - [modules/authentication/v1/shared/permission.proto](#modules_authentication_v1_shared_permission-proto)
     - [Permission](#modules-authentication-v1-shared-Permission)
-    - [Role](#modules-authentication-v1-shared-Role)
-    - [UserRole](#modules-authentication-v1-shared-UserRole)
+    - [UserPermission](#modules-authentication-v1-shared-UserPermission)
   
     - [RoleType](#modules-authentication-v1-shared-RoleType)
   
@@ -52,12 +51,15 @@ User entity
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  | id |
-| phone_number | [string](#string) |  | phone number with E.163 format |
-| fullname | [string](#string) |  | full name |
-| username | [string](#string) |  | user name |
-| email | [string](#string) |  | email |
-| status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  | status |
+| user_id | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
@@ -117,7 +119,6 @@ Permission entity
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | role id |
 | action | [string](#string) |  | action |
 | resource_name | [string](#string) |  | resource name |
 | permission_id | [string](#string) |  | id |
@@ -130,35 +131,15 @@ Permission entity
 
 
 
-<a name="modules-authentication-v1-shared-Role"></a>
+<a name="modules-authentication-v1-shared-UserPermission"></a>
 
-### Role
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | id |
-| domain_name | [string](#string) |  | domain name |
-| name | [string](#string) |  | role name |
-| role_type | [RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when role is created |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when role is updated |
-
-
-
-
-
-
-<a name="modules-authentication-v1-shared-UserRole"></a>
-
-### UserRole
+### UserPermission
 RoleWithUserId entity
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | id |
+| permission_id | [string](#string) |  | id |
 | user_id | [string](#string) |  | user_id |
 | domain_name | [string](#string) |  | domain name |
 | name | [string](#string) |  | role name |

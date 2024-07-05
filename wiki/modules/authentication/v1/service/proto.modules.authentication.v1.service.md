@@ -30,24 +30,16 @@
     - [IdentityService](#modules-authentication-v1-service-IdentityService)
   
 - [modules/authentication/v1/service/permission.proto](#modules_authentication_v1_service_permission-proto)
-    - [AssignUserRoleRequest](#modules-authentication-v1-service-AssignUserRoleRequest)
-    - [AssignUserRoleResponse](#modules-authentication-v1-service-AssignUserRoleResponse)
+    - [AssignUserPermissionRequest](#modules-authentication-v1-service-AssignUserPermissionRequest)
+    - [AssignUserPermissionResponse](#modules-authentication-v1-service-AssignUserPermissionResponse)
     - [CreatePermissionRequest](#modules-authentication-v1-service-CreatePermissionRequest)
     - [CreatePermissionResponse](#modules-authentication-v1-service-CreatePermissionResponse)
-    - [CreateRoleRequest](#modules-authentication-v1-service-CreateRoleRequest)
-    - [CreateRoleResponse](#modules-authentication-v1-service-CreateRoleResponse)
     - [DeletePermissionRequest](#modules-authentication-v1-service-DeletePermissionRequest)
     - [DeletePermissionResponse](#modules-authentication-v1-service-DeletePermissionResponse)
-    - [DeleteRoleRequest](#modules-authentication-v1-service-DeleteRoleRequest)
-    - [DeleteRoleResponse](#modules-authentication-v1-service-DeleteRoleResponse)
-    - [GetRoleByIdRequest](#modules-authentication-v1-service-GetRoleByIdRequest)
-    - [GetRoleByIdResponse](#modules-authentication-v1-service-GetRoleByIdResponse)
     - [ListPermissionRequest](#modules-authentication-v1-service-ListPermissionRequest)
     - [ListPermissionResponse](#modules-authentication-v1-service-ListPermissionResponse)
-    - [ListRoleRequest](#modules-authentication-v1-service-ListRoleRequest)
-    - [ListRoleResponse](#modules-authentication-v1-service-ListRoleResponse)
-    - [UnassignUserRoleRequest](#modules-authentication-v1-service-UnassignUserRoleRequest)
-    - [UnassignUserRoleResponse](#modules-authentication-v1-service-UnassignUserRoleResponse)
+    - [UnassignUserPermissionRequest](#modules-authentication-v1-service-UnassignUserPermissionRequest)
+    - [UnassignUserPermissionResponse](#modules-authentication-v1-service-UnassignUserPermissionResponse)
   
     - [PermissionService](#modules-authentication-v1-service-PermissionService)
   
@@ -413,31 +405,31 @@ IdentityService contains user identity management functionality such as register
 
 
 
-<a name="modules-authentication-v1-service-AssignUserRoleRequest"></a>
+<a name="modules-authentication-v1-service-AssignUserPermissionRequest"></a>
 
-### AssignUserRoleRequest
-Request body of AssignRole
+### AssignUserPermissionRequest
+Request body of AssignPermission
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_id | [string](#string) |  | id of user |
-| role_id | [string](#string) |  | id of rule to be assigned |
+| permission_id | [string](#string) |  | id of rule to be assigned |
 
 
 
 
 
 
-<a name="modules-authentication-v1-service-AssignUserRoleResponse"></a>
+<a name="modules-authentication-v1-service-AssignUserPermissionResponse"></a>
 
-### AssignUserRoleResponse
-Response body of AssignUserRole
+### AssignUserPermissionResponse
+Response body of AssignUserPermission
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  | message if role is assigned to user |
+| message | [string](#string) |  | message if permission is assigned to user |
 
 
 
@@ -452,7 +444,6 @@ Request body of CreatePermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | id of role |
 | action | [string](#string) |  | action |
 | resource_name | [string](#string) |  | resource name |
 | display_name | [string](#string) |  | display name |
@@ -478,39 +469,6 @@ Response body of CreatePermission
 
 
 
-<a name="modules-authentication-v1-service-CreateRoleRequest"></a>
-
-### CreateRoleRequest
-Request body of CreateRole
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| domain_name | [string](#string) |  | name of domain |
-| role_name | [string](#string) |  | name of role |
-| type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-CreateRoleResponse"></a>
-
-### CreateRoleResponse
-Response body of CreateRole
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  | additional message |
-| role | [modules.authentication.v1.shared.Role](#modules-authentication-v1-shared-Role) |  | role data |
-
-
-
-
-
-
 <a name="modules-authentication-v1-service-DeletePermissionRequest"></a>
 
 ### DeletePermissionRequest
@@ -519,8 +477,7 @@ Request body of DeletePermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | id of role |
-| permission_id | [string](#string) |  | id of permission to delete |
+| permission_id | [string](#string) |  | id of permission |
 
 
 
@@ -535,67 +492,7 @@ Response body of DeletePermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  | message if permission is successfully deleted from role |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-DeleteRoleRequest"></a>
-
-### DeleteRoleRequest
-Request body of DeleteRole
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | id of role |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-DeleteRoleResponse"></a>
-
-### DeleteRoleResponse
-Response body of DeleteRole
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  | message if role is successfully deleted |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-GetRoleByIdRequest"></a>
-
-### GetRoleByIdRequest
-Request body of GetRoleById
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | role id of the role |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-GetRoleByIdResponse"></a>
-
-### GetRoleByIdResponse
-Response body of GetRoleById
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| role | [modules.authentication.v1.shared.Role](#modules-authentication-v1-shared-Role) |  | role information |
+| message | [string](#string) |  | message if permission is successfully deleted from permission |
 
 
 
@@ -610,7 +507,7 @@ Request body of ListPermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role_id | [string](#string) |  | id of role |
+| permission_id | [string](#string) |  | id of permission |
 | limit | [int32](#int32) |  | limit of permission to return |
 | cursor | [string](#string) |  | cursor of pagination |
 
@@ -627,7 +524,7 @@ Response body of ListPermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| permission | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) |  | list of permission |
+| permission | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) | repeated | permission data |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | metadata |
 
 
@@ -635,64 +532,31 @@ Response body of ListPermission
 
 
 
-<a name="modules-authentication-v1-service-ListRoleRequest"></a>
+<a name="modules-authentication-v1-service-UnassignUserPermissionRequest"></a>
 
-### ListRoleRequest
-Request body of ListRole
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| domain_name | [string](#string) |  | name of domain |
-| limit | [int32](#int32) |  | limit of role to return |
-| cursor | [string](#string) |  | cursor of pagination |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-ListRoleResponse"></a>
-
-### ListRoleResponse
-Response body of ListRole
+### UnassignUserPermissionRequest
+Request body of UnassignUserPermission
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| role | [modules.authentication.v1.shared.Role](#modules-authentication-v1-shared-Role) | repeated | role data |
-| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | metadata |
-
-
-
-
-
-
-<a name="modules-authentication-v1-service-UnassignUserRoleRequest"></a>
-
-### UnassignUserRoleRequest
-Request body of UnassignUserRole
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
+| permission_id | [string](#string) |  | id of permission to unassign |
 | user_id | [string](#string) |  | user of id |
-| role_id | [string](#string) |  | id of role to unassign |
 
 
 
 
 
 
-<a name="modules-authentication-v1-service-UnassignUserRoleResponse"></a>
+<a name="modules-authentication-v1-service-UnassignUserPermissionResponse"></a>
 
-### UnassignUserRoleResponse
-Response body of UnassignUserRole
+### UnassignUserPermissionResponse
+Response body of UnassignUserPermission
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  | message ig role is unassigned from user |
+| message | [string](#string) |  | message ig permission is unassigned from user |
 
 
 
@@ -708,19 +572,15 @@ Response body of UnassignUserRole
 <a name="modules-authentication-v1-service-PermissionService"></a>
 
 ### PermissionService
-PermissionService contains role and permission management functionality such as create/read/update/delete Role.
+PermissionService contains permission and permission management functionality such as create/read/update/delete Permission.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateRole | [CreateRoleRequest](#modules-authentication-v1-service-CreateRoleRequest) | [CreateRoleResponse](#modules-authentication-v1-service-CreateRoleResponse) | Create Role for a domain. Can be accessed by admin only |
-| GetRoleById | [GetRoleByIdRequest](#modules-authentication-v1-service-GetRoleByIdRequest) | [GetRoleByIdResponse](#modules-authentication-v1-service-GetRoleByIdResponse) | Get Role by Roll ID. Can be accessed by admin only. |
-| ListRole | [ListRoleRequest](#modules-authentication-v1-service-ListRoleRequest) | [ListRoleResponse](#modules-authentication-v1-service-ListRoleResponse) | Get List of Role on a domain. Can be accessed by admin only. |
-| DeleteRole | [DeleteRoleRequest](#modules-authentication-v1-service-DeleteRoleRequest) | [DeleteRoleResponse](#modules-authentication-v1-service-DeleteRoleResponse) | Create a Role. Can be accessed by admin only |
-| ListPermission | [ListPermissionRequest](#modules-authentication-v1-service-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-service-ListPermissionResponse) | Get List of Permission on a role. Can be accessed by admin only. |
-| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-service-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-service-CreatePermissionResponse) | Add permission to a role. Can be accessed by admin only. |
-| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-service-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-service-DeletePermissionResponse) | Delete permission from a role. Can be accessed by admin only. |
-| AssignUserRole | [AssignUserRoleRequest](#modules-authentication-v1-service-AssignUserRoleRequest) | [AssignUserRoleResponse](#modules-authentication-v1-service-AssignUserRoleResponse) | Assign role to a user. Can be accessed by admin only. |
-| UnassignUserRole | [UnassignUserRoleRequest](#modules-authentication-v1-service-UnassignUserRoleRequest) | [UnassignUserRoleResponse](#modules-authentication-v1-service-UnassignUserRoleResponse) | Unassign a role from user. Can be accessed by admin only. |
+| ListPermission | [ListPermissionRequest](#modules-authentication-v1-service-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-service-ListPermissionResponse) | Get List of Permission on a permission. Can be accessed by admin only. |
+| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-service-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-service-CreatePermissionResponse) | Add permission to a permission. Can be accessed by admin only. |
+| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-service-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-service-DeletePermissionResponse) | Delete permission from a permission. Can be accessed by admin only. |
+| AssignUserPermission | [AssignUserPermissionRequest](#modules-authentication-v1-service-AssignUserPermissionRequest) | [AssignUserPermissionResponse](#modules-authentication-v1-service-AssignUserPermissionResponse) | Assign permission to a user. Can be accessed by admin only. |
+| UnassignUserPermission | [UnassignUserPermissionRequest](#modules-authentication-v1-service-UnassignUserPermissionRequest) | [UnassignUserPermissionResponse](#modules-authentication-v1-service-UnassignUserPermissionResponse) | Unassign a permission from user. Can be accessed by admin only. |
 
  
 

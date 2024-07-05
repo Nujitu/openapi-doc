@@ -25,12 +25,11 @@ Represents user&#39;s detail
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
+| user_id | [string](#string) |  |  |
 | fullname | [string](#string) |  |  |
 | username | [string](#string) |  |  |
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
-| roles | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) | repeated |  |
 | instance_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |

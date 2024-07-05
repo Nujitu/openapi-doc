@@ -175,7 +175,7 @@ paths:
     sharedUser:
       type: object
       properties:
-        id:
+        user_id:
           example: 123
           type: string
           description: User ID
@@ -195,13 +195,6 @@ paths:
           example: john.fd@gmail.com
           type: string
           description: User email
-        roles:
-          type: array
-          items:
-            enum: [STUDENT, PARENT, TEACHER, STAFF, ADMINISTRATOR, SUPERADMIN]
-            type: string
-            format: enum
-          description: User roles
         instance_id:
           type: string
           description: Represent school/instance
