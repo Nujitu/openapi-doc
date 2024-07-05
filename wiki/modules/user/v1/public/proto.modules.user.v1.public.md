@@ -3,29 +3,29 @@
 
 ## Table of Contents
 
-- [modules/user/v1/service/user.proto](#modules_user_v1_service_user-proto)
-    - [CreateUserRequest](#modules-user-v1-service-CreateUserRequest)
-    - [GetUserListRequest](#modules-user-v1-service-GetUserListRequest)
-    - [GetUserListResponse](#modules-user-v1-service-GetUserListResponse)
-    - [GetUserRequest](#modules-user-v1-service-GetUserRequest)
-    - [GetUserResponse](#modules-user-v1-service-GetUserResponse)
-    - [InviteUserRequest](#modules-user-v1-service-InviteUserRequest)
-    - [InviteUserResponse](#modules-user-v1-service-InviteUserResponse)
+- [modules/user/v1/public/user.proto](#modules_user_v1_public_user-proto)
+    - [CreateUserRequest](#modules-user-v1-public-CreateUserRequest)
+    - [GetUserListRequest](#modules-user-v1-public-GetUserListRequest)
+    - [GetUserListResponse](#modules-user-v1-public-GetUserListResponse)
+    - [GetUserRequest](#modules-user-v1-public-GetUserRequest)
+    - [GetUserResponse](#modules-user-v1-public-GetUserResponse)
+    - [InviteUserRequest](#modules-user-v1-public-InviteUserRequest)
+    - [InviteUserResponse](#modules-user-v1-public-InviteUserResponse)
   
-    - [UserService](#modules-user-v1-service-UserService)
+    - [UserService](#modules-user-v1-public-UserService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="modules_user_v1_service_user-proto"></a>
+<a name="modules_user_v1_public_user-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/user/v1/service/user.proto
+## modules/user/v1/public/user.proto
 
 
 
-<a name="modules-user-v1-service-CreateUserRequest"></a>
+<a name="modules-user-v1-public-CreateUserRequest"></a>
 
 ### CreateUserRequest
 
@@ -40,7 +40,7 @@
 
 
 
-<a name="modules-user-v1-service-GetUserListRequest"></a>
+<a name="modules-user-v1-public-GetUserListRequest"></a>
 
 ### GetUserListRequest
 Request body of GetUserList
@@ -48,7 +48,7 @@ Request body of GetUserList
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| instance | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
@@ -60,7 +60,7 @@ Request body of GetUserList
 
 
 
-<a name="modules-user-v1-service-GetUserListResponse"></a>
+<a name="modules-user-v1-public-GetUserListResponse"></a>
 
 ### GetUserListResponse
 
@@ -76,7 +76,7 @@ Request body of GetUserList
 
 
 
-<a name="modules-user-v1-service-GetUserRequest"></a>
+<a name="modules-user-v1-public-GetUserRequest"></a>
 
 ### GetUserRequest
 Represents request payload to retrieve user
@@ -84,7 +84,8 @@ Represents request payload to retrieve user
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| user_id | [string](#string) |  |  |
 | username | [string](#string) |  |  |
 
 
@@ -92,7 +93,7 @@ Represents request payload to retrieve user
 
 
 
-<a name="modules-user-v1-service-GetUserResponse"></a>
+<a name="modules-user-v1-public-GetUserResponse"></a>
 
 ### GetUserResponse
 Represents user&#39;s detail
@@ -107,7 +108,7 @@ Represents user&#39;s detail
 
 
 
-<a name="modules-user-v1-service-InviteUserRequest"></a>
+<a name="modules-user-v1-public-InviteUserRequest"></a>
 
 ### InviteUserRequest
 Response body of Invite
@@ -124,7 +125,7 @@ Response body of Invite
 
 
 
-<a name="modules-user-v1-service-InviteUserResponse"></a>
+<a name="modules-user-v1-public-InviteUserResponse"></a>
 
 ### InviteUserResponse
 Response body of Invite
@@ -145,16 +146,16 @@ Response body of Invite
  
 
 
-<a name="modules-user-v1-service-UserService"></a>
+<a name="modules-user-v1-public-UserService"></a>
 
 ### UserService
 Service for user related feature
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetUser | [GetUserRequest](#modules-user-v1-service-GetUserRequest) | [GetUserResponse](#modules-user-v1-service-GetUserResponse) |  |
-| InviteUser | [InviteUserRequest](#modules-user-v1-service-InviteUserRequest) | [InviteUserResponse](#modules-user-v1-service-InviteUserResponse) |  |
-| GetUserList | [GetUserListRequest](#modules-user-v1-service-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-service-GetUserListResponse) |  |
+| GetUser | [GetUserRequest](#modules-user-v1-public-GetUserRequest) | [GetUserResponse](#modules-user-v1-public-GetUserResponse) |  |
+| InviteUser | [InviteUserRequest](#modules-user-v1-public-InviteUserRequest) | [InviteUserResponse](#modules-user-v1-public-InviteUserResponse) |  |
+| GetUserList | [GetUserListRequest](#modules-user-v1-public-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-public-GetUserListResponse) |  |
 
  
 

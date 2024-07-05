@@ -5,37 +5,7 @@ info:
   description: "Skoola User Service"
   version: v1
 paths:
-  /v1/users:
-    get:
-      tags: [UserService]
-      summary: Get Current User's Detail
-      description: Get the login user's Skoola user detail
-      operationId: UserService_GetUser
-      parameters:
-        [
-          { name: id, in: query, schema: { type: string } },
-          { name: username, in: query, schema: { type: string } },
-        ]
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/serviceGetUserResponse"
-        "401":
-          description: Unauthorized JWT token. Invalid scopes.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-        "404":
-          description: User is not found.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-  /v1/users/invite:
+  /v1/user/invite:
     post:
       tags: [UserService]
       summary: Invite new user
@@ -45,7 +15,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/serviceInviteUserRequest"
+              $ref: "#/components/schemas/publicInviteUserRequest"
         required: true
       responses:
         "200":
@@ -53,7 +23,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/serviceInviteUserResponse"
+                $ref: "#/components/schemas/publicInviteUserResponse"
         "401":
           description: Unauthorized JWT token. Invalid scopes.
           content:
@@ -66,7 +36,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-  /v1/users/list:
+  "/v1/user/list/{instance_id}":
     get:
       tags: [UserService]
       summary: Get user list
@@ -74,7 +44,12 @@ paths:
       operationId: UserService_GetUserList
       parameters:
         [
-          { name: instance, in: query, schema: { type: string } },
+          {
+            name: instance_id,
+            in: path,
+            required: true,
+            schema: { type: string },
+          },
           { name: name, in: query, schema: { type: string } },
           { name: email, in: query, schema: { type: string } },
           { name: sort, in: query, schema: { type: string } },
@@ -91,7 +66,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/serviceGetUserListResponse"
+                $ref: "#/components/schemas/publicGetUserListResponse"
+        "401":
+          description: Unauthorized JWT token. Invalid scopes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "404":
+          description: User is not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+  "/v1/user/{instance_id}":
+    get:
+      tags: [UserService]
+      summary: Get Current User's Detail
+      description: Get the login user's Skoola user detail
+      operationId: UserService_GetUser
+      parameters:
+        [
+          {
+            name: instance_id,
+            in: path,
+            required: true,
+            schema: { type: string },
+          },
+          { name: user_id, in: query, schema: { type: string } },
+          { name: username, in: query, schema: { type: string } },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicGetUserResponse"
         "401":
           description: Unauthorized JWT token. Invalid scopes.
           content:
@@ -137,20 +148,20 @@ paths:
           $ref: "#/components/schemas/v1OffsetPagination"
         cursor_pagination:
           $ref: "#/components/schemas/v1CursorPagination"
-    serviceGetUserListResponse:
+    publicGetUserListResponse:
       type: object
       properties:
         user:
           $ref: "#/components/schemas/sharedUser"
         meta:
           $ref: "#/components/schemas/v1ResponseMetadata"
-    serviceGetUserResponse:
+    publicGetUserResponse:
       type: object
       properties:
         user:
           $ref: "#/components/schemas/sharedUser"
       description: "*\n Represents user's detail"
-    serviceInviteUserRequest:
+    publicInviteUserRequest:
       type: object
       properties:
         email:
@@ -165,7 +176,7 @@ paths:
           description: user role
           format: enum
       description: Response body of Invite
-    serviceInviteUserResponse:
+    publicInviteUserResponse:
       type: object
       properties:
         message:

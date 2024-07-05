@@ -3,58 +3,58 @@
 
 ## Table of Contents
 
-- [modules/authentication/v1/service/auth.proto](#modules_authentication_v1_service_auth-proto)
-    - [LoginRequest](#modules-authentication-v1-service-LoginRequest)
-    - [LoginResponse](#modules-authentication-v1-service-LoginResponse)
-    - [LogoutRequest](#modules-authentication-v1-service-LogoutRequest)
-    - [LogoutResponse](#modules-authentication-v1-service-LogoutResponse)
+- [modules/authentication/v1/private/auth.proto](#modules_authentication_v1_private_auth-proto)
+    - [LoginRequest](#modules-authentication-v1-private-LoginRequest)
+    - [LoginResponse](#modules-authentication-v1-private-LoginResponse)
+    - [LogoutRequest](#modules-authentication-v1-private-LogoutRequest)
+    - [LogoutResponse](#modules-authentication-v1-private-LogoutResponse)
   
-    - [AuthService](#modules-authentication-v1-service-AuthService)
+    - [AuthService](#modules-authentication-v1-private-AuthService)
   
-- [modules/authentication/v1/service/identity.proto](#modules_authentication_v1_service_identity-proto)
-    - [DeleteUserRequest](#modules-authentication-v1-service-DeleteUserRequest)
-    - [DeleteUserResponse](#modules-authentication-v1-service-DeleteUserResponse)
-    - [GetUserByEmailRequest](#modules-authentication-v1-service-GetUserByEmailRequest)
-    - [GetUserByEmailResponse](#modules-authentication-v1-service-GetUserByEmailResponse)
-    - [GetUserByIdRequest](#modules-authentication-v1-service-GetUserByIdRequest)
-    - [GetUserByIdResponse](#modules-authentication-v1-service-GetUserByIdResponse)
-    - [GetUserByPhoneRequest](#modules-authentication-v1-service-GetUserByPhoneRequest)
-    - [GetUserByPhoneResponse](#modules-authentication-v1-service-GetUserByPhoneResponse)
-    - [GetUserListRequest](#modules-authentication-v1-service-GetUserListRequest)
-    - [GetUserListResponse](#modules-authentication-v1-service-GetUserListResponse)
-    - [RegisterRequest](#modules-authentication-v1-service-RegisterRequest)
-    - [RegisterResponse](#modules-authentication-v1-service-RegisterResponse)
-    - [UpdateUserRequest](#modules-authentication-v1-service-UpdateUserRequest)
-    - [UpdateUserResponse](#modules-authentication-v1-service-UpdateUserResponse)
+- [modules/authentication/v1/private/identity.proto](#modules_authentication_v1_private_identity-proto)
+    - [DeleteUserRequest](#modules-authentication-v1-private-DeleteUserRequest)
+    - [DeleteUserResponse](#modules-authentication-v1-private-DeleteUserResponse)
+    - [GetUserByEmailRequest](#modules-authentication-v1-private-GetUserByEmailRequest)
+    - [GetUserByEmailResponse](#modules-authentication-v1-private-GetUserByEmailResponse)
+    - [GetUserByIdRequest](#modules-authentication-v1-private-GetUserByIdRequest)
+    - [GetUserByIdResponse](#modules-authentication-v1-private-GetUserByIdResponse)
+    - [GetUserByPhoneRequest](#modules-authentication-v1-private-GetUserByPhoneRequest)
+    - [GetUserByPhoneResponse](#modules-authentication-v1-private-GetUserByPhoneResponse)
+    - [GetUserListRequest](#modules-authentication-v1-private-GetUserListRequest)
+    - [GetUserListResponse](#modules-authentication-v1-private-GetUserListResponse)
+    - [RegisterRequest](#modules-authentication-v1-private-RegisterRequest)
+    - [RegisterResponse](#modules-authentication-v1-private-RegisterResponse)
+    - [UpdateUserRequest](#modules-authentication-v1-private-UpdateUserRequest)
+    - [UpdateUserResponse](#modules-authentication-v1-private-UpdateUserResponse)
   
-    - [IdentityService](#modules-authentication-v1-service-IdentityService)
+    - [IdentityService](#modules-authentication-v1-private-IdentityService)
   
-- [modules/authentication/v1/service/permission.proto](#modules_authentication_v1_service_permission-proto)
-    - [AssignUserPermissionRequest](#modules-authentication-v1-service-AssignUserPermissionRequest)
-    - [AssignUserPermissionResponse](#modules-authentication-v1-service-AssignUserPermissionResponse)
-    - [CreatePermissionRequest](#modules-authentication-v1-service-CreatePermissionRequest)
-    - [CreatePermissionResponse](#modules-authentication-v1-service-CreatePermissionResponse)
-    - [DeletePermissionRequest](#modules-authentication-v1-service-DeletePermissionRequest)
-    - [DeletePermissionResponse](#modules-authentication-v1-service-DeletePermissionResponse)
-    - [ListPermissionRequest](#modules-authentication-v1-service-ListPermissionRequest)
-    - [ListPermissionResponse](#modules-authentication-v1-service-ListPermissionResponse)
-    - [UnassignUserPermissionRequest](#modules-authentication-v1-service-UnassignUserPermissionRequest)
-    - [UnassignUserPermissionResponse](#modules-authentication-v1-service-UnassignUserPermissionResponse)
+- [modules/authentication/v1/private/permission.proto](#modules_authentication_v1_private_permission-proto)
+    - [AssignUserPermissionRequest](#modules-authentication-v1-private-AssignUserPermissionRequest)
+    - [AssignUserPermissionResponse](#modules-authentication-v1-private-AssignUserPermissionResponse)
+    - [CreatePermissionRequest](#modules-authentication-v1-private-CreatePermissionRequest)
+    - [CreatePermissionResponse](#modules-authentication-v1-private-CreatePermissionResponse)
+    - [DeletePermissionRequest](#modules-authentication-v1-private-DeletePermissionRequest)
+    - [DeletePermissionResponse](#modules-authentication-v1-private-DeletePermissionResponse)
+    - [ListPermissionRequest](#modules-authentication-v1-private-ListPermissionRequest)
+    - [ListPermissionResponse](#modules-authentication-v1-private-ListPermissionResponse)
+    - [UnassignUserPermissionRequest](#modules-authentication-v1-private-UnassignUserPermissionRequest)
+    - [UnassignUserPermissionResponse](#modules-authentication-v1-private-UnassignUserPermissionResponse)
   
-    - [PermissionService](#modules-authentication-v1-service-PermissionService)
+    - [PermissionService](#modules-authentication-v1-private-PermissionService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="modules_authentication_v1_service_auth-proto"></a>
+<a name="modules_authentication_v1_private_auth-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/authentication/v1/service/auth.proto
+## modules/authentication/v1/private/auth.proto
 
 
 
-<a name="modules-authentication-v1-service-LoginRequest"></a>
+<a name="modules-authentication-v1-private-LoginRequest"></a>
 
 ### LoginRequest
 
@@ -70,7 +70,7 @@
 
 
 
-<a name="modules-authentication-v1-service-LoginResponse"></a>
+<a name="modules-authentication-v1-private-LoginResponse"></a>
 
 ### LoginResponse
 Response body of Login
@@ -87,7 +87,7 @@ Response body of Login
 
 
 
-<a name="modules-authentication-v1-service-LogoutRequest"></a>
+<a name="modules-authentication-v1-private-LogoutRequest"></a>
 
 ### LogoutRequest
 Request body of Logout
@@ -102,7 +102,7 @@ Request body of Logout
 
 
 
-<a name="modules-authentication-v1-service-LogoutResponse"></a>
+<a name="modules-authentication-v1-private-LogoutResponse"></a>
 
 ### LogoutResponse
 Response body of Logout
@@ -123,28 +123,28 @@ Response body of Logout
  
 
 
-<a name="modules-authentication-v1-service-AuthService"></a>
+<a name="modules-authentication-v1-private-AuthService"></a>
 
 ### AuthService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Login | [LoginRequest](#modules-authentication-v1-service-LoginRequest) | [LoginResponse](#modules-authentication-v1-service-LoginResponse) | Logging in user |
-| Logout | [LogoutRequest](#modules-authentication-v1-service-LogoutRequest) | [LogoutResponse](#modules-authentication-v1-service-LogoutResponse) | Logging out user by invalidating provided access token |
+| Login | [LoginRequest](#modules-authentication-v1-private-LoginRequest) | [LoginResponse](#modules-authentication-v1-private-LoginResponse) | Logging in user |
+| Logout | [LogoutRequest](#modules-authentication-v1-private-LogoutRequest) | [LogoutResponse](#modules-authentication-v1-private-LogoutResponse) | Logging out user by invalidating provided access token |
 
  
 
 
 
-<a name="modules_authentication_v1_service_identity-proto"></a>
+<a name="modules_authentication_v1_private_identity-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/authentication/v1/service/identity.proto
+## modules/authentication/v1/private/identity.proto
 
 
 
-<a name="modules-authentication-v1-service-DeleteUserRequest"></a>
+<a name="modules-authentication-v1-private-DeleteUserRequest"></a>
 
 ### DeleteUserRequest
 Request body of DeleteUser
@@ -159,7 +159,7 @@ Request body of DeleteUser
 
 
 
-<a name="modules-authentication-v1-service-DeleteUserResponse"></a>
+<a name="modules-authentication-v1-private-DeleteUserResponse"></a>
 
 ### DeleteUserResponse
 Response body of DeleteUser
@@ -174,7 +174,7 @@ Response body of DeleteUser
 
 
 
-<a name="modules-authentication-v1-service-GetUserByEmailRequest"></a>
+<a name="modules-authentication-v1-private-GetUserByEmailRequest"></a>
 
 ### GetUserByEmailRequest
 Request body of GetUserByEmail
@@ -189,7 +189,7 @@ Request body of GetUserByEmail
 
 
 
-<a name="modules-authentication-v1-service-GetUserByEmailResponse"></a>
+<a name="modules-authentication-v1-private-GetUserByEmailResponse"></a>
 
 ### GetUserByEmailResponse
 Response body of GetUserByPhone
@@ -204,7 +204,7 @@ Response body of GetUserByPhone
 
 
 
-<a name="modules-authentication-v1-service-GetUserByIdRequest"></a>
+<a name="modules-authentication-v1-private-GetUserByIdRequest"></a>
 
 ### GetUserByIdRequest
 Request body of GetUserById
@@ -219,7 +219,7 @@ Request body of GetUserById
 
 
 
-<a name="modules-authentication-v1-service-GetUserByIdResponse"></a>
+<a name="modules-authentication-v1-private-GetUserByIdResponse"></a>
 
 ### GetUserByIdResponse
 Response body of GetUserById
@@ -234,7 +234,7 @@ Response body of GetUserById
 
 
 
-<a name="modules-authentication-v1-service-GetUserByPhoneRequest"></a>
+<a name="modules-authentication-v1-private-GetUserByPhoneRequest"></a>
 
 ### GetUserByPhoneRequest
 Request body of GetUserByPhone
@@ -249,7 +249,7 @@ Request body of GetUserByPhone
 
 
 
-<a name="modules-authentication-v1-service-GetUserByPhoneResponse"></a>
+<a name="modules-authentication-v1-private-GetUserByPhoneResponse"></a>
 
 ### GetUserByPhoneResponse
 Response body of GetUserByPhone
@@ -264,7 +264,7 @@ Response body of GetUserByPhone
 
 
 
-<a name="modules-authentication-v1-service-GetUserListRequest"></a>
+<a name="modules-authentication-v1-private-GetUserListRequest"></a>
 
 ### GetUserListRequest
 Request body of GetUserList
@@ -272,6 +272,7 @@ Request body of GetUserList
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| instance_id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
@@ -284,7 +285,7 @@ Request body of GetUserList
 
 
 
-<a name="modules-authentication-v1-service-GetUserListResponse"></a>
+<a name="modules-authentication-v1-private-GetUserListResponse"></a>
 
 ### GetUserListResponse
 
@@ -300,7 +301,7 @@ Request body of GetUserList
 
 
 
-<a name="modules-authentication-v1-service-RegisterRequest"></a>
+<a name="modules-authentication-v1-private-RegisterRequest"></a>
 
 ### RegisterRequest
 Request body of Register new user
@@ -320,7 +321,7 @@ Request body of Register new user
 
 
 
-<a name="modules-authentication-v1-service-RegisterResponse"></a>
+<a name="modules-authentication-v1-private-RegisterResponse"></a>
 
 ### RegisterResponse
 Response body of Register new user
@@ -337,7 +338,7 @@ Response body of Register new user
 
 
 
-<a name="modules-authentication-v1-service-UpdateUserRequest"></a>
+<a name="modules-authentication-v1-private-UpdateUserRequest"></a>
 
 ### UpdateUserRequest
 Request body of UpdateUser
@@ -358,7 +359,7 @@ Request body of UpdateUser
 
 
 
-<a name="modules-authentication-v1-service-UpdateUserResponse"></a>
+<a name="modules-authentication-v1-private-UpdateUserResponse"></a>
 
 ### UpdateUserResponse
 Response body of UpdateUser
@@ -379,33 +380,33 @@ Response body of UpdateUser
  
 
 
-<a name="modules-authentication-v1-service-IdentityService"></a>
+<a name="modules-authentication-v1-private-IdentityService"></a>
 
 ### IdentityService
 IdentityService contains user identity management functionality such as register/read/update/delete.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Register | [RegisterRequest](#modules-authentication-v1-service-RegisterRequest) | [RegisterResponse](#modules-authentication-v1-service-RegisterResponse) |  |
-| DeleteUser | [DeleteUserRequest](#modules-authentication-v1-service-DeleteUserRequest) | [DeleteUserResponse](#modules-authentication-v1-service-DeleteUserResponse) | Delete a user by id |
-| UpdateUser | [UpdateUserRequest](#modules-authentication-v1-service-UpdateUserRequest) | [UpdateUserResponse](#modules-authentication-v1-service-UpdateUserResponse) |  |
-| GetUserById | [GetUserByIdRequest](#modules-authentication-v1-service-GetUserByIdRequest) | [GetUserByIdResponse](#modules-authentication-v1-service-GetUserByIdResponse) | Get a user by id |
-| GetUserByPhone | [GetUserByPhoneRequest](#modules-authentication-v1-service-GetUserByPhoneRequest) | [GetUserByPhoneResponse](#modules-authentication-v1-service-GetUserByPhoneResponse) | GetUserByPhone get user by their phone. |
-| GetUserByEmail | [GetUserByEmailRequest](#modules-authentication-v1-service-GetUserByEmailRequest) | [GetUserByEmailResponse](#modules-authentication-v1-service-GetUserByEmailResponse) | GetUserByPhone get user by their phone. |
-| GetUserList | [GetUserListRequest](#modules-authentication-v1-service-GetUserListRequest) | [GetUserListResponse](#modules-authentication-v1-service-GetUserListResponse) | GetUserByPhone get user by their phone. |
+| Register | [RegisterRequest](#modules-authentication-v1-private-RegisterRequest) | [RegisterResponse](#modules-authentication-v1-private-RegisterResponse) |  |
+| DeleteUser | [DeleteUserRequest](#modules-authentication-v1-private-DeleteUserRequest) | [DeleteUserResponse](#modules-authentication-v1-private-DeleteUserResponse) | Delete a user by id |
+| UpdateUser | [UpdateUserRequest](#modules-authentication-v1-private-UpdateUserRequest) | [UpdateUserResponse](#modules-authentication-v1-private-UpdateUserResponse) |  |
+| GetUserById | [GetUserByIdRequest](#modules-authentication-v1-private-GetUserByIdRequest) | [GetUserByIdResponse](#modules-authentication-v1-private-GetUserByIdResponse) | Get a user by id |
+| GetUserByPhone | [GetUserByPhoneRequest](#modules-authentication-v1-private-GetUserByPhoneRequest) | [GetUserByPhoneResponse](#modules-authentication-v1-private-GetUserByPhoneResponse) | GetUserByPhone get user by their phone. |
+| GetUserByEmail | [GetUserByEmailRequest](#modules-authentication-v1-private-GetUserByEmailRequest) | [GetUserByEmailResponse](#modules-authentication-v1-private-GetUserByEmailResponse) | GetUserByPhone get user by their phone. |
+| GetUserList | [GetUserListRequest](#modules-authentication-v1-private-GetUserListRequest) | [GetUserListResponse](#modules-authentication-v1-private-GetUserListResponse) | GetUserByPhone get user by their phone. |
 
  
 
 
 
-<a name="modules_authentication_v1_service_permission-proto"></a>
+<a name="modules_authentication_v1_private_permission-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/authentication/v1/service/permission.proto
+## modules/authentication/v1/private/permission.proto
 
 
 
-<a name="modules-authentication-v1-service-AssignUserPermissionRequest"></a>
+<a name="modules-authentication-v1-private-AssignUserPermissionRequest"></a>
 
 ### AssignUserPermissionRequest
 Request body of AssignPermission
@@ -421,7 +422,7 @@ Request body of AssignPermission
 
 
 
-<a name="modules-authentication-v1-service-AssignUserPermissionResponse"></a>
+<a name="modules-authentication-v1-private-AssignUserPermissionResponse"></a>
 
 ### AssignUserPermissionResponse
 Response body of AssignUserPermission
@@ -436,7 +437,7 @@ Response body of AssignUserPermission
 
 
 
-<a name="modules-authentication-v1-service-CreatePermissionRequest"></a>
+<a name="modules-authentication-v1-private-CreatePermissionRequest"></a>
 
 ### CreatePermissionRequest
 Request body of CreatePermission
@@ -453,7 +454,7 @@ Request body of CreatePermission
 
 
 
-<a name="modules-authentication-v1-service-CreatePermissionResponse"></a>
+<a name="modules-authentication-v1-private-CreatePermissionResponse"></a>
 
 ### CreatePermissionResponse
 Response body of CreatePermission
@@ -469,7 +470,7 @@ Response body of CreatePermission
 
 
 
-<a name="modules-authentication-v1-service-DeletePermissionRequest"></a>
+<a name="modules-authentication-v1-private-DeletePermissionRequest"></a>
 
 ### DeletePermissionRequest
 Request body of DeletePermission
@@ -484,7 +485,7 @@ Request body of DeletePermission
 
 
 
-<a name="modules-authentication-v1-service-DeletePermissionResponse"></a>
+<a name="modules-authentication-v1-private-DeletePermissionResponse"></a>
 
 ### DeletePermissionResponse
 Response body of DeletePermission
@@ -499,7 +500,7 @@ Response body of DeletePermission
 
 
 
-<a name="modules-authentication-v1-service-ListPermissionRequest"></a>
+<a name="modules-authentication-v1-private-ListPermissionRequest"></a>
 
 ### ListPermissionRequest
 Request body of ListPermission
@@ -516,7 +517,7 @@ Request body of ListPermission
 
 
 
-<a name="modules-authentication-v1-service-ListPermissionResponse"></a>
+<a name="modules-authentication-v1-private-ListPermissionResponse"></a>
 
 ### ListPermissionResponse
 Response body of ListPermission
@@ -532,7 +533,7 @@ Response body of ListPermission
 
 
 
-<a name="modules-authentication-v1-service-UnassignUserPermissionRequest"></a>
+<a name="modules-authentication-v1-private-UnassignUserPermissionRequest"></a>
 
 ### UnassignUserPermissionRequest
 Request body of UnassignUserPermission
@@ -548,7 +549,7 @@ Request body of UnassignUserPermission
 
 
 
-<a name="modules-authentication-v1-service-UnassignUserPermissionResponse"></a>
+<a name="modules-authentication-v1-private-UnassignUserPermissionResponse"></a>
 
 ### UnassignUserPermissionResponse
 Response body of UnassignUserPermission
@@ -569,18 +570,18 @@ Response body of UnassignUserPermission
  
 
 
-<a name="modules-authentication-v1-service-PermissionService"></a>
+<a name="modules-authentication-v1-private-PermissionService"></a>
 
 ### PermissionService
 PermissionService contains permission and permission management functionality such as create/read/update/delete Permission.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| ListPermission | [ListPermissionRequest](#modules-authentication-v1-service-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-service-ListPermissionResponse) | Get List of Permission on a permission. Can be accessed by admin only. |
-| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-service-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-service-CreatePermissionResponse) | Add permission to a permission. Can be accessed by admin only. |
-| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-service-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-service-DeletePermissionResponse) | Delete permission from a permission. Can be accessed by admin only. |
-| AssignUserPermission | [AssignUserPermissionRequest](#modules-authentication-v1-service-AssignUserPermissionRequest) | [AssignUserPermissionResponse](#modules-authentication-v1-service-AssignUserPermissionResponse) | Assign permission to a user. Can be accessed by admin only. |
-| UnassignUserPermission | [UnassignUserPermissionRequest](#modules-authentication-v1-service-UnassignUserPermissionRequest) | [UnassignUserPermissionResponse](#modules-authentication-v1-service-UnassignUserPermissionResponse) | Unassign a permission from user. Can be accessed by admin only. |
+| ListPermission | [ListPermissionRequest](#modules-authentication-v1-private-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-private-ListPermissionResponse) | Get List of Permission on a permission. Can be accessed by admin only. |
+| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-private-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-private-CreatePermissionResponse) | Add permission to a permission. Can be accessed by admin only. |
+| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-private-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-private-DeletePermissionResponse) | Delete permission from a permission. Can be accessed by admin only. |
+| AssignUserPermission | [AssignUserPermissionRequest](#modules-authentication-v1-private-AssignUserPermissionRequest) | [AssignUserPermissionResponse](#modules-authentication-v1-private-AssignUserPermissionResponse) | Assign permission to a user. Can be accessed by admin only. |
+| UnassignUserPermission | [UnassignUserPermissionRequest](#modules-authentication-v1-private-UnassignUserPermissionRequest) | [UnassignUserPermissionResponse](#modules-authentication-v1-private-UnassignUserPermissionResponse) | Unassign a permission from user. Can be accessed by admin only. |
 
  
 
