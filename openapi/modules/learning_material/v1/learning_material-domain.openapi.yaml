@@ -1,0 +1,85 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: Learning_material Domain
+  version: v1
+  description: Skoola Material Service
+paths:
+  /v1/material:
+    post:
+      tags: [MaterialService]
+      summary: Register New Material
+      description: register new material for teacher.
+      operationId: MaterialService_CreateMaterial
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/serviceMaterialRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/serviceMaterialResponse"
+"components":
+  "schemas":
+    serviceMaterialRequest:
+      type: object
+      properties:
+        material_name:
+          example: John F. Doe
+          type: string
+          description: Material Name
+        class_id:
+          example: 10A
+          type: string
+          description: Class ID
+    serviceMaterialResponse:
+      type: object
+      properties:
+        material:
+          type: array
+          items:
+            $ref: "#/components/schemas/sharedMaterial"
+          description: material information
+    sharedMaterial:
+      type: object
+      properties:
+        message:
+          example: Matematika Aljabar
+          type: string
+          description: learning message
+        created_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when user is created
+          format: date-time
+        updated_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when user data updated
+          format: date-time
+      description: "*\n Represents user's detail"
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"
