@@ -152,7 +152,10 @@ paths:
       type: object
       properties:
         user:
-          $ref: "#/components/schemas/sharedUser"
+          type: array
+          items:
+            $ref: "#/components/schemas/sharedUser"
+          description: user information
         meta:
           $ref: "#/components/schemas/v1ResponseMetadata"
     publicGetUserResponse:

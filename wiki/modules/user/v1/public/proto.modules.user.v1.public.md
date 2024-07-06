@@ -68,7 +68,7 @@ Request body of GetUserList
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user | [modules.user.v1.shared.User](#modules-user-v1-shared-User) |  |  |
+| user | [modules.user.v1.shared.User](#modules-user-v1-shared-User) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
 
 
