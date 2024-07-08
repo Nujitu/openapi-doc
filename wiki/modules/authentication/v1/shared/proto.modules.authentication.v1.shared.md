@@ -5,10 +5,13 @@
 
 - [modules/authentication/v1/shared/authentication.proto](#modules_authentication_v1_shared_authentication-proto)
     - [LoginEntity](#modules-authentication-v1-shared-LoginEntity)
-    - [User](#modules-authentication-v1-shared-User)
   
 - [modules/authentication/v1/shared/enumeration.proto](#modules_authentication_v1_shared_enumeration-proto)
     - [UserStatus](#modules-authentication-v1-shared-UserStatus)
+  
+- [modules/authentication/v1/shared/identity.proto](#modules_authentication_v1_shared_identity-proto)
+    - [Address](#modules-authentication-v1-shared-Address)
+    - [User](#modules-authentication-v1-shared-User)
   
 - [modules/authentication/v1/shared/permission.proto](#modules_authentication_v1_shared_permission-proto)
     - [Permission](#modules-authentication-v1-shared-Permission)
@@ -37,29 +40,6 @@ Login entity
 | ----- | ---- | ----- | ----------- |
 | user | [User](#modules-authentication-v1-shared-User) |  | user data |
 | session_token | [string](#string) |  | session token |
-
-
-
-
-
-
-<a name="modules-authentication-v1-shared-User"></a>
-
-### User
-User entity
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
-| fullname | [string](#string) |  |  |
-| username | [string](#string) |  |  |
-| phone_number | [string](#string) |  |  |
-| email | [string](#string) |  |  |
-| instance_id | [string](#string) |  |  |
-| status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
@@ -95,6 +75,69 @@ possible values of UserStatus
 | USER_STATUS_ACTIVE | 1 | User status active |
 | USER_STATUS_INACTIVE | 2 | User status inactive |
 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_authentication_v1_shared_identity-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/authentication/v1/shared/identity.proto
+
+
+
+<a name="modules-authentication-v1-shared-Address"></a>
+
+### Address
+Represents user&#39;s address
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| address_line_1 | [string](#string) |  | address detail |
+| address_line_2 | [string](#string) |  | address detail |
+| ADMINISTRATORistrative_area_level_1 | [string](#string) |  | province / provinsi |
+| ADMINISTRATORistrative_area_level_2 | [string](#string) |  | city / kota |
+| ADMINISTRATORistrative_area_level_3 | [string](#string) |  | area / kecamatan |
+| ADMINISTRATORistrative_area_level_4 | [string](#string) |  | district / kelurahan |
+| postal_code | [string](#string) |  | postal code / kode pos |
+| latitude | [string](#string) |  | stored latitude coordinate in decimal |
+| longitude | [string](#string) |  | stored longitude coordinate in decimal |
+
+
+
+
+
+
+<a name="modules-authentication-v1-shared-User"></a>
+
+### User
+User entity
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| profic_pic | [string](#string) |  |  |
+| address | [Address](#modules-authentication-v1-shared-Address) |  |  |
+| status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
 
  
 
@@ -164,8 +207,8 @@ Enums of role possible value
 | PARENT | 1 |  |
 | TEACHER | 2 |  |
 | STAFF | 3 |  |
-| ADMINISTRATOR | 4 |  |
-| SUPERADMIN | 5 |  |
+| ADMINISTRATORISTRATOR | 4 |  |
+| SUPERADMINISTRATOR | 5 |  |
 
 
  

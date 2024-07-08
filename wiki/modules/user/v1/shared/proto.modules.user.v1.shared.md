@@ -4,6 +4,7 @@
 ## Table of Contents
 
 - [modules/user/v1/shared/user.proto](#modules_user_v1_shared_user-proto)
+    - [Address](#modules-user-v1-shared-Address)
     - [User](#modules-user-v1-shared-User)
   
 - [Scalar Value Types](#scalar-value-types)
@@ -17,20 +18,44 @@
 
 
 
-<a name="modules-user-v1-shared-User"></a>
+<a name="modules-user-v1-shared-Address"></a>
 
-### User
-Represents user&#39;s detail
+### Address
+Represents user&#39;s address
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
+| address_line_1 | [string](#string) |  | address detail |
+| address_line_2 | [string](#string) |  | address detail |
+| ADMINISTRATORistrative_area_level_1 | [string](#string) |  | province / provinsi |
+| ADMINISTRATORistrative_area_level_2 | [string](#string) |  | city / kota |
+| ADMINISTRATORistrative_area_level_3 | [string](#string) |  | area / kecamatan |
+| ADMINISTRATORistrative_area_level_4 | [string](#string) |  | district / kelurahan |
+| postal_code | [string](#string) |  | postal code / kode pos |
+| latitude | [string](#string) |  | stored latitude coordinate in decimal |
+| longitude | [string](#string) |  | stored longitude coordinate in decimal |
+
+
+
+
+
+
+<a name="modules-user-v1-shared-User"></a>
+
+### User
+User entity
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
 | fullname | [string](#string) |  |  |
 | username | [string](#string) |  |  |
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
-| instance_id | [string](#string) |  |  |
+| profic_pic | [string](#string) |  |  |
+| address | [Address](#modules-user-v1-shared-Address) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

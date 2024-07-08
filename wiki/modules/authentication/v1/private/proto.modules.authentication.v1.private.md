@@ -577,11 +577,11 @@ PermissionService contains permission and permission management functionality su
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| ListPermission | [ListPermissionRequest](#modules-authentication-v1-private-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-private-ListPermissionResponse) | Get List of Permission on a permission. Can be accessed by admin only. |
-| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-private-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-private-CreatePermissionResponse) | Add permission to a permission. Can be accessed by admin only. |
-| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-private-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-private-DeletePermissionResponse) | Delete permission from a permission. Can be accessed by admin only. |
-| AssignUserPermission | [AssignUserPermissionRequest](#modules-authentication-v1-private-AssignUserPermissionRequest) | [AssignUserPermissionResponse](#modules-authentication-v1-private-AssignUserPermissionResponse) | Assign permission to a user. Can be accessed by admin only. |
-| UnassignUserPermission | [UnassignUserPermissionRequest](#modules-authentication-v1-private-UnassignUserPermissionRequest) | [UnassignUserPermissionResponse](#modules-authentication-v1-private-UnassignUserPermissionResponse) | Unassign a permission from user. Can be accessed by admin only. |
+| ListPermission | [ListPermissionRequest](#modules-authentication-v1-private-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-private-ListPermissionResponse) | Get List of Permission on a permission. Can be accessed by ADMINISTRATOR only. |
+| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-private-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-private-CreatePermissionResponse) | Add permission to a permission. Can be accessed by ADMINISTRATOR only. |
+| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-private-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-private-DeletePermissionResponse) | Delete permission from a permission. Can be accessed by ADMINISTRATOR only. |
+| AssignUserPermission | [AssignUserPermissionRequest](#modules-authentication-v1-private-AssignUserPermissionRequest) | [AssignUserPermissionResponse](#modules-authentication-v1-private-AssignUserPermissionResponse) | Assign permission to a user. Can be accessed by ADMINISTRATOR only. |
+| UnassignUserPermission | [UnassignUserPermissionRequest](#modules-authentication-v1-private-UnassignUserPermissionRequest) | [UnassignUserPermissionResponse](#modules-authentication-v1-private-UnassignUserPermissionResponse) | Unassign a permission from user. Can be accessed by ADMINISTRATOR only. |
 
  
 

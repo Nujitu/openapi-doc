@@ -5,6 +5,37 @@ info:
   description: "Skoola User Service"
   version: v1
 paths:
+  /v1/user:
+    get:
+      tags: [UserService]
+      summary: Get Current User's Detail
+      description: Get the login user's Skoola user detail
+      operationId: UserService_GetUser
+      parameters:
+        [
+          { name: user_id, in: query, schema: { type: string } },
+          { name: username, in: query, schema: { type: string } },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicGetUserResponse"
+        "401":
+          description: Unauthorized JWT token. Invalid scopes.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "404":
+          description: User is not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+      security: [{ OAuth2: [ADMINISTRATOR] }]
   /v1/user/invite:
     post:
       tags: [UserService]
@@ -36,7 +67,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-  "/v1/user/list/{instance_id}":
+      security: [{ OAuth2: [ADMINISTRATOR] }]
+  /v1/user/list:
     get:
       tags: [UserService]
       summary: Get user list
@@ -44,12 +76,6 @@ paths:
       operationId: UserService_GetUserList
       parameters:
         [
-          {
-            name: instance_id,
-            in: path,
-            required: true,
-            schema: { type: string },
-          },
           { name: name, in: query, schema: { type: string } },
           { name: email, in: query, schema: { type: string } },
           { name: sort, in: query, schema: { type: string } },
@@ -79,42 +105,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-  "/v1/user/{instance_id}":
-    get:
-      tags: [UserService]
-      summary: Get Current User's Detail
-      description: Get the login user's Skoola user detail
-      operationId: UserService_GetUser
-      parameters:
-        [
-          {
-            name: instance_id,
-            in: path,
-            required: true,
-            schema: { type: string },
-          },
-          { name: user_id, in: query, schema: { type: string } },
-          { name: username, in: query, schema: { type: string } },
-        ]
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/publicGetUserResponse"
-        "401":
-          description: Unauthorized JWT token. Invalid scopes.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-        "404":
-          description: User is not found.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
+      security: [{ OAuth2: [ADMINISTRATOR] }]
 "components":
   "schemas":
     v1CursorPagination:
@@ -174,7 +165,15 @@ paths:
           type: string
           description: user instance
         role:
-          enum: [STUDENT, PARENT, TEACHER, STAFF, ADMINISTRATOR, SUPERADMIN]
+          enum:
+            [
+              STUDENT,
+              PARENT,
+              TEACHER,
+              STAFF,
+              ADMINISTRATORISTRATOR,
+              SUPERADMINISTRATOR,
+            ]
           type: string
           description: user role
           format: enum
@@ -186,10 +185,41 @@ paths:
           type: string
           description: message for inviting result
       description: Response body of Invite
+    sharedAddress:
+      type: object
+      properties:
+        address_line_1:
+          type: string
+          description: address detail
+        address_line_2:
+          type: string
+          description: address detail
+        ADMINISTRATORistrative_area_level_1:
+          type: string
+          description: province / provinsi
+        ADMINISTRATORistrative_area_level_2:
+          type: string
+          description: city / kota
+        ADMINISTRATORistrative_area_level_3:
+          type: string
+          description: area / kecamatan
+        ADMINISTRATORistrative_area_level_4:
+          type: string
+          description: district / kelurahan
+        postal_code:
+          type: string
+          description: postal code / kode pos
+        latitude:
+          type: string
+          description: stored latitude coordinate in decimal
+        longitude:
+          type: string
+          description: stored longitude coordinate in decimal
+      description: "*\n Represents user's address"
     sharedUser:
       type: object
       properties:
-        user_id:
+        id:
           example: 123
           type: string
           description: User ID
@@ -209,9 +239,12 @@ paths:
           example: john.fd@gmail.com
           type: string
           description: User email
-        instance_id:
+        profic_pic:
+          example: profile.png
           type: string
-          description: Represent school/instance
+          description: User profile pict name
+        address:
+          $ref: "#/components/schemas/sharedAddress"
         created_at:
           example: "2020-01-01T00:00:00Z"
           type: string
@@ -222,7 +255,7 @@ paths:
           type: string
           description: Time when user data updated
           format: date-time
-      description: "*\n Represents user's detail"
+      description: User entity
     "v1ErrorResponse":
       "type": "object"
       "properties":

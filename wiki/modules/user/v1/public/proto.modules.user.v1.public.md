@@ -48,7 +48,6 @@ Request body of GetUserList
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| instance_id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
@@ -84,7 +83,6 @@ Represents request payload to retrieve user
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| instance_id | [string](#string) |  |  |
 | user_id | [string](#string) |  |  |
 | username | [string](#string) |  |  |
 
