@@ -166,14 +166,7 @@ paths:
           description: user instance
         role:
           enum:
-            [
-              STUDENT,
-              PARENT,
-              TEACHER,
-              STAFF,
-              ADMINISTRATORISTRATOR,
-              SUPERADMINISTRATOR,
-            ]
+            [STUDENT, PARENT, TEACHER, STAFF, ADMINISTRATOR, SUPERADMINISTRATOR]
           type: string
           description: user role
           format: enum

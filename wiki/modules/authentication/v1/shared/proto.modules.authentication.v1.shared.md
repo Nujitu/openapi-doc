@@ -207,7 +207,7 @@ Enums of role possible value
 | PARENT | 1 |  |
 | TEACHER | 2 |  |
 | STAFF | 3 |  |
-| ADMINISTRATORISTRATOR | 4 |  |
+| ADMINISTRATOR | 4 |  |
 | SUPERADMINISTRATOR | 5 |  |
 
 
