@@ -1,271 +1,766 @@
 # Generated with gnostic protoc-gen-openapi
-openapi: 3.0.3
-info:
-  title: User Domain
-  description: "Skoola User Service"
-  version: v1
-paths:
-  /v1/user:
-    get:
-      tags: [UserService]
-      summary: Get Current User's Detail
-      description: Get the login user's Skoola user detail
-      operationId: UserService_GetUser
-      parameters:
-        [
-          { name: user_id, in: query, schema: { type: string } },
-          { name: username, in: query, schema: { type: string } },
-        ]
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/publicGetUserResponse"
-        "401":
-          description: Unauthorized JWT token. Invalid scopes.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-        "404":
-          description: User is not found.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [ADMINISTRATOR] }]
-  /v1/user/invite:
-    post:
-      tags: [UserService]
-      summary: Invite new user
-      description: Invite user by email and instance
-      operationId: UserService_InviteUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/publicInviteUserRequest"
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/publicInviteUserResponse"
-        "401":
-          description: Unauthorized JWT token. Invalid scopes.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-        "422":
-          description: Unprocessable entity error. Invalid payload from client.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [ADMINISTRATOR] }]
-  /v1/user/list:
-    get:
-      tags: [UserService]
-      summary: Get user list
-      description: Get user list with given parameters
-      operationId: UserService_GetUserList
-      parameters:
-        [
-          { name: name, in: query, schema: { type: string } },
-          { name: email, in: query, schema: { type: string } },
-          { name: sort, in: query, schema: { type: string } },
-          { name: limit, in: query, schema: { type: integer, format: uint32 } },
-          {
-            name: offset,
-            in: query,
-            schema: { type: integer, format: uint32 },
-          },
-        ]
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/publicGetUserListResponse"
-        "401":
-          description: Unauthorized JWT token. Invalid scopes.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-        "404":
-          description: User is not found.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [ADMINISTRATOR] }]
-"components":
-  "schemas":
-    v1CursorPagination:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: uint32
-        next_cursor:
-          type: string
-        prev_cursor:
-          type: string
-        curr_cursor:
-          type: string
-    v1OffsetPagination:
-      type: object
-      properties:
-        limit:
-          type: integer
-          format: uint32
-        offset:
-          type: integer
-          format: uint32
-        total:
-          type: integer
-          format: uint32
-    v1ResponseMetadata:
-      type: object
-      properties:
-        offset_pagination:
-          $ref: "#/components/schemas/v1OffsetPagination"
-        cursor_pagination:
-          $ref: "#/components/schemas/v1CursorPagination"
-    publicGetUserListResponse:
-      type: object
-      properties:
-        user:
-          type: array
-          items:
-            $ref: "#/components/schemas/sharedUser"
-          description: user information
-        meta:
-          $ref: "#/components/schemas/v1ResponseMetadata"
-    publicGetUserResponse:
-      type: object
-      properties:
-        user:
-          $ref: "#/components/schemas/sharedUser"
-      description: "*\n Represents user's detail"
-    publicInviteUserRequest:
-      type: object
-      properties:
-        email:
-          type: string
-          description: user email
-        instance:
-          type: string
-          description: user instance
-        role:
-          enum:
-            [STUDENT, PARENT, TEACHER, STAFF, ADMINISTRATOR, SUPERADMINISTRATOR]
-          type: string
-          description: user role
-          format: enum
-      description: Response body of Invite
-    publicInviteUserResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: message for inviting result
-      description: Response body of Invite
-    sharedAddress:
-      type: object
-      properties:
-        address_line_1:
-          type: string
-          description: address detail
-        address_line_2:
-          type: string
-          description: address detail
-        ADMINISTRATORistrative_area_level_1:
-          type: string
-          description: province / provinsi
-        ADMINISTRATORistrative_area_level_2:
-          type: string
-          description: city / kota
-        ADMINISTRATORistrative_area_level_3:
-          type: string
-          description: area / kecamatan
-        ADMINISTRATORistrative_area_level_4:
-          type: string
-          description: district / kelurahan
-        postal_code:
-          type: string
-          description: postal code / kode pos
-        latitude:
-          type: string
-          description: stored latitude coordinate in decimal
-        longitude:
-          type: string
-          description: stored longitude coordinate in decimal
-      description: "*\n Represents user's address"
-    sharedUser:
-      type: object
-      properties:
-        id:
-          example: 123
-          type: string
-          description: User ID
-        fullname:
-          example: John F. Doe
-          type: string
-          description: User full name
-        username:
-          example: JohnFD
-          type: string
-          description: User username
-        phone_number:
-          example: +628790909321
-          type: string
-          description: User phone number
-        email:
-          example: john.fd@gmail.com
-          type: string
-          description: User email
-        profic_pic:
-          example: profile.png
-          type: string
-          description: User profile pict name
-        address:
-          $ref: "#/components/schemas/sharedAddress"
-        created_at:
-          example: "2020-01-01T00:00:00Z"
-          type: string
-          description: Time when user is created
-          format: date-time
-        updated_at:
-          example: "2020-01-01T00:00:00Z"
-          type: string
-          description: Time when user data updated
-          format: date-time
-      description: User entity
-    "v1ErrorResponse":
-      "type": "object"
-      "properties":
-        "errors":
-          "title": "errors"
-          "type": "array"
-          "items":
-            "$ref": "#/components/schemas/v1ErrorInfo"
-    "v1ErrorInfo":
-      "type": "object"
-      "properties":
-        "message":
-          "title": "message"
-          "type": "string"
-        "code":
-          "title": "code"
-          "type": "string"
-        "field":
-          "title": "field"
-          "type": "string"
+{
+  openapi: 3.0.3,
+  info:
+    {
+      title: User Domain,
+      description: "Skoola User Service, Skoola Student Service",
+      version: v1,
+    },
+  paths:
+    {
+      /v1/user:
+        {
+          get:
+            {
+              tags: [UserService],
+              summary: Get Current User's Detail,
+              description: Get the login user's Skoola user detail,
+              operationId: UserService_GetUser,
+              parameters:
+                [
+                  { name: user_id, in: query, schema: { type: string } },
+                  { name: username, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetUserResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token. Invalid scopes.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "404":
+                    {
+                      description: User is not found.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [ADMINISTRATOR] }],
+            },
+        },
+      /v1/user/invite:
+        {
+          post:
+            {
+              tags: [UserService],
+              summary: Invite new user,
+              description: Invite user by email and instance,
+              operationId: UserService_InviteUser,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicInviteUserRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicInviteUserResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token. Invalid scopes.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      description: Unprocessable entity error. Invalid payload from client.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [ADMINISTRATOR] }],
+            },
+        },
+      /v1/user/list:
+        {
+          get:
+            {
+              tags: [UserService],
+              summary: Get user list,
+              description: Get user list with given parameters,
+              operationId: UserService_GetUserList,
+              parameters:
+                [
+                  { name: name, in: query, schema: { type: string } },
+                  { name: email, in: query, schema: { type: string } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetUserListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token. Invalid scopes.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "404":
+                    {
+                      description: User is not found.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [ADMINISTRATOR] }],
+            },
+        },
+      /v1/student/register:
+        {
+          post:
+            {
+              tags: [StudentService],
+              summary: Register student to an instance,
+              description: Register a student to a new school or instance.,
+              operationId: StudentService_RegisterStudentToInstance,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/.RegisterStudentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.RegisterStudentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token. Invalid scopes.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "400":
+                    {
+                      description: Invalid input data.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [STUDENT] }],
+            },
+        },
+      /v1/student/status:
+        {
+          patch:
+            {
+              tags: [StudentService],
+              summary: Update student status in an instance,
+              description: Update the status of a student in a specific instance.,
+              operationId: StudentService_UpdateStudentStatus,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/.UpdateStudentStatusRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.UpdateStudentStatusResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token. Invalid scopes.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "404":
+                    {
+                      description: User or instance not found.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [STUDENT] }],
+            },
+        },
+      "/v1/student/{user_id}":
+        {
+          get:
+            {
+              tags: [StudentService],
+              summary: Get List of registered student instances,
+              description: Student might be registered in multiple school/instances,
+              operationId: StudentService_GetStudentRegisteredInstances,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.GetStudentInstanceResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token. Invalid scopes.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "404":
+                    {
+                      description: User is not found.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+              security: [{ OAuth2: [STUDENT] }],
+            },
+        },
+    },
+  "components":
+    {
+      "schemas":
+        {
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          publicGetUserListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedUser",
+                        },
+                      description: user information,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                },
+              description: "*\n Represents user's detail",
+            },
+          publicInviteUserRequest:
+            {
+              type: object,
+              properties:
+                {
+                  email: { type: string, description: user email },
+                  instance: { type: string, description: user instance },
+                  role:
+                    {
+                      enum:
+                        [
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      description: user role,
+                      format: enum,
+                    },
+                },
+              description: Response body of Invite,
+            },
+          publicInviteUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for inviting result },
+                },
+              description: Response body of Invite,
+            },
+          sharedAddress:
+            {
+              type: object,
+              properties:
+                {
+                  address_line_1: { type: string, description: address detail },
+                  address_line_2: { type: string, description: address detail },
+                  ADMINISTRATORistrative_area_level_1:
+                    { type: string, description: province / provinsi },
+                  ADMINISTRATORistrative_area_level_2:
+                    { type: string, description: city / kota },
+                  ADMINISTRATORistrative_area_level_3:
+                    { type: string, description: area / kecamatan },
+                  ADMINISTRATORistrative_area_level_4:
+                    { type: string, description: district / kelurahan },
+                  postal_code:
+                    { type: string, description: postal code / kode pos },
+                  latitude:
+                    {
+                      type: string,
+                      description: stored latitude coordinate in decimal,
+                    },
+                  longitude:
+                    {
+                      type: string,
+                      description: stored longitude coordinate in decimal,
+                    },
+                },
+              description: "*\n Represents user's address",
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  profic_pic:
+                    {
+                      example: profile.png,
+                      type: string,
+                      description: User profile pict name,
+                    },
+                  address:
+                    {
+                      $ref: "#/components/schemas/sharedAddress",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+              description: User entity,
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          .GetStudentInstanceResponse:
+            {
+              type: object,
+              properties:
+                {
+                  student:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudent",
+                        },
+                      description: Student data by it's registered instances,
+                    },
+                },
+            },
+          .RegisterStudentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: User ID },
+                  student:
+                    {
+                      $ref: "#/components/schemas/sharedStudent",
+                    },
+                },
+            },
+          .RegisterStudentResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: Registration status } },
+            },
+          .UpdateStudentStatusRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: User ID },
+                  status:
+                    {
+                      enum:
+                        [
+                          STUDENT_STATUS_UNSPECIFIED,
+                          STUDENT_STATUS_ACTIVE,
+                          STUDENT_STATUS_INACTIVE,
+                          STUDENT_STATUS_ALUMNI,
+                        ],
+                      type: string,
+                      description: New status of the student,
+                      format: enum,
+                    },
+                },
+            },
+          .UpdateStudentStatusResponse:
+            {
+              type: object,
+              properties:
+                {
+                  status:
+                    {
+                      enum:
+                        [
+                          STUDENT_STATUS_UNSPECIFIED,
+                          STUDENT_STATUS_ACTIVE,
+                          STUDENT_STATUS_INACTIVE,
+                          STUDENT_STATUS_ALUMNI,
+                        ],
+                      type: string,
+                      description: Update status,
+                      format: enum,
+                    },
+                  message: { type: string, description: Update message },
+                },
+            },
+          sharedStudent:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Student ID },
+                  user_id:
+                    {
+                      type: string,
+                      description: Student Registered user profile,
+                    },
+                  nisn:
+                    {
+                      type: string,
+                      description: National registered student number,
+                    },
+                  instance_id:
+                    {
+                      type: string,
+                      description: ID of Instance where student is registered,
+                    },
+                  instance_name:
+                    {
+                      type: string,
+                      description: Name of Instance where student is registered,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          STUDENT_STATUS_UNSPECIFIED,
+                          STUDENT_STATUS_ACTIVE,
+                          STUDENT_STATUS_INACTIVE,
+                          STUDENT_STATUS_ALUMNI,
+                        ],
+                      type: string,
+                      description: Status of student,
+                      format: enum,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+            },
+        },
+    },
+}

@@ -3,11 +3,68 @@
 
 ## Table of Contents
 
+- [modules/user/v1/shared/student.proto](#modules_user_v1_shared_student-proto)
+    - [Student](#modules-user-v1-shared-Student)
+  
+    - [StudentStatus](#modules-user-v1-shared-StudentStatus)
+  
 - [modules/user/v1/shared/user.proto](#modules_user_v1_shared_user-proto)
     - [Address](#modules-user-v1-shared-Address)
     - [User](#modules-user-v1-shared-User)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_user_v1_shared_student-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/shared/student.proto
+
+
+
+<a name="modules-user-v1-shared-Student"></a>
+
+### Student
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| user_id | [string](#string) |  |  |
+| nisn | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
+| status | [StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="modules-user-v1-shared-StudentStatus"></a>
+
+### StudentStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| STUDENT_STATUS_UNSPECIFIED | 0 | Default Student status. It will not be used. |
+| STUDENT_STATUS_ACTIVE | 1 | Student status active |
+| STUDENT_STATUS_INACTIVE | 2 | Student status inactive |
+| STUDENT_STATUS_ALUMNI | 3 | indicates that the student is now an alumnus or finished their studies |
+
+
+ 
+
+ 
+
+ 
 
 
 

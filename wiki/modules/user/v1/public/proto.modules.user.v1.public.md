@@ -3,6 +3,16 @@
 
 ## Table of Contents
 
+- [modules/user/v1/public/student.proto](#modules_user_v1_public_student-proto)
+    - [GetStudentInstanceRequest](#-GetStudentInstanceRequest)
+    - [GetStudentInstanceResponse](#-GetStudentInstanceResponse)
+    - [RegisterStudentRequest](#-RegisterStudentRequest)
+    - [RegisterStudentResponse](#-RegisterStudentResponse)
+    - [UpdateStudentStatusRequest](#-UpdateStudentStatusRequest)
+    - [UpdateStudentStatusResponse](#-UpdateStudentStatusResponse)
+  
+    - [StudentService](#-StudentService)
+  
 - [modules/user/v1/public/user.proto](#modules_user_v1_public_user-proto)
     - [CreateUserRequest](#modules-user-v1-public-CreateUserRequest)
     - [GetUserListRequest](#modules-user-v1-public-GetUserListRequest)
@@ -15,6 +25,127 @@
     - [UserService](#modules-user-v1-public-UserService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_user_v1_public_student-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/public/student.proto
+
+
+
+<a name="-GetStudentInstanceRequest"></a>
+
+### GetStudentInstanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-GetStudentInstanceResponse"></a>
+
+### GetStudentInstanceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) | repeated |  |
+
+
+
+
+
+
+<a name="-RegisterStudentRequest"></a>
+
+### RegisterStudentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) |  |  |
+
+
+
+
+
+
+<a name="-RegisterStudentResponse"></a>
+
+### RegisterStudentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-UpdateStudentStatusRequest"></a>
+
+### UpdateStudentStatusRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
+
+
+
+
+
+
+<a name="-UpdateStudentStatusResponse"></a>
+
+### UpdateStudentStatusResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="-StudentService"></a>
+
+### StudentService
+Service for student related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetStudentRegisteredInstances | [.GetStudentInstanceRequest](#GetStudentInstanceRequest) | [.GetStudentInstanceResponse](#GetStudentInstanceResponse) |  |
+| RegisterStudentToInstance | [.RegisterStudentRequest](#RegisterStudentRequest) | [.RegisterStudentResponse](#RegisterStudentResponse) |  |
+| UpdateStudentStatus | [.UpdateStudentStatusRequest](#UpdateStudentStatusRequest) | [.UpdateStudentStatusResponse](#UpdateStudentStatusResponse) |  |
+
+ 
 
 
 
