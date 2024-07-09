@@ -478,7 +478,7 @@ Request body of DeletePermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| permission_id | [string](#string) |  | id of permission |
+| id | [string](#string) |  | id of permission |
 
 
 
@@ -508,7 +508,7 @@ Request body of ListPermission
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| permission_id | [string](#string) |  | id of permission |
+| id | [string](#string) |  | id of permission |
 | limit | [int32](#int32) |  | limit of permission to return |
 | cursor | [string](#string) |  | cursor of pagination |
 

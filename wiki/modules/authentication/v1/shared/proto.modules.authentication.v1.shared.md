@@ -182,7 +182,7 @@ RoleWithUserId entity
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| permission_id | [string](#string) |  | id |
+| id | [string](#string) |  | id |
 | user_id | [string](#string) |  | user_id |
 | domain_name | [string](#string) |  | domain name |
 | name | [string](#string) |  | role name |
