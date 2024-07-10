@@ -162,10 +162,10 @@ Permission entity
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | id |
 | action | [string](#string) |  | action |
-| resource_name | [string](#string) |  | resource name |
-| permission_id | [string](#string) |  | id |
-| display_name | [string](#string) |  | display name |
+| permission_name | [string](#string) |  | resource name |
+| description | [string](#string) |  | display name |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when permission is created |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  | when permission is updated |
 
