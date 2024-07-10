@@ -448,6 +448,7 @@ Request body of CreatePermission
 | action | [string](#string) |  | action |
 | resource_name | [string](#string) |  | resource name |
 | display_name | [string](#string) |  | display name |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
 
 
 
