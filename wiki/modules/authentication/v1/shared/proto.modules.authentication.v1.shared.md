@@ -127,7 +127,7 @@ User entity
 | username | [string](#string) |  |  |
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
-| profic_pic | [string](#string) |  |  |
+| profile_pic | [string](#string) |  |  |
 | address | [Address](#modules-authentication-v1-shared-Address) |  |  |
 | status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |

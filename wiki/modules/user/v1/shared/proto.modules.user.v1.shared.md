@@ -111,7 +111,7 @@ User entity
 | username | [string](#string) |  |  |
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
-| profic_pic | [string](#string) |  |  |
+| profile_pic | [string](#string) |  |  |
 | address | [Address](#modules-user-v1-shared-Address) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
