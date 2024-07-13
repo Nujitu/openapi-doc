@@ -1,0 +1,163 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: Teaching_module Domain
+  version: v1
+  description: Skoola Teaching Module Service
+paths:
+  /v1/teaching-module:
+    post:
+      tags: [TeachingModuleService]
+      summary: Insert New Teaching Module
+      description: insert new teaching module
+      operationId: TeachingModuleService_CreateTeachingModule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicTeachingModuleRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicTeachingModuleResponse"
+  /v1/teaching-module/approval:
+    patch:
+      tags: [TeachingModuleService]
+      summary: Insert New Teaching Module
+      description: insert new teaching module
+      operationId: TeachingModuleService_ApproveTeachingModule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicApproveteachingModuleRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicTeachingModuleResponse"
+  "/v1/teaching-module/{subject_id}":
+    get:
+      tags: [TeachingModuleService]
+      summary: Get teaching Module by subject id
+      description: get teaching module general infor by subject id
+      operationId: TeachingModuleService_GetTeachingModulebySubjectID
+      parameters:
+        [
+          {
+            name: subject_id,
+            in: path,
+            required: true,
+            schema: { type: string },
+          },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/sharedTeachingModule"
+"components":
+  "schemas":
+    publicApproveteachingModuleRequest:
+      type: object
+      properties:
+        teaching_module_id:
+          type: string
+          description: teaching module id
+        teacher_id:
+          type: string
+          description: teacher id
+        is_approved:
+          type: boolean
+          description: approval request
+    publicTeachingModuleRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: teaching module id
+        title:
+          type: string
+          description: Title for teaching module
+        description:
+          type: string
+          description: "Teaching Module "
+        start_date:
+          type: string
+          description: Star Date for teaching module
+        end_date:
+          type: string
+          description: End Date for teaching module
+        components:
+          type: string
+          description: Curriculum component for teaching module
+        learning_profile:
+          type: string
+          description: Learning Profile each teaching module
+        subject_id:
+          type: string
+          description: Subject id that related teaching module
+        approver:
+          type: array
+          items:
+            $ref: "#/components/schemas/sharedApprover"
+          description: List of approver for teaching module
+    publicTeachingModuleResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: message for teaching module
+    sharedApprover:
+      type: object
+      properties:
+        teacher_id:
+          type: string
+          description: Teacher who approve new teaching module
+        is_approved:
+          type: boolean
+          description: approve status
+    sharedTeachingModule:
+      type: object
+      properties:
+        id:
+          type: string
+          description: teaching module id
+        subject_id:
+          type: string
+          description: subject id
+        title:
+          type: string
+          description: title from teaching module
+        description:
+          type: string
+          description: description from teaching module
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"
