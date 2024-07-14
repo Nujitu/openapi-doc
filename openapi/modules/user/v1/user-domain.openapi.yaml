@@ -650,6 +650,7 @@
                     {
                       enum:
                         [
+                          UNSPECIFIED,
                           STUDENT,
                           PARENT,
                           TEACHER,

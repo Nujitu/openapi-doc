@@ -203,12 +203,13 @@ Enums of role possible value
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| STUDENT | 0 |  |
-| PARENT | 1 |  |
-| TEACHER | 2 |  |
-| STAFF | 3 |  |
-| ADMINISTRATOR | 4 |  |
-| SUPERADMINISTRATOR | 5 |  |
+| UNSPECIFIED | 0 |  |
+| STUDENT | 1 |  |
+| PARENT | 2 |  |
+| TEACHER | 3 |  |
+| STAFF | 4 |  |
+| ADMINISTRATOR | 5 |  |
+| SUPERADMINISTRATOR | 6 |  |
 
 
  
