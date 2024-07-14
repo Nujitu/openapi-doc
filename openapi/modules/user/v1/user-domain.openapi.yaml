@@ -345,7 +345,7 @@
               security: [{ OAuth2: [ADMINISTRATOR] }],
             },
         },
-      /v1/user/list:
+      "/v1/user/list/{instnace_id}":
         {
           get:
             {
@@ -355,6 +355,13 @@
               operationId: UserService_GetUserList,
               parameters:
                 [
+                  {
+                    name: instnace_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: instance_id, in: query, schema: { type: string } },
                   { name: name, in: query, schema: { type: string } },
                   { name: email, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
