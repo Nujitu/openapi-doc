@@ -3,11 +3,47 @@
 
 ## Table of Contents
 
+- [modules/teaching_module/v1/shared/learning_goal.proto](#modules_teaching_module_v1_shared_learning_goal-proto)
+    - [LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal)
+  
 - [modules/teaching_module/v1/shared/teaching_module.proto](#modules_teaching_module_v1_shared_teaching_module-proto)
     - [Approver](#modules-teaching_modules-v1-shared-Approver)
     - [TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_teaching_module_v1_shared_learning_goal-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/shared/learning_goal.proto
+
+
+
+<a name="modules-teaching_modules-v1-shared-LearningGoal"></a>
+
+### LearningGoal
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| learning_goal_id | [string](#string) |  |  |
+| goal | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
 
 
 

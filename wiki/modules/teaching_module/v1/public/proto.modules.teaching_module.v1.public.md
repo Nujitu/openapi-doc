@@ -3,8 +3,15 @@
 
 ## Table of Contents
 
+- [modules/teaching_module/v1/public/learning_goal.proto](#modules_teaching_module_v1_public_learning_goal-proto)
+    - [CreateLearningGoalResponse](#modules-teaching_module-v1-public-CreateLearningGoalResponse)
+    - [CreateLearningGoalsRequest](#modules-teaching_module-v1-public-CreateLearningGoalsRequest)
+    - [UpdateLearningGoalRequest](#modules-teaching_module-v1-public-UpdateLearningGoalRequest)
+    - [UpdateLearningGoalResponse](#modules-teaching_module-v1-public-UpdateLearningGoalResponse)
+  
+    - [LearningGoalService](#modules-teaching_module-v1-public-LearningGoalService)
+  
 - [modules/teaching_module/v1/public/teaching_module.proto](#modules_teaching_module_v1_public_teaching_module-proto)
-    - [Approver](#modules-teaching_module-v1-public-Approver)
     - [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest)
     - [GetTeachingModuleBySubjectIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest)
     - [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest)
@@ -16,26 +23,97 @@
 
 
 
-<a name="modules_teaching_module_v1_public_teaching_module-proto"></a>
+<a name="modules_teaching_module_v1_public_learning_goal-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/teaching_module/v1/public/teaching_module.proto
+## modules/teaching_module/v1/public/learning_goal.proto
 
 
 
-<a name="modules-teaching_module-v1-public-Approver"></a>
+<a name="modules-teaching_module-v1-public-CreateLearningGoalResponse"></a>
 
-### Approver
+### CreateLearningGoalResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
-| is_approved | [bool](#bool) |  |  |
+| message | [string](#string) |  |  |
 
 
 
+
+
+
+<a name="modules-teaching_module-v1-public-CreateLearningGoalsRequest"></a>
+
+### CreateLearningGoalsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| learning_goals | [modules.teaching_modules.v1.shared.LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) | repeated |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-UpdateLearningGoalRequest"></a>
+
+### UpdateLearningGoalRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| learning_goals | [modules.teaching_modules.v1.shared.LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-UpdateLearningGoalResponse"></a>
+
+### UpdateLearningGoalResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-public-LearningGoalService"></a>
+
+### LearningGoalService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateLearningGoals | [CreateLearningGoalsRequest](#modules-teaching_module-v1-public-CreateLearningGoalsRequest) | [CreateLearningGoalResponse](#modules-teaching_module-v1-public-CreateLearningGoalResponse) |  |
+| UpdateLearningGoal | [UpdateLearningGoalRequest](#modules-teaching_module-v1-public-UpdateLearningGoalRequest) | [UpdateLearningGoalResponse](#modules-teaching_module-v1-public-UpdateLearningGoalResponse) |  |
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_public_teaching_module-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/public/teaching_module.proto
 
 
 
@@ -88,6 +166,7 @@
 | learning_profile | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | approver | [modules.teaching_modules.v1.shared.Approver](#modules-teaching_modules-v1-shared-Approver) | repeated |  |
+| learning_goals | [modules.teaching_modules.v1.shared.LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) | repeated |  |
 
 
 
