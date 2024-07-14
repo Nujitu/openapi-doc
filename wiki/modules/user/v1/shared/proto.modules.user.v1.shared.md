@@ -8,6 +8,11 @@
   
     - [StudentStatus](#modules-user-v1-shared-StudentStatus)
   
+- [modules/user/v1/shared/teacher.proto](#modules_user_v1_shared_teacher-proto)
+    - [Teacher](#modules-user-v1-shared-Teacher)
+  
+    - [TeacherStatus](#modules-user-v1-shared-TeacherStatus)
+  
 - [modules/user/v1/shared/user.proto](#modules_user_v1_shared_user-proto)
     - [Address](#modules-user-v1-shared-Address)
     - [User](#modules-user-v1-shared-User)
@@ -58,6 +63,58 @@
 | STUDENT_STATUS_ACTIVE | 1 | Student status active |
 | STUDENT_STATUS_INACTIVE | 2 | Student status inactive |
 | STUDENT_STATUS_ALUMNI | 3 | indicates that the student is now an alumnus or finished their studies |
+
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_user_v1_shared_teacher-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/shared/teacher.proto
+
+
+
+<a name="modules-user-v1-shared-Teacher"></a>
+
+### Teacher
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| user_id | [string](#string) |  |  |
+| nip | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
+| status | [TeacherStatus](#modules-user-v1-shared-TeacherStatus) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="modules-user-v1-shared-TeacherStatus"></a>
+
+### TeacherStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TEACHER_STATUS_UNSPECIFIED | 0 | Default TEACHER status. It will not be used. |
+| TEACHER_STATUS_ACTIVE | 1 | TEACHER status active |
+| TEACHER_STATUS_INACTIVE | 2 | TEACHER status inactive |
+| TEACHER_STATUS_ALUMNI | 3 | indicates that the TEACHER is now an alumnus or finished their studies |
 
 
  

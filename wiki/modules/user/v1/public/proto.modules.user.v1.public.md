@@ -73,7 +73,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
 | student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) |  |  |
 
 

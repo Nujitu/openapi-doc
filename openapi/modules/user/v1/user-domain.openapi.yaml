@@ -345,7 +345,7 @@
               security: [{ OAuth2: [ADMINISTRATOR] }],
             },
         },
-      "/v1/user/list/{instnace_id}":
+      "/v1/user/list/{instance_id}":
         {
           get:
             {
@@ -356,12 +356,11 @@
               parameters:
                 [
                   {
-                    name: instnace_id,
+                    name: instance_id,
                     in: path,
                     required: true,
                     schema: { type: string },
                   },
-                  { name: instance_id, in: query, schema: { type: string } },
                   { name: name, in: query, schema: { type: string } },
                   { name: email, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
@@ -450,7 +449,6 @@
               type: object,
               properties:
                 {
-                  user_id: { type: string, description: User ID },
                   student:
                     {
                       $ref: "#/components/schemas/sharedStudent",
