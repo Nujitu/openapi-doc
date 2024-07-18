@@ -2,8 +2,9 @@
 openapi: 3.0.3
 info:
   title: Authentication Domain
+  description: "Skoola Admin User Service"
   version: v1
-  description: Skoola Admin User Service
+servers: [{ url: "https://api.stg.skola.com" }]
 paths:
   /v1/user/admin:
     post:
@@ -24,19 +25,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/publicRegisterUserResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
         "401":
-          description: Unauthorized JWT token. Invalid scopes.
+          description: Unauthorized JWT token.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-        "422":
-          description: Unprocessable entity error. Invalid payload from client.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/v1ErrorResponse"
-      security: [{ OAuth2: [ADMINISTRATOR] }]
 "components":
   "schemas":
     publicRegisterUserRequest:
@@ -190,3 +190,22 @@ paths:
         "field":
           "title": "field"
           "type": "string"
+  responses:
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+    "401":
+      description: Unauthorized JWT token.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+  securitySchemes:
+    OAuth2:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security: [{ bearerAuth: [] }]

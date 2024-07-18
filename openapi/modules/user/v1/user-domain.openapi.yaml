@@ -219,8 +219,8 @@
           get:
             {
               tags: [UserService],
-              summary: Get Current User's Detail,
-              description: Get the login user's Skoola user detail,
+              summary: Get User,
+              description: Get user detail,
               operationId: UserService_GetUser,
               parameters:
                 [
@@ -243,9 +243,9 @@
                             },
                         },
                     },
-                  "401":
+                  "500":
                     {
-                      description: Unauthorized JWT token. Invalid scopes.,
+                      description: Internal Server Error,
                       content:
                         {
                           application/json:
@@ -257,9 +257,9 @@
                             },
                         },
                     },
-                  "404":
+                  "401":
                     {
-                      description: User is not found.,
+                      description: Unauthorized JWT token.,
                       content:
                         {
                           application/json:
@@ -272,7 +272,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [ADMINISTRATOR] }],
             },
         },
       /v1/user/invite:
@@ -280,8 +279,8 @@
           post:
             {
               tags: [UserService],
-              summary: Invite new user,
-              description: Invite user by email and instance,
+              summary: Invite a new user,
+              description: "Invite a new user, if user is already registered, it will create a new profile based on the role type",
               operationId: UserService_InviteUser,
               requestBody:
                 {
@@ -313,9 +312,9 @@
                             },
                         },
                     },
-                  "401":
+                  "500":
                     {
-                      description: Unauthorized JWT token. Invalid scopes.,
+                      description: Internal Server Error,
                       content:
                         {
                           application/json:
@@ -327,9 +326,9 @@
                             },
                         },
                     },
-                  "422":
+                  "401":
                     {
-                      description: Unprocessable entity error. Invalid payload from client.,
+                      description: Unauthorized JWT token.,
                       content:
                         {
                           application/json:
@@ -342,7 +341,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [ADMINISTRATOR] }],
             },
         },
       "/v1/user/list/{instance_id}":
@@ -391,9 +389,9 @@
                             },
                         },
                     },
-                  "401":
+                  "500":
                     {
-                      description: Unauthorized JWT token. Invalid scopes.,
+                      description: Internal Server Error,
                       content:
                         {
                           application/json:
@@ -405,9 +403,9 @@
                             },
                         },
                     },
-                  "404":
+                  "401":
                     {
-                      description: User is not found.,
+                      description: Unauthorized JWT token.,
                       content:
                         {
                           application/json:
@@ -420,7 +418,6 @@
                         },
                     },
                 },
-              security: [{ OAuth2: [ADMINISTRATOR] }],
             },
         },
     },
@@ -768,5 +765,40 @@
               description: User entity,
             },
         },
+      responses:
+        {
+          "500":
+            {
+              description: Internal Server Error,
+              content:
+                {
+                  application/json:
+                    {
+                      schema:
+                        {
+                          $ref: "#/components/schemas/v1ErrorResponse",
+                        },
+                    },
+                },
+            },
+          "401":
+            {
+              description: Unauthorized JWT token.,
+              content:
+                {
+                  application/json:
+                    {
+                      schema:
+                        {
+                          $ref: "#/components/schemas/v1ErrorResponse",
+                        },
+                    },
+                },
+            },
+        },
+      securitySchemes:
+        { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
+  servers: [{ url: "https://api.stg.skola.com" }],
+  security: [{ bearerAuth: [] }],
 }

@@ -67,7 +67,7 @@ Request body of Register new user
 <a name="modules-authentication-v1-public-AdminUserService"></a>
 
 ### AdminUserService
-
+Service for user related feature
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
