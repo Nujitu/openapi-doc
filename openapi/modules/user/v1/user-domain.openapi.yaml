@@ -800,5 +800,5 @@
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
   servers: [{ url: "https://api.stg.skola.com" }],
-  security: [{ bearerAuth: [] }],
+  security: [{ OAuth2: [USER] }],
 }

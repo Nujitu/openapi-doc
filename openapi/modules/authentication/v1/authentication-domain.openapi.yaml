@@ -208,4 +208,4 @@ paths:
       type: http
       scheme: bearer
       bearerFormat: JWT
-security: [{ bearerAuth: [] }]
+security: [{ OAuth2: [ADMIN] }]
