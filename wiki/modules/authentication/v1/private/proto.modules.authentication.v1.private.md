@@ -8,6 +8,8 @@
     - [LoginResponse](#modules-authentication-v1-private-LoginResponse)
     - [LogoutRequest](#modules-authentication-v1-private-LogoutRequest)
     - [LogoutResponse](#modules-authentication-v1-private-LogoutResponse)
+    - [RefreshTokenRequest](#modules-authentication-v1-private-RefreshTokenRequest)
+    - [RefreshTokenResponse](#modules-authentication-v1-private-RefreshTokenResponse)
   
     - [AuthService](#modules-authentication-v1-private-AuthService)
   
@@ -116,6 +118,36 @@ Response body of Logout
 
 
 
+
+<a name="modules-authentication-v1-private-RefreshTokenRequest"></a>
+
+### RefreshTokenRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_access_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-private-RefreshTokenResponse"></a>
+
+### RefreshTokenResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_access_token | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -132,6 +164,7 @@ Response body of Logout
 | ----------- | ------------ | ------------- | ------------|
 | Login | [LoginRequest](#modules-authentication-v1-private-LoginRequest) | [LoginResponse](#modules-authentication-v1-private-LoginResponse) | Logging in user |
 | Logout | [LogoutRequest](#modules-authentication-v1-private-LogoutRequest) | [LogoutResponse](#modules-authentication-v1-private-LogoutResponse) | Logging out user by invalidating provided access token |
+| RefreshToken | [RefreshTokenRequest](#modules-authentication-v1-private-RefreshTokenRequest) | [RefreshTokenResponse](#modules-authentication-v1-private-RefreshTokenResponse) |  |
 
  
 
