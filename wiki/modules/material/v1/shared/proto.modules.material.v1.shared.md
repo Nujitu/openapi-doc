@@ -6,6 +6,12 @@
 - [modules/material/v1/shared/class_group.proto](#modules_material_v1_shared_class_group-proto)
     - [ClassGroup](#modules-material-v1-shared-ClassGroup)
   
+- [modules/material/v1/shared/curriculum.proto](#modules_material_v1_shared_curriculum-proto)
+    - [Curriculum](#modules-material-v1-shared-Curriculum)
+    - [Curriculum.ComponentsEntry](#modules-material-v1-shared-Curriculum-ComponentsEntry)
+  
+    - [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus)
+  
 - [modules/material/v1/shared/subject.proto](#modules_material_v1_shared_subject-proto)
     - [Subject](#modules-material-v1-shared-Subject)
   
@@ -47,6 +53,74 @@
 
 
  
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_curriculum-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/curriculum.proto
+
+
+
+<a name="modules-material-v1-shared-Curriculum"></a>
+
+### Curriculum
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| logo | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| status | [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus) |  |  |
+| notes | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| components | [Curriculum.ComponentsEntry](#modules-material-v1-shared-Curriculum-ComponentsEntry) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-Curriculum-ComponentsEntry"></a>
+
+### Curriculum.ComponentsEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [common.v1.Dict](#common-v1-Dict) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="modules-material-v1-shared-CurriculumStatus"></a>
+
+### CurriculumStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CURRICULUM_STATUS_ACTIVE | 0 | Curriculum status active |
+| CURRICULUM_STATUS_INACTIVE | 1 | Curriculum status inactive |
+
 
  
 

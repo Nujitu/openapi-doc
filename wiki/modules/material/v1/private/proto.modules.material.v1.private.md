@@ -9,6 +9,11 @@
   
     - [ClassGroupService](#modules-material-v1-private-ClassGroupService)
   
+- [modules/material/v1/private/curriculum.proto](#modules_material_v1_private_curriculum-proto)
+    - [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest)
+  
+    - [CurriculumService](#modules-material-v1-private-CurriculumService)
+  
 - [modules/material/v1/private/subject.proto](#modules_material_v1_private_subject-proto)
     - [GetStudentSubjectListRequest](#modules-material-v1-private-GetStudentSubjectListRequest)
     - [GetSubjectByTeacherIdRequest](#modules-material-v1-private-GetSubjectByTeacherIdRequest)
@@ -82,6 +87,47 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-private-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-private-GetClassGroupListResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_private_curriculum-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/private/curriculum.proto
+
+
+
+<a name="modules-material-v1-private-GetCurriculumByIdRequest"></a>
+
+### GetCurriculumByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-private-CurriculumService"></a>
+
+### CurriculumService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetCurriculumByID | [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
 
  
 

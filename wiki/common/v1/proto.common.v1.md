@@ -12,6 +12,9 @@
     - [OffsetPagination](#common-v1-OffsetPagination)
     - [ResponseMetadata](#common-v1-ResponseMetadata)
   
+- [common/v1/type.proto](#common_v1_type-proto)
+    - [Dict](#common-v1-Dict)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -116,6 +119,38 @@
 | ----- | ---- | ----- | ----------- |
 | offset_pagination | [OffsetPagination](#common-v1-OffsetPagination) |  |  |
 | cursor_pagination | [CursorPagination](#common-v1-CursorPagination) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="common_v1_type-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/v1/type.proto
+
+
+
+<a name="common-v1-Dict"></a>
+
+### Dict
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
 
 
 

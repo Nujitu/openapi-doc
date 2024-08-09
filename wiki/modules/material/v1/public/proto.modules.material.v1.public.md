@@ -14,6 +14,11 @@
   
     - [ClassGroupService](#modules-material-v1-public-ClassGroupService)
   
+- [modules/material/v1/public/curriculum.proto](#modules_material_v1_public_curriculum-proto)
+    - [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest)
+  
+    - [CurriculumService](#modules-material-v1-public-CurriculumService)
+  
 - [modules/material/v1/public/subject.proto](#modules_material_v1_public_subject-proto)
     - [CreateSubjectRequest](#modules-material-v1-public-CreateSubjectRequest)
     - [GetStudentSubjectListRequest](#modules-material-v1-public-GetStudentSubjectListRequest)
@@ -187,6 +192,47 @@ Service for user related feature
 | GetClassGroupDetail | [GetClassGroupDetailRequest](#modules-material-v1-public-GetClassGroupDetailRequest) | [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse) |  |
 | UpdateClassGroup | [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest) | [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse) |  |
 | GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_public_curriculum-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/public/curriculum.proto
+
+
+
+<a name="modules-material-v1-public-CreateCurriculumRequest"></a>
+
+### CreateCurriculumRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum | [modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-public-CurriculumService"></a>
+
+### CurriculumService
+Service for user related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateCurriculum | [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
 
  
 

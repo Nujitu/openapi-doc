@@ -4,7 +4,7 @@
   info:
     {
       title: Material Domain,
-      description: "Skola Subject Service, Skola Class Group Service",
+      description: "Skola Subject Service, Skola Class Group Service, Skoola Curriculum Service",
       version: v1,
     },
   servers: [{ url: "https://api.stg.skola.com" }],
@@ -722,6 +722,75 @@
                 },
             },
         },
+      /v1/curriculum:
+        {
+          post:
+            {
+              tags: [CurriculumService],
+              summary: Create a new curriculum,
+              description: Admin register a new user,
+              operationId: CurriculumService_CreateCurriculum,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateCurriculumRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCurriculum",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
@@ -1178,6 +1247,76 @@
                     },
                 },
             },
+          v1Dict:
+            {
+              type: object,
+              properties: { key: { type: string }, value: { type: string } },
+            },
+          publicCreateCurriculumRequest:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
+          sharedCurriculum:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  logo:
+                    {
+                      example: "https://skola.bucket/curriculum-name.png",
+                      type: string,
+                      description: Curriculum logo,
+                    },
+                  name:
+                    {
+                      example: Indonesia Merdeka,
+                      type: string,
+                      description: Curriculum name,
+                    },
+                  description: { type: string, description: Curriculum desc },
+                  status:
+                    {
+                      enum:
+                        [CURRICULUM_STATUS_ACTIVE, CURRICULUM_STATUS_INACTIVE],
+                      type: string,
+                      description: Curriculum Status,
+                      format: enum,
+                    },
+                  notes: { type: string, description: Curriculum notes },
+                  instance_id:
+                    { type: string, description: Curriculum instance },
+                  components:
+                    {
+                      type: object,
+                      additionalProperties:
+                        { $ref: "#/components/schemas/v1Dict" },
+                      description: Curriculum instance,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
         },
       responses:
         {
@@ -1213,5 +1352,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  security: [{ OAuth2: [TEACHER] }],
+  security: [{ OAuth2: [ADMIN] }],
 }
