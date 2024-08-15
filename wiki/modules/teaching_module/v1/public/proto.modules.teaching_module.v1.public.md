@@ -14,10 +14,20 @@
 - [modules/teaching_module/v1/public/teaching_module.proto](#modules_teaching_module_v1_public_teaching_module-proto)
     - [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest)
     - [GetTeachingModuleBySubjectIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest)
+    - [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest)
+    - [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse)
     - [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest)
     - [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse)
   
     - [TeachingModuleService](#modules-teaching_module-v1-public-TeachingModuleService)
+  
+- [modules/teaching_module/v1/public/teaching_module_folder.proto](#modules_teaching_module_v1_public_teaching_module_folder-proto)
+    - [CreateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-CreateTeachingModuleFolderResponse)
+    - [GetTeachingModuleFolderByTeachingModuleIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDRequest)
+    - [GetTeachingModuleFolderByTeachingModuleIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDResponse)
+    - [UpdateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse)
+  
+    - [TeachingModuleFolderService](#modules-teaching_module-v1-public-TeachingModuleFolderService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -149,6 +159,36 @@
 
 
 
+<a name="modules-teaching_module-v1-public-GetTeachingModuleDetailRequest"></a>
+
+### GetTeachingModuleDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-TeachingModuleListResponse"></a>
+
+### TeachingModuleListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_modules | [modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) | repeated |  |
+
+
+
+
+
+
 <a name="modules-teaching_module-v1-public-TeachingModuleRequest"></a>
 
 ### TeachingModuleRequest
@@ -157,16 +197,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| title | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| start_date | [string](#string) |  |  |
-| end_date | [string](#string) |  |  |
-| components | [string](#string) |  |  |
-| learning_profile | [string](#string) |  |  |
-| subject_id | [string](#string) |  |  |
-| approver | [modules.teaching_modules.v1.shared.Approver](#modules-teaching_modules-v1-shared-Approver) | repeated |  |
-| learning_goals | [modules.teaching_modules.v1.shared.LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) | repeated |  |
+| teaching_module | [modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |  |
 
 
 
@@ -202,8 +233,98 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
-| GetTeachingModulebySubjectID | [GetTeachingModuleBySubjectIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
+| GetTeachingModuleBySubjectID | [GetTeachingModuleBySubjectIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest) | [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse) |  |
+| GetTeachingModuleDetail | [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
 | ApproveTeachingModule | [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
+| UpdateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_public_teaching_module_folder-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/public/teaching_module_folder.proto
+
+
+
+<a name="modules-teaching_module-v1-public-CreateTeachingModuleFolderResponse"></a>
+
+### CreateTeachingModuleFolderResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDRequest"></a>
+
+### GetTeachingModuleFolderByTeachingModuleIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_module_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDResponse"></a>
+
+### GetTeachingModuleFolderByTeachingModuleIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| folders | [modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | repeated |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse"></a>
+
+### UpdateTeachingModuleFolderResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-public-TeachingModuleFolderService"></a>
+
+### TeachingModuleFolderService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateTeachingModuleFolder | [.modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | [CreateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-CreateTeachingModuleFolderResponse) |  |
+| UpdateTeachingModuleFolder | [.modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | [UpdateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse) |  |
+| GetTeachingModuleFolderByTeachingModuleID | [GetTeachingModuleFolderByTeachingModuleIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDRequest) | [GetTeachingModuleFolderByTeachingModuleIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDResponse) |  |
 
  
 

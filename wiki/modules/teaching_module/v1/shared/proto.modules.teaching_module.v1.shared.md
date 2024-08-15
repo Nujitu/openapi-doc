@@ -9,6 +9,10 @@
 - [modules/teaching_module/v1/shared/teaching_module.proto](#modules_teaching_module_v1_shared_teaching_module-proto)
     - [Approver](#modules-teaching_modules-v1-shared-Approver)
     - [TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule)
+    - [TeachingModule.ComponentsEntry](#modules-teaching_modules-v1-shared-TeachingModule-ComponentsEntry)
+  
+- [modules/teaching_module/v1/shared/teaching_module_folder.proto](#modules_teaching_module_v1_shared_teaching_module_folder-proto)
+    - [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -79,9 +83,70 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| subject_id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
-| description | [string](#string) |  |  |
+| learning_profile | [string](#string) |  |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| subject_id | [string](#string) |  |  |
+| approver | [Approver](#modules-teaching_modules-v1-shared-Approver) | repeated |  |
+| learning_goals | [LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) | repeated |  |
+| components | [TeachingModule.ComponentsEntry](#modules-teaching_modules-v1-shared-TeachingModule-ComponentsEntry) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| cover_image | [string](#string) |  |  |
+| time_allocation | [string](#string) |  |  |
+| folders | [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | repeated |  |
+
+
+
+
+
+
+<a name="modules-teaching_modules-v1-shared-TeachingModule-ComponentsEntry"></a>
+
+### TeachingModule.ComponentsEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [common.v1.Dict](#common-v1-Dict) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_shared_teaching_module_folder-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/shared/teaching_module_folder.proto
+
+
+
+<a name="modules-teaching_modules-v1-shared-TeachingModuleFolder"></a>
+
+### TeachingModuleFolder
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| folder_id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| learning_goal_ids | [string](#string) | repeated |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 

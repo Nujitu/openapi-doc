@@ -5,12 +5,12 @@
     {
       title: Teaching_module Domain,
       version: v1,
-      description: "Skoola Learning Goal Service, Skoola Teaching Module Service",
+      description: "Skoola Learning Goal Service, Skoola Teaching Module Service, Skoola Folder Management Service",
     },
   servers: [{ url: "https://api.stg.skola.com" }],
   paths:
     {
-      /v1/teaching-module/learning-goal:
+      /v1/learning-goal:
         {
           post:
             {
@@ -147,6 +147,72 @@
         },
       /v1/teaching-module:
         {
+          put:
+            {
+              tags: [TeachingModuleService],
+              summary: Update New Teaching Module,
+              description: update new teaching module,
+              operationId: TeachingModuleService_UpdateTeachingModule,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicTeachingModuleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           post:
             {
               tags: [TeachingModuleService],
@@ -283,6 +349,70 @@
                 },
             },
         },
+      "/v1/teaching-module/{id}/details":
+        {
+          get:
+            {
+              tags: [TeachingModuleService],
+              summary: Get teaching Module by id,
+              description: get teaching module general info by id,
+              operationId: TeachingModuleService_GetTeachingModuleDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedTeachingModule",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/teaching-module/{subject_id}":
         {
           get:
@@ -290,7 +420,7 @@
               tags: [TeachingModuleService],
               summary: Get teaching Module by subject id,
               description: get teaching module general infor by subject id,
-              operationId: TeachingModuleService_GetTeachingModulebySubjectID,
+              operationId: TeachingModuleService_GetTeachingModuleBySubjectID,
               parameters:
                 [
                   {
@@ -311,7 +441,206 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedTeachingModule",
+                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/teaching-module-folder:
+        {
+          post:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: Insert New Learning Goals separate with teaching module folder,
+              description: insert new teaching module folder,
+              operationId: TeachingModuleFolderService_CreateTeachingModuleFolder,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: Update New Learning Goals separate with teaching module folder,
+              description: update new teaching module folder,
+              operationId: TeachingModuleFolderService_UpdateTeachingModuleFolder,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module-folder/{teaching_module_id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: get folder list by teaching module ID,
+              description: get folder list by teaching module ID,
+              operationId: TeachingModuleFolderService_GetTeachingModuleFolderByTeachingModuleID,
+              parameters:
+                [
+                  {
+                    name: teaching_module_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderByTeachingModuleIDResponse",
                                 },
                             },
                         },
@@ -433,6 +762,11 @@
                   "field": { "title": "field", "type": "string" },
                 },
             },
+          v1Dict:
+            {
+              type: object,
+              properties: { key: { type: string }, value: { type: string } },
+            },
           publicApproveteachingModuleRequest:
             {
               type: object,
@@ -444,55 +778,30 @@
                   is_approved: { type: boolean, description: approval request },
                 },
             },
+          publicTeachingModuleListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_modules:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModule",
+                        },
+                      description: Teaching Module Body,
+                    },
+                },
+            },
           publicTeachingModuleRequest:
             {
               type: object,
               properties:
                 {
-                  id: { type: string, description: teaching module id },
-                  title:
-                    { type: string, description: Title for teaching module },
-                  description:
-                    { type: string, description: "Teaching Module " },
-                  start_date:
+                  teaching_module:
                     {
-                      type: string,
-                      description: Star Date for teaching module,
-                    },
-                  end_date:
-                    { type: string, description: End Date for teaching module },
-                  components:
-                    {
-                      type: string,
-                      description: Curriculum component for teaching module,
-                    },
-                  learning_profile:
-                    {
-                      type: string,
-                      description: Learning Profile each teaching module,
-                    },
-                  subject_id:
-                    {
-                      type: string,
-                      description: Subject id that related teaching module,
-                    },
-                  approver:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedApprover",
-                        },
-                      description: List of approver for teaching module,
-                    },
-                  learning_goals:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedLearningGoal",
-                        },
-                      description: List of approver for teaching module,
+                      $ref: "#/components/schemas/sharedTeachingModule",
                     },
                 },
             },
@@ -524,14 +833,145 @@
               properties:
                 {
                   id: { type: string, description: teaching module id },
-                  subject_id: { type: string, description: subject id },
                   title:
-                    { type: string, description: title from teaching module },
-                  description:
+                    { type: string, description: Title for teaching module },
+                  learning_profile:
                     {
                       type: string,
-                      description: description from teaching module,
+                      description: Learning Profile associated with teaching module,
                     },
+                  start_date:
+                    {
+                      type: string,
+                      description: Star Date for teaching module,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End Date for teaching module,
+                      format: date-time,
+                    },
+                  subject_id:
+                    {
+                      type: string,
+                      description: Subject id that related teaching module,
+                    },
+                  approver:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedApprover",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedLearningGoal",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                  components:
+                    {
+                      type: object,
+                      additionalProperties:
+                        { $ref: "#/components/schemas/v1Dict" },
+                      description: Curriculum instance,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                  cover_image:
+                    {
+                      type: string,
+                      description: Cover Image for teaching module,
+                    },
+                  time_allocation:
+                    {
+                      type: string,
+                      description: Time allocated for teaching module,
+                    },
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                },
+            },
+          sharedTeachingModuleFolder:
+            {
+              type: object,
+              properties:
+                {
+                  folder_id: { type: string, description: Folder Name },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of Learning Goals,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start Date,
+                      format: date-time,
+                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                },
+            },
+          publicCreateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          publicGetTeachingModuleFolderByTeachingModuleIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: get folder by teaching module ID,
+                    },
+                },
+            },
+          publicUpdateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
                 },
             },
         },
