@@ -1247,6 +1247,18 @@
                     },
                 },
             },
+          v1ArrayDict:
+            {
+              type: object,
+              properties:
+                {
+                  valuest:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/v1Dict" },
+                    },
+                },
+            },
           v1Dict:
             {
               type: object,
@@ -1298,8 +1310,8 @@
                     {
                       type: object,
                       additionalProperties:
-                        { $ref: "#/components/schemas/v1Dict" },
-                      description: Curriculum instance,
+                        { $ref: "#/components/schemas/v1ArrayDict" },
+                      description: Curriculum Components,
                     },
                   created_at:
                     {

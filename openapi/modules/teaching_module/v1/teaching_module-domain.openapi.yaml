@@ -762,6 +762,18 @@
                   "field": { "title": "field", "type": "string" },
                 },
             },
+          v1ArrayDict:
+            {
+              type: object,
+              properties:
+                {
+                  valuest:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/v1Dict" },
+                    },
+                },
+            },
           v1Dict:
             {
               type: object,
@@ -879,7 +891,7 @@
                     {
                       type: object,
                       additionalProperties:
-                        { $ref: "#/components/schemas/v1Dict" },
+                        { $ref: "#/components/schemas/v1ArrayDict" },
                       description: Curriculum instance,
                     },
                   created_at:

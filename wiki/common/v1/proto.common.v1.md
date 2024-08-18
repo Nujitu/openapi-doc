@@ -13,6 +13,7 @@
     - [ResponseMetadata](#common-v1-ResponseMetadata)
   
 - [common/v1/type.proto](#common_v1_type-proto)
+    - [ArrayDict](#common-v1-ArrayDict)
     - [Dict](#common-v1-Dict)
   
 - [Scalar Value Types](#scalar-value-types)
@@ -138,6 +139,21 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## common/v1/type.proto
+
+
+
+<a name="common-v1-ArrayDict"></a>
+
+### ArrayDict
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| valuest | [Dict](#common-v1-Dict) | repeated |  |
+
+
+
 
 
 
