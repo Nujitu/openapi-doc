@@ -15,6 +15,7 @@
 - [common/v1/type.proto](#common_v1_type-proto)
     - [ArrayDict](#common-v1-ArrayDict)
     - [Dict](#common-v1-Dict)
+    - [KeyArrayValues](#common-v1-KeyArrayValues)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -167,6 +168,22 @@
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
 | value | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="common-v1-KeyArrayValues"></a>
+
+### KeyArrayValues
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [Dict](#common-v1-Dict) | repeated |  |
 
 
 
