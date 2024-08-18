@@ -83,7 +83,7 @@
 | status | [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus) |  |  |
 | notes | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
-| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
+| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

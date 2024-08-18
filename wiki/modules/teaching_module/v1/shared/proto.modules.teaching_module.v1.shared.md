@@ -89,7 +89,7 @@
 | subject_id | [string](#string) |  |  |
 | approver | [Approver](#modules-teaching_modules-v1-shared-Approver) | repeated |  |
 | learning_goals | [LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) | repeated |  |
-| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
+| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | cover_image | [string](#string) |  |  |
