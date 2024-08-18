@@ -1247,22 +1247,23 @@
                     },
                 },
             },
-          v1ArrayDict:
+          v1Dict:
+            {
+              type: object,
+              properties: { key: { type: string }, value: { type: string } },
+            },
+          v1KeyArrayValues:
             {
               type: object,
               properties:
                 {
-                  valuest:
+                  key: { type: string },
+                  value:
                     {
                       type: array,
                       items: { $ref: "#/components/schemas/v1Dict" },
                     },
                 },
-            },
-          v1Dict:
-            {
-              type: object,
-              properties: { key: { type: string }, value: { type: string } },
             },
           publicCreateCurriculumRequest:
             {
@@ -1310,7 +1311,9 @@
                     {
                       type: object,
                       additionalProperties:
-                        { $ref: "#/components/schemas/v1ArrayDict" },
+                        {
+                          $ref: "#/components/schemas/v1KeyArrayValues",
+                        },
                       description: Curriculum Components,
                     },
                   created_at:

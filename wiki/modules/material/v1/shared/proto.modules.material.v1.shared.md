@@ -102,7 +102,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
-| value | [common.v1.ArrayDict](#common-v1-ArrayDict) |  |  |
+| value | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
 
 
 
