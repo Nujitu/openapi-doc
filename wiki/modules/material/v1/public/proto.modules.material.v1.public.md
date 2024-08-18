@@ -57,6 +57,7 @@
 | curriculum_id | [string](#string) |  |  |
 | academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 | subject_ids | [string](#string) | repeated |  |
 
 

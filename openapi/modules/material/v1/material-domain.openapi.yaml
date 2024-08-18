@@ -1100,6 +1100,7 @@
                       description: Academic Term,
                     },
                   homeroom_teacher: { type: string, description: Teacher ID },
+                  instance_id: { type: string, description: Instance ID },
                   subject_ids:
                     {
                       type: array,
