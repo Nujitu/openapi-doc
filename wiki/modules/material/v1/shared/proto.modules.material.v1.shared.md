@@ -8,7 +8,6 @@
   
 - [modules/material/v1/shared/curriculum.proto](#modules_material_v1_shared_curriculum-proto)
     - [Curriculum](#modules-material-v1-shared-Curriculum)
-    - [Curriculum.ComponentsEntry](#modules-material-v1-shared-Curriculum-ComponentsEntry)
   
     - [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus)
   
@@ -84,25 +83,9 @@
 | status | [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus) |  |  |
 | notes | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
-| components | [Curriculum.ComponentsEntry](#modules-material-v1-shared-Curriculum-ComponentsEntry) | repeated |  |
+| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-
-
-
-
-
-
-<a name="modules-material-v1-shared-Curriculum-ComponentsEntry"></a>
-
-### Curriculum.ComponentsEntry
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
 
 
 

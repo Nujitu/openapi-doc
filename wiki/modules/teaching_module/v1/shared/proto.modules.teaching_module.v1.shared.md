@@ -9,7 +9,6 @@
 - [modules/teaching_module/v1/shared/teaching_module.proto](#modules_teaching_module_v1_shared_teaching_module-proto)
     - [Approver](#modules-teaching_modules-v1-shared-Approver)
     - [TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule)
-    - [TeachingModule.ComponentsEntry](#modules-teaching_modules-v1-shared-TeachingModule-ComponentsEntry)
   
 - [modules/teaching_module/v1/shared/teaching_module_folder.proto](#modules_teaching_module_v1_shared_teaching_module_folder-proto)
     - [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder)
@@ -90,28 +89,12 @@
 | subject_id | [string](#string) |  |  |
 | approver | [Approver](#modules-teaching_modules-v1-shared-Approver) | repeated |  |
 | learning_goals | [LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal) | repeated |  |
-| components | [TeachingModule.ComponentsEntry](#modules-teaching_modules-v1-shared-TeachingModule-ComponentsEntry) | repeated |  |
+| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | cover_image | [string](#string) |  |  |
 | time_allocation | [string](#string) |  |  |
 | folders | [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | repeated |  |
-
-
-
-
-
-
-<a name="modules-teaching_modules-v1-shared-TeachingModule-ComponentsEntry"></a>
-
-### TeachingModule.ComponentsEntry
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) |  |  |
 
 
 

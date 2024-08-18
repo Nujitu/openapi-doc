@@ -1308,14 +1308,7 @@
                   instance_id:
                     { type: string, description: Curriculum instance },
                   components:
-                    {
-                      type: object,
-                      additionalProperties:
-                        {
-                          $ref: "#/components/schemas/v1KeyArrayValues",
-                        },
-                      description: Curriculum Components,
-                    },
+                    { $ref: "#/components/schemas/v1KeyArrayValues" },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",

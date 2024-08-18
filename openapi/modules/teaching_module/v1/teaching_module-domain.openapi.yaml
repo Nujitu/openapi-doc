@@ -889,14 +889,7 @@
                       description: List of approver for teaching module,
                     },
                   components:
-                    {
-                      type: object,
-                      additionalProperties:
-                        {
-                          $ref: "#/components/schemas/v1KeyArrayValues",
-                        },
-                      description: Curriculum instance,
-                    },
+                    { $ref: "#/components/schemas/v1KeyArrayValues" },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
