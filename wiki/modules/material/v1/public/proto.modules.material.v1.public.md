@@ -422,7 +422,7 @@ Service for user related feature
 | CreateSubject | [CreateSubjectRequest](#modules-material-v1-public-CreateSubjectRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | UpdateSubject | [UpdateSubjectRequest](#modules-material-v1-public-UpdateSubjectRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectByID | [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
-| GetSubjectList | [GetSubjectListRequest](#modules-material-v1-public-GetSubjectListRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
+| GetSubjectList | [GetSubjectListRequest](#modules-material-v1-public-GetSubjectListRequest) | [GetSubjectListResponse](#modules-material-v1-public-GetSubjectListResponse) |  |
 | GetStudentSubjectList | [GetStudentSubjectListRequest](#modules-material-v1-public-GetStudentSubjectListRequest) | [SubjectListResponse](#modules-material-v1-public-SubjectListResponse) |  |
 | GetTeacherSubjectList | [GetTeacherSubjectListRequest](#modules-material-v1-public-GetTeacherSubjectListRequest) | [SubjectListResponse](#modules-material-v1-public-SubjectListResponse) |  |
 

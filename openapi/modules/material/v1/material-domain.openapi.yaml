@@ -219,7 +219,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedSubject",
+                                  $ref: "#/components/schemas/publicGetSubjectListResponse",
                                 },
                             },
                         },
@@ -796,6 +796,38 @@
     {
       "schemas":
         {
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
           publicCreateSubjectRequest:
             {
               type: object,
@@ -858,6 +890,24 @@
                     },
                   description: { type: string, description: Description },
                   instance_id: { type: string, description: Instance ID },
+                },
+            },
+          publicGetSubjectListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  subjects:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedSubject",
+                        },
+                      description: Subject group List,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
           publicSubjectListResponse:
@@ -1040,38 +1090,6 @@
                   "message": { "title": "message", "type": "string" },
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
-                },
-            },
-          v1CursorPagination:
-            {
-              type: object,
-              properties:
-                {
-                  limit: { type: integer, format: uint32 },
-                  next_cursor: { type: string },
-                  prev_cursor: { type: string },
-                  curr_cursor: { type: string },
-                },
-            },
-          v1OffsetPagination:
-            {
-              type: object,
-              properties:
-                {
-                  limit: { type: integer, format: uint32 },
-                  offset: { type: integer, format: uint32 },
-                  total: { type: integer, format: uint32 },
-                },
-            },
-          v1ResponseMetadata:
-            {
-              type: object,
-              properties:
-                {
-                  offset_pagination:
-                    { $ref: "#/components/schemas/v1OffsetPagination" },
-                  cursor_pagination:
-                    { $ref: "#/components/schemas/v1CursorPagination" },
                 },
             },
           publicCreateClassGroupRequest:
