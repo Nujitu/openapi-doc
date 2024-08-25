@@ -16,6 +16,8 @@
   
 - [modules/material/v1/public/curriculum.proto](#modules_material_v1_public_curriculum-proto)
     - [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest)
+    - [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest)
+    - [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse)
   
     - [CurriculumService](#modules-material-v1-public-CurriculumService)
   
@@ -219,6 +221,40 @@ Service for user related feature
 
 
 
+
+<a name="modules-material-v1-public-GetCurriculumListRequest"></a>
+
+### GetCurriculumListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetCurriculumListResponse"></a>
+
+### GetCurriculumListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculums | [modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
  
 
  
@@ -234,6 +270,7 @@ Service for user related feature
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateCurriculum | [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
+| GetCurriculumList | [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest) | [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse) |  |
 
  
 
