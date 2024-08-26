@@ -5,6 +5,7 @@
 
 - [modules/material/v1/shared/class_group.proto](#modules_material_v1_shared_class_group-proto)
     - [ClassGroup](#modules-material-v1-shared-ClassGroup)
+    - [ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail)
   
 - [modules/material/v1/shared/curriculum.proto](#modules_material_v1_shared_curriculum-proto)
     - [Curriculum](#modules-material-v1-shared-Curriculum)
@@ -44,6 +45,31 @@
 | homeroom_teacher | [string](#string) |  |  |
 | group_subject_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-ClassSubjectDetail"></a>
+
+### ClassSubjectDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| classgroup_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| homeroom_teacher_id | [string](#string) |  |  |
+| start_time | [uint32](#uint32) |  |  |
+| index_minimum | [uint32](#uint32) |  |  |
+| meetings_per_week | [uint32](#uint32) |  |  |
+| lesson_hours_per_week | [uint32](#uint32) |  |  |
+| lesson_minutes | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
