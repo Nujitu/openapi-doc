@@ -227,7 +227,7 @@ paths:
           description: Assignment score
           format: float
         learning_goals:
-          example: [123, 234, 567]
+          example: [123, 234, 567, 8910]
           type: array
           items:
             type: string
