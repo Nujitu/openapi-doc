@@ -176,6 +176,9 @@ paths:
       properties:
         assignment:
           $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of creating assignment
     publicDeleteAssignmentRequest:
       type: object
       properties:
@@ -187,11 +190,17 @@ paths:
       properties:
         assignment:
           $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of deleting assignment
     publicGetAssignmentResponse:
       type: object
       properties:
         assignment:
           $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of getting assignment
     publicUpdateAssignmentRequest:
       type: object
       properties:
@@ -240,6 +249,9 @@ paths:
       properties:
         assignment:
           $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of updating assignment
     sharedAssignment:
       type: object
       properties:

@@ -59,6 +59,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment | [modules.assignment.v1.shared.Assignment](#modules-assignment-v1-shared-Assignment) |  |  |
+| message | [string](#string) |  |  |
 
 
 
@@ -89,6 +90,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment | [modules.assignment.v1.shared.Assignment](#modules-assignment-v1-shared-Assignment) |  |  |
+| message | [string](#string) |  |  |
 
 
 
@@ -119,6 +121,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment | [modules.assignment.v1.shared.Assignment](#modules-assignment-v1-shared-Assignment) |  |  |
+| message | [string](#string) |  |  |
 
 
 
@@ -157,6 +160,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment | [modules.assignment.v1.shared.Assignment](#modules-assignment-v1-shared-Assignment) |  |  |
+| message | [string](#string) |  |  |
 
 
 
