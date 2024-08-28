@@ -573,6 +573,75 @@
                 },
             },
         },
+      /v1/class-group/add-student:
+        {
+          post:
+            {
+              tags: [ClassGroupService],
+              summary: Adding student to class,
+              description: Adding student to class,
+              operationId: ClassGroupService_AddStudentToClass,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicAddStudentToClassRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicAddStudentToClassResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/class-group/list:
         {
           get:
@@ -623,6 +692,84 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetClassGroupListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/class-group/{class_id}":
+        {
+          patch:
+            {
+              tags: [ClassGroupService],
+              summary: Update Class Group Detail,
+              description: Update Class Group Detail,
+              operationId: ClassGroupService_UpdateClassSubjectDetail,
+              parameters:
+                [
+                  {
+                    name: class_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateClassSubjectDetailRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateClassSubjectDetailResponse",
                                 },
                             },
                         },
@@ -932,30 +1079,6 @@
                       description: Subject type,
                       format: enum,
                     },
-                  index_minimum:
-                    {
-                      type: integer,
-                      description: Index Minimum,
-                      format: uint32,
-                    },
-                  meetings_per_week:
-                    {
-                      type: integer,
-                      description: Subject meetings per week,
-                      format: uint32,
-                    },
-                  lesson_hours_per_week:
-                    {
-                      type: integer,
-                      description: Lesson Hours per week,
-                      format: uint32,
-                    },
-                  lesson_minutes:
-                    {
-                      type: integer,
-                      description: Lesson minutes,
-                      format: uint32,
-                    },
                   description: { type: string, description: Description },
                   instance_id: { type: string, description: Instance ID },
                 },
@@ -1030,30 +1153,6 @@
                       description: Subject type,
                       format: enum,
                     },
-                  index_minimum:
-                    {
-                      type: integer,
-                      description: Index Minimum,
-                      format: uint32,
-                    },
-                  meetings_per_week:
-                    {
-                      type: integer,
-                      description: Subject meetings per week,
-                      format: uint32,
-                    },
-                  lesson_hours_per_week:
-                    {
-                      type: integer,
-                      description: Lesson Hours per week,
-                      format: uint32,
-                    },
-                  lesson_minutes:
-                    {
-                      type: integer,
-                      description: Lesson minutes,
-                      format: uint32,
-                    },
                   description: { type: string, description: Description },
                   instance_id: { type: string, description: Instance ID },
                 },
@@ -1093,30 +1192,6 @@
                       type: string,
                       description: Subject type,
                       format: enum,
-                    },
-                  index_minimum:
-                    {
-                      type: integer,
-                      description: Index Minimum,
-                      format: uint32,
-                    },
-                  meetings_per_week:
-                    {
-                      type: integer,
-                      description: Subject meetings per week,
-                      format: uint32,
-                    },
-                  lesson_hours_per_week:
-                    {
-                      type: integer,
-                      description: Lesson Hours per week,
-                      format: uint32,
-                    },
-                  lesson_minutes:
-                    {
-                      type: integer,
-                      description: Lesson minutes,
-                      format: uint32,
                     },
                   description: { type: string, description: Description },
                   instance_id: { type: string, description: Instance ID },
@@ -1160,6 +1235,77 @@
                   "field": { "title": "field", "type": "string" },
                 },
             },
+          publicAddStudentToClassRequest:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  class_id:
+                    { example: 123, type: string, description: Class ID },
+                },
+            },
+          publicAddStudentToClassResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      example: Success adding student,
+                      type: string,
+                      description: response info,
+                    },
+                },
+            },
+          publicClassSubjectDetailPayload:
+            {
+              type: object,
+              properties:
+                {
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  homeroom_teacher_id:
+                    { example: 123, type: string, description: teacher ID },
+                  subject_name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  start_time:
+                    {
+                      type: integer,
+                      description: time when the subject start,
+                      format: uint32,
+                    },
+                  index_minimum:
+                    {
+                      type: integer,
+                      description: Index Minimum,
+                      format: uint32,
+                    },
+                  meetings_per_week:
+                    {
+                      type: integer,
+                      description: Subject meetings per week,
+                      format: uint32,
+                    },
+                  lesson_hours_per_week:
+                    {
+                      type: integer,
+                      description: Lesson Hours per week,
+                      format: uint32,
+                    },
+                  lesson_minutes:
+                    {
+                      type: integer,
+                      description: Lesson minutes,
+                      format: uint32,
+                    },
+                },
+            },
           publicCreateClassGroupRequest:
             {
               type: object,
@@ -1187,11 +1333,14 @@
                     },
                   homeroom_teacher: { type: string, description: Teacher ID },
                   instance_id: { type: string, description: Instance ID },
-                  subject_ids:
+                  class_subjects:
                     {
                       type: array,
-                      items: { type: string },
-                      description: Ids of subject,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
+                        },
+                      description: Component of class,
                     },
                 },
             },
@@ -1204,14 +1353,14 @@
                     {
                       $ref: "#/components/schemas/sharedClassGroup",
                     },
-                  subjects:
+                  class_subjects:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedSubject",
+                          $ref: "#/components/schemas/sharedClassSubjectDetail",
                         },
-                      description: list of Subjects,
+                      description: list of class subjects,
                     },
                 },
             },
@@ -1278,15 +1427,50 @@
                     {
                       $ref: "#/components/schemas/sharedClassGroup",
                     },
-                  subjects:
+                  class_subjects:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedSubject",
+                          $ref: "#/components/schemas/sharedClassSubjectDetail",
                         },
-                      description: list of Subjects,
+                      description: list of class subjects,
                     },
+                },
+            },
+          publicUpdateClassSubjectDetailRequest:
+            {
+              type: object,
+              properties:
+                {
+                  class_id:
+                    { example: 123, type: string, description: Class ID },
+                  class_subjects:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
+                        },
+                      description: Component of class,
+                    },
+                },
+            },
+          publicUpdateClassSubjectDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  class_subjects:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
+                        },
+                      description: Component of class,
+                    },
+                  message: { type: string, description: response info },
                 },
             },
           sharedClassGroup:
@@ -1318,6 +1502,75 @@
                   group_subject_id:
                     { type: string, description: Group subject ID },
                   instance_id: { type: string, description: Instance ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedClassSubjectDetail:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: ClassSubjectDetail ID,
+                    },
+                  classgroup_id:
+                    { example: 123, type: string, description: Classgroup ID },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  homeroom_teacher_id:
+                    { example: 123, type: string, description: teacher ID },
+                  subject_name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  start_time:
+                    {
+                      type: integer,
+                      description: time when the subject start,
+                      format: uint32,
+                    },
+                  index_minimum:
+                    {
+                      type: integer,
+                      description: Index Minimum,
+                      format: uint32,
+                    },
+                  meetings_per_week:
+                    {
+                      type: integer,
+                      description: Subject meetings per week,
+                      format: uint32,
+                    },
+                  lesson_hours_per_week:
+                    {
+                      type: integer,
+                      description: Lesson Hours per week,
+                      format: uint32,
+                    },
+                  lesson_minutes:
+                    {
+                      type: integer,
+                      description: Lesson minutes,
+                      format: uint32,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
