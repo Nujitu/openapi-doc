@@ -4,6 +4,7 @@
 ## Table of Contents
 
 - [modules/material/v1/public/class_group.proto](#modules_material_v1_public_class_group-proto)
+    - [ClassSubjectDetailRequest](#modules-material-v1-public-ClassSubjectDetailRequest)
     - [CreateClassGroupRequest](#modules-material-v1-public-CreateClassGroupRequest)
     - [GetClassGroupDetailRequest](#modules-material-v1-public-GetClassGroupDetailRequest)
     - [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse)
@@ -44,6 +45,28 @@
 
 
 
+<a name="modules-material-v1-public-ClassSubjectDetailRequest"></a>
+
+### ClassSubjectDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject_id | [string](#string) |  |  |
+| homeroom_teacher_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| start_time | [uint32](#uint32) |  |  |
+| index_minimum | [uint32](#uint32) |  |  |
+| meetings_per_week | [uint32](#uint32) |  |  |
+| lesson_hours_per_week | [uint32](#uint32) |  |  |
+| lesson_minutes | [uint32](#uint32) |  |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-CreateClassGroupRequest"></a>
 
 ### CreateClassGroupRequest
@@ -60,7 +83,7 @@
 | academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
-| subject_ids | [string](#string) | repeated |  |
+| class_subjects | [ClassSubjectDetailRequest](#modules-material-v1-public-ClassSubjectDetailRequest) | repeated |  |
 
 
 
@@ -91,7 +114,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) |  |  |
-| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
 
 
 
@@ -171,7 +194,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) |  |  |
-| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
 
 
 
@@ -298,10 +321,6 @@ Service for user related feature
 | name | [string](#string) |  |  |
 | subject_code | [string](#string) |  |  |
 | subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-| index_minimum | [uint32](#uint32) |  |  |
-| meetings_per_week | [uint32](#uint32) |  |  |
-| lesson_hours_per_week | [uint32](#uint32) |  |  |
-| lesson_minutes | [uint32](#uint32) |  |  |
 | description | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 
@@ -431,10 +450,6 @@ Service for user related feature
 | name | [string](#string) |  |  |
 | subject_code | [string](#string) |  |  |
 | subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-| index_minimum | [uint32](#uint32) |  |  |
-| meetings_per_week | [uint32](#uint32) |  |  |
-| lesson_hours_per_week | [uint32](#uint32) |  |  |
-| lesson_minutes | [uint32](#uint32) |  |  |
 | description | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 

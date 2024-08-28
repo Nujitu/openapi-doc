@@ -65,6 +65,7 @@
 | classgroup_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | homeroom_teacher_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
 | start_time | [uint32](#uint32) |  |  |
 | index_minimum | [uint32](#uint32) |  |  |
 | meetings_per_week | [uint32](#uint32) |  |  |
@@ -161,10 +162,6 @@
 | name | [string](#string) |  |  |
 | subject_code | [string](#string) |  |  |
 | subject_type | [SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-| index_minimum | [uint32](#uint32) |  |  |
-| meetings_per_week | [uint32](#uint32) |  |  |
-| lesson_hours_per_week | [uint32](#uint32) |  |  |
-| lesson_minutes | [uint32](#uint32) |  |  |
 | description | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
