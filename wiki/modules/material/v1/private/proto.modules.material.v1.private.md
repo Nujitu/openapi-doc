@@ -14,13 +14,6 @@
   
     - [CurriculumService](#modules-material-v1-private-CurriculumService)
   
-- [modules/material/v1/private/subject.proto](#modules_material_v1_private_subject-proto)
-    - [GetStudentSubjectListRequest](#modules-material-v1-private-GetStudentSubjectListRequest)
-    - [GetSubjectByTeacherIdRequest](#modules-material-v1-private-GetSubjectByTeacherIdRequest)
-    - [SubjectListResponse](#modules-material-v1-private-SubjectListResponse)
-  
-    - [SubjectService](#modules-material-v1-private-SubjectService)
-  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -128,80 +121,6 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetCurriculumByID | [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
-
- 
-
-
-
-<a name="modules_material_v1_private_subject-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## modules/material/v1/private/subject.proto
-
-
-
-<a name="modules-material-v1-private-GetStudentSubjectListRequest"></a>
-
-### GetStudentSubjectListRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
-| class_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-material-v1-private-GetSubjectByTeacherIdRequest"></a>
-
-### GetSubjectByTeacherIdRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
-| class_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-material-v1-private-SubjectListResponse"></a>
-
-### SubjectListResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="modules-material-v1-private-SubjectService"></a>
-
-### SubjectService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| GetStudentSubjectList | [GetStudentSubjectListRequest](#modules-material-v1-private-GetStudentSubjectListRequest) | [SubjectListResponse](#modules-material-v1-private-SubjectListResponse) |  |
-| GetSubjectByTeacherID | [GetSubjectByTeacherIdRequest](#modules-material-v1-private-GetSubjectByTeacherIdRequest) | [SubjectListResponse](#modules-material-v1-private-SubjectListResponse) |  |
 
  
 
