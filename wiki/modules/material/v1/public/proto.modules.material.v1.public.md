@@ -4,13 +4,22 @@
 ## Table of Contents
 
 - [modules/material/v1/public/class_group.proto](#modules_material_v1_public_class_group-proto)
+    - [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest)
+    - [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse)
+    - [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload)
     - [CreateClassGroupRequest](#modules-material-v1-public-CreateClassGroupRequest)
     - [GetClassGroupDetailRequest](#modules-material-v1-public-GetClassGroupDetailRequest)
     - [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse)
     - [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest)
     - [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse)
+    - [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest)
+    - [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse)
+    - [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest)
+    - [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse)
     - [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest)
     - [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse)
+    - [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest)
+    - [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse)
   
     - [ClassGroupService](#modules-material-v1-public-ClassGroupService)
   
@@ -23,11 +32,9 @@
   
 - [modules/material/v1/public/subject.proto](#modules_material_v1_public_subject-proto)
     - [CreateSubjectRequest](#modules-material-v1-public-CreateSubjectRequest)
-    - [GetStudentSubjectListRequest](#modules-material-v1-public-GetStudentSubjectListRequest)
     - [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest)
     - [GetSubjectListRequest](#modules-material-v1-public-GetSubjectListRequest)
     - [GetSubjectListResponse](#modules-material-v1-public-GetSubjectListResponse)
-    - [GetTeacherSubjectListRequest](#modules-material-v1-public-GetTeacherSubjectListRequest)
     - [SubjectListResponse](#modules-material-v1-public-SubjectListResponse)
     - [UpdateSubjectRequest](#modules-material-v1-public-UpdateSubjectRequest)
   
@@ -41,6 +48,59 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/material/v1/public/class_group.proto
+
+
+
+<a name="modules-material-v1-public-AddStudentToClassRequest"></a>
+
+### AddStudentToClassRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| class_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-AddStudentToClassResponse"></a>
+
+### AddStudentToClassResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-ClassSubjectDetailPayload"></a>
+
+### ClassSubjectDetailPayload
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject_id | [string](#string) |  |  |
+| homeroom_teacher_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
+| start_time | [uint32](#uint32) |  |  |
+| index_minimum | [uint32](#uint32) |  |  |
+| meetings_per_week | [uint32](#uint32) |  |  |
+| lesson_hours_per_week | [uint32](#uint32) |  |  |
+| lesson_minutes | [uint32](#uint32) |  |  |
+
+
+
 
 
 
@@ -60,7 +120,7 @@
 | academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
-| subject_ids | [string](#string) | repeated |  |
+| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
 
 
 
@@ -91,7 +151,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) |  |  |
-| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
 
 
 
@@ -139,6 +199,66 @@
 
 
 
+<a name="modules-material-v1-public-GetStudentClassesRequest"></a>
+
+### GetStudentClassesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetStudentClassesResponse"></a>
+
+### GetStudentClassesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeacherClassesRequest"></a>
+
+### GetTeacherClassesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teacher_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeacherClassesResponse"></a>
+
+### GetTeacherClassesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) | repeated |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-UpdateClassGroupRequest"></a>
 
 ### UpdateClassGroupRequest
@@ -171,7 +291,39 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) |  |  |
-| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateClassSubjectDetailRequest"></a>
+
+### UpdateClassSubjectDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateClassSubjectDetailResponse"></a>
+
+### UpdateClassSubjectDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
+| message | [string](#string) |  |  |
 
 
 
@@ -195,6 +347,10 @@ Service for user related feature
 | GetClassGroupDetail | [GetClassGroupDetailRequest](#modules-material-v1-public-GetClassGroupDetailRequest) | [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse) |  |
 | UpdateClassGroup | [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest) | [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse) |  |
 | GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse) |  |
+| AddStudentToClass | [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest) | [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse) |  |
+| UpdateClassSubjectDetail | [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest) | [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse) |  |
+| GetStudentClasses | [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest) | [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse) |  |
+| GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
 
  
 
@@ -298,28 +454,8 @@ Service for user related feature
 | name | [string](#string) |  |  |
 | subject_code | [string](#string) |  |  |
 | subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-| index_minimum | [uint32](#uint32) |  |  |
-| meetings_per_week | [uint32](#uint32) |  |  |
-| lesson_hours_per_week | [uint32](#uint32) |  |  |
-| lesson_minutes | [uint32](#uint32) |  |  |
 | description | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-material-v1-public-GetStudentSubjectListRequest"></a>
-
-### GetStudentSubjectListRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
-| class_id | [string](#string) |  |  |
 
 
 
@@ -385,22 +521,6 @@ Service for user related feature
 
 
 
-<a name="modules-material-v1-public-GetTeacherSubjectListRequest"></a>
-
-### GetTeacherSubjectListRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
-| class_id | [string](#string) |  |  |
-
-
-
-
-
-
 <a name="modules-material-v1-public-SubjectListResponse"></a>
 
 ### SubjectListResponse
@@ -431,10 +551,6 @@ Service for user related feature
 | name | [string](#string) |  |  |
 | subject_code | [string](#string) |  |  |
 | subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-| index_minimum | [uint32](#uint32) |  |  |
-| meetings_per_week | [uint32](#uint32) |  |  |
-| lesson_hours_per_week | [uint32](#uint32) |  |  |
-| lesson_minutes | [uint32](#uint32) |  |  |
 | description | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 
@@ -460,8 +576,6 @@ Service for user related feature
 | UpdateSubject | [UpdateSubjectRequest](#modules-material-v1-public-UpdateSubjectRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectByID | [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectList | [GetSubjectListRequest](#modules-material-v1-public-GetSubjectListRequest) | [GetSubjectListResponse](#modules-material-v1-public-GetSubjectListResponse) |  |
-| GetStudentSubjectList | [GetStudentSubjectListRequest](#modules-material-v1-public-GetStudentSubjectListRequest) | [SubjectListResponse](#modules-material-v1-public-SubjectListResponse) |  |
-| GetTeacherSubjectList | [GetTeacherSubjectListRequest](#modules-material-v1-public-GetTeacherSubjectListRequest) | [SubjectListResponse](#modules-material-v1-public-SubjectListResponse) |  |
 
  
 
