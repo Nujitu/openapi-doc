@@ -11,7 +11,7 @@ paths:
       tags: [AssignmentService]
       summary: Get an assignment
       description: Get user detail
-      operationId: AssignmentService_GetAssignment
+      operationId: AssignmentService_GetAssignmentById
       parameters: [{ name: assignment_id, in: query, schema: { type: string } }]
       responses:
         "200":
@@ -19,7 +19,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/publicGetAssignmentResponse"
+                $ref: "#/components/schemas/publicGetAssignmentByIdResponse"
         "500":
           description: Internal Server Error
           content:
@@ -188,12 +188,10 @@ paths:
     publicDeleteAssignmentResponse:
       type: object
       properties:
-        assignment:
-          $ref: "#/components/schemas/sharedAssignment"
         message:
           type: string
           description: response message of deleting assignment
-    publicGetAssignmentResponse:
+    publicGetAssignmentByIdResponse:
       type: object
       properties:
         assignment:

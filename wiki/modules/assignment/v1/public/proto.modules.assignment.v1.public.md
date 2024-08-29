@@ -8,8 +8,8 @@
     - [CreateAssignmentResponse](#modules-assignment-v1-public-CreateAssignmentResponse)
     - [DeleteAssignmentRequest](#modules-assignment-v1-public-DeleteAssignmentRequest)
     - [DeleteAssignmentResponse](#modules-assignment-v1-public-DeleteAssignmentResponse)
-    - [GetAssignmentRequest](#modules-assignment-v1-public-GetAssignmentRequest)
-    - [GetAssignmentResponse](#modules-assignment-v1-public-GetAssignmentResponse)
+    - [GetAssignmentByIdRequest](#modules-assignment-v1-public-GetAssignmentByIdRequest)
+    - [GetAssignmentByIdResponse](#modules-assignment-v1-public-GetAssignmentByIdResponse)
     - [UpdateAssignmentRequest](#modules-assignment-v1-public-UpdateAssignmentRequest)
     - [UpdateAssignmentResponse](#modules-assignment-v1-public-UpdateAssignmentResponse)
   
@@ -89,7 +89,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| assignment | [modules.assignment.v1.shared.Assignment](#modules-assignment-v1-shared-Assignment) |  |  |
 | message | [string](#string) |  |  |
 
 
@@ -97,9 +96,9 @@
 
 
 
-<a name="modules-assignment-v1-public-GetAssignmentRequest"></a>
+<a name="modules-assignment-v1-public-GetAssignmentByIdRequest"></a>
 
-### GetAssignmentRequest
+### GetAssignmentByIdRequest
 
 
 
@@ -112,9 +111,9 @@
 
 
 
-<a name="modules-assignment-v1-public-GetAssignmentResponse"></a>
+<a name="modules-assignment-v1-public-GetAssignmentByIdResponse"></a>
 
-### GetAssignmentResponse
+### GetAssignmentByIdResponse
 
 
 
@@ -183,7 +182,7 @@ Service for assignment related feature
 | CreateAssignment | [CreateAssignmentRequest](#modules-assignment-v1-public-CreateAssignmentRequest) | [CreateAssignmentResponse](#modules-assignment-v1-public-CreateAssignmentResponse) |  |
 | UpdateAssignment | [UpdateAssignmentRequest](#modules-assignment-v1-public-UpdateAssignmentRequest) | [UpdateAssignmentResponse](#modules-assignment-v1-public-UpdateAssignmentResponse) |  |
 | DeleteAssignment | [DeleteAssignmentRequest](#modules-assignment-v1-public-DeleteAssignmentRequest) | [DeleteAssignmentResponse](#modules-assignment-v1-public-DeleteAssignmentResponse) |  |
-| GetAssignment | [GetAssignmentRequest](#modules-assignment-v1-public-GetAssignmentRequest) | [GetAssignmentResponse](#modules-assignment-v1-public-GetAssignmentResponse) |  |
+| GetAssignmentById | [GetAssignmentByIdRequest](#modules-assignment-v1-public-GetAssignmentByIdRequest) | [GetAssignmentByIdResponse](#modules-assignment-v1-public-GetAssignmentByIdResponse) |  |
 
  
 
