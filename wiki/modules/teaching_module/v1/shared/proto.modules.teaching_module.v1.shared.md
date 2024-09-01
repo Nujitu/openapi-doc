@@ -6,6 +6,9 @@
 - [modules/teaching_module/v1/shared/learning_goal.proto](#modules_teaching_module_v1_shared_learning_goal-proto)
     - [LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal)
   
+- [modules/teaching_module/v1/shared/study_material.proto](#modules_teaching_module_v1_shared_study_material-proto)
+    - [StudyMaterial](#modules-teaching_modules-v1-shared-StudyMaterial)
+  
 - [modules/teaching_module/v1/shared/teaching_module.proto](#modules_teaching_module_v1_shared_teaching_module-proto)
     - [Approver](#modules-teaching_modules-v1-shared-Approver)
     - [TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule)
@@ -35,6 +38,45 @@
 | learning_goal_id | [string](#string) |  |  |
 | goal | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_shared_study_material-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/shared/study_material.proto
+
+
+
+<a name="modules-teaching_modules-v1-shared-StudyMaterial"></a>
+
+### StudyMaterial
+study material
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| instruction | [string](#string) |  |  |
+| attachment_ids | [string](#string) | repeated |  |
+| folder_id | [string](#string) |  |  |
+| publish_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
@@ -130,6 +172,7 @@
 | learning_goal_ids | [string](#string) | repeated |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 
 
 
