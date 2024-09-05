@@ -1,0 +1,1028 @@
+# Generated with gnostic protoc-gen-openapi
+{
+  openapi: 3.0.3,
+  info:
+    {
+      title: Teaching_module Domain,
+      version: v1,
+      description: "Skoola Learning Goal Service, Skoola Teaching Module Service, Skoola Folder Management Service",
+    },
+  servers: [{ url: "https://api.stg.skola.com" }],
+  paths:
+    {
+      /v1/learning-goal:
+        {
+          post:
+            {
+              tags: [LearningGoalService],
+              summary: Insert New Learning Goals separate with teaching modules,
+              description: insert new learning goal,
+              operationId: LearningGoalService_CreateLearningGoals,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateLearningGoalsRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateLearningGoalResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [LearningGoalService],
+              summary: Insert New Learning Goals separate with teaching modules,
+              description: insert new learning goal,
+              operationId: LearningGoalService_UpdateLearningGoal,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateLearningGoalRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateLearningGoalResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/teaching-module:
+        {
+          put:
+            {
+              tags: [TeachingModuleService],
+              summary: Update New Teaching Module,
+              description: update new teaching module,
+              operationId: TeachingModuleService_UpdateTeachingModule,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicTeachingModuleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [TeachingModuleService],
+              summary: Insert New Teaching Module,
+              description: insert new teaching module,
+              operationId: TeachingModuleService_CreateTeachingModule,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicTeachingModuleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/teaching-module/approval:
+        {
+          patch:
+            {
+              tags: [TeachingModuleService],
+              summary: Insert New Teaching Module,
+              description: insert new teaching module,
+              operationId: TeachingModuleService_ApproveTeachingModule,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicApproveteachingModuleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module/{id}/details":
+        {
+          get:
+            {
+              tags: [TeachingModuleService],
+              summary: Get teaching Module by id,
+              description: get teaching module general info by id,
+              operationId: TeachingModuleService_GetTeachingModuleDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedTeachingModule",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module/{subject_id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleService],
+              summary: Get teaching Module by subject id,
+              description: get teaching module general infor by subject id,
+              operationId: TeachingModuleService_GetTeachingModuleBySubjectID,
+              parameters:
+                [
+                  {
+                    name: subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/teaching-module-folder:
+        {
+          post:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: Insert New Learning Goals separate with teaching module folder,
+              description: insert new teaching module folder,
+              operationId: TeachingModuleFolderService_CreateTeachingModuleFolder,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: Update New Learning Goals separate with teaching module folder,
+              description: update new teaching module folder,
+              operationId: TeachingModuleFolderService_UpdateTeachingModuleFolder,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module-folder/{teaching_module_id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: get folder list by teaching module ID,
+              description: get folder list by teaching module ID,
+              operationId: TeachingModuleFolderService_GetTeachingModuleFolderByTeachingModuleID,
+              parameters:
+                [
+                  {
+                    name: teaching_module_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderByTeachingModuleIDResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+  "components":
+    {
+      "schemas":
+        {
+          publicCreateLearningGoalResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          publicCreateLearningGoalsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedLearningGoal",
+                        },
+                      description: insert multiple data learning goal,
+                    },
+                },
+            },
+          publicUpdateLearningGoalRequest:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goals:
+                    {
+                      $ref: "#/components/schemas/sharedLearningGoal",
+                    },
+                },
+            },
+          publicUpdateLearningGoalResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          sharedLearningGoal:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goal_id:
+                    { type: string, description: Learning Profile ID },
+                  goal: { type: string, description: goal description },
+                  teaching_module_id:
+                    { type: string, description: teaching module id },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          v1Dict:
+            {
+              type: object,
+              properties: { key: { type: string }, value: { type: string } },
+            },
+          v1KeyArrayValues:
+            {
+              type: object,
+              properties:
+                {
+                  key: { type: string },
+                  value:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/v1Dict" },
+                    },
+                },
+            },
+          publicApproveteachingModuleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module_id:
+                    { type: string, description: teaching module id },
+                  teacher_id: { type: string, description: teacher id },
+                  is_approved: { type: boolean, description: approval request },
+                },
+            },
+          publicTeachingModuleListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_modules:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModule",
+                        },
+                      description: Teaching Module Body,
+                    },
+                },
+            },
+          publicTeachingModuleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModule",
+                    },
+                },
+            },
+          publicTeachingModuleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          sharedApprover:
+            {
+              type: object,
+              properties:
+                {
+                  teacher_id:
+                    {
+                      type: string,
+                      description: Teacher who approve new teaching module,
+                    },
+                  is_approved: { type: boolean, description: approve status },
+                },
+            },
+          sharedTeachingModule:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: teaching module id },
+                  title:
+                    { type: string, description: Title for teaching module },
+                  learning_profile:
+                    {
+                      type: string,
+                      description: Learning Profile associated with teaching module,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Star Date for teaching module,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End Date for teaching module,
+                      format: date-time,
+                    },
+                  subject_id:
+                    {
+                      type: string,
+                      description: Subject id that related teaching module,
+                    },
+                  approver:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedApprover",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedLearningGoal",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1KeyArrayValues",
+                        },
+                      description: Curriculum instance,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                  cover_image:
+                    {
+                      type: string,
+                      description: Cover Image for teaching module,
+                    },
+                  time_allocation:
+                    {
+                      type: string,
+                      description: Time allocated for teaching module,
+                    },
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                },
+            },
+          sharedTeachingModuleFolder:
+            {
+              type: object,
+              properties:
+                {
+                  folder_id: { type: string, description: Folder Name },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of Learning Goals,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start Date,
+                      format: date-time,
+                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                },
+            },
+          publicCreateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          publicGetTeachingModuleFolderByTeachingModuleIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: get folder by teaching module ID,
+                    },
+                },
+            },
+          publicUpdateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+        },
+      responses:
+        {
+          "500":
+            {
+              description: Internal Server Error,
+              content:
+                {
+                  application/json:
+                    {
+                      schema:
+                        {
+                          $ref: "#/components/schemas/v1ErrorResponse",
+                        },
+                    },
+                },
+            },
+          "401":
+            {
+              description: Unauthorized JWT token.,
+              content:
+                {
+                  application/json:
+                    {
+                      schema:
+                        {
+                          $ref: "#/components/schemas/v1ErrorResponse",
+                        },
+                    },
+                },
+            },
+        },
+      securitySchemes:
+        { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
+    },
+  security: [{ OAuth2: [TEACHER] }],
+}

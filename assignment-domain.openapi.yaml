@@ -1,0 +1,344 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: Assignment Domain
+  description: "Skoola Assignment Service"
+  version: v1
+servers: [{ url: "https://api.stg.skola.com" }]
+paths:
+  /v1/assignment:
+    get:
+      tags: [AssignmentService]
+      summary: Get an assignment
+      description: Get user detail
+      operationId: AssignmentService_GetAssignmentById
+      parameters: [{ name: assignment_id, in: query, schema: { type: string } }]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicGetAssignmentByIdResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+    post:
+      tags: [AssignmentService]
+      summary: Create an assignment
+      description: Create an assignment
+      operationId: AssignmentService_CreateAssignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicCreateAssignmentRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicCreateAssignmentResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+    delete:
+      tags: [AssignmentService]
+      summary: Delete an assignment
+      description: Delete an assignment
+      operationId: AssignmentService_DeleteAssignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicDeleteAssignmentRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicDeleteAssignmentResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+    patch:
+      tags: [AssignmentService]
+      summary: Update an assignment
+      description: Update an assignment
+      operationId: AssignmentService_UpdateAssignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicUpdateAssignmentRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicUpdateAssignmentResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+"components":
+  "schemas":
+    publicCreateAssignmentRequest:
+      type: object
+      properties:
+        id:
+          example: 123
+          type: string
+          description: Assignment ID
+        title:
+          example: Tes Baris dan Deret Aritmatika
+          type: string
+          description: Assignment title
+        description:
+          type: string
+          description: Assignment description
+        start_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Start date when the assignment can be done
+          format: date-time
+        due_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Assignment deadline
+          format: date-time
+        until_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Available until date
+          format: date-time
+        score:
+          example: 1.0
+          type: number
+          description: Assignment score
+          format: float
+        learning_goals:
+          example: [123, 234, 567]
+          type: array
+          items:
+            type: string
+          description: Learning goal IDs related to assignment
+        publish:
+          type: boolean
+          description: Assignment publish status
+        teaching_module_folder_id:
+          example: 123
+          type: string
+          description: Teaching Module Folder ID
+    publicCreateAssignmentResponse:
+      type: object
+      properties:
+        assignment:
+          $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of creating assignment
+    publicDeleteAssignmentRequest:
+      type: object
+      properties:
+        assignment_id:
+          type: string
+          description: Assignment ID
+    publicDeleteAssignmentResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: response message of deleting assignment
+    publicGetAssignmentByIdResponse:
+      type: object
+      properties:
+        assignment:
+          $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of getting assignment
+    publicUpdateAssignmentRequest:
+      type: object
+      properties:
+        id:
+          example: 123
+          type: string
+          description: Assignment ID
+        title:
+          example: Tes Baris dan Deret Aritmatika
+          type: string
+          description: Assignment title
+        description:
+          type: string
+          description: Assignment description
+        start_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Start date when the assignment can be done
+          format: date-time
+        due_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Assignment deadline
+          format: date-time
+        until_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Available until date
+          format: date-time
+        score:
+          example: 1.0
+          type: number
+          description: Assignment score
+          format: float
+        learning_goals:
+          example: [123, 234, 567, 8910]
+          type: array
+          items:
+            type: string
+          description: Learning goal IDs related to assignment
+        publish:
+          type: boolean
+          description: Assignment publish status
+    publicUpdateAssignmentResponse:
+      type: object
+      properties:
+        assignment:
+          $ref: "#/components/schemas/sharedAssignment"
+        message:
+          type: string
+          description: response message of updating assignment
+    sharedAssignment:
+      type: object
+      properties:
+        id:
+          example: 123
+          type: string
+          description: Assignment ID
+        title:
+          example: Tes Baris dan Deret Aritmatika
+          type: string
+          description: Assignment title
+        description:
+          type: string
+          description: Assignment description
+        start_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Start date when the assignment can be done
+          format: date-time
+        due_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Assignment deadline
+          format: date-time
+        until_date:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Available until date
+          format: date-time
+        score:
+          example: 1.0
+          type: number
+          description: Assignment score
+          format: float
+        learning_goals:
+          example: [123, 234, 567]
+          type: array
+          items:
+            type: string
+          description: Learning goal IDs related to assignment
+        publish:
+          type: boolean
+          description: Assignment publish status
+        created_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when assignment is created
+          format: date-time
+        updated_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when assignment data updated
+          format: date-time
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"
+  responses:
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+    "401":
+      description: Unauthorized JWT token.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+  securitySchemes:
+    OAuth2:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security: [{ OAuth2: [TEACHER] }]
