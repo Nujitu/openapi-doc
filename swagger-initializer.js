@@ -3,23 +3,23 @@
       const ui = SwaggerUIBundle({
         urls: [
   {
-    "url": "/assignment-domain.openapi.yaml",
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/assignment-domain.openapi.yaml",
     "name": "assignment-domain.openapi"
   },
   {
-    "url": "/authentication-domain.openapi.yaml",
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/authentication-domain.openapi.yaml",
     "name": "authentication-domain.openapi"
   },
   {
-    "url": "/material-domain.openapi.yaml",
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/material-domain.openapi.yaml",
     "name": "material-domain.openapi"
   },
   {
-    "url": "/teaching_module-domain.openapi.yaml",
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/teaching_module-domain.openapi.yaml",
     "name": "teaching_module-domain.openapi"
   },
   {
-    "url": "/user-domain.openapi.yaml",
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/user-domain.openapi.yaml",
     "name": "user-domain.openapi"
   }
 ],
