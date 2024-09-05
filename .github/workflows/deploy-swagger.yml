@@ -17,9 +17,10 @@ jobs:
       # Step 4: Move YAML files to swagger-ui directory
       - name: Move YAML files
         run: |
-          ls
-          mkdir -p swagger-ui
-          cp -r openapi/modules/**/*.yaml swagger-ui/
+          # Check the files in the openapi/modules directory
+          find openapi/modules -name '*.yaml'
+          # Copy YAML files to the /swagger-ui directory
+          find openapi/modules -name '*.yaml' -exec cp {} swagger-ui/ \;
 
       # Step 5: Run the Node.js script to generate swagger-ui-initializer.js
       - name: Generate Swagger UI initializer
