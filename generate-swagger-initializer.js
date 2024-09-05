@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Base URL where your OpenAPI files will be hosted in GitHub Pages
-const baseUrl = ''; // Leave empty if the files are in the root of the swagger-ui directory
+// Base URL where your OpenAPI files are hosted in GitHub Pages
+const baseUrl = 'https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/';
 
 // Directory to search for OpenAPI files
 const openapiDir = path.join(__dirname, 'swagger-ui');
@@ -27,8 +27,8 @@ function getOpenAPIFiles(dir, fileList = []) {
 // Create URLs for the Swagger UI configuration
 function createSwaggerUrls(fileList) {
   return fileList.map((file) => {
-    // Convert file path to URL path relative to the GitHub Pages base URL
-    const urlPath = `/${path.basename(file)}`;
+    // Construct URL path relative to the GitHub Pages base URL
+    const urlPath = `${baseUrl}${path.relative(openapiDir, file).replace(/\\/g, '/')}`;
 
     const name = path.basename(file, path.extname(file));
     return { url: urlPath, name: name.replace('.domain.openapi', '') };
