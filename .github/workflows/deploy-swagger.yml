@@ -1,0 +1,42 @@
+name: Deploy Swagger UI
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow when pushing to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js to run the script
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Use Node.js version 16 or adjust as needed
+
+      # Step 3: Install necessary packages (if you have a package.json)
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Move YAML files to swagger-ui directory
+      - name: Move YAML files
+        run: |
+          mkdir -p swagger-ui
+          cp -r openapi/modules/**/*.yaml swagger-ui/
+
+      # Step 5: Run the Node.js script to generate swagger-ui-initializer.js
+      - name: Generate Swagger UI initializer
+        run: node generate-swagger-initializer.js
+
+      # Step 6: Deploy Swagger UI and OpenAPI files to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./swagger-ui # The directory with Swagger UI static files
