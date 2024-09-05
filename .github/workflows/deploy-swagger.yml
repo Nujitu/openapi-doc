@@ -14,16 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js to run the script
-      - name: Set up Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16' # Use Node.js version 16 or adjust as needed
-
-      # Step 3: Install necessary packages (if you have a package.json)
-      - name: Install dependencies
-        run: npm install
-
       # Step 4: Move YAML files to swagger-ui directory
       - name: Move YAML files
         run: |
