@@ -17,6 +17,7 @@ jobs:
       # Step 4: Move YAML files to swagger-ui directory
       - name: Move YAML files
         run: |
+          ls
           mkdir -p swagger-ui
           cp -r openapi/modules/**/*.yaml swagger-ui/
 
