@@ -1,5 +1,7 @@
 - [common/v1](/common/v1/proto.common.v1)
 - [core/v1](/core/v1/proto.core.v1)
+- [modules/assessment/v1/public](/modules/assessment/v1/public/proto.modules.assessment.v1.public)
+- [modules/assessment/v1/shared](/modules/assessment/v1/shared/proto.modules.assessment.v1.shared)
 - [modules/assignment/v1/public](/modules/assignment/v1/public/proto.modules.assignment.v1.public)
 - [modules/assignment/v1/shared](/modules/assignment/v1/shared/proto.modules.assignment.v1.shared)
 - [modules/authentication/v1/private](/modules/authentication/v1/private/proto.modules.authentication.v1.private)
