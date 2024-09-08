@@ -1031,24 +1031,6 @@
                   curr_cursor: { type: string },
                 },
             },
-          v1Dict:
-            {
-              type: object,
-              properties: { key: { type: string }, value: { type: string } },
-            },
-          v1KeyArrayValues:
-            {
-              type: object,
-              properties:
-                {
-                  key: { type: string },
-                  value:
-                    {
-                      type: array,
-                      items: { $ref: "#/components/schemas/v1Dict" },
-                    },
-                },
-            },
           v1OffsetPagination:
             {
               type: object,
@@ -1164,7 +1146,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/v1KeyArrayValues",
+                          $ref: "#/components/schemas/sharedCurriculumGroupComponent",
                         },
                       description: Curriculum Components,
                     },
@@ -1181,6 +1163,41 @@
                       type: string,
                       description: Time when Curriculum data updated,
                       format: date-time,
+                    },
+                },
+            },
+          sharedCurriculumGroupComponent:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: CurriculumGroupComponentID,
+                    },
+                  description:
+                    {
+                      example: ini ada group component,
+                      type: string,
+                      description: Curriculum Group Component Description,
+                    },
+                  component_type:
+                    {
+                      example: choose component type,
+                      enum:
+                        [
+                          TEXT_INPUT,
+                          MULTIPLE_TEXT_INPUT,
+                          TEXT_DESCRIPTION,
+                          MULTIPLE_TEXT_DESCRIPTION,
+                          CHECKLIST,
+                          RADIO_BUTTON,
+                        ],
+                      type: string,
+                      description: Component type,
+                      format: enum,
                     },
                 },
             },
