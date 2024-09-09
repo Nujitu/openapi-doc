@@ -3,8 +3,8 @@
       const ui = SwaggerUIBundle({
         urls: [
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/assignment-domain.openapi.yaml",
-    "name": "assignment-domain.openapi"
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/assessment-domain.openapi.yaml",
+    "name": "assessment-domain.openapi"
   },
   {
     "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/authentication-domain.openapi.yaml",
