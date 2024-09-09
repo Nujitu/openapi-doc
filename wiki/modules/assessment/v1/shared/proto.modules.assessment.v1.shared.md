@@ -3,21 +3,24 @@
 
 ## Table of Contents
 
-- [modules/assignment/v1/shared/assignment.proto](#modules_assignment_v1_shared_assignment-proto)
-    - [Assignment](#modules-assignment-v1-shared-Assignment)
+- [modules/assessment/v1/shared/assignment.proto](#modules_assessment_v1_shared_assignment-proto)
+    - [Assignment](#modules-assessment-v1-shared-Assignment)
+  
+- [modules/assessment/v1/shared/observation.proto](#modules_assessment_v1_shared_observation-proto)
+    - [Observation](#modules-assessment-v1-shared-Observation)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="modules_assignment_v1_shared_assignment-proto"></a>
+<a name="modules_assessment_v1_shared_assignment-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/assignment/v1/shared/assignment.proto
+## modules/assessment/v1/shared/assignment.proto
 
 
 
-<a name="modules-assignment-v1-shared-Assignment"></a>
+<a name="modules-assessment-v1-shared-Assignment"></a>
 
 ### Assignment
 
@@ -34,6 +37,48 @@
 | score | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_assessment_v1_shared_observation-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/shared/observation.proto
+
+
+
+<a name="modules-assessment-v1-shared-Observation"></a>
+
+### Observation
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| score | [float](#float) |  |  |
+| learning_goals | [string](#string) | repeated |  |
+| publish | [bool](#bool) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
