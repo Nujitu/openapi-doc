@@ -1252,8 +1252,9 @@
                         {
                           $ref: "#/components/schemas/sharedTeachingModuleFolder",
                         },
-                      description: List of approver for teaching module,
+                      description: List of folder for teaching module,
                     },
+                  curriculum_id: { type: string, description: curriculum ID },
                 },
             },
           sharedTeachingModuleFolder:

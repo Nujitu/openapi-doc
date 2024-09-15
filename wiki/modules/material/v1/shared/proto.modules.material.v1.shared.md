@@ -12,6 +12,11 @@
   
     - [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus)
   
+- [modules/material/v1/shared/curriculum_group_component.proto](#modules_material_v1_shared_curriculum_group_component-proto)
+    - [CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent)
+  
+    - [ComponentType](#modules-material-v1-shared-ComponentType)
+  
 - [modules/material/v1/shared/subject.proto](#modules_material_v1_shared_subject-proto)
     - [Subject](#modules-material-v1-shared-Subject)
   
@@ -110,7 +115,7 @@
 | status | [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus) |  |  |
 | notes | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
-| components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) | repeated |  |
+| components | [CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -130,6 +135,55 @@
 | ---- | ------ | ----------- |
 | CURRICULUM_STATUS_ACTIVE | 0 | Curriculum status active |
 | CURRICULUM_STATUS_INACTIVE | 1 | Curriculum status inactive |
+
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_curriculum_group_component-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/curriculum_group_component.proto
+
+
+
+<a name="modules-material-v1-shared-CurriculumGroupComponent"></a>
+
+### CurriculumGroupComponent
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| component_type | [ComponentType](#modules-material-v1-shared-ComponentType) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="modules-material-v1-shared-ComponentType"></a>
+
+### ComponentType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TEXT_INPUT | 0 |  |
+| MULTIPLE_TEXT_INPUT | 1 |  |
+| TEXT_DESCRIPTION | 2 |  |
+| MULTIPLE_TEXT_DESCRIPTION | 3 |  |
+| CHECKLIST | 4 |  |
+| RADIO_BUTTON | 5 |  |
 
 
  
