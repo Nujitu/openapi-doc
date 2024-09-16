@@ -660,6 +660,76 @@
                 },
             },
         },
+      "/v1/class-group/add-student/{class_id}/{student_id}":
+        {
+          delete:
+            {
+              tags: [ClassGroupService],
+              summary: Removing student from class,
+              description: Removing student from class,
+              operationId: ClassGroupService_RemoveStudentFromClass,
+              parameters:
+                [
+                  {
+                    name: class_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: student_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRemoveStudentFromClassResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/class-group/list:
         {
           get:
@@ -678,11 +748,6 @@
                   { name: academic_term, in: query, schema: { type: string } },
                   {
                     name: homeroom_teacher,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: group_subject_id,
                     in: query,
                     schema: { type: string },
                   },
@@ -1159,6 +1224,18 @@
                   notes: { type: string, description: Curriculum notes },
                   instance_id:
                     { type: string, description: Curriculum instance },
+                  academic_term:
+                    {
+                      example: 2024/2025,
+                      type: string,
+                      description: Academic Term,
+                    },
+                  semester:
+                    {
+                      example: 1,
+                      type: string,
+                      description: Curriculum semester,
+                    },
                   components:
                     {
                       type: array,
@@ -1365,10 +1442,15 @@
               type: object,
               properties:
                 {
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
                   class_id:
                     { example: 123, type: string, description: Class ID },
+                  student_id:
+                    {
+                      example: 123,
+                      type: array,
+                      items: { type: string },
+                      description: Student ID,
+                    },
                 },
             },
           publicAddStudentToClassResponse:
@@ -1399,12 +1481,6 @@
                       type: string,
                       description: Subject name,
                     },
-                  start_time:
-                    {
-                      type: integer,
-                      description: time when the subject start,
-                      format: uint32,
-                    },
                   index_minimum:
                     {
                       type: integer,
@@ -1429,6 +1505,13 @@
                       description: Lesson minutes,
                       format: uint32,
                     },
+                  subject_type:
+                    {
+                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      type: string,
+                      description: Subject type,
+                      format: enum,
+                    },
                 },
             },
           publicCreateClassGroupRequest:
@@ -1436,8 +1519,6 @@
               type: object,
               properties:
                 {
-                  id:
-                    { example: 123, type: string, description: ClassGroup ID },
                   name:
                     {
                       example: Class Group 123,
@@ -1450,14 +1531,17 @@
                     { example: IPA, type: string, description: Class major },
                   curriculum_id:
                     { type: string, description: ID of curriculum },
-                  academic_term:
-                    {
-                      example: 2024/2025,
-                      type: string,
-                      description: Academic Term,
-                    },
                   homeroom_teacher: { type: string, description: Teacher ID },
+                  group_subject_id:
+                    { type: string, description: Group subject ID },
                   instance_id: { type: string, description: Instance ID },
+                  type:
+                    {
+                      enum: [CLASS_GENERAL, CLASS_COMBINED],
+                      type: string,
+                      description: GENERAL/SELECTION,
+                      format: enum,
+                    },
                   class_subjects:
                     {
                       type: array,
@@ -1536,6 +1620,19 @@
                           $ref: "#/components/schemas/sharedClassGroup",
                         },
                       description: Class group List,
+                    },
+                },
+            },
+          publicRemoveStudentFromClassResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      example: Success deleting student,
+                      type: string,
+                      description: response info,
                     },
                 },
             },
@@ -1649,16 +1746,17 @@
                     { example: IPA, type: string, description: Class major },
                   curriculum_id:
                     { type: string, description: ID of curriculum },
-                  academic_term:
-                    {
-                      example: 2024/2025,
-                      type: string,
-                      description: Academic Term,
-                    },
                   homeroom_teacher: { type: string, description: Teacher ID },
                   group_subject_id:
                     { type: string, description: Group subject ID },
                   instance_id: { type: string, description: Instance ID },
+                  type:
+                    {
+                      enum: [CLASS_GENERAL, CLASS_COMBINED],
+                      type: string,
+                      description: GENERAL/COMBINED,
+                      format: enum,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -1698,12 +1796,6 @@
                       type: string,
                       description: Subject name,
                     },
-                  start_time:
-                    {
-                      type: integer,
-                      description: time when the subject start,
-                      format: uint32,
-                    },
                   index_minimum:
                     {
                       type: integer,
@@ -1727,6 +1819,13 @@
                       type: integer,
                       description: Lesson minutes,
                       format: uint32,
+                    },
+                  subject_type:
+                    {
+                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      type: string,
+                      description: Subject type,
+                      format: enum,
                     },
                   created_at:
                     {

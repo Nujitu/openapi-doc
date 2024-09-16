@@ -6,6 +6,8 @@
 - [modules/material/v1/private/class_group.proto](#modules_material_v1_private_class_group-proto)
     - [GetClassGroupListRequest](#modules-material-v1-private-GetClassGroupListRequest)
     - [GetClassGroupListResponse](#modules-material-v1-private-GetClassGroupListResponse)
+    - [GetClassGroupSubjectsRequest](#modules-material-v1-private-GetClassGroupSubjectsRequest)
+    - [GetClassGroupSubjectsResponse](#modules-material-v1-private-GetClassGroupSubjectsResponse)
   
     - [ClassGroupService](#modules-material-v1-private-ClassGroupService)
   
@@ -40,7 +42,6 @@
 | curriculum_id | [string](#string) |  |  |
 | academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
-| group_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -65,6 +66,36 @@
 
 
 
+
+<a name="modules-material-v1-private-GetClassGroupSubjectsRequest"></a>
+
+### GetClassGroupSubjectsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_group_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-private-GetClassGroupSubjectsResponse"></a>
+
+### GetClassGroupSubjectsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
+
+
+
+
+
  
 
  
@@ -80,6 +111,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-private-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-private-GetClassGroupListResponse) |  |
+| GetClassGroupSubjects | [GetClassGroupSubjectsRequest](#modules-material-v1-private-GetClassGroupSubjectsRequest) | [GetClassGroupSubjectsResponse](#modules-material-v1-private-GetClassGroupSubjectsResponse) |  |
 
  
 

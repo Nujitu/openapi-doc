@@ -16,6 +16,8 @@
     - [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse)
     - [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest)
     - [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse)
+    - [RemoveStudentFromClassRequest](#modules-material-v1-public-RemoveStudentFromClassRequest)
+    - [RemoveStudentFromClassResponse](#modules-material-v1-public-RemoveStudentFromClassResponse)
     - [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest)
     - [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse)
     - [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest)
@@ -59,8 +61,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
 | class_id | [string](#string) |  |  |
+| student_id | [string](#string) | repeated |  |
 
 
 
@@ -93,11 +95,11 @@
 | subject_id | [string](#string) |  |  |
 | homeroom_teacher_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
-| start_time | [uint32](#uint32) |  |  |
 | index_minimum | [uint32](#uint32) |  |  |
 | meetings_per_week | [uint32](#uint32) |  |  |
 | lesson_hours_per_week | [uint32](#uint32) |  |  |
 | lesson_minutes | [uint32](#uint32) |  |  |
+| subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
 
 
 
@@ -112,14 +114,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 | grade_level | [string](#string) |  |  |
 | major | [string](#string) |  |  |
 | curriculum_id | [string](#string) |  |  |
-| academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
+| group_subject_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| type | [modules.material.v1.shared.ClassGroupType](#modules-material-v1-shared-ClassGroupType) |  |  |
 | class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
 
 
@@ -173,7 +175,6 @@
 | curriculum_id | [string](#string) |  |  |
 | academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
-| group_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -253,6 +254,37 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-RemoveStudentFromClassRequest"></a>
+
+### RemoveStudentFromClassRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-RemoveStudentFromClassResponse"></a>
+
+### RemoveStudentFromClassResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
 
 
 
@@ -348,6 +380,7 @@ Service for user related feature
 | UpdateClassGroup | [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest) | [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse) |  |
 | GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse) |  |
 | AddStudentToClass | [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest) | [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse) |  |
+| RemoveStudentFromClass | [RemoveStudentFromClassRequest](#modules-material-v1-public-RemoveStudentFromClassRequest) | [RemoveStudentFromClassResponse](#modules-material-v1-public-RemoveStudentFromClassResponse) |  |
 | UpdateClassSubjectDetail | [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest) | [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse) |  |
 | GetStudentClasses | [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest) | [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse) |  |
 | GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
