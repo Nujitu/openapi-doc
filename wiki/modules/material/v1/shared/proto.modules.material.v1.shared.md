@@ -7,6 +7,8 @@
     - [ClassGroup](#modules-material-v1-shared-ClassGroup)
     - [ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail)
   
+    - [ClassGroupType](#modules-material-v1-shared-ClassGroupType)
+  
 - [modules/material/v1/shared/curriculum.proto](#modules_material_v1_shared_curriculum-proto)
     - [Curriculum](#modules-material-v1-shared-Curriculum)
   
@@ -41,10 +43,10 @@
 | grade_level | [string](#string) |  |  |
 | major | [string](#string) |  |  |
 | curriculum_id | [string](#string) |  |  |
-| academic_term | [string](#string) |  |  |
 | homeroom_teacher | [string](#string) |  |  |
 | group_subject_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| type | [ClassGroupType](#modules-material-v1-shared-ClassGroupType) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -66,11 +68,11 @@
 | subject_id | [string](#string) |  |  |
 | homeroom_teacher_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
-| start_time | [uint32](#uint32) |  |  |
 | index_minimum | [uint32](#uint32) |  |  |
 | meetings_per_week | [uint32](#uint32) |  |  |
 | lesson_hours_per_week | [uint32](#uint32) |  |  |
 | lesson_minutes | [uint32](#uint32) |  |  |
+| subject_type | [SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -79,6 +81,18 @@
 
 
  
+
+
+<a name="modules-material-v1-shared-ClassGroupType"></a>
+
+### ClassGroupType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CLASS_GENERAL | 0 |  |
+| CLASS_COMBINED | 1 |  |
+
 
  
 
@@ -110,6 +124,8 @@
 | status | [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus) |  |  |
 | notes | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| academic_term | [string](#string) |  |  |
+| semester | [string](#string) |  |  |
 | components | [common.v1.KeyArrayValues](#common-v1-KeyArrayValues) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
