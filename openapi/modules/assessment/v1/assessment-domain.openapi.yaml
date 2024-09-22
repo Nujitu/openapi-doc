@@ -4,336 +4,12 @@
   info:
     {
       title: Assessment Domain,
-      description: "Skoola Observation Service, Skoola Assignment Service",
+      description: "Skoola Assignment Service, Skoola Observation Service, Skola Quiz Service",
       version: v1,
     },
   servers: [{ url: "https://api.stg.skola.com" }],
   paths:
     {
-      /v1/observation:
-        {
-          post:
-            {
-              tags: [ObservationService],
-              summary: Create an observation,
-              description: Create an observation,
-              operationId: ObservationService_CreateObservation,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateObservationRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateObservationResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [ObservationService],
-              summary: Update an observation,
-              description: Update an observation,
-              operationId: ObservationService_UpdateObservation,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateObservationRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateObservationResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/observation/list/teaching-module-folder/{teaching_module_folder_id}":
-        {
-          get:
-            {
-              tags: [ObservationService],
-              summary: List observations,
-              description: List observations by teaching module folder id,
-              operationId: ObservationService_ListObservationByTeachingModuleId,
-              parameters:
-                [
-                  {
-                    name: teaching_module_folder_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListObservationByTeachingModuleIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/observation/{observation_id}":
-        {
-          get:
-            {
-              tags: [ObservationService],
-              summary: Get an observation,
-              description: Get observation by id,
-              operationId: ObservationService_GetObservationById,
-              parameters:
-                [
-                  {
-                    name: observation_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetObservationByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          delete:
-            {
-              tags: [ObservationService],
-              summary: Delete an observation,
-              description: Delete an observation,
-              operationId: ObservationService_DeleteObservation,
-              parameters:
-                [
-                  {
-                    name: observation_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteObservationResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/assignment:
         {
           post:
@@ -658,233 +334,1057 @@
                 },
             },
         },
+      /v1/observation:
+        {
+          post:
+            {
+              tags: [ObservationService],
+              summary: Create an observation,
+              description: Create an observation,
+              operationId: ObservationService_CreateObservation,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateObservationRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [ObservationService],
+              summary: Update an observation,
+              description: Update an observation,
+              operationId: ObservationService_UpdateObservation,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateObservationRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/observation/list/teaching-module-folder/{teaching_module_folder_id}":
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: List observations,
+              description: List observations by teaching module folder id,
+              operationId: ObservationService_ListObservationByTeachingModuleId,
+              parameters:
+                [
+                  {
+                    name: teaching_module_folder_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListObservationByTeachingModuleIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/observation/{observation_id}":
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: Get an observation,
+              description: Get observation by id,
+              operationId: ObservationService_GetObservationById,
+              parameters:
+                [
+                  {
+                    name: observation_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetObservationByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [ObservationService],
+              summary: Delete an observation,
+              description: Delete an observation,
+              operationId: ObservationService_DeleteObservation,
+              parameters:
+                [
+                  {
+                    name: observation_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Create a new Quiz,
+              description: Teacher create a new Quiz,
+              operationId: QuizService_CreateQuiz,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateQuizRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateQuizResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/answer/{quiz_id}/submit":
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Questions,
+              description: Will return list of question for student to answer,
+              operationId: QuizService_SubmitStudentAnswer,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicSubmitStudentAnswerRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicSubmitStudentAnswerResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/list/{instance_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz List,
+              description: Get Quiz list will return list of quiz info,
+              operationId: QuizService_GetQuizList,
+              parameters:
+                [
+                  {
+                    name: instance_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: title, in: query, schema: { type: string } },
+                  {
+                    name: learning_goal_title,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/questions:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Creating questions,
+              description: Teacher create a list of questions,
+              operationId: QuizService_CreateQuestions,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateQuestionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateQuestionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/questions/{quiz_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Questions,
+              description: Will return list of question for student to answer,
+              operationId: QuizService_GetQuestionList,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuestionListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [QuizService],
+              summary: Update Quiz Questions,
+              description: Teacher can update question and server will replace every question in db,
+              operationId: QuizService_EditQuestions,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicEditQuestionsRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicEditQuestionsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/setting:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Create a new Quiz,
+              description: Teacher create a new Quiz,
+              operationId: QuizService_CreateQuizSetting,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateQuizSettingRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateQuizSettingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/setting/{id}":
+        {
+          patch:
+            {
+              tags: [QuizService],
+              summary: Update Quiz Setting,
+              description: Update Quiz Setting,
+              operationId: QuizService_UpdateQuizSetting,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateQuizRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateQuizResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/{id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Detail,
+              description: Get Quiz Detail will return both quiz information and settings,
+              operationId: QuizService_GetQuizDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizDetailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [QuizService],
+              summary: Update Quiz,
+              description: Update Quiz Information,
+              operationId: QuizService_UpdateQuiz,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateQuizRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateQuizResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
       "schemas":
         {
-          publicCreateObservationRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Observation ID },
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  score:
-                    {
-                      example: 1.0,
-                      type: number,
-                      description: Observation score,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                },
-            },
-          publicCreateObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating observation,
-                    },
-                },
-            },
-          publicDeleteObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting observation,
-                    },
-                },
-            },
-          publicGetObservationByIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                },
-            },
-          publicListObservationByTeachingModuleIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observations:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedObservation",
-                        },
-                      description: List Observations,
-                    },
-                },
-            },
-          publicUpdateObservationRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Observation ID },
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  score:
-                    {
-                      example: 1.0,
-                      type: number,
-                      description: Observation score,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567, 8910],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                },
-            },
-          publicUpdateObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of updating observation,
-                    },
-                },
-            },
-          sharedObservation:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Observation ID },
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  score:
-                    {
-                      example: 1.0,
-                      type: number,
-                      description: Observation score,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  instance_id:
-                    { example: 123, type: string, description: Instance ID },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when observation is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when observation data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
           publicCreateAssignmentRequest:
             {
               type: object,
@@ -1146,6 +1646,769 @@
                     },
                 },
             },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          publicCreateObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  score:
+                    {
+                      example: 1.0,
+                      type: number,
+                      description: Observation score,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                },
+            },
+          publicCreateObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating observation,
+                    },
+                },
+            },
+          publicDeleteObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting observation,
+                    },
+                },
+            },
+          publicGetObservationByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                },
+            },
+          publicListObservationByTeachingModuleIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observations:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedObservation",
+                        },
+                      description: List Observations,
+                    },
+                },
+            },
+          publicUpdateObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  score:
+                    {
+                      example: 1.0,
+                      type: number,
+                      description: Observation score,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567, 8910],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                },
+            },
+          publicUpdateObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating observation,
+                    },
+                },
+            },
+          sharedObservation:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  score:
+                    {
+                      example: 1.0,
+                      type: number,
+                      description: Observation score,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          publicAnswer:
+            {
+              type: object,
+              properties:
+                {
+                  question_id:
+                    { example: 123, type: string, description: Question ID },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                },
+            },
+          publicCreateQuestionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicCreateQuestionResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicCreateQuizRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  instance_id: { type: string, description: Instance ID },
+                },
+            },
+          publicCreateQuizResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          publicCreateQuizSettingRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { example: 123, type: string, description: Quiz },
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum: [PRACTICE_QUIZ, QUIZ, HOMEWORK],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                      format: date-time,
+                    },
+                },
+            },
+          publicCreateQuizSettingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  setting:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                },
+            },
+          publicEditQuestionsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicEditQuestionsResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicGetQuestionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicGetQuizDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                  setting:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicGetQuizListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuiz",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicSubmitStudentAnswerRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  student_id: { type: string },
+                  answer:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAnswer",
+                        },
+                    },
+                },
+            },
+          publicSubmitStudentAnswerResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicUpdateQuizRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                },
+            },
+          publicUpdateQuizResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          sharedQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizOption:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  text: { type: string },
+                  value: { type: string },
+                  isAnswer: { type: boolean },
+                },
+            },
+          sharedQuizQuestion:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Question ID },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  question:
+                    {
+                      example: Choose the correct answer,
+                      type: string,
+                      description: Question,
+                    },
+                  questionType:
+                    {
+                      example: MULIPLE_ANSWER,
+                      enum: [TEXT, ESSAY, MULIPLE_ANSWER, FILE_UPLOAD],
+                      type: string,
+                      description: question type,
+                      format: enum,
+                    },
+                  points:
+                    {
+                      example: 5,
+                      type: integer,
+                      description: question points,
+                      format: int32,
+                    },
+                  options:
+                    {
+                      example: 5,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                      description: question option answer,
+                    },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                },
+            },
+          sharedQuizSettings:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Setting ID },
+                  quiz_id: { example: 123, type: string, description: Quiz },
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum: [PRACTICE_QUIZ, QUIZ, HOMEWORK],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                      format: date-time,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz data updated,
+                      format: date-time,
+                    },
+                },
+            },
         },
       responses:
         {
@@ -1181,5 +2444,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  security: [{ OAuth2: [TEACHER] }],
+  security: [{ OAuth2: [TEACHERSTUDENT] }],
 }
