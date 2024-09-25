@@ -685,7 +685,11 @@ Service for observation related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  |  |
+| learning_goal_id | [string](#string) |  |  |
 | learning_goal_title | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -836,7 +840,7 @@ Service for quiz related feature
 | CreateQuiz | [CreateQuizRequest](#modules-assessment-v1-public-CreateQuizRequest) | [CreateQuizResponse](#modules-assessment-v1-public-CreateQuizResponse) |  |
 | CreateQuizSetting | [CreateQuizSettingRequest](#modules-assessment-v1-public-CreateQuizSettingRequest) | [CreateQuizSettingResponse](#modules-assessment-v1-public-CreateQuizSettingResponse) |  |
 | UpdateQuiz | [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest) | [UpdateQuizResponse](#modules-assessment-v1-public-UpdateQuizResponse) |  |
-| UpdateQuizSetting | [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest) | [UpdateQuizResponse](#modules-assessment-v1-public-UpdateQuizResponse) |  |
+| UpdateQuizSetting | [UpdateQuizSettingRequest](#modules-assessment-v1-public-UpdateQuizSettingRequest) | [UpdateQuizSettingResponse](#modules-assessment-v1-public-UpdateQuizSettingResponse) |  |
 | GetQuizDetail | [GetQuizDetailRequest](#modules-assessment-v1-public-GetQuizDetailRequest) | [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse) |  |
 | GetQuizList | [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest) | [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse) |  |
 | CreateQuestions | [CreateQuestionRequest](#modules-assessment-v1-public-CreateQuestionRequest) | [CreateQuestionResponse](#modules-assessment-v1-public-CreateQuestionResponse) |  |
