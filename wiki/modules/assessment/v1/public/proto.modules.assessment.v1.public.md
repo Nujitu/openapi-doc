@@ -685,7 +685,11 @@ Service for observation related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  |  |
+| learning_goal_id | [string](#string) |  |  |
 | learning_goal_title | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |

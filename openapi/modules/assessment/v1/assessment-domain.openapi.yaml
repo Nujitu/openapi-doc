@@ -823,10 +823,22 @@
                   },
                   { name: title, in: query, schema: { type: string } },
                   {
+                    name: learning_goal_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
                     name: learning_goal_title,
                     in: query,
                     schema: { type: string },
                   },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: subject_name, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
