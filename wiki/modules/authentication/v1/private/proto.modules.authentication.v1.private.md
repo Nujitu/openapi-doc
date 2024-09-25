@@ -162,6 +162,7 @@ Response body of Logout
 | user_id | [string](#string) |  |  |
 | current_password | [string](#string) |  |  |
 | new_password | [string](#string) |  |  |
+| user_access_token | [string](#string) |  |  |
 
 
 
