@@ -21,6 +21,8 @@
     - [GetUserResponse](#modules-user-v1-public-GetUserResponse)
     - [InviteUserRequest](#modules-user-v1-public-InviteUserRequest)
     - [InviteUserResponse](#modules-user-v1-public-InviteUserResponse)
+    - [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest)
+    - [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse)
   
     - [UserService](#modules-user-v1-public-UserService)
   
@@ -267,6 +269,36 @@ Response body of Invite
 
 
 
+
+<a name="modules-user-v1-public-NewPasswordRequest"></a>
+
+### NewPasswordRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-NewPasswordResponse"></a>
+
+### NewPasswordResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -284,6 +316,7 @@ Service for user related feature
 | GetUser | [GetUserRequest](#modules-user-v1-public-GetUserRequest) | [GetUserResponse](#modules-user-v1-public-GetUserResponse) |  |
 | InviteUser | [InviteUserRequest](#modules-user-v1-public-InviteUserRequest) | [InviteUserResponse](#modules-user-v1-public-InviteUserResponse) |  |
 | GetUserList | [GetUserListRequest](#modules-user-v1-public-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-public-GetUserListResponse) |  |
+| NewPassword | [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest) | [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse) |  |
 
  
 

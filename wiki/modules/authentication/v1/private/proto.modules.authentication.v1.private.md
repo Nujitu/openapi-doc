@@ -159,10 +159,9 @@ Response body of Logout
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
+| key | [string](#string) |  |  |
 | current_password | [string](#string) |  |  |
 | new_password | [string](#string) |  |  |
-| user_access_token | [string](#string) |  |  |
 
 
 

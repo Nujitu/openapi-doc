@@ -210,6 +210,63 @@
                 },
             },
         },
+      /v1/user/new-password:
+        {
+          get:
+            {
+              tags: [UserService],
+              summary: New Password request,
+              description: User will receieved an email for next step,
+              operationId: UserService_NewPassword,
+              parameters:
+                [{ name: email, in: query, schema: { type: string } }],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicNewPasswordResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/student/register:
         {
           post:
@@ -517,6 +574,12 @@
                     { type: string, description: message for inviting result },
                 },
               description: Response body of Invite,
+            },
+          publicNewPasswordResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: Email Sent } },
             },
           sharedAddress:
             {
