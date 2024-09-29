@@ -10,8 +10,8 @@
     - [DeleteAssignmentResponse](#modules-assessment-v1-public-DeleteAssignmentResponse)
     - [GetAssignmentByIdRequest](#modules-assessment-v1-public-GetAssignmentByIdRequest)
     - [GetAssignmentByIdResponse](#modules-assessment-v1-public-GetAssignmentByIdResponse)
-    - [ListAssignmentByTeachingModuleIdRequest](#modules-assessment-v1-public-ListAssignmentByTeachingModuleIdRequest)
-    - [ListAssignmentByTeachingModuleIdResponse](#modules-assessment-v1-public-ListAssignmentByTeachingModuleIdResponse)
+    - [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest)
+    - [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse)
     - [UpdateAssignmentRequest](#modules-assessment-v1-public-UpdateAssignmentRequest)
     - [UpdateAssignmentResponse](#modules-assessment-v1-public-UpdateAssignmentResponse)
   
@@ -24,8 +24,8 @@
     - [DeleteObservationResponse](#modules-assessment-v1-public-DeleteObservationResponse)
     - [GetObservationByIdRequest](#modules-assessment-v1-public-GetObservationByIdRequest)
     - [GetObservationByIdResponse](#modules-assessment-v1-public-GetObservationByIdResponse)
-    - [ListObservationByTeachingModuleIdRequest](#modules-assessment-v1-public-ListObservationByTeachingModuleIdRequest)
-    - [ListObservationByTeachingModuleIdResponse](#modules-assessment-v1-public-ListObservationByTeachingModuleIdResponse)
+    - [ListObservationRequest](#modules-assessment-v1-public-ListObservationRequest)
+    - [ListObservationResponse](#modules-assessment-v1-public-ListObservationResponse)
     - [UpdateObservationRequest](#modules-assessment-v1-public-UpdateObservationRequest)
     - [UpdateObservationResponse](#modules-assessment-v1-public-UpdateObservationResponse)
   
@@ -56,6 +56,18 @@
   
     - [QuizService](#modules-assessment-v1-public-QuizService)
   
+- [modules/assessment/v1/public/rubric.proto](#modules_assessment_v1_public_rubric-proto)
+    - [CreateRubricRequest](#modules-assessment-v1-public-CreateRubricRequest)
+    - [CreateRubricResponse](#modules-assessment-v1-public-CreateRubricResponse)
+    - [DeleteRubricRequest](#modules-assessment-v1-public-DeleteRubricRequest)
+    - [DeleteRubricResponse](#modules-assessment-v1-public-DeleteRubricResponse)
+    - [GetRubricByIdRequest](#modules-assessment-v1-public-GetRubricByIdRequest)
+    - [GetRubricByIdResponse](#modules-assessment-v1-public-GetRubricByIdResponse)
+    - [UpdateRubricRequest](#modules-assessment-v1-public-UpdateRubricRequest)
+    - [UpdateRubricResponse](#modules-assessment-v1-public-UpdateRubricResponse)
+  
+    - [RubricService](#modules-assessment-v1-public-RubricService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -75,13 +87,12 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| score | [float](#float) |  |  |
+| point | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
@@ -167,30 +178,50 @@
 
 
 
-<a name="modules-assessment-v1-public-ListAssignmentByTeachingModuleIdRequest"></a>
+<a name="modules-assessment-v1-public-ListAssignmentRequest"></a>
 
-### ListAssignmentByTeachingModuleIdRequest
+### ListAssignmentRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| start_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| start_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| start_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| start_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| until_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| until_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| until_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| until_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| point | [float](#float) |  |  |
+| publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
 
 
 
 
 
 
-<a name="modules-assessment-v1-public-ListAssignmentByTeachingModuleIdResponse"></a>
+<a name="modules-assessment-v1-public-ListAssignmentResponse"></a>
 
-### ListAssignmentByTeachingModuleIdResponse
+### ListAssignmentResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignments | [modules.assessment.v1.shared.Assignment](#modules-assessment-v1-shared-Assignment) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
 
 
 
@@ -211,7 +242,7 @@
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| score | [float](#float) |  |  |
+| point | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 
@@ -253,7 +284,7 @@ Service for assignment related feature
 | UpdateAssignment | [UpdateAssignmentRequest](#modules-assessment-v1-public-UpdateAssignmentRequest) | [UpdateAssignmentResponse](#modules-assessment-v1-public-UpdateAssignmentResponse) |  |
 | DeleteAssignment | [DeleteAssignmentRequest](#modules-assessment-v1-public-DeleteAssignmentRequest) | [DeleteAssignmentResponse](#modules-assessment-v1-public-DeleteAssignmentResponse) |  |
 | GetAssignmentById | [GetAssignmentByIdRequest](#modules-assessment-v1-public-GetAssignmentByIdRequest) | [GetAssignmentByIdResponse](#modules-assessment-v1-public-GetAssignmentByIdResponse) |  |
-| ListAssignmentByTeachingModuleId | [ListAssignmentByTeachingModuleIdRequest](#modules-assessment-v1-public-ListAssignmentByTeachingModuleIdRequest) | [ListAssignmentByTeachingModuleIdResponse](#modules-assessment-v1-public-ListAssignmentByTeachingModuleIdResponse) |  |
+| ListAssignment | [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest) | [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse) |  |
 
  
 
@@ -274,10 +305,9 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| score | [float](#float) |  |  |
+| point | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
@@ -363,30 +393,38 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-ListObservationByTeachingModuleIdRequest"></a>
+<a name="modules-assessment-v1-public-ListObservationRequest"></a>
 
-### ListObservationByTeachingModuleIdRequest
+### ListObservationRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
 
 
 
 
 
 
-<a name="modules-assessment-v1-public-ListObservationByTeachingModuleIdResponse"></a>
+<a name="modules-assessment-v1-public-ListObservationResponse"></a>
 
-### ListObservationByTeachingModuleIdResponse
+### ListObservationResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observations | [modules.assessment.v1.shared.Observation](#modules-assessment-v1-shared-Observation) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
 
 
 
@@ -404,7 +442,7 @@ Service for assignment related feature
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| score | [float](#float) |  |  |
+| point | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 
@@ -446,7 +484,7 @@ Service for observation related feature
 | UpdateObservation | [UpdateObservationRequest](#modules-assessment-v1-public-UpdateObservationRequest) | [UpdateObservationResponse](#modules-assessment-v1-public-UpdateObservationResponse) |  |
 | DeleteObservation | [DeleteObservationRequest](#modules-assessment-v1-public-DeleteObservationRequest) | [DeleteObservationResponse](#modules-assessment-v1-public-DeleteObservationResponse) |  |
 | GetObservationById | [GetObservationByIdRequest](#modules-assessment-v1-public-GetObservationByIdRequest) | [GetObservationByIdResponse](#modules-assessment-v1-public-GetObservationByIdResponse) |  |
-| ListObservationByTeachingModuleId | [ListObservationByTeachingModuleIdRequest](#modules-assessment-v1-public-ListObservationByTeachingModuleIdRequest) | [ListObservationByTeachingModuleIdResponse](#modules-assessment-v1-public-ListObservationByTeachingModuleIdResponse) |  |
+| ListObservation | [ListObservationRequest](#modules-assessment-v1-public-ListObservationRequest) | [ListObservationResponse](#modules-assessment-v1-public-ListObservationResponse) |  |
 
  
 
@@ -847,6 +885,164 @@ Service for quiz related feature
 | EditQuestions | [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest) | [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse) |  |
 | GetQuestionList | [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest) | [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse) |  |
 | SubmitStudentAnswer | [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest) | [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse) |  |
+
+ 
+
+
+
+<a name="modules_assessment_v1_public_rubric-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/public/rubric.proto
+
+
+
+<a name="modules-assessment-v1-public-CreateRubricRequest"></a>
+
+### CreateRubricRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| criteria | [modules.assessment.v1.shared.Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-CreateRubricResponse"></a>
+
+### CreateRubricResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| rubric | [modules.assessment.v1.shared.Rubric](#modules-assessment-v1-shared-Rubric) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-DeleteRubricRequest"></a>
+
+### DeleteRubricRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| rubric_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-DeleteRubricResponse"></a>
+
+### DeleteRubricResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetRubricByIdRequest"></a>
+
+### GetRubricByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| rubric_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetRubricByIdResponse"></a>
+
+### GetRubricByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| rubric | [modules.assessment.v1.shared.Rubric](#modules-assessment-v1-shared-Rubric) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-UpdateRubricRequest"></a>
+
+### UpdateRubricRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| criteria | [modules.assessment.v1.shared.Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-UpdateRubricResponse"></a>
+
+### UpdateRubricResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| rubric | [modules.assessment.v1.shared.Rubric](#modules-assessment-v1-shared-Rubric) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-assessment-v1-public-RubricService"></a>
+
+### RubricService
+Service for rubric related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateRubric | [CreateRubricRequest](#modules-assessment-v1-public-CreateRubricRequest) | [CreateRubricResponse](#modules-assessment-v1-public-CreateRubricResponse) |  |
+| UpdateRubric | [UpdateRubricRequest](#modules-assessment-v1-public-UpdateRubricRequest) | [UpdateRubricResponse](#modules-assessment-v1-public-UpdateRubricResponse) |  |
+| DeleteRubric | [DeleteRubricRequest](#modules-assessment-v1-public-DeleteRubricRequest) | [DeleteRubricResponse](#modules-assessment-v1-public-DeleteRubricResponse) |  |
+| GetRubricById | [GetRubricByIdRequest](#modules-assessment-v1-public-GetRubricByIdRequest) | [GetRubricByIdResponse](#modules-assessment-v1-public-GetRubricByIdResponse) |  |
 
  
 

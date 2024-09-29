@@ -13,6 +13,7 @@
     - [ResponseMetadata](#common-v1-ResponseMetadata)
   
 - [common/v1/type.proto](#common_v1_type-proto)
+    - [AttachmentFile](#common-v1-AttachmentFile)
     - [Dict](#common-v1-Dict)
     - [KeyArrayValues](#common-v1-KeyArrayValues)
   
@@ -139,6 +140,25 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## common/v1/type.proto
+
+
+
+<a name="common-v1-AttachmentFile"></a>
+
+### AttachmentFile
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| display_name | [string](#string) |  |  |
+| unique_name | [string](#string) |  |  |
+| file_extension | [string](#string) |  |  |
+| file_size | [string](#string) |  |  |
+| link | [string](#string) |  |  |
+
+
+
 
 
 

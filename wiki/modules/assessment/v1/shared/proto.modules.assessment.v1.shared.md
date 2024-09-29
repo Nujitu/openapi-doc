@@ -5,6 +5,7 @@
 
 - [modules/assessment/v1/shared/assignment.proto](#modules_assessment_v1_shared_assignment-proto)
     - [Assignment](#modules-assessment-v1-shared-Assignment)
+    - [AssignmentAnswer](#modules-assessment-v1-shared-AssignmentAnswer)
   
 - [modules/assessment/v1/shared/enum.proto](#modules_assessment_v1_shared_enum-proto)
     - [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory)
@@ -20,6 +21,12 @@
     - [QuizQuestion](#modules-assessment-v1-shared-QuizQuestion)
     - [QuizSettings](#modules-assessment-v1-shared-QuizSettings)
     - [StudentAnswer](#modules-assessment-v1-shared-StudentAnswer)
+  
+- [modules/assessment/v1/shared/rubric.proto](#modules_assessment_v1_shared_rubric-proto)
+    - [Criterion](#modules-assessment-v1-shared-Criterion)
+    - [Rating](#modules-assessment-v1-shared-Rating)
+    - [Rubric](#modules-assessment-v1-shared-Rubric)
+    - [RubricAssessment](#modules-assessment-v1-shared-RubricAssessment)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -46,11 +53,34 @@
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| score | [float](#float) |  |  |
+| point | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-AssignmentAnswer"></a>
+
+### AssignmentAnswer
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| assignment_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| answer_text | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| point | [float](#float) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -141,11 +171,12 @@
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| score | [float](#float) |  |  |
+| point | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -274,6 +305,98 @@
 | question_id | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
 | answer | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_assessment_v1_shared_rubric-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/shared/rubric.proto
+
+
+
+<a name="modules-assessment-v1-shared-Criterion"></a>
+
+### Criterion
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| ratings | [Rating](#modules-assessment-v1-shared-Rating) | repeated |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-Rating"></a>
+
+### Rating
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-Rubric"></a>
+
+### Rubric
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| criteria | [Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-RubricAssessment"></a>
+
+### RubricAssessment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| total_point | [float](#float) |  |  |
+| points | [float](#float) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
