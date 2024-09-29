@@ -559,8 +559,8 @@ Service for observation related feature
 | randomArrangement | [bool](#bool) |  |  |
 | resultView | [bool](#bool) |  |  |
 | indexMinimum | [int32](#int32) |  |  |
-| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date | [string](#string) |  |  |
+| until_date | [string](#string) |  |  |
 
 
 
@@ -800,8 +800,8 @@ Service for observation related feature
 | randomArrangement | [bool](#bool) |  |  |
 | resultView | [bool](#bool) |  |  |
 | indexMinimum | [int32](#int32) |  |  |
-| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date | [string](#string) |  |  |
+| until_date | [string](#string) |  |  |
 
 
 

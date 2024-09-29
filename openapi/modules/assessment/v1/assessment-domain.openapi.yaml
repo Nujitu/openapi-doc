@@ -2057,14 +2057,12 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Quiz deadline,
-                      format: date-time,
                     },
                   until_date:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Quiz until date,
-                      format: date-time,
                     },
                 },
             },
@@ -2276,14 +2274,12 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Quiz deadline,
-                      format: date-time,
                     },
                   until_date:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Quiz until date,
-                      format: date-time,
                     },
                 },
             },
