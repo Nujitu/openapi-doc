@@ -823,10 +823,22 @@
                   },
                   { name: title, in: query, schema: { type: string } },
                   {
+                    name: learning_goal_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
                     name: learning_goal_title,
                     in: query,
                     schema: { type: string },
                   },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: subject_name, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1188,7 +1200,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicUpdateQuizRequest",
+                              $ref: "#/components/schemas/publicUpdateQuizSettingRequest",
                             },
                         },
                     },
@@ -1205,7 +1217,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicUpdateQuizResponse",
+                                  $ref: "#/components/schemas/publicUpdateQuizSettingResponse",
                                 },
                             },
                         },
@@ -2207,6 +2219,83 @@
                   quiz:
                     {
                       $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          publicUpdateQuizSettingRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Setting ID },
+                  quiz_id: { example: 123, type: string, description: Quiz },
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum: [PRACTICE_QUIZ, QUIZ, HOMEWORK],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                      format: date-time,
+                    },
+                },
+            },
+          publicUpdateQuizSettingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  setting:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
                     },
                 },
             },
