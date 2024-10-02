@@ -1,0 +1,158 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: Schedule Domain
+  version: v1
+  description: Skoola Learning Goal Service
+servers: [{ url: "https://api.stg.skola.com" }]
+paths:
+  /v1/schedule:
+    post:
+      tags: [ScheduleTimeService]
+      summary: Insert New Schedule
+      description: Insert New Schedule
+      operationId: ScheduleTimeService_CreateScheduleTimeByDay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sharedCreateScheduleTimeRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicCreateScheduleTimeResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+  "/v1/schedule/{day}":
+    get:
+      tags: [ScheduleTimeService]
+      summary: Get schedules for each day
+      description: "Get schedules for each day, e.g /v1/schedule/MONDAY, /v1/schedule/TUESDAY, /v1/schedule/SUNDAY"
+      operationId: ScheduleTimeService_GetScheduleTimeByDay
+      parameters:
+        [{ name: day, in: path, required: true, schema: { type: string } }]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/sharedGetScheduleTimeResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+"components":
+  "schemas":
+    publicCreateScheduleTimeResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message confirming the creation of the new schedule
+    sharedCreateScheduleTimeRequest:
+      type: object
+      properties:
+        day:
+          enum: [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY]
+          type: string
+          description: "Day e.g. SUNDAY, MONDAY"
+          format: enum
+        start_time:
+          type: string
+          description: Start time activity
+          format: date-time
+        end_time:
+          type: string
+          description: End time activity
+          format: date-time
+        activity:
+          enum: [LEARNING, OTHERS]
+          type: string
+          description: Activity
+          format: enum
+    sharedGetScheduleTimeResponse:
+      type: object
+      properties:
+        day:
+          enum: [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY]
+          type: string
+          description: "Day e.g. SUNDAY, MONDAY"
+          format: enum
+        period:
+          type: string
+          description: Counter of each schedule
+        start_time:
+          type: string
+          description: Start time activity
+          format: date-time
+        end_time:
+          type: string
+          description: End time activity
+          format: date-time
+        activity:
+          enum: [LEARNING, OTHERS]
+          type: string
+          description: Activity
+          format: enum
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"
+  responses:
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+    "401":
+      description: Unauthorized JWT token.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+  securitySchemes:
+    OAuth2:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security: [{ OAuth2: [TEACHER] }]
