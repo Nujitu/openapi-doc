@@ -2722,6 +2722,9 @@
                 {
                   quiz_id: { type: string },
                   student_id: { type: string },
+                  student_name: { type: string },
+                  submission_start_time: { type: string },
+                  subission_end_time: { type: string },
                   answer:
                     {
                       type: array,
