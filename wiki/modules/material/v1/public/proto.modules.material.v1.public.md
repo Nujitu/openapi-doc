@@ -14,10 +14,13 @@
     - [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse)
     - [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest)
     - [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse)
+    - [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest)
+    - [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse)
     - [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest)
     - [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse)
     - [RemoveStudentFromClassRequest](#modules-material-v1-public-RemoveStudentFromClassRequest)
     - [RemoveStudentFromClassResponse](#modules-material-v1-public-RemoveStudentFromClassResponse)
+    - [StudentClass](#modules-material-v1-public-StudentClass)
     - [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest)
     - [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse)
     - [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest)
@@ -62,7 +65,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_id | [string](#string) |  |  |
-| student_id | [string](#string) | repeated |  |
+| students | [StudentClass](#modules-material-v1-public-StudentClass) | repeated |  |
 
 
 
@@ -230,6 +233,36 @@
 
 
 
+<a name="modules-material-v1-public-GetStudentsInClassRequest"></a>
+
+### GetStudentsInClassRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetStudentsInClassResponse"></a>
+
+### GetStudentsInClassResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| students | [StudentClass](#modules-material-v1-public-StudentClass) | repeated |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-GetTeacherClassesRequest"></a>
 
 ### GetTeacherClassesRequest
@@ -285,6 +318,22 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-StudentClass"></a>
+
+### StudentClass
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
 
 
 
@@ -384,6 +433,7 @@ Service for user related feature
 | UpdateClassSubjectDetail | [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest) | [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse) |  |
 | GetStudentClasses | [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest) | [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse) |  |
 | GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
+| GetStudentsInClass | [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest) | [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse) |  |
 
  
 
