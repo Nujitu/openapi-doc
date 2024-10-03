@@ -8,6 +8,7 @@
     - [AssignmentAnswer](#modules-assessment-v1-shared-AssignmentAnswer)
   
 - [modules/assessment/v1/shared/enum.proto](#modules_assessment_v1_shared_enum-proto)
+    - [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState)
     - [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory)
     - [AssessmentQuizQuestionType](#modules-assessment-v1-shared-AssessmentQuizQuestionType)
     - [AssessmentType](#modules-assessment-v1-shared-AssessmentType)
@@ -105,6 +106,18 @@
 
 
  
+
+
+<a name="modules-assessment-v1-shared-AnswerScoreState"></a>
+
+### AnswerScoreState
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| NOT_SCORED | 0 |  |
+| SCORED | 1 |  |
+
 
 
 <a name="modules-assessment-v1-shared-AssessmentQuizCategory"></a>
@@ -305,6 +318,8 @@
 | question_id | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
 | answer | [string](#string) |  |  |
+| points | [string](#string) |  |  |
+| score_state | [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState) |  |  |
 
 
 
