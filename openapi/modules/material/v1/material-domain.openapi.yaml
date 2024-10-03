@@ -1089,6 +1089,70 @@
                 },
             },
         },
+      "/v1/class-group/{id}/students":
+        {
+          get:
+            {
+              tags: [ClassGroupService],
+              summary: GetStudentsInClass,
+              description: retrieves a list of students enrolled in the specified class.,
+              operationId: ClassGroupService_GetStudentsInClass,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentsInClassResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
@@ -1453,12 +1517,13 @@
                 {
                   class_id:
                     { example: 123, type: string, description: Class ID },
-                  student_id:
+                  students:
                     {
-                      example: 123,
                       type: array,
-                      items: { type: string },
-                      description: Student ID,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicStudentClass",
+                        },
                     },
                 },
             },
@@ -1616,6 +1681,21 @@
                     },
                 },
             },
+          publicGetStudentsInClassResponse:
+            {
+              type: object,
+              properties:
+                {
+                  students:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicStudentClass",
+                        },
+                    },
+                },
+            },
           publicGetTeacherClassesResponse:
             {
               type: object,
@@ -1643,6 +1723,17 @@
                       type: string,
                       description: response info,
                     },
+                },
+            },
+          publicStudentClass:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    { example: 123, type: string, description: Student Name },
                 },
             },
           publicUpdateClassGroupRequest:
