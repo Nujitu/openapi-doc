@@ -47,6 +47,8 @@
     - [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse)
     - [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest)
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
+    - [ScoringQuizJob](#modules-assessment-v1-public-ScoringQuizJob)
+    - [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload)
     - [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest)
     - [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse)
     - [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest)
@@ -748,6 +750,40 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ScoringQuizJob"></a>
+
+### ScoringQuizJob
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| meta | [common.v1.AsyncMetadata](#common-v1-AsyncMetadata) |  |  |
+| payload | [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ScoringQuizJobPayload"></a>
+
+### ScoringQuizJobPayload
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| action | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| answer | [Answer](#modules-assessment-v1-public-Answer) | repeated |  |
 
 
 
