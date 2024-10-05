@@ -8,6 +8,8 @@
 - [modules/material/v1/private](/modules/material/v1/private/proto.modules.material.v1.private)
 - [modules/material/v1/public](/modules/material/v1/public/proto.modules.material.v1.public)
 - [modules/material/v1/shared](/modules/material/v1/shared/proto.modules.material.v1.shared)
+- [modules/schedule/v1/public](/modules/schedule/v1/public/proto.modules.schedule.v1.public)
+- [modules/schedule/v1/shared](/modules/schedule/v1/shared/proto.modules.schedule.v1.shared)
 - [modules/teaching_module/v1/public](/modules/teaching_module/v1/public/proto.modules.teaching_module.v1.public)
 - [modules/teaching_module/v1/shared](/modules/teaching_module/v1/shared/proto.modules.teaching_module.v1.shared)
 - [modules/user/v1/private](/modules/user/v1/private/proto.modules.user.v1.private)
