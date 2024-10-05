@@ -1,0 +1,120 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: Report Domain
+  version: v1
+  description: Skoola Finalized Score Service
+servers: [{ url: "https://api.stg.skola.com" }]
+paths:
+  "/v1/finalized-score/{class_group_id}/{task_id}":
+    get:
+      tags: [FinalizedScoreService]
+      summary: Get Finalized Score
+      description: Retrieve Finalized Score
+      operationId: FinalizedScoreService_GetFinalizedScoreList
+      parameters:
+        [
+          {
+            name: class_group_id,
+            in: path,
+            required: true,
+            schema: { type: string },
+          },
+          { name: task_id, in: path, required: true, schema: { type: string } },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicGetFinalizedScoreListResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+"components":
+  "schemas":
+    publicGetFinalizedScoreListResponse:
+      type: object
+      properties:
+        finalized_scores:
+          type: array
+          items:
+            $ref: "#/components/schemas/sharedFinalizedScore"
+          description: finalized score response
+    sharedFinalizedScore:
+      type: object
+      properties:
+        id:
+          type: string
+          description: folder task id
+        task_id:
+          type: string
+          description: folder id
+        task_type:
+          type: string
+          description: task id
+        final_score:
+          type: number
+          description: task type
+          format: float
+        student_id:
+          type: string
+          description: student id
+        class_group_id:
+          type: string
+          description: class group id
+        created_at:
+          type: string
+          description: created at
+        updated_at:
+          type: string
+          description: updated at
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"
+  responses:
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+    "401":
+      description: Unauthorized JWT token.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+  securitySchemes:
+    OAuth2:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security: [{ OAuth2: [TEACHER] }]

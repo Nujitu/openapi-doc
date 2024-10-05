@@ -936,18 +936,18 @@
                 },
             },
         },
-      "/v1/teaching-module-folder/{teaching_module_id}":
+      "/v1/teaching-module-folder/{id}":
         {
           get:
             {
               tags: [TeachingModuleFolderService],
-              summary: get folder list by teaching module ID,
-              description: get folder list by teaching module ID,
-              operationId: TeachingModuleFolderService_GetTeachingModuleFolderByTeachingModuleID,
+              summary: get folder detail by id,
+              description: get folder detail by id,
+              operationId: TeachingModuleFolderService_GetTeachingModuleDetailByID,
               parameters:
                 [
                   {
-                    name: teaching_module_id,
+                    name: id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -964,7 +964,77 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderByTeachingModuleIDResponse",
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderDetailByIDResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module-folder/{teaching_module_id}/{class_group_detail_id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: get folder list by class group detail ID,
+              description: get folder list by class group detail ID,
+              operationId: TeachingModuleFolderService_GetTeachingModuleFolderList,
+              parameters:
+                [
+                  {
+                    name: teaching_module_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_group_detail_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderListResponse",
                                 },
                             },
                         },
@@ -1379,7 +1449,7 @@
               type: object,
               properties:
                 {
-                  folder_id: { type: string, description: Folder Name },
+                  folder_id: { type: string, description: Folder ID },
                   title: { type: string, description: Folder Name },
                   learning_goal_ids:
                     {
@@ -1397,6 +1467,8 @@
                     { type: string, description: End Date, format: date-time },
                   teaching_module_id:
                     { type: string, description: Teaching Module ID },
+                  class_group_detail_id:
+                    { type: string, description: class_group_detail_id },
                 },
             },
           publicCreateTeachingModuleFolderResponse:
@@ -1408,7 +1480,23 @@
                     { type: string, description: message for teaching module },
                 },
             },
-          publicGetTeachingModuleFolderByTeachingModuleIDResponse:
+          publicGetTeachingModuleFolderDetailByIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  datas:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedFolderTask",
+                        },
+                      description: data from folder id requested,
+                    },
+                },
+            },
+          publicGetTeachingModuleFolderListResponse:
             {
               type: object,
               properties:
@@ -1420,7 +1508,7 @@
                         {
                           $ref: "#/components/schemas/sharedTeachingModuleFolder",
                         },
-                      description: get folder by teaching module ID,
+                      description: get folder by class group detail ID,
                     },
                 },
             },
@@ -1431,6 +1519,22 @@
                 {
                   message:
                     { type: string, description: message for teaching module },
+                },
+            },
+          sharedFolderTask:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: folder task id },
+                  folder_id: { type: string, description: folder id },
+                  task_id: { type: string, description: task id },
+                  task_type: { type: string, description: task type },
+                  task_name: { type: string, description: task name },
+                  task_attachment:
+                    { type: string, description: task attachment },
+                  created_at: { type: string, description: created at },
+                  updated_at: { type: string, description: updated at },
                 },
             },
         },
