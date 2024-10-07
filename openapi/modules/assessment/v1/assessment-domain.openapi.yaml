@@ -20,8 +20,6 @@
               operationId: AssignmentService_ListAssignment,
               parameters:
                 [
-                  { name: title, in: query, schema: { type: string } },
-                  { name: description, in: query, schema: { type: string } },
                   {
                     name: start_date_gt,
                     in: query,
@@ -82,12 +80,6 @@
                     in: query,
                     schema: { type: string, format: date-time },
                   },
-                  {
-                    name: point,
-                    in: query,
-                    schema: { type: number, format: float },
-                  },
-                  { name: publish, in: query, schema: { type: boolean } },
                   {
                     name: teaching_module_folder_id,
                     in: query,
@@ -284,6 +276,472 @@
                 },
             },
         },
+      /v1/assignment/submission:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: List assignment submissions,
+              description: List assignment submissions,
+              operationId: AssignmentService_ListAssignmentSubmission,
+              parameters:
+                [
+                  { name: assignment_id, in: query, schema: { type: string } },
+                  { name: student_id, in: query, schema: { type: string } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAssignmentSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [AssignmentService],
+              summary: Update assignment submission,
+              description: Updates a student assignment submission.,
+              operationId: AssignmentService_UpdateSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [AssignmentService],
+              summary: Create assignment submission,
+              description: Creates a student assignment submission.,
+              operationId: AssignmentService_CreateSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/assess:
+        {
+          post:
+            {
+              tags: [AssignmentService],
+              summary: Assess assignment submission,
+              description: Assesss a student assignment submission.,
+              operationId: AssignmentService_AssessSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicAssessSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicAssessSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/finalize:
+        {
+          post:
+            {
+              tags: [AssignmentService],
+              summary: Finalize assignment submission,
+              description: Finalizes an assignment submission of a student.,
+              operationId: AssignmentService_FinalizeSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicFinalizeSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicFinalizeSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/assignment/submission/{submission_id}":
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get a submission of assignment assessment,
+              description: Get assignment submission by submission id,
+              operationId: AssignmentService_GetSubmissionBySubmissionId,
+              parameters:
+                [
+                  {
+                    name: submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetSubmissionBySubmissionIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [AssignmentService],
+              summary: Delete a submission,
+              description: Delete a submission,
+              operationId: AssignmentService_DeleteSubmission,
+              parameters:
+                [
+                  {
+                    name: submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/assignment/{assignment_id}":
         {
           get:
@@ -411,6 +869,72 @@
         },
       /v1/rubric:
         {
+          get:
+            {
+              tags: [RubricService],
+              summary: List rubrics,
+              description: List rubrics,
+              operationId: RubricService_ListRubric,
+              parameters:
+                [
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListRubricResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           put:
             {
               tags: [RubricService],
@@ -679,14 +1203,6 @@
               operationId: ObservationService_ListObservation,
               parameters:
                 [
-                  { name: title, in: query, schema: { type: string } },
-                  { name: description, in: query, schema: { type: string } },
-                  {
-                    name: point,
-                    in: query,
-                    schema: { type: number, format: float },
-                  },
-                  { name: publish, in: query, schema: { type: boolean } },
                   {
                     name: teaching_module_folder_id,
                     in: query,
@@ -848,6 +1364,334 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicCreateObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/observation/assess:
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: List observation assessments,
+              description: List observation assessments,
+              operationId: ObservationService_ListObservationAssessment,
+              parameters:
+                [
+                  { name: observation_id, in: query, schema: { type: string } },
+                  { name: student_id, in: query, schema: { type: string } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListObservationAssessmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [ObservationService],
+              summary: Update observation assessment,
+              description: Update the submission of an observation assessment.,
+              operationId: ObservationService_UpdateObservationAssessment,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateObservationAssessmentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateObservationAssessmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [ObservationService],
+              summary: Assess observation submission,
+              description: Assesss a student observation submission.,
+              operationId: ObservationService_AssessObservation,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicAssessObservationRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicAssessObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/observation/assess/{observation_submission_id}":
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: Get a submission of observation assessment,
+              description: Get observation assessment by observation submission id,
+              operationId: ObservationService_GetObservationAssessmentBySubmissionId,
+              parameters:
+                [
+                  {
+                    name: observation_submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetObservationAssessmentBySubmissionIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [ObservationService],
+              summary: Delete an observation,
+              description: Delete an observation,
+              operationId: ObservationService_DeleteObservationAssessment,
+              parameters:
+                [
+                  {
+                    name: observation_submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteObservationAssessmentResponse",
                                 },
                             },
                         },
@@ -1747,36 +2591,52 @@
     {
       "schemas":
         {
-          v1CursorPagination:
+          v1AttachmentFile:
             {
               type: object,
               properties:
                 {
-                  limit: { type: integer, format: uint32 },
-                  next_cursor: { type: string },
-                  prev_cursor: { type: string },
-                  curr_cursor: { type: string },
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
                 },
             },
-          v1OffsetPagination:
+          publicAssessSubmissionRequest:
             {
               type: object,
               properties:
                 {
-                  limit: { type: integer, format: uint32 },
-                  offset: { type: integer, format: uint32 },
-                  total: { type: integer, format: uint32 },
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Assignment submission ID,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
                 },
             },
-          v1ResponseMetadata:
+          publicAssessSubmissionResponse:
             {
               type: object,
               properties:
                 {
-                  offset_pagination:
-                    { $ref: "#/components/schemas/v1OffsetPagination" },
-                  cursor_pagination:
-                    { $ref: "#/components/schemas/v1CursorPagination" },
+                  message:
+                    {
+                      type: string,
+                      description: response message of adding assignment assessment,
+                    },
                 },
             },
           publicCreateAssignmentRequest:
@@ -1853,6 +2713,40 @@
                     },
                 },
             },
+          publicCreateSubmissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  assignment_id:
+                    { example: 123, type: string, description: Assignment ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  answer_text:
+                    { example: 123, type: string, description: Student ID },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                },
+            },
+          publicCreateSubmissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating assignment submission,
+                    },
+                },
+            },
           publicDeleteAssignmentResponse:
             {
               type: object,
@@ -1865,6 +2759,43 @@
                     },
                 },
             },
+          publicDeleteSubmissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting assignment submission,
+                    },
+                },
+            },
+          publicFinalizeSubmissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Assignment submission ID,
+                    },
+                },
+            },
+          publicFinalizeSubmissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of finalizing assignment submission,
+                    },
+                },
+            },
           publicGetAssignmentByIdResponse:
             {
               type: object,
@@ -1873,6 +2804,17 @@
                   assignment:
                     {
                       $ref: "#/components/schemas/sharedAssignment",
+                    },
+                },
+            },
+          publicGetSubmissionBySubmissionIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignment_submission:
+                    {
+                      $ref: "#/components/schemas/sharedAssignmentSubmission",
                     },
                 },
             },
@@ -1890,8 +2832,22 @@
                         },
                       description: List Assignments,
                     },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicListAssignmentSubmissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignment_submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedAssignmentSubmission",
+                        },
+                      description: List assignment submissions,
+                    },
                 },
             },
           publicUpdateAssignmentRequest:
@@ -1961,6 +2917,42 @@
                     {
                       type: string,
                       description: response message of updating assignment,
+                    },
+                },
+            },
+          publicUpdateSubmissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Assignment submission ID,
+                    },
+                  answer_text:
+                    { example: 123, type: string, description: Student ID },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                },
+            },
+          publicUpdateSubmissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating assignment submission,
                     },
                 },
             },
@@ -2042,6 +3034,100 @@
                     },
                 },
             },
+          sharedAssignmentSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Assignment submission ID,
+                    },
+                  assignment_id:
+                    { example: 123, type: string, description: Assignment ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  answer_text:
+                    { example: 123, type: string, description: Student ID },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                  finalized:
+                    {
+                      type: boolean,
+                      description: Finalization status of the submission,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedRubricSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  total_point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The total points from the rubric assessment,
+                      format: float,
+                    },
+                  points:
+                    {
+                      type: array,
+                      items: { type: number, format: float },
+                      description: The list of criteria point,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when rubric assessment is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when rubric assessment data updated,
+                      format: date-time,
+                    },
+                },
+            },
           "v1ErrorResponse":
             {
               "type": "object",
@@ -2079,11 +3165,11 @@
                     },
                   description:
                     { type: string, description: Rubric description },
-                  point:
+                  total_point:
                     {
                       example: 100.0,
                       type: number,
-                      description: Rubric point,
+                      description: Rubric total point,
                       format: float,
                     },
                   criteria:
@@ -2136,6 +3222,22 @@
                     },
                 },
             },
+          publicListRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubrics:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedRubric",
+                        },
+                      description: List Rubrics,
+                    },
+                },
+            },
           publicUpdateRubricRequest:
             {
               type: object,
@@ -2150,11 +3252,11 @@
                     },
                   description:
                     { type: string, description: Rubric description },
-                  point:
+                  total_point:
                     {
                       example: 100.0,
                       type: number,
-                      description: Rubric point,
+                      description: Rubric total point,
                       format: float,
                     },
                   criteria:
@@ -2197,18 +3299,18 @@
                     },
                   description:
                     { type: string, description: Criterion description },
-                  ratings:
+                  levels:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedRating",
+                          $ref: "#/components/schemas/sharedLevel",
                         },
-                      description: The list of criteria ratings,
+                      description: The list of criteria levels,
                     },
                 },
             },
-          sharedRating:
+          sharedLevel:
             {
               type: object,
               properties:
@@ -2217,15 +3319,14 @@
                     {
                       example: Sangat Baik,
                       type: string,
-                      description: Rating title,
+                      description: Level title,
                     },
-                  description:
-                    { type: string, description: Rating description },
+                  description: { type: string, description: Level description },
                   point:
                     {
                       example: 5.0,
                       type: number,
-                      description: Rating point,
+                      description: Level point,
                       format: float,
                     },
                 },
@@ -2244,11 +3345,11 @@
                     },
                   description:
                     { type: string, description: Rubric description },
-                  point:
+                  total_point:
                     {
                       example: 100.0,
                       type: number,
-                      description: Rubric point,
+                      description: Rubric total point,
                       format: float,
                     },
                   criteria:
@@ -2273,149 +3374,6 @@
                       type: string,
                       description: Time when Rubric data updated,
                       format: date-time,
-                    },
-                },
-            },
-          publicCreateObservationRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Observation point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                },
-            },
-          publicCreateObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating observation,
-                    },
-                },
-            },
-          publicDeleteObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting observation,
-                    },
-                },
-            },
-          publicGetObservationByIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                },
-            },
-          publicListObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observations:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedObservation",
-                        },
-                      description: List Observations,
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicUpdateObservationRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Observation ID },
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Observation point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567, 8910],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                },
-            },
-          publicUpdateObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of updating observation,
                     },
                 },
             },
@@ -2474,6 +3432,330 @@
                       description: Time when observation data updated,
                       format: date-time,
                     },
+                },
+            },
+          sharedObservationSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Observation submission ID,
+                    },
+                  observation_id:
+                    { example: 123, type: string, description: Observation ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          publicAssessObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  observation_id:
+                    { example: 123, type: string, description: Observation ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                },
+            },
+          publicAssessObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating observation assessment,
+                    },
+                },
+            },
+          publicCreateObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Observation point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                },
+            },
+          publicCreateObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating observation,
+                    },
+                },
+            },
+          publicDeleteObservationAssessmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting observation assessment submission,
+                    },
+                },
+            },
+          publicDeleteObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting observation,
+                    },
+                },
+            },
+          publicGetObservationAssessmentBySubmissionIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation_submission:
+                    {
+                      $ref: "#/components/schemas/sharedObservationSubmission",
+                    },
+                },
+            },
+          publicGetObservationByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                },
+            },
+          publicListObservationAssessmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedObservationSubmission",
+                        },
+                      description: List of the observation submission assessment,
+                    },
+                },
+            },
+          publicListObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observations:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedObservation",
+                        },
+                      description: List Observations,
+                    },
+                },
+            },
+          publicUpdateObservationAssessmentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Observation submission ID,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                },
+            },
+          publicUpdateObservationAssessmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating observation assessment,
+                    },
+                },
+            },
+          publicUpdateObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Observation point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567, 8910],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                },
+            },
+          publicUpdateObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating observation,
+                    },
+                },
+            },
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
                 },
             },
           publicAnswer:

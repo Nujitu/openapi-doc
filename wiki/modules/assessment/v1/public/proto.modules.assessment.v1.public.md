@@ -4,32 +4,56 @@
 ## Table of Contents
 
 - [modules/assessment/v1/public/assignment.proto](#modules_assessment_v1_public_assignment-proto)
+    - [AssessSubmissionRequest](#modules-assessment-v1-public-AssessSubmissionRequest)
+    - [AssessSubmissionResponse](#modules-assessment-v1-public-AssessSubmissionResponse)
     - [CreateAssignmentRequest](#modules-assessment-v1-public-CreateAssignmentRequest)
     - [CreateAssignmentResponse](#modules-assessment-v1-public-CreateAssignmentResponse)
+    - [CreateSubmissionRequest](#modules-assessment-v1-public-CreateSubmissionRequest)
+    - [CreateSubmissionResponse](#modules-assessment-v1-public-CreateSubmissionResponse)
     - [DeleteAssignmentRequest](#modules-assessment-v1-public-DeleteAssignmentRequest)
     - [DeleteAssignmentResponse](#modules-assessment-v1-public-DeleteAssignmentResponse)
+    - [DeleteSubmissionRequest](#modules-assessment-v1-public-DeleteSubmissionRequest)
+    - [DeleteSubmissionResponse](#modules-assessment-v1-public-DeleteSubmissionResponse)
+    - [FinalizeSubmissionRequest](#modules-assessment-v1-public-FinalizeSubmissionRequest)
+    - [FinalizeSubmissionResponse](#modules-assessment-v1-public-FinalizeSubmissionResponse)
     - [GetAssignmentByIdRequest](#modules-assessment-v1-public-GetAssignmentByIdRequest)
     - [GetAssignmentByIdResponse](#modules-assessment-v1-public-GetAssignmentByIdResponse)
+    - [GetSubmissionBySubmissionIdRequest](#modules-assessment-v1-public-GetSubmissionBySubmissionIdRequest)
+    - [GetSubmissionBySubmissionIdResponse](#modules-assessment-v1-public-GetSubmissionBySubmissionIdResponse)
     - [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest)
     - [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse)
+    - [ListAssignmentSubmissionRequest](#modules-assessment-v1-public-ListAssignmentSubmissionRequest)
+    - [ListAssignmentSubmissionResponse](#modules-assessment-v1-public-ListAssignmentSubmissionResponse)
     - [UpdateAssignmentRequest](#modules-assessment-v1-public-UpdateAssignmentRequest)
     - [UpdateAssignmentResponse](#modules-assessment-v1-public-UpdateAssignmentResponse)
+    - [UpdateSubmissionRequest](#modules-assessment-v1-public-UpdateSubmissionRequest)
+    - [UpdateSubmissionResponse](#modules-assessment-v1-public-UpdateSubmissionResponse)
   
     - [AssignmentService](#modules-assessment-v1-public-AssignmentService)
   
 - [modules/assessment/v1/public/observation.proto](#modules_assessment_v1_public_observation-proto)
-    - [CreateObservationRequest](#modules-assessment-v1-public-CreateObservationRequest)
-    - [CreateObservationResponse](#modules-assessment-v1-public-CreateObservationResponse)
-    - [DeleteObservationRequest](#modules-assessment-v1-public-DeleteObservationRequest)
-    - [DeleteObservationResponse](#modules-assessment-v1-public-DeleteObservationResponse)
-    - [GetObservationByIdRequest](#modules-assessment-v1-public-GetObservationByIdRequest)
-    - [GetObservationByIdResponse](#modules-assessment-v1-public-GetObservationByIdResponse)
-    - [ListObservationRequest](#modules-assessment-v1-public-ListObservationRequest)
-    - [ListObservationResponse](#modules-assessment-v1-public-ListObservationResponse)
-    - [UpdateObservationRequest](#modules-assessment-v1-public-UpdateObservationRequest)
-    - [UpdateObservationResponse](#modules-assessment-v1-public-UpdateObservationResponse)
+    - [AssessObservationRequest](#modules-observation-v1-public-AssessObservationRequest)
+    - [AssessObservationResponse](#modules-observation-v1-public-AssessObservationResponse)
+    - [CreateObservationRequest](#modules-observation-v1-public-CreateObservationRequest)
+    - [CreateObservationResponse](#modules-observation-v1-public-CreateObservationResponse)
+    - [DeleteObservationAssessmentRequest](#modules-observation-v1-public-DeleteObservationAssessmentRequest)
+    - [DeleteObservationAssessmentResponse](#modules-observation-v1-public-DeleteObservationAssessmentResponse)
+    - [DeleteObservationRequest](#modules-observation-v1-public-DeleteObservationRequest)
+    - [DeleteObservationResponse](#modules-observation-v1-public-DeleteObservationResponse)
+    - [GetObservationAssessmentBySubmissionIdRequest](#modules-observation-v1-public-GetObservationAssessmentBySubmissionIdRequest)
+    - [GetObservationAssessmentBySubmissionIdResponse](#modules-observation-v1-public-GetObservationAssessmentBySubmissionIdResponse)
+    - [GetObservationByIdRequest](#modules-observation-v1-public-GetObservationByIdRequest)
+    - [GetObservationByIdResponse](#modules-observation-v1-public-GetObservationByIdResponse)
+    - [ListObservationAssessmentRequest](#modules-observation-v1-public-ListObservationAssessmentRequest)
+    - [ListObservationAssessmentResponse](#modules-observation-v1-public-ListObservationAssessmentResponse)
+    - [ListObservationRequest](#modules-observation-v1-public-ListObservationRequest)
+    - [ListObservationResponse](#modules-observation-v1-public-ListObservationResponse)
+    - [UpdateObservationAssessmentRequest](#modules-observation-v1-public-UpdateObservationAssessmentRequest)
+    - [UpdateObservationAssessmentResponse](#modules-observation-v1-public-UpdateObservationAssessmentResponse)
+    - [UpdateObservationRequest](#modules-observation-v1-public-UpdateObservationRequest)
+    - [UpdateObservationResponse](#modules-observation-v1-public-UpdateObservationResponse)
   
-    - [ObservationService](#modules-assessment-v1-public-ObservationService)
+    - [ObservationService](#modules-observation-v1-public-ObservationService)
   
 - [modules/assessment/v1/public/quiz.proto](#modules_assessment_v1_public_quiz-proto)
     - [Answer](#modules-assessment-v1-public-Answer)
@@ -63,6 +87,8 @@
     - [DeleteRubricResponse](#modules-assessment-v1-public-DeleteRubricResponse)
     - [GetRubricByIdRequest](#modules-assessment-v1-public-GetRubricByIdRequest)
     - [GetRubricByIdResponse](#modules-assessment-v1-public-GetRubricByIdResponse)
+    - [ListRubricRequest](#modules-assessment-v1-public-ListRubricRequest)
+    - [ListRubricResponse](#modules-assessment-v1-public-ListRubricResponse)
     - [UpdateRubricRequest](#modules-assessment-v1-public-UpdateRubricRequest)
     - [UpdateRubricResponse](#modules-assessment-v1-public-UpdateRubricResponse)
   
@@ -76,6 +102,38 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/assessment/v1/public/assignment.proto
+
+
+
+<a name="modules-assessment-v1-public-AssessSubmissionRequest"></a>
+
+### AssessSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-AssessSubmissionResponse"></a>
+
+### AssessSubmissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
 
 
 
@@ -118,6 +176,39 @@
 
 
 
+<a name="modules-assessment-v1-public-CreateSubmissionRequest"></a>
+
+### CreateSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| answer_text | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-CreateSubmissionResponse"></a>
+
+### CreateSubmissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-DeleteAssignmentRequest"></a>
 
 ### DeleteAssignmentRequest
@@ -136,6 +227,66 @@
 <a name="modules-assessment-v1-public-DeleteAssignmentResponse"></a>
 
 ### DeleteAssignmentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-DeleteSubmissionRequest"></a>
+
+### DeleteSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| submission_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-DeleteSubmissionResponse"></a>
+
+### DeleteSubmissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-FinalizeSubmissionRequest"></a>
+
+### FinalizeSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-FinalizeSubmissionResponse"></a>
+
+### FinalizeSubmissionResponse
 
 
 
@@ -178,6 +329,36 @@
 
 
 
+<a name="modules-assessment-v1-public-GetSubmissionBySubmissionIdRequest"></a>
+
+### GetSubmissionBySubmissionIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| submission_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetSubmissionBySubmissionIdResponse"></a>
+
+### GetSubmissionBySubmissionIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_submission | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-ListAssignmentRequest"></a>
 
 ### ListAssignmentRequest
@@ -186,8 +367,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| title | [string](#string) |  |  |
-| description | [string](#string) |  |  |
 | start_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | start_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | start_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -200,8 +379,6 @@
 | until_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | until_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | until_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| point | [float](#float) |  |  |
-| publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -221,7 +398,40 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignments | [modules.assessment.v1.shared.Assignment](#modules-assessment-v1-shared-Assignment) | repeated |  |
-| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ListAssignmentSubmissionRequest"></a>
+
+### ListAssignmentSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ListAssignmentSubmissionResponse"></a>
+
+### ListAssignmentSubmissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_submissions | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) | repeated |  |
 
 
 
@@ -266,6 +476,38 @@
 
 
 
+
+<a name="modules-assessment-v1-public-UpdateSubmissionRequest"></a>
+
+### UpdateSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| answer_text | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-UpdateSubmissionResponse"></a>
+
+### UpdateSubmissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -285,6 +527,13 @@ Service for assignment related feature
 | DeleteAssignment | [DeleteAssignmentRequest](#modules-assessment-v1-public-DeleteAssignmentRequest) | [DeleteAssignmentResponse](#modules-assessment-v1-public-DeleteAssignmentResponse) |  |
 | GetAssignmentById | [GetAssignmentByIdRequest](#modules-assessment-v1-public-GetAssignmentByIdRequest) | [GetAssignmentByIdResponse](#modules-assessment-v1-public-GetAssignmentByIdResponse) |  |
 | ListAssignment | [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest) | [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse) |  |
+| CreateSubmission | [CreateSubmissionRequest](#modules-assessment-v1-public-CreateSubmissionRequest) | [CreateSubmissionResponse](#modules-assessment-v1-public-CreateSubmissionResponse) |  |
+| UpdateSubmission | [UpdateSubmissionRequest](#modules-assessment-v1-public-UpdateSubmissionRequest) | [UpdateSubmissionResponse](#modules-assessment-v1-public-UpdateSubmissionResponse) |  |
+| GetSubmissionBySubmissionId | [GetSubmissionBySubmissionIdRequest](#modules-assessment-v1-public-GetSubmissionBySubmissionIdRequest) | [GetSubmissionBySubmissionIdResponse](#modules-assessment-v1-public-GetSubmissionBySubmissionIdResponse) |  |
+| DeleteSubmission | [DeleteSubmissionRequest](#modules-assessment-v1-public-DeleteSubmissionRequest) | [DeleteSubmissionResponse](#modules-assessment-v1-public-DeleteSubmissionResponse) |  |
+| FinalizeSubmission | [FinalizeSubmissionRequest](#modules-assessment-v1-public-FinalizeSubmissionRequest) | [FinalizeSubmissionResponse](#modules-assessment-v1-public-FinalizeSubmissionResponse) |  |
+| AssessSubmission | [AssessSubmissionRequest](#modules-assessment-v1-public-AssessSubmissionRequest) | [AssessSubmissionResponse](#modules-assessment-v1-public-AssessSubmissionResponse) |  |
+| ListAssignmentSubmission | [ListAssignmentSubmissionRequest](#modules-assessment-v1-public-ListAssignmentSubmissionRequest) | [ListAssignmentSubmissionResponse](#modules-assessment-v1-public-ListAssignmentSubmissionResponse) |  |
 
  
 
@@ -297,7 +546,40 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-CreateObservationRequest"></a>
+<a name="modules-observation-v1-public-AssessObservationRequest"></a>
+
+### AssessObservationRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-AssessObservationResponse"></a>
+
+### AssessObservationResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-CreateObservationRequest"></a>
 
 ### CreateObservationRequest
 
@@ -317,7 +599,7 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-CreateObservationResponse"></a>
+<a name="modules-observation-v1-public-CreateObservationResponse"></a>
 
 ### CreateObservationResponse
 
@@ -333,7 +615,37 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-DeleteObservationRequest"></a>
+<a name="modules-observation-v1-public-DeleteObservationAssessmentRequest"></a>
+
+### DeleteObservationAssessmentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_submission_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-DeleteObservationAssessmentResponse"></a>
+
+### DeleteObservationAssessmentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-DeleteObservationRequest"></a>
 
 ### DeleteObservationRequest
 
@@ -348,7 +660,7 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-DeleteObservationResponse"></a>
+<a name="modules-observation-v1-public-DeleteObservationResponse"></a>
 
 ### DeleteObservationResponse
 
@@ -363,7 +675,37 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-GetObservationByIdRequest"></a>
+<a name="modules-observation-v1-public-GetObservationAssessmentBySubmissionIdRequest"></a>
+
+### GetObservationAssessmentBySubmissionIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_submission_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-GetObservationAssessmentBySubmissionIdResponse"></a>
+
+### GetObservationAssessmentBySubmissionIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_submission | [modules.assessment.v1.shared.ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-GetObservationByIdRequest"></a>
 
 ### GetObservationByIdRequest
 
@@ -378,7 +720,7 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-GetObservationByIdResponse"></a>
+<a name="modules-observation-v1-public-GetObservationByIdResponse"></a>
 
 ### GetObservationByIdResponse
 
@@ -393,7 +735,41 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-ListObservationRequest"></a>
+<a name="modules-observation-v1-public-ListObservationAssessmentRequest"></a>
+
+### ListObservationAssessmentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-ListObservationAssessmentResponse"></a>
+
+### ListObservationAssessmentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| submissions | [modules.assessment.v1.shared.ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission) | repeated |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-ListObservationRequest"></a>
 
 ### ListObservationRequest
 
@@ -401,10 +777,6 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| title | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| point | [float](#float) |  |  |
-| publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -415,7 +787,7 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-ListObservationResponse"></a>
+<a name="modules-observation-v1-public-ListObservationResponse"></a>
 
 ### ListObservationResponse
 
@@ -424,14 +796,45 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observations | [modules.assessment.v1.shared.Observation](#modules-assessment-v1-shared-Observation) | repeated |  |
-| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
 
 
 
 
 
 
-<a name="modules-assessment-v1-public-UpdateObservationRequest"></a>
+<a name="modules-observation-v1-public-UpdateObservationAssessmentRequest"></a>
+
+### UpdateObservationAssessmentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-UpdateObservationAssessmentResponse"></a>
+
+### UpdateObservationAssessmentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-UpdateObservationRequest"></a>
 
 ### UpdateObservationRequest
 
@@ -451,7 +854,7 @@ Service for assignment related feature
 
 
 
-<a name="modules-assessment-v1-public-UpdateObservationResponse"></a>
+<a name="modules-observation-v1-public-UpdateObservationResponse"></a>
 
 ### UpdateObservationResponse
 
@@ -473,18 +876,23 @@ Service for assignment related feature
  
 
 
-<a name="modules-assessment-v1-public-ObservationService"></a>
+<a name="modules-observation-v1-public-ObservationService"></a>
 
 ### ObservationService
 Service for observation related feature
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateObservation | [CreateObservationRequest](#modules-assessment-v1-public-CreateObservationRequest) | [CreateObservationResponse](#modules-assessment-v1-public-CreateObservationResponse) |  |
-| UpdateObservation | [UpdateObservationRequest](#modules-assessment-v1-public-UpdateObservationRequest) | [UpdateObservationResponse](#modules-assessment-v1-public-UpdateObservationResponse) |  |
-| DeleteObservation | [DeleteObservationRequest](#modules-assessment-v1-public-DeleteObservationRequest) | [DeleteObservationResponse](#modules-assessment-v1-public-DeleteObservationResponse) |  |
-| GetObservationById | [GetObservationByIdRequest](#modules-assessment-v1-public-GetObservationByIdRequest) | [GetObservationByIdResponse](#modules-assessment-v1-public-GetObservationByIdResponse) |  |
-| ListObservation | [ListObservationRequest](#modules-assessment-v1-public-ListObservationRequest) | [ListObservationResponse](#modules-assessment-v1-public-ListObservationResponse) |  |
+| CreateObservation | [CreateObservationRequest](#modules-observation-v1-public-CreateObservationRequest) | [CreateObservationResponse](#modules-observation-v1-public-CreateObservationResponse) |  |
+| UpdateObservation | [UpdateObservationRequest](#modules-observation-v1-public-UpdateObservationRequest) | [UpdateObservationResponse](#modules-observation-v1-public-UpdateObservationResponse) |  |
+| DeleteObservation | [DeleteObservationRequest](#modules-observation-v1-public-DeleteObservationRequest) | [DeleteObservationResponse](#modules-observation-v1-public-DeleteObservationResponse) |  |
+| GetObservationById | [GetObservationByIdRequest](#modules-observation-v1-public-GetObservationByIdRequest) | [GetObservationByIdResponse](#modules-observation-v1-public-GetObservationByIdResponse) |  |
+| ListObservation | [ListObservationRequest](#modules-observation-v1-public-ListObservationRequest) | [ListObservationResponse](#modules-observation-v1-public-ListObservationResponse) |  |
+| AssessObservation | [AssessObservationRequest](#modules-observation-v1-public-AssessObservationRequest) | [AssessObservationResponse](#modules-observation-v1-public-AssessObservationResponse) |  |
+| UpdateObservationAssessment | [UpdateObservationAssessmentRequest](#modules-observation-v1-public-UpdateObservationAssessmentRequest) | [UpdateObservationAssessmentResponse](#modules-observation-v1-public-UpdateObservationAssessmentResponse) |  |
+| GetObservationAssessmentBySubmissionId | [GetObservationAssessmentBySubmissionIdRequest](#modules-observation-v1-public-GetObservationAssessmentBySubmissionIdRequest) | [GetObservationAssessmentBySubmissionIdResponse](#modules-observation-v1-public-GetObservationAssessmentBySubmissionIdResponse) |  |
+| DeleteObservationAssessment | [DeleteObservationAssessmentRequest](#modules-observation-v1-public-DeleteObservationAssessmentRequest) | [DeleteObservationAssessmentResponse](#modules-observation-v1-public-DeleteObservationAssessmentResponse) |  |
+| ListObservationAssessment | [ListObservationAssessmentRequest](#modules-observation-v1-public-ListObservationAssessmentRequest) | [ListObservationAssessmentResponse](#modules-observation-v1-public-ListObservationAssessmentResponse) |  |
 
  
 
@@ -907,7 +1315,7 @@ Service for quiz related feature
 | ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| point | [float](#float) |  |  |
+| total_point | [float](#float) |  |  |
 | criteria | [modules.assessment.v1.shared.Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
 
 
@@ -991,6 +1399,38 @@ Service for quiz related feature
 
 
 
+<a name="modules-assessment-v1-public-ListRubricRequest"></a>
+
+### ListRubricRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ListRubricResponse"></a>
+
+### ListRubricResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| rubrics | [modules.assessment.v1.shared.Rubric](#modules-assessment-v1-shared-Rubric) | repeated |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-UpdateRubricRequest"></a>
 
 ### UpdateRubricRequest
@@ -1002,7 +1442,7 @@ Service for quiz related feature
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| point | [float](#float) |  |  |
+| total_point | [float](#float) |  |  |
 | criteria | [modules.assessment.v1.shared.Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
 
 
@@ -1043,6 +1483,7 @@ Service for rubric related feature
 | UpdateRubric | [UpdateRubricRequest](#modules-assessment-v1-public-UpdateRubricRequest) | [UpdateRubricResponse](#modules-assessment-v1-public-UpdateRubricResponse) |  |
 | DeleteRubric | [DeleteRubricRequest](#modules-assessment-v1-public-DeleteRubricRequest) | [DeleteRubricResponse](#modules-assessment-v1-public-DeleteRubricResponse) |  |
 | GetRubricById | [GetRubricByIdRequest](#modules-assessment-v1-public-GetRubricByIdRequest) | [GetRubricByIdResponse](#modules-assessment-v1-public-GetRubricByIdResponse) |  |
+| ListRubric | [ListRubricRequest](#modules-assessment-v1-public-ListRubricRequest) | [ListRubricResponse](#modules-assessment-v1-public-ListRubricResponse) |  |
 
  
 
