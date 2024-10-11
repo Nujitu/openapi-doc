@@ -5,19 +5,19 @@
     {
       title: Teaching_module Domain,
       version: v1,
-      description: "Study Material Management Service, Skoola Learning Goal Service, Skoola Teaching Module Service, Skoola Folder Management Service",
+      description: "Skoola Folder Management Service, Skoola Learning Goal Service, Skoola Teaching Module Service, Study Material Management Service",
     },
   servers: [{ url: "https://api.stg.skola.com" }],
   paths:
     {
-      /v1/study-material:
+      /v1/teaching-module-folder:
         {
           post:
             {
-              tags: [StudyMaterialService],
-              summary: Create new study material,
-              description: Creates a new study material and associates it with a folder.,
-              operationId: StudyMaterialService_CreateStudyMaterial,
+              tags: [TeachingModuleFolderService],
+              summary: Insert New Learning Goals separate with teaching module folder,
+              description: insert new teaching module folder,
+              operationId: TeachingModuleFolderService_CreateTeachingModuleFolder,
               requestBody:
                 {
                   content:
@@ -26,7 +26,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedStudyMaterial",
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
                             },
                         },
                     },
@@ -43,7 +43,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateStudyMaterialResponse",
+                                  $ref: "#/components/schemas/publicCreateTeachingModuleFolderResponse",
                                 },
                             },
                         },
@@ -80,10 +80,10 @@
             },
           patch:
             {
-              tags: [StudyMaterialService],
-              summary: Update existing study material,
-              description: Updates an existing study material.,
-              operationId: StudyMaterialService_UpdateStudyMaterial,
+              tags: [TeachingModuleFolderService],
+              summary: Update New Learning Goals separate with teaching module folder,
+              description: update new teaching module folder,
+              operationId: TeachingModuleFolderService_UpdateTeachingModuleFolder,
               requestBody:
                 {
                   content:
@@ -92,7 +92,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedStudyMaterial",
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
                             },
                         },
                     },
@@ -109,7 +109,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicUpdateStudyMaterialResponse",
+                                  $ref: "#/components/schemas/publicUpdateTeachingModuleFolderResponse",
                                 },
                             },
                         },
@@ -145,18 +145,18 @@
                 },
             },
         },
-      "/v1/study-material/{folder_id}":
+      "/v1/teaching-module-folder/{teaching_module_id}":
         {
           get:
             {
-              tags: [StudyMaterialService],
-              summary: Get study materials by folder ID,
-              description: Retrieves a list of study materials associated with the specified folder ID.,
-              operationId: StudyMaterialService_GetStudyMaterialByFolderID,
+              tags: [TeachingModuleFolderService],
+              summary: get folder list by teaching module ID,
+              description: get folder list by teaching module ID,
+              operationId: TeachingModuleFolderService_GetTeachingModuleFolderByTeachingModuleID,
               parameters:
                 [
                   {
-                    name: folder_id,
+                    name: teaching_module_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -173,132 +173,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetStudyMaterialByFolderIDResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/study-material/{id}":
-        {
-          get:
-            {
-              tags: [StudyMaterialService],
-              summary: Get study material detail,
-              description: Retrieves the details of a specific study material by its ID.,
-              operationId: StudyMaterialService_GetStudyMaterialDetail,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetStudyMaterialDetailResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          delete:
-            {
-              tags: [StudyMaterialService],
-              summary: Delete study material,
-              description: Deletes a study material by its ID.,
-              operationId: StudyMaterialService_DeleteStudyMaterial,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteStudyMaterialResponse",
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderByTeachingModuleIDResponse",
                                 },
                             },
                         },
@@ -801,14 +676,14 @@
                 },
             },
         },
-      /v1/teaching-module-folder:
+      /v1/study-material:
         {
           post:
             {
-              tags: [TeachingModuleFolderService],
-              summary: Insert New Learning Goals separate with teaching module folder,
-              description: insert new teaching module folder,
-              operationId: TeachingModuleFolderService_CreateTeachingModuleFolder,
+              tags: [StudyMaterialService],
+              summary: Create new study material,
+              description: Creates a new study material and associates it with a folder.,
+              operationId: StudyMaterialService_CreateStudyMaterial,
               requestBody:
                 {
                   content:
@@ -817,7 +692,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                              $ref: "#/components/schemas/sharedStudyMaterial",
                             },
                         },
                     },
@@ -834,7 +709,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateTeachingModuleFolderResponse",
+                                  $ref: "#/components/schemas/publicCreateStudyMaterialResponse",
                                 },
                             },
                         },
@@ -871,10 +746,10 @@
             },
           patch:
             {
-              tags: [TeachingModuleFolderService],
-              summary: Update New Learning Goals separate with teaching module folder,
-              description: update new teaching module folder,
-              operationId: TeachingModuleFolderService_UpdateTeachingModuleFolder,
+              tags: [StudyMaterialService],
+              summary: Update existing study material,
+              description: Updates an existing study material.,
+              operationId: StudyMaterialService_UpdateStudyMaterial,
               requestBody:
                 {
                   content:
@@ -883,7 +758,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                              $ref: "#/components/schemas/sharedStudyMaterial",
                             },
                         },
                     },
@@ -900,7 +775,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicUpdateTeachingModuleFolderResponse",
+                                  $ref: "#/components/schemas/publicUpdateStudyMaterialResponse",
                                 },
                             },
                         },
@@ -936,18 +811,18 @@
                 },
             },
         },
-      "/v1/teaching-module-folder/{teaching_module_id}":
+      "/v1/study-material/{folder_id}":
         {
           get:
             {
-              tags: [TeachingModuleFolderService],
-              summary: get folder list by teaching module ID,
-              description: get folder list by teaching module ID,
-              operationId: TeachingModuleFolderService_GetTeachingModuleFolderByTeachingModuleID,
+              tags: [StudyMaterialService],
+              summary: Get study materials by folder ID,
+              description: Retrieves a list of study materials associated with the specified folder ID.,
+              operationId: StudyMaterialService_GetStudyMaterialByFolderID,
               parameters:
                 [
                   {
-                    name: teaching_module_id,
+                    name: folder_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -964,7 +839,132 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderByTeachingModuleIDResponse",
+                                  $ref: "#/components/schemas/publicGetStudyMaterialByFolderIDResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/study-material/{id}":
+        {
+          get:
+            {
+              tags: [StudyMaterialService],
+              summary: Get study material detail,
+              description: Retrieves the details of a specific study material by its ID.,
+              operationId: StudyMaterialService_GetStudyMaterialDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudyMaterialDetailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [StudyMaterialService],
+              summary: Delete study material,
+              description: Deletes a study material by its ID.,
+              operationId: StudyMaterialService_DeleteStudyMaterial,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteStudyMaterialResponse",
                                 },
                             },
                         },
@@ -1005,123 +1005,64 @@
     {
       "schemas":
         {
-          publicCreateStudyMaterialResponse:
+          publicCreateTeachingModuleFolderResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    {
-                      type: string,
-                      description: Message confirming the creation of the study material,
-                    },
+                    { type: string, description: message for teaching module },
                 },
             },
-          publicDeleteStudyMaterialResponse:
+          publicGetTeachingModuleFolderByTeachingModuleIDResponse:
             {
               type: object,
               properties:
                 {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the deletion of the study material,
-                    },
-                },
-            },
-          publicGetStudyMaterialByFolderIDResponse:
-            {
-              type: object,
-              properties:
-                {
-                  study_materials:
+                  folders:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedStudyMaterial",
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
                         },
-                      description: List of study materials associated with the specified folder,
+                      description: get folder by teaching module ID,
                     },
                 },
             },
-          publicGetStudyMaterialDetailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  study_material:
-                    {
-                      $ref: "#/components/schemas/sharedStudyMaterial",
-                    },
-                },
-            },
-          publicUpdateStudyMaterialResponse:
+          publicUpdateTeachingModuleFolderResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    {
-                      type: string,
-                      description: Message confirming the update of the study material,
-                    },
+                    { type: string, description: message for teaching module },
                 },
             },
-          sharedStudyMaterial:
+          sharedTeachingModuleFolder:
             {
               type: object,
               properties:
                 {
-                  id:
-                    {
-                      type: string,
-                      description: Unique identifier for the study material,
-                    },
-                  title:
-                    { type: string, description: Title of the study material },
-                  due_date:
-                    {
-                      type: string,
-                      description: Due date for the study material,
-                      format: date-time,
-                    },
-                  instruction:
-                    {
-                      type: string,
-                      description: Instructions related to the study material,
-                    },
-                  attachment_ids:
+                  folder_id: { type: string, description: Folder Name },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
                     {
                       type: array,
                       items: { type: string },
-                      description: List of attachment IDs associated with the study material,
+                      description: List of Learning Goals,
                     },
-                  folder_id:
+                  start_date:
                     {
                       type: string,
-                      description: ID of the folder where the study material is stored,
-                    },
-                  publish_at:
-                    {
-                      type: string,
-                      description: Timestamp when the study material is published,
+                      description: Start Date,
                       format: date-time,
                     },
-                  created_at:
-                    {
-                      type: string,
-                      description: Timestamp when the study material was created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      type: string,
-                      description: Timestamp when the study material was last updated,
-                      format: date-time,
-                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
                 },
-              description: study material,
             },
           "v1ErrorResponse":
             {
@@ -1374,64 +1315,123 @@
                     },
                 },
             },
-          sharedTeachingModuleFolder:
-            {
-              type: object,
-              properties:
-                {
-                  folder_id: { type: string, description: Folder Name },
-                  title: { type: string, description: Folder Name },
-                  learning_goal_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of Learning Goals,
-                    },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start Date,
-                      format: date-time,
-                    },
-                  end_date:
-                    { type: string, description: End Date, format: date-time },
-                  teaching_module_id:
-                    { type: string, description: Teaching Module ID },
-                },
-            },
-          publicCreateTeachingModuleFolderResponse:
+          publicCreateStudyMaterialResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    { type: string, description: message for teaching module },
+                    {
+                      type: string,
+                      description: Message confirming the creation of the study material,
+                    },
                 },
             },
-          publicGetTeachingModuleFolderByTeachingModuleIDResponse:
+          publicDeleteStudyMaterialResponse:
             {
               type: object,
               properties:
                 {
-                  folders:
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the deletion of the study material,
+                    },
+                },
+            },
+          publicGetStudyMaterialByFolderIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  study_materials:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                          $ref: "#/components/schemas/sharedStudyMaterial",
                         },
-                      description: get folder by teaching module ID,
+                      description: List of study materials associated with the specified folder,
                     },
                 },
             },
-          publicUpdateTeachingModuleFolderResponse:
+          publicGetStudyMaterialDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  study_material:
+                    {
+                      $ref: "#/components/schemas/sharedStudyMaterial",
+                    },
+                },
+            },
+          publicUpdateStudyMaterialResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    { type: string, description: message for teaching module },
+                    {
+                      type: string,
+                      description: Message confirming the update of the study material,
+                    },
                 },
+            },
+          sharedStudyMaterial:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      type: string,
+                      description: Unique identifier for the study material,
+                    },
+                  title:
+                    { type: string, description: Title of the study material },
+                  due_date:
+                    {
+                      type: string,
+                      description: Due date for the study material,
+                      format: date-time,
+                    },
+                  instruction:
+                    {
+                      type: string,
+                      description: Instructions related to the study material,
+                    },
+                  attachment_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of attachment IDs associated with the study material,
+                    },
+                  folder_id:
+                    {
+                      type: string,
+                      description: ID of the folder where the study material is stored,
+                    },
+                  publish_at:
+                    {
+                      type: string,
+                      description: Timestamp when the study material is published,
+                      format: date-time,
+                    },
+                  created_at:
+                    {
+                      type: string,
+                      description: Timestamp when the study material was created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: Timestamp when the study material was last updated,
+                      format: date-time,
+                    },
+                },
+              description: study material,
             },
         },
       responses:

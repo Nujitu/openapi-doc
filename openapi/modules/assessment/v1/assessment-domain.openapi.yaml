@@ -4,7 +4,7 @@
   info:
     {
       title: Assessment Domain,
-      description: "Skoola Assignment Service, Skoola Rubric Service, Skoola Observation Service, Skola Quiz Service",
+      description: "Skoola Assignment Service, Skola Quiz Service, Skoola Observation Service, Skoola Rubric Service",
       version: v1,
     },
   servers: [{ url: "https://api.stg.skola.com" }],
@@ -374,605 +374,6 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicDeleteAssignmentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/rubric:
-        {
-          put:
-            {
-              tags: [RubricService],
-              summary: Update an rubric,
-              description: Update an rubric,
-              operationId: RubricService_UpdateRubric,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateRubricRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateRubricResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [RubricService],
-              summary: Create an rubric,
-              description: Create an rubric,
-              operationId: RubricService_CreateRubric,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateRubricRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateRubricResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/rubric/{rubric_id}":
-        {
-          get:
-            {
-              tags: [RubricService],
-              summary: Get an rubric,
-              description: Get rubric by id,
-              operationId: RubricService_GetRubricById,
-              parameters:
-                [
-                  {
-                    name: rubric_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetRubricByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          delete:
-            {
-              tags: [RubricService],
-              summary: Delete an rubric,
-              description: Delete an rubric,
-              operationId: RubricService_DeleteRubric,
-              parameters:
-                [
-                  {
-                    name: rubric_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteRubricResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/observation:
-        {
-          get:
-            {
-              tags: [ObservationService],
-              summary: List observations,
-              description: List observations,
-              operationId: ObservationService_ListObservation,
-              parameters:
-                [
-                  { name: title, in: query, schema: { type: string } },
-                  { name: description, in: query, schema: { type: string } },
-                  {
-                    name: point,
-                    in: query,
-                    schema: { type: number, format: float },
-                  },
-                  { name: publish, in: query, schema: { type: boolean } },
-                  {
-                    name: teaching_module_folder_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListObservationResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          put:
-            {
-              tags: [ObservationService],
-              summary: Update an observation,
-              description: Update an observation,
-              operationId: ObservationService_UpdateObservation,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateObservationRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateObservationResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [ObservationService],
-              summary: Create an observation,
-              description: Create an observation,
-              operationId: ObservationService_CreateObservation,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateObservationRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateObservationResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/observation/{observation_id}":
-        {
-          get:
-            {
-              tags: [ObservationService],
-              summary: Get an observation,
-              description: Get observation by id,
-              operationId: ObservationService_GetObservationById,
-              parameters:
-                [
-                  {
-                    name: observation_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetObservationByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          delete:
-            {
-              tags: [ObservationService],
-              summary: Delete an observation,
-              description: Delete an observation,
-              operationId: ObservationService_DeleteObservation,
-              parameters:
-                [
-                  {
-                    name: observation_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteObservationResponse",
                                 },
                             },
                         },
@@ -1742,6 +1143,605 @@
                 },
             },
         },
+      /v1/observation:
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: List observations,
+              description: List observations,
+              operationId: ObservationService_ListObservation,
+              parameters:
+                [
+                  { name: title, in: query, schema: { type: string } },
+                  { name: description, in: query, schema: { type: string } },
+                  {
+                    name: point,
+                    in: query,
+                    schema: { type: number, format: float },
+                  },
+                  { name: publish, in: query, schema: { type: boolean } },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [ObservationService],
+              summary: Update an observation,
+              description: Update an observation,
+              operationId: ObservationService_UpdateObservation,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateObservationRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [ObservationService],
+              summary: Create an observation,
+              description: Create an observation,
+              operationId: ObservationService_CreateObservation,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateObservationRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/observation/{observation_id}":
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: Get an observation,
+              description: Get observation by id,
+              operationId: ObservationService_GetObservationById,
+              parameters:
+                [
+                  {
+                    name: observation_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetObservationByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [ObservationService],
+              summary: Delete an observation,
+              description: Delete an observation,
+              operationId: ObservationService_DeleteObservation,
+              parameters:
+                [
+                  {
+                    name: observation_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteObservationResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/rubric:
+        {
+          put:
+            {
+              tags: [RubricService],
+              summary: Update an rubric,
+              description: Update an rubric,
+              operationId: RubricService_UpdateRubric,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateRubricRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateRubricResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [RubricService],
+              summary: Create an rubric,
+              description: Create an rubric,
+              operationId: RubricService_CreateRubric,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateRubricRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateRubricResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/rubric/{rubric_id}":
+        {
+          get:
+            {
+              tags: [RubricService],
+              summary: Get an rubric,
+              description: Get rubric by id,
+              operationId: RubricService_GetRubricById,
+              parameters:
+                [
+                  {
+                    name: rubric_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetRubricByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [RubricService],
+              summary: Delete an rubric,
+              description: Delete an rubric,
+              operationId: RubricService_DeleteRubric,
+              parameters:
+                [
+                  {
+                    name: rubric_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteRubricResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
@@ -2064,416 +2064,6 @@
                   "message": { "title": "message", "type": "string" },
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
-                },
-            },
-          publicCreateRubricRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Rubrik penilaian presentasi sejarah,
-                      type: string,
-                      description: Rubric title,
-                    },
-                  description:
-                    { type: string, description: Rubric description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Rubric point,
-                      format: float,
-                    },
-                  criteria:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCriterion",
-                        },
-                      description: The list of rubric criteria,
-                    },
-                },
-            },
-          publicCreateRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubric:
-                    {
-                      $ref: "#/components/schemas/sharedRubric",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating rubric,
-                    },
-                },
-            },
-          publicDeleteRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting rubric,
-                    },
-                },
-            },
-          publicGetRubricByIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubric:
-                    {
-                      $ref: "#/components/schemas/sharedRubric",
-                    },
-                },
-            },
-          publicUpdateRubricRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Rubric ID },
-                  title:
-                    {
-                      example: Rubrik penilaian presentasi sejarah,
-                      type: string,
-                      description: Rubric title,
-                    },
-                  description:
-                    { type: string, description: Rubric description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Rubric point,
-                      format: float,
-                    },
-                  criteria:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCriterion",
-                        },
-                      description: The list of rubric criteria,
-                    },
-                },
-            },
-          publicUpdateRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubric:
-                    {
-                      $ref: "#/components/schemas/sharedRubric",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of updating rubric,
-                    },
-                },
-            },
-          sharedCriterion:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Ekspresi dan Interpretasi,
-                      type: string,
-                      description: Criterion title,
-                    },
-                  description:
-                    { type: string, description: Criterion description },
-                  ratings:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedRating",
-                        },
-                      description: The list of criteria ratings,
-                    },
-                },
-            },
-          sharedRating:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Sangat Baik,
-                      type: string,
-                      description: Rating title,
-                    },
-                  description:
-                    { type: string, description: Rating description },
-                  point:
-                    {
-                      example: 5.0,
-                      type: number,
-                      description: Rating point,
-                      format: float,
-                    },
-                },
-            },
-          sharedRubric:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Rubric ID },
-                  title:
-                    {
-                      example: Rubrik penilaian presentasi sejarah,
-                      type: string,
-                      description: Rubric title,
-                    },
-                  description:
-                    { type: string, description: Rubric description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Rubric point,
-                      format: float,
-                    },
-                  criteria:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCriterion",
-                        },
-                      description: The list of rubric criteria,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Rubric is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Rubric data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          publicCreateObservationRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Observation point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                },
-            },
-          publicCreateObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating observation,
-                    },
-                },
-            },
-          publicDeleteObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting observation,
-                    },
-                },
-            },
-          publicGetObservationByIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                },
-            },
-          publicListObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observations:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedObservation",
-                        },
-                      description: List Observations,
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicUpdateObservationRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Observation ID },
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Observation point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567, 8910],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                },
-            },
-          publicUpdateObservationResponse:
-            {
-              type: object,
-              properties:
-                {
-                  observation:
-                    {
-                      $ref: "#/components/schemas/sharedObservation",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of updating observation,
-                    },
-                },
-            },
-          sharedObservation:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Observation ID },
-                  title:
-                    {
-                      example: Praktek seni musik menggunakan gitar,
-                      type: string,
-                      description: Observation title,
-                    },
-                  description:
-                    { type: string, description: Observation description },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Observation point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to observation,
-                    },
-                  publish:
-                    { type: boolean, description: Observation publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  instance_id:
-                    { example: 123, type: string, description: Instance ID },
-                  rubric_id:
-                    { example: 123, type: string, description: Rubric ID },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when observation is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when observation data updated,
-                      format: date-time,
-                    },
                 },
             },
           publicAnswer:
@@ -3058,6 +2648,416 @@
                     },
                 },
             },
+          publicCreateObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Observation point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                },
+            },
+          publicCreateObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating observation,
+                    },
+                },
+            },
+          publicDeleteObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting observation,
+                    },
+                },
+            },
+          publicGetObservationByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                },
+            },
+          publicListObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observations:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedObservation",
+                        },
+                      description: List Observations,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicUpdateObservationRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Observation point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567, 8910],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                },
+            },
+          publicUpdateObservationResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservation",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating observation,
+                    },
+                },
+            },
+          sharedObservation:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Observation point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          publicCreateRubricRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Rubrik penilaian presentasi sejarah,
+                      type: string,
+                      description: Rubric title,
+                    },
+                  description:
+                    { type: string, description: Rubric description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Rubric point,
+                      format: float,
+                    },
+                  criteria:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCriterion",
+                        },
+                      description: The list of rubric criteria,
+                    },
+                },
+            },
+          publicCreateRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubric:
+                    {
+                      $ref: "#/components/schemas/sharedRubric",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating rubric,
+                    },
+                },
+            },
+          publicDeleteRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting rubric,
+                    },
+                },
+            },
+          publicGetRubricByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubric:
+                    {
+                      $ref: "#/components/schemas/sharedRubric",
+                    },
+                },
+            },
+          publicUpdateRubricRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Rubric ID },
+                  title:
+                    {
+                      example: Rubrik penilaian presentasi sejarah,
+                      type: string,
+                      description: Rubric title,
+                    },
+                  description:
+                    { type: string, description: Rubric description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Rubric point,
+                      format: float,
+                    },
+                  criteria:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCriterion",
+                        },
+                      description: The list of rubric criteria,
+                    },
+                },
+            },
+          publicUpdateRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubric:
+                    {
+                      $ref: "#/components/schemas/sharedRubric",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating rubric,
+                    },
+                },
+            },
+          sharedCriterion:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Ekspresi dan Interpretasi,
+                      type: string,
+                      description: Criterion title,
+                    },
+                  description:
+                    { type: string, description: Criterion description },
+                  ratings:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedRating",
+                        },
+                      description: The list of criteria ratings,
+                    },
+                },
+            },
+          sharedRating:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Sangat Baik,
+                      type: string,
+                      description: Rating title,
+                    },
+                  description:
+                    { type: string, description: Rating description },
+                  point:
+                    {
+                      example: 5.0,
+                      type: number,
+                      description: Rating point,
+                      format: float,
+                    },
+                },
+            },
+          sharedRubric:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Rubric ID },
+                  title:
+                    {
+                      example: Rubrik penilaian presentasi sejarah,
+                      type: string,
+                      description: Rubric title,
+                    },
+                  description:
+                    { type: string, description: Rubric description },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Rubric point,
+                      format: float,
+                    },
+                  criteria:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCriterion",
+                        },
+                      description: The list of rubric criteria,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Rubric is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Rubric data updated,
+                      format: date-time,
+                    },
+                },
+            },
         },
       responses:
         {
@@ -3093,5 +3093,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  security: [{ OAuth2: [TEACHERSTUDENT] }],
+  security: [{ OAuth2: [TEACHER] }],
 }
