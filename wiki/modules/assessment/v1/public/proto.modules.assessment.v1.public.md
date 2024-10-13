@@ -47,6 +47,9 @@
     - [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse)
     - [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest)
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
+    - [QuizAssignee](#modules-assessment-v1-public-QuizAssignee)
+    - [ScoringQuizJob](#modules-assessment-v1-public-ScoringQuizJob)
+    - [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload)
     - [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest)
     - [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse)
     - [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest)
@@ -599,6 +602,7 @@ Service for observation related feature
 | indexMinimum | [int32](#int32) |  |  |
 | due_date | [string](#string) |  |  |
 | until_date | [string](#string) |  |  |
+| assignee | [QuizAssignee](#modules-assessment-v1-public-QuizAssignee) | repeated |  |
 
 
 
@@ -754,6 +758,59 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-QuizAssignee"></a>
+
+### QuizAssignee
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ScoringQuizJob"></a>
+
+### ScoringQuizJob
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| meta | [common.v1.AsyncMetadata](#common-v1-AsyncMetadata) |  |  |
+| payload | [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-ScoringQuizJobPayload"></a>
+
+### ScoringQuizJobPayload
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| action | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| submission_start_time | [string](#string) |  |  |
+| subission_end_time | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| answer | [Answer](#modules-assessment-v1-public-Answer) | repeated |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-SubmitStudentAnswerRequest"></a>
 
 ### SubmitStudentAnswerRequest
@@ -764,6 +821,9 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | quiz_id | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| submission_start_time | [string](#string) |  |  |
+| subission_end_time | [string](#string) |  |  |
 | answer | [Answer](#modules-assessment-v1-public-Answer) | repeated |  |
 
 

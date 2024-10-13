@@ -8,6 +8,7 @@
     - [ErrorResponse](#common-v1-ErrorResponse)
   
 - [common/v1/meta.proto](#common_v1_meta-proto)
+    - [AsyncMetadata](#common-v1-AsyncMetadata)
     - [CursorPagination](#common-v1-CursorPagination)
     - [OffsetPagination](#common-v1-OffsetPagination)
     - [ResponseMetadata](#common-v1-ResponseMetadata)
@@ -73,6 +74,29 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## common/v1/meta.proto
+
+
+
+<a name="common-v1-AsyncMetadata"></a>
+
+### AsyncMetadata
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| request_id | [string](#string) |  |  |
+| event_id | [string](#string) |  |  |
+| client_id | [string](#string) |  |  |
+| actor_id | [string](#string) |  |  |
+| source_ip | [string](#string) |  |  |
+| service_name | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| tenant_id | [string](#string) |  |  |
+| idempotency_key | [string](#string) |  |  |
+
+
+
 
 
 
