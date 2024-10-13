@@ -8,9 +8,11 @@
     - [AssignmentAnswer](#modules-assessment-v1-shared-AssignmentAnswer)
   
 - [modules/assessment/v1/shared/enum.proto](#modules_assessment_v1_shared_enum-proto)
+    - [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState)
     - [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory)
     - [AssessmentQuizQuestionType](#modules-assessment-v1-shared-AssessmentQuizQuestionType)
     - [AssessmentType](#modules-assessment-v1-shared-AssessmentType)
+    - [SubmissionState](#modules-assessment-v1-shared-SubmissionState)
   
 - [modules/assessment/v1/shared/observation.proto](#modules_assessment_v1_shared_observation-proto)
     - [Observation](#modules-assessment-v1-shared-Observation)
@@ -107,6 +109,18 @@
  
 
 
+<a name="modules-assessment-v1-shared-AnswerScoreState"></a>
+
+### AnswerScoreState
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| NOT_SCORED | 0 |  |
+| SCORED | 1 |  |
+
+
+
 <a name="modules-assessment-v1-shared-AssessmentQuizCategory"></a>
 
 ### AssessmentQuizCategory
@@ -143,6 +157,19 @@
 | ---- | ------ | ----------- |
 | FORMATIVE | 0 |  |
 | SUMMATIVE | 1 |  |
+
+
+
+<a name="modules-assessment-v1-shared-SubmissionState"></a>
+
+### SubmissionState
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| NO_SUBMISSION | 0 |  |
+| NEED_GRADING | 1 |  |
+| GRADED | 2 |  |
 
 
  
@@ -304,7 +331,10 @@
 | quiz_id | [string](#string) |  |  |
 | question_id | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
 | answer | [string](#string) |  |  |
+| points | [string](#string) |  |  |
+| score_state | [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState) |  |  |
 
 
 
