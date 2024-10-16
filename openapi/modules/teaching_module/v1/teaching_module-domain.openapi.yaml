@@ -1263,24 +1263,6 @@
                 },
               description: study material,
             },
-          v1Dict:
-            {
-              type: object,
-              properties: { key: { type: string }, value: { type: string } },
-            },
-          v1KeyArrayValues:
-            {
-              type: object,
-              properties:
-                {
-                  key: { type: string },
-                  value:
-                    {
-                      type: array,
-                      items: { $ref: "#/components/schemas/v1Dict" },
-                    },
-                },
-            },
           publicApproveteachingModuleRequest:
             {
               type: object,
@@ -1341,6 +1323,58 @@
                   is_approved: { type: boolean, description: approve status },
                 },
             },
+          sharedComponent:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: component id },
+                  parent_id: { type: string, description: component id },
+                  description:
+                    {
+                      type: string,
+                      description: Curriculum Group Component Description,
+                    },
+                  component_type:
+                    {
+                      enum:
+                        [
+                          TEXT_INPUT,
+                          MULTIPLE_TEXT_INPUT,
+                          TEXT_DESCRIPTION,
+                          MULTIPLE_TEXT_DESCRIPTION,
+                          CHECKLIST,
+                          RADIO_BUTTON,
+                        ],
+                      type: string,
+                      description: Component type,
+                      format: enum,
+                    },
+                  content:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedContent",
+                        },
+                      description: list of content,
+                    },
+                },
+            },
+          sharedContent:
+            {
+              type: object,
+              properties:
+                {
+                  text:
+                    { type: string, description: CurriculumGroupComponentID },
+                  value:
+                    {
+                      type: boolean,
+                      description: Curriculum Group Component Description,
+                    },
+                },
+            },
           sharedTeachingModule:
             {
               type: object,
@@ -1394,7 +1428,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/v1KeyArrayValues",
+                          $ref: "#/components/schemas/sharedComponent",
                         },
                       description: Curriculum instance,
                     },
@@ -1429,8 +1463,10 @@
                         {
                           $ref: "#/components/schemas/sharedTeachingModuleFolder",
                         },
-                      description: List of approver for teaching module,
+                      description: List of folder for teaching module,
                     },
+                  curriculum_id: { type: string, description: curriculum ID },
+                  description: { type: string, description: curriculum ID },
                 },
             },
         },

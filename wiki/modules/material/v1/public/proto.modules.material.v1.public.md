@@ -35,6 +35,17 @@
   
     - [CurriculumService](#modules-material-v1-public-CurriculumService)
   
+- [modules/material/v1/public/curriculum_group_component.proto](#modules_material_v1_public_curriculum_group_component-proto)
+    - [CreateCurriculumGroupComponentRequest](#modules-material-v1-public-CreateCurriculumGroupComponentRequest)
+    - [CurriculumGroupComponentResponse](#modules-material-v1-public-CurriculumGroupComponentResponse)
+    - [DeleteCurriculumGroupComponentRequest](#modules-material-v1-public-DeleteCurriculumGroupComponentRequest)
+    - [GetCurriculumGroupComponentDetailByCurriculumIDRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailByCurriculumIDRequest)
+    - [GetCurriculumGroupComponentDetailRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailRequest)
+    - [GetCurriculumGroupComponentResponse](#modules-material-v1-public-GetCurriculumGroupComponentResponse)
+    - [UpdateCurriculumGroupComponentRequest](#modules-material-v1-public-UpdateCurriculumGroupComponentRequest)
+  
+    - [CurriculumGroupComponentService](#modules-material-v1-public-CurriculumGroupComponentService)
+  
 - [modules/material/v1/public/subject.proto](#modules_material_v1_public_subject-proto)
     - [CreateSubjectRequest](#modules-material-v1-public-CreateSubjectRequest)
     - [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest)
@@ -510,6 +521,141 @@ Service for user related feature
 | ----------- | ------------ | ------------- | ------------|
 | CreateCurriculum | [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
 | GetCurriculumList | [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest) | [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_public_curriculum_group_component-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/public/curriculum_group_component.proto
+
+
+
+<a name="modules-material-v1-public-CreateCurriculumGroupComponentRequest"></a>
+
+### CreateCurriculumGroupComponentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_group_component | [modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CurriculumGroupComponentResponse"></a>
+
+### CurriculumGroupComponentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteCurriculumGroupComponentRequest"></a>
+
+### DeleteCurriculumGroupComponentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetCurriculumGroupComponentDetailByCurriculumIDRequest"></a>
+
+### GetCurriculumGroupComponentDetailByCurriculumIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetCurriculumGroupComponentDetailRequest"></a>
+
+### GetCurriculumGroupComponentDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetCurriculumGroupComponentResponse"></a>
+
+### GetCurriculumGroupComponentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| components | [modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateCurriculumGroupComponentRequest"></a>
+
+### UpdateCurriculumGroupComponentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_group_component | [modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-public-CurriculumGroupComponentService"></a>
+
+### CurriculumGroupComponentService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateCurriculumGroupComponent | [CreateCurriculumGroupComponentRequest](#modules-material-v1-public-CreateCurriculumGroupComponentRequest) | [.modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |
+| UpdateCurriculumGroupComponent | [UpdateCurriculumGroupComponentRequest](#modules-material-v1-public-UpdateCurriculumGroupComponentRequest) | [.modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |
+| DeleteCurriculumGroupComponent | [DeleteCurriculumGroupComponentRequest](#modules-material-v1-public-DeleteCurriculumGroupComponentRequest) | [CurriculumGroupComponentResponse](#modules-material-v1-public-CurriculumGroupComponentResponse) |  |
+| GetCurriculumGroupComponentDetail | [GetCurriculumGroupComponentDetailRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailRequest) | [.modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |
+| GetCurriculumGroupComponentByCurriculumID | [GetCurriculumGroupComponentDetailByCurriculumIDRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailByCurriculumIDRequest) | [GetCurriculumGroupComponentResponse](#modules-material-v1-public-GetCurriculumGroupComponentResponse) |  |
 
  
 
