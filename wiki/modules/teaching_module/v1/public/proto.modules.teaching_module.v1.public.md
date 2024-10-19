@@ -35,8 +35,10 @@
   
 - [modules/teaching_module/v1/public/teaching_module_folder.proto](#modules_teaching_module_v1_public_teaching_module_folder-proto)
     - [CreateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-CreateTeachingModuleFolderResponse)
-    - [GetTeachingModuleFolderByTeachingModuleIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDRequest)
-    - [GetTeachingModuleFolderByTeachingModuleIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDResponse)
+    - [GetTeachingModuleFolderDetailByIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDRequest)
+    - [GetTeachingModuleFolderDetailByIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDResponse)
+    - [GetTeachingModuleFolderListRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderListRequest)
+    - [GetTeachingModuleFolderListResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderListResponse)
     - [UpdateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse)
   
     - [TeachingModuleFolderService](#modules-teaching_module-v1-public-TeachingModuleFolderService)
@@ -426,14 +428,45 @@
 
 
 
-<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDRequest"></a>
+<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDRequest"></a>
 
-### GetTeachingModuleFolderByTeachingModuleIDRequest
+### GetTeachingModuleFolderDetailByIDRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDResponse"></a>
+
+### GetTeachingModuleFolderDetailByIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| datas | [modules.teaching_modules.v1.shared.FolderTask](#modules-teaching_modules-v1-shared-FolderTask) | repeated |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderListRequest"></a>
+
+### GetTeachingModuleFolderListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_group_detail_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 
 
@@ -441,9 +474,9 @@
 
 
 
-<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDResponse"></a>
+<a name="modules-teaching_module-v1-public-GetTeachingModuleFolderListResponse"></a>
 
-### GetTeachingModuleFolderByTeachingModuleIDResponse
+### GetTeachingModuleFolderListResponse
 
 
 
@@ -486,7 +519,8 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateTeachingModuleFolder | [.modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | [CreateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-CreateTeachingModuleFolderResponse) |  |
 | UpdateTeachingModuleFolder | [.modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | [UpdateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse) |  |
-| GetTeachingModuleFolderByTeachingModuleID | [GetTeachingModuleFolderByTeachingModuleIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDRequest) | [GetTeachingModuleFolderByTeachingModuleIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderByTeachingModuleIDResponse) |  |
+| GetTeachingModuleFolderList | [GetTeachingModuleFolderListRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderListRequest) | [GetTeachingModuleFolderListResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderListResponse) |  |
+| GetTeachingModuleDetailByID | [GetTeachingModuleFolderDetailByIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDRequest) | [GetTeachingModuleFolderDetailByIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDResponse) |  |
 
  
 

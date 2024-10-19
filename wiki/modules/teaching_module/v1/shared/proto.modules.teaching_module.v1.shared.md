@@ -3,6 +3,9 @@
 
 ## Table of Contents
 
+- [modules/teaching_module/v1/shared/folder_task.proto](#modules_teaching_module_v1_shared_folder_task-proto)
+    - [FolderTask](#modules-teaching_modules-v1-shared-FolderTask)
+  
 - [modules/teaching_module/v1/shared/learning_goal.proto](#modules_teaching_module_v1_shared_learning_goal-proto)
     - [LearningGoal](#modules-teaching_modules-v1-shared-LearningGoal)
   
@@ -21,6 +24,45 @@
     - [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_teaching_module_v1_shared_folder_task-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/shared/folder_task.proto
+
+
+
+<a name="modules-teaching_modules-v1-shared-FolderTask"></a>
+
+### FolderTask
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| folder_id | [string](#string) |  |  |
+| task_id | [string](#string) |  |  |
+| task_type | [string](#string) |  |  |
+| task_name | [string](#string) |  |  |
+| task_attachment | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| created_at | [string](#string) |  |  |
+| updated_at | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
 
 
 
@@ -230,6 +272,7 @@ study material
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | teaching_module_id | [string](#string) |  |  |
+| class_group_detail_id | [string](#string) |  |  |
 
 
 
