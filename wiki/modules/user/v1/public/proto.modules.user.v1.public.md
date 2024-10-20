@@ -3,6 +3,15 @@
 
 ## Table of Contents
 
+- [modules/user/v1/public/school.proto](#modules_user_v1_public_school-proto)
+    - [CreateSchoolRequest](#modules-user-v1-public-CreateSchoolRequest)
+    - [CreateSchoolResponse](#modules-user-v1-public-CreateSchoolResponse)
+    - [GetSchoolByIDRequest](#modules-user-v1-public-GetSchoolByIDRequest)
+    - [GetSchoolListRequest](#modules-user-v1-public-GetSchoolListRequest)
+    - [GetSchoolListResponse](#modules-user-v1-public-GetSchoolListResponse)
+  
+    - [SchoolService](#modules-user-v1-public-SchoolService)
+  
 - [modules/user/v1/public/student.proto](#modules_user_v1_public_student-proto)
     - [GetStudentInstanceRequest](#-GetStudentInstanceRequest)
     - [GetStudentInstanceResponse](#-GetStudentInstanceResponse)
@@ -27,6 +36,125 @@
     - [UserService](#modules-user-v1-public-UserService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_user_v1_public_school-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/public/school.proto
+
+
+
+<a name="modules-user-v1-public-CreateSchoolRequest"></a>
+
+### CreateSchoolRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| type | [modules.user.v1.shared.SchoolType](#modules-user-v1-shared-SchoolType) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| level | [modules.user.v1.shared.EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
+| province | [string](#string) |  |  |
+| img_url | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-CreateSchoolResponse"></a>
+
+### CreateSchoolResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| school | [modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-GetSchoolByIDRequest"></a>
+
+### GetSchoolByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-GetSchoolListRequest"></a>
+
+### GetSchoolListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| type | [modules.user.v1.shared.SchoolType](#modules-user-v1-shared-SchoolType) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| level | [modules.user.v1.shared.EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
+| province | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-GetSchoolListResponse"></a>
+
+### GetSchoolListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| schools | [modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-user-v1-public-SchoolService"></a>
+
+### SchoolService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateSchool | [CreateSchoolRequest](#modules-user-v1-public-CreateSchoolRequest) | [CreateSchoolResponse](#modules-user-v1-public-CreateSchoolResponse) |  |
+| GetSchoolByID | [GetSchoolByIDRequest](#modules-user-v1-public-GetSchoolByIDRequest) | [.modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |
+| GetSchoolList | [GetSchoolListRequest](#modules-user-v1-public-GetSchoolListRequest) | [GetSchoolListResponse](#modules-user-v1-public-GetSchoolListResponse) |  |
+
+ 
 
 
 

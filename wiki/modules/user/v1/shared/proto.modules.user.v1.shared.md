@@ -3,6 +3,12 @@
 
 ## Table of Contents
 
+- [modules/user/v1/shared/school.proto](#modules_user_v1_shared_school-proto)
+    - [School](#modules-user-v1-shared-School)
+  
+    - [EducationLevel](#modules-user-v1-shared-EducationLevel)
+    - [SchoolType](#modules-user-v1-shared-SchoolType)
+  
 - [modules/user/v1/shared/student.proto](#modules_user_v1_shared_student-proto)
     - [Student](#modules-user-v1-shared-Student)
   
@@ -18,6 +24,74 @@
     - [User](#modules-user-v1-shared-User)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_user_v1_shared_school-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/shared/school.proto
+
+
+
+<a name="modules-user-v1-shared-School"></a>
+
+### School
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| type | [SchoolType](#modules-user-v1-shared-SchoolType) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| level | [EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
+| province | [string](#string) |  |  |
+| img_url | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="modules-user-v1-shared-EducationLevel"></a>
+
+### EducationLevel
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| EDUCATION_LEVEL_UNSPECIFIED | 0 |  |
+| EDUCATION_LEVEL_ELEMENTARY | 1 |  |
+| EDUCATION_LEVEL_JUNIOR_HIGH | 2 |  |
+| EDUCATION_LEVEL_SENIOR_HIGH | 3 |  |
+| EDUCATION_LEVEL_COLLEGE | 4 |  |
+
+
+
+<a name="modules-user-v1-shared-SchoolType"></a>
+
+### SchoolType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SCHOOL_TYPE_UNSPECIFIED | 0 |  |
+| SCHOOL_TYPE_PUBLIC | 1 |  |
+| SCHOOL_TYPE_PRIVATE | 2 |  |
+
+
+ 
+
+ 
+
+ 
 
 
 
