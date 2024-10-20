@@ -4,12 +4,411 @@
   info:
     {
       title: Assessment Domain,
-      description: "Skola Quiz Service, Skoola Observation Service, Skoola Rubric Service, Skoola Assignment Service",
+      description: "Skoola Assignment Service, Skola Quiz Service, Skoola Observation Service, Skoola Rubric Service",
       version: v1,
     },
   servers: [{ url: "https://api.stg.skola.com" }],
   paths:
     {
+      /v1/assignment:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: List assignments,
+              description: List assignments,
+              operationId: AssignmentService_ListAssignment,
+              parameters:
+                [
+                  { name: title, in: query, schema: { type: string } },
+                  { name: description, in: query, schema: { type: string } },
+                  {
+                    name: start_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: start_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: start_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: start_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: until_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: until_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: until_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: until_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: point,
+                    in: query,
+                    schema: { type: number, format: float },
+                  },
+                  { name: publish, in: query, schema: { type: boolean } },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAssignmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [AssignmentService],
+              summary: Update an assignment,
+              description: Update an assignment,
+              operationId: AssignmentService_UpdateAssignment,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateAssignmentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateAssignmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [AssignmentService],
+              summary: Create an assignment,
+              description: Create an assignment,
+              operationId: AssignmentService_CreateAssignment,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateAssignmentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateAssignmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/assignment/{assignment_id}":
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get an assignment,
+              description: Get assignment by id,
+              operationId: AssignmentService_GetAssignmentById,
+              parameters:
+                [
+                  {
+                    name: assignment_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAssignmentByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [AssignmentService],
+              summary: Delete an assignment,
+              description: Delete an assignment,
+              operationId: AssignmentService_DeleteAssignment,
+              parameters:
+                [
+                  {
+                    name: assignment_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteAssignmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/quiz:
         {
           post:
@@ -1343,405 +1742,6 @@
                 },
             },
         },
-      /v1/assignment:
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: List assignments,
-              description: List assignments,
-              operationId: AssignmentService_ListAssignment,
-              parameters:
-                [
-                  { name: title, in: query, schema: { type: string } },
-                  { name: description, in: query, schema: { type: string } },
-                  {
-                    name: start_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: start_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: start_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: start_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: point,
-                    in: query,
-                    schema: { type: number, format: float },
-                  },
-                  { name: publish, in: query, schema: { type: boolean } },
-                  {
-                    name: teaching_module_folder_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListAssignmentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          put:
-            {
-              tags: [AssignmentService],
-              summary: Update an assignment,
-              description: Update an assignment,
-              operationId: AssignmentService_UpdateAssignment,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateAssignmentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateAssignmentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [AssignmentService],
-              summary: Create an assignment,
-              description: Create an assignment,
-              operationId: AssignmentService_CreateAssignment,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateAssignmentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateAssignmentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/assignment/{assignment_id}":
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get an assignment,
-              description: Get assignment by id,
-              operationId: AssignmentService_GetAssignmentById,
-              parameters:
-                [
-                  {
-                    name: assignment_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAssignmentByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          delete:
-            {
-              tags: [AssignmentService],
-              summary: Delete an assignment,
-              description: Delete an assignment,
-              operationId: AssignmentService_DeleteAssignment,
-              parameters:
-                [
-                  {
-                    name: assignment_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteAssignmentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
     },
   "components":
     {
@@ -1777,6 +1777,293 @@
                     { $ref: "#/components/schemas/v1OffsetPagination" },
                   cursor_pagination:
                     { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          publicCreateAssignmentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Tes Baris dan Deret Aritmatika,
+                      type: string,
+                      description: Assignment title,
+                    },
+                  description:
+                    { type: string, description: Assignment description },
+                  start_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Start date when the assignment can be done,
+                      format: date-time,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Available until date,
+                      format: date-time,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Assignment point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to assignment,
+                    },
+                  publish:
+                    { type: boolean, description: Assignment publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                },
+            },
+          publicCreateAssignmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignment:
+                    {
+                      $ref: "#/components/schemas/sharedAssignment",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating assignment,
+                    },
+                },
+            },
+          publicDeleteAssignmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting assignment,
+                    },
+                },
+            },
+          publicGetAssignmentByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignment:
+                    {
+                      $ref: "#/components/schemas/sharedAssignment",
+                    },
+                },
+            },
+          publicListAssignmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignments:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedAssignment",
+                        },
+                      description: List Assignments,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicUpdateAssignmentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Assignment ID },
+                  title:
+                    {
+                      example: Tes Baris dan Deret Aritmatika,
+                      type: string,
+                      description: Assignment title,
+                    },
+                  description:
+                    { type: string, description: Assignment description },
+                  start_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Start date when the assignment can be done,
+                      format: date-time,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Available until date,
+                      format: date-time,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Assignment point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567, 8910],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to assignment,
+                    },
+                  publish:
+                    { type: boolean, description: Assignment publish status },
+                },
+            },
+          publicUpdateAssignmentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignment:
+                    {
+                      $ref: "#/components/schemas/sharedAssignment",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating assignment,
+                    },
+                },
+            },
+          sharedAssignment:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Assignment ID },
+                  title:
+                    {
+                      example: Tes Baris dan Deret Aritmatika,
+                      type: string,
+                      description: Assignment title,
+                    },
+                  description:
+                    { type: string, description: Assignment description },
+                  start_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Start date when the assignment can be done,
+                      format: date-time,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Available until date,
+                      format: date-time,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Assignment point,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to assignment,
+                    },
+                  publish:
+                    { type: boolean, description: Assignment publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
                 },
             },
           publicAnswer:
@@ -2381,30 +2668,6 @@
                     },
                 },
             },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
           publicCreateObservationRequest:
             {
               type: object,
@@ -2811,269 +3074,6 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Time when Rubric data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          publicCreateAssignmentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Tes Baris dan Deret Aritmatika,
-                      type: string,
-                      description: Assignment title,
-                    },
-                  description:
-                    { type: string, description: Assignment description },
-                  start_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Start date when the assignment can be done,
-                      format: date-time,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Assignment deadline,
-                      format: date-time,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Available until date,
-                      format: date-time,
-                    },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Assignment point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to assignment,
-                    },
-                  publish:
-                    { type: boolean, description: Assignment publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                },
-            },
-          publicCreateAssignmentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  assignment:
-                    {
-                      $ref: "#/components/schemas/sharedAssignment",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating assignment,
-                    },
-                },
-            },
-          publicDeleteAssignmentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting assignment,
-                    },
-                },
-            },
-          publicGetAssignmentByIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  assignment:
-                    {
-                      $ref: "#/components/schemas/sharedAssignment",
-                    },
-                },
-            },
-          publicListAssignmentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  assignments:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedAssignment",
-                        },
-                      description: List Assignments,
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicUpdateAssignmentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Assignment ID },
-                  title:
-                    {
-                      example: Tes Baris dan Deret Aritmatika,
-                      type: string,
-                      description: Assignment title,
-                    },
-                  description:
-                    { type: string, description: Assignment description },
-                  start_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Start date when the assignment can be done,
-                      format: date-time,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Assignment deadline,
-                      format: date-time,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Available until date,
-                      format: date-time,
-                    },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Assignment point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567, 8910],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to assignment,
-                    },
-                  publish:
-                    { type: boolean, description: Assignment publish status },
-                },
-            },
-          publicUpdateAssignmentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  assignment:
-                    {
-                      $ref: "#/components/schemas/sharedAssignment",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of updating assignment,
-                    },
-                },
-            },
-          sharedAssignment:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Assignment ID },
-                  title:
-                    {
-                      example: Tes Baris dan Deret Aritmatika,
-                      type: string,
-                      description: Assignment title,
-                    },
-                  description:
-                    { type: string, description: Assignment description },
-                  start_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Start date when the assignment can be done,
-                      format: date-time,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Assignment deadline,
-                      format: date-time,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Available until date,
-                      format: date-time,
-                    },
-                  point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Assignment point,
-                      format: float,
-                    },
-                  learning_goals:
-                    {
-                      example: [123, 234, 567],
-                      type: array,
-                      items: { type: string },
-                      description: Learning goal IDs related to assignment,
-                    },
-                  publish:
-                    { type: boolean, description: Assignment publish status },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  instance_id:
-                    { example: 123, type: string, description: Instance ID },
-                  rubric_id:
-                    { example: 123, type: string, description: Rubric ID },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when assignment is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when assignment data updated,
                       format: date-time,
                     },
                 },

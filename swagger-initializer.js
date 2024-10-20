@@ -15,6 +15,10 @@
     "name": "material-domain.openapi"
   },
   {
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/report-domain.openapi.yaml",
+    "name": "report-domain.openapi"
+  },
+  {
     "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/teaching_module-domain.openapi.yaml",
     "name": "teaching_module-domain.openapi"
   },
