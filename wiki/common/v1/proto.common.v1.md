@@ -178,7 +178,7 @@
 | display_name | [string](#string) |  |  |
 | unique_name | [string](#string) |  |  |
 | file_extension | [string](#string) |  |  |
-| file_size | [string](#string) |  |  |
+| file_size | [uint64](#uint64) |  |  |
 | link | [string](#string) |  |  |
 
 
