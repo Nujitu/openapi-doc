@@ -18,6 +18,8 @@
     - [FinalizeAssignmentSubmissionResponse](#modules-assessment-v1-public-FinalizeAssignmentSubmissionResponse)
     - [GetAssignmentByIdRequest](#modules-assessment-v1-public-GetAssignmentByIdRequest)
     - [GetAssignmentByIdResponse](#modules-assessment-v1-public-GetAssignmentByIdResponse)
+    - [GetAssignmentStatisticByIdRequest](#modules-assessment-v1-public-GetAssignmentStatisticByIdRequest)
+    - [GetAssignmentStatisticByIdResponse](#modules-assessment-v1-public-GetAssignmentStatisticByIdResponse)
     - [GetAssignmentSubmissionByIdRequest](#modules-assessment-v1-public-GetAssignmentSubmissionByIdRequest)
     - [GetAssignmentSubmissionByIdResponse](#modules-assessment-v1-public-GetAssignmentSubmissionByIdResponse)
     - [GetOneAssignmentSubmissionByFilterRequest](#modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterRequest)
@@ -44,6 +46,8 @@
     - [DeleteObservationSubmissionResponse](#modules-observation-v1-public-DeleteObservationSubmissionResponse)
     - [GetObservationByIdRequest](#modules-observation-v1-public-GetObservationByIdRequest)
     - [GetObservationByIdResponse](#modules-observation-v1-public-GetObservationByIdResponse)
+    - [GetObservationStatisticByIdRequest](#modules-observation-v1-public-GetObservationStatisticByIdRequest)
+    - [GetObservationStatisticByIdResponse](#modules-observation-v1-public-GetObservationStatisticByIdResponse)
     - [GetObservationSubmissionByIdRequest](#modules-observation-v1-public-GetObservationSubmissionByIdRequest)
     - [GetObservationSubmissionByIdResponse](#modules-observation-v1-public-GetObservationSubmissionByIdResponse)
     - [GetOneObservationSubmissionByFilterRequest](#modules-observation-v1-public-GetOneObservationSubmissionByFilterRequest)
@@ -121,8 +125,8 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| point | [float](#float) |  |  |
-| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+| point | [float](#float) | optional |  |
+| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) | optional |  |
 
 
 
@@ -161,6 +165,9 @@
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 
 
 
@@ -337,6 +344,36 @@
 
 
 
+<a name="modules-assessment-v1-public-GetAssignmentStatisticByIdRequest"></a>
+
+### GetAssignmentStatisticByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetAssignmentStatisticByIdResponse"></a>
+
+### GetAssignmentStatisticByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| statistic | [modules.assessment.v1.shared.AssignmentStatistic](#modules-assessment-v1-shared-AssignmentStatistic) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-GetAssignmentSubmissionByIdRequest"></a>
 
 ### GetAssignmentSubmissionByIdRequest
@@ -486,14 +523,14 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| title | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| point | [float](#float) |  |  |
+| title | [string](#string) | optional |  |
+| description | [string](#string) | optional |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| point | [float](#float) | optional |  |
 | learning_goals | [string](#string) | repeated |  |
-| publish | [bool](#bool) |  |  |
+| publish | [bool](#bool) | optional |  |
 
 
 
@@ -525,7 +562,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| answer_text | [string](#string) |  |  |
+| answer_text | [string](#string) | optional |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 
 
@@ -575,6 +612,7 @@ Service for assignment related feature
 | FinalizeAssignmentSubmission | [FinalizeAssignmentSubmissionRequest](#modules-assessment-v1-public-FinalizeAssignmentSubmissionRequest) | [FinalizeAssignmentSubmissionResponse](#modules-assessment-v1-public-FinalizeAssignmentSubmissionResponse) |  |
 | AssessAssignmentSubmission | [AssessAssignmentSubmissionRequest](#modules-assessment-v1-public-AssessAssignmentSubmissionRequest) | [AssessAssignmentSubmissionResponse](#modules-assessment-v1-public-AssessAssignmentSubmissionResponse) |  |
 | ListAssignmentSubmission | [ListAssignmentSubmissionRequest](#modules-assessment-v1-public-ListAssignmentSubmissionRequest) | [ListAssignmentSubmissionResponse](#modules-assessment-v1-public-ListAssignmentSubmissionResponse) |  |
+| GetAssignmentStatisticById | [GetAssignmentStatisticByIdRequest](#modules-assessment-v1-public-GetAssignmentStatisticByIdRequest) | [GetAssignmentStatisticByIdResponse](#modules-assessment-v1-public-GetAssignmentStatisticByIdResponse) |  |
 
  
 
@@ -601,6 +639,9 @@ Service for assignment related feature
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 
 
 
@@ -747,6 +788,36 @@ Service for assignment related feature
 
 
 
+<a name="modules-observation-v1-public-GetObservationStatisticByIdRequest"></a>
+
+### GetObservationStatisticByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-GetObservationStatisticByIdResponse"></a>
+
+### GetObservationStatisticByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| statistic | [modules.assessment.v1.shared.ObservationStatistic](#modules-assessment-v1-shared-ObservationStatistic) |  |  |
+
+
+
+
+
+
 <a name="modules-observation-v1-public-GetObservationSubmissionByIdRequest"></a>
 
 ### GetObservationSubmissionByIdRequest
@@ -884,11 +955,11 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| title | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| point | [float](#float) |  |  |
+| title | [string](#string) | optional |  |
+| description | [string](#string) | optional |  |
+| point | [float](#float) | optional |  |
 | learning_goals | [string](#string) | repeated |  |
-| publish | [bool](#bool) |  |  |
+| publish | [bool](#bool) | optional |  |
 
 
 
@@ -920,8 +991,8 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| point | [float](#float) |  |  |
-| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+| point | [float](#float) | optional |  |
+| RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) | optional |  |
 
 
 
@@ -968,6 +1039,7 @@ Service for observation related feature
 | GetObservationSubmissionById | [GetObservationSubmissionByIdRequest](#modules-observation-v1-public-GetObservationSubmissionByIdRequest) | [GetObservationSubmissionByIdResponse](#modules-observation-v1-public-GetObservationSubmissionByIdResponse) |  |
 | DeleteObservationSubmission | [DeleteObservationSubmissionRequest](#modules-observation-v1-public-DeleteObservationSubmissionRequest) | [DeleteObservationSubmissionResponse](#modules-observation-v1-public-DeleteObservationSubmissionResponse) |  |
 | ListObservationSubmission | [ListObservationSubmissionRequest](#modules-observation-v1-public-ListObservationSubmissionRequest) | [ListObservationSubmissionResponse](#modules-observation-v1-public-ListObservationSubmissionResponse) |  |
+| GetObservationStatisticById | [GetObservationStatisticByIdRequest](#modules-observation-v1-public-GetObservationStatisticByIdRequest) | [GetObservationStatisticByIdResponse](#modules-observation-v1-public-GetObservationStatisticByIdResponse) |  |
 
  
 

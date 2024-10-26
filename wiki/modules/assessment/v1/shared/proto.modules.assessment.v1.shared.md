@@ -5,6 +5,7 @@
 
 - [modules/assessment/v1/shared/assignment.proto](#modules_assessment_v1_shared_assignment-proto)
     - [Assignment](#modules-assessment-v1-shared-Assignment)
+    - [AssignmentStatistic](#modules-assessment-v1-shared-AssignmentStatistic)
     - [AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission)
   
 - [modules/assessment/v1/shared/enum.proto](#modules_assessment_v1_shared_enum-proto)
@@ -16,6 +17,7 @@
   
 - [modules/assessment/v1/shared/observation.proto](#modules_assessment_v1_shared_observation-proto)
     - [Observation](#modules-assessment-v1-shared-Observation)
+    - [ObservationStatistic](#modules-assessment-v1-shared-ObservationStatistic)
     - [ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission)
   
 - [modules/assessment/v1/shared/quiz.proto](#modules_assessment_v1_shared_quiz-proto)
@@ -62,6 +64,29 @@
 | teaching_module_folder_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | rubric_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-AssignmentStatistic"></a>
+
+### AssignmentStatistic
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_id | [string](#string) |  |  |
+| assigned | [uint32](#uint32) |  |  |
+| submitted | [uint32](#uint32) |  |  |
+| assessed | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -207,6 +232,28 @@
 | teaching_module_folder_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | rubric_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ObservationStatistic"></a>
+
+### ObservationStatistic
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+| assigned | [uint32](#uint32) |  |  |
+| assessed | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
