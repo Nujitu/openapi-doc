@@ -20,6 +20,7 @@
     - [DeleteUserResponse](#modules-authentication-v1-private-DeleteUserResponse)
     - [GetUserByEmailRequest](#modules-authentication-v1-private-GetUserByEmailRequest)
     - [GetUserByEmailResponse](#modules-authentication-v1-private-GetUserByEmailResponse)
+    - [GetUserByIDsRequest](#modules-authentication-v1-private-GetUserByIDsRequest)
     - [GetUserByIdRequest](#modules-authentication-v1-private-GetUserByIdRequest)
     - [GetUserByIdResponse](#modules-authentication-v1-private-GetUserByIdResponse)
     - [GetUserByPhoneRequest](#modules-authentication-v1-private-GetUserByPhoneRequest)
@@ -272,6 +273,21 @@ Response body of GetUserByPhone
 
 
 
+<a name="modules-authentication-v1-private-GetUserByIDsRequest"></a>
+
+### GetUserByIDsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) | repeated |  |
+
+
+
+
+
+
 <a name="modules-authentication-v1-private-GetUserByIdRequest"></a>
 
 ### GetUserByIdRequest
@@ -462,6 +478,7 @@ IdentityService contains user identity management functionality such as register
 | GetUserByPhone | [GetUserByPhoneRequest](#modules-authentication-v1-private-GetUserByPhoneRequest) | [GetUserByPhoneResponse](#modules-authentication-v1-private-GetUserByPhoneResponse) | GetUserByPhone get user by their phone. |
 | GetUserByEmail | [GetUserByEmailRequest](#modules-authentication-v1-private-GetUserByEmailRequest) | [GetUserByEmailResponse](#modules-authentication-v1-private-GetUserByEmailResponse) | GetUserByPhone get user by their phone. |
 | GetUserList | [GetUserListRequest](#modules-authentication-v1-private-GetUserListRequest) | [GetUserListResponse](#modules-authentication-v1-private-GetUserListResponse) | GetUserByPhone get user by their phone. |
+| GetUserByIDs | [GetUserByIDsRequest](#modules-authentication-v1-private-GetUserByIDsRequest) | [GetUserListResponse](#modules-authentication-v1-private-GetUserListResponse) | GetUserByPhone get user by their phone. |
 
  
 
