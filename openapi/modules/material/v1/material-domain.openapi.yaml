@@ -4,7 +4,7 @@
   info:
     {
       title: Material Domain,
-      description: "Skola Subject Service, Skoola Curriculum Group Component Service, Skoola Curriculum Service, Skola Class Group Service",
+      description: "Skola Subject Service, Skoola Curriculum Group Component Service, Skoola Header Component Service, Skoola Curriculum Service, Skola Class Group Service",
       version: v1,
     },
   servers: [{ url: "https://api.stg.skola.com" }],
@@ -454,18 +454,18 @@
                 },
             },
         },
-      "/v1/curriculum-group-component/{curriculum_id}":
+      "/v1/curriculum-group-component/{header_id}":
         {
           get:
             {
               tags: [CurriculumGroupComponentService],
-              summary: get component list by curriculum ID,
-              description: get component list by curriculum ID,
-              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentByCurriculumID,
+              summary: get component list by header component ID,
+              description: get component list by header component ID,
+              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentByHeader,
               parameters:
                 [
                   {
-                    name: curriculum_id,
+                    name: header_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -608,6 +608,330 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicCurriculumGroupComponentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/header-component:
+        {
+          put:
+            {
+              tags: [HeaderComponentService],
+              summary: Update new header component,
+              description: Admin update a new header component,
+              operationId: HeaderComponentService_UpdateHeaderComponent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateHeaderComponentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [HeaderComponentService],
+              summary: Create header component,
+              description: Admin register a new header component,
+              operationId: HeaderComponentService_CreateHeaderComponent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateHeaderComponentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/header-component/{curriculum_id}":
+        {
+          get:
+            {
+              tags: [HeaderComponentService],
+              summary: get header component by curriculum ID,
+              description: get header component list by curriculum ID,
+              operationId: HeaderComponentService_GetHeaderComponentByCurriculumID,
+              parameters:
+                [
+                  {
+                    name: curriculum_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetHeaderComponentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/header-component/{id}":
+        {
+          get:
+            {
+              tags: [HeaderComponentService],
+              summary: get header component detail,
+              description: get header component detail,
+              operationId: HeaderComponentService_GetHeaderComponentDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [HeaderComponentService],
+              summary: Delete a header component,
+              description: Admin deletes a header component by its ID,
+              operationId: HeaderComponentService_DeleteHeaderComponent,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicHeaderComponentResponse",
                                 },
                             },
                         },
@@ -1771,6 +2095,83 @@
                       type: string,
                       description: Component type,
                       format: enum,
+                    },
+                  header_id:
+                    {
+                      example: Header Component ID,
+                      type: string,
+                      description: Header Component ID,
+                    },
+                },
+            },
+          publicCreateHeaderComponentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  header_component:
+                    {
+                      $ref: "#/components/schemas/sharedHeaderComponent",
+                    },
+                },
+            },
+          publicGetHeaderComponentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  header_components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedHeaderComponent",
+                        },
+                    },
+                },
+            },
+          publicHeaderComponentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for header component },
+                },
+            },
+          publicUpdateHeaderComponentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  header_component:
+                    {
+                      $ref: "#/components/schemas/sharedHeaderComponent",
+                    },
+                },
+            },
+          sharedHeaderComponent:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: HeaderComponentID,
+                    },
+                  description:
+                    {
+                      example: header group description,
+                      type: string,
+                      description: Header Component Description,
+                    },
+                  curriculum_id:
+                    {
+                      example: header group description,
+                      type: string,
+                      description: Curriculum ID,
                     },
                 },
             },
