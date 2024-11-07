@@ -16,6 +16,7 @@
     - [Approver](#modules-teaching_modules-v1-shared-Approver)
     - [Component](#modules-teaching_modules-v1-shared-Component)
     - [Content](#modules-teaching_modules-v1-shared-Content)
+    - [GroupComponent](#modules-teaching_modules-v1-shared-GroupComponent)
     - [TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule)
   
     - [ComponentType](#modules-teaching_modules-v1-shared-ComponentType)
@@ -123,6 +124,7 @@ study material
 | publish_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| description | [string](#string) |  |  |
 
 
 
@@ -170,10 +172,8 @@ study material
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| parent_id | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| component_type | [ComponentType](#modules-teaching_modules-v1-shared-ComponentType) |  |  |
-| content | [Content](#modules-teaching_modules-v1-shared-Content) | repeated |  |
+| group_components | [GroupComponent](#modules-teaching_modules-v1-shared-GroupComponent) | repeated |  |
 
 
 
@@ -196,6 +196,25 @@ study material
 
 
 
+<a name="modules-teaching_modules-v1-shared-GroupComponent"></a>
+
+### GroupComponent
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| parent_id | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| component_type | [ComponentType](#modules-teaching_modules-v1-shared-ComponentType) |  |  |
+| content | [Content](#modules-teaching_modules-v1-shared-Content) | repeated |  |
+
+
+
+
+
+
 <a name="modules-teaching_modules-v1-shared-TeachingModule"></a>
 
 ### TeachingModule
@@ -206,7 +225,7 @@ study material
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
-| learning_profile | [string](#string) |  |  |
+| learning_profile | [string](#string) | repeated |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | subject_id | [string](#string) |  |  |
@@ -220,6 +239,7 @@ study material
 | folders | [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | repeated |  |
 | curriculum_id | [string](#string) |  |  |
 | description | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 
 
 

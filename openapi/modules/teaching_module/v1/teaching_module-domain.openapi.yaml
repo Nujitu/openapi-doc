@@ -1315,8 +1315,48 @@
               type: object,
               properties:
                 {
+                  id: { type: string, description: header component id },
+                  description:
+                    {
+                      type: string,
+                      description: description header component id,
+                    },
+                  group_components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedGroupComponent",
+                        },
+                      description: group component,
+                    },
+                },
+            },
+          sharedContent:
+            {
+              type: object,
+              properties:
+                {
+                  text:
+                    { type: string, description: CurriculumGroupComponentID },
+                  value:
+                    {
+                      type: boolean,
+                      description: Curriculum Group Component Description,
+                    },
+                },
+            },
+          sharedGroupComponent:
+            {
+              type: object,
+              properties:
+                {
                   id: { type: string, description: component id },
-                  parent_id: { type: string, description: component id },
+                  parent_id:
+                    {
+                      type: string,
+                      description: parent component id from curriculum,
+                    },
                   description:
                     {
                       type: string,
@@ -1348,20 +1388,6 @@
                     },
                 },
             },
-          sharedContent:
-            {
-              type: object,
-              properties:
-                {
-                  text:
-                    { type: string, description: CurriculumGroupComponentID },
-                  value:
-                    {
-                      type: boolean,
-                      description: Curriculum Group Component Description,
-                    },
-                },
-            },
           sharedTeachingModule:
             {
               type: object,
@@ -1372,7 +1398,8 @@
                     { type: string, description: Title for teaching module },
                   learning_profile:
                     {
-                      type: string,
+                      type: array,
+                      items: { type: string },
                       description: Learning Profile associated with teaching module,
                     },
                   start_date:
@@ -1453,7 +1480,8 @@
                       description: List of folder for teaching module,
                     },
                   curriculum_id: { type: string, description: curriculum ID },
-                  description: { type: string, description: curriculum ID },
+                  description: { type: string, description: Description },
+                  teacher_id: { type: string, description: teacher id },
                 },
             },
           publicCreateStudyMaterialResponse:
@@ -1570,6 +1598,11 @@
                       type: string,
                       description: Timestamp when the study material was last updated,
                       format: date-time,
+                    },
+                  description:
+                    {
+                      type: string,
+                      description: description from study material,
                     },
                 },
               description: study material,
