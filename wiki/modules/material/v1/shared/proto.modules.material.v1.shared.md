@@ -19,6 +19,9 @@
   
     - [ComponentType](#modules-material-v1-shared-ComponentType)
   
+- [modules/material/v1/shared/header_component.proto](#modules_material_v1_shared_header_component-proto)
+    - [HeaderComponent](#modules-material-v1-shared-HeaderComponent)
+  
 - [modules/material/v1/shared/subject.proto](#modules_material_v1_shared_subject-proto)
     - [Subject](#modules-material-v1-shared-Subject)
   
@@ -179,6 +182,7 @@
 | id | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | component_type | [ComponentType](#modules-material-v1-shared-ComponentType) |  |  |
+| header_id | [string](#string) |  |  |
 
 
 
@@ -201,6 +205,40 @@
 | CHECKLIST | 4 |  |
 | RADIO_BUTTON | 5 |  |
 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_header_component-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/header_component.proto
+
+
+
+<a name="modules-material-v1-shared-HeaderComponent"></a>
+
+### HeaderComponent
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+
+
+
+
+
+ 
 
  
 
