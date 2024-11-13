@@ -39,12 +39,23 @@
     - [CreateCurriculumGroupComponentRequest](#modules-material-v1-public-CreateCurriculumGroupComponentRequest)
     - [CurriculumGroupComponentResponse](#modules-material-v1-public-CurriculumGroupComponentResponse)
     - [DeleteCurriculumGroupComponentRequest](#modules-material-v1-public-DeleteCurriculumGroupComponentRequest)
-    - [GetCurriculumGroupComponentDetailByCurriculumIDRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailByCurriculumIDRequest)
+    - [GetCurriculumGroupComponentDetailByHeaderRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailByHeaderRequest)
     - [GetCurriculumGroupComponentDetailRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailRequest)
     - [GetCurriculumGroupComponentResponse](#modules-material-v1-public-GetCurriculumGroupComponentResponse)
     - [UpdateCurriculumGroupComponentRequest](#modules-material-v1-public-UpdateCurriculumGroupComponentRequest)
   
     - [CurriculumGroupComponentService](#modules-material-v1-public-CurriculumGroupComponentService)
+  
+- [modules/material/v1/public/header_component.proto](#modules_material_v1_public_header_component-proto)
+    - [CreateHeaderComponentRequest](#modules-material-v1-public-CreateHeaderComponentRequest)
+    - [DeleteHeaderComponentRequest](#modules-material-v1-public-DeleteHeaderComponentRequest)
+    - [GetHeaderComponentByCurriculumIDRequest](#modules-material-v1-public-GetHeaderComponentByCurriculumIDRequest)
+    - [GetHeaderComponentDetailRequest](#modules-material-v1-public-GetHeaderComponentDetailRequest)
+    - [GetHeaderComponentResponse](#modules-material-v1-public-GetHeaderComponentResponse)
+    - [HeaderComponentResponse](#modules-material-v1-public-HeaderComponentResponse)
+    - [UpdateHeaderComponentRequest](#modules-material-v1-public-UpdateHeaderComponentRequest)
+  
+    - [HeaderComponentService](#modules-material-v1-public-HeaderComponentService)
   
 - [modules/material/v1/public/subject.proto](#modules_material_v1_public_subject-proto)
     - [CreateSubjectRequest](#modules-material-v1-public-CreateSubjectRequest)
@@ -578,15 +589,15 @@ Service for user related feature
 
 
 
-<a name="modules-material-v1-public-GetCurriculumGroupComponentDetailByCurriculumIDRequest"></a>
+<a name="modules-material-v1-public-GetCurriculumGroupComponentDetailByHeaderRequest"></a>
 
-### GetCurriculumGroupComponentDetailByCurriculumIDRequest
+### GetCurriculumGroupComponentDetailByHeaderRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| curriculum_id | [string](#string) |  |  |
+| header_id | [string](#string) |  |  |
 
 
 
@@ -655,7 +666,142 @@ Service for user related feature
 | UpdateCurriculumGroupComponent | [UpdateCurriculumGroupComponentRequest](#modules-material-v1-public-UpdateCurriculumGroupComponentRequest) | [.modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |
 | DeleteCurriculumGroupComponent | [DeleteCurriculumGroupComponentRequest](#modules-material-v1-public-DeleteCurriculumGroupComponentRequest) | [CurriculumGroupComponentResponse](#modules-material-v1-public-CurriculumGroupComponentResponse) |  |
 | GetCurriculumGroupComponentDetail | [GetCurriculumGroupComponentDetailRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailRequest) | [.modules.material.v1.shared.CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) |  |
-| GetCurriculumGroupComponentByCurriculumID | [GetCurriculumGroupComponentDetailByCurriculumIDRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailByCurriculumIDRequest) | [GetCurriculumGroupComponentResponse](#modules-material-v1-public-GetCurriculumGroupComponentResponse) |  |
+| GetCurriculumGroupComponentByHeader | [GetCurriculumGroupComponentDetailByHeaderRequest](#modules-material-v1-public-GetCurriculumGroupComponentDetailByHeaderRequest) | [GetCurriculumGroupComponentResponse](#modules-material-v1-public-GetCurriculumGroupComponentResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_public_header_component-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/public/header_component.proto
+
+
+
+<a name="modules-material-v1-public-CreateHeaderComponentRequest"></a>
+
+### CreateHeaderComponentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header_component | [modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteHeaderComponentRequest"></a>
+
+### DeleteHeaderComponentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetHeaderComponentByCurriculumIDRequest"></a>
+
+### GetHeaderComponentByCurriculumIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetHeaderComponentDetailRequest"></a>
+
+### GetHeaderComponentDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetHeaderComponentResponse"></a>
+
+### GetHeaderComponentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header_components | [modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-HeaderComponentResponse"></a>
+
+### HeaderComponentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateHeaderComponentRequest"></a>
+
+### UpdateHeaderComponentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| header_component | [modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-public-HeaderComponentService"></a>
+
+### HeaderComponentService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateHeaderComponent | [CreateHeaderComponentRequest](#modules-material-v1-public-CreateHeaderComponentRequest) | [.modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) |  |
+| UpdateHeaderComponent | [UpdateHeaderComponentRequest](#modules-material-v1-public-UpdateHeaderComponentRequest) | [.modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) |  |
+| DeleteHeaderComponent | [DeleteHeaderComponentRequest](#modules-material-v1-public-DeleteHeaderComponentRequest) | [HeaderComponentResponse](#modules-material-v1-public-HeaderComponentResponse) |  |
+| GetHeaderComponentDetail | [GetHeaderComponentDetailRequest](#modules-material-v1-public-GetHeaderComponentDetailRequest) | [.modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) |  |
+| GetHeaderComponentByCurriculumID | [GetHeaderComponentByCurriculumIDRequest](#modules-material-v1-public-GetHeaderComponentByCurriculumIDRequest) | [GetHeaderComponentResponse](#modules-material-v1-public-GetHeaderComponentResponse) |  |
 
  
 
