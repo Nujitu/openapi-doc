@@ -13,6 +13,7 @@
     - [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory)
     - [AssessmentQuizQuestionType](#modules-assessment-v1-shared-AssessmentQuizQuestionType)
     - [AssessmentType](#modules-assessment-v1-shared-AssessmentType)
+    - [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod)
     - [SubmissionState](#modules-assessment-v1-shared-SubmissionState)
   
 - [modules/assessment/v1/shared/observation.proto](#modules_assessment_v1_shared_observation-proto)
@@ -55,10 +56,10 @@
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| available_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| point | [float](#float) |  |  |
+| instruction | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
@@ -67,6 +68,9 @@
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| assignee | [string](#string) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -84,9 +88,11 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment_id | [string](#string) |  |  |
-| assigned | [uint32](#uint32) |  |  |
-| submitted | [uint32](#uint32) |  |  |
-| assessed | [uint32](#uint32) |  |  |
+| no_submission | [uint32](#uint32) |  |  |
+| need_grading | [uint32](#uint32) |  |  |
+| graded | [uint32](#uint32) |  |  |
+| submitted_on_time | [uint32](#uint32) |  |  |
+| submitted_late | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -110,7 +116,7 @@
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
-| finalized | [bool](#bool) |  |  |
+| submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -188,6 +194,18 @@
 
 
 
+<a name="modules-assessment-v1-shared-ScoringMethod"></a>
+
+### ScoringMethod
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| MANUAL | 0 |  |
+| RUBRIC | 1 |  |
+
+
+
 <a name="modules-assessment-v1-shared-SubmissionState"></a>
 
 ### SubmissionState
@@ -252,8 +270,8 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observation_id | [string](#string) |  |  |
-| assigned | [uint32](#uint32) |  |  |
-| assessed | [uint32](#uint32) |  |  |
+| need_grading | [uint32](#uint32) |  |  |
+| graded | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -475,6 +493,7 @@
 | description | [string](#string) |  |  |
 | total_point | [float](#float) |  |  |
 | criteria | [Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
+| teacher_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

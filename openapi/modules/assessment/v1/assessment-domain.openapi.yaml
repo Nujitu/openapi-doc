@@ -21,22 +21,22 @@
               parameters:
                 [
                   {
-                    name: start_date_gt,
+                    name: available_date_gt,
                     in: query,
                     schema: { type: string, format: date-time },
                   },
                   {
-                    name: start_date_gte,
+                    name: available_date_gte,
                     in: query,
                     schema: { type: string, format: date-time },
                   },
                   {
-                    name: start_date_lt,
+                    name: available_date_lt,
                     in: query,
                     schema: { type: string, format: date-time },
                   },
                   {
-                    name: start_date_lte,
+                    name: available_date_lte,
                     in: query,
                     schema: { type: string, format: date-time },
                   },
@@ -61,29 +61,33 @@
                     schema: { type: string, format: date-time },
                   },
                   {
-                    name: until_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: until_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
                     name: teaching_module_folder_id,
                     in: query,
                     schema: { type: string },
+                  },
+                  { name: rubric_id, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: scoring_method,
+                    in: query,
+                    schema:
+                      { enum: [MANUAL, RUBRIC], type: string, format: enum },
+                  },
+                  {
+                    name: assignment_type,
+                    in: query,
+                    schema:
+                      {
+                        enum: [FORMATIVE, SUMMATIVE],
+                        type: string,
+                        format: enum,
+                      },
                   },
                   { name: sort, in: query, schema: { type: string } },
                   {
@@ -2900,7 +2904,7 @@
                     },
                   description:
                     { type: string, description: Assignment description },
-                  start_date:
+                  available_date:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
@@ -2914,18 +2918,13 @@
                       description: Assignment deadline,
                       format: date-time,
                     },
-                  until_date:
+                  instruction:
+                    { type: string, description: Assignment instruction },
+                  index_minimum:
                     {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Available until date,
-                      format: date-time,
-                    },
-                  point:
-                    {
-                      example: 100.0,
+                      example: 75.0,
                       type: number,
-                      description: Assignment point,
+                      description: Assignment index minimum on scale of 0 to 100,
                       format: float,
                     },
                   learning_goals:
@@ -2961,6 +2960,32 @@
                       type: string,
                       description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
                     },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Assignment scoring method,
+                      format: enum,
+                    },
+                  assignment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Assignment assessment type,
+                      format: enum,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of student ids who are given assignments,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
                 },
             },
           publicCreateAssignmentResponse:
@@ -3157,7 +3182,7 @@
                     },
                   description:
                     { type: string, description: Assignment description },
-                  start_date:
+                  available_date:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
@@ -3171,18 +3196,13 @@
                       description: Assignment deadline,
                       format: date-time,
                     },
-                  until_date:
+                  instruction:
+                    { type: string, description: Assignment instruction },
+                  index_minimum:
                     {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Available until date,
-                      format: date-time,
-                    },
-                  point:
-                    {
-                      example: 100.0,
+                      example: 75.0,
                       type: number,
-                      description: Assignment point,
+                      description: Assignment index minimum on scale of 0 to 100,
                       format: float,
                     },
                   learning_goals:
@@ -3194,6 +3214,30 @@
                     },
                   publish:
                     { type: boolean, description: Assignment publish status },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Assignment scoring method,
+                      format: enum,
+                    },
+                  assignment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Assignment assessment type,
+                      format: enum,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of student ids who are given assignments,
+                    },
                 },
             },
           publicUpdateAssignmentResponse:
@@ -3267,7 +3311,7 @@
                     },
                   description:
                     { type: string, description: Assignment description },
-                  start_date:
+                  available_date:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
@@ -3281,18 +3325,13 @@
                       description: Assignment deadline,
                       format: date-time,
                     },
-                  until_date:
+                  instruction:
+                    { type: string, description: Assignment instruction },
+                  index_minimum:
                     {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Available until date,
-                      format: date-time,
-                    },
-                  point:
-                    {
-                      example: 100.0,
+                      example: 75.0,
                       type: number,
-                      description: Assignment point,
+                      description: Assignment index minimum on scale of 0 to 100,
                       format: float,
                     },
                   learning_goals:
@@ -3332,6 +3371,28 @@
                       type: string,
                       description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
                     },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Assignment scoring method,
+                      format: enum,
+                    },
+                  assignment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Assignment assessment type,
+                      format: enum,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of student ids who are given assignments,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -3355,25 +3416,39 @@
                 {
                   assignment_id:
                     { example: 123, type: string, description: Assignment ID },
-                  assigned:
+                  no_submission:
                     {
                       example: 123,
                       type: integer,
-                      description: The number of the assignee,
+                      description: The number of students who have been assigned but haven't submitted the assignment yet,
                       format: uint32,
                     },
-                  submitted:
+                  need_grading:
                     {
                       example: 123,
                       type: integer,
-                      description: The number of students who have submitted the assignment,
+                      description: The number of students who needs to be graded,
                       format: uint32,
                     },
-                  assessed:
+                  graded:
                     {
                       example: 123,
                       type: integer,
-                      description: The number of student assignments that have been assessed,
+                      description: The number of student who have been graded,
+                      format: uint32,
+                    },
+                  submitted_on_time:
+                    {
+                      example: 123,
+                      type: integer,
+                      description: The number of students who submit their assignments on time,
+                      format: uint32,
+                    },
+                  submitted_late:
+                    {
+                      example: 123,
+                      type: integer,
+                      description: The number of students who submit their assignments late,
                       format: uint32,
                     },
                   created_at:
@@ -3422,17 +3497,20 @@
                     {
                       example: 100.0,
                       type: number,
-                      description: The points earned by students,
+                      description: The points earned by students on scale of 0 to 100,
                       format: float,
                     },
                   RubricSubmission:
                     {
                       $ref: "#/components/schemas/sharedRubricSubmission",
                     },
-                  finalized:
+                  submission_state:
                     {
-                      type: boolean,
-                      description: Finalization status of the submission,
+                      example: RUBRIC,
+                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      type: string,
+                      description: Assignment scoring method,
+                      format: enum,
                     },
                   created_at:
                     {
@@ -4212,18 +4290,18 @@
                 {
                   observation_id:
                     { example: 123, type: string, description: Observation ID },
-                  assigned:
+                  need_grading:
                     {
                       example: 123,
                       type: integer,
-                      description: The number of the assignee,
+                      description: The number of students who needs to be graded,
                       format: uint32,
                     },
-                  assessed:
+                  graded:
                     {
                       example: 123,
                       type: integer,
-                      description: The number of student observations that have been assessed,
+                      description: The number of student who have been graded,
                       format: uint32,
                     },
                   created_at:
@@ -4791,6 +4869,8 @@
                         },
                       description: The list of rubric criteria,
                     },
+                  teacher_id:
+                    { example: 123, type: string, description: Teacher ID },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",

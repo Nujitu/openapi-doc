@@ -158,16 +158,21 @@
 | ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| available_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| point | [float](#float) |  |  |
+| instruction | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| assignee | [string](#string) | repeated |  |
+| instance_id | [string](#string) |  |  |
 
 
 
@@ -443,19 +448,21 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| start_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| start_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| start_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| start_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| due_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| due_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| due_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| due_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| until_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| teaching_module_folder_id | [string](#string) |  |  |
+| available_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| available_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| available_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| available_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| due_date_gt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| due_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| due_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| due_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| teaching_module_folder_id | [string](#string) | optional |  |
+| rubric_id | [string](#string) | optional |  |
+| class_subject_id | [string](#string) | optional |  |
+| subject_id | [string](#string) | optional |  |
+| teacher_id | [string](#string) | optional |  |
+| scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
+| assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -525,12 +532,16 @@
 | id | [string](#string) |  |  |
 | title | [string](#string) | optional |  |
 | description | [string](#string) | optional |  |
-| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| available_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
-| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
-| point | [float](#float) | optional |  |
+| instruction | [string](#string) | optional |  |
+| index_minimum | [float](#float) | optional |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) | optional |  |
+| rubric_id | [string](#string) | optional |  |
+| scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
+| assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
+| assignee | [string](#string) | repeated |  |
 
 
 
