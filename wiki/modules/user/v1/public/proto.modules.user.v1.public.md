@@ -3,15 +3,30 @@
 
 ## Table of Contents
 
+- [modules/user/v1/public/school.proto](#modules_user_v1_public_school-proto)
+    - [CreateSchoolRequest](#modules-user-v1-public-CreateSchoolRequest)
+    - [CreateSchoolResponse](#modules-user-v1-public-CreateSchoolResponse)
+    - [GetSchoolByIDRequest](#modules-user-v1-public-GetSchoolByIDRequest)
+    - [GetSchoolListRequest](#modules-user-v1-public-GetSchoolListRequest)
+    - [GetSchoolListResponse](#modules-user-v1-public-GetSchoolListResponse)
+  
+    - [SchoolService](#modules-user-v1-public-SchoolService)
+  
 - [modules/user/v1/public/student.proto](#modules_user_v1_public_student-proto)
-    - [GetStudentInstanceRequest](#-GetStudentInstanceRequest)
-    - [GetStudentInstanceResponse](#-GetStudentInstanceResponse)
-    - [RegisterStudentRequest](#-RegisterStudentRequest)
-    - [RegisterStudentResponse](#-RegisterStudentResponse)
-    - [UpdateStudentStatusRequest](#-UpdateStudentStatusRequest)
-    - [UpdateStudentStatusResponse](#-UpdateStudentStatusResponse)
+    - [GetStudentByIDRequest](#-GetStudentByIDRequest)
+    - [GetStudentListRequest](#-GetStudentListRequest)
+    - [GetStudentListResponse](#-GetStudentListResponse)
+    - [StudentResponse](#-StudentResponse)
   
     - [StudentService](#-StudentService)
+  
+- [modules/user/v1/public/teacher.proto](#modules_user_v1_public_teacher-proto)
+    - [GetTeacherByIDRequest](#-GetTeacherByIDRequest)
+    - [GetTeacherListRequest](#-GetTeacherListRequest)
+    - [GetTeacherListResponse](#-GetTeacherListResponse)
+    - [TeacherResponse](#-TeacherResponse)
+  
+    - [TeacherService](#-TeacherService)
   
 - [modules/user/v1/public/user.proto](#modules_user_v1_public_user-proto)
     - [CreateUserRequest](#modules-user-v1-public-CreateUserRequest)
@@ -30,6 +45,125 @@
 
 
 
+<a name="modules_user_v1_public_school-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/public/school.proto
+
+
+
+<a name="modules-user-v1-public-CreateSchoolRequest"></a>
+
+### CreateSchoolRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| type | [modules.user.v1.shared.SchoolType](#modules-user-v1-shared-SchoolType) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| level | [modules.user.v1.shared.EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
+| province | [string](#string) |  |  |
+| img_url | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-CreateSchoolResponse"></a>
+
+### CreateSchoolResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| school | [modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-GetSchoolByIDRequest"></a>
+
+### GetSchoolByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-GetSchoolListRequest"></a>
+
+### GetSchoolListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| type | [modules.user.v1.shared.SchoolType](#modules-user-v1-shared-SchoolType) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| level | [modules.user.v1.shared.EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
+| province | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-GetSchoolListResponse"></a>
+
+### GetSchoolListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| schools | [modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-user-v1-public-SchoolService"></a>
+
+### SchoolService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateSchool | [CreateSchoolRequest](#modules-user-v1-public-CreateSchoolRequest) | [CreateSchoolResponse](#modules-user-v1-public-CreateSchoolResponse) |  |
+| GetSchoolByID | [GetSchoolByIDRequest](#modules-user-v1-public-GetSchoolByIDRequest) | [.modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |
+| GetSchoolList | [GetSchoolListRequest](#modules-user-v1-public-GetSchoolListRequest) | [GetSchoolListResponse](#modules-user-v1-public-GetSchoolListResponse) |  |
+
+ 
+
+
+
 <a name="modules_user_v1_public_student-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -37,92 +171,80 @@
 
 
 
-<a name="-GetStudentInstanceRequest"></a>
+<a name="-GetStudentByIDRequest"></a>
 
-### GetStudentInstanceRequest
+### GetStudentByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-GetStudentListRequest"></a>
+
+### GetStudentListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| nisn | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="-GetStudentListResponse"></a>
+
+### GetStudentListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| list | [StudentResponse](#StudentResponse) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="-StudentResponse"></a>
+
+### StudentResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-GetStudentInstanceResponse"></a>
-
-### GetStudentInstanceResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) | repeated |  |
-
-
-
-
-
-
-<a name="-RegisterStudentRequest"></a>
-
-### RegisterStudentRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) |  |  |
-
-
-
-
-
-
-<a name="-RegisterStudentResponse"></a>
-
-### RegisterStudentResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-UpdateStudentStatusRequest"></a>
-
-### UpdateStudentStatusRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
+| nisn | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
 | status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
-
-
-
-
-
-
-<a name="-UpdateStudentStatusResponse"></a>
-
-### UpdateStudentStatusResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
-| message | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| profile_pic | [string](#string) |  |  |
+| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
@@ -142,9 +264,115 @@ Service for student related feature
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetStudentRegisteredInstances | [.GetStudentInstanceRequest](#GetStudentInstanceRequest) | [.GetStudentInstanceResponse](#GetStudentInstanceResponse) |  |
-| RegisterStudentToInstance | [.RegisterStudentRequest](#RegisterStudentRequest) | [.RegisterStudentResponse](#RegisterStudentResponse) |  |
-| UpdateStudentStatus | [.UpdateStudentStatusRequest](#UpdateStudentStatusRequest) | [.UpdateStudentStatusResponse](#UpdateStudentStatusResponse) |  |
+| GetStudentByID | [.GetStudentByIDRequest](#GetStudentByIDRequest) | [.StudentResponse](#StudentResponse) |  |
+| GetStudentList | [.GetStudentListRequest](#GetStudentListRequest) | [.GetStudentListResponse](#GetStudentListResponse) |  |
+
+ 
+
+
+
+<a name="modules_user_v1_public_teacher-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/user/v1/public/teacher.proto
+
+
+
+<a name="-GetTeacherByIDRequest"></a>
+
+### GetTeacherByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-GetTeacherListRequest"></a>
+
+### GetTeacherListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| nip | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="-GetTeacherListResponse"></a>
+
+### GetTeacherListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teachers | [TeacherResponse](#TeacherResponse) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="-TeacherResponse"></a>
+
+### TeacherResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| nip | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
+| status | [modules.user.v1.shared.TeacherStatus](#modules-user-v1-shared-TeacherStatus) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| profile_pic | [string](#string) |  |  |
+| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="-TeacherService"></a>
+
+### TeacherService
+Service for teacher related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetTeacherByID | [.GetTeacherByIDRequest](#GetTeacherByIDRequest) | [.TeacherResponse](#TeacherResponse) |  |
+| GetTeacherList | [.GetTeacherListRequest](#GetTeacherListRequest) | [.GetTeacherListResponse](#GetTeacherListResponse) |  |
 
  
 
@@ -249,6 +477,7 @@ Response body of Invite
 | email | [string](#string) |  |  |
 | instance | [string](#string) |  |  |
 | role | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| role_id | [string](#string) | optional |  |
 
 
 
