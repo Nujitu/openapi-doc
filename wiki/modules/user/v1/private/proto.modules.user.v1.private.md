@@ -4,12 +4,18 @@
 ## Table of Contents
 
 - [modules/user/v1/private/student.proto](#modules_user_v1_private_student-proto)
+    - [GetStudentByIDRequest](#modules-user-v1-private-GetStudentByIDRequest)
+    - [GetStudentByIDResponse](#modules-user-v1-private-GetStudentByIDResponse)
+    - [GetStudentByIDsRequest](#modules-user-v1-private-GetStudentByIDsRequest)
+    - [GetStudentByIDsResponse](#modules-user-v1-private-GetStudentByIDsResponse)
     - [RegisterRequest](#modules-user-v1-private-RegisterRequest)
     - [RegisterResponse](#modules-user-v1-private-RegisterResponse)
   
     - [StudentPrivateService](#modules-user-v1-private-StudentPrivateService)
   
 - [modules/user/v1/private/teacher.proto](#modules_user_v1_private_teacher-proto)
+    - [GetTeacherByIDRequest](#modules-user-v1-private-GetTeacherByIDRequest)
+    - [GetTeacherByIDResponse](#modules-user-v1-private-GetTeacherByIDResponse)
     - [RegisterTeacherRequest](#modules-user-v1-private-RegisterTeacherRequest)
     - [RegisterTeacherResponse](#modules-user-v1-private-RegisterTeacherResponse)
   
@@ -23,6 +29,66 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/private/student.proto
+
+
+
+<a name="modules-user-v1-private-GetStudentByIDRequest"></a>
+
+### GetStudentByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByIDResponse"></a>
+
+### GetStudentByIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByIDsRequest"></a>
+
+### GetStudentByIDsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByIDsResponse"></a>
+
+### GetStudentByIDsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) | repeated |  |
+
+
+
 
 
 
@@ -70,6 +136,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Register | [RegisterRequest](#modules-user-v1-private-RegisterRequest) | [RegisterResponse](#modules-user-v1-private-RegisterResponse) |  |
+| GetStudentByID | [GetStudentByIDRequest](#modules-user-v1-private-GetStudentByIDRequest) | [GetStudentByIDResponse](#modules-user-v1-private-GetStudentByIDResponse) |  |
+| GetStudentByIDs | [GetStudentByIDsRequest](#modules-user-v1-private-GetStudentByIDsRequest) | [GetStudentByIDsResponse](#modules-user-v1-private-GetStudentByIDsResponse) |  |
 
  
 
@@ -79,6 +147,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/private/teacher.proto
+
+
+
+<a name="modules-user-v1-private-GetTeacherByIDRequest"></a>
+
+### GetTeacherByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetTeacherByIDResponse"></a>
+
+### GetTeacherByIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teacher | [modules.user.v1.shared.Teacher](#modules-user-v1-shared-Teacher) |  |  |
+
+
+
 
 
 
@@ -126,6 +224,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Register | [RegisterTeacherRequest](#modules-user-v1-private-RegisterTeacherRequest) | [RegisterTeacherResponse](#modules-user-v1-private-RegisterTeacherResponse) |  |
+| GetByID | [GetTeacherByIDRequest](#modules-user-v1-private-GetTeacherByIDRequest) | [GetTeacherByIDResponse](#modules-user-v1-private-GetTeacherByIDResponse) |  |
 
  
 
