@@ -4,12 +4,18 @@
 ## Table of Contents
 
 - [modules/user/v1/private/student.proto](#modules_user_v1_private_student-proto)
+    - [GetStudentByUserIDRequest](#modules-user-v1-private-GetStudentByUserIDRequest)
+    - [GetStudentByUserIDResponse](#modules-user-v1-private-GetStudentByUserIDResponse)
+    - [GetStudentByUserIDsRequest](#modules-user-v1-private-GetStudentByUserIDsRequest)
+    - [GetStudentByUserIDsResponse](#modules-user-v1-private-GetStudentByUserIDsResponse)
     - [RegisterRequest](#modules-user-v1-private-RegisterRequest)
     - [RegisterResponse](#modules-user-v1-private-RegisterResponse)
   
     - [StudentPrivateService](#modules-user-v1-private-StudentPrivateService)
   
 - [modules/user/v1/private/teacher.proto](#modules_user_v1_private_teacher-proto)
+    - [GetTeacherByUserIDRequest](#modules-user-v1-private-GetTeacherByUserIDRequest)
+    - [GetTeacherByUserIDResponse](#modules-user-v1-private-GetTeacherByUserIDResponse)
     - [RegisterTeacherRequest](#modules-user-v1-private-RegisterTeacherRequest)
     - [RegisterTeacherResponse](#modules-user-v1-private-RegisterTeacherResponse)
   
@@ -23,6 +29,66 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/private/student.proto
+
+
+
+<a name="modules-user-v1-private-GetStudentByUserIDRequest"></a>
+
+### GetStudentByUserIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByUserIDResponse"></a>
+
+### GetStudentByUserIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByUserIDsRequest"></a>
+
+### GetStudentByUserIDsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByUserIDsResponse"></a>
+
+### GetStudentByUserIDsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) | repeated |  |
+
+
+
 
 
 
@@ -70,6 +136,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Register | [RegisterRequest](#modules-user-v1-private-RegisterRequest) | [RegisterResponse](#modules-user-v1-private-RegisterResponse) |  |
+| GetStudentByUserID | [GetStudentByUserIDRequest](#modules-user-v1-private-GetStudentByUserIDRequest) | [GetStudentByUserIDResponse](#modules-user-v1-private-GetStudentByUserIDResponse) |  |
+| GetStudentByUserIDs | [GetStudentByUserIDsRequest](#modules-user-v1-private-GetStudentByUserIDsRequest) | [GetStudentByUserIDsResponse](#modules-user-v1-private-GetStudentByUserIDsResponse) |  |
 
  
 
@@ -79,6 +147,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/private/teacher.proto
+
+
+
+<a name="modules-user-v1-private-GetTeacherByUserIDRequest"></a>
+
+### GetTeacherByUserIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetTeacherByUserIDResponse"></a>
+
+### GetTeacherByUserIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teacher | [modules.user.v1.shared.Teacher](#modules-user-v1-shared-Teacher) |  |  |
+
+
+
 
 
 
@@ -126,6 +224,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Register | [RegisterTeacherRequest](#modules-user-v1-private-RegisterTeacherRequest) | [RegisterTeacherResponse](#modules-user-v1-private-RegisterTeacherResponse) |  |
+| GetByUserID | [GetTeacherByUserIDRequest](#modules-user-v1-private-GetTeacherByUserIDRequest) | [GetTeacherByUserIDResponse](#modules-user-v1-private-GetTeacherByUserIDResponse) |  |
 
  
 
