@@ -9,6 +9,24 @@
   
     - [AdminUserService](#modules-authentication-v1-public-AdminUserService)
   
+- [modules/authentication/v1/public/auth.proto](#modules_authentication_v1_public_auth-proto)
+    - [LoginRequest](#modules-authentication-v1-public-LoginRequest)
+    - [LoginResponse](#modules-authentication-v1-public-LoginResponse)
+    - [LogoutRequest](#modules-authentication-v1-public-LogoutRequest)
+    - [LogoutResponse](#modules-authentication-v1-public-LogoutResponse)
+    - [RefreshTokenRequest](#modules-authentication-v1-public-RefreshTokenRequest)
+    - [RefreshTokenResponse](#modules-authentication-v1-public-RefreshTokenResponse)
+    - [ResetPasswordRequest](#modules-authentication-v1-public-ResetPasswordRequest)
+    - [ResetPasswordResponse](#modules-authentication-v1-public-ResetPasswordResponse)
+  
+    - [AuthService](#modules-authentication-v1-public-AuthService)
+  
+- [modules/authentication/v1/public/identity.proto](#modules_authentication_v1_public_identity-proto)
+    - [RegisterRequest](#modules-authentication-v1-public-RegisterRequest)
+    - [RegisterResponse](#modules-authentication-v1-public-RegisterResponse)
+  
+    - [IdentityService](#modules-authentication-v1-public-IdentityService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -72,6 +90,223 @@ Service for user related feature
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | RegisterUser | [RegisterUserRequest](#modules-authentication-v1-public-RegisterUserRequest) | [RegisterUserResponse](#modules-authentication-v1-public-RegisterUserResponse) |  |
+
+ 
+
+
+
+<a name="modules_authentication_v1_public_auth-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/authentication/v1/public/auth.proto
+
+
+
+<a name="modules-authentication-v1-public-LoginRequest"></a>
+
+### LoginRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+| password | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-LoginResponse"></a>
+
+### LoginResponse
+Response body of Login
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| login_entity | [modules.authentication.v1.shared.LoginEntity](#modules-authentication-v1-shared-LoginEntity) |  |  |
+| redirect_to | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-LogoutRequest"></a>
+
+### LogoutRequest
+Request body of Logout
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_access_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-LogoutResponse"></a>
+
+### LogoutResponse
+Response body of Logout
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  | message if logout is success |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-RefreshTokenRequest"></a>
+
+### RefreshTokenRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_access_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-RefreshTokenResponse"></a>
+
+### RefreshTokenResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_access_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-ResetPasswordRequest"></a>
+
+### ResetPasswordRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| current_password | [string](#string) |  |  |
+| new_password | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-ResetPasswordResponse"></a>
+
+### ResetPasswordResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-authentication-v1-public-AuthService"></a>
+
+### AuthService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Login | [LoginRequest](#modules-authentication-v1-public-LoginRequest) | [LoginResponse](#modules-authentication-v1-public-LoginResponse) | Logging in user |
+| Logout | [LogoutRequest](#modules-authentication-v1-public-LogoutRequest) | [LogoutResponse](#modules-authentication-v1-public-LogoutResponse) | Logging out user by invalidating provided access token |
+| RefreshToken | [RefreshTokenRequest](#modules-authentication-v1-public-RefreshTokenRequest) | [RefreshTokenResponse](#modules-authentication-v1-public-RefreshTokenResponse) |  |
+| ResetPassword | [ResetPasswordRequest](#modules-authentication-v1-public-ResetPasswordRequest) | [ResetPasswordResponse](#modules-authentication-v1-public-ResetPasswordResponse) |  |
+
+ 
+
+
+
+<a name="modules_authentication_v1_public_identity-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/authentication/v1/public/identity.proto
+
+
+
+<a name="modules-authentication-v1-public-RegisterRequest"></a>
+
+### RegisterRequest
+Request body of Register new user
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fullname | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| password | [string](#string) |  |  |
+| login_challenge | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-RegisterResponse"></a>
+
+### RegisterResponse
+Response body of Register new user
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| user | [modules.authentication.v1.shared.User](#modules-authentication-v1-shared-User) |  |  |
+| token | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-authentication-v1-public-IdentityService"></a>
+
+### IdentityService
+IdentityService contains user identity management functionality such as register/read/update/delete.
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Register | [RegisterRequest](#modules-authentication-v1-public-RegisterRequest) | [RegisterResponse](#modules-authentication-v1-public-RegisterResponse) |  |
 
  
 
