@@ -25,8 +25,8 @@
   
 - [modules/teaching_module/v1/public/teaching_module.proto](#modules_teaching_module_v1_public_teaching_module-proto)
     - [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest)
-    - [GetTeachingModuleBySubjectIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest)
     - [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest)
+    - [GetTeachingModuleListRequest](#modules-teaching_module-v1-public-GetTeachingModuleListRequest)
     - [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse)
     - [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest)
     - [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse)
@@ -308,21 +308,6 @@
 
 
 
-<a name="modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest"></a>
-
-### GetTeachingModuleBySubjectIDRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| subject_id | [string](#string) |  |  |
-
-
-
-
-
-
 <a name="modules-teaching_module-v1-public-GetTeachingModuleDetailRequest"></a>
 
 ### GetTeachingModuleDetailRequest
@@ -332,6 +317,22 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetTeachingModuleListRequest"></a>
+
+### GetTeachingModuleListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 
 
 
@@ -397,7 +398,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
-| GetTeachingModuleBySubjectID | [GetTeachingModuleBySubjectIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleBySubjectIDRequest) | [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse) |  |
+| GetTeachingModuleList | [GetTeachingModuleListRequest](#modules-teaching_module-v1-public-GetTeachingModuleListRequest) | [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse) |  |
 | GetTeachingModuleDetail | [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
 | ApproveTeachingModule | [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 | UpdateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |

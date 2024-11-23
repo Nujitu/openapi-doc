@@ -56,7 +56,7 @@
 <a name="modules-teaching_module-v1-private-InsertFolderTaskRequest"></a>
 
 ### InsertFolderTaskRequest
-
+Insert Folder Task Request
 
 
 | Field | Type | Label | Description |
