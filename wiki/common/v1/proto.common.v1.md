@@ -13,6 +13,11 @@
     - [OffsetPagination](#common-v1-OffsetPagination)
     - [ResponseMetadata](#common-v1-ResponseMetadata)
   
+- [common/v1/s3.proto](#common_v1_s3-proto)
+    - [S3PresignedUrlRequest](#common-v1-S3PresignedUrlRequest)
+    - [S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse)
+    - [S3PresignedValues](#common-v1-S3PresignedValues)
+  
 - [common/v1/type.proto](#common_v1_type-proto)
     - [AttachmentFile](#common-v1-AttachmentFile)
     - [Dict](#common-v1-Dict)
@@ -145,6 +150,74 @@
 | ----- | ---- | ----- | ----------- |
 | offset_pagination | [OffsetPagination](#common-v1-OffsetPagination) |  |  |
 | cursor_pagination | [CursorPagination](#common-v1-CursorPagination) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="common_v1_s3-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## common/v1/s3.proto
+
+
+
+<a name="common-v1-S3PresignedUrlRequest"></a>
+
+### S3PresignedUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| filename | [string](#string) |  |  |
+| filesize | [uint64](#uint64) |  |  |
+
+
+
+
+
+
+<a name="common-v1-S3PresignedUrlResponse"></a>
+
+### S3PresignedUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| url | [string](#string) |  |  |
+| values | [S3PresignedValues](#common-v1-S3PresignedValues) |  |  |
+
+
+
+
+
+
+<a name="common-v1-S3PresignedValues"></a>
+
+### S3PresignedValues
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| X_Amz_Algorithm | [string](#string) |  |  |
+| X_Amz_Credential | [string](#string) |  |  |
+| X_Amz_Date | [string](#string) |  |  |
+| X_Amz_Signature | [string](#string) |  |  |
+| key | [string](#string) |  |  |
+| policy | [string](#string) |  |  |
 
 
 

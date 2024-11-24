@@ -6,6 +6,8 @@
 - [modules/assessment/v1/public/assignment.proto](#modules_assessment_v1_public_assignment-proto)
     - [AssessAssignmentSubmissionRequest](#modules-assessment-v1-public-AssessAssignmentSubmissionRequest)
     - [AssessAssignmentSubmissionResponse](#modules-assessment-v1-public-AssessAssignmentSubmissionResponse)
+    - [CreateAssignmentPresignedPostUrlRequest](#modules-assessment-v1-public-CreateAssignmentPresignedPostUrlRequest)
+    - [CreateAssignmentPresignedPostUrlResponse](#modules-assessment-v1-public-CreateAssignmentPresignedPostUrlResponse)
     - [CreateAssignmentRequest](#modules-assessment-v1-public-CreateAssignmentRequest)
     - [CreateAssignmentResponse](#modules-assessment-v1-public-CreateAssignmentResponse)
     - [CreateAssignmentSubmissionRequest](#modules-assessment-v1-public-CreateAssignmentSubmissionRequest)
@@ -142,6 +144,36 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-CreateAssignmentPresignedPostUrlRequest"></a>
+
+### CreateAssignmentPresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [common.v1.S3PresignedUrlRequest](#common-v1-S3PresignedUrlRequest) | repeated |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-CreateAssignmentPresignedPostUrlResponse"></a>
+
+### CreateAssignmentPresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) | repeated |  |
 
 
 
@@ -624,6 +656,7 @@ Service for assignment related feature
 | AssessAssignmentSubmission | [AssessAssignmentSubmissionRequest](#modules-assessment-v1-public-AssessAssignmentSubmissionRequest) | [AssessAssignmentSubmissionResponse](#modules-assessment-v1-public-AssessAssignmentSubmissionResponse) |  |
 | ListAssignmentSubmission | [ListAssignmentSubmissionRequest](#modules-assessment-v1-public-ListAssignmentSubmissionRequest) | [ListAssignmentSubmissionResponse](#modules-assessment-v1-public-ListAssignmentSubmissionResponse) |  |
 | GetAssignmentStatisticById | [GetAssignmentStatisticByIdRequest](#modules-assessment-v1-public-GetAssignmentStatisticByIdRequest) | [GetAssignmentStatisticByIdResponse](#modules-assessment-v1-public-GetAssignmentStatisticByIdResponse) |  |
+| CreateAssignmentPresignedPostUrl | [CreateAssignmentPresignedPostUrlRequest](#modules-assessment-v1-public-CreateAssignmentPresignedPostUrlRequest) | [CreateAssignmentPresignedPostUrlResponse](#modules-assessment-v1-public-CreateAssignmentPresignedPostUrlResponse) |  |
 
  
 

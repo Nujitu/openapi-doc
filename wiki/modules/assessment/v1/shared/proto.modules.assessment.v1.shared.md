@@ -71,6 +71,7 @@
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | assignee | [string](#string) | repeated |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
