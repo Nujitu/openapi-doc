@@ -47,6 +47,7 @@
 | ----- | ---- | ----- | ----------- |
 | task_id | [string](#string) |  |  |
 | task_type | [string](#string) |  |  |
+| class_group_id | [string](#string) |  |  |
 | student_scores | [StudentScores](#modules-report-v1-private-StudentScores) | repeated |  |
 
 
