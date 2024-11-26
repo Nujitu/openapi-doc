@@ -205,6 +205,7 @@
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | assignee | [string](#string) | repeated |  |
 | instance_id | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 
 
 
@@ -574,6 +575,7 @@
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | assignee | [string](#string) | repeated |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 
 
 

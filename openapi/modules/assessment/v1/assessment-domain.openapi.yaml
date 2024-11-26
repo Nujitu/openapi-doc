@@ -3118,6 +3118,15 @@
                     },
                   instance_id:
                     { example: 123, type: string, description: Instance ID },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
                 },
             },
           publicCreateAssignmentResponse:
@@ -3369,6 +3378,15 @@
                       type: array,
                       items: { type: string },
                       description: List of student ids who are given assignments,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
                     },
                 },
             },
