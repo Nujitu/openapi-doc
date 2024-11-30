@@ -7,7 +7,7 @@
       description: "Skola Subject Service, Skoola Curriculum Group Component Service, Skoola Header Component Service, Skoola Curriculum Service, Skola Class Group Service",
       version: v1,
     },
-  servers: [{ url: "https://api.stg.skola.com" }],
+  servers: [{ url: "https://staging-api.skola.co.id" }],
   paths:
     {
       /v1/subject:
@@ -1069,6 +1069,143 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetCurriculumListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/curriculum/{id}":
+        {
+          delete:
+            {
+              tags: [CurriculumService],
+              summary: Delete Curriculum,
+              operationId: CurriculumService_DeleteCurriculum,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteCurriculumResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [CurriculumService],
+              summary: Update Curriculum,
+              operationId: CurriculumService_UpdateCurriculum,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateCurriculumRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateCurriculumResponse",
                                 },
                             },
                         },
@@ -2192,6 +2329,8 @@
                     },
                 },
             },
+          publicDeleteCurriculumResponse:
+            { type: object, properties: { message: { type: string } } },
           publicGetCurriculumListRequest:
             {
               type: object,
@@ -2239,6 +2378,29 @@
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
+          publicUpdateCurriculumRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
+          publicUpdateCurriculumResponse:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
           sharedCurriculum:
             {
               type: object,
@@ -2281,6 +2443,40 @@
                       example: 1,
                       type: string,
                       description: Curriculum semester,
+                    },
+                  type:
+                    {
+                      example: 1,
+                      enum: [CURRICULUM_NATIONAL, CURRICULUM_OTHERS],
+                      type: string,
+                      description: Curriculum type,
+                      format: enum,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum start date,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum end date,
+                      format: date-time,
+                    },
+                  start_year:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum start year,
+                    },
+                  end_year:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum end year,
                     },
                   components:
                     {

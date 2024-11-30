@@ -4,7 +4,7 @@ info:
   title: Report Domain
   version: v1
   description: Skoola Finalized Score Service
-servers: [{ url: "https://api.stg.skola.com" }]
+servers: [{ url: "https://staging-api.skola.co.id" }]
 paths:
   "/v1/finalized-score/{class_group_id}/{task_id}":
     get:
