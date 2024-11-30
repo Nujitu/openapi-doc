@@ -13,6 +13,7 @@
     - [Curriculum](#modules-material-v1-shared-Curriculum)
   
     - [CurriculumStatus](#modules-material-v1-shared-CurriculumStatus)
+    - [CurriculumType](#modules-material-v1-shared-CurriculumType)
   
 - [modules/material/v1/shared/curriculum_group_component.proto](#modules_material_v1_shared_curriculum_group_component-proto)
     - [CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent)
@@ -134,6 +135,11 @@
 | instance_id | [string](#string) |  |  |
 | academic_term | [string](#string) |  |  |
 | semester | [string](#string) |  |  |
+| type | [CurriculumType](#modules-material-v1-shared-CurriculumType) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| start_year | [string](#string) |  |  |
+| end_year | [string](#string) |  |  |
 | components | [CurriculumGroupComponent](#modules-material-v1-shared-CurriculumGroupComponent) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -154,6 +160,18 @@
 | ---- | ------ | ----------- |
 | CURRICULUM_STATUS_ACTIVE | 0 | Curriculum status active |
 | CURRICULUM_STATUS_INACTIVE | 1 | Curriculum status inactive |
+
+
+
+<a name="modules-material-v1-shared-CurriculumType"></a>
+
+### CurriculumType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CURRICULUM_NATIONAL | 0 |  |
+| CURRICULUM_OTHERS | 99 |  |
 
 
  
