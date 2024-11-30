@@ -691,6 +691,6 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  servers: [{ url: "https://api.stg.skola.com" }],
+  servers: [{ url: "https://staging-api.skola.co.id" }],
   security: [{ OAuth2: [ADMIN] }],
 }

@@ -30,8 +30,12 @@
   
 - [modules/material/v1/public/curriculum.proto](#modules_material_v1_public_curriculum-proto)
     - [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest)
+    - [DeleteCurriculumRequest](#modules-material-v1-public-DeleteCurriculumRequest)
+    - [DeleteCurriculumResponse](#modules-material-v1-public-DeleteCurriculumResponse)
     - [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest)
     - [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse)
+    - [UpdateCurriculumRequest](#modules-material-v1-public-UpdateCurriculumRequest)
+    - [UpdateCurriculumResponse](#modules-material-v1-public-UpdateCurriculumResponse)
   
     - [CurriculumService](#modules-material-v1-public-CurriculumService)
   
@@ -483,6 +487,36 @@ Service for user related feature
 
 
 
+<a name="modules-material-v1-public-DeleteCurriculumRequest"></a>
+
+### DeleteCurriculumRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteCurriculumResponse"></a>
+
+### DeleteCurriculumResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-GetCurriculumListRequest"></a>
 
 ### GetCurriculumListRequest
@@ -516,6 +550,37 @@ Service for user related feature
 
 
 
+
+<a name="modules-material-v1-public-UpdateCurriculumRequest"></a>
+
+### UpdateCurriculumRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| curriculum | [modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateCurriculumResponse"></a>
+
+### UpdateCurriculumResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum | [modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |  |
+
+
+
+
+
  
 
  
@@ -532,6 +597,8 @@ Service for user related feature
 | ----------- | ------------ | ------------- | ------------|
 | CreateCurriculum | [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
 | GetCurriculumList | [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest) | [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse) |  |
+| DeleteCurriculum | [DeleteCurriculumRequest](#modules-material-v1-public-DeleteCurriculumRequest) | [DeleteCurriculumResponse](#modules-material-v1-public-DeleteCurriculumResponse) |  |
+| UpdateCurriculum | [UpdateCurriculumRequest](#modules-material-v1-public-UpdateCurriculumRequest) | [UpdateCurriculumResponse](#modules-material-v1-public-UpdateCurriculumResponse) |  |
 
  
 

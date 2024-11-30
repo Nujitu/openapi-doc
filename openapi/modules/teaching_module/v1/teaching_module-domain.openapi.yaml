@@ -7,7 +7,7 @@
       version: v1,
       description: "Skoola Folder Management Service, Skoola Learning Goal Service, Skoola Teaching Module Service, Study Material Management Service",
     },
-  servers: [{ url: "https://api.stg.skola.com" }],
+  servers: [{ url: "https://staging-api.skola.co.id" }],
   paths:
     {
       /v1/teaching-module-folder:
