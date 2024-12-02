@@ -681,13 +681,16 @@ Service for assignment related feature
 | ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| point | [float](#float) |  |  |
+| index_minimum | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 
 
 
@@ -933,7 +936,13 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teaching_module_folder_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) | optional |  |
+| rubric_id | [string](#string) | optional |  |
+| class_subject_id | [string](#string) | optional |  |
+| subject_id | [string](#string) | optional |  |
+| teacher_id | [string](#string) | optional |  |
+| scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
+| observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1003,9 +1012,12 @@ Service for assignment related feature
 | id | [string](#string) |  |  |
 | title | [string](#string) | optional |  |
 | description | [string](#string) | optional |  |
-| point | [float](#float) | optional |  |
+| index_minimum | [float](#float) | optional |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) | optional |  |
+| rubric_id | [string](#string) | optional |  |
+| scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
+| observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 
 
 

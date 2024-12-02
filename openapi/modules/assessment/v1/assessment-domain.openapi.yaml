@@ -7,7 +7,7 @@
       description: "Skoola Assignment Service, Skola Quiz Service, Skoola Observation Service, Skoola Rubric Service",
       version: v1,
     },
-  servers: [{ url: "https://api.stg.skola.com" }],
+  servers: [{ url: "https://staging-api.skola.co.id" }],
   paths:
     {
       /v1/assignment:
@@ -1812,6 +1812,30 @@
                     name: teaching_module_folder_id,
                     in: query,
                     schema: { type: string },
+                  },
+                  { name: rubric_id, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: scoring_method,
+                    in: query,
+                    schema:
+                      { enum: [MANUAL, RUBRIC], type: string, format: enum },
+                  },
+                  {
+                    name: observation_type,
+                    in: query,
+                    schema:
+                      {
+                        enum: [FORMATIVE, SUMMATIVE],
+                        type: string,
+                        format: enum,
+                      },
                   },
                   { name: sort, in: query, schema: { type: string } },
                   {
@@ -3668,7 +3692,7 @@
                       example: RUBRIC,
                       enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
                       type: string,
-                      description: Assignment scoring method,
+                      description: Assignment submission state,
                       format: enum,
                     },
                   created_at:
@@ -4382,11 +4406,11 @@
                     },
                   description:
                     { type: string, description: Observation description },
-                  point:
+                  index_minimum:
                     {
-                      example: 100.0,
+                      example: 75.0,
                       type: number,
-                      description: Observation point,
+                      description: Observation index minimum on scale of 0 to 100,
                       format: float,
                     },
                   learning_goals:
@@ -4425,6 +4449,22 @@
                       example: 123,
                       type: string,
                       description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                    },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Observation scoring method,
+                      format: enum,
+                    },
+                  observation_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Observation assessment type,
+                      format: enum,
                     },
                   created_at:
                     {
@@ -4534,11 +4574,11 @@
                     },
                   description:
                     { type: string, description: Observation description },
-                  point:
+                  index_minimum:
                     {
-                      example: 100.0,
+                      example: 75.0,
                       type: number,
-                      description: Observation point,
+                      description: Observation index minimum on scale of 0 to 100,
                       format: float,
                     },
                   learning_goals:
@@ -4573,6 +4613,24 @@
                       example: 123,
                       type: string,
                       description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                    },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Observation scoring method,
+                      format: enum,
+                    },
+                  observation_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Observation assessment type,
+                      format: enum,
                     },
                 },
             },
@@ -4745,11 +4803,11 @@
                     },
                   description:
                     { type: string, description: Observation description },
-                  point:
+                  index_minimum:
                     {
-                      example: 100.0,
+                      example: 75.0,
                       type: number,
-                      description: Observation point,
+                      description: Observation index minimum on scale of 0 to 100,
                       format: float,
                     },
                   learning_goals:
@@ -4761,6 +4819,24 @@
                     },
                   publish:
                     { type: boolean, description: Observation publish status },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Observation scoring method,
+                      format: enum,
+                    },
+                  observation_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [FORMATIVE, SUMMATIVE],
+                      type: string,
+                      description: Observation assessment type,
+                      format: enum,
+                    },
                 },
             },
           publicUpdateObservationResponse:

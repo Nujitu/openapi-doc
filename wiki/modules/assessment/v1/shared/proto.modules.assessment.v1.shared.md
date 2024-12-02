@@ -245,7 +245,7 @@
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| point | [float](#float) |  |  |
+| index_minimum | [float](#float) |  |  |
 | learning_goals | [string](#string) | repeated |  |
 | publish | [bool](#bool) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
@@ -254,6 +254,8 @@
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
