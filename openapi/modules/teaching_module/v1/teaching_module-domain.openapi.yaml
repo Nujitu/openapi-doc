@@ -953,12 +953,12 @@
         },
       "/v1/study-material/{id}":
         {
-          get:
+          delete:
             {
               tags: [StudyMaterialService],
-              summary: Get study material detail,
-              description: Retrieves the details of a specific study material by its ID.,
-              operationId: StudyMaterialService_GetStudyMaterialDetail,
+              summary: Delete study material,
+              description: Deletes a study material by its ID.,
+              operationId: StudyMaterialService_DeleteStudyMaterial,
               parameters:
                 [
                   {
@@ -979,7 +979,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetStudyMaterialDetailResponse",
+                                  $ref: "#/components/schemas/publicDeleteStudyMaterialResponse",
                                 },
                             },
                         },
@@ -1014,12 +1014,15 @@
                     },
                 },
             },
-          delete:
+        },
+      "/v1/study-material/{id}/detail":
+        {
+          get:
             {
               tags: [StudyMaterialService],
-              summary: Delete study material,
-              description: Deletes a study material by its ID.,
-              operationId: StudyMaterialService_DeleteStudyMaterial,
+              summary: Get study material detail,
+              description: Retrieves the details of a specific study material by its ID.,
+              operationId: StudyMaterialService_GetStudyMaterialDetail,
               parameters:
                 [
                   {
@@ -1040,7 +1043,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicDeleteStudyMaterialResponse",
+                                  $ref: "#/components/schemas/publicGetStudyMaterialDetailResponse",
                                 },
                             },
                         },
