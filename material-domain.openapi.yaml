@@ -520,12 +520,12 @@
         },
       "/v1/curriculum-group-component/{id}":
         {
-          get:
+          delete:
             {
               tags: [CurriculumGroupComponentService],
-              summary: get component detail,
-              description: get component detail,
-              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentDetail,
+              summary: Delete a curriculum,
+              description: Admin deletes a curriculum by its ID,
+              operationId: CurriculumGroupComponentService_DeleteCurriculumGroupComponent,
               parameters:
                 [
                   {
@@ -546,7 +546,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                  $ref: "#/components/schemas/publicCurriculumGroupComponentResponse",
                                 },
                             },
                         },
@@ -581,12 +581,15 @@
                     },
                 },
             },
-          delete:
+        },
+      "/v1/curriculum-group-component/{id}/detail":
+        {
+          get:
             {
               tags: [CurriculumGroupComponentService],
-              summary: Delete a curriculum,
-              description: Admin deletes a curriculum by its ID,
-              operationId: CurriculumGroupComponentService_DeleteCurriculumGroupComponent,
+              summary: get component detail,
+              description: get component detail,
+              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentDetail,
               parameters:
                 [
                   {
@@ -607,7 +610,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCurriculumGroupComponentResponse",
+                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
                                 },
                             },
                         },
@@ -778,7 +781,7 @@
                 },
             },
         },
-      "/v1/header-component/curriculum/{curriculum_id}":
+      "/v1/header-component/{curriculum_id}":
         {
           get:
             {
@@ -844,12 +847,12 @@
         },
       "/v1/header-component/{id}":
         {
-          get:
+          delete:
             {
               tags: [HeaderComponentService],
-              summary: get header component detail,
-              description: get header component detail,
-              operationId: HeaderComponentService_GetHeaderComponentDetail,
+              summary: Delete a header component,
+              description: Admin deletes a header component by its ID,
+              operationId: HeaderComponentService_DeleteHeaderComponent,
               parameters:
                 [
                   {
@@ -870,7 +873,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedHeaderComponent",
+                                  $ref: "#/components/schemas/publicHeaderComponentResponse",
                                 },
                             },
                         },
@@ -905,12 +908,15 @@
                     },
                 },
             },
-          delete:
+        },
+      "/v1/header-component/{id}/detail":
+        {
+          get:
             {
               tags: [HeaderComponentService],
-              summary: Delete a header component,
-              description: Admin deletes a header component by its ID,
-              operationId: HeaderComponentService_DeleteHeaderComponent,
+              summary: get header component detail,
+              description: get header component detail,
+              operationId: HeaderComponentService_GetHeaderComponentDetail,
               parameters:
                 [
                   {
@@ -931,7 +937,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicHeaderComponentResponse",
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
                                 },
                             },
                         },
