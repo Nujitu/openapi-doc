@@ -14,6 +14,8 @@
     - [StudentPrivateService](#modules-user-v1-private-StudentPrivateService)
   
 - [modules/user/v1/private/teacher.proto](#modules_user_v1_private_teacher-proto)
+    - [GetByTeacherIDsRequest](#modules-user-v1-private-GetByTeacherIDsRequest)
+    - [GetByTeacherIDsResponse](#modules-user-v1-private-GetByTeacherIDsResponse)
     - [GetTeacherByUserIDRequest](#modules-user-v1-private-GetTeacherByUserIDRequest)
     - [GetTeacherByUserIDResponse](#modules-user-v1-private-GetTeacherByUserIDResponse)
     - [RegisterTeacherRequest](#modules-user-v1-private-RegisterTeacherRequest)
@@ -150,6 +152,36 @@
 
 
 
+<a name="modules-user-v1-private-GetByTeacherIDsRequest"></a>
+
+### GetByTeacherIDsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetByTeacherIDsResponse"></a>
+
+### GetByTeacherIDsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teacher | [modules.user.v1.shared.Teacher](#modules-user-v1-shared-Teacher) | repeated |  |
+
+
+
+
+
+
 <a name="modules-user-v1-private-GetTeacherByUserIDRequest"></a>
 
 ### GetTeacherByUserIDRequest
@@ -225,6 +257,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | Register | [RegisterTeacherRequest](#modules-user-v1-private-RegisterTeacherRequest) | [RegisterTeacherResponse](#modules-user-v1-private-RegisterTeacherResponse) |  |
 | GetByUserID | [GetTeacherByUserIDRequest](#modules-user-v1-private-GetTeacherByUserIDRequest) | [GetTeacherByUserIDResponse](#modules-user-v1-private-GetTeacherByUserIDResponse) |  |
+| GetByTeacherIDs | [GetByTeacherIDsRequest](#modules-user-v1-private-GetByTeacherIDsRequest) | [GetByTeacherIDsResponse](#modules-user-v1-private-GetByTeacherIDsResponse) |  |
 
  
 

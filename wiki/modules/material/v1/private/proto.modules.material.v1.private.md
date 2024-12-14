@@ -16,6 +16,14 @@
   
     - [CurriculumService](#modules-material-v1-private-CurriculumService)
   
+- [modules/material/v1/private/subject.proto](#modules_material_v1_private_subject-proto)
+    - [GetByIdsRequest](#modules-material-v1-private-GetByIdsRequest)
+    - [GetByIdsResponse](#modules-material-v1-private-GetByIdsResponse)
+    - [GetByTeacherIdsRequest](#modules-material-v1-private-GetByTeacherIdsRequest)
+    - [GetByTeacherIdsResponse](#modules-material-v1-private-GetByTeacherIdsResponse)
+  
+    - [PrivateSubjectService](#modules-material-v1-private-PrivateSubjectService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -153,6 +161,93 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetCurriculumByID | [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_private_subject-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/private/subject.proto
+
+
+
+<a name="modules-material-v1-private-GetByIdsRequest"></a>
+
+### GetByIdsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ids | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-private-GetByIdsResponse"></a>
+
+### GetByIdsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-private-GetByTeacherIdsRequest"></a>
+
+### GetByTeacherIdsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ids | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-private-GetByTeacherIdsResponse"></a>
+
+### GetByTeacherIdsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subjects | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-private-PrivateSubjectService"></a>
+
+### PrivateSubjectService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetByIds | [GetByIdsRequest](#modules-material-v1-private-GetByIdsRequest) | [GetByIdsResponse](#modules-material-v1-private-GetByIdsResponse) |  |
+| GetByTeacherIds | [GetByTeacherIdsRequest](#modules-material-v1-private-GetByTeacherIdsRequest) | [GetByTeacherIdsResponse](#modules-material-v1-private-GetByTeacherIdsResponse) |  |
 
  
 
