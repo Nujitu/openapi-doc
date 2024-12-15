@@ -11,6 +11,8 @@
 - [modules/report/v1/private](/modules/report/v1/private/proto.modules.report.v1.private)
 - [modules/report/v1/public](/modules/report/v1/public/proto.modules.report.v1.public)
 - [modules/report/v1/shared](/modules/report/v1/shared/proto.modules.report.v1.shared)
+- [modules/schedule/v1/public](/modules/schedule/v1/public/proto.modules.schedule.v1.public)
+- [modules/schedule/v1/shared](/modules/schedule/v1/shared/proto.modules.schedule.v1.shared)
 - [modules/teaching_module/v1/private](/modules/teaching_module/v1/private/proto.modules.teaching_module.v1.private)
 - [modules/teaching_module/v1/public](/modules/teaching_module/v1/public/proto.modules.teaching_module.v1.public)
 - [modules/teaching_module/v1/shared](/modules/teaching_module/v1/shared/proto.modules.teaching_module.v1.shared)
