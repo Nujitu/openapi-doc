@@ -19,6 +19,10 @@
     "name": "report-domain.openapi"
   },
   {
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/schedule-domain.openapi.yaml",
+    "name": "schedule-domain.openapi"
+  },
+  {
     "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/teaching_module-domain.openapi.yaml",
     "name": "teaching_module-domain.openapi"
   },
