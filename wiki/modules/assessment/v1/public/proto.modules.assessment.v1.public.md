@@ -1120,6 +1120,7 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | question_id | [string](#string) |  |  |
 | answer | [string](#string) |  |  |
+| options | [modules.assessment.v1.shared.QuizOption](#modules-assessment-v1-shared-QuizOption) | repeated | for multiple answer |
 
 
 
