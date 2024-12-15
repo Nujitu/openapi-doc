@@ -178,8 +178,13 @@
 | ---- | ------ | ----------- |
 | TEXT | 0 |  |
 | ESSAY | 1 |  |
-| MULIPLE_ANSWER | 2 |  |
-| FILE_UPLOAD | 3 |  |
+| MULTIPLE_ANSWER | 2 | Assignee allow to choose multiple answer |
+| SINGLE_ANSWER | 3 | Assignee allow single answer |
+| FILE_UPLOAD | 4 | Assignee allow file upload |
+| NUMERIC | 5 | Assignee allow numeric answer |
+| TRUE_FALSE | 6 | Assignee allow true false answer |
+| SORTING | 7 | Assignee allow sorting answer |
+| MATCHING | 8 | Assignee allow matching answer |
 
 
 
@@ -357,7 +362,9 @@
 | id | [string](#string) |  |  |
 | text | [string](#string) |  |  |
 | value | [string](#string) |  |  |
-| isAnswer | [bool](#bool) | optional |  |
+| isAnswer | [bool](#bool) | optional | for single / multiple answer |
+| priority | [string](#string) | optional | for sorting answer |
+| matching_id | [string](#string) | optional | for matching answer |
 
 
 
@@ -426,6 +433,7 @@
 | student_name | [string](#string) |  |  |
 | answer | [string](#string) |  |  |
 | points | [string](#string) |  |  |
+| options | [QuizOption](#modules-assessment-v1-shared-QuizOption) | repeated |  |
 | score_state | [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState) |  |  |
 
 
