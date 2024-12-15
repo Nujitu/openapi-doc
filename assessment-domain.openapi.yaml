@@ -2977,6 +2977,14 @@
                     { example: 123, type: string, description: Question ID },
                   answer:
                     { example: 7, type: string, description: question answer },
+                  options:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                    },
                 },
             },
           publicCreateQuestionRequest:
@@ -3447,6 +3455,7 @@
                   text: { type: string },
                   value: { type: string },
                   isAnswer: { type: boolean },
+                  priority: { type: string },
                 },
             },
           sharedQuizQuestion:
@@ -3465,7 +3474,19 @@
                   questionType:
                     {
                       example: MULIPLE_ANSWER,
-                      enum: [TEXT, ESSAY, MULIPLE_ANSWER, FILE_UPLOAD],
+                      enum:
+                        [
+                          TEXT,
+                          ESSAY,
+                          MULTIPLE_ANSWER,
+                          SINGLE_ANSWER,
+                          FILE_UPLOAD,
+                          NUMERIC,
+                          TRUE_FALSE,
+                          SORTING,
+                          MATCHING,
+                          MULTIPLE_PARTIAL_ANSWER,
+                        ],
                       type: string,
                       description: question type,
                       format: enum,
