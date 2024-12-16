@@ -7,6 +7,10 @@
     - [Activity](#modules-schedule-v1-shared-Activity)
     - [Day](#modules-schedule-v1-shared-Day)
   
+- [modules/schedule/v1/shared/event.proto](#modules_schedule_v1_shared_event-proto)
+    - [CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest)
+    - [CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse)
+  
 - [modules/schedule/v1/shared/schedule_student.proto](#modules_schedule_v1_shared_schedule_student-proto)
     - [CreateScheduleStudentByDayRequest](#modules-schedule-v1-shared-CreateScheduleStudentByDayRequest)
     - [CreateScheduleStudentByDayResponse](#modules-schedule-v1-shared-CreateScheduleStudentByDayResponse)
@@ -68,6 +72,56 @@
 | SATURDAY | 5 |  |
 | SUNDAY | 6 |  |
 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_schedule_v1_shared_event-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/schedule/v1/shared/event.proto
+
+
+
+<a name="modules-schedule-v1-shared-CreateEventRequest"></a>
+
+### CreateEventRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
+| start_time | [string](#string) |  |  |
+| end_time | [string](#string) |  |  |
+| activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
+| date | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-CreateEventResponse"></a>
+
+### CreateEventResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
 
  
 
