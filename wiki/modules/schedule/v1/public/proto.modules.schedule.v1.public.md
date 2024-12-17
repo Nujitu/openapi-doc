@@ -3,6 +3,9 @@
 
 ## Table of Contents
 
+- [modules/schedule/v1/public/event.proto](#modules_schedule_v1_public_event-proto)
+    - [EventService](#modules-schedule-v1-public-EventService)
+  
 - [modules/schedule/v1/public/schedule_student.proto](#modules_schedule_v1_public_schedule_student-proto)
     - [ScheduleStudentService](#modules-schedule-v1-public-ScheduleStudentService)
   
@@ -13,6 +16,32 @@
     - [SubjectScheduleService](#modules-schedule-v1-public-SubjectScheduleService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_schedule_v1_public_event-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/schedule/v1/public/event.proto
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-schedule-v1-public-EventService"></a>
+
+### EventService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateEvent | [.modules.schedule.v1.shared.CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest) | [.modules.schedule.v1.shared.CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse) |  |
+
+ 
 
 
 
