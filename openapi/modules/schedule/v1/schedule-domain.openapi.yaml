@@ -78,7 +78,7 @@
                 },
             },
         },
-      "/v1/event/{event_id}":
+      "/v1/event/{id}":
         {
           post:
             {
@@ -88,7 +88,7 @@
               parameters:
                 [
                   {
-                    name: event_id,
+                    name: id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -569,6 +569,7 @@
               type: object,
               properties:
                 {
+                  id: { type: string, description: Event ID },
                   name: { type: string, description: Event name },
                   description: { type: string, description: Event description },
                   user_ids:
