@@ -10,6 +10,8 @@
 - [modules/schedule/v1/shared/event.proto](#modules_schedule_v1_shared_event-proto)
     - [CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest)
     - [CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse)
+    - [UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest)
+    - [UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse)
   
 - [modules/schedule/v1/shared/schedule_student.proto](#modules_schedule_v1_shared_schedule_student-proto)
     - [CreateScheduleStudentByDayRequest](#modules-schedule-v1-shared-CreateScheduleStudentByDayRequest)
@@ -113,6 +115,42 @@
 <a name="modules-schedule-v1-shared-CreateEventResponse"></a>
 
 ### CreateEventResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-UpdateEventRequest"></a>
+
+### UpdateEventRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| user_ids | [string](#string) | repeated |  |
+| date | [string](#string) |  |  |
+| start_time | [string](#string) |  |  |
+| end_time | [string](#string) |  |  |
+| activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-UpdateEventResponse"></a>
+
+### UpdateEventResponse
 
 
 

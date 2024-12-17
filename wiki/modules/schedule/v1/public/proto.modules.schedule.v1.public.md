@@ -40,6 +40,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateEvent | [.modules.schedule.v1.shared.CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest) | [.modules.schedule.v1.shared.CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse) |  |
+| UpdateEvent | [.modules.schedule.v1.shared.UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest) | [.modules.schedule.v1.shared.UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse) |  |
 
  
 
