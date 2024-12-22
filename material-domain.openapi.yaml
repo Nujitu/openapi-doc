@@ -707,6 +707,70 @@
                 },
             },
         },
+      "/v1/class-group/{teacher_id}/teacher/courses":
+        {
+          get:
+            {
+              tags: [ClassGroupService],
+              summary: GetTeacherCourses,
+              description: retrieves a list of subjects taught by the specified teacher.,
+              operationId: ClassGroupService_GetTeacherCourses,
+              parameters:
+                [
+                  {
+                    name: teacher_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeacherActiveSubjectsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/curriculum:
         {
           post:
@@ -2167,6 +2231,22 @@
                     },
                 },
             },
+          publicGetTeacherActiveSubjectsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  courses:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeacherClassCourses",
+                        },
+                      description: list of class subjects,
+                    },
+                },
+            },
           publicGetTeacherClassesResponse:
             {
               type: object,
@@ -2401,6 +2481,54 @@
                       description: Subject type,
                       format: enum,
                     },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedTeacherClassCourses:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: ClassCourses ID,
+                    },
+                  classgroup_id:
+                    { example: 123, type: string, description: Classgroup ID },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  homeroom_teacher_id:
+                    { example: 123, type: string, description: teacher ID },
+                  subject_name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  classgroup_name:
+                    {
+                      example: Class Group 123,
+                      type: string,
+                      description: Classgroup name,
+                    },
+                  total_students: { type: string, description: Total students },
+                  major:
+                    { example: IPA, type: string, description: Class major },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
