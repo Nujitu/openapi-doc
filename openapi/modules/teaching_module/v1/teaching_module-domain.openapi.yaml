@@ -1522,6 +1522,20 @@
                     },
                 },
             },
+          sharedPercentageScore:
+            {
+              type: object,
+              properties:
+                {
+                  name: { type: string, description: name of percentage score },
+                  value:
+                    {
+                      type: integer,
+                      description: value of percentage score,
+                      format: int32,
+                    },
+                },
+            },
           sharedTeachingModule:
             {
               type: object,
@@ -1616,6 +1630,17 @@
                   curriculum_id: { type: string, description: curriculum ID },
                   description: { type: string, description: Description },
                   teacher_id: { type: string, description: teacher id },
+                  index_minimum:
+                    { type: integer, description: teacher id, format: int32 },
+                  percentage_score:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedPercentageScore",
+                        },
+                      description: score percentage,
+                    },
                 },
             },
         },

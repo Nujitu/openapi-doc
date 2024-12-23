@@ -17,6 +17,7 @@
     - [Component](#modules-teaching_modules-v1-shared-Component)
     - [Content](#modules-teaching_modules-v1-shared-Content)
     - [GroupComponent](#modules-teaching_modules-v1-shared-GroupComponent)
+    - [PercentageScore](#modules-teaching_modules-v1-shared-PercentageScore)
     - [TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule)
   
     - [ComponentType](#modules-teaching_modules-v1-shared-ComponentType)
@@ -217,6 +218,22 @@ study material
 
 
 
+<a name="modules-teaching_modules-v1-shared-PercentageScore"></a>
+
+### PercentageScore
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| value | [int32](#int32) |  |  |
+
+
+
+
+
+
 <a name="modules-teaching_modules-v1-shared-TeachingModule"></a>
 
 ### TeachingModule
@@ -242,6 +259,8 @@ study material
 | curriculum_id | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| index_minimum | [int32](#int32) |  |  |
+| percentage_score | [PercentageScore](#modules-teaching_modules-v1-shared-PercentageScore) | repeated | list of percentage score must be 100 |
 
 
 
