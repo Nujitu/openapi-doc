@@ -2675,7 +2675,11 @@
                   status:
                     {
                       enum:
-                        [CURRICULUM_STATUS_ACTIVE, CURRICULUM_STATUS_INACTIVE],
+                        [
+                          CURRICULUM_STATUS_UNSPECIFIED,
+                          CURRICULUM_STATUS_INACTIVE,
+                          CURRICULUM_STATUS_ACTIVE,
+                        ],
                       type: string,
                       description: Curriculum Status,
                       format: enum,
@@ -2698,7 +2702,12 @@
                   type:
                     {
                       example: 1,
-                      enum: [CURRICULUM_NATIONAL, CURRICULUM_OTHERS],
+                      enum:
+                        [
+                          CURRICULUM_UNSPECIFIED,
+                          CURRICULUM_NATIONAL,
+                          CURRICULUM_OTHERS,
+                        ],
                       type: string,
                       description: Curriculum type,
                       format: enum,

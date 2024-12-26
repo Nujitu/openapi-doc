@@ -183,8 +183,9 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| CURRICULUM_STATUS_ACTIVE | 0 | Curriculum status active |
+| CURRICULUM_STATUS_UNSPECIFIED | 0 |  |
 | CURRICULUM_STATUS_INACTIVE | 1 | Curriculum status inactive |
+| CURRICULUM_STATUS_ACTIVE | 2 | Curriculum status active |
 
 
 
@@ -195,7 +196,8 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| CURRICULUM_NATIONAL | 0 |  |
+| CURRICULUM_UNSPECIFIED | 0 |  |
+| CURRICULUM_NATIONAL | 1 |  |
 | CURRICULUM_OTHERS | 99 |  |
 
 
