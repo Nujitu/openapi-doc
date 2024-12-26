@@ -10,6 +10,8 @@
 - [modules/schedule/v1/shared/event.proto](#modules_schedule_v1_shared_event-proto)
     - [CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest)
     - [CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse)
+    - [DeleteEventRequest](#modules-schedule-v1-shared-DeleteEventRequest)
+    - [DeleteEventResponse](#modules-schedule-v1-shared-DeleteEventResponse)
     - [UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest)
     - [UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse)
   
@@ -115,6 +117,36 @@
 <a name="modules-schedule-v1-shared-CreateEventResponse"></a>
 
 ### CreateEventResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DeleteEventRequest"></a>
+
+### DeleteEventRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DeleteEventResponse"></a>
+
+### DeleteEventResponse
 
 
 

@@ -41,6 +41,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateEvent | [.modules.schedule.v1.shared.CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest) | [.modules.schedule.v1.shared.CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse) |  |
 | UpdateEvent | [.modules.schedule.v1.shared.UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest) | [.modules.schedule.v1.shared.UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse) |  |
+| DeleteEvent | [.modules.schedule.v1.shared.DeleteEventRequest](#modules-schedule-v1-shared-DeleteEventRequest) | [.modules.schedule.v1.shared.DeleteEventResponse](#modules-schedule-v1-shared-DeleteEventResponse) |  |
 
  
 
