@@ -1109,6 +1109,11 @@
                         format: enum,
                       },
                   },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1567,14 +1572,14 @@
                 },
             },
         },
-      /v1/observation/submission/one:
+      /v1/observation/submission/student-id:
         {
           get:
             {
               tags: [ObservationService],
-              summary: Get an observation submission by specific filter,
-              description: Returns the first document that satisfies the filter query,
-              operationId: ObservationService_GetOneObservationSubmissionByFilter,
+              summary: Get an observation submission by student id,
+              description: Get observation assessment by specified student id and observation id,
+              operationId: ObservationService_GetObservationSubmissionByStudentId,
               parameters:
                 [
                   { name: observation_id, in: query, schema: { type: string } },
@@ -1591,7 +1596,67 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetOneObservationSubmissionByFilterResponse",
+                                  $ref: "#/components/schemas/publicGetObservationSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/observation/submission/student-id/bulk:
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: Get bulk observation submission by many student id,
+              description: Get bulk observation assessment by specified student ids and observation id,
+              operationId: ObservationService_GetBulkObservationSubmissionByStudentId,
+              parameters:
+                [
+                  { name: observation_id, in: query, schema: { type: string } },
+                  { name: student_ids, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetBulkObservationSubmissionByStudentIdResponse",
                                 },
                             },
                         },
@@ -1955,6 +2020,11 @@
                         type: string,
                         format: enum,
                       },
+                  },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
                   },
                   { name: sort, in: query, schema: { type: string } },
                   {
@@ -2621,14 +2691,14 @@
                 },
             },
         },
-      /v1/assignment/submission/one:
+      /v1/assignment/submission/student-id:
         {
           get:
             {
               tags: [AssignmentService],
-              summary: Get an assignment submission by specific filter,
-              description: Returns the first document that satisfies the filter query,
-              operationId: AssignmentService_GetOneAssignmentSubmissionByFilter,
+              summary: Get an assignment submission by student id,
+              description: Get assignment assessment by specified student id and assignment id,
+              operationId: AssignmentService_GetAssignmentSubmissionByStudentId,
               parameters:
                 [
                   { name: assignment_id, in: query, schema: { type: string } },
@@ -2645,7 +2715,67 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetOneAssignmentSubmissionByFilterResponse",
+                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/student-id/bulk:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get bulk assignment submission by many student ids,
+              description: Get bulk assignment assessment by specified student ids and assignment id,
+              operationId: AssignmentService_GetBulkAssignmentSubmissionByStudentId,
+              parameters:
+                [
+                  { name: assignment_id, in: query, schema: { type: string } },
+                  { name: student_ids, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetBulkAssignmentSubmissionByStudentIdResponse",
                                 },
                             },
                         },
@@ -3917,6 +4047,18 @@
                       description: Observation assessment type,
                       format: enum,
                     },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of observed student IDs,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -3995,6 +4137,14 @@
                   RubricSubmission:
                     {
                       $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                  submission_state:
+                    {
+                      example: NEED_GRADING,
+                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      type: string,
+                      description: Observation submission state,
+                      format: enum,
                     },
                   created_at:
                     {
@@ -4105,6 +4255,18 @@
                       description: Observation assessment type,
                       format: enum,
                     },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of observed student IDs,
+                    },
                 },
             },
           publicCreateObservationResponse:
@@ -4142,6 +4304,14 @@
                   RubricSubmission:
                     {
                       $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                  submission_state:
+                    {
+                      example: RUBRIC,
+                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      type: string,
+                      description: Observation submission state,
+                      format: enum,
                     },
                 },
             },
@@ -4185,6 +4355,22 @@
                     },
                 },
             },
+          publicGetBulkObservationSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  observation_submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedObservationSubmission",
+                        },
+                      description: Observation submission details,
+                    },
+                },
+            },
           publicGetObservationByIdResponse:
             {
               type: object,
@@ -4218,7 +4404,7 @@
                     },
                 },
             },
-          publicGetOneObservationSubmissionByFilterResponse:
+          publicGetObservationSubmissionByStudentIdResponse:
             {
               type: object,
               properties:
@@ -4309,6 +4495,12 @@
                       type: string,
                       description: Observation assessment type,
                       format: enum,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of observed student IDs,
                     },
                 },
             },
@@ -4583,6 +4775,12 @@
                         },
                       description: Attachment files,
                     },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
                 },
             },
           publicCreateAssignmentResponse:
@@ -4721,7 +4919,7 @@
                     },
                 },
             },
-          publicGetOneAssignmentSubmissionByFilterResponse:
+          publicGetAssignmentSubmissionByStudentIdResponse:
             {
               type: object,
               properties:
@@ -4729,6 +4927,22 @@
                   assignment_submission:
                     {
                       $ref: "#/components/schemas/sharedAssignmentSubmission",
+                    },
+                },
+            },
+          publicGetBulkAssignmentSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  assignment_submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedAssignmentSubmission",
+                        },
+                      description: Assignment submission details,
                     },
                 },
             },
@@ -5008,6 +5222,12 @@
                         },
                       description: Attachment files,
                     },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -5121,7 +5341,7 @@
                     },
                   submission_state:
                     {
-                      example: RUBRIC,
+                      example: NEED_GRADING,
                       enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
                       type: string,
                       description: Assignment submission state,

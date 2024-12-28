@@ -24,8 +24,10 @@
     - [GetAssignmentStatisticByIdResponse](#modules-assessment-v1-public-GetAssignmentStatisticByIdResponse)
     - [GetAssignmentSubmissionByIdRequest](#modules-assessment-v1-public-GetAssignmentSubmissionByIdRequest)
     - [GetAssignmentSubmissionByIdResponse](#modules-assessment-v1-public-GetAssignmentSubmissionByIdResponse)
-    - [GetOneAssignmentSubmissionByFilterRequest](#modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterRequest)
-    - [GetOneAssignmentSubmissionByFilterResponse](#modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterResponse)
+    - [GetAssignmentSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetAssignmentSubmissionByStudentIdRequest)
+    - [GetAssignmentSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetAssignmentSubmissionByStudentIdResponse)
+    - [GetBulkAssignmentSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentIdRequest)
+    - [GetBulkAssignmentSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentIdResponse)
     - [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest)
     - [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse)
     - [ListAssignmentSubmissionRequest](#modules-assessment-v1-public-ListAssignmentSubmissionRequest)
@@ -46,14 +48,16 @@
     - [DeleteObservationResponse](#modules-observation-v1-public-DeleteObservationResponse)
     - [DeleteObservationSubmissionRequest](#modules-observation-v1-public-DeleteObservationSubmissionRequest)
     - [DeleteObservationSubmissionResponse](#modules-observation-v1-public-DeleteObservationSubmissionResponse)
+    - [GetBulkObservationSubmissionByStudentIdRequest](#modules-observation-v1-public-GetBulkObservationSubmissionByStudentIdRequest)
+    - [GetBulkObservationSubmissionByStudentIdResponse](#modules-observation-v1-public-GetBulkObservationSubmissionByStudentIdResponse)
     - [GetObservationByIdRequest](#modules-observation-v1-public-GetObservationByIdRequest)
     - [GetObservationByIdResponse](#modules-observation-v1-public-GetObservationByIdResponse)
     - [GetObservationStatisticByIdRequest](#modules-observation-v1-public-GetObservationStatisticByIdRequest)
     - [GetObservationStatisticByIdResponse](#modules-observation-v1-public-GetObservationStatisticByIdResponse)
     - [GetObservationSubmissionByIdRequest](#modules-observation-v1-public-GetObservationSubmissionByIdRequest)
     - [GetObservationSubmissionByIdResponse](#modules-observation-v1-public-GetObservationSubmissionByIdResponse)
-    - [GetOneObservationSubmissionByFilterRequest](#modules-observation-v1-public-GetOneObservationSubmissionByFilterRequest)
-    - [GetOneObservationSubmissionByFilterResponse](#modules-observation-v1-public-GetOneObservationSubmissionByFilterResponse)
+    - [GetObservationSubmissionByStudentIdRequest](#modules-observation-v1-public-GetObservationSubmissionByStudentIdRequest)
+    - [GetObservationSubmissionByStudentIdResponse](#modules-observation-v1-public-GetObservationSubmissionByStudentIdResponse)
     - [ListObservationRequest](#modules-observation-v1-public-ListObservationRequest)
     - [ListObservationResponse](#modules-observation-v1-public-ListObservationResponse)
     - [ListObservationSubmissionRequest](#modules-observation-v1-public-ListObservationSubmissionRequest)
@@ -206,6 +210,7 @@
 | assignee | [string](#string) | repeated |  |
 | instance_id | [string](#string) |  |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| teaching_module_id | [string](#string) |  |  |
 
 
 
@@ -442,9 +447,9 @@
 
 
 
-<a name="modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterRequest"></a>
+<a name="modules-assessment-v1-public-GetAssignmentSubmissionByStudentIdRequest"></a>
 
-### GetOneAssignmentSubmissionByFilterRequest
+### GetAssignmentSubmissionByStudentIdRequest
 
 
 
@@ -458,15 +463,46 @@
 
 
 
-<a name="modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterResponse"></a>
+<a name="modules-assessment-v1-public-GetAssignmentSubmissionByStudentIdResponse"></a>
 
-### GetOneAssignmentSubmissionByFilterResponse
+### GetAssignmentSubmissionByStudentIdResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment_submission | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentIdRequest"></a>
+
+### GetBulkAssignmentSubmissionByStudentIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_id | [string](#string) |  |  |
+| student_ids | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentIdResponse"></a>
+
+### GetBulkAssignmentSubmissionByStudentIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_submissions | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) | repeated |  |
 
 
 
@@ -496,6 +532,7 @@
 | teacher_id | [string](#string) | optional |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
+| teaching_module_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -651,7 +688,8 @@ Service for assignment related feature
 | ListAssignment | [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest) | [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse) |  |
 | CreateAssignmentSubmission | [CreateAssignmentSubmissionRequest](#modules-assessment-v1-public-CreateAssignmentSubmissionRequest) | [CreateAssignmentSubmissionResponse](#modules-assessment-v1-public-CreateAssignmentSubmissionResponse) |  |
 | UpdateAssignmentSubmission | [UpdateAssignmentSubmissionRequest](#modules-assessment-v1-public-UpdateAssignmentSubmissionRequest) | [UpdateAssignmentSubmissionResponse](#modules-assessment-v1-public-UpdateAssignmentSubmissionResponse) |  |
-| GetOneAssignmentSubmissionByFilter | [GetOneAssignmentSubmissionByFilterRequest](#modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterRequest) | [GetOneAssignmentSubmissionByFilterResponse](#modules-assessment-v1-public-GetOneAssignmentSubmissionByFilterResponse) |  |
+| GetBulkAssignmentSubmissionByStudentId | [GetBulkAssignmentSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentIdRequest) | [GetBulkAssignmentSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentIdResponse) |  |
+| GetAssignmentSubmissionByStudentId | [GetAssignmentSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetAssignmentSubmissionByStudentIdRequest) | [GetAssignmentSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetAssignmentSubmissionByStudentIdResponse) |  |
 | GetAssignmentSubmissionById | [GetAssignmentSubmissionByIdRequest](#modules-assessment-v1-public-GetAssignmentSubmissionByIdRequest) | [GetAssignmentSubmissionByIdResponse](#modules-assessment-v1-public-GetAssignmentSubmissionByIdResponse) |  |
 | DeleteAssignmentSubmission | [DeleteAssignmentSubmissionRequest](#modules-assessment-v1-public-DeleteAssignmentSubmissionRequest) | [DeleteAssignmentSubmissionResponse](#modules-assessment-v1-public-DeleteAssignmentSubmissionResponse) |  |
 | FinalizeAssignmentSubmission | [FinalizeAssignmentSubmissionRequest](#modules-assessment-v1-public-FinalizeAssignmentSubmissionRequest) | [FinalizeAssignmentSubmissionResponse](#modules-assessment-v1-public-FinalizeAssignmentSubmissionResponse) |  |
@@ -691,6 +729,8 @@ Service for assignment related feature
 | rubric_id | [string](#string) |  |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| assignee | [string](#string) | repeated |  |
 
 
 
@@ -725,6 +765,7 @@ Service for assignment related feature
 | student_id | [string](#string) |  |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 
 
 
@@ -801,6 +842,37 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-GetBulkObservationSubmissionByStudentIdRequest"></a>
+
+### GetBulkObservationSubmissionByStudentIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+| student_ids | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-observation-v1-public-GetBulkObservationSubmissionByStudentIdResponse"></a>
+
+### GetBulkObservationSubmissionByStudentIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_submissions | [modules.assessment.v1.shared.ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission) | repeated |  |
 
 
 
@@ -897,9 +969,9 @@ Service for assignment related feature
 
 
 
-<a name="modules-observation-v1-public-GetOneObservationSubmissionByFilterRequest"></a>
+<a name="modules-observation-v1-public-GetObservationSubmissionByStudentIdRequest"></a>
 
-### GetOneObservationSubmissionByFilterRequest
+### GetObservationSubmissionByStudentIdRequest
 
 
 
@@ -913,9 +985,9 @@ Service for assignment related feature
 
 
 
-<a name="modules-observation-v1-public-GetOneObservationSubmissionByFilterResponse"></a>
+<a name="modules-observation-v1-public-GetObservationSubmissionByStudentIdResponse"></a>
 
-### GetOneObservationSubmissionByFilterResponse
+### GetObservationSubmissionByStudentIdResponse
 
 
 
@@ -943,6 +1015,7 @@ Service for assignment related feature
 | teacher_id | [string](#string) | optional |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
+| teaching_module_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1018,6 +1091,7 @@ Service for assignment related feature
 | rubric_id | [string](#string) | optional |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
+| assignee | [string](#string) | repeated |  |
 
 
 
@@ -1093,7 +1167,8 @@ Service for observation related feature
 | ListObservation | [ListObservationRequest](#modules-observation-v1-public-ListObservationRequest) | [ListObservationResponse](#modules-observation-v1-public-ListObservationResponse) |  |
 | CreateObservationSubmission | [CreateObservationSubmissionRequest](#modules-observation-v1-public-CreateObservationSubmissionRequest) | [CreateObservationSubmissionResponse](#modules-observation-v1-public-CreateObservationSubmissionResponse) |  |
 | UpdateObservationSubmission | [UpdateObservationSubmissionRequest](#modules-observation-v1-public-UpdateObservationSubmissionRequest) | [UpdateObservationSubmissionResponse](#modules-observation-v1-public-UpdateObservationSubmissionResponse) |  |
-| GetOneObservationSubmissionByFilter | [GetOneObservationSubmissionByFilterRequest](#modules-observation-v1-public-GetOneObservationSubmissionByFilterRequest) | [GetOneObservationSubmissionByFilterResponse](#modules-observation-v1-public-GetOneObservationSubmissionByFilterResponse) |  |
+| GetBulkObservationSubmissionByStudentId | [GetBulkObservationSubmissionByStudentIdRequest](#modules-observation-v1-public-GetBulkObservationSubmissionByStudentIdRequest) | [GetBulkObservationSubmissionByStudentIdResponse](#modules-observation-v1-public-GetBulkObservationSubmissionByStudentIdResponse) |  |
+| GetObservationSubmissionByStudentId | [GetObservationSubmissionByStudentIdRequest](#modules-observation-v1-public-GetObservationSubmissionByStudentIdRequest) | [GetObservationSubmissionByStudentIdResponse](#modules-observation-v1-public-GetObservationSubmissionByStudentIdResponse) |  |
 | GetObservationSubmissionById | [GetObservationSubmissionByIdRequest](#modules-observation-v1-public-GetObservationSubmissionByIdRequest) | [GetObservationSubmissionByIdResponse](#modules-observation-v1-public-GetObservationSubmissionByIdResponse) |  |
 | DeleteObservationSubmission | [DeleteObservationSubmissionRequest](#modules-observation-v1-public-DeleteObservationSubmissionRequest) | [DeleteObservationSubmissionResponse](#modules-observation-v1-public-DeleteObservationSubmissionResponse) |  |
 | ListObservationSubmission | [ListObservationSubmissionRequest](#modules-observation-v1-public-ListObservationSubmissionRequest) | [ListObservationSubmissionResponse](#modules-observation-v1-public-ListObservationSubmissionResponse) |  |
