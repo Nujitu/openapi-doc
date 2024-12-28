@@ -72,6 +72,7 @@
 | assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | assignee | [string](#string) | repeated |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| teaching_module_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -262,6 +263,8 @@
 | teacher_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| assignee | [string](#string) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -302,6 +305,7 @@
 | student_id | [string](#string) |  |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+| submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
