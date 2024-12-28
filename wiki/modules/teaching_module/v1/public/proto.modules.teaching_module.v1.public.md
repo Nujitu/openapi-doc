@@ -452,7 +452,14 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| datas | [modules.teaching_modules.v1.shared.FolderTask](#modules-teaching_modules-v1-shared-FolderTask) | repeated |  |
+| folder_id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| learning_goal_ids | [string](#string) | repeated |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| class_group_detail_id | [string](#string) |  |  |
+| folder_tasks | [modules.teaching_modules.v1.shared.FolderTask](#modules-teaching_modules-v1-shared-FolderTask) | repeated |  |
 
 
 
