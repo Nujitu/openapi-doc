@@ -1098,7 +1098,27 @@
               type: object,
               properties:
                 {
-                  datas:
+                  folder_id: { type: string, description: Folder ID },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of Learning Goals,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start Date,
+                      format: date-time,
+                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
+                  class_group_detail_id:
+                    { type: string, description: class_group_detail_id },
+                  folder_tasks:
                     {
                       type: array,
                       items:
