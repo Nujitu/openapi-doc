@@ -361,7 +361,7 @@
                 },
             },
         },
-      "/v1/schedule/student/{day}/time/{time_schedule_id}/subject":
+      "/v1/schedule/student/{time_schedule_id}/subject":
         {
           post:
             {
@@ -371,26 +371,6 @@
               operationId: SubjectScheduleService_CreateSubjectSchedule,
               parameters:
                 [
-                  {
-                    name: day,
-                    in: path,
-                    required: true,
-                    schema:
-                      {
-                        enum:
-                          [
-                            MONDAY,
-                            TUESDAY,
-                            WEDNESDAY,
-                            THURSDAY,
-                            FRIDAY,
-                            SATURDAY,
-                            SUNDAY,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
                   {
                     name: time_schedule_id,
                     in: path,
@@ -829,22 +809,6 @@
               type: object,
               properties:
                 {
-                  day:
-                    {
-                      enum:
-                        [
-                          MONDAY,
-                          TUESDAY,
-                          WEDNESDAY,
-                          THURSDAY,
-                          FRIDAY,
-                          SATURDAY,
-                          SUNDAY,
-                        ],
-                      type: string,
-                      description: "Day e.g. SUNDAY, MONDAY",
-                      format: enum,
-                    },
                   time_schedule_id:
                     { type: string, description: time schedule ID },
                   subject_schedules:

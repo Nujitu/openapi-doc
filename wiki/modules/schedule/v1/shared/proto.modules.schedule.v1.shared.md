@@ -399,7 +399,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
 | time_schedule_id | [string](#string) |  |  |
 | subject_schedules | [SubjectSchedule](#modules-schedule-v1-shared-SubjectSchedule) | repeated |  |
 
