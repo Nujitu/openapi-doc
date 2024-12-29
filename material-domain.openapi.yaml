@@ -2785,12 +2785,13 @@
                       example: choose component type,
                       enum:
                         [
-                          TEXT_INPUT,
+                          DEFAULT,
                           MULTIPLE_TEXT_INPUT,
                           TEXT_DESCRIPTION,
                           MULTIPLE_TEXT_DESCRIPTION,
                           CHECKLIST,
                           RADIO_BUTTON,
+                          TEXT_INPUT,
                         ],
                       type: string,
                       description: Component type,
