@@ -243,12 +243,13 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| TEXT_INPUT | 0 |  |
+| DEFAULT | 0 |  |
 | MULTIPLE_TEXT_INPUT | 1 |  |
 | TEXT_DESCRIPTION | 2 |  |
 | MULTIPLE_TEXT_DESCRIPTION | 3 |  |
 | CHECKLIST | 4 |  |
 | RADIO_BUTTON | 5 |  |
+| TEXT_INPUT | 6 |  |
 
 
  
