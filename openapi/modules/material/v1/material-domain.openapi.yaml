@@ -362,71 +362,7 @@
                 },
             },
         },
-      "/v1/class-group/teacher/{teacher_id}":
-        {
-          get:
-            {
-              tags: [ClassGroupService],
-              summary: Get Teacher Classes,
-              description: Retrieve teacher enrolled classes past/present,
-              operationId: ClassGroupService_GetTeacherClasses,
-              parameters:
-                [
-                  {
-                    name: teacher_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetTeacherClassesResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/class-group/{class_id}":
+      "/v1/class-group/subject/{class_id}":
         {
           patch:
             {
@@ -469,6 +405,70 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicUpdateClassSubjectDetailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/class-group/teacher/{teacher_id}":
+        {
+          get:
+            {
+              tags: [ClassGroupService],
+              summary: Get Teacher Classes,
+              description: Retrieve teacher enrolled classes past/present,
+              operationId: ClassGroupService_GetTeacherClasses,
+              parameters:
+                [
+                  {
+                    name: teacher_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeacherClassesResponse",
                                 },
                             },
                         },
