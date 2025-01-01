@@ -34,6 +34,7 @@
     - [SubjectSchedule](#modules-schedule-v1-shared-SubjectSchedule)
   
 - [modules/schedule/v1/shared/time_schedule.proto](#modules_schedule_v1_shared_time_schedule-proto)
+    - [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail)
     - [TimeSchedule](#modules-schedule-v1-shared-TimeSchedule)
   
 - [Scalar Value Types](#scalar-value-types)
@@ -303,8 +304,7 @@
 | day | [Day](#modules-schedule-v1-shared-Day) |  |  |
 | start_time | [string](#string) |  |  |
 | end_time | [string](#string) |  |  |
-| teacher_name | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teachers | [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail) | repeated |  |
 
 
 
@@ -458,6 +458,22 @@
 
 
 
+<a name="modules-schedule-v1-shared-DutyTeacherDetail"></a>
+
+### DutyTeacherDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-schedule-v1-shared-TimeSchedule"></a>
 
 ### TimeSchedule
@@ -472,8 +488,7 @@
 | end_time | [string](#string) |  |  |
 | subject_schedule | [SubjectSchedule](#modules-schedule-v1-shared-SubjectSchedule) | repeated | time schedule fields for student |
 | activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
-| teacher_name | [string](#string) |  | time schedule fields for teacher |
-| teacher_id | [string](#string) |  |  |
+| teachers | [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail) | repeated | duty teachers |
 
 
 
