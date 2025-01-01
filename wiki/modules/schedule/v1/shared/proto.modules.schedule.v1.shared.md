@@ -24,6 +24,7 @@
 - [modules/schedule/v1/shared/schedule_teacher.proto](#modules_schedule_v1_shared_schedule_teacher-proto)
     - [CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest)
     - [CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse)
+    - [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail)
     - [GetScheduleTeacherRequest](#modules-schedule-v1-shared-GetScheduleTeacherRequest)
     - [GetScheduleTeacherResponse](#modules-schedule-v1-shared-GetScheduleTeacherResponse)
     - [ScheduleTeacherResponse](#modules-schedule-v1-shared-ScheduleTeacherResponse)
@@ -303,8 +304,7 @@
 | day | [Day](#modules-schedule-v1-shared-Day) |  |  |
 | start_time | [string](#string) |  |  |
 | end_time | [string](#string) |  |  |
-| teacher_name | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teachers | [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail) | repeated |  |
 
 
 
@@ -320,6 +320,22 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DutyTeacherDetail"></a>
+
+### DutyTeacherDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
 
 
 
