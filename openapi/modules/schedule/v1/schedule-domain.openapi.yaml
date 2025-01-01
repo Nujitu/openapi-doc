@@ -15,6 +15,7 @@
           post:
             {
               tags: [EventService],
+              summary: Insert new event,
               description: Insert new event,
               operationId: EventService_CreateEvent,
               requestBody:
@@ -83,6 +84,7 @@
           post:
             {
               tags: [EventService],
+              summary: Update an event by id,
               description: Update event by id,
               operationId: EventService_UpdateEvent,
               parameters:
@@ -221,6 +223,7 @@
           post:
             {
               tags: [ScheduleStudentService],
+              summary: Insert new schedule for student,
               description: Insert new schedule for student,
               operationId: ScheduleStudentService_CreateScheduleStudentByDay,
               requestBody:
@@ -289,6 +292,7 @@
           get:
             {
               tags: [ScheduleStudentService],
+              summary: Get schedule for student for each day,
               description: "Get schedule for student for each day, e.g /v1/schedule/student/MONDAY, /v1/schedule/student/TUESDAY, /v1/schedule/student/SUNDAY",
               operationId: ScheduleStudentService_GetScheduleStudentByDay,
               parameters:
@@ -464,6 +468,7 @@
           get:
             {
               tags: [ScheduleTeacherService],
+              summary: Get schedule for teacher with date range,
               description: "Get schedule for teacher with date range, e.g /v1/schedule/teacher?from=2024-09-01&to=2024-09-30",
               operationId: ScheduleTeacherService_GetScheduleTeacher,
               parameters:
@@ -520,6 +525,7 @@
           post:
             {
               tags: [ScheduleTeacherService],
+              summary: Insert new schedule for teacher,
               description: Insert new schedule for teacher,
               operationId: ScheduleTeacherService_CreateScheduleTeacherByDay,
               requestBody:
@@ -744,6 +750,15 @@
                     },
                 },
             },
+          sharedDutyTeacherDetail:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Duty teacher name },
+                  name: { type: string, description: Duty teacher id },
+                },
+            },
           sharedGetScheduleStudentByDayResponse:
             {
               type: object,
@@ -819,9 +834,15 @@
                       description: time schedule activity,
                       format: enum,
                     },
-                  teacher_name:
-                    { type: string, description: duty teacher name },
-                  teacher_id: { type: string, description: duty teacher id },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher IDs,
+                    },
                 },
             },
           sharedCreateSubjectScheduleRequest:
@@ -894,9 +915,15 @@
                   start_time:
                     { type: string, description: Start time activity },
                   end_time: { type: string, description: End time activity },
-                  teacher_name:
-                    { type: string, description: Duty teacher name },
-                  teacher_id: { type: string, description: Duty teacher id },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher IDs,
+                    },
                 },
             },
           sharedCreateScheduleTeacherByDayResponse:
