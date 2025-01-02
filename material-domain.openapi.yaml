@@ -643,6 +643,70 @@
                 },
             },
         },
+      "/v1/class-group/{id}/class-subject":
+        {
+          get:
+            {
+              tags: [ClassGroupService],
+              summary: GetClassSubjectDetails,
+              description: retrieves a subject taught in the specified class.,
+              operationId: ClassGroupService_GetClassSubjectDetails,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetClassSubjectDetailsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/class-group/{id}/students":
         {
           get:
@@ -2198,6 +2262,17 @@
                     },
                   meta:
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetClassSubjectDetailsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  class_subjects:
+                    {
+                      $ref: "#/components/schemas/sharedClassSubjectDetail",
+                    },
                 },
             },
           publicGetStudentClassesResponse:
