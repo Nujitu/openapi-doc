@@ -12,6 +12,8 @@
     - [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse)
     - [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest)
     - [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse)
+    - [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest)
+    - [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse)
     - [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest)
     - [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse)
     - [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest)
@@ -225,6 +227,36 @@
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetClassSubjectDetailsRequest"></a>
+
+### GetClassSubjectDetailsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetClassSubjectDetailsResponse"></a>
+
+### GetClassSubjectDetailsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) |  |  |
 
 
 
@@ -493,6 +525,7 @@ Service for user related feature
 | GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
 | GetStudentsInClass | [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest) | [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse) |  |
 | GetTeacherCourses | [GetTeacherActiveSubjectsRequest](#modules-material-v1-public-GetTeacherActiveSubjectsRequest) | [GetTeacherActiveSubjectsResponse](#modules-material-v1-public-GetTeacherActiveSubjectsResponse) |  |
+| GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
 
  
 
