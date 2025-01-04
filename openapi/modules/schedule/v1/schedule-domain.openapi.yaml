@@ -12,6 +12,63 @@
     {
       /v1/event:
         {
+          get:
+            {
+              tags: [EventService],
+              summary: Get list of events and schedules by date range,
+              description: "Get list of events and schedules by date range, e.g /v1/event?from=2024-09-01&to=2024-09-30",
+              operationId: EventService_GetEvent,
+              parameters:
+                [
+                  { name: from, in: query, schema: { type: string } },
+                  { name: to, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           post:
             {
               tags: [EventService],
@@ -612,7 +669,16 @@
                   end_time: { type: string, description: Event end time },
                   activity:
                     {
-                      enum: [LEARNING, SCHOOL_EVENT, OTHERS],
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
                       type: string,
                       description: Event activity,
                       format: enum,
@@ -643,6 +709,52 @@
                     },
                 },
             },
+          sharedGetEventDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  title: { type: string, description: title of the event },
+                  description:
+                    { type: string, description: description of the event },
+                  schedule_type:
+                    {
+                      example: "e.g. STUDENT, TEACHER, EVENT",
+                      type: string,
+                      description: description of the event,
+                    },
+                  start:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: start time of event,
+                      format: date-time,
+                    },
+                  end:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: end time of event,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedGetEventResponse:
+            {
+              type: object,
+              properties:
+                {
+                  events:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedGetEventDetailResponse",
+                        },
+                      description: list of schedules and events,
+                    },
+                },
+            },
           sharedUpdateEventRequest:
             {
               type: object,
@@ -662,7 +774,16 @@
                   end_time: { type: string, description: Event end time },
                   activity:
                     {
-                      enum: [LEARNING, SCHOOL_EVENT, OTHERS],
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
                       type: string,
                       description: Event activity,
                       format: enum,
@@ -731,7 +852,16 @@
                   end_time: { type: string, description: End time activity },
                   activity:
                     {
-                      enum: [LEARNING, SCHOOL_EVENT, OTHERS],
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
                       type: string,
                       description: Activity,
                       format: enum,
@@ -829,7 +959,16 @@
                     },
                   activity:
                     {
-                      enum: [LEARNING, SCHOOL_EVENT, OTHERS],
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
                       type: string,
                       description: time schedule activity,
                       format: enum,
