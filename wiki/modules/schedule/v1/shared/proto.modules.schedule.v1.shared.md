@@ -12,6 +12,9 @@
     - [CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse)
     - [DeleteEventRequest](#modules-schedule-v1-shared-DeleteEventRequest)
     - [DeleteEventResponse](#modules-schedule-v1-shared-DeleteEventResponse)
+    - [GetEventDetailResponse](#modules-schedule-v1-shared-GetEventDetailResponse)
+    - [GetEventRequest](#modules-schedule-v1-shared-GetEventRequest)
+    - [GetEventResponse](#modules-schedule-v1-shared-GetEventResponse)
     - [UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest)
     - [UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse)
   
@@ -57,9 +60,13 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| LEARNING | 0 |  |
-| SCHOOL_EVENT | 1 |  |
-| OTHERS | 2 |  |
+| OTHERS | 0 |  |
+| LEARNING | 1 |  |
+| SCHOOL_EVENT | 2 |  |
+| EXAM | 3 |  |
+| CEREMONY | 4 |  |
+| EXTRACURRICULAR | 5 |  |
+| STAFF_DEVELOPMENT | 6 |  |
 
 
 
@@ -154,6 +161,55 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetEventDetailResponse"></a>
+
+### GetEventDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| start | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetEventRequest"></a>
+
+### GetEventRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| from | [string](#string) |  |  |
+| to | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetEventResponse"></a>
+
+### GetEventResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| events | [GetEventDetailResponse](#modules-schedule-v1-shared-GetEventDetailResponse) | repeated |  |
 
 
 
