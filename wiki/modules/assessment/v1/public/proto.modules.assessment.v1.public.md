@@ -79,12 +79,16 @@
     - [CreateQuizSettingResponse](#modules-assessment-v1-public-CreateQuizSettingResponse)
     - [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest)
     - [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse)
+    - [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest)
+    - [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse)
     - [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest)
     - [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse)
     - [GetQuizDetailRequest](#modules-assessment-v1-public-GetQuizDetailRequest)
     - [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse)
     - [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest)
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
+    - [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest)
+    - [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse)
     - [QuizAssignee](#modules-assessment-v1-public-QuizAssignee)
     - [ScoringQuizJob](#modules-assessment-v1-public-ScoringQuizJob)
     - [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload)
@@ -1342,6 +1346,37 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest"></a>
+
+### GetBulkQuizSubmissionByStudentIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| student_ids | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse"></a>
+
+### GetBulkQuizSubmissionByStudentIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_submissions | [modules.assessment.v1.shared.QuizSubmission](#modules-assessment-v1-shared-QuizSubmission) | repeated |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-GetQuestionListRequest"></a>
 
 ### GetQuestionListRequest
@@ -1438,6 +1473,37 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest"></a>
+
+### GetQuizSubmissionByStudentIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse"></a>
+
+### GetQuizSubmissionByStudentIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_submission | [modules.assessment.v1.shared.QuizSubmission](#modules-assessment-v1-shared-QuizSubmission) |  |  |
 
 
 
@@ -1631,6 +1697,8 @@ Service for quiz related feature
 | EditQuestions | [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest) | [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse) |  |
 | GetQuestionList | [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest) | [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse) |  |
 | SubmitStudentAnswer | [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest) | [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse) |  |
+| GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
+| GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
 
  
 
