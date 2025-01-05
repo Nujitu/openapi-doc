@@ -96,7 +96,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleTeacherByDay | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse) |  |
-| GetScheduleTeacher | [.modules.schedule.v1.shared.GetScheduleTeacherRequest](#modules-schedule-v1-shared-GetScheduleTeacherRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherResponse](#modules-schedule-v1-shared-GetScheduleTeacherResponse) |  |
+| GetScheduleTeacherByDay | [.modules.schedule.v1.shared.GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse) |  |
 
  
 

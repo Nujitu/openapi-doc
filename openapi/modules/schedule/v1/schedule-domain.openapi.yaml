@@ -527,11 +527,28 @@
               tags: [ScheduleTeacherService],
               summary: Get schedule for teacher with date range,
               description: "Get schedule for teacher with date range, e.g /v1/schedule/teacher?from=2024-09-01&to=2024-09-30",
-              operationId: ScheduleTeacherService_GetScheduleTeacher,
+              operationId: ScheduleTeacherService_GetScheduleTeacherByDay,
               parameters:
                 [
-                  { name: from, in: query, schema: { type: string } },
-                  { name: to, in: query, schema: { type: string } },
+                  {
+                    name: day,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            MONDAY,
+                            TUESDAY,
+                            WEDNESDAY,
+                            THURSDAY,
+                            FRIDAY,
+                            SATURDAY,
+                            SUNDAY,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
                 ],
               responses:
                 {
@@ -544,7 +561,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetScheduleTeacherResponse",
+                                  $ref: "#/components/schemas/sharedGetScheduleTeacherByDayResponse",
                                 },
                             },
                         },
@@ -1061,7 +1078,7 @@
                         {
                           $ref: "#/components/schemas/sharedDutyTeacherDetail",
                         },
-                      description: Duty teacher IDs,
+                      description: Duty teacher detail,
                     },
                 },
             },
@@ -1077,42 +1094,57 @@
                     },
                 },
             },
-          sharedGetScheduleTeacherResponse:
+          sharedGetScheduleTeacherByDayDetailResponse:
             {
               type: object,
               properties:
                 {
+                  time_schedule_id:
+                    { type: string, description: time schedule start time },
+                  start_time:
+                    { type: string, description: time schedule start time },
+                  end_time:
+                    { type: string, description: time schedule start time },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher detail,
+                    },
+                },
+            },
+          sharedGetScheduleTeacherByDayResponse:
+            {
+              type: object,
+              properties:
+                {
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
                   schedules:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedScheduleTeacherResponse",
+                          $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
                         },
                       description: list of teacher time schedule,
-                    },
-                },
-            },
-          sharedScheduleTeacherResponse:
-            {
-              type: object,
-              properties:
-                {
-                  title: { type: string, description: title of the schedule },
-                  teacher_name: { type: string, description: teacher name },
-                  start:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: start date for duty teacher schedule,
-                      format: date-time,
-                    },
-                  end:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: end date for duty teacher schedule,
-                      format: date-time,
                     },
                 },
             },
