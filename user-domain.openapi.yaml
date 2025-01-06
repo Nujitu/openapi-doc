@@ -1267,6 +1267,21 @@
                     {
                       $ref: "#/components/schemas/sharedAddress",
                     },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
