@@ -243,6 +243,7 @@ User entity
 | email | [string](#string) |  |  |
 | profile_pic | [string](#string) |  |  |
 | address | [Address](#modules-user-v1-shared-Address) |  |  |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

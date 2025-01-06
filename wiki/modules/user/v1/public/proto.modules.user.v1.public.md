@@ -29,7 +29,6 @@
     - [TeacherService](#-TeacherService)
   
 - [modules/user/v1/public/user.proto](#modules_user_v1_public_user-proto)
-    - [CreateUserRequest](#modules-user-v1-public-CreateUserRequest)
     - [GetUserListRequest](#modules-user-v1-public-GetUserListRequest)
     - [GetUserListResponse](#modules-user-v1-public-GetUserListResponse)
     - [GetUserRequest](#modules-user-v1-public-GetUserRequest)
@@ -382,21 +381,6 @@ Service for teacher related feature
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/public/user.proto
-
-
-
-<a name="modules-user-v1-public-CreateUserRequest"></a>
-
-### CreateUserRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user | [modules.user.v1.shared.User](#modules-user-v1-shared-User) |  |  |
-
-
-
 
 
 
