@@ -3,6 +3,22 @@
 
 ## Table of Contents
 
+- [modules/report/v1/public/absence.proto](#modules_report_v1_public_absence-proto)
+    - [AbsenceDetail](#modules-report-v1-public-AbsenceDetail)
+    - [DeleteAbsenceRequest](#modules-report-v1-public-DeleteAbsenceRequest)
+    - [GeneralAbsenceResponse](#modules-report-v1-public-GeneralAbsenceResponse)
+    - [ListAbsencesRequest](#modules-report-v1-public-ListAbsencesRequest)
+    - [ListAbsencesResponse](#modules-report-v1-public-ListAbsencesResponse)
+    - [StudentAbsenceData](#modules-report-v1-public-StudentAbsenceData)
+  
+    - [AbsenceService](#modules-report-v1-public-AbsenceService)
+  
+- [modules/report/v1/public/attendance.proto](#modules_report_v1_public_attendance-proto)
+    - [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest)
+    - [SubmitAttendanceRequest](#modules-report-v1-public-SubmitAttendanceRequest)
+  
+    - [AttendanceService](#modules-report-v1-public-AttendanceService)
+  
 - [modules/report/v1/public/finalized_score.proto](#modules_report_v1_public_finalized_score-proto)
     - [GetFinalizedScoreListRequest](#modules-report-v1-public-GetFinalizedScoreListRequest)
     - [GetFinalizedScoreListResponse](#modules-report-v1-public-GetFinalizedScoreListResponse)
@@ -10,6 +26,197 @@
     - [FinalizedScoreService](#modules-report-v1-public-FinalizedScoreService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_report_v1_public_absence-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/public/absence.proto
+
+
+
+<a name="modules-report-v1-public-AbsenceDetail"></a>
+
+### AbsenceDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| date | [int64](#int64) |  |  |
+| status | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-DeleteAbsenceRequest"></a>
+
+### DeleteAbsenceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| date | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GeneralAbsenceResponse"></a>
+
+### GeneralAbsenceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-ListAbsencesRequest"></a>
+
+### ListAbsencesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-ListAbsencesResponse"></a>
+
+### ListAbsencesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [StudentAbsenceData](#modules-report-v1-public-StudentAbsenceData) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-StudentAbsenceData"></a>
+
+### StudentAbsenceData
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| total | [int32](#int32) |  |  |
+| sick | [int32](#int32) |  |  |
+| present | [int32](#int32) |  |  |
+| absent | [int32](#int32) |  |  |
+| leave | [int32](#int32) |  |  |
+| late | [int32](#int32) |  |  |
+| absences | [AbsenceDetail](#modules-report-v1-public-AbsenceDetail) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-report-v1-public-AbsenceService"></a>
+
+### AbsenceService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| ListAbsences | [ListAbsencesRequest](#modules-report-v1-public-ListAbsencesRequest) | [ListAbsencesResponse](#modules-report-v1-public-ListAbsencesResponse) |  |
+| DeleteAbsence | [DeleteAbsenceRequest](#modules-report-v1-public-DeleteAbsenceRequest) | [GeneralAbsenceResponse](#modules-report-v1-public-GeneralAbsenceResponse) |  |
+
+ 
+
+
+
+<a name="modules_report_v1_public_attendance-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/public/attendance.proto
+
+
+
+<a name="modules-report-v1-public-GetAttendanceRequest"></a>
+
+### GetAttendanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| schedule_id | [string](#string) |  |  |
+| class_id | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-SubmitAttendanceRequest"></a>
+
+### SubmitAttendanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| schedule_id | [string](#string) |  |  |
+| class_id | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| student_attendance | [modules.report.v1.shared.StudentAttendance](#modules-report-v1-shared-StudentAttendance) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-report-v1-public-AttendanceService"></a>
+
+### AttendanceService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SubmitAttendance | [SubmitAttendanceRequest](#modules-report-v1-public-SubmitAttendanceRequest) | [.modules.report.v1.shared.Attendance](#modules-report-v1-shared-Attendance) | Create attendance |
+| GetAttendance | [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest) | [.modules.report.v1.shared.Attendance](#modules-report-v1-shared-Attendance) | Get attendance by ID |
+
+ 
 
 
 
