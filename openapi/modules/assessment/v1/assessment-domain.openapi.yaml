@@ -605,6 +605,126 @@
                 },
             },
         },
+      /v1/quiz/submission/student-id:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get an quiz submission by student id,
+              description: Will return quiz assessment by specified student id and quiz id,
+              operationId: QuizService_GetQuizSubmissionByStudentId,
+              parameters:
+                [
+                  { name: quiz_id, in: query, schema: { type: string } },
+                  { name: student_id, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/submission/student-id/bulk:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get bulk quiz submission by many student ids,
+              description: Will return multiple quiz assessment by specified student ids and quiz id,
+              operationId: QuizService_GetBulkQuizSubmissionByStudentId,
+              parameters:
+                [
+                  { name: quiz_id, in: query, schema: { type: string } },
+                  { name: student_ids, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetBulkQuizSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/quiz/{id}":
         {
           get:
@@ -3298,6 +3418,22 @@
             },
           publicEditQuestionsResponse:
             { type: object, properties: { message: { type: string } } },
+          publicGetBulkQuizSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmission",
+                        },
+                      description: Quiz submission details,
+                    },
+                },
+            },
           publicGetQuestionListResponse:
             {
               type: object,
@@ -3351,6 +3487,17 @@
                     },
                   meta:
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetQuizSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSubmission",
+                    },
                 },
             },
           publicQuizAssignee:
@@ -3717,6 +3864,90 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Time when quiz data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Quiz submission ID,
+                    },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  attempt:
+                    {
+                      example: 1,
+                      type: integer,
+                      description: Number of quiz submission attempt,
+                      format: int32,
+                    },
+                  time_spent:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time spent,
+                      format: int32,
+                    },
+                  score:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The score earned by students on scale of 0 to 100,
+                      format: float,
+                    },
+                  points:
+                    {
+                      example: 100,
+                      type: integer,
+                      description: The total point from students answer,
+                      format: int32,
+                    },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz submission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz submission is updated,
                       format: date-time,
                     },
                 },

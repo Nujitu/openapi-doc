@@ -26,6 +26,7 @@
     - [QuizOption](#modules-assessment-v1-shared-QuizOption)
     - [QuizQuestion](#modules-assessment-v1-shared-QuizQuestion)
     - [QuizSettings](#modules-assessment-v1-shared-QuizSettings)
+    - [QuizSubmission](#modules-assessment-v1-shared-QuizSubmission)
     - [StudentAnswer](#modules-assessment-v1-shared-StudentAnswer)
   
 - [modules/assessment/v1/shared/rubric.proto](#modules_assessment_v1_shared_rubric-proto)
@@ -414,6 +415,33 @@
 | indexMinimum | [int32](#int32) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-QuizSubmission"></a>
+
+### QuizSubmission
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| quiz_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| attempt | [int32](#int32) |  |  |
+| time_spent | [int32](#int32) |  |  |
+| score | [float](#float) |  |  |
+| points | [int32](#int32) |  |  |
+| state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
