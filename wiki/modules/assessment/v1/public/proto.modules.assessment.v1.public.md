@@ -1293,6 +1293,7 @@ Service for observation related feature
 | due_date | [string](#string) |  |  |
 | until_date | [string](#string) |  |  |
 | assignee | [QuizAssignee](#modules-assessment-v1-public-QuizAssignee) | repeated |  |
+| folder_id | [string](#string) |  |  |
 
 
 
