@@ -3386,6 +3386,7 @@
                           $ref: "#/components/schemas/publicQuizAssignee",
                         },
                     },
+                  folder_id: { type: string },
                 },
             },
           publicCreateQuizSettingResponse:
