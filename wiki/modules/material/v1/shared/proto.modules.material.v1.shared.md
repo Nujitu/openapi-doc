@@ -107,6 +107,7 @@
 | classgroup_name | [string](#string) |  |  |
 | total_students | [string](#string) |  |  |
 | major | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

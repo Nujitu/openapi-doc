@@ -2604,6 +2604,12 @@
                   total_students: { type: string, description: Total students },
                   major:
                     { example: IPA, type: string, description: Class major },
+                  class_subject_id:
+                    {
+                      example: 1231244,
+                      type: string,
+                      description: Class subject id,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
