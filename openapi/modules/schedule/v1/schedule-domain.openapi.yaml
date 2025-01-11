@@ -275,6 +275,84 @@
                 },
             },
         },
+      "/v1/schedule/day/{day}/student":
+        {
+          get:
+            {
+              tags: [ScheduleStudentService],
+              summary: Get schedule for student for each day,
+              description: "Get schedule for student for each day, e.g /v1/schedule/day/MONDAY/student, /v1/schedule/day/TUESDAY/student, /v1/schedule/day/SUNDAY/student",
+              operationId: ScheduleStudentService_GetScheduleStudentByDay,
+              parameters:
+                [
+                  {
+                    name: day,
+                    in: path,
+                    required: true,
+                    schema:
+                      {
+                        enum:
+                          [
+                            MONDAY,
+                            TUESDAY,
+                            WEDNESDAY,
+                            THURSDAY,
+                            FRIDAY,
+                            SATURDAY,
+                            SUNDAY,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleStudentByDayResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/schedule/student:
         {
           post:
@@ -343,36 +421,88 @@
                     },
                 },
             },
-        },
-      "/v1/schedule/student/{day}":
-        {
-          get:
+          patch:
             {
               tags: [ScheduleStudentService],
-              summary: Get schedule for student for each day,
-              description: "Get schedule for student for each day, e.g /v1/schedule/student/MONDAY, /v1/schedule/student/TUESDAY, /v1/schedule/student/SUNDAY",
-              operationId: ScheduleStudentService_GetScheduleStudentByDay,
+              summary: Update schedule for student,
+              description: Update schedule for student,
+              operationId: ScheduleStudentService_UpdateScheduleStudent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedUpdateScheduleStudentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedUpdateScheduleStudentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/schedule/student/{id}":
+        {
+          delete:
+            {
+              tags: [ScheduleStudentService],
+              summary: Delete schedule for student,
+              description: Delete schedule for student,
+              operationId: ScheduleStudentService_DeleteScheduleStudent,
               parameters:
                 [
                   {
-                    name: day,
+                    name: id,
                     in: path,
                     required: true,
-                    schema:
-                      {
-                        enum:
-                          [
-                            MONDAY,
-                            TUESDAY,
-                            WEDNESDAY,
-                            THURSDAY,
-                            FRIDAY,
-                            SATURDAY,
-                            SUNDAY,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
+                    schema: { type: string },
                   },
                 ],
               responses:
@@ -386,7 +516,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetScheduleStudentByDayResponse",
+                                  $ref: "#/components/schemas/sharedDeleteScheduleStudentResponse",
                                 },
                             },
                         },
@@ -520,18 +650,36 @@
                 },
             },
         },
-      /v1/schedule/teacher:
+      "/v1/schedule/day/{day}/teacher":
         {
           get:
             {
               tags: [ScheduleTeacherService],
-              summary: Get schedule for teacher with date range,
-              description: "Get schedule for teacher with date range, e.g /v1/schedule/teacher?from=2024-09-01&to=2024-09-30",
-              operationId: ScheduleTeacherService_GetScheduleTeacher,
+              summary: Get schedule for teacher for each day,
+              description: "Get schedule for teacher for each day, e.g /v1/schedule/day/MONDAY/teacher, /v1/schedule/day/TUESDAY/teacher, /v1/schedule/day/SUNDAY/teacher",
+              operationId: ScheduleTeacherService_GetScheduleTeacherByDay,
               parameters:
                 [
-                  { name: from, in: query, schema: { type: string } },
-                  { name: to, in: query, schema: { type: string } },
+                  {
+                    name: day,
+                    in: path,
+                    required: true,
+                    schema:
+                      {
+                        enum:
+                          [
+                            MONDAY,
+                            TUESDAY,
+                            WEDNESDAY,
+                            THURSDAY,
+                            FRIDAY,
+                            SATURDAY,
+                            SUNDAY,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
                 ],
               responses:
                 {
@@ -544,7 +692,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetScheduleTeacherResponse",
+                                  $ref: "#/components/schemas/sharedGetScheduleTeacherByDayResponse",
                                 },
                             },
                         },
@@ -579,6 +727,9 @@
                     },
                 },
             },
+        },
+      /v1/schedule/teacher:
+        {
           post:
             {
               tags: [ScheduleTeacherService],
@@ -880,6 +1031,18 @@
                     },
                 },
             },
+          sharedDeleteScheduleStudentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the deleting of the schedule,
+                    },
+                },
+            },
           sharedDutyTeacherDetail:
             {
               type: object,
@@ -984,6 +1147,61 @@
                     },
                 },
             },
+          sharedUpdateScheduleStudentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Start time activity },
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  start_time:
+                    { type: string, description: Start time activity },
+                  end_time: { type: string, description: End time activity },
+                  activity:
+                    {
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
+                      type: string,
+                      description: Activity,
+                      format: enum,
+                    },
+                },
+            },
+          sharedUpdateScheduleStudentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the updating of the schedule,
+                    },
+                },
+            },
           sharedCreateSubjectScheduleRequest:
             {
               type: object,
@@ -1061,7 +1279,7 @@
                         {
                           $ref: "#/components/schemas/sharedDutyTeacherDetail",
                         },
-                      description: Duty teacher IDs,
+                      description: Duty teacher detail,
                     },
                 },
             },
@@ -1077,42 +1295,57 @@
                     },
                 },
             },
-          sharedGetScheduleTeacherResponse:
+          sharedGetScheduleTeacherByDayDetailResponse:
             {
               type: object,
               properties:
                 {
+                  time_schedule_id:
+                    { type: string, description: time schedule start time },
+                  start_time:
+                    { type: string, description: time schedule start time },
+                  end_time:
+                    { type: string, description: time schedule start time },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher detail,
+                    },
+                },
+            },
+          sharedGetScheduleTeacherByDayResponse:
+            {
+              type: object,
+              properties:
+                {
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
                   schedules:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedScheduleTeacherResponse",
+                          $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
                         },
                       description: list of teacher time schedule,
-                    },
-                },
-            },
-          sharedScheduleTeacherResponse:
-            {
-              type: object,
-              properties:
-                {
-                  title: { type: string, description: title of the schedule },
-                  teacher_name: { type: string, description: teacher name },
-                  start:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: start date for duty teacher schedule,
-                      format: date-time,
-                    },
-                  end:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: end date for duty teacher schedule,
-                      format: date-time,
                     },
                 },
             },
