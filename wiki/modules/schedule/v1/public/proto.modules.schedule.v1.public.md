@@ -70,6 +70,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleStudentByDay | [.modules.schedule.v1.shared.CreateScheduleStudentByDayRequest](#modules-schedule-v1-shared-CreateScheduleStudentByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleStudentByDayResponse](#modules-schedule-v1-shared-CreateScheduleStudentByDayResponse) |  |
 | GetScheduleStudentByDay | [.modules.schedule.v1.shared.GetScheduleStudentByDayRequest](#modules-schedule-v1-shared-GetScheduleStudentByDayRequest) | [.modules.schedule.v1.shared.GetScheduleStudentByDayResponse](#modules-schedule-v1-shared-GetScheduleStudentByDayResponse) |  |
+| UpdateScheduleStudent | [.modules.schedule.v1.shared.UpdateScheduleStudentRequest](#modules-schedule-v1-shared-UpdateScheduleStudentRequest) | [.modules.schedule.v1.shared.UpdateScheduleStudentResponse](#modules-schedule-v1-shared-UpdateScheduleStudentResponse) |  |
 
  
 
@@ -96,7 +97,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleTeacherByDay | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse) |  |
-| GetScheduleTeacher | [.modules.schedule.v1.shared.GetScheduleTeacherRequest](#modules-schedule-v1-shared-GetScheduleTeacherRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherResponse](#modules-schedule-v1-shared-GetScheduleTeacherResponse) |  |
+| GetScheduleTeacherByDay | [.modules.schedule.v1.shared.GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse) |  |
 
  
 
