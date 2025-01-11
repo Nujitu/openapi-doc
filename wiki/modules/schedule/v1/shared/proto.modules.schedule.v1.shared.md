@@ -21,12 +21,19 @@
 - [modules/schedule/v1/shared/schedule_student.proto](#modules_schedule_v1_shared_schedule_student-proto)
     - [CreateScheduleStudentByDayRequest](#modules-schedule-v1-shared-CreateScheduleStudentByDayRequest)
     - [CreateScheduleStudentByDayResponse](#modules-schedule-v1-shared-CreateScheduleStudentByDayResponse)
+    - [DeleteScheduleStudentRequest](#modules-schedule-v1-shared-DeleteScheduleStudentRequest)
+    - [DeleteScheduleStudentResponse](#modules-schedule-v1-shared-DeleteScheduleStudentResponse)
     - [GetScheduleStudentByDayRequest](#modules-schedule-v1-shared-GetScheduleStudentByDayRequest)
     - [GetScheduleStudentByDayResponse](#modules-schedule-v1-shared-GetScheduleStudentByDayResponse)
+    - [UpdateScheduleStudentRequest](#modules-schedule-v1-shared-UpdateScheduleStudentRequest)
+    - [UpdateScheduleStudentResponse](#modules-schedule-v1-shared-UpdateScheduleStudentResponse)
   
 - [modules/schedule/v1/shared/schedule_teacher.proto](#modules_schedule_v1_shared_schedule_teacher-proto)
     - [CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest)
     - [CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse)
+    - [GetScheduleTeacherByDayDetailResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse)
+    - [GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest)
+    - [GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse)
     - [GetScheduleTeacherRequest](#modules-schedule-v1-shared-GetScheduleTeacherRequest)
     - [GetScheduleTeacherResponse](#modules-schedule-v1-shared-GetScheduleTeacherResponse)
     - [ScheduleTeacherResponse](#modules-schedule-v1-shared-ScheduleTeacherResponse)
@@ -303,6 +310,36 @@
 
 
 
+<a name="modules-schedule-v1-shared-DeleteScheduleStudentRequest"></a>
+
+### DeleteScheduleStudentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DeleteScheduleStudentResponse"></a>
+
+### DeleteScheduleStudentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-schedule-v1-shared-GetScheduleStudentByDayRequest"></a>
 
 ### GetScheduleStudentByDayRequest
@@ -328,6 +365,40 @@
 | ----- | ---- | ----- | ----------- |
 | day | [Day](#modules-schedule-v1-shared-Day) |  |  |
 | time_schedules | [TimeSchedule](#modules-schedule-v1-shared-TimeSchedule) | repeated |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-UpdateScheduleStudentRequest"></a>
+
+### UpdateScheduleStudentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
+| start_time | [string](#string) |  |  |
+| end_time | [string](#string) |  |  |
+| activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-UpdateScheduleStudentResponse"></a>
+
+### UpdateScheduleStudentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
 
 
 
@@ -377,6 +448,55 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse"></a>
+
+### GetScheduleTeacherByDayDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| time_schedule_id | [string](#string) |  |  |
+| start_time | [string](#string) |  |  |
+| end_time | [string](#string) |  |  |
+| duty_teachers | [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail) | repeated |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetScheduleTeacherByDayRequest"></a>
+
+### GetScheduleTeacherByDayRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetScheduleTeacherByDayResponse"></a>
+
+### GetScheduleTeacherByDayResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
+| schedules | [GetScheduleTeacherByDayDetailResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse) | repeated |  |
 
 
 
