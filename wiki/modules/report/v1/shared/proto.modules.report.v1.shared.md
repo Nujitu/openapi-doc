@@ -3,10 +3,114 @@
 
 ## Table of Contents
 
+- [modules/report/v1/shared/absence.proto](#modules_report_v1_shared_absence-proto)
+    - [Absence](#modules-report-v1-shared-Absence)
+  
+- [modules/report/v1/shared/attendance.proto](#modules_report_v1_shared_attendance-proto)
+    - [Attendance](#modules-report-v1-shared-Attendance)
+    - [StudentAttendance](#modules-report-v1-shared-StudentAttendance)
+  
 - [modules/report/v1/shared/finalized_score.proto](#modules_report_v1_shared_finalized_score-proto)
     - [FinalizedScore](#modules-report-v1-shared-FinalizedScore)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_report_v1_shared_absence-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/shared/absence.proto
+
+
+
+<a name="modules-report-v1-shared-Absence"></a>
+
+### Absence
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| class_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| status | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_report_v1_shared_attendance-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/shared/attendance.proto
+
+
+
+<a name="modules-report-v1-shared-Attendance"></a>
+
+### Attendance
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| schedule_id | [string](#string) |  |  |
+| date | [string](#string) |  |  |
+| class_id | [string](#string) |  |  |
+| present | [int32](#int32) |  |  |
+| absent | [int32](#int32) |  |  |
+| sick | [int32](#int32) |  |  |
+| leave | [int32](#int32) |  |  |
+| late | [int32](#int32) |  |  |
+| student_attendance | [StudentAttendance](#modules-report-v1-shared-StudentAttendance) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-shared-StudentAttendance"></a>
+
+### StudentAttendance
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| status | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
 
 
 
