@@ -552,13 +552,13 @@
                 },
             },
         },
-      "/v1/schedule/student/{day}/time/{time_schedule_id}/subject":
+      "/v1/schedule/day/{day}/time/{time_schedule_id}/subject":
         {
           post:
             {
               tags: [SubjectScheduleService],
               summary: Insert new subject schedule,
-              description: Insert new schedule,
+              description: "Insert new schedule, e.g. /v1/schedule/day/MONDAY/time/231241/subject",
               operationId: SubjectScheduleService_CreateSubjectSchedule,
               parameters:
                 [
@@ -762,6 +762,136 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Update schedule for teacher,
+              description: Update schedule for teacher,
+              operationId: ScheduleTeacherService_UpdateScheduleTeacher,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedUpdateScheduleTeacherRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedUpdateScheduleTeacherResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/schedule/teacher/{id}":
+        {
+          delete:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Delete schedule for teacher,
+              description: Delete schedule for teacher,
+              operationId: ScheduleTeacherService_DeleteScheduleTeacher,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteScheduleTeacherResponse",
                                 },
                             },
                         },
@@ -1152,7 +1282,7 @@
               type: object,
               properties:
                 {
-                  id: { type: string, description: Start time activity },
+                  id: { type: string, description: Id of schedule student },
                   day:
                     {
                       enum:
@@ -1295,6 +1425,18 @@
                     },
                 },
             },
+          sharedDeleteScheduleTeacherResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the deleting of the schedule,
+                    },
+                },
+            },
           sharedGetScheduleTeacherByDayDetailResponse:
             {
               type: object,
@@ -1346,6 +1488,54 @@
                           $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
                         },
                       description: list of teacher time schedule,
+                    },
+                },
+            },
+          sharedUpdateScheduleTeacherRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Id of the schedule teacher },
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  start_time:
+                    { type: string, description: Start time activity },
+                  end_time: { type: string, description: End time activity },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher detail,
+                    },
+                },
+            },
+          sharedUpdateScheduleTeacherResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the updating of the schedule,
                     },
                 },
             },
