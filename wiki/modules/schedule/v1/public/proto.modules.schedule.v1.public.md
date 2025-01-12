@@ -99,6 +99,8 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleTeacherByDay | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse) |  |
 | GetScheduleTeacherByDay | [.modules.schedule.v1.shared.GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse) |  |
+| UpdateScheduleTeacher | [.modules.schedule.v1.shared.UpdateScheduleTeacherRequest](#modules-schedule-v1-shared-UpdateScheduleTeacherRequest) | [.modules.schedule.v1.shared.UpdateScheduleTeacherResponse](#modules-schedule-v1-shared-UpdateScheduleTeacherResponse) |  |
+| DeleteScheduleTeacher | [.modules.schedule.v1.shared.DeleteScheduleTeacherRequest](#modules-schedule-v1-shared-DeleteScheduleTeacherRequest) | [.modules.schedule.v1.shared.DeleteScheduleTeacherResponse](#modules-schedule-v1-shared-DeleteScheduleTeacherResponse) |  |
 
  
 
