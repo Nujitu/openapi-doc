@@ -31,12 +31,16 @@
 - [modules/schedule/v1/shared/schedule_teacher.proto](#modules_schedule_v1_shared_schedule_teacher-proto)
     - [CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest)
     - [CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse)
+    - [DeleteScheduleTeacherRequest](#modules-schedule-v1-shared-DeleteScheduleTeacherRequest)
+    - [DeleteScheduleTeacherResponse](#modules-schedule-v1-shared-DeleteScheduleTeacherResponse)
     - [GetScheduleTeacherByDayDetailResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse)
     - [GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest)
     - [GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse)
     - [GetScheduleTeacherRequest](#modules-schedule-v1-shared-GetScheduleTeacherRequest)
     - [GetScheduleTeacherResponse](#modules-schedule-v1-shared-GetScheduleTeacherResponse)
     - [ScheduleTeacherResponse](#modules-schedule-v1-shared-ScheduleTeacherResponse)
+    - [UpdateScheduleTeacherRequest](#modules-schedule-v1-shared-UpdateScheduleTeacherRequest)
+    - [UpdateScheduleTeacherResponse](#modules-schedule-v1-shared-UpdateScheduleTeacherResponse)
   
 - [modules/schedule/v1/shared/subject_schedule.proto](#modules_schedule_v1_shared_subject_schedule-proto)
     - [CreateSubjectScheduleRequest](#modules-schedule-v1-shared-CreateSubjectScheduleRequest)
@@ -454,6 +458,36 @@
 
 
 
+<a name="modules-schedule-v1-shared-DeleteScheduleTeacherRequest"></a>
+
+### DeleteScheduleTeacherRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DeleteScheduleTeacherResponse"></a>
+
+### DeleteScheduleTeacherResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse"></a>
 
 ### GetScheduleTeacherByDayDetailResponse
@@ -546,6 +580,40 @@
 | teacher_name | [string](#string) |  |  |
 | start | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-UpdateScheduleTeacherRequest"></a>
+
+### UpdateScheduleTeacherRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
+| start_time | [string](#string) |  |  |
+| end_time | [string](#string) |  |  |
+| duty_teachers | [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail) | repeated |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-UpdateScheduleTeacherResponse"></a>
+
+### UpdateScheduleTeacherResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
 
 
 
