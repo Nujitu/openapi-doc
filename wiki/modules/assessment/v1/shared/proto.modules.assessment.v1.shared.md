@@ -74,6 +74,7 @@
 | assignee | [string](#string) | repeated |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | teaching_module_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -200,6 +201,7 @@
 | ---- | ------ | ----------- |
 | FORMATIVE | 0 |  |
 | SUMMATIVE | 1 |  |
+| EXAM | 2 |  |
 
 
 
@@ -266,6 +268,7 @@
 | observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | assignee | [string](#string) | repeated |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -349,6 +352,9 @@
 | learing_goal_id | [string](#string) |  |  |
 | learning_goal_title | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

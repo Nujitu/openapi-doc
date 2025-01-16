@@ -3,6 +3,20 @@
 
 ## Table of Contents
 
+- [modules/teaching_module/v1/public/exam.proto](#modules_teaching_module_v1_public_exam-proto)
+    - [CreateExamRequest](#modules-teaching_module-v1-public-CreateExamRequest)
+    - [CreateExamResponse](#modules-teaching_module-v1-public-CreateExamResponse)
+    - [DeleteExamRequest](#modules-teaching_module-v1-public-DeleteExamRequest)
+    - [DeleteExamResponse](#modules-teaching_module-v1-public-DeleteExamResponse)
+    - [GetExamByIdRequest](#modules-teaching_module-v1-public-GetExamByIdRequest)
+    - [GetExamByIdResponse](#modules-teaching_module-v1-public-GetExamByIdResponse)
+    - [GetExamByTypeRequest](#modules-teaching_module-v1-public-GetExamByTypeRequest)
+    - [GetExamByTypeResponse](#modules-teaching_module-v1-public-GetExamByTypeResponse)
+    - [UpdateExamRequest](#modules-teaching_module-v1-public-UpdateExamRequest)
+    - [UpdateExamResponse](#modules-teaching_module-v1-public-UpdateExamResponse)
+  
+    - [ExamService](#modules-teaching_module-v1-public-ExamService)
+  
 - [modules/teaching_module/v1/public/learning_goal.proto](#modules_teaching_module_v1_public_learning_goal-proto)
     - [CreateLearningGoalResponse](#modules-teaching_module-v1-public-CreateLearningGoalResponse)
     - [CreateLearningGoalsRequest](#modules-teaching_module-v1-public-CreateLearningGoalsRequest)
@@ -44,6 +58,201 @@
     - [TeachingModuleFolderService](#modules-teaching_module-v1-public-TeachingModuleFolderService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_teaching_module_v1_public_exam-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/public/exam.proto
+
+
+
+<a name="modules-teaching_module-v1-public-CreateExamRequest"></a>
+
+### CreateExamRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| learning_goal_ids | [string](#string) | repeated |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| exam_type | [modules.teaching_modules.v1.shared.ExamType](#modules-teaching_modules-v1-shared-ExamType) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-CreateExamResponse"></a>
+
+### CreateExamResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| exam | [modules.teaching_modules.v1.shared.Exam](#modules-teaching_modules-v1-shared-Exam) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-DeleteExamRequest"></a>
+
+### DeleteExamRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-DeleteExamResponse"></a>
+
+### DeleteExamResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetExamByIdRequest"></a>
+
+### GetExamByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetExamByIdResponse"></a>
+
+### GetExamByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| exam | [modules.teaching_modules.v1.shared.Exam](#modules-teaching_modules-v1-shared-Exam) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetExamByTypeRequest"></a>
+
+### GetExamByTypeRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| exam_type | [modules.teaching_modules.v1.shared.ExamType](#modules-teaching_modules-v1-shared-ExamType) |  |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetExamByTypeResponse"></a>
+
+### GetExamByTypeResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| exam | [modules.teaching_modules.v1.shared.Exam](#modules-teaching_modules-v1-shared-Exam) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-UpdateExamRequest"></a>
+
+### UpdateExamRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) | optional |  |
+| learning_goal_ids | [string](#string) | repeated |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| index_minimum | [float](#float) | optional |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-UpdateExamResponse"></a>
+
+### UpdateExamResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| exam | [modules.teaching_modules.v1.shared.Exam](#modules-teaching_modules-v1-shared-Exam) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-public-ExamService"></a>
+
+### ExamService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateExam | [CreateExamRequest](#modules-teaching_module-v1-public-CreateExamRequest) | [CreateExamResponse](#modules-teaching_module-v1-public-CreateExamResponse) |  |
+| UpdateExam | [UpdateExamRequest](#modules-teaching_module-v1-public-UpdateExamRequest) | [UpdateExamResponse](#modules-teaching_module-v1-public-UpdateExamResponse) |  |
+| DeleteExam | [DeleteExamRequest](#modules-teaching_module-v1-public-DeleteExamRequest) | [DeleteExamResponse](#modules-teaching_module-v1-public-DeleteExamResponse) |  |
+| GetExamById | [GetExamByIdRequest](#modules-teaching_module-v1-public-GetExamByIdRequest) | [GetExamByIdResponse](#modules-teaching_module-v1-public-GetExamByIdResponse) |  |
+| GetExamByType | [GetExamByTypeRequest](#modules-teaching_module-v1-public-GetExamByTypeRequest) | [GetExamByTypeResponse](#modules-teaching_module-v1-public-GetExamByTypeResponse) |  |
+
+ 
 
 
 
