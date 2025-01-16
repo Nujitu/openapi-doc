@@ -3,6 +3,11 @@
 
 ## Table of Contents
 
+- [modules/teaching_module/v1/shared/exam.proto](#modules_teaching_module_v1_shared_exam-proto)
+    - [Exam](#modules-teaching_modules-v1-shared-Exam)
+  
+    - [ExamType](#modules-teaching_modules-v1-shared-ExamType)
+  
 - [modules/teaching_module/v1/shared/folder_task.proto](#modules_teaching_module_v1_shared_folder_task-proto)
     - [FolderTask](#modules-teaching_modules-v1-shared-FolderTask)
   
@@ -26,6 +31,60 @@
     - [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_teaching_module_v1_shared_exam-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/shared/exam.proto
+
+
+
+<a name="modules-teaching_modules-v1-shared-Exam"></a>
+
+### Exam
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| learning_goal_ids | [string](#string) | repeated |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| exam_type | [ExamType](#modules-teaching_modules-v1-shared-ExamType) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="modules-teaching_modules-v1-shared-ExamType"></a>
+
+### ExamType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| FINAL_EXAM | 0 |  |
+| MIDTERM_EXAM | 1 |  |
+
+
+ 
+
+ 
+
+ 
 
 
 

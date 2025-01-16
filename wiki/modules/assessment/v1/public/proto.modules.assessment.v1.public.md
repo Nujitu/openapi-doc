@@ -215,6 +215,7 @@
 | instance_id | [string](#string) |  |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | teaching_module_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 
 
 
@@ -537,6 +538,7 @@
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | teaching_module_id | [string](#string) | optional |  |
+| exam_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -735,6 +737,7 @@ Service for assignment related feature
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | assignee | [string](#string) | repeated |  |
+| exam_id | [string](#string) |  |  |
 
 
 
@@ -1020,6 +1023,7 @@ Service for assignment related feature
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | teaching_module_id | [string](#string) | optional |  |
+| exam_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1253,6 +1257,9 @@ Service for observation related feature
 | subject_id | [string](#string) | optional |  |
 | subject_name | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 
 
 
@@ -1454,6 +1461,7 @@ Service for observation related feature
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |

@@ -191,6 +191,7 @@
                   },
                   { name: subject_id, in: query, schema: { type: string } },
                   { name: subject_name, in: query, schema: { type: string } },
+                  { name: exam_id, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1224,7 +1225,7 @@
                     in: query,
                     schema:
                       {
-                        enum: [FORMATIVE, SUMMATIVE],
+                        enum: [FORMATIVE, SUMMATIVE, EXAM],
                         type: string,
                         format: enum,
                       },
@@ -1234,6 +1235,7 @@
                     in: query,
                     schema: { type: string },
                   },
+                  { name: exam_id, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -2136,7 +2138,7 @@
                     in: query,
                     schema:
                       {
-                        enum: [FORMATIVE, SUMMATIVE],
+                        enum: [FORMATIVE, SUMMATIVE, EXAM],
                         type: string,
                         format: enum,
                       },
@@ -2146,6 +2148,7 @@
                     in: query,
                     schema: { type: string },
                   },
+                  { name: exam_id, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -3304,6 +3307,19 @@
                   subject_name:
                     { example: MATH, type: string, description: Subject Name },
                   instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
                 },
             },
           publicCreateQuizResponse:
@@ -3327,7 +3343,7 @@
                   assessmentType:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assessment Type,
                       format: enum,
@@ -3592,7 +3608,7 @@
                   assessmentType:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assessment Type,
                       format: enum,
@@ -3708,6 +3724,19 @@
                       description: Learing goal title,
                     },
                   instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -3800,7 +3829,7 @@
                   assessmentType:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assessment Type,
                       format: enum,
@@ -4274,7 +4303,7 @@
                   observation_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Observation assessment type,
                       format: enum,
@@ -4291,6 +4320,7 @@
                       items: { type: string },
                       description: List of observed student IDs,
                     },
+                  exam_id: { example: 123, type: string, description: Exam ID },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -4482,7 +4512,7 @@
                   observation_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Observation assessment type,
                       format: enum,
@@ -4499,6 +4529,7 @@
                       items: { type: string },
                       description: List of observed student IDs,
                     },
+                  exam_id: { example: 123, type: string, description: Exam ID },
                 },
             },
           publicCreateObservationResponse:
@@ -4723,7 +4754,7 @@
                   observation_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Observation assessment type,
                       format: enum,
@@ -4985,7 +5016,7 @@
                   assignment_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assignment assessment type,
                       format: enum,
@@ -5013,6 +5044,7 @@
                       type: string,
                       description: Teaching Module ID,
                     },
+                  exam_id: { example: 123, type: string, description: Exam ID },
                 },
             },
           publicCreateAssignmentResponse:
@@ -5270,7 +5302,7 @@
                   assignment_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assignment assessment type,
                       format: enum,
@@ -5434,7 +5466,7 @@
                   assignment_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE],
+                      enum: [FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assignment assessment type,
                       format: enum,
@@ -5460,6 +5492,7 @@
                       type: string,
                       description: Teaching Module ID,
                     },
+                  exam_id: { example: 123, type: string, description: Exam ID },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -5630,5 +5663,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  security: [{ OAuth2: [TEACHER] }],
+  security: [{ OAuth2: [TEACHERSTUDENT] }],
 }
