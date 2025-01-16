@@ -205,6 +205,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| mode | [string](#string) |  |  |
 | from | [string](#string) |  |  |
 | to | [string](#string) |  |  |
 

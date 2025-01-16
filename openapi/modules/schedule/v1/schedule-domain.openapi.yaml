@@ -16,10 +16,11 @@
             {
               tags: [EventService],
               summary: Get list of events and schedules by date range,
-              description: "Get list of events and schedules by date range, e.g /v1/event?from=2024-09-01&to=2024-09-30",
+              description: "Get list of events and schedules by date range, e.g /v1/event?mode=admin&from=2024-09-01&to=2024-09-30 or /v1/event?mode={teacher_id}&from=2024-09-01&to=2024-09-30",
               operationId: EventService_GetEvent,
               parameters:
                 [
+                  { name: mode, in: query, schema: { type: string } },
                   { name: from, in: query, schema: { type: string } },
                   { name: to, in: query, schema: { type: string } },
                 ],
@@ -135,24 +136,12 @@
                     },
                 },
             },
-        },
-      "/v1/event/{id}":
-        {
-          post:
+          patch:
             {
               tags: [EventService],
               summary: Update an event by id,
               description: Update event by id,
               operationId: EventService_UpdateEvent,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
               requestBody:
                 {
                   content:
@@ -213,6 +202,9 @@
                     },
                 },
             },
+        },
+      "/v1/event/{id}":
+        {
           delete:
             {
               tags: [EventService],
