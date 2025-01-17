@@ -166,9 +166,10 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| PRACTICE_QUIZ | 0 |  |
-| QUIZ | 1 |  |
-| HOMEWORK | 2 |  |
+| ASSESSMENT_CATEGORY_EMPTY | 0 |  |
+| PRACTICE_QUIZ | 1 |  |
+| QUIZ | 2 |  |
+| HOMEWORK | 3 |  |
 
 
 
@@ -179,16 +180,17 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| TEXT | 0 |  |
-| ESSAY | 1 |  |
-| MULTIPLE_ANSWER | 2 | Assignee allow to choose multiple answer |
-| SINGLE_ANSWER | 3 | Assignee allow single answer |
-| FILE_UPLOAD | 4 | Assignee allow file upload |
-| NUMERIC | 5 | Assignee allow numeric answer |
-| TRUE_FALSE | 6 | Assignee allow true false answer |
-| SORTING | 7 | Assignee allow sorting answer |
-| MATCHING | 8 | Assignee allow matching answer |
-| MULTIPLE_PARTIAL_ANSWER | 9 | Assignee allow to choose multiple answer with partial score |
+| ASSESSMENT_QUIZ_EMPTY | 0 |  |
+| TEXT | 1 |  |
+| ESSAY | 2 |  |
+| MULTIPLE_ANSWER | 3 | Assignee allow to choose multiple answer |
+| SINGLE_ANSWER | 4 | Assignee allow single answer |
+| FILE_UPLOAD | 5 | Assignee allow file upload |
+| NUMERIC | 6 | Assignee allow numeric answer |
+| TRUE_FALSE | 7 | Assignee allow true false answer |
+| SORTING | 8 | Assignee allow sorting answer |
+| MATCHING | 9 | Assignee allow matching answer |
+| MULTIPLE_PARTIAL_ANSWER | 10 | Assignee allow to choose multiple answer with partial score |
 
 
 
@@ -199,9 +201,10 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| FORMATIVE | 0 |  |
-| SUMMATIVE | 1 |  |
-| EXAM | 2 |  |
+| ASSESSMENT_EMPTY | 0 |  |
+| FORMATIVE | 1 |  |
+| SUMMATIVE | 2 |  |
+| EXAM | 3 |  |
 
 
 

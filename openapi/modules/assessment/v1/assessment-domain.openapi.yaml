@@ -1225,7 +1225,7 @@
                     in: query,
                     schema:
                       {
-                        enum: [FORMATIVE, SUMMATIVE, EXAM],
+                        enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                         type: string,
                         format: enum,
                       },
@@ -2138,7 +2138,7 @@
                     in: query,
                     schema:
                       {
-                        enum: [FORMATIVE, SUMMATIVE, EXAM],
+                        enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                         type: string,
                         format: enum,
                       },
@@ -3343,7 +3343,7 @@
                   assessmentType:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assessment Type,
                       format: enum,
@@ -3351,7 +3351,13 @@
                   category:
                     {
                       example: PRACTICE_QUIZ,
-                      enum: [PRACTICE_QUIZ, QUIZ, HOMEWORK],
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
                       type: string,
                       description: Assessment Quiz Category,
                       format: enum,
@@ -3608,7 +3614,7 @@
                   assessmentType:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assessment Type,
                       format: enum,
@@ -3616,7 +3622,13 @@
                   category:
                     {
                       example: PRACTICE_QUIZ,
-                      enum: [PRACTICE_QUIZ, QUIZ, HOMEWORK],
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
                       type: string,
                       description: Assessment Quiz Category,
                       format: enum,
@@ -3783,6 +3795,7 @@
                       example: MULIPLE_ANSWER,
                       enum:
                         [
+                          ASSESSMENT_QUIZ_EMPTY,
                           TEXT,
                           ESSAY,
                           MULTIPLE_ANSWER,
@@ -3829,7 +3842,7 @@
                   assessmentType:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assessment Type,
                       format: enum,
@@ -3837,7 +3850,13 @@
                   category:
                     {
                       example: PRACTICE_QUIZ,
-                      enum: [PRACTICE_QUIZ, QUIZ, HOMEWORK],
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
                       type: string,
                       description: Assessment Quiz Category,
                       format: enum,
@@ -4303,7 +4322,7 @@
                   observation_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Observation assessment type,
                       format: enum,
@@ -4512,7 +4531,7 @@
                   observation_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Observation assessment type,
                       format: enum,
@@ -4754,7 +4773,7 @@
                   observation_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Observation assessment type,
                       format: enum,
@@ -5016,7 +5035,7 @@
                   assignment_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assignment assessment type,
                       format: enum,
@@ -5302,7 +5321,7 @@
                   assignment_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assignment assessment type,
                       format: enum,
@@ -5466,7 +5485,7 @@
                   assignment_type:
                     {
                       example: SUMMATIVE,
-                      enum: [FORMATIVE, SUMMATIVE, EXAM],
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
                       type: string,
                       description: Assignment assessment type,
                       format: enum,
