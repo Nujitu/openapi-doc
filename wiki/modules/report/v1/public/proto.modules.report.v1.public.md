@@ -3,6 +3,35 @@
 
 ## Table of Contents
 
+- [modules/report/v1/public/absence.proto](#modules_report_v1_public_absence-proto)
+    - [AbsenceDetail](#modules-report-v1-public-AbsenceDetail)
+    - [DeleteAbsenceRequest](#modules-report-v1-public-DeleteAbsenceRequest)
+    - [GeneralAbsenceResponse](#modules-report-v1-public-GeneralAbsenceResponse)
+    - [GetAbsenceHistoryRequest](#modules-report-v1-public-GetAbsenceHistoryRequest)
+    - [GetAbsenceHistoryResponse](#modules-report-v1-public-GetAbsenceHistoryResponse)
+    - [ListAbsencesRequest](#modules-report-v1-public-ListAbsencesRequest)
+    - [ListAbsencesResponse](#modules-report-v1-public-ListAbsencesResponse)
+    - [StudentAbsenceData](#modules-report-v1-public-StudentAbsenceData)
+  
+    - [AbsenceService](#modules-report-v1-public-AbsenceService)
+  
+- [modules/report/v1/public/attendance.proto](#modules_report_v1_public_attendance-proto)
+    - [Assesment](#modules-report-v1-public-Assesment)
+    - [BaseResponse](#modules-report-v1-public-BaseResponse)
+    - [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest)
+    - [GetJournalAttendanceRequest](#modules-report-v1-public-GetJournalAttendanceRequest)
+    - [GetJournalAttendanceResponse](#modules-report-v1-public-GetJournalAttendanceResponse)
+    - [LearningGoal](#modules-report-v1-public-LearningGoal)
+    - [ListGetJournalAttendanceResponse](#modules-report-v1-public-ListGetJournalAttendanceResponse)
+    - [Observation](#modules-report-v1-public-Observation)
+    - [Quiz](#modules-report-v1-public-Quiz)
+    - [StudyMaterial](#modules-report-v1-public-StudyMaterial)
+    - [SubmitAttendanceRequest](#modules-report-v1-public-SubmitAttendanceRequest)
+    - [SubmitJournalAttendanceRequest](#modules-report-v1-public-SubmitJournalAttendanceRequest)
+    - [TeachingModule](#modules-report-v1-public-TeachingModule)
+  
+    - [AttendanceService](#modules-report-v1-public-AttendanceService)
+  
 - [modules/report/v1/public/finalized_score.proto](#modules_report_v1_public_finalized_score-proto)
     - [GetFinalizedScoreListRequest](#modules-report-v1-public-GetFinalizedScoreListRequest)
     - [GetFinalizedScoreListResponse](#modules-report-v1-public-GetFinalizedScoreListResponse)
@@ -10,6 +39,425 @@
     - [FinalizedScoreService](#modules-report-v1-public-FinalizedScoreService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_report_v1_public_absence-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/public/absence.proto
+
+
+
+<a name="modules-report-v1-public-AbsenceDetail"></a>
+
+### AbsenceDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| status | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-DeleteAbsenceRequest"></a>
+
+### DeleteAbsenceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| date | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GeneralAbsenceResponse"></a>
+
+### GeneralAbsenceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetAbsenceHistoryRequest"></a>
+
+### GetAbsenceHistoryRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetAbsenceHistoryResponse"></a>
+
+### GetAbsenceHistoryResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| present | [int32](#int32) |  |  |
+| absent | [int32](#int32) |  |  |
+| sick | [int32](#int32) |  |  |
+| leave | [int32](#int32) |  |  |
+| late | [int32](#int32) |  |  |
+| absences | [AbsenceDetail](#modules-report-v1-public-AbsenceDetail) | repeated |  |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-ListAbsencesRequest"></a>
+
+### ListAbsencesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-ListAbsencesResponse"></a>
+
+### ListAbsencesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [StudentAbsenceData](#modules-report-v1-public-StudentAbsenceData) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-StudentAbsenceData"></a>
+
+### StudentAbsenceData
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| total | [int32](#int32) |  |  |
+| sick | [int32](#int32) |  |  |
+| present | [int32](#int32) |  |  |
+| absent | [int32](#int32) |  |  |
+| leave | [int32](#int32) |  |  |
+| late | [int32](#int32) |  |  |
+| absences | [AbsenceDetail](#modules-report-v1-public-AbsenceDetail) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-report-v1-public-AbsenceService"></a>
+
+### AbsenceService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| ListAbsences | [ListAbsencesRequest](#modules-report-v1-public-ListAbsencesRequest) | [ListAbsencesResponse](#modules-report-v1-public-ListAbsencesResponse) |  |
+| GetAbsenceHistory | [GetAbsenceHistoryRequest](#modules-report-v1-public-GetAbsenceHistoryRequest) | [GetAbsenceHistoryResponse](#modules-report-v1-public-GetAbsenceHistoryResponse) |  |
+| DeleteAbsence | [DeleteAbsenceRequest](#modules-report-v1-public-DeleteAbsenceRequest) | [GeneralAbsenceResponse](#modules-report-v1-public-GeneralAbsenceResponse) |  |
+
+ 
+
+
+
+<a name="modules_report_v1_public_attendance-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/public/attendance.proto
+
+
+
+<a name="modules-report-v1-public-Assesment"></a>
+
+### Assesment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assesment_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-BaseResponse"></a>
+
+### BaseResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetAttendanceRequest"></a>
+
+### GetAttendanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| schedule_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| class_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetJournalAttendanceRequest"></a>
+
+### GetJournalAttendanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetJournalAttendanceResponse"></a>
+
+### GetJournalAttendanceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+| teaching_module | [TeachingModule](#modules-report-v1-public-TeachingModule) |  |  |
+| present | [int32](#int32) |  |  |
+| absent | [int32](#int32) |  |  |
+| sick | [int32](#int32) |  |  |
+| leave | [int32](#int32) |  |  |
+| is_submitted | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-LearningGoal"></a>
+
+### LearningGoal
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| learning_goals_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-ListGetJournalAttendanceResponse"></a>
+
+### ListGetJournalAttendanceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [GetJournalAttendanceResponse](#modules-report-v1-public-GetJournalAttendanceResponse) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-Observation"></a>
+
+### Observation
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-Quiz"></a>
+
+### Quiz
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-StudyMaterial"></a>
+
+### StudyMaterial
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| study_material_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-SubmitAttendanceRequest"></a>
+
+### SubmitAttendanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| schedule_id | [string](#string) |  |  |
+| class_id | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| student_attendance | [modules.report.v1.shared.StudentAttendance](#modules-report-v1-shared-StudentAttendance) | repeated |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-SubmitJournalAttendanceRequest"></a>
+
+### SubmitJournalAttendanceRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| teaching_module | [TeachingModule](#modules-report-v1-public-TeachingModule) |  |  |
+| learning_goals | [LearningGoal](#modules-report-v1-public-LearningGoal) | repeated |  |
+| study_materials | [StudyMaterial](#modules-report-v1-public-StudyMaterial) | repeated |  |
+| quizzes | [Quiz](#modules-report-v1-public-Quiz) | repeated |  |
+| assesments | [Assesment](#modules-report-v1-public-Assesment) | repeated |  |
+| observations | [Observation](#modules-report-v1-public-Observation) | repeated |  |
+| note | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-TeachingModule"></a>
+
+### TeachingModule
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_module_id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-report-v1-public-AttendanceService"></a>
+
+### AttendanceService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SubmitAttendance | [SubmitAttendanceRequest](#modules-report-v1-public-SubmitAttendanceRequest) | [.modules.report.v1.shared.Attendance](#modules-report-v1-shared-Attendance) |  |
+| SubmitJournalAttendance | [SubmitJournalAttendanceRequest](#modules-report-v1-public-SubmitJournalAttendanceRequest) | [BaseResponse](#modules-report-v1-public-BaseResponse) |  |
+| GetJournalAttendance | [GetJournalAttendanceRequest](#modules-report-v1-public-GetJournalAttendanceRequest) | [ListGetJournalAttendanceResponse](#modules-report-v1-public-ListGetJournalAttendanceResponse) |  |
+| GetAttendance | [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest) | [.modules.report.v1.shared.Attendance](#modules-report-v1-shared-Attendance) |  |
+
+ 
 
 
 
