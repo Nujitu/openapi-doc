@@ -1219,6 +1219,7 @@
                     { type: string, description: class subject detail id },
                   class_subject_detail_name:
                     { type: string, description: class subject detail name },
+                  teacher_id: { type: string, description: teacher id },
                 },
             },
           sharedTimeSchedule:

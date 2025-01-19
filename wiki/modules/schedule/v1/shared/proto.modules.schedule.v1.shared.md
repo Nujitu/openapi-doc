@@ -682,6 +682,7 @@
 | class_group_name | [string](#string) |  |  |
 | class_subject_detail_id | [string](#string) |  |  |
 | class_subject_detail_name | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 
 
 
