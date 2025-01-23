@@ -987,6 +987,7 @@
               type: object,
               properties:
                 {
+                  id: { type: string, description: id of the event },
                   title: { type: string, description: title of the event },
                   description:
                     { type: string, description: description of the event },
