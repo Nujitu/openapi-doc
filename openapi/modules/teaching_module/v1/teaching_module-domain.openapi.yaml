@@ -5,7 +5,7 @@
     {
       title: Teaching_module Domain,
       version: v1,
-      description: "Exam Management Service, Skoola Learning Goal Service, Study Material Management Service, Skoola Folder Management Service, Skoola Teaching Module Service",
+      description: "Exam Management Service, Skoola Learning Goal Service, Study Material Management Service, Skoola Folder Management Service, Skoola Teaching Module Service, Skoola Folder Task Management Service",
     },
   servers: [{ url: "https://staging-api.skola.co.id" }],
   paths:
@@ -1412,6 +1412,145 @@
                 },
             },
         },
+      /v1/folder-task/task:
+        {
+          post:
+            {
+              tags: [FolderTaskService],
+              summary: Submit folder task,
+              description: submit folder task,
+              operationId: FolderTaskService_SubmitFolderTask,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicSubmitFolderTaskRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicSubmitFolderTaskResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/folder-task/task/{task_id}/{folder_id}":
+        {
+          delete:
+            {
+              tags: [FolderTaskService],
+              summary: Delete folder task,
+              description: delete folder task using task_id and folder_id,
+              operationId: FolderTaskService_DeleteFolderTask,
+              parameters:
+                [
+                  {
+                    name: task_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: folder_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteFolderTaskResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
@@ -2192,6 +2331,45 @@
                         },
                       description: score percentage,
                     },
+                },
+            },
+          publicDeleteFolderTaskResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for folder task },
+                },
+            },
+          publicSubmitFolderTaskRequest:
+            {
+              type: object,
+              properties:
+                {
+                  folder_id: { type: string, description: folder id },
+                  task_id: { type: string, description: task id },
+                  task_type: { type: string, description: task type },
+                  task_name: { type: string, description: task name },
+                  task_attachment:
+                    { type: string, description: task attachment },
+                  student_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: student ids,
+                    },
+                  class_subject_id:
+                    { type: string, description: class_subject_id },
+                },
+            },
+          publicSubmitFolderTaskResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for folder task },
                 },
             },
         },

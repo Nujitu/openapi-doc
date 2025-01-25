@@ -17,6 +17,14 @@
   
     - [ExamService](#modules-teaching_module-v1-public-ExamService)
   
+- [modules/teaching_module/v1/public/folder_task.proto](#modules_teaching_module_v1_public_folder_task-proto)
+    - [DeleteFolderTaskRequest](#modules-teaching_module-v1-public-DeleteFolderTaskRequest)
+    - [DeleteFolderTaskResponse](#modules-teaching_module-v1-public-DeleteFolderTaskResponse)
+    - [SubmitFolderTaskRequest](#modules-teaching_module-v1-public-SubmitFolderTaskRequest)
+    - [SubmitFolderTaskResponse](#modules-teaching_module-v1-public-SubmitFolderTaskResponse)
+  
+    - [FolderTaskService](#modules-teaching_module-v1-public-FolderTaskService)
+  
 - [modules/teaching_module/v1/public/learning_goal.proto](#modules_teaching_module_v1_public_learning_goal-proto)
     - [CreateLearningGoalResponse](#modules-teaching_module-v1-public-CreateLearningGoalResponse)
     - [CreateLearningGoalsRequest](#modules-teaching_module-v1-public-CreateLearningGoalsRequest)
@@ -251,6 +259,100 @@
 | DeleteExam | [DeleteExamRequest](#modules-teaching_module-v1-public-DeleteExamRequest) | [DeleteExamResponse](#modules-teaching_module-v1-public-DeleteExamResponse) |  |
 | GetExamById | [GetExamByIdRequest](#modules-teaching_module-v1-public-GetExamByIdRequest) | [GetExamByIdResponse](#modules-teaching_module-v1-public-GetExamByIdResponse) |  |
 | GetExamByType | [GetExamByTypeRequest](#modules-teaching_module-v1-public-GetExamByTypeRequest) | [GetExamByTypeResponse](#modules-teaching_module-v1-public-GetExamByTypeResponse) |  |
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_public_folder_task-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/public/folder_task.proto
+
+
+
+<a name="modules-teaching_module-v1-public-DeleteFolderTaskRequest"></a>
+
+### DeleteFolderTaskRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| folder_id | [string](#string) |  |  |
+| task_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-DeleteFolderTaskResponse"></a>
+
+### DeleteFolderTaskResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-SubmitFolderTaskRequest"></a>
+
+### SubmitFolderTaskRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| folder_id | [string](#string) |  |  |
+| task_id | [string](#string) |  |  |
+| task_type | [string](#string) |  |  |
+| task_name | [string](#string) |  |  |
+| task_attachment | [string](#string) |  |  |
+| student_ids | [string](#string) | repeated |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-SubmitFolderTaskResponse"></a>
+
+### SubmitFolderTaskResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-public-FolderTaskService"></a>
+
+### FolderTaskService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SubmitFolderTask | [SubmitFolderTaskRequest](#modules-teaching_module-v1-public-SubmitFolderTaskRequest) | [SubmitFolderTaskResponse](#modules-teaching_module-v1-public-SubmitFolderTaskResponse) |  |
+| DeleteFolderTask | [DeleteFolderTaskRequest](#modules-teaching_module-v1-public-DeleteFolderTaskRequest) | [DeleteFolderTaskResponse](#modules-teaching_module-v1-public-DeleteFolderTaskResponse) |  |
 
  
 
