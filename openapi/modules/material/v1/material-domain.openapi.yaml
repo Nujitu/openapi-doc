@@ -4,7 +4,7 @@
   info:
     {
       title: Material Domain,
-      description: "Skola Class Group Service, Skoola Curriculum Service, Skola Subject Service, Skoola Curriculum Group Component Service, Skoola Header Component Service",
+      description: "Skola Class Group Service, Skola Subject Service, Skoola Curriculum Group Component Service, Skoola Curriculum Service, Skoola Header Component Service",
       version: v1,
     },
   servers: [{ url: "https://staging-api.skola.co.id" }],
@@ -835,280 +835,6 @@
                 },
             },
         },
-      /v1/curriculum:
-        {
-          post:
-            {
-              tags: [CurriculumService],
-              summary: Create a new curriculum,
-              description: Admin register a new curriculum,
-              operationId: CurriculumService_CreateCurriculum,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateCurriculumRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCurriculum",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/curriculum/list:
-        {
-          post:
-            {
-              tags: [CurriculumService],
-              summary: Get list curriculum,
-              operationId: CurriculumService_GetCurriculumList,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicGetCurriculumListRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetCurriculumListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/curriculum/{id}":
-        {
-          delete:
-            {
-              tags: [CurriculumService],
-              summary: Delete Curriculum,
-              operationId: CurriculumService_DeleteCurriculum,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteCurriculumResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [CurriculumService],
-              summary: Update Curriculum,
-              operationId: CurriculumService_UpdateCurriculum,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateCurriculumRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateCurriculumResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/subject:
         {
           post:
@@ -1710,6 +1436,280 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/curriculum:
+        {
+          post:
+            {
+              tags: [CurriculumService],
+              summary: Create a new curriculum,
+              description: Admin register a new curriculum,
+              operationId: CurriculumService_CreateCurriculum,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateCurriculumRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCurriculum",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/curriculum/list:
+        {
+          post:
+            {
+              tags: [CurriculumService],
+              summary: Get list curriculum,
+              operationId: CurriculumService_GetCurriculumList,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicGetCurriculumListRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetCurriculumListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/curriculum/{id}":
+        {
+          delete:
+            {
+              tags: [CurriculumService],
+              summary: Delete Curriculum,
+              operationId: CurriculumService_DeleteCurriculum,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteCurriculumResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [CurriculumService],
+              summary: Update Curriculum,
+              operationId: CurriculumService_UpdateCurriculum,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateCurriculumRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateCurriculumResponse",
                                 },
                             },
                         },
@@ -2650,242 +2650,6 @@
                   "field": { "title": "field", "type": "string" },
                 },
             },
-          publicCreateCurriculumRequest:
-            {
-              type: object,
-              properties:
-                {
-                  curriculum:
-                    {
-                      $ref: "#/components/schemas/sharedCurriculum",
-                    },
-                },
-            },
-          publicDeleteCurriculumResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicGetCurriculumListRequest:
-            {
-              type: object,
-              properties:
-                {
-                  name:
-                    {
-                      example: Indonesia Merdeka,
-                      type: string,
-                      description: Curriculum name,
-                    },
-                  instance_id:
-                    { type: string, description: Curriculum instance },
-                  limit:
-                    {
-                      example: 20,
-                      type: integer,
-                      description: The maximum number of entries,
-                      format: uint32,
-                    },
-                  offset:
-                    {
-                      example: 0,
-                      type: integer,
-                      description: The starting position of entries,
-                      format: uint32,
-                    },
-                },
-            },
-          publicGetCurriculumListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  curriculums:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCurriculum",
-                        },
-                      description: Curriculum List,
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicUpdateCurriculumRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string },
-                  curriculum:
-                    {
-                      $ref: "#/components/schemas/sharedCurriculum",
-                    },
-                },
-            },
-          publicUpdateCurriculumResponse:
-            {
-              type: object,
-              properties:
-                {
-                  curriculum:
-                    {
-                      $ref: "#/components/schemas/sharedCurriculum",
-                    },
-                },
-            },
-          sharedCurriculum:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    { example: 123, type: string, description: Curriculum ID },
-                  logo:
-                    {
-                      example: "https://skola.bucket/curriculum-name.png",
-                      type: string,
-                      description: Curriculum logo,
-                    },
-                  name:
-                    {
-                      example: Indonesia Merdeka,
-                      type: string,
-                      description: Curriculum name,
-                    },
-                  description: { type: string, description: Curriculum desc },
-                  status:
-                    {
-                      enum:
-                        [
-                          CURRICULUM_STATUS_UNSPECIFIED,
-                          CURRICULUM_STATUS_INACTIVE,
-                          CURRICULUM_STATUS_ACTIVE,
-                        ],
-                      type: string,
-                      description: Curriculum Status,
-                      format: enum,
-                    },
-                  notes: { type: string, description: Curriculum notes },
-                  instance_id:
-                    { type: string, description: Curriculum instance },
-                  academic_term:
-                    {
-                      example: 2024/2025,
-                      type: string,
-                      description: Academic Term,
-                    },
-                  semester:
-                    {
-                      example: 1,
-                      type: string,
-                      description: Curriculum semester,
-                    },
-                  type:
-                    {
-                      example: 1,
-                      enum:
-                        [
-                          CURRICULUM_UNSPECIFIED,
-                          CURRICULUM_NATIONAL,
-                          CURRICULUM_OTHERS,
-                        ],
-                      type: string,
-                      description: Curriculum type,
-                      format: enum,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: curriculum start date,
-                      format: date-time,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: curriculum end date,
-                      format: date-time,
-                    },
-                  start_year:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: curriculum start year,
-                    },
-                  end_year:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: curriculum end year,
-                    },
-                  components:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCurriculumGroupComponent",
-                        },
-                      description: Curriculum Components,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedCurriculumGroupComponent:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: CurriculumGroupComponentID,
-                    },
-                  description:
-                    {
-                      example: ini ada group component,
-                      type: string,
-                      description: Curriculum Group Component Description,
-                    },
-                  component_type:
-                    {
-                      example: choose component type,
-                      enum:
-                        [
-                          DEFAULT,
-                          MULTIPLE_TEXT_INPUT,
-                          TEXT_DESCRIPTION,
-                          MULTIPLE_TEXT_DESCRIPTION,
-                          CHECKLIST,
-                          RADIO_BUTTON,
-                          TEXT_INPUT,
-                        ],
-                      type: string,
-                      description: Component type,
-                      format: enum,
-                    },
-                  header_id:
-                    {
-                      example: Header Component ID,
-                      type: string,
-                      description: Header Component ID,
-                    },
-                },
-            },
           publicCreateSubjectRequest:
             {
               type: object,
@@ -3084,6 +2848,242 @@
                   curriculum_group_component:
                     {
                       $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                    },
+                },
+            },
+          sharedCurriculumGroupComponent:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: CurriculumGroupComponentID,
+                    },
+                  description:
+                    {
+                      example: ini ada group component,
+                      type: string,
+                      description: Curriculum Group Component Description,
+                    },
+                  component_type:
+                    {
+                      example: choose component type,
+                      enum:
+                        [
+                          DEFAULT,
+                          MULTIPLE_TEXT_INPUT,
+                          TEXT_DESCRIPTION,
+                          MULTIPLE_TEXT_DESCRIPTION,
+                          CHECKLIST,
+                          RADIO_BUTTON,
+                          TEXT_INPUT,
+                        ],
+                      type: string,
+                      description: Component type,
+                      format: enum,
+                    },
+                  header_id:
+                    {
+                      example: Header Component ID,
+                      type: string,
+                      description: Header Component ID,
+                    },
+                },
+            },
+          publicCreateCurriculumRequest:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
+          publicDeleteCurriculumResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicGetCurriculumListRequest:
+            {
+              type: object,
+              properties:
+                {
+                  name:
+                    {
+                      example: Indonesia Merdeka,
+                      type: string,
+                      description: Curriculum name,
+                    },
+                  instance_id:
+                    { type: string, description: Curriculum instance },
+                  limit:
+                    {
+                      example: 20,
+                      type: integer,
+                      description: The maximum number of entries,
+                      format: uint32,
+                    },
+                  offset:
+                    {
+                      example: 0,
+                      type: integer,
+                      description: The starting position of entries,
+                      format: uint32,
+                    },
+                },
+            },
+          publicGetCurriculumListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  curriculums:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCurriculum",
+                        },
+                      description: Curriculum List,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicUpdateCurriculumRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
+          publicUpdateCurriculumResponse:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
+          sharedCurriculum:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  logo:
+                    {
+                      example: "https://skola.bucket/curriculum-name.png",
+                      type: string,
+                      description: Curriculum logo,
+                    },
+                  name:
+                    {
+                      example: Indonesia Merdeka,
+                      type: string,
+                      description: Curriculum name,
+                    },
+                  description: { type: string, description: Curriculum desc },
+                  status:
+                    {
+                      enum:
+                        [
+                          CURRICULUM_STATUS_UNSPECIFIED,
+                          CURRICULUM_STATUS_INACTIVE,
+                          CURRICULUM_STATUS_ACTIVE,
+                        ],
+                      type: string,
+                      description: Curriculum Status,
+                      format: enum,
+                    },
+                  notes: { type: string, description: Curriculum notes },
+                  instance_id:
+                    { type: string, description: Curriculum instance },
+                  academic_term:
+                    {
+                      example: 2024/2025,
+                      type: string,
+                      description: Academic Term,
+                    },
+                  semester:
+                    {
+                      example: 1,
+                      type: string,
+                      description: Curriculum semester,
+                    },
+                  type:
+                    {
+                      example: 1,
+                      enum:
+                        [
+                          CURRICULUM_UNSPECIFIED,
+                          CURRICULUM_NATIONAL,
+                          CURRICULUM_OTHERS,
+                        ],
+                      type: string,
+                      description: Curriculum type,
+                      format: enum,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum start date,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum end date,
+                      format: date-time,
+                    },
+                  start_year:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum start year,
+                    },
+                  end_year:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: curriculum end year,
+                    },
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                        },
+                      description: Curriculum Components,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
                     },
                 },
             },
