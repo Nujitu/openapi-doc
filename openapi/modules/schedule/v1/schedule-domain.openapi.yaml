@@ -10,216 +10,57 @@
   servers: [{ url: "https://staging-api.skola.co.id" }],
   paths:
     {
-      /v1/event:
+      "/v1/schedule/day/{day}/time/{time_schedule_id}/subject":
         {
-          get:
-            {
-              tags: [EventService],
-              summary: Get list of events and schedules by date range,
-              description: "Get list of events and schedules by date range, e.g /v1/event?mode=admin&from=2024-09-01&to=2024-09-30 or /v1/event?mode={teacher_id}&from=2024-09-01&to=2024-09-30",
-              operationId: EventService_GetEvent,
-              parameters:
-                [
-                  { name: mode, in: query, schema: { type: string } },
-                  { name: from, in: query, schema: { type: string } },
-                  { name: to, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetEventResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           post:
             {
-              tags: [EventService],
-              summary: Insert new event,
-              description: Insert new event,
-              operationId: EventService_CreateEvent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateEventRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCreateEventResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [EventService],
-              summary: Update an event by id,
-              description: Update event by id,
-              operationId: EventService_UpdateEvent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedUpdateEventRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedUpdateEventResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/event/{id}":
-        {
-          delete:
-            {
-              tags: [EventService],
-              summary: Delete an event by id,
-              description: Delete an event by id,
-              operationId: EventService_DeleteEvent,
+              tags: [SubjectScheduleService],
+              summary: Insert new subject schedule,
+              description: "Insert new schedule, e.g. /v1/schedule/day/MONDAY/time/231241/subject",
+              operationId: SubjectScheduleService_CreateSubjectSchedule,
               parameters:
                 [
                   {
-                    name: id,
+                    name: day,
+                    in: path,
+                    required: true,
+                    schema:
+                      {
+                        enum:
+                          [
+                            MONDAY,
+                            TUESDAY,
+                            WEDNESDAY,
+                            THURSDAY,
+                            FRIDAY,
+                            SATURDAY,
+                            SUNDAY,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: time_schedule_id,
                     in: path,
                     required: true,
                     schema: { type: string },
                   },
                 ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateSubjectScheduleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
               responses:
                 {
                   "200":
@@ -231,7 +72,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedDeleteEventResponse",
+                                  $ref: "#/components/schemas/sharedCreateSubjectScheduleResponse",
                                 },
                             },
                         },
@@ -544,104 +385,6 @@
                 },
             },
         },
-      "/v1/schedule/day/{day}/time/{time_schedule_id}/subject":
-        {
-          post:
-            {
-              tags: [SubjectScheduleService],
-              summary: Insert new subject schedule,
-              description: "Insert new schedule, e.g. /v1/schedule/day/MONDAY/time/231241/subject",
-              operationId: SubjectScheduleService_CreateSubjectSchedule,
-              parameters:
-                [
-                  {
-                    name: day,
-                    in: path,
-                    required: true,
-                    schema:
-                      {
-                        enum:
-                          [
-                            MONDAY,
-                            TUESDAY,
-                            WEDNESDAY,
-                            THURSDAY,
-                            FRIDAY,
-                            SATURDAY,
-                            SUNDAY,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  {
-                    name: time_schedule_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateSubjectScheduleRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCreateSubjectScheduleResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       "/v1/schedule/day/{day}/teacher":
         {
           get:
@@ -919,152 +662,303 @@
                 },
             },
         },
+      /v1/event:
+        {
+          get:
+            {
+              tags: [EventService],
+              summary: Get list of events and schedules by date range,
+              description: "Get list of events and schedules by date range, e.g /v1/event?mode=admin&from=2024-09-01&to=2024-09-30 or /v1/event?mode={teacher_id}&from=2024-09-01&to=2024-09-30",
+              operationId: EventService_GetEvent,
+              parameters:
+                [
+                  { name: mode, in: query, schema: { type: string } },
+                  { name: from, in: query, schema: { type: string } },
+                  { name: to, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [EventService],
+              summary: Insert new event,
+              description: Insert new event,
+              operationId: EventService_CreateEvent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateEventRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [EventService],
+              summary: Update an event by id,
+              description: Update event by id,
+              operationId: EventService_UpdateEvent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedUpdateEventRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedUpdateEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/event/{id}":
+        {
+          delete:
+            {
+              tags: [EventService],
+              summary: Delete an event by id,
+              description: Delete an event by id,
+              operationId: EventService_DeleteEvent,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
       "schemas":
         {
-          sharedCreateEventRequest:
+          sharedCreateSubjectScheduleRequest:
             {
               type: object,
               properties:
                 {
-                  name: { type: string, description: Event name },
-                  description: { type: string, description: Event description },
-                  user_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of attendees (user ids),
-                    },
-                  date: { type: string, description: Event date yyyy-mm-dd },
-                  start_time: { type: string, description: Event start time },
-                  end_time: { type: string, description: Event end time },
-                  activity:
+                  day:
                     {
                       enum:
                         [
-                          OTHERS,
-                          LEARNING,
-                          SCHOOL_EVENT,
-                          EXAM,
-                          CEREMONY,
-                          EXTRACURRICULAR,
-                          STAFF_DEVELOPMENT,
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
                         ],
                       type: string,
-                      description: Event activity,
+                      description: "Day e.g. SUNDAY, MONDAY",
                       format: enum,
                     },
-                },
-            },
-          sharedCreateEventResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the creation of the new event,
-                    },
-                },
-            },
-          sharedDeleteEventResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the deleted event,
-                    },
-                },
-            },
-          sharedGetEventDetailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: id of the event },
-                  title: { type: string, description: title of the event },
-                  description:
-                    { type: string, description: description of the event },
-                  schedule_type:
-                    {
-                      example: "e.g. STUDENT, TEACHER, EVENT",
-                      type: string,
-                      description: description of the event,
-                    },
-                  start:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: start time of event,
-                      format: date-time,
-                    },
-                  end:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: end time of event,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedGetEventResponse:
-            {
-              type: object,
-              properties:
-                {
-                  events:
+                  time_schedule_id:
+                    { type: string, description: time schedule ID },
+                  subject_schedules:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedGetEventDetailResponse",
+                          $ref: "#/components/schemas/sharedSubjectSchedule",
                         },
-                      description: list of schedules and events,
+                      description: subject schedule object,
                     },
                 },
             },
-          sharedUpdateEventRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: Event ID },
-                  name: { type: string, description: Event name },
-                  description: { type: string, description: Event description },
-                  user_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of attendees (user ids),
-                    },
-                  date: { type: string, description: Event date yyyy-mm-dd },
-                  start_time: { type: string, description: Event start time },
-                  end_time: { type: string, description: Event end time },
-                  activity:
-                    {
-                      enum:
-                        [
-                          OTHERS,
-                          LEARNING,
-                          SCHOOL_EVENT,
-                          EXAM,
-                          CEREMONY,
-                          EXTRACURRICULAR,
-                          STAFF_DEVELOPMENT,
-                        ],
-                      type: string,
-                      description: Event activity,
-                      format: enum,
-                    },
-                },
-            },
-          sharedUpdateEventResponse:
+          sharedCreateSubjectScheduleResponse:
             {
               type: object,
               properties:
@@ -1072,8 +966,24 @@
                   message:
                     {
                       type: string,
-                      description: Message confirming the update of the event,
+                      description: Message confirming the creation of the new subject schedule,
                     },
+                },
+            },
+          sharedSubjectSchedule:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: subject schedule id },
+                  class_group_id: { type: string, description: class group id },
+                  class_group_name:
+                    { type: string, description: class group name },
+                  class_subject_detail_id:
+                    { type: string, description: class subject detail id },
+                  class_subject_detail_name:
+                    { type: string, description: class subject detail name },
+                  teacher_id: { type: string, description: teacher id },
                 },
             },
           "v1ErrorResponse":
@@ -1207,22 +1117,6 @@
                     },
                 },
             },
-          sharedSubjectSchedule:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: subject schedule id },
-                  class_group_id: { type: string, description: class group id },
-                  class_group_name:
-                    { type: string, description: class group name },
-                  class_subject_detail_id:
-                    { type: string, description: class subject detail id },
-                  class_subject_detail_name:
-                    { type: string, description: class subject detail name },
-                  teacher_id: { type: string, description: teacher id },
-                },
-            },
           sharedTimeSchedule:
             {
               type: object,
@@ -1323,52 +1217,6 @@
                     {
                       type: string,
                       description: Message confirming the updating of the schedule,
-                    },
-                },
-            },
-          sharedCreateSubjectScheduleRequest:
-            {
-              type: object,
-              properties:
-                {
-                  day:
-                    {
-                      enum:
-                        [
-                          MONDAY,
-                          TUESDAY,
-                          WEDNESDAY,
-                          THURSDAY,
-                          FRIDAY,
-                          SATURDAY,
-                          SUNDAY,
-                        ],
-                      type: string,
-                      description: "Day e.g. SUNDAY, MONDAY",
-                      format: enum,
-                    },
-                  time_schedule_id:
-                    { type: string, description: time schedule ID },
-                  subject_schedules:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedSubjectSchedule",
-                        },
-                      description: subject schedule object,
-                    },
-                },
-            },
-          sharedCreateSubjectScheduleResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the creation of the new subject schedule,
                     },
                 },
             },
@@ -1530,6 +1378,158 @@
                     {
                       type: string,
                       description: Message confirming the updating of the schedule,
+                    },
+                },
+            },
+          sharedCreateEventRequest:
+            {
+              type: object,
+              properties:
+                {
+                  name: { type: string, description: Event name },
+                  description: { type: string, description: Event description },
+                  user_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of attendees (user ids),
+                    },
+                  date: { type: string, description: Event date yyyy-mm-dd },
+                  start_time: { type: string, description: Event start time },
+                  end_time: { type: string, description: Event end time },
+                  activity:
+                    {
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
+                      type: string,
+                      description: Event activity,
+                      format: enum,
+                    },
+                },
+            },
+          sharedCreateEventResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the new event,
+                    },
+                },
+            },
+          sharedDeleteEventResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the deleted event,
+                    },
+                },
+            },
+          sharedGetEventDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: id of the event },
+                  title: { type: string, description: title of the event },
+                  description:
+                    { type: string, description: description of the event },
+                  schedule_type:
+                    {
+                      example: "e.g. STUDENT, TEACHER, EVENT",
+                      type: string,
+                      description: description of the event,
+                    },
+                  start:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: start time of event,
+                      format: date-time,
+                    },
+                  end:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: end time of event,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedGetEventResponse:
+            {
+              type: object,
+              properties:
+                {
+                  events:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedGetEventDetailResponse",
+                        },
+                      description: list of schedules and events,
+                    },
+                },
+            },
+          sharedUpdateEventRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Event ID },
+                  name: { type: string, description: Event name },
+                  description: { type: string, description: Event description },
+                  user_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of attendees (user ids),
+                    },
+                  date: { type: string, description: Event date yyyy-mm-dd },
+                  start_time: { type: string, description: Event start time },
+                  end_time: { type: string, description: Event end time },
+                  activity:
+                    {
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
+                      type: string,
+                      description: Event activity,
+                      format: enum,
+                    },
+                },
+            },
+          sharedUpdateEventResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the update of the event,
                     },
                 },
             },

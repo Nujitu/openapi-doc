@@ -4,52 +4,11 @@
   info:
     {
       title: Authentication Domain,
-      description: "Skoola Identity Service, Skoola Auth Service, Skoola Admin User Service",
       version: v1,
+      description: "Skoola Auth Service, Skoola Identity Service, Skoola Admin User Service",
     },
   paths:
     {
-      /v1/identity/register:
-        {
-          post:
-            {
-              tags: [IdentityService],
-              summary: Register New User,
-              description: register new user.,
-              operationId: IdentityService_Register,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/auth/login:
         {
           post:
@@ -214,6 +173,47 @@
                 },
             },
         },
+      /v1/identity/register:
+        {
+          post:
+            {
+              tags: [IdentityService],
+              summary: Register New User,
+              description: register new user.,
+              operationId: IdentityService_Register,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/user/admin:
         {
           post:
@@ -288,180 +288,6 @@
     {
       "schemas":
         {
-          publicRegisterRequest:
-            {
-              type: object,
-              properties:
-                {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                  login_challenge:
-                    {
-                      type: string,
-                      description: " login challenge from auth-server",
-                    },
-                },
-              description: Request body of Register new user,
-            },
-          publicRegisterResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string, description: additional message },
-                  user:
-                    {
-                      $ref: "#/components/schemas/sharedUser",
-                    },
-                  token:
-                    {
-                      type: string,
-                      description: generated token after registered,
-                    },
-                },
-              description: Response body of Register new user,
-            },
-          sharedAddress:
-            {
-              type: object,
-              properties:
-                {
-                  address_line_1: { type: string, description: address detail },
-                  address_line_2: { type: string, description: address detail },
-                  ADMINISTRATORistrative_area_level_1:
-                    { type: string, description: province / provinsi },
-                  ADMINISTRATORistrative_area_level_2:
-                    { type: string, description: city / kota },
-                  ADMINISTRATORistrative_area_level_3:
-                    { type: string, description: area / kecamatan },
-                  ADMINISTRATORistrative_area_level_4:
-                    { type: string, description: district / kelurahan },
-                  postal_code:
-                    { type: string, description: postal code / kode pos },
-                  latitude:
-                    {
-                      type: string,
-                      description: stored latitude coordinate in decimal,
-                    },
-                  longitude:
-                    {
-                      type: string,
-                      description: stored longitude coordinate in decimal,
-                    },
-                },
-              description: "*\n Represents user's address",
-            },
-          sharedUser:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: User ID },
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  username:
-                    {
-                      example: JohnFD,
-                      type: string,
-                      description: User username,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  profile_pic:
-                    {
-                      example: profile.png,
-                      type: string,
-                      description: User profile pict name,
-                    },
-                  address:
-                    {
-                      $ref: "#/components/schemas/sharedAddress",
-                    },
-                  status:
-                    {
-                      enum:
-                        [
-                          USER_STATUS_UNSPECIFIED,
-                          USER_STATUS_ACTIVE,
-                          USER_STATUS_INACTIVE,
-                        ],
-                      type: string,
-                      description: Represent user status,
-                      format: enum,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user data updated,
-                      format: date-time,
-                    },
-                },
-              description: User entity,
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
           publicLoginRequest:
             {
               type: object,
@@ -563,6 +389,36 @@
                     { type: string, description: additional information },
                 },
             },
+          sharedAddress:
+            {
+              type: object,
+              properties:
+                {
+                  address_line_1: { type: string, description: address detail },
+                  address_line_2: { type: string, description: address detail },
+                  ADMINISTRATORistrative_area_level_1:
+                    { type: string, description: province / provinsi },
+                  ADMINISTRATORistrative_area_level_2:
+                    { type: string, description: city / kota },
+                  ADMINISTRATORistrative_area_level_3:
+                    { type: string, description: area / kecamatan },
+                  ADMINISTRATORistrative_area_level_4:
+                    { type: string, description: district / kelurahan },
+                  postal_code:
+                    { type: string, description: postal code / kode pos },
+                  latitude:
+                    {
+                      type: string,
+                      description: stored latitude coordinate in decimal,
+                    },
+                  longitude:
+                    {
+                      type: string,
+                      description: stored longitude coordinate in decimal,
+                    },
+                },
+              description: "*\n Represents user's address",
+            },
           sharedLoginEntity:
             {
               type: object,
@@ -581,6 +437,150 @@
                   session_token: { type: string, description: session token },
                 },
               description: Login entity,
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  profile_pic:
+                    {
+                      example: profile.png,
+                      type: string,
+                      description: User profile pict name,
+                    },
+                  address:
+                    {
+                      $ref: "#/components/schemas/sharedAddress",
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: Represent user status,
+                      format: enum,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+              description: User entity,
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          publicRegisterRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                  login_challenge:
+                    {
+                      type: string,
+                      description: " login challenge from auth-server",
+                    },
+                },
+              description: Request body of Register new user,
+            },
+          publicRegisterResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                  token:
+                    {
+                      type: string,
+                      description: generated token after registered,
+                    },
+                },
+              description: Response body of Register new user,
             },
           publicRegisterUserRequest:
             {
