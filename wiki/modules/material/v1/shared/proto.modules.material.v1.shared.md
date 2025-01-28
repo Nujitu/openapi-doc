@@ -6,6 +6,7 @@
 - [modules/material/v1/shared/class_group.proto](#modules_material_v1_shared_class_group-proto)
     - [ClassGroup](#modules-material-v1-shared-ClassGroup)
     - [ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail)
+    - [StudentCourse](#modules-material-v1-shared-StudentCourse)
     - [TeacherClassCourses](#modules-material-v1-shared-TeacherClassCourses)
   
     - [ClassGroupType](#modules-material-v1-shared-ClassGroupType)
@@ -91,6 +92,28 @@
 
 
 
+<a name="modules-material-v1-shared-StudentCourse"></a>
+
+### StudentCourse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| classgroup_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| homeroom_teacher_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
+| classgroup_name | [string](#string) |  |  |
+| major | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-material-v1-shared-TeacherClassCourses"></a>
 
 ### TeacherClassCourses
@@ -108,8 +131,6 @@
 | total_students | [string](#string) |  |  |
 | major | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 

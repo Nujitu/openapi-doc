@@ -16,6 +16,8 @@
     - [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse)
     - [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest)
     - [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse)
+    - [GetStudentCoursesRequest](#modules-material-v1-public-GetStudentCoursesRequest)
+    - [GetStudentCoursesResponse](#modules-material-v1-public-GetStudentCoursesResponse)
     - [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest)
     - [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse)
     - [GetTeacherActiveSubjectsRequest](#modules-material-v1-public-GetTeacherActiveSubjectsRequest)
@@ -293,6 +295,36 @@
 
 
 
+<a name="modules-material-v1-public-GetStudentCoursesRequest"></a>
+
+### GetStudentCoursesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetStudentCoursesResponse"></a>
+
+### GetStudentCoursesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| courses | [modules.material.v1.shared.StudentCourse](#modules-material-v1-shared-StudentCourse) | repeated |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-GetStudentsInClassRequest"></a>
 
 ### GetStudentsInClassRequest
@@ -525,6 +557,7 @@ Service for user related feature
 | GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
 | GetStudentsInClass | [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest) | [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse) |  |
 | GetTeacherCourses | [GetTeacherActiveSubjectsRequest](#modules-material-v1-public-GetTeacherActiveSubjectsRequest) | [GetTeacherActiveSubjectsResponse](#modules-material-v1-public-GetTeacherActiveSubjectsResponse) |  |
+| GetStudentCourses | [GetStudentCoursesRequest](#modules-material-v1-public-GetStudentCoursesRequest) | [GetStudentCoursesResponse](#modules-material-v1-public-GetStudentCoursesResponse) |  |
 | GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
 
  
