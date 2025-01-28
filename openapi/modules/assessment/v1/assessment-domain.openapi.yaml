@@ -7,7 +7,11 @@
       description: "Skola Quiz Service, Skoola Assignment Service, Skoola Rubric Service, Skoola Observation Service",
       version: v1,
     },
-  servers: [{ url: "https://staging-api.skola.co.id" }],
+  servers:
+    [
+      { url: "https://staging-api.skola.co.id" },
+      { url: "http://localhost:8080" },
+    ],
   paths:
     {
       /v1/quiz:

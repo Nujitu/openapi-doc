@@ -7,7 +7,11 @@
       version: v1,
       description: "Exam Management Service, Skoola Learning Goal Service, Study Material Management Service, Skoola Folder Management Service, Skoola Teaching Module Service",
     },
-  servers: [{ url: "https://staging-api.skola.co.id" }],
+  servers:
+    [
+      { url: "https://staging-api.skola.co.id" },
+      { url: "http://localhost:8080" },
+    ],
   paths:
     {
       /v1/exam:

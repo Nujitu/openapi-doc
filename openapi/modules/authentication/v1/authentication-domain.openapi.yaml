@@ -7,6 +7,11 @@
       version: v1,
       description: "Skoola Auth Service, Skoola Identity Service, Skoola Admin User Service",
     },
+  servers:
+    [
+      { url: "https://staging-api.skola.co.id" },
+      { url: "http://localhost:8080" },
+    ],
   paths:
     {
       /v1/auth/login:
@@ -691,6 +696,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  servers: [{ url: "https://staging-api.skola.co.id" }],
   security: [{ OAuth2: [ADMIN] }],
 }

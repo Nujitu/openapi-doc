@@ -7,7 +7,11 @@
       version: v1,
       description: "Skola School Service, Skoola User Service, Skoola Teacher Service, Skoola Student Service",
     },
-  servers: [{ url: "https://staging-api.skola.co.id" }],
+  servers:
+    [
+      { url: "https://staging-api.skola.co.id" },
+      { url: "http://localhost:8080" },
+    ],
   paths:
     {
       /v1/school:

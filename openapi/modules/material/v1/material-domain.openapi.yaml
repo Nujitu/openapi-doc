@@ -7,7 +7,11 @@
       description: "Skola Class Group Service, Skola Subject Service, Skoola Curriculum Group Component Service, Skoola Curriculum Service, Skoola Header Component Service",
       version: v1,
     },
-  servers: [{ url: "https://staging-api.skola.co.id" }],
+  servers:
+    [
+      { url: "https://staging-api.skola.co.id" },
+      { url: "http://localhost:8080" },
+    ],
   paths:
     {
       /v1/class-group:
