@@ -14,7 +14,7 @@
         {
           post:
             {
-              tags: [AttendanceService, attendance],
+              tags: [AttendanceService],
               summary: Submit attendance,
               operationId: submitAttendance,
               requestBody:
@@ -82,7 +82,7 @@
         {
           post:
             {
-              tags: [AttendanceService, attendance],
+              tags: [AttendanceService],
               summary: submit journal attendance,
               description: This operation submits attendance for a journal.,
               operationId: submitJournalAttendance,
@@ -151,7 +151,7 @@
         {
           get:
             {
-              tags: [AttendanceService, attendance],
+              tags: [AttendanceService],
               summary: Get journal attendance by ID,
               operationId: getJournalAttendance,
               parameters:
@@ -213,7 +213,7 @@
         {
           post:
             {
-              tags: [AttendanceService, attendance],
+              tags: [AttendanceService],
               summary: Get attendance by ID,
               operationId: getAttendance,
               requestBody:
@@ -281,7 +281,7 @@
         {
           post:
             {
-              tags: [AbsenceService, absence],
+              tags: [AbsenceService],
               summary: Get absence history,
               operationId: getAbsenceHistory,
               requestBody:
@@ -335,7 +335,7 @@
         {
           post:
             {
-              tags: [AbsenceService, absence],
+              tags: [AbsenceService],
               summary: List absences,
               operationId: listAbsences,
               requestBody:
@@ -389,7 +389,7 @@
         {
           delete:
             {
-              tags: [AbsenceService, absence],
+              tags: [AbsenceService],
               summary: Delete absence,
               operationId: deleteAbsence,
               parameters:
