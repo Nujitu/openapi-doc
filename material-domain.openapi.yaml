@@ -771,6 +771,70 @@
                 },
             },
         },
+      "/v1/class-group/{student_id}/student/courses":
+        {
+          get:
+            {
+              tags: [ClassGroupService],
+              summary: GetStudentCourses,
+              description: retrieves a list of subjects students enrolled,
+              operationId: ClassGroupService_GetStudentCourses,
+              parameters:
+                [
+                  {
+                    name: student_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentCoursesResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/class-group/{teacher_id}/teacher/courses":
         {
           get:
@@ -2291,6 +2355,22 @@
                     },
                 },
             },
+          publicGetStudentCoursesResponse:
+            {
+              type: object,
+              properties:
+                {
+                  courses:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentCourse",
+                        },
+                      description: list of class subjects,
+                    },
+                },
+            },
           publicGetStudentsInClassResponse:
             {
               type: object,
@@ -2572,6 +2652,45 @@
                     },
                 },
             },
+          sharedStudentCourse:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: ClassCourses ID,
+                    },
+                  classgroup_id:
+                    { example: 123, type: string, description: Classgroup ID },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  homeroom_teacher_id:
+                    { example: 123, type: string, description: teacher ID },
+                  subject_name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  classgroup_name:
+                    {
+                      example: Class Group 123,
+                      type: string,
+                      description: Classgroup name,
+                    },
+                  major:
+                    { example: IPA, type: string, description: Class major },
+                  class_subject_id:
+                    {
+                      example: 1231244,
+                      type: string,
+                      description: Class subject id,
+                    },
+                },
+            },
           sharedTeacherClassCourses:
             {
               type: object,
@@ -2609,20 +2728,6 @@
                       example: 1231244,
                       type: string,
                       description: Class subject id,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
                     },
                 },
             },
