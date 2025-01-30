@@ -1145,6 +1145,70 @@
                 },
             },
         },
+      "/v1/assignment/detail/{assignment_id}":
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get an assignment,
+              description: Get assignment by id,
+              operationId: AssignmentService_GetAssignmentById,
+              parameters:
+                [
+                  {
+                    name: assignment_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAssignmentByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/assignment/presigned-url:
         {
           post:
@@ -1214,7 +1278,7 @@
                 },
             },
         },
-      "/v1/assignment/statistic/{assignment_id}":
+      "/v1/assignment/statistic/detail/{assignment_id}":
         {
           get:
             {
@@ -1550,6 +1614,70 @@
                 },
             },
         },
+      "/v1/assignment/submission/detail/{submission_id}":
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get a submission of assignment assessment by id,
+              description: Get assignment submission by submission id,
+              operationId: AssignmentService_GetAssignmentSubmissionById,
+              parameters:
+                [
+                  {
+                    name: submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/assignment/submission/finalize:
         {
           post:
@@ -1741,67 +1869,6 @@
         },
       "/v1/assignment/submission/{submission_id}":
         {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get a submission of assignment assessment by id,
-              description: Get assignment submission by submission id,
-              operationId: AssignmentService_GetAssignmentSubmissionById,
-              parameters:
-                [
-                  {
-                    name: submission_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           delete:
             {
               tags: [AssignmentService],
@@ -1866,67 +1933,6 @@
         },
       "/v1/assignment/{assignment_id}":
         {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get an assignment,
-              description: Get assignment by id,
-              operationId: AssignmentService_GetAssignmentById,
-              parameters:
-                [
-                  {
-                    name: assignment_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAssignmentByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           delete:
             {
               tags: [AssignmentService],
@@ -2190,7 +2196,7 @@
                 },
             },
         },
-      "/v1/rubric/{rubric_id}":
+      "/v1/rubric/detail/{rubric_id}":
         {
           get:
             {
@@ -2253,6 +2259,9 @@
                     },
                 },
             },
+        },
+      "/v1/rubric/{rubric_id}":
+        {
           delete:
             {
               tags: [RubricService],
@@ -2551,7 +2560,71 @@
                 },
             },
         },
-      "/v1/observation/statistic/{observation_id}":
+      "/v1/observation/detail/{observation_id}":
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: Get an observation,
+              description: Get observation by id,
+              operationId: ObservationService_GetObservationById,
+              parameters:
+                [
+                  {
+                    name: observation_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetObservationByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/observation/statistic/detail/{observation_id}":
         {
           get:
             {
@@ -2818,6 +2891,70 @@
                 },
             },
         },
+      "/v1/observation/submission/detail/{submission_id}":
+        {
+          get:
+            {
+              tags: [ObservationService],
+              summary: Get a submission of observation assessment,
+              description: Get observation assessment by observation submission id,
+              operationId: ObservationService_GetObservationSubmissionById,
+              parameters:
+                [
+                  {
+                    name: submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetObservationSubmissionByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/observation/submission/student-id:
         {
           get:
@@ -2940,67 +3077,6 @@
         },
       "/v1/observation/submission/{submission_id}":
         {
-          get:
-            {
-              tags: [ObservationService],
-              summary: Get a submission of observation assessment,
-              description: Get observation assessment by observation submission id,
-              operationId: ObservationService_GetObservationSubmissionById,
-              parameters:
-                [
-                  {
-                    name: submission_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetObservationSubmissionByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           delete:
             {
               tags: [ObservationService],
@@ -3065,67 +3141,6 @@
         },
       "/v1/observation/{observation_id}":
         {
-          get:
-            {
-              tags: [ObservationService],
-              summary: Get an observation,
-              description: Get observation by id,
-              operationId: ObservationService_GetObservationById,
-              parameters:
-                [
-                  {
-                    name: observation_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetObservationByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           delete:
             {
               tags: [ObservationService],
