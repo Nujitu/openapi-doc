@@ -28,6 +28,7 @@
     - [QuizSettings](#modules-assessment-v1-shared-QuizSettings)
     - [QuizSubmission](#modules-assessment-v1-shared-QuizSubmission)
     - [StudentAnswer](#modules-assessment-v1-shared-StudentAnswer)
+    - [StudentSubmissions](#modules-assessment-v1-shared-StudentSubmissions)
   
 - [modules/assessment/v1/shared/rubric.proto](#modules_assessment_v1_shared_rubric-proto)
     - [Criterion](#modules-assessment-v1-shared-Criterion)
@@ -476,6 +477,27 @@
 | points | [string](#string) |  |  |
 | options | [QuizOption](#modules-assessment-v1-shared-QuizOption) | repeated |  |
 | score_state | [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-StudentSubmissions"></a>
+
+### StudentSubmissions
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_name | [string](#string) |  |  |
+| learning_goal | [string](#string) |  |  |
+| due_date | [string](#string) |  |  |
+| state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| category | [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory) |  |  |
+| score | [float](#float) |  |  |
+| points | [int32](#int32) |  |  |
 
 
 

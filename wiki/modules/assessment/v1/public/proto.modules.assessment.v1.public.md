@@ -89,6 +89,8 @@
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
     - [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest)
     - [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse)
+    - [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest)
+    - [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse)
     - [QuizAssignee](#modules-assessment-v1-public-QuizAssignee)
     - [ScoringQuizJob](#modules-assessment-v1-public-ScoringQuizJob)
     - [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload)
@@ -1519,6 +1521,37 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-GetStudentSubmissionsRequest"></a>
+
+### GetStudentSubmissionsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetStudentSubmissionsResponse"></a>
+
+### GetStudentSubmissionsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| submissions | [modules.assessment.v1.shared.StudentSubmissions](#modules-assessment-v1-shared-StudentSubmissions) | repeated |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-QuizAssignee"></a>
 
 ### QuizAssignee
@@ -1708,6 +1741,7 @@ Service for quiz related feature
 | SubmitStudentAnswer | [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest) | [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse) |  |
 | GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
 | GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
+| GetStudentSubmissions | [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest) | [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse) |  |
 
  
 
