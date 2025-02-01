@@ -498,6 +498,9 @@
 | category | [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory) |  |  |
 | score | [float](#float) |  |  |
 | points | [int32](#int32) |  |  |
+| quiz_id | [string](#string) |  |  |
+| submission_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 
 
 

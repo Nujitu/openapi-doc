@@ -4158,6 +4158,20 @@
                       description: The total point from students answer,
                       format: int32,
                     },
+                  quiz_id:
+                    { example: 123456, type: string, description: Quiz ID },
+                  submission_id:
+                    {
+                      example: 65324314,
+                      type: string,
+                      description: Submission ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 862435235,
+                      type: string,
+                      description: Class subject ID,
+                    },
                 },
             },
           "v1ErrorResponse":
