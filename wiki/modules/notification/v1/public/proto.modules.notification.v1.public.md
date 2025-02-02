@@ -4,7 +4,6 @@
 ## Table of Contents
 
 - [modules/notification/v1/public/notification.proto](#modules_notification_v1_public_notification-proto)
-    - [GetNotificationPreferenceByUserIdRequest](#modules-notification-v1-public-GetNotificationPreferenceByUserIdRequest)
     - [GetNotificationPreferenceByUserIdResponse](#modules-notification-v1-public-GetNotificationPreferenceByUserIdResponse)
     - [ListNotificationRequest](#modules-notification-v1-public-ListNotificationRequest)
     - [ListNotificationResponse](#modules-notification-v1-public-ListNotificationResponse)
@@ -23,21 +22,6 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/notification/v1/public/notification.proto
-
-
-
-<a name="modules-notification-v1-public-GetNotificationPreferenceByUserIdRequest"></a>
-
-### GetNotificationPreferenceByUserIdRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
-
-
-
 
 
 
@@ -64,7 +48,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| account_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -127,7 +110,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
 | fcm_token | [string](#string) | repeated |  |
 | email_notification | [bool](#bool) | optional |  |
 | push_notification | [bool](#bool) | optional |  |
@@ -169,7 +151,7 @@ Service for notification related feature
 | ListNotification | [ListNotificationRequest](#modules-notification-v1-public-ListNotificationRequest) | [ListNotificationResponse](#modules-notification-v1-public-ListNotificationResponse) |  |
 | MarkNotificationAsRead | [MarkNotificationAsReadRequest](#modules-notification-v1-public-MarkNotificationAsReadRequest) | [MarkNotificationAsReadResponse](#modules-notification-v1-public-MarkNotificationAsReadResponse) |  |
 | UpdateNotificationPreference | [UpdateNotificationPreferenceRequest](#modules-notification-v1-public-UpdateNotificationPreferenceRequest) | [UpdateNotificationPreferenceResponse](#modules-notification-v1-public-UpdateNotificationPreferenceResponse) |  |
-| GetNotificationPreferenceByUserId | [GetNotificationPreferenceByUserIdRequest](#modules-notification-v1-public-GetNotificationPreferenceByUserIdRequest) | [GetNotificationPreferenceByUserIdResponse](#modules-notification-v1-public-GetNotificationPreferenceByUserIdResponse) |  |
+| GetNotificationPreferenceByUserId | [.google.protobuf.Empty](#google-protobuf-Empty) | [GetNotificationPreferenceByUserIdResponse](#modules-notification-v1-public-GetNotificationPreferenceByUserIdResponse) |  |
 
  
 

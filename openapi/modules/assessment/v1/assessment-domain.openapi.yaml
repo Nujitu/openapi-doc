@@ -2130,8 +2130,8 @@
           put:
             {
               tags: [RubricService],
-              summary: Update an rubric,
-              description: Update an rubric,
+              summary: Update a rubric,
+              description: Update a rubric,
               operationId: RubricService_UpdateRubric,
               requestBody:
                 {
@@ -2196,8 +2196,8 @@
           post:
             {
               tags: [RubricService],
-              summary: Create an rubric,
-              description: Create an rubric,
+              summary: Create a rubric,
+              description: Create a rubric,
               operationId: RubricService_CreateRubric,
               requestBody:
                 {
@@ -2265,7 +2265,7 @@
           get:
             {
               tags: [RubricService],
-              summary: Get an rubric,
+              summary: Get a rubric,
               description: Get rubric by id,
               operationId: RubricService_GetRubricById,
               parameters:
@@ -2329,8 +2329,8 @@
           delete:
             {
               tags: [RubricService],
-              summary: Delete an rubric,
-              description: Delete an rubric,
+              summary: Delete a rubric,
+              description: Delete a rubric,
               operationId: RubricService_DeleteRubric,
               parameters:
                 [
