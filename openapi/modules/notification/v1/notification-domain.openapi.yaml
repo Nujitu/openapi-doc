@@ -14,7 +14,6 @@ paths:
       operationId: NotificationService_ListNotification
       parameters:
         [
-          { name: account_id, in: query, schema: { type: string } },
           { name: sort, in: query, schema: { type: string } },
           { name: limit, in: query, schema: { type: integer, format: uint32 } },
           {
@@ -73,14 +72,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/v1ErrorResponse"
-  "/v1/notification/preference/user/{user_id}":
+  /v1/notification/preference/user-id:
     get:
       tags: [NotificationService]
       summary: Get notification preference
       description: Get notification preference by user id
       operationId: NotificationService_GetNotificationPreferenceByUserId
-      parameters:
-        [{ name: user_id, in: path, required: true, schema: { type: string } }]
       responses:
         "200":
           description: OK
@@ -163,10 +160,6 @@ paths:
     publicUpdateNotificationPreferenceRequest:
       type: object
       properties:
-        user_id:
-          example: 123
-          type: string
-          description: User ID
         fcm_token:
           type: array
           items:
@@ -208,16 +201,10 @@ paths:
           type: string
           description: Notification type
           format: enum
-        account_id:
+        user_id:
           example: 123
           type: string
-          description: "Account ID, can be Teacher ID or Student ID"
-        account_type:
-          example: TEACHER
-          enum: [UNCATEGORIZED, TEACHER, STUDENT, PARENT]
-          type: string
-          description: Account Type
-          format: enum
+          description: User ID
         url:
           type: string
           description: Notification url
@@ -301,4 +288,10 @@ paths:
       type: http
       scheme: bearer
       bearerFormat: JWT
-security: [{ OAuth2: [TEACHERSTUDENT] }]
+security:
+  [
+    {
+      OAuth2:
+        [UNSPECIFIEDSTUDENTPARENTTEACHERSTAFFADMINISTRATORSUPERADMINISTRATOR],
+    },
+  ]

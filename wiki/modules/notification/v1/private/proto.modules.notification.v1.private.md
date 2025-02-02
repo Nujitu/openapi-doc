@@ -6,10 +6,12 @@
 - [modules/notification/v1/private/notification.proto](#modules_notification_v1_private_notification-proto)
     - [CreateNotificationRequest](#modules-notification-v1-private-CreateNotificationRequest)
     - [CreateNotificationResponse](#modules-notification-v1-private-CreateNotificationResponse)
+    - [DeleteNotificationByUserIdRequest](#modules-notification-v1-private-DeleteNotificationByUserIdRequest)
+    - [DeleteNotificationByUserIdResponse](#modules-notification-v1-private-DeleteNotificationByUserIdResponse)
     - [DeleteNotificationRequest](#modules-notification-v1-private-DeleteNotificationRequest)
     - [DeleteNotificationResponse](#modules-notification-v1-private-DeleteNotificationResponse)
   
-    - [NotificationService](#modules-notification-v1-private-NotificationService)
+    - [NotificationPrivateService](#modules-notification-v1-private-NotificationPrivateService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -30,13 +32,11 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | read | [bool](#bool) |  |  |
 | type | [modules.notification.v1.shared.NotificationType](#modules-notification-v1-shared-NotificationType) |  |  |
-| account_id | [string](#string) |  |  |
-| account_type | [modules.notification.v1.shared.AccountType](#modules-notification-v1-shared-AccountType) |  |  |
+| user_id | [string](#string) |  |  |
 | url | [string](#string) |  |  |
 
 
@@ -53,6 +53,36 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | notification | [modules.notification.v1.shared.Notification](#modules-notification-v1-shared-Notification) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-notification-v1-private-DeleteNotificationByUserIdRequest"></a>
+
+### DeleteNotificationByUserIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-notification-v1-private-DeleteNotificationByUserIdResponse"></a>
+
+### DeleteNotificationByUserIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
 
 
@@ -96,15 +126,16 @@
  
 
 
-<a name="modules-notification-v1-private-NotificationService"></a>
+<a name="modules-notification-v1-private-NotificationPrivateService"></a>
 
-### NotificationService
+### NotificationPrivateService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateNotification | [CreateNotificationRequest](#modules-notification-v1-private-CreateNotificationRequest) | [CreateNotificationResponse](#modules-notification-v1-private-CreateNotificationResponse) |  |
 | DeleteNotification | [DeleteNotificationRequest](#modules-notification-v1-private-DeleteNotificationRequest) | [DeleteNotificationResponse](#modules-notification-v1-private-DeleteNotificationResponse) |  |
+| DeleteNotificationByUserId | [DeleteNotificationByUserIdRequest](#modules-notification-v1-private-DeleteNotificationByUserIdRequest) | [DeleteNotificationByUserIdResponse](#modules-notification-v1-private-DeleteNotificationByUserIdResponse) |  |
 
  
 

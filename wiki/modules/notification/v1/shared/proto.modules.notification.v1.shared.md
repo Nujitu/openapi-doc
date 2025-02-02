@@ -4,7 +4,6 @@
 ## Table of Contents
 
 - [modules/notification/v1/shared/enum.proto](#modules_notification_v1_shared_enum-proto)
-    - [AccountType](#modules-notification-v1-shared-AccountType)
     - [NotificationType](#modules-notification-v1-shared-NotificationType)
   
 - [modules/notification/v1/shared/notification.proto](#modules_notification_v1_shared_notification-proto)
@@ -22,20 +21,6 @@
 
 
  
-
-
-<a name="modules-notification-v1-shared-AccountType"></a>
-
-### AccountType
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| UNCATEGORIZED | 0 |  |
-| TEACHER | 1 |  |
-| STUDENT | 2 |  |
-| PARENT | 3 |  |
-
 
 
 <a name="modules-notification-v1-shared-NotificationType"></a>
@@ -80,8 +65,7 @@
 | description | [string](#string) |  |  |
 | read | [bool](#bool) |  |  |
 | type | [NotificationType](#modules-notification-v1-shared-NotificationType) |  |  |
-| account_id | [string](#string) |  |  |
-| account_type | [AccountType](#modules-notification-v1-shared-AccountType) |  |  |
+| user_id | [string](#string) |  |  |
 | url | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
