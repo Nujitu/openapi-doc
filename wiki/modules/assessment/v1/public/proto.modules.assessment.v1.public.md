@@ -94,6 +94,8 @@
     - [QuizAssignee](#modules-assessment-v1-public-QuizAssignee)
     - [ScoringQuizJob](#modules-assessment-v1-public-ScoringQuizJob)
     - [ScoringQuizJobPayload](#modules-assessment-v1-public-ScoringQuizJobPayload)
+    - [StartSubmissionRequest](#modules-assessment-v1-public-StartSubmissionRequest)
+    - [StartSubmissionResponse](#modules-assessment-v1-public-StartSubmissionResponse)
     - [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest)
     - [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse)
     - [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest)
@@ -1605,6 +1607,37 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-StartSubmissionRequest"></a>
+
+### StartSubmissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-StartSubmissionResponse"></a>
+
+### StartSubmissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-SubmitStudentAnswerRequest"></a>
 
 ### SubmitStudentAnswerRequest
@@ -1742,6 +1775,7 @@ Service for quiz related feature
 | GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
 | GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
 | GetStudentSubmissions | [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest) | [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse) |  |
+| StartSubmission | [StartSubmissionRequest](#modules-assessment-v1-public-StartSubmissionRequest) | [StartSubmissionResponse](#modules-assessment-v1-public-StartSubmissionResponse) |  |
 
  
 

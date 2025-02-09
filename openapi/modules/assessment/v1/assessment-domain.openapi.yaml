@@ -674,6 +674,66 @@
                 },
             },
         },
+      /v1/quiz/student/submission-start:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Starting submission,
+              description: to trigger student submission start time,
+              operationId: QuizService_StartSubmission,
+              parameters:
+                [
+                  { name: quiz_id, in: query, schema: { type: string } },
+                  { name: student_id, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicStartSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/quiz/submission/student-id:
         {
           get:
@@ -3630,6 +3690,8 @@
                   student_name: { type: string },
                 },
             },
+          publicStartSubmissionResponse:
+            { type: object, properties: { message: { type: string } } },
           publicSubmitStudentAnswerRequest:
             {
               type: object,
