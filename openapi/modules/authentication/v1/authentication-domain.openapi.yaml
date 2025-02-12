@@ -5,7 +5,7 @@
     {
       title: Authentication Domain,
       version: v1,
-      description: "Skoola Auth Service, Skoola Identity Service, Skoola Admin User Service",
+      description: "Skoola Auth Service, Skoola Admin User Service, Skoola Identity Service",
     },
   servers:
     [
@@ -178,47 +178,6 @@
                 },
             },
         },
-      /v1/identity/register:
-        {
-          post:
-            {
-              tags: [IdentityService],
-              summary: Register New User,
-              description: register new user.,
-              operationId: IdentityService_Register,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/user/admin:
         {
           post:
@@ -281,6 +240,47 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/identity/register:
+        {
+          post:
+            {
+              tags: [IdentityService],
+              summary: Register New User,
+              description: register new user.,
+              operationId: IdentityService_Register,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterResponse",
                                 },
                             },
                         },
@@ -536,57 +536,6 @@
                   "field": { "title": "field", "type": "string" },
                 },
             },
-          publicRegisterRequest:
-            {
-              type: object,
-              properties:
-                {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                  login_challenge:
-                    {
-                      type: string,
-                      description: " login challenge from auth-server",
-                    },
-                },
-              description: Request body of Register new user,
-            },
-          publicRegisterResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string, description: additional message },
-                  user:
-                    {
-                      $ref: "#/components/schemas/sharedUser",
-                    },
-                  token:
-                    {
-                      type: string,
-                      description: generated token after registered,
-                    },
-                },
-              description: Response body of Register new user,
-            },
           publicRegisterUserRequest:
             {
               type: object,
@@ -660,6 +609,57 @@
                       $ref: "#/components/schemas/sharedUser",
                     },
                 },
+            },
+          publicRegisterRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                  login_challenge:
+                    {
+                      type: string,
+                      description: " login challenge from auth-server",
+                    },
+                },
+              description: Request body of Register new user,
+            },
+          publicRegisterResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                  token:
+                    {
+                      type: string,
+                      description: generated token after registered,
+                    },
+                },
+              description: Response body of Register new user,
             },
         },
       responses:
