@@ -197,7 +197,8 @@ paths:
           description: Notification read status
         type:
           example: ATTENDANCE
-          enum: [DEFAULT, ASSIGNMENT, OBSERVATION, QUIZ, ATTENDANCE]
+          enum:
+            [DEFAULT, ASSIGNMENT, OBSERVATION, QUIZ, ATTENDANCE, STUDY_MATERIAL]
           type: string
           description: Notification type
           format: enum
