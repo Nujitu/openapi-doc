@@ -35,6 +35,7 @@
 | OBSERVATION | 2 |  |
 | QUIZ | 3 |  |
 | ATTENDANCE | 4 |  |
+| STUDY_MATERIAL | 5 |  |
 
 
  

@@ -1086,14 +1086,13 @@ Service for user related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
-| grade_level | [string](#string) |  |  |
+| teacher_id | [string](#string) | optional |  |
+| grade_level | [string](#string) | optional |  |
 | major | [string](#string) | repeated |  |
-| name | [string](#string) |  |  |
-| subject_code | [string](#string) |  |  |
-| subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-| description | [string](#string) |  |  |
-| instance_id | [string](#string) |  |  |
+| name | [string](#string) | optional |  |
+| subject_code | [string](#string) | optional |  |
+| subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) | optional |  |
+| description | [string](#string) | optional |  |
 
 
 
