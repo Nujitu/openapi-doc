@@ -389,6 +389,60 @@
                 },
             },
         },
+      /v1/absence/student:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: Student absence detail,
+              operationId: getStudentAbsenceDetail,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicGetStudentAbsenceDetailRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentAbsenceDetailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/absence/{id}":
         {
           delete:
@@ -918,6 +972,38 @@
                     },
                   student_id: { type: string, description: Student name },
                   student_name: { type: string, description: Student name },
+                },
+            },
+          publicGetStudentAbsenceDetailRequest:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { type: string, description: Filter by student ID },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start date for filtering,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End date for filtering,
+                      format: date-time,
+                    },
+                },
+            },
+          publicGetStudentAbsenceDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      $ref: "#/components/schemas/publicStudentAbsenceData",
+                    },
                 },
             },
           publicListAbsencesRequest:

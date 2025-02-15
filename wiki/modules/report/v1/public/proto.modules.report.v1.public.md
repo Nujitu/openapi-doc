@@ -9,6 +9,8 @@
     - [GeneralAbsenceResponse](#modules-report-v1-public-GeneralAbsenceResponse)
     - [GetAbsenceHistoryRequest](#modules-report-v1-public-GetAbsenceHistoryRequest)
     - [GetAbsenceHistoryResponse](#modules-report-v1-public-GetAbsenceHistoryResponse)
+    - [GetStudentAbsenceDetailRequest](#modules-report-v1-public-GetStudentAbsenceDetailRequest)
+    - [GetStudentAbsenceDetailResponse](#modules-report-v1-public-GetStudentAbsenceDetailResponse)
     - [ListAbsencesRequest](#modules-report-v1-public-ListAbsencesRequest)
     - [ListAbsencesResponse](#modules-report-v1-public-ListAbsencesResponse)
     - [StudentAbsenceData](#modules-report-v1-public-StudentAbsenceData)
@@ -135,6 +137,38 @@
 
 
 
+<a name="modules-report-v1-public-GetStudentAbsenceDetailRequest"></a>
+
+### GetStudentAbsenceDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetStudentAbsenceDetailResponse"></a>
+
+### GetStudentAbsenceDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [StudentAbsenceData](#modules-report-v1-public-StudentAbsenceData) |  |  |
+
+
+
+
+
+
 <a name="modules-report-v1-public-ListAbsencesRequest"></a>
 
 ### ListAbsencesRequest
@@ -204,6 +238,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | ListAbsences | [ListAbsencesRequest](#modules-report-v1-public-ListAbsencesRequest) | [ListAbsencesResponse](#modules-report-v1-public-ListAbsencesResponse) |  |
+| GetStudentAbsenceDetail | [GetStudentAbsenceDetailRequest](#modules-report-v1-public-GetStudentAbsenceDetailRequest) | [GetStudentAbsenceDetailResponse](#modules-report-v1-public-GetStudentAbsenceDetailResponse) |  |
 | GetAbsenceHistory | [GetAbsenceHistoryRequest](#modules-report-v1-public-GetAbsenceHistoryRequest) | [GetAbsenceHistoryResponse](#modules-report-v1-public-GetAbsenceHistoryResponse) |  |
 | DeleteAbsence | [DeleteAbsenceRequest](#modules-report-v1-public-DeleteAbsenceRequest) | [GeneralAbsenceResponse](#modules-report-v1-public-GeneralAbsenceResponse) |  |
 
