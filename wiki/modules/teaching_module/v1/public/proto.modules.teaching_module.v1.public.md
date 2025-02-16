@@ -65,6 +65,12 @@
   
     - [TeachingModuleFolderService](#modules-teaching_module-v1-public-TeachingModuleFolderService)
   
+- [modules/teaching_module/v1/public/uploader.proto](#modules_teaching_module_v1_public_uploader-proto)
+    - [CreateTeachingModulePresignedPostUrlRequest](#modules-teaching_module-v1-public-CreateTeachingModulePresignedPostUrlRequest)
+    - [CreateTeachingModulePresignedPostUrlResponse](#modules-teaching_module-v1-public-CreateTeachingModulePresignedPostUrlResponse)
+  
+    - [UploaderService](#modules-teaching_module-v1-public-UploaderService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -840,6 +846,62 @@
 | UpdateTeachingModuleFolder | [.modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | [UpdateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse) |  |
 | GetTeachingModuleFolderList | [GetTeachingModuleFolderListRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderListRequest) | [GetTeachingModuleFolderListResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderListResponse) |  |
 | GetTeachingModuleDetailByID | [GetTeachingModuleFolderDetailByIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDRequest) | [GetTeachingModuleFolderDetailByIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDResponse) |  |
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_public_uploader-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/public/uploader.proto
+
+
+
+<a name="modules-teaching_module-v1-public-CreateTeachingModulePresignedPostUrlRequest"></a>
+
+### CreateTeachingModulePresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [modules.teaching_modules.v1.shared.Uploader](#modules-teaching_modules-v1-shared-Uploader) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-CreateTeachingModulePresignedPostUrlResponse"></a>
+
+### CreateTeachingModulePresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-public-UploaderService"></a>
+
+### UploaderService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateTeachingModulePresignedPostUrl | [CreateTeachingModulePresignedPostUrlRequest](#modules-teaching_module-v1-public-CreateTeachingModulePresignedPostUrlRequest) | [CreateTeachingModulePresignedPostUrlResponse](#modules-teaching_module-v1-public-CreateTeachingModulePresignedPostUrlResponse) |  |
 
  
 

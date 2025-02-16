@@ -30,6 +30,9 @@
 - [modules/teaching_module/v1/shared/teaching_module_folder.proto](#modules_teaching_module_v1_shared_teaching_module_folder-proto)
     - [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder)
   
+- [modules/teaching_module/v1/shared/uploader.proto](#modules_teaching_module_v1_shared_uploader-proto)
+    - [Uploader](#modules-teaching_modules-v1-shared-Uploader)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -374,6 +377,41 @@ study material
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | class_group_detail_id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_shared_uploader-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/shared/uploader.proto
+
+
+
+<a name="modules-teaching_modules-v1-shared-Uploader"></a>
+
+### Uploader
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| file_name | [string](#string) |  |  |
+| file_size | [int64](#int64) |  |  |
+| bucket_name | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
