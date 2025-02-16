@@ -5,6 +5,8 @@
 - [modules/authentication/v1/private](/modules/authentication/v1/private/proto.modules.authentication.v1.private)
 - [modules/authentication/v1/public](/modules/authentication/v1/public/proto.modules.authentication.v1.public)
 - [modules/authentication/v1/shared](/modules/authentication/v1/shared/proto.modules.authentication.v1.shared)
+- [modules/mail/v1/public](/modules/mail/v1/public/proto.modules.mail.v1.public)
+- [modules/mail/v1/shared](/modules/mail/v1/shared/proto.modules.mail.v1.shared)
 - [modules/material/v1/private](/modules/material/v1/private/proto.modules.material.v1.private)
 - [modules/material/v1/public](/modules/material/v1/public/proto.modules.material.v1.public)
 - [modules/material/v1/shared](/modules/material/v1/shared/proto.modules.material.v1.shared)
