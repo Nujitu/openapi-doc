@@ -5,7 +5,7 @@
     {
       title: Teaching_module Domain,
       version: v1,
-      description: "Skoola Folder Task Management Service, Exam Management Service, Study Material Management Service, Skoola Teaching Module Service, Skoola Learning Goal Service, Skoola Folder Management Service",
+      description: "Skoola Folder Task Management Service, Exam Management Service, Study Material Management Service, Skoola Teaching Module Service, Skoola Learning Goal Service, Skoola Teaching Module Service, Skoola Folder Management Service",
     },
   servers:
     [
@@ -1286,6 +1286,75 @@
                 },
             },
         },
+      /v1/teaching-module/presigned-url:
+        {
+          post:
+            {
+              tags: [UploaderService],
+              summary: Create teaching module presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload teaching module assets,
+              operationId: UploaderService_CreateTeachingModulePresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/teaching-module-folder:
         {
           post:
@@ -2287,6 +2356,77 @@
                 {
                   message:
                     { type: string, description: message for teaching module },
+                },
+            },
+          v1S3PresignedUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  url: { type: string },
+                  values:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedValues",
+                    },
+                },
+            },
+          v1S3PresignedValues:
+            {
+              type: object,
+              properties:
+                {
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          publicCreateTeachingModulePresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      $ref: "#/components/schemas/sharedUploader",
+                    },
+                },
+            },
+          publicCreateTeachingModulePresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                    },
+                },
+            },
+          sharedUploader:
+            {
+              type: object,
+              properties:
+                {
+                  file_name: { type: string, description: File Name },
+                  file_size: { type: string, description: File Size in bytes },
+                  bucket_name: { type: string, description: bucket Name },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when file is uploaded,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when file is updated,
+                      format: date-time,
+                    },
                 },
             },
           publicCreateTeachingModuleFolderResponse:
