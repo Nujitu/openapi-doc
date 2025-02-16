@@ -1,0 +1,691 @@
+# Generated with gnostic protoc-gen-openapi
+{
+  openapi: 3.0.3,
+  info:
+    {
+      title: Mail Domain,
+      version: v1,
+      description: "Skoola Learning Goal Service, Skoola Learning Goal Service, Skoola Learning Goal Service",
+    },
+  servers:
+    [
+      { url: "https://staging-api.skola.co.id" },
+      { url: "http://localhost:8080" },
+    ],
+  paths:
+    {
+      /v1/mail/inbox:
+        {
+          get:
+            {
+              tags: [MailInboxService],
+              summary: Get mail inbox,
+              description: Get mail inbox,
+              operationId: MailInboxService_GetMailInbox,
+              parameters:
+                [
+                  { name: user_id, in: query, schema: { type: string } },
+                  {
+                    name: page,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: size,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetMailInboxResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [MailInboxService],
+              summary: Insert new inbox,
+              description: Insert new inbox,
+              operationId: MailInboxService_CreateMailInbox,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateMailInboxRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateMailInboxResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/inbox/{id}":
+        {
+          delete:
+            {
+              tags: [MailInboxService],
+              summary: Delete inbox by id,
+              description: Delete inbox by id,
+              operationId: MailInboxService_DeleteMailInbox,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteMailInboxResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/mail/send:
+        {
+          post:
+            {
+              tags: [SendMailService],
+              summary: Trigger send email,
+              description: Trigger send email,
+              operationId: SendMailService_SendMail,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedSendMailRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedSendMailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/mail/outgoing:
+        {
+          get:
+            {
+              tags: [MailOutgoingService],
+              summary: Get mail inbox,
+              description: Get mail inbox,
+              operationId: MailOutgoingService_GetSentMail,
+              parameters:
+                [
+                  { name: user_id, in: query, schema: { type: string } },
+                  {
+                    name: page,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: size,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetMailOutgoingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/outgoing/{id}":
+        {
+          delete:
+            {
+              tags: [MailOutgoingService],
+              summary: Delete sent email by id,
+              description: Delete sent email by id,
+              operationId: MailOutgoingService_DeleteSentMail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteSentMailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+  "components":
+    {
+      "schemas":
+        {
+          sharedCreateMailInboxRequest:
+            {
+              type: object,
+              properties:
+                {
+                  no_ref:
+                    {
+                      example: 001/01/2025,
+                      type: string,
+                      description: No. Ref.,
+                    },
+                  date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Received date,
+                      format: date-time,
+                    },
+                  from:
+                    {
+                      example: Dinas Pendidikan,
+                      type: string,
+                      description: Sender of the mail,
+                    },
+                  to:
+                    {
+                      example: { Kepala_sekolah_id: "" },
+                      type: array,
+                      items: { type: string },
+                      description: List of receiver id,
+                    },
+                  mail_type:
+                    {
+                      example: Pemintaan Data/Permohonan/Surat Panggilan,
+                      type: string,
+                      description: Type of the mail,
+                    },
+                  mail_subject:
+                    {
+                      example: Undangan mengikuti pelatihan seluruh guru,
+                      type: string,
+                      description: Subject of the mail,
+                    },
+                },
+            },
+          sharedCreateMailInboxResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the mail,
+                    },
+                },
+            },
+          sharedDeleteMailInboxResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming succeed to delete the mail,
+                    },
+                },
+            },
+          sharedGetMailInboxResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mails:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMail",
+                        },
+                      description: List of mail,
+                    },
+                },
+            },
+          sharedMail:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: ID of the mail },
+                  no_ref:
+                    {
+                      example: 001/01/2025,
+                      type: string,
+                      description: No. Ref.,
+                    },
+                  date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Received date,
+                    },
+                  from:
+                    {
+                      example: Dinas Pendidikan,
+                      type: string,
+                      description: Sender of the mail,
+                    },
+                  mail_type:
+                    {
+                      example: Pemintaan Data/Permohonan/Surat Panggilan,
+                      type: string,
+                      description: Type of the mail,
+                    },
+                  mail_subject:
+                    {
+                      example: Undangan mengikuti pelatihan seluruh guru,
+                      type: string,
+                      description: Subject of the mail,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          sharedSendMailRequest:
+            {
+              type: object,
+              properties:
+                {
+                  no_ref:
+                    {
+                      example: 001/01/2025,
+                      type: string,
+                      description: No. Ref.,
+                    },
+                  date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Received date,
+                      format: date-time,
+                    },
+                  from:
+                    {
+                      example: Dinas Pendidikan,
+                      type: string,
+                      description: Sender of the mail,
+                    },
+                  to:
+                    {
+                      example: { Kepala_sekolah_id: "" },
+                      type: array,
+                      items: { type: string },
+                      description: List of receiver id,
+                    },
+                  mail_type:
+                    {
+                      example: Pemintaan Data/Permohonan/Surat Panggilan,
+                      type: string,
+                      description: Type of the mail,
+                    },
+                  mail_subject:
+                    {
+                      example: Undangan mengikuti pelatihan seluruh guru,
+                      type: string,
+                      description: Subject of the mail,
+                    },
+                },
+            },
+          sharedSendMailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the mail,
+                    },
+                },
+            },
+          sharedDeleteSentMailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming succeed to delete the mail,
+                    },
+                },
+            },
+          sharedGetMailOutgoingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mails:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMail",
+                        },
+                      description: List of mail,
+                    },
+                },
+            },
+        },
+      responses:
+        {
+          "500":
+            {
+              description: Internal Server Error,
+              content:
+                {
+                  application/json:
+                    {
+                      schema:
+                        {
+                          $ref: "#/components/schemas/v1ErrorResponse",
+                        },
+                    },
+                },
+            },
+          "401":
+            {
+              description: Unauthorized JWT token.,
+              content:
+                {
+                  application/json:
+                    {
+                      schema:
+                        {
+                          $ref: "#/components/schemas/v1ErrorResponse",
+                        },
+                    },
+                },
+            },
+        },
+      securitySchemes:
+        { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
+    },
+  security: [{ OAuth2: [TEACHER] }],
+}

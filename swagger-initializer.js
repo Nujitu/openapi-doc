@@ -11,6 +11,10 @@
     "name": "authentication-domain.openapi"
   },
   {
+    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/mail-domain.openapi.yaml",
+    "name": "mail-domain.openapi"
+  },
+  {
     "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/material-domain.openapi.yaml",
     "name": "material-domain.openapi"
   },
