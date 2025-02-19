@@ -252,6 +252,7 @@
 | student_id | [string](#string) |  |  |
 | answer_text | [string](#string) |  |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| class_subject_id | [string](#string) |  |  |
 
 
 
@@ -558,7 +559,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| assignments | [modules.assessment.v1.shared.Assignment](#modules-assessment-v1-shared-Assignment) | repeated |  |
+| assignments | [modules.assessment.v1.shared.ListAssignment](#modules-assessment-v1-shared-ListAssignment) | repeated |  |
 
 
 
@@ -575,6 +576,7 @@
 | ----- | ---- | ----- | ----------- |
 | assignment_id | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -592,7 +594,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| assignment_submissions | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) | repeated |  |
+| assignment_submissions | [modules.assessment.v1.shared.ListAssignmentSubmission](#modules-assessment-v1-shared-ListAssignmentSubmission) | repeated |  |
 
 
 
@@ -775,6 +777,7 @@ Service for assignment related feature
 | point | [float](#float) |  |  |
 | RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| class_subject_id | [string](#string) |  |  |
 
 
 
@@ -1043,7 +1046,7 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| observations | [modules.assessment.v1.shared.Observation](#modules-assessment-v1-shared-Observation) | repeated |  |
+| observations | [modules.assessment.v1.shared.ListObservation](#modules-assessment-v1-shared-ListObservation) | repeated |  |
 
 
 
@@ -1060,6 +1063,7 @@ Service for assignment related feature
 | ----- | ---- | ----- | ----------- |
 | observation_id | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1077,7 +1081,7 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| observation_submissions | [modules.assessment.v1.shared.ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission) | repeated |  |
+| observation_submissions | [modules.assessment.v1.shared.ListObservationSubmission](#modules-assessment-v1-shared-ListObservationSubmission) | repeated |  |
 
 
 
