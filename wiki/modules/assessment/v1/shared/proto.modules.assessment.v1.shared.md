@@ -5,8 +5,11 @@
 
 - [modules/assessment/v1/shared/assignment.proto](#modules_assessment_v1_shared_assignment-proto)
     - [Assignment](#modules-assessment-v1-shared-Assignment)
+    - [AssignmentDetails](#modules-assessment-v1-shared-AssignmentDetails)
     - [AssignmentStatistic](#modules-assessment-v1-shared-AssignmentStatistic)
     - [AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission)
+    - [ListAssignment](#modules-assessment-v1-shared-ListAssignment)
+    - [ListAssignmentSubmission](#modules-assessment-v1-shared-ListAssignmentSubmission)
   
 - [modules/assessment/v1/shared/enum.proto](#modules_assessment_v1_shared_enum-proto)
     - [AnswerScoreState](#modules-assessment-v1-shared-AnswerScoreState)
@@ -17,7 +20,10 @@
     - [SubmissionState](#modules-assessment-v1-shared-SubmissionState)
   
 - [modules/assessment/v1/shared/observation.proto](#modules_assessment_v1_shared_observation-proto)
+    - [ListObservation](#modules-assessment-v1-shared-ListObservation)
+    - [ListObservationSubmission](#modules-assessment-v1-shared-ListObservationSubmission)
     - [Observation](#modules-assessment-v1-shared-Observation)
+    - [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails)
     - [ObservationStatistic](#modules-assessment-v1-shared-ObservationStatistic)
     - [ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission)
   
@@ -35,6 +41,12 @@
     - [Level](#modules-assessment-v1-shared-Level)
     - [Rubric](#modules-assessment-v1-shared-Rubric)
     - [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission)
+  
+- [modules/assessment/v1/shared/subject.proto](#modules_assessment_v1_shared_subject-proto)
+    - [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails)
+  
+- [modules/assessment/v1/shared/teaching_module.proto](#modules_assessment_v1_shared_teaching_module-proto)
+    - [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -84,6 +96,43 @@
 
 
 
+<a name="modules-assessment-v1-shared-AssignmentDetails"></a>
+
+### AssignmentDetails
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| available_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| instruction | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
+| learning_goals | [string](#string) | repeated |  |
+| publish | [bool](#bool) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
+| teacher_id | [string](#string) |  |  |
+| scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| assignee | [string](#string) | repeated |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
+| exam_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-shared-AssignmentStatistic"></a>
 
 ### AssignmentStatistic
@@ -122,6 +171,69 @@
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ListAssignment"></a>
+
+### ListAssignment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| available_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| instruction | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
+| learning_goals | [string](#string) | repeated |  |
+| publish | [bool](#bool) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
+| teacher_id | [string](#string) |  |  |
+| scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| assignee | [string](#string) | repeated |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
+| exam_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ListAssignmentSubmission"></a>
+
+### ListAssignmentSubmission
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| assignment | [AssignmentDetails](#modules-assessment-v1-shared-AssignmentDetails) |  |  |
+| student_id | [string](#string) |  |  |
+| answer_text | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| point | [float](#float) |  |  |
+| RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+| submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -248,6 +360,62 @@
 
 
 
+<a name="modules-assessment-v1-shared-ListObservation"></a>
+
+### ListObservation
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
+| learning_goals | [string](#string) | repeated |  |
+| publish | [bool](#bool) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
+| teacher_id | [string](#string) |  |  |
+| scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
+| assignee | [string](#string) | repeated |  |
+| exam_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ListObservationSubmission"></a>
+
+### ListObservationSubmission
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| observation | [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails) |  |  |
+| student_id | [string](#string) |  |  |
+| point | [float](#float) |  |  |
+| RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
+| submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-shared-Observation"></a>
 
 ### Observation
@@ -271,6 +439,39 @@
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | teaching_module_id | [string](#string) |  |  |
+| assignee | [string](#string) | repeated |  |
+| exam_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ObservationDetails"></a>
+
+### ObservationDetails
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| index_minimum | [float](#float) |  |  |
+| learning_goals | [string](#string) | repeated |  |
+| publish | [bool](#bool) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| rubric_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
+| teacher_id | [string](#string) |  |  |
+| scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
+| observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
+| teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
 | assignee | [string](#string) | repeated |  |
 | exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -314,6 +515,7 @@
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -590,6 +792,87 @@
 | rubric_id | [string](#string) |  |  |
 | total_point | [float](#float) |  |  |
 | points | [float](#float) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_assessment_v1_shared_subject-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/shared/subject.proto
+
+
+
+<a name="modules-assessment-v1-shared-SubjectDetails"></a>
+
+### SubjectDetails
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| grade_level | [string](#string) |  |  |
+| major | [string](#string) | repeated |  |
+| name | [string](#string) |  |  |
+| subject_code | [string](#string) |  |  |
+| subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
+| description | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_assessment_v1_shared_teaching_module-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/shared/teaching_module.proto
+
+
+
+<a name="modules-assessment-v1-shared-TeachingModuleSummary"></a>
+
+### TeachingModuleSummary
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| learning_profile | [string](#string) | repeated |  |
+| start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| subject_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| cover_image | [string](#string) |  |  |
+| time_allocation | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| index_minimum | [int32](#int32) |  |  |
 
 
 

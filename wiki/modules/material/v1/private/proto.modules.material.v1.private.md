@@ -16,6 +16,11 @@
   
     - [CurriculumService](#modules-material-v1-private-CurriculumService)
   
+- [modules/material/v1/private/subject.proto](#modules_material_v1_private_subject-proto)
+    - [GetSubjectByIdRequest](#modules-material-v1-private-GetSubjectByIdRequest)
+  
+    - [SubjectService](#modules-material-v1-private-SubjectService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -153,6 +158,47 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetCurriculumByID | [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_private_subject-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/private/subject.proto
+
+
+
+<a name="modules-material-v1-private-GetSubjectByIdRequest"></a>
+
+### GetSubjectByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-private-SubjectService"></a>
+
+### SubjectService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetSubjectByID | [GetSubjectByIdRequest](#modules-material-v1-private-GetSubjectByIdRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 
  
 

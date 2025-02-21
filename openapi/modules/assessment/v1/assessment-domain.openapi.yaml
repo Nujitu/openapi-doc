@@ -390,6 +390,11 @@
                 [
                   { name: observation_id, in: query, schema: { type: string } },
                   { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1378,6 +1383,11 @@
                 [
                   { name: assignment_id, in: query, schema: { type: string } },
                   { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -3272,6 +3282,164 @@
     {
       "schemas":
         {
+          sharedListObservation:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  index_minimum:
+                    {
+                      example: 75.0,
+                      type: number,
+                      description: Observation index minimum on scale of 0 to 100,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, observation will be attached to specific class",
+                    },
+                  subject:
+                    {
+                      $ref: "#/components/schemas/sharedSubjectDetails",
+                    },
+                  teacher_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                    },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Observation scoring method,
+                      format: enum,
+                    },
+                  observation_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Observation assessment type,
+                      format: enum,
+                    },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModuleSummary",
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of observed student IDs,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedListObservationSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Observation submission ID,
+                    },
+                  observation:
+                    {
+                      $ref: "#/components/schemas/sharedObservationDetails",
+                    },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                  submission_state:
+                    {
+                      example: NEED_GRADING,
+                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      type: string,
+                      description: Observation submission state,
+                      format: enum,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, observation submission will be attached to specific class",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation submission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation submission is updated,
+                      format: date-time,
+                    },
+                },
+            },
           sharedObservation:
             {
               type: object,
@@ -3376,6 +3544,106 @@
                     },
                 },
             },
+          sharedObservationDetails:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Observation ID },
+                  title:
+                    {
+                      example: Praktek seni musik menggunakan gitar,
+                      type: string,
+                      description: Observation title,
+                    },
+                  description:
+                    { type: string, description: Observation description },
+                  index_minimum:
+                    {
+                      example: 75.0,
+                      type: number,
+                      description: Observation index minimum on scale of 0 to 100,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to observation,
+                    },
+                  publish:
+                    { type: boolean, description: Observation publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, observation will be attached to specific class",
+                    },
+                  subject:
+                    {
+                      $ref: "#/components/schemas/sharedSubjectDetails",
+                    },
+                  teacher_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                    },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Observation scoring method,
+                      format: enum,
+                    },
+                  observation_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Observation assessment type,
+                      format: enum,
+                    },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModuleSummary",
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of observed student IDs,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when observation data updated,
+                      format: date-time,
+                    },
+                },
+            },
           sharedObservationStatistic:
             {
               type: object,
@@ -3447,6 +3715,12 @@
                       description: Observation submission state,
                       format: enum,
                     },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, observation submission will be attached to specific class",
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -3483,6 +3757,105 @@
                       items: { type: number, format: float },
                       description: The list of criteria point,
                     },
+                },
+            },
+          sharedSubjectDetails:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Subject ID },
+                  grade_level:
+                    {
+                      example: 1,
+                      type: string,
+                      description: Subject Grade Level,
+                    },
+                  major:
+                    {
+                      example: [IPA, IPS, BAHASA],
+                      type: array,
+                      items: { type: string },
+                      description: Subject listed major,
+                    },
+                  name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  subject_code:
+                    { example: MTK, type: string, description: Subject code },
+                  subject_type:
+                    {
+                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      type: string,
+                      description: Subject type,
+                      format: enum,
+                    },
+                  description: { type: string, description: Description },
+                },
+            },
+          sharedTeachingModuleSummary:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Teaching Module ID },
+                  title:
+                    { type: string, description: Title for teaching module },
+                  learning_profile:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: Learning Profile associated with teaching module,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start date of teaching module,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End date of teaching module,
+                      format: date-time,
+                    },
+                  subject_id:
+                    {
+                      type: string,
+                      description: Subject ID associated with teaching module,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                  cover_image:
+                    {
+                      type: string,
+                      description: Cover Image for teaching module,
+                    },
+                  time_allocation:
+                    {
+                      type: string,
+                      description: Time allocated for teaching module,
+                    },
+                  curriculum_id: { type: string, description: curriculum ID },
+                  description: { type: string, description: Description },
+                  teacher_id: { type: string, description: teacher id },
+                  index_minimum:
+                    { type: integer, description: teacher id, format: int32 },
                 },
             },
           publicCreateObservationRequest:
@@ -3615,6 +3988,12 @@
                       description: Observation submission state,
                       format: enum,
                     },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, observation submission will be attached to specific class",
+                    },
                 },
             },
           publicCreateObservationSubmissionResponse:
@@ -3727,7 +4106,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedObservation",
+                          $ref: "#/components/schemas/sharedListObservation",
                         },
                       description: List Observations,
                     },
@@ -3743,7 +4122,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedObservationSubmission",
+                          $ref: "#/components/schemas/sharedListObservationSubmission",
                         },
                       description: List of the observation submission assessment,
                     },
@@ -4146,6 +4525,12 @@
                         },
                       description: Attachment files,
                     },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, assignment submission will be attached to specific class",
+                    },
                 },
             },
           publicCreateAssignmentSubmissionResponse:
@@ -4283,7 +4668,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedAssignment",
+                          $ref: "#/components/schemas/sharedListAssignment",
                         },
                       description: List Assignments,
                     },
@@ -4299,7 +4684,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedAssignmentSubmission",
+                          $ref: "#/components/schemas/sharedListAssignmentSubmission",
                         },
                       description: List assignment submissions,
                     },
@@ -4572,6 +4957,131 @@
                     },
                 },
             },
+          sharedAssignmentDetails:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Assignment ID },
+                  title:
+                    {
+                      example: Tes Baris dan Deret Aritmatika,
+                      type: string,
+                      description: Assignment title,
+                    },
+                  description:
+                    { type: string, description: Assignment description },
+                  available_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Start date when the assignment can be done,
+                      format: date-time,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
+                    },
+                  instruction:
+                    { type: string, description: Assignment instruction },
+                  index_minimum:
+                    {
+                      example: 75.0,
+                      type: number,
+                      description: Assignment index minimum on scale of 0 to 100,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to assignment,
+                    },
+                  publish:
+                    { type: boolean, description: Assignment publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, assignment will be attached to specific class",
+                    },
+                  subject:
+                    {
+                      $ref: "#/components/schemas/sharedSubjectDetails",
+                    },
+                  teacher_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
+                    },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Assignment scoring method,
+                      format: enum,
+                    },
+                  assignment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assignment assessment type,
+                      format: enum,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of student ids who are given assignments,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModuleSummary",
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment data updated,
+                      format: date-time,
+                    },
+                },
+            },
           sharedAssignmentStatistic:
             {
               type: object,
@@ -4674,6 +5184,206 @@
                       type: string,
                       description: Assignment submission state,
                       format: enum,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, assignment submission will be attached to specific class",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment submission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment submission is updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedListAssignment:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    { example: 123, type: string, description: Assignment ID },
+                  title:
+                    {
+                      example: Tes Baris dan Deret Aritmatika,
+                      type: string,
+                      description: Assignment title,
+                    },
+                  description:
+                    { type: string, description: Assignment description },
+                  available_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Start date when the assignment can be done,
+                      format: date-time,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
+                    },
+                  instruction:
+                    { type: string, description: Assignment instruction },
+                  index_minimum:
+                    {
+                      example: 75.0,
+                      type: number,
+                      description: Assignment index minimum on scale of 0 to 100,
+                      format: float,
+                    },
+                  learning_goals:
+                    {
+                      example: [123, 234, 567],
+                      type: array,
+                      items: { type: string },
+                      description: Learning goal IDs related to assignment,
+                    },
+                  publish:
+                    { type: boolean, description: Assignment publish status },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  rubric_id:
+                    { example: 123, type: string, description: Rubric ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, assignment will be attached to specific class",
+                    },
+                  subject:
+                    {
+                      $ref: "#/components/schemas/sharedSubjectDetails",
+                    },
+                  teacher_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
+                    },
+                  scoring_method:
+                    {
+                      example: RUBRIC,
+                      enum: [MANUAL, RUBRIC],
+                      type: string,
+                      description: Assignment scoring method,
+                      format: enum,
+                    },
+                  assignment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assignment assessment type,
+                      format: enum,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of student ids who are given assignments,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModuleSummary",
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when assignment data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedListAssignmentSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Assignment submission ID,
+                    },
+                  assignment:
+                    {
+                      $ref: "#/components/schemas/sharedAssignmentDetails",
+                    },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  answer_text:
+                    { example: 123, type: string, description: Student ID },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                  point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The points earned by students on scale of 0 to 100,
+                      format: float,
+                    },
+                  RubricSubmission:
+                    {
+                      $ref: "#/components/schemas/sharedRubricSubmission",
+                    },
+                  submission_state:
+                    {
+                      example: NEED_GRADING,
+                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      type: string,
+                      description: Assignment submission state,
+                      format: enum,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Class Subject ID, assignment submission will be attached to specific class",
                     },
                   created_at:
                     {

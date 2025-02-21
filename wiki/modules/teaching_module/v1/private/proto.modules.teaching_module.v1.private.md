@@ -11,6 +11,11 @@
   
     - [FolderTaskService](#modules-teaching_module-v1-private-FolderTaskService)
   
+- [modules/teaching_module/v1/private/teaching_module.proto](#modules_teaching_module_v1_private_teaching_module-proto)
+    - [GetTeachingModuleSummaryByIdRequest](#modules-teaching_module-v1-private-GetTeachingModuleSummaryByIdRequest)
+  
+    - [TeachingModuleService](#modules-teaching_module-v1-private-TeachingModuleService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -104,6 +109,47 @@ Insert Folder Task Request
 | ----------- | ------------ | ------------- | ------------|
 | InsertFolderTask | [InsertFolderTaskRequest](#modules-teaching_module-v1-private-InsertFolderTaskRequest) | [InsertFolderTaskResponse](#modules-teaching_module-v1-private-InsertFolderTaskResponse) |  |
 | DeleteFolderTask | [DeleteFolderTaskRequest](#modules-teaching_module-v1-private-DeleteFolderTaskRequest) | [DeleteFolderTaskResponse](#modules-teaching_module-v1-private-DeleteFolderTaskResponse) |  |
+
+ 
+
+
+
+<a name="modules_teaching_module_v1_private_teaching_module-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/private/teaching_module.proto
+
+
+
+<a name="modules-teaching_module-v1-private-GetTeachingModuleSummaryByIdRequest"></a>
+
+### GetTeachingModuleSummaryByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-private-TeachingModuleService"></a>
+
+### TeachingModuleService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetTeachingModuleSummaryByID | [GetTeachingModuleSummaryByIdRequest](#modules-teaching_module-v1-private-GetTeachingModuleSummaryByIdRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
 
  
 
