@@ -9,6 +9,7 @@
     - [AssignmentStatistic](#modules-assessment-v1-shared-AssignmentStatistic)
     - [AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission)
     - [ListAssignment](#modules-assessment-v1-shared-ListAssignment)
+    - [ListAssignmentStatistic](#modules-assessment-v1-shared-ListAssignmentStatistic)
     - [ListAssignmentSubmission](#modules-assessment-v1-shared-ListAssignmentSubmission)
   
 - [modules/assessment/v1/shared/enum.proto](#modules_assessment_v1_shared_enum-proto)
@@ -21,6 +22,7 @@
   
 - [modules/assessment/v1/shared/observation.proto](#modules_assessment_v1_shared_observation-proto)
     - [ListObservation](#modules-assessment-v1-shared-ListObservation)
+    - [ListObservationStatistic](#modules-assessment-v1-shared-ListObservationStatistic)
     - [ListObservationSubmission](#modules-assessment-v1-shared-ListObservationSubmission)
     - [Observation](#modules-assessment-v1-shared-Observation)
     - [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails)
@@ -88,6 +90,7 @@
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | teaching_module_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -125,6 +128,7 @@
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
 | exam_id | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -147,6 +151,7 @@
 | graded | [uint32](#uint32) |  |  |
 | submitted_on_time | [uint32](#uint32) |  |  |
 | submitted_late | [uint32](#uint32) |  |  |
+| teacher_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -209,6 +214,30 @@
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
 | exam_id | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ListAssignmentStatistic"></a>
+
+### ListAssignmentStatistic
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment | [AssignmentDetails](#modules-assessment-v1-shared-AssignmentDetails) |  |  |
+| no_submission | [uint32](#uint32) |  |  |
+| need_grading | [uint32](#uint32) |  |  |
+| graded | [uint32](#uint32) |  |  |
+| submitted_on_time | [uint32](#uint32) |  |  |
+| submitted_late | [uint32](#uint32) |  |  |
+| teacher_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -385,6 +414,27 @@
 | teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
 | assignee | [string](#string) | repeated |  |
 | exam_id | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-ListObservationStatistic"></a>
+
+### ListObservationStatistic
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation | [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails) |  |  |
+| need_grading | [uint32](#uint32) |  |  |
+| graded | [uint32](#uint32) |  |  |
+| teacher_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -441,6 +491,7 @@
 | teaching_module_id | [string](#string) |  |  |
 | assignee | [string](#string) | repeated |  |
 | exam_id | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -474,6 +525,7 @@
 | teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
 | assignee | [string](#string) | repeated |  |
 | exam_id | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -493,6 +545,7 @@
 | observation_id | [string](#string) |  |  |
 | need_grading | [uint32](#uint32) |  |  |
 | graded | [uint32](#uint32) |  |  |
+| teacher_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

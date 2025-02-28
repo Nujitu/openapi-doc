@@ -4,8 +4,8 @@
   info:
     {
       title: Authentication Domain,
+      description: "Skoola Identity Service, Skoola Admin User Service, Skoola Auth Service",
       version: v1,
-      description: "Skoola Auth Service, Skoola Admin User Service, Skoola Identity Service",
     },
   servers:
     [
@@ -14,6 +14,116 @@
     ],
   paths:
     {
+      /v1/identity/register:
+        {
+          post:
+            {
+              tags: [IdentityService],
+              summary: Register New User,
+              description: register new user.,
+              operationId: IdentityService_Register,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/user/admin:
+        {
+          post:
+            {
+              tags: [AdminUserService],
+              summary: Register new user,
+              description: Admin register a new user,
+              operationId: AdminUserService_RegisterUser,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterUserRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterUserResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/auth/login:
         {
           post:
@@ -178,126 +288,29 @@
                 },
             },
         },
-      /v1/user/admin:
-        {
-          post:
-            {
-              tags: [AdminUserService],
-              summary: Register new user,
-              description: Admin register a new user,
-              operationId: AdminUserService_RegisterUser,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterUserRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterUserResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/identity/register:
-        {
-          post:
-            {
-              tags: [IdentityService],
-              summary: Register New User,
-              description: register new user.,
-              operationId: IdentityService_Register,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
     },
   "components":
     {
       "schemas":
         {
-          publicLoginRequest:
+          publicRegisterRequest:
             {
               type: object,
               properties:
                 {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
                   email:
                     {
                       example: john.fd@gmail.com,
@@ -305,94 +318,31 @@
                       description: User email,
                     },
                   password: { type: string, description: User Password },
-                },
-            },
-          publicLoginResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                  login_entity:
-                    {
-                      $ref: "#/components/schemas/sharedLoginEntity",
-                    },
-                  redirect_to:
+                  login_challenge:
                     {
                       type: string,
-                      description: url redirection when login is success or fail,
+                      description: " login challenge from auth-server",
                     },
                 },
-              description: Response body of Login,
+              description: Request body of Register new user,
             },
-          publicLogoutRequest:
+          publicRegisterResponse:
             {
               type: object,
               properties:
                 {
-                  user_access_token:
+                  message: { type: string, description: additional message },
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                  token:
                     {
                       type: string,
-                      description: access token of user to be invalidated,
+                      description: generated token after registered,
                     },
                 },
-              description: Request body of Logout,
-            },
-          publicLogoutResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message if logout is success },
-                },
-              description: Response body of Logout,
-            },
-          publicRefreshTokenRequest:
-            {
-              type: object,
-              properties:
-                {
-                  user_access_token:
-                    {
-                      type: string,
-                      description: access token of user to be invalidated,
-                    },
-                },
-            },
-          publicRefreshTokenResponse:
-            {
-              type: object,
-              properties:
-                {
-                  user_access_token:
-                    {
-                      type: string,
-                      description: access token of user to be invalidated,
-                    },
-                },
-            },
-          publicResetPasswordRequest:
-            {
-              type: object,
-              properties:
-                {
-                  key: { type: string, description: a key received from email },
-                  current_password:
-                    { type: string, description: User Password },
-                  new_password:
-                    { type: string, description: User new Password },
-                },
-            },
-          publicResetPasswordResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                },
+              description: Response body of Register new user,
             },
           sharedAddress:
             {
@@ -423,25 +373,6 @@
                     },
                 },
               description: "*\n Represents user's address",
-            },
-          sharedLoginEntity:
-            {
-              type: object,
-              properties:
-                {
-                  user:
-                    {
-                      allOf:
-                        [
-                          {
-                            $ref: "#/components/schemas/sharedUser",
-                          },
-                        ],
-                      description: user data,
-                    },
-                  session_token: { type: string, description: session token },
-                },
-              description: Login entity,
             },
           sharedUser:
             {
@@ -610,24 +541,11 @@
                     },
                 },
             },
-          publicRegisterRequest:
+          publicLoginRequest:
             {
               type: object,
               properties:
                 {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
                   email:
                     {
                       example: john.fd@gmail.com,
@@ -635,31 +553,113 @@
                       description: User email,
                     },
                   password: { type: string, description: User Password },
-                  login_challenge:
-                    {
-                      type: string,
-                      description: " login challenge from auth-server",
-                    },
                 },
-              description: Request body of Register new user,
             },
-          publicRegisterResponse:
+          publicLoginResponse:
             {
               type: object,
               properties:
                 {
-                  message: { type: string, description: additional message },
-                  user:
+                  message:
+                    { type: string, description: additional information },
+                  login_entity:
                     {
-                      $ref: "#/components/schemas/sharedUser",
+                      $ref: "#/components/schemas/sharedLoginEntity",
                     },
-                  token:
+                  redirect_to:
                     {
                       type: string,
-                      description: generated token after registered,
+                      description: url redirection when login is success or fail,
                     },
                 },
-              description: Response body of Register new user,
+              description: Response body of Login,
+            },
+          publicLogoutRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_access_token:
+                    {
+                      type: string,
+                      description: access token of user to be invalidated,
+                    },
+                },
+              description: Request body of Logout,
+            },
+          publicLogoutResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message if logout is success },
+                },
+              description: Response body of Logout,
+            },
+          publicRefreshTokenRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_access_token:
+                    {
+                      type: string,
+                      description: access token of user to be invalidated,
+                    },
+                },
+            },
+          publicRefreshTokenResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user_access_token:
+                    {
+                      type: string,
+                      description: access token of user to be invalidated,
+                    },
+                },
+            },
+          publicResetPasswordRequest:
+            {
+              type: object,
+              properties:
+                {
+                  key: { type: string, description: a key received from email },
+                  current_password:
+                    { type: string, description: User Password },
+                  new_password:
+                    { type: string, description: User new Password },
+                },
+            },
+          publicResetPasswordResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                },
+            },
+          sharedLoginEntity:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedUser",
+                          },
+                        ],
+                      description: user data,
+                    },
+                  session_token: { type: string, description: session token },
+                },
+              description: Login entity,
             },
         },
       responses:
