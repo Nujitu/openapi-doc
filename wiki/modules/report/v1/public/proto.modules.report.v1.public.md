@@ -16,7 +16,7 @@
     - [AbsenceService](#modules-report-v1-public-AbsenceService)
   
 - [modules/report/v1/public/attendance.proto](#modules_report_v1_public_attendance-proto)
-    - [Assesment](#modules-report-v1-public-Assesment)
+    - [Assignment](#modules-report-v1-public-Assignment)
     - [BaseResponse](#modules-report-v1-public-BaseResponse)
     - [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest)
     - [GetJournalAttendanceRequest](#modules-report-v1-public-GetJournalAttendanceRequest)
@@ -218,15 +218,15 @@
 
 
 
-<a name="modules-report-v1-public-Assesment"></a>
+<a name="modules-report-v1-public-Assignment"></a>
 
-### Assesment
+### Assignment
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| assesment_id | [string](#string) |  |  |
+| assignment_id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
 
 
@@ -414,7 +414,7 @@
 | learning_goals | [LearningGoal](#modules-report-v1-public-LearningGoal) | repeated |  |
 | study_materials | [StudyMaterial](#modules-report-v1-public-StudyMaterial) | repeated |  |
 | quizzes | [Quiz](#modules-report-v1-public-Quiz) | repeated |  |
-| assesments | [Assesment](#modules-report-v1-public-Assesment) | repeated |  |
+| assignments | [Assignment](#modules-report-v1-public-Assignment) | repeated |  |
 | observations | [Observation](#modules-report-v1-public-Observation) | repeated |  |
 | note | [string](#string) |  |  |
 
