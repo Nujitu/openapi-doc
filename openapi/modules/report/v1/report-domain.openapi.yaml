@@ -514,12 +514,12 @@
     {
       "schemas":
         {
-          publicAssesment:
+          publicAssignment:
             {
               type: object,
               properties:
                 {
-                  assesment_id: { type: string, description: Assesment ID },
+                  assignment_id: { type: string, description: Assesment ID },
                   name: { type: string, description: Assesment Name },
                 },
             },
@@ -690,14 +690,14 @@
                         },
                       description: quizzes,
                     },
-                  assesments:
+                  assignments:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/publicAssesment",
+                          $ref: "#/components/schemas/publicAssignment",
                         },
-                      description: assesments,
+                      description: assignments,
                     },
                   observations:
                     {
