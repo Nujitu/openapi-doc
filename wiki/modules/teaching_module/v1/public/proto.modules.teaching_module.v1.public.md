@@ -47,6 +47,7 @@
   
 - [modules/teaching_module/v1/public/teaching_module.proto](#modules_teaching_module_v1_public_teaching_module-proto)
     - [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest)
+    - [DeleteTeachingModuleRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleRequest)
     - [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest)
     - [GetTeachingModuleListRequest](#modules-teaching_module-v1-public-GetTeachingModuleListRequest)
     - [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse)
@@ -625,6 +626,21 @@
 
 
 
+<a name="modules-teaching_module-v1-public-DeleteTeachingModuleRequest"></a>
+
+### DeleteTeachingModuleRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-teaching_module-v1-public-GetTeachingModuleDetailRequest"></a>
 
 ### GetTeachingModuleDetailRequest
@@ -719,6 +735,7 @@
 | GetTeachingModuleDetail | [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
 | ApproveTeachingModule | [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 | UpdateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
+| DeleteTeachingModule | [DeleteTeachingModuleRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 
  
 

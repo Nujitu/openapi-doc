@@ -1028,6 +1028,70 @@
                 },
             },
         },
+      "/v1/teaching-module/{id}":
+        {
+          delete:
+            {
+              tags: [TeachingModuleService],
+              summary: Delete Teaching Module,
+              description: Delete teaching module by ID,
+              operationId: TeachingModuleService_DeleteTeachingModule,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/teaching-module/{id}/details":
         {
           get:
