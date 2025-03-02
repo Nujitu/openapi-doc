@@ -2496,6 +2496,8 @@
                       description: Timestamp when the study material is published,
                       format: date-time,
                     },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
                   created_at:
                     {
                       type: string,

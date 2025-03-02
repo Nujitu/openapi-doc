@@ -185,6 +185,7 @@ study material
 | attachment_ids | [string](#string) | repeated |  |
 | folder_id | [string](#string) |  |  |
 | publish_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | description | [string](#string) |  |  |

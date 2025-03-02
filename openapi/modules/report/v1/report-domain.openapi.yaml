@@ -553,6 +553,7 @@
               type: object,
               properties:
                 {
+                  attendance_id: { type: string, description: attendance ID },
                   class_subject_id: { type: string, description: class ID },
                   teaching_module:
                     {
@@ -571,6 +572,12 @@
                   leave:
                     { type: integer, description: total Leave, format: int32 },
                   is_submitted: { type: boolean, description: IsSubmitted },
+                  date:
+                    {
+                      type: string,
+                      description: attendance date,
+                      format: date-time,
+                    },
                 },
             },
           publicLearningGoal:
