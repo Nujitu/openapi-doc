@@ -290,6 +290,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| attendance_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | teaching_module | [TeachingModule](#modules-report-v1-public-TeachingModule) |  |  |
 | present | [int32](#int32) |  |  |
@@ -297,6 +298,7 @@
 | sick | [int32](#int32) |  |  |
 | leave | [int32](#int32) |  |  |
 | is_submitted | [bool](#bool) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
