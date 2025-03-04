@@ -1911,7 +1911,8 @@
                       description: Subject id that related teaching module,
                     },
                   curriculum_id: { type: string, description: Curriculum ID },
-                  teacher_id: { type: string, description: Teacher ID },
+                  teacher_user_id:
+                    { type: string, description: Teacher User ID },
                   index_minimum:
                     {
                       example: 75.0,
@@ -2050,7 +2051,8 @@
                       description: Subject id that related teaching module,
                     },
                   curriculum_id: { type: string, description: Curriculum ID },
-                  teacher_id: { type: string, description: Teacher ID },
+                  teacher_user_id:
+                    { type: string, description: Teacher User ID },
                   index_minimum:
                     {
                       example: 75.0,
