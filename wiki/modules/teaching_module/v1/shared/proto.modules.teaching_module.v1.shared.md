@@ -60,7 +60,7 @@
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | curriculum_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | index_minimum | [float](#float) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
