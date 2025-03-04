@@ -93,6 +93,8 @@
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
     - [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest)
     - [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse)
+    - [GetQuizSubmissionListRequest](#modules-assessment-v1-public-GetQuizSubmissionListRequest)
+    - [GetQuizSubmissionListResponse](#modules-assessment-v1-public-GetQuizSubmissionListResponse)
     - [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest)
     - [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse)
     - [QuizAssignee](#modules-assessment-v1-public-QuizAssignee)
@@ -1597,6 +1599,41 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-GetQuizSubmissionListRequest"></a>
+
+### GetQuizSubmissionListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+| state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| student_name | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetQuizSubmissionListResponse"></a>
+
+### GetQuizSubmissionListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_submission_list | [modules.assessment.v1.shared.QuizSubmissionResult](#modules-assessment-v1-shared-QuizSubmissionResult) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-GetStudentSubmissionsRequest"></a>
 
 ### GetStudentSubmissionsRequest
@@ -1818,6 +1855,7 @@ Service for quiz related feature
 | GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
 | GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
 | GetStudentSubmissions | [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest) | [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse) |  |
+| GetQuizSubmissionList | [GetQuizSubmissionListRequest](#modules-assessment-v1-public-GetQuizSubmissionListRequest) | [GetQuizSubmissionListResponse](#modules-assessment-v1-public-GetQuizSubmissionListResponse) |  |
 
  
 
