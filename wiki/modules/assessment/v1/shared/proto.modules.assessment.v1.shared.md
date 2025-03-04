@@ -83,7 +83,7 @@
 | rubric_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | assignee | [string](#string) | repeated |  |
@@ -121,7 +121,7 @@
 | rubric_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | assignee | [string](#string) | repeated |  |
@@ -151,7 +151,8 @@
 | graded | [uint32](#uint32) |  |  |
 | submitted_on_time | [uint32](#uint32) |  |  |
 | submitted_late | [uint32](#uint32) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -207,7 +208,7 @@
 | rubric_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | assignment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | assignee | [string](#string) | repeated |  |
@@ -237,7 +238,8 @@
 | graded | [uint32](#uint32) |  |  |
 | submitted_on_time | [uint32](#uint32) |  |  |
 | submitted_late | [uint32](#uint32) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -408,7 +410,7 @@
 | rubric_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
@@ -434,7 +436,8 @@
 | observation | [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails) |  |  |
 | need_grading | [uint32](#uint32) |  |  |
 | graded | [uint32](#uint32) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -453,7 +456,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | observation | [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
@@ -485,7 +488,7 @@
 | rubric_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | teaching_module_id | [string](#string) |  |  |
@@ -519,7 +522,7 @@
 | rubric_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject | [SubjectDetails](#modules-assessment-v1-shared-SubjectDetails) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | scoring_method | [ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | teaching_module | [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary) |  |  |
@@ -545,7 +548,8 @@
 | observation_id | [string](#string) |  |  |
 | need_grading | [uint32](#uint32) |  |  |
 | graded | [uint32](#uint32) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -564,7 +568,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | observation_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
@@ -825,7 +829,7 @@
 | description | [string](#string) |  |  |
 | total_point | [float](#float) |  |  |
 | criteria | [Criterion](#modules-assessment-v1-shared-Criterion) | repeated |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

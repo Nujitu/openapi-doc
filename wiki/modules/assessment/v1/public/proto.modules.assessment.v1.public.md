@@ -213,7 +213,7 @@
 | teaching_module_folder_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | rubric_id | [string](#string) |  |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
@@ -254,7 +254,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | answer_text | [string](#string) |  |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | class_subject_id | [string](#string) |  |  |
@@ -469,7 +469,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
@@ -500,7 +500,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment_id | [string](#string) |  |  |
-| student_ids | [string](#string) |  |  |
+| student_user_ids | [string](#string) |  |  |
 
 
 
@@ -542,7 +542,7 @@
 | rubric_id | [string](#string) | optional |  |
 | class_subject_id | [string](#string) | optional |  |
 | subject_id | [string](#string) | optional |  |
-| teacher_id | [string](#string) | optional |  |
+| teacher_user_id | [string](#string) | optional |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | teaching_module_id | [string](#string) | optional |  |
@@ -580,7 +580,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | assignment_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -614,7 +614,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -773,7 +774,7 @@ Service for assignment related feature
 | teaching_module_folder_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | rubric_id | [string](#string) |  |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) |  |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
@@ -812,7 +813,7 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observation_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [modules.assessment.v1.shared.RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
@@ -908,7 +909,7 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observation_id | [string](#string) |  |  |
-| student_ids | [string](#string) |  |  |
+| student_user_ids | [string](#string) |  |  |
 
 
 
@@ -1029,7 +1030,7 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observation_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
@@ -1063,7 +1064,7 @@ Service for assignment related feature
 | rubric_id | [string](#string) | optional |  |
 | class_subject_id | [string](#string) | optional |  |
 | subject_id | [string](#string) | optional |  |
-| teacher_id | [string](#string) | optional |  |
+| teacher_user_id | [string](#string) | optional |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | teaching_module_id | [string](#string) | optional |  |
@@ -1101,7 +1102,7 @@ Service for assignment related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | observation_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -1135,7 +1136,8 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
