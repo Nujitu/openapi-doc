@@ -35,6 +35,7 @@
     - [QuizQuestion](#modules-assessment-v1-shared-QuizQuestion)
     - [QuizSettings](#modules-assessment-v1-shared-QuizSettings)
     - [QuizSubmission](#modules-assessment-v1-shared-QuizSubmission)
+    - [QuizSubmissionList](#modules-assessment-v1-shared-QuizSubmissionList)
     - [StudentAnswer](#modules-assessment-v1-shared-StudentAnswer)
     - [StudentSubmissions](#modules-assessment-v1-shared-StudentSubmissions)
   
@@ -709,6 +710,26 @@
 | state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-QuizSubmissionList"></a>
+
+### QuizSubmissionList
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| total_score | [string](#string) |  |  |
+| correct_answer | [string](#string) |  |  |
+| duration | [string](#string) |  |  |
+| state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 
 
 
