@@ -76,7 +76,11 @@
                     schema: { type: string },
                   },
                   { name: subject_id, in: query, schema: { type: string } },
-                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   {
                     name: scoring_method,
                     in: query,
@@ -498,7 +502,11 @@
               parameters:
                 [
                   { name: assignment_id, in: query, schema: { type: string } },
-                  { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   {
                     name: class_subject_id,
                     in: query,
@@ -904,11 +912,15 @@
               tags: [AssignmentService],
               summary: Get an assignment submission by student id,
               description: Get assignment assessment by specified student id and assignment id,
-              operationId: AssignmentService_GetAssignmentSubmissionByStudentId,
+              operationId: AssignmentService_GetAssignmentSubmissionByStudentUserId,
               parameters:
                 [
                   { name: assignment_id, in: query, schema: { type: string } },
-                  { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                 ],
               responses:
                 {
@@ -921,7 +933,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByStudentIdResponse",
+                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByStudentUserIdResponse",
                                 },
                             },
                         },
@@ -964,11 +976,15 @@
               tags: [AssignmentService],
               summary: Get bulk assignment submission by many student ids,
               description: Get bulk assignment assessment by specified student ids and assignment id,
-              operationId: AssignmentService_GetBulkAssignmentSubmissionByStudentId,
+              operationId: AssignmentService_GetBulkAssignmentSubmissionByStudentUserId,
               parameters:
                 [
                   { name: assignment_id, in: query, schema: { type: string } },
-                  { name: student_ids, in: query, schema: { type: string } },
+                  {
+                    name: student_user_ids,
+                    in: query,
+                    schema: { type: string },
+                  },
                 ],
               responses:
                 {
@@ -981,7 +997,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetBulkAssignmentSubmissionByStudentIdResponse",
+                                  $ref: "#/components/schemas/publicGetBulkAssignmentSubmissionByStudentUserIdResponse",
                                 },
                             },
                         },
@@ -1091,7 +1107,16 @@
               operationId: AssignmentService_ListAssignmentToReview,
               parameters:
                 [
-                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1237,7 +1262,11 @@
                     schema: { type: string },
                   },
                   { name: subject_id, in: query, schema: { type: string } },
-                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   {
                     name: scoring_method,
                     in: query,
@@ -1590,7 +1619,11 @@
               parameters:
                 [
                   { name: observation_id, in: query, schema: { type: string } },
-                  { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   {
                     name: class_subject_id,
                     in: query,
@@ -1858,11 +1891,15 @@
               tags: [ObservationService],
               summary: Get an observation submission by student id,
               description: Get observation assessment by specified student id and observation id,
-              operationId: ObservationService_GetObservationSubmissionByStudentId,
+              operationId: ObservationService_GetObservationSubmissionByStudentUserId,
               parameters:
                 [
                   { name: observation_id, in: query, schema: { type: string } },
-                  { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                 ],
               responses:
                 {
@@ -1875,7 +1912,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetObservationSubmissionByStudentIdResponse",
+                                  $ref: "#/components/schemas/publicGetObservationSubmissionByStudentUserIdResponse",
                                 },
                             },
                         },
@@ -1918,11 +1955,15 @@
               tags: [ObservationService],
               summary: Get bulk observation submission by many student id,
               description: Get bulk observation assessment by specified student ids and observation id,
-              operationId: ObservationService_GetBulkObservationSubmissionByStudentId,
+              operationId: ObservationService_GetBulkObservationSubmissionByStudentUserId,
               parameters:
                 [
                   { name: observation_id, in: query, schema: { type: string } },
-                  { name: student_ids, in: query, schema: { type: string } },
+                  {
+                    name: student_user_ids,
+                    in: query,
+                    schema: { type: string },
+                  },
                 ],
               responses:
                 {
@@ -1935,7 +1976,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetBulkObservationSubmissionByStudentIdResponse",
+                                  $ref: "#/components/schemas/publicGetBulkObservationSubmissionByStudentUserIdResponse",
                                 },
                             },
                         },
@@ -2045,7 +2086,16 @@
               operationId: ObservationService_ListObservationToReview,
               parameters:
                 [
-                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -3596,11 +3646,11 @@
                       type: string,
                       description: "Subject ID, assignment will be attached to all class that enrolled this subject",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
+                      description: "Teacher User ID, the user ID of ateacher of the Class Subject and the maker of the assignment",
                     },
                   rubric_id:
                     { example: 123, type: string, description: Rubric ID },
@@ -3624,7 +3674,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of student ids who are given assignments,
+                      description: List of student user ids who are given assignments,
                     },
                   instance_id:
                     { example: 123, type: string, description: Instance ID },
@@ -3671,8 +3721,12 @@
                 {
                   assignment_id:
                     { example: 123, type: string, description: Assignment ID },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
+                  student_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Student User ID,
+                    },
                   answer_text:
                     { example: 123, type: string, description: Student ID },
                   attachment_files:
@@ -3790,7 +3844,7 @@
                     },
                 },
             },
-          publicGetAssignmentSubmissionByStudentIdResponse:
+          publicGetAssignmentSubmissionByStudentUserIdResponse:
             {
               type: object,
               properties:
@@ -3801,7 +3855,7 @@
                     },
                 },
             },
-          publicGetBulkAssignmentSubmissionByStudentIdResponse:
+          publicGetBulkAssignmentSubmissionByStudentUserIdResponse:
             {
               type: object,
               properties:
@@ -4066,11 +4120,11 @@
                       type: string,
                       description: "Subject ID, assignment will be attached to all class that enrolled this subject",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
                     },
                   scoring_method:
                     {
@@ -4092,7 +4146,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of student ids who are given assignments,
+                      description: List of student user ids who are given assignments,
                     },
                   attachment_files:
                     {
@@ -4195,11 +4249,11 @@
                     {
                       $ref: "#/components/schemas/sharedSubjectDetails",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
                     },
                   scoring_method:
                     {
@@ -4221,7 +4275,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of student ids who are given assignments,
+                      description: List of student user ids who are given assignments,
                     },
                   attachment_files:
                     {
@@ -4297,8 +4351,18 @@
                       description: The number of students who submit their assignments late,
                       format: uint32,
                     },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher User ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -4328,8 +4392,12 @@
                     },
                   assignment_id:
                     { example: 123, type: string, description: Assignment ID },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
+                  student_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Student User ID,
+                    },
                   answer_text:
                     { example: 123, type: string, description: Student ID },
                   attachment_files:
@@ -4449,11 +4517,11 @@
                     {
                       $ref: "#/components/schemas/sharedSubjectDetails",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the assignment",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
                     },
                   scoring_method:
                     {
@@ -4475,7 +4543,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of student ids who are given assignments,
+                      description: List of student user ids who are given assignments,
                     },
                   attachment_files:
                     {
@@ -4553,8 +4621,18 @@
                       description: The number of students who submit their assignments late,
                       format: uint32,
                     },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher User ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -4586,8 +4664,12 @@
                     {
                       $ref: "#/components/schemas/sharedAssignmentDetails",
                     },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
+                  student_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Student User ID,
+                    },
                   answer_text:
                     { example: 123, type: string, description: Student ID },
                   attachment_files:
@@ -4836,11 +4918,11 @@
                     {
                       $ref: "#/components/schemas/sharedSubjectDetails",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the observation",
                     },
                   scoring_method:
                     {
@@ -4866,7 +4948,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of observed student IDs,
+                      description: List of observed student user IDs,
                     },
                   exam_id: { example: 123, type: string, description: Exam ID },
                   class_name:
@@ -4910,8 +4992,18 @@
                       description: The number of student who have been graded,
                       format: uint32,
                     },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher User ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -4943,8 +5035,12 @@
                     {
                       $ref: "#/components/schemas/sharedObservationDetails",
                     },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
+                  student_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Student User ID,
+                    },
                   point:
                     {
                       example: 100.0,
@@ -5039,11 +5135,11 @@
                       type: string,
                       description: "Subject ID, observation will be attached to all class that enrolled this subject",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the observation",
                     },
                   scoring_method:
                     {
@@ -5071,7 +5167,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of observed student IDs,
+                      description: List of observed student user IDs,
                     },
                   exam_id: { example: 123, type: string, description: Exam ID },
                   class_name:
@@ -5143,11 +5239,11 @@
                     {
                       $ref: "#/components/schemas/sharedSubjectDetails",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the observation",
                     },
                   scoring_method:
                     {
@@ -5173,7 +5269,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of observed student IDs,
+                      description: List of observed student user IDs,
                     },
                   exam_id: { example: 123, type: string, description: Exam ID },
                   class_name:
@@ -5215,8 +5311,18 @@
                       description: The number of student who have been graded,
                       format: uint32,
                     },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher User ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -5246,8 +5352,12 @@
                     },
                   observation_id:
                     { example: 123, type: string, description: Observation ID },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
+                  student_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Student User ID,
+                    },
                   point:
                     {
                       example: 100.0,
@@ -5336,11 +5446,11 @@
                       type: string,
                       description: "Subject ID, observation will be attached to all class that enrolled this subject",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 123,
                       type: string,
-                      description: "Teacher ID, the teacher of the Class Subject and the maker of the observation",
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the observation",
                     },
                   rubric_id:
                     { example: 123, type: string, description: Rubric ID },
@@ -5370,7 +5480,7 @@
                     {
                       type: array,
                       items: { type: string },
-                      description: List of observed student IDs,
+                      description: List of observed student user IDs,
                     },
                   exam_id: { example: 123, type: string, description: Exam ID },
                   class_name:
@@ -5400,8 +5510,12 @@
                 {
                   observation_id:
                     { example: 123, type: string, description: Observation ID },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
+                  student_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Student User ID,
+                    },
                   point:
                     {
                       example: 100.0,
@@ -5469,7 +5583,7 @@
                     },
                 },
             },
-          publicGetBulkObservationSubmissionByStudentIdResponse:
+          publicGetBulkObservationSubmissionByStudentUserIdResponse:
             {
               type: object,
               properties:
@@ -5518,7 +5632,7 @@
                     },
                 },
             },
-          publicGetObservationSubmissionByStudentIdResponse:
+          publicGetObservationSubmissionByStudentUserIdResponse:
             {
               type: object,
               properties:
@@ -6795,8 +6909,12 @@
                         },
                       description: The list of rubric criteria,
                     },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher User ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
