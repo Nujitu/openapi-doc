@@ -2829,6 +2829,97 @@
                 },
             },
         },
+      "/v1/quiz/submission/list/{class_subject_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get all quiz submission,
+              description: Will return all quiz submission in class,
+              operationId: QuizService_GetQuizSubmissionList,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  { name: student_name, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizSubmissionListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/quiz/submission/student-id:
         {
           get:
@@ -4355,7 +4446,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Assignment submission state,
                       format: enum,
@@ -4613,7 +4710,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Assignment submission state,
                       format: enum,
@@ -4959,7 +5062,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Observation submission state,
                       format: enum,
@@ -5262,7 +5371,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Observation submission state,
                       format: enum,
@@ -5416,7 +5531,13 @@
                   submission_state:
                     {
                       example: RUBRIC,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Observation submission state,
                       format: enum,
@@ -6018,6 +6139,23 @@
                     },
                 },
             },
+          publicGetQuizSubmissionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission_list:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmissionResult",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
           publicGetStudentSubmissionsResponse:
             {
               type: object,
@@ -6490,7 +6628,13 @@
                   state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Quiz submission state,
                       format: enum,
@@ -6508,6 +6652,41 @@
                       type: string,
                       description: Time when quiz submission is updated,
                       format: date-time,
+                    },
+                },
+            },
+          sharedQuizSubmissionResult:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  total_score:
+                    { example: 100, type: string, description: Total score },
+                  correct_answer:
+                    { example: 100, type: string, description: Correct answer },
+                  duration:
+                    { example: 100, type: string, description: Duration },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
                     },
                 },
             },
@@ -6537,7 +6716,13 @@
                   state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Quiz submission state,
                       format: enum,
