@@ -35,6 +35,7 @@
     - [QuizQuestion](#modules-assessment-v1-shared-QuizQuestion)
     - [QuizSettings](#modules-assessment-v1-shared-QuizSettings)
     - [QuizSubmission](#modules-assessment-v1-shared-QuizSubmission)
+    - [QuizSubmissionResult](#modules-assessment-v1-shared-QuizSubmissionResult)
     - [StudentAnswer](#modules-assessment-v1-shared-StudentAnswer)
     - [StudentSubmissions](#modules-assessment-v1-shared-StudentSubmissions)
   
@@ -298,8 +299,9 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| NOT_SCORED | 0 |  |
-| SCORED | 1 |  |
+| UNKNOWN | 0 |  |
+| NOT_SCORED | 1 |  |
+| SCORED | 2 |  |
 
 
 
@@ -371,9 +373,10 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| NO_SUBMISSION | 0 |  |
-| NEED_GRADING | 1 |  |
-| GRADED | 2 |  |
+| UNKNOWN_SUBMISSON | 0 |  |
+| NO_SUBMISSION | 1 |  |
+| NEED_GRADING | 2 |  |
+| GRADED | 3 |  |
 
 
  
@@ -713,6 +716,26 @@
 | state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-QuizSubmissionResult"></a>
+
+### QuizSubmissionResult
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| student_id | [string](#string) |  |  |
+| student_name | [string](#string) |  |  |
+| total_score | [string](#string) |  |  |
+| correct_answer | [string](#string) |  |  |
+| duration | [string](#string) |  |  |
+| state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 
 
 
