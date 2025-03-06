@@ -2879,6 +2879,166 @@
                 },
             },
         },
+      "/v1/quiz/submission/list/{class_subject_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get all quiz submission,
+              description: Will return all quiz submission in class,
+              operationId: QuizService_GetQuizSubmissionList,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  { name: student_name, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizSubmissionListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/submission/manual-grading:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Manual Grading Answer,
+              description: Teacher will manually grading student answer,
+              operationId: QuizService_ManualGradingSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicManualGradingSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicManualGradingSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/quiz/submission/student-id:
         {
           get:
@@ -2964,6 +3124,76 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetBulkQuizSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/submission/{quiz_id}/{nisn}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Student Answer,
+              description: Will return all student answer for selected quiz,
+              operationId: QuizService_GetStudentAnswer,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: nisn,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentAnswerResponse",
                                 },
                             },
                         },
@@ -4423,7 +4653,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Assignment submission state,
                       format: enum,
@@ -4695,7 +4931,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Assignment submission state,
                       format: enum,
@@ -5055,7 +5297,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Observation submission state,
                       format: enum,
@@ -5372,7 +5620,13 @@
                   submission_state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Observation submission state,
                       format: enum,
@@ -5530,7 +5784,13 @@
                   submission_state:
                     {
                       example: RUBRIC,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Observation submission state,
                       format: enum,
@@ -6132,6 +6392,38 @@
                     },
                 },
             },
+          publicGetQuizSubmissionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission_list:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmissionResult",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetStudentAnswerResponse:
+            {
+              type: object,
+              properties:
+                {
+                  answers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAnswer",
+                        },
+                    },
+                },
+            },
           publicGetStudentSubmissionsResponse:
             {
               type: object,
@@ -6147,6 +6439,31 @@
                     },
                 },
             },
+          publicManualGradingSubmissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  body:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicManualGradingSubmissionRequestBody",
+                        },
+                    },
+                  quiz_id: { type: string },
+                  nisn: { type: string },
+                },
+            },
+          publicManualGradingSubmissionRequestBody:
+            {
+              type: object,
+              properties:
+                { score: { type: string }, answer_id: { type: string } },
+            },
+          publicManualGradingSubmissionResponse:
+            { type: object, properties: { message: { type: string } } },
           publicQuizAssignee:
             {
               type: object,
@@ -6604,7 +6921,13 @@
                   state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Quiz submission state,
                       format: enum,
@@ -6622,6 +6945,75 @@
                       type: string,
                       description: Time when quiz submission is updated,
                       format: date-time,
+                    },
+                },
+            },
+          sharedQuizSubmissionResult:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  total_score:
+                    { example: 100, type: string, description: Total score },
+                  correct_answer:
+                    { example: 100, type: string, description: Correct answer },
+                  duration:
+                    { example: 100, type: string, description: Duration },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                },
+            },
+          sharedStudentAnswer:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Question ID },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  question_id:
+                    { example: 123, type: string, description: Question ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    { example: John, type: string, description: Student Name },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                  points: { example: 7, type: string, description: points },
+                  options:
+                    {
+                      example: 5,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                      description: student answer option,
+                    },
+                  score_state:
+                    {
+                      enum: [UNKNOWN, NOT_SCORED, SCORED],
+                      type: string,
+                      format: enum,
                     },
                 },
             },
@@ -6651,7 +7043,13 @@
                   state:
                     {
                       example: NEED_GRADING,
-                      enum: [NO_SUBMISSION, NEED_GRADING, GRADED],
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
                       type: string,
                       description: Quiz submission state,
                       format: enum,
