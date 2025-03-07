@@ -1617,6 +1617,7 @@ Service for observation related feature
 | class_subject_id | [string](#string) |  |  |
 | state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) | optional |  |
 | student_name | [string](#string) | optional |  |
+| quiz_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 

@@ -2912,6 +2912,7 @@
                       },
                   },
                   { name: student_name, in: query, schema: { type: string } },
+                  { name: quiz_id, in: query, schema: { type: string } },
                   {
                     name: limit,
                     in: query,
