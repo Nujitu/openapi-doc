@@ -2879,7 +2879,7 @@
                 },
             },
         },
-      "/v1/quiz/submission/list/{class_subject_id}":
+      "/v1/quiz/submission/list/{class_subject_id}/{quiz_id}":
         {
           get:
             {
@@ -2891,6 +2891,12 @@
                 [
                   {
                     name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: quiz_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -2912,7 +2918,6 @@
                       },
                   },
                   { name: student_name, in: query, schema: { type: string } },
-                  { name: quiz_id, in: query, schema: { type: string } },
                   {
                     name: limit,
                     in: query,
