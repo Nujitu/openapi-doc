@@ -589,6 +589,7 @@
 | assignment_id | [string](#string) |  |  |
 | student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1111,6 +1112,7 @@ Service for assignment related feature
 | observation_id | [string](#string) |  |  |
 | student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |

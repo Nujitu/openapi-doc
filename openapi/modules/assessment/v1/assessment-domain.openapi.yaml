@@ -512,6 +512,22 @@
                     in: query,
                     schema: { type: string },
                   },
+                  {
+                    name: submission_state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1628,6 +1644,22 @@
                     name: class_subject_id,
                     in: query,
                     schema: { type: string },
+                  },
+                  {
+                    name: submission_state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
                   },
                   { name: sort, in: query, schema: { type: string } },
                   {
