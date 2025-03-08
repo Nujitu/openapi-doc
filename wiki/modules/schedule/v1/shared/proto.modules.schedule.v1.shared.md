@@ -295,6 +295,7 @@
 | start_time | [string](#string) |  |  |
 | end_time | [string](#string) |  |  |
 | activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
+| detail_activity | [string](#string) |  |  |
 
 
 
