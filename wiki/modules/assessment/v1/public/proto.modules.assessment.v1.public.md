@@ -97,6 +97,8 @@
     - [GetQuizSubmissionListResponse](#modules-assessment-v1-public-GetQuizSubmissionListResponse)
     - [GetStudentAnswerRequest](#modules-assessment-v1-public-GetStudentAnswerRequest)
     - [GetStudentAnswerResponse](#modules-assessment-v1-public-GetStudentAnswerResponse)
+    - [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest)
+    - [GetStudentSubmissionDetailsResponse](#modules-assessment-v1-public-GetStudentSubmissionDetailsResponse)
     - [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest)
     - [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse)
     - [ManualGradingSubmissionRequest](#modules-assessment-v1-public-ManualGradingSubmissionRequest)
@@ -1675,6 +1677,38 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-GetStudentSubmissionDetailsRequest"></a>
+
+### GetStudentSubmissionDetailsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| nisn | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetStudentSubmissionDetailsResponse"></a>
+
+### GetStudentSubmissionDetailsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| submission_info | [modules.assessment.v1.shared.QuizSubmission](#modules-assessment-v1-shared-QuizSubmission) |  |  |
+| answers | [modules.assessment.v1.shared.StudentAnswer](#modules-assessment-v1-shared-StudentAnswer) | repeated |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-GetStudentSubmissionsRequest"></a>
 
 ### GetStudentSubmissionsRequest
@@ -1947,6 +1981,7 @@ Service for quiz related feature
 | GetQuizSubmissionList | [GetQuizSubmissionListRequest](#modules-assessment-v1-public-GetQuizSubmissionListRequest) | [GetQuizSubmissionListResponse](#modules-assessment-v1-public-GetQuizSubmissionListResponse) |  |
 | ManualGradingSubmission | [ManualGradingSubmissionRequest](#modules-assessment-v1-public-ManualGradingSubmissionRequest) | [ManualGradingSubmissionResponse](#modules-assessment-v1-public-ManualGradingSubmissionResponse) |  |
 | GetStudentAnswer | [GetStudentAnswerRequest](#modules-assessment-v1-public-GetStudentAnswerRequest) | [GetStudentAnswerResponse](#modules-assessment-v1-public-GetStudentAnswerResponse) |  |
+| GetStudentSubmissionDetails | [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest) | [GetStudentSubmissionDetailsResponse](#modules-assessment-v1-public-GetStudentSubmissionDetailsResponse) |  |
 
  
 
