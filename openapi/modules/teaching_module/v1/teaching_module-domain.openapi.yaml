@@ -357,6 +357,70 @@
                 },
             },
         },
+      "/v1/teaching-module-folder/{folder_id}":
+        {
+          delete:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: Delete teaching module folder,
+              description: Delete teaching module folder by ID,
+              operationId: TeachingModuleFolderService_DeleteTeachingModuleFolder,
+              parameters:
+                [
+                  {
+                    name: folder_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/teaching-module-folder/{id}":
         {
           get:
@@ -981,6 +1045,70 @@
                     },
                   required: true,
                 },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module/{id}":
+        {
+          delete:
+            {
+              tags: [TeachingModuleService],
+              summary: Delete Teaching Module,
+              description: Delete teaching module by ID,
+              operationId: TeachingModuleService_DeleteTeachingModule,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
               responses:
                 {
                   "200":
@@ -1770,6 +1898,18 @@
                 {
                   message:
                     { type: string, description: message for teaching module },
+                },
+            },
+          publicDeleteTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  success:
+                    {
+                      type: boolean,
+                      description: Whether the folder was successfully deleted,
+                    },
                 },
             },
           publicGetTeachingModuleFolderDetailByIDResponse:
