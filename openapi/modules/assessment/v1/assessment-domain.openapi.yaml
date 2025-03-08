@@ -3267,6 +3267,76 @@
                 },
             },
         },
+      "/v1/quiz/submission_detail/{quiz_id}/{nisn}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Student Submission Details,
+              description: Will return all detail about student submission and the quiz,
+              operationId: QuizService_GetStudentSubmissionDetails,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: nisn,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentSubmissionDetailsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/quiz/{id}":
         {
           get:
@@ -6452,6 +6522,25 @@
               type: object,
               properties:
                 {
+                  answers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAnswer",
+                        },
+                    },
+                },
+            },
+          publicGetStudentSubmissionDetailsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  submission_info:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSubmission",
+                    },
                   answers:
                     {
                       type: array,
