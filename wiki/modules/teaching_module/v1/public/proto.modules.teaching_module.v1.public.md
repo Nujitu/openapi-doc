@@ -47,6 +47,7 @@
   
 - [modules/teaching_module/v1/public/teaching_module.proto](#modules_teaching_module_v1_public_teaching_module-proto)
     - [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest)
+    - [DeleteTeachingModuleRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleRequest)
     - [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest)
     - [GetTeachingModuleListRequest](#modules-teaching_module-v1-public-GetTeachingModuleListRequest)
     - [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse)
@@ -57,6 +58,8 @@
   
 - [modules/teaching_module/v1/public/teaching_module_folder.proto](#modules_teaching_module_v1_public_teaching_module_folder-proto)
     - [CreateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-CreateTeachingModuleFolderResponse)
+    - [DeleteTeachingModuleFolderRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleFolderRequest)
+    - [DeleteTeachingModuleFolderResponse](#modules-teaching_module-v1-public-DeleteTeachingModuleFolderResponse)
     - [GetTeachingModuleFolderDetailByIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDRequest)
     - [GetTeachingModuleFolderDetailByIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDResponse)
     - [GetTeachingModuleFolderListRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderListRequest)
@@ -625,6 +628,21 @@
 
 
 
+<a name="modules-teaching_module-v1-public-DeleteTeachingModuleRequest"></a>
+
+### DeleteTeachingModuleRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-teaching_module-v1-public-GetTeachingModuleDetailRequest"></a>
 
 ### GetTeachingModuleDetailRequest
@@ -719,6 +737,7 @@
 | GetTeachingModuleDetail | [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
 | ApproveTeachingModule | [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 | UpdateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
+| DeleteTeachingModule | [DeleteTeachingModuleRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 
  
 
@@ -740,6 +759,36 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-DeleteTeachingModuleFolderRequest"></a>
+
+### DeleteTeachingModuleFolderRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| folder_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-DeleteTeachingModuleFolderResponse"></a>
+
+### DeleteTeachingModuleFolderResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| success | [bool](#bool) |  |  |
 
 
 
@@ -846,6 +895,7 @@
 | UpdateTeachingModuleFolder | [.modules.teaching_modules.v1.shared.TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | [UpdateTeachingModuleFolderResponse](#modules-teaching_module-v1-public-UpdateTeachingModuleFolderResponse) |  |
 | GetTeachingModuleFolderList | [GetTeachingModuleFolderListRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderListRequest) | [GetTeachingModuleFolderListResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderListResponse) |  |
 | GetTeachingModuleDetailByID | [GetTeachingModuleFolderDetailByIDRequest](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDRequest) | [GetTeachingModuleFolderDetailByIDResponse](#modules-teaching_module-v1-public-GetTeachingModuleFolderDetailByIDResponse) |  |
+| DeleteTeachingModuleFolder | [DeleteTeachingModuleFolderRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleFolderRequest) | [DeleteTeachingModuleFolderResponse](#modules-teaching_module-v1-public-DeleteTeachingModuleFolderResponse) |  |
 
  
 
