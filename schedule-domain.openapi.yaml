@@ -968,6 +968,8 @@
                       description: Activity,
                       format: enum,
                     },
+                  detail_activity:
+                    { type: string, description: Detail activity },
                 },
             },
           sharedCreateScheduleStudentByDayResponse:
