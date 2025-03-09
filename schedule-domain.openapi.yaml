@@ -1267,6 +1267,8 @@
                       description: end time of event,
                       format: date-time,
                     },
+                  detail_activity:
+                    { type: string, description: detail activity },
                 },
             },
           sharedGetEventResponse:
