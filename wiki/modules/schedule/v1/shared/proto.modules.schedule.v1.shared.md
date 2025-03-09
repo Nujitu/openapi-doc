@@ -192,6 +192,7 @@
 | schedule_type | [string](#string) |  |  |
 | start | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| detail_activity | [string](#string) |  |  |
 
 
 
