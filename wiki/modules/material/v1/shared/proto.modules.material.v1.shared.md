@@ -146,8 +146,9 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| CLASS_GENERAL | 0 |  |
-| CLASS_COMBINED | 1 |  |
+| CLASS_DEFAULT | 0 | Default value |
+| CLASS_GENERAL | 1 |  |
+| CLASS_COMBINED | 2 |  |
 
 
  
