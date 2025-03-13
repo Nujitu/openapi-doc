@@ -2815,7 +2815,7 @@
                   instance_id: { type: string, description: Instance ID },
                   type:
                     {
-                      enum: [CLASS_GENERAL, CLASS_COMBINED],
+                      enum: [CLASS_DEFAULT, CLASS_GENERAL, CLASS_COMBINED],
                       type: string,
                       description: GENERAL/SELECTION,
                       format: enum,
@@ -3006,7 +3006,7 @@
                   instance_id: { type: string, description: Instance ID },
                   type:
                     {
-                      enum: [CLASS_GENERAL, CLASS_COMBINED],
+                      enum: [CLASS_DEFAULT, CLASS_GENERAL, CLASS_COMBINED],
                       type: string,
                       description: GENERAL/SELECTION,
                       format: enum,
@@ -3102,7 +3102,7 @@
                   instance_id: { type: string, description: Instance ID },
                   type:
                     {
-                      enum: [CLASS_GENERAL, CLASS_COMBINED],
+                      enum: [CLASS_DEFAULT, CLASS_GENERAL, CLASS_COMBINED],
                       type: string,
                       description: GENERAL/COMBINED,
                       format: enum,
