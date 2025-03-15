@@ -51,6 +51,11 @@
     - [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail)
     - [TimeSchedule](#modules-schedule-v1-shared-TimeSchedule)
   
+- [modules/schedule/v1/shared/uploader.proto](#modules_schedule_v1_shared_uploader-proto)
+    - [CreateScheduleModulePresignedPostUrlRequest](#modules-schedule-v1-shared-CreateScheduleModulePresignedPostUrlRequest)
+    - [CreateScheduleModulePresignedPostUrlResponse](#modules-schedule-v1-shared-CreateScheduleModulePresignedPostUrlResponse)
+    - [Uploader](#modules-schedule-v1-shared-Uploader)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -739,6 +744,71 @@
 | subject_schedule | [SubjectSchedule](#modules-schedule-v1-shared-SubjectSchedule) | repeated | time schedule fields for student |
 | activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
 | duty_teachers | [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail) | repeated | duty teachers |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_schedule_v1_shared_uploader-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/schedule/v1/shared/uploader.proto
+
+
+
+<a name="modules-schedule-v1-shared-CreateScheduleModulePresignedPostUrlRequest"></a>
+
+### CreateScheduleModulePresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [Uploader](#modules-schedule-v1-shared-Uploader) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-CreateScheduleModulePresignedPostUrlResponse"></a>
+
+### CreateScheduleModulePresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-Uploader"></a>
+
+### Uploader
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| file_name | [string](#string) |  |  |
+| file_size | [int64](#int64) |  |  |
+| bucket_name | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
