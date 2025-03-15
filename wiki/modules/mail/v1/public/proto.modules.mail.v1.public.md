@@ -12,6 +12,9 @@
 - [modules/mail/v1/public/mail_send.proto](#modules_mail_v1_public_mail_send-proto)
     - [SendMailService](#modules-mail-v1-public-SendMailService)
   
+- [modules/mail/v1/public/uploader.proto](#modules_mail_v1_public_uploader-proto)
+    - [MailUploaderService](#modules-mail-v1-public-MailUploaderService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -92,6 +95,32 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | SendMail | [.modules.mail.v1.shared.SendMailRequest](#modules-mail-v1-shared-SendMailRequest) | [.modules.mail.v1.shared.SendMailResponse](#modules-mail-v1-shared-SendMailResponse) |  |
+
+ 
+
+
+
+<a name="modules_mail_v1_public_uploader-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/mail/v1/public/uploader.proto
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-mail-v1-public-MailUploaderService"></a>
+
+### MailUploaderService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateMailModulePresignedPostUrl | [.modules.mail.v1.shared.CreateMailModulePresignedPostUrlRequest](#modules-mail-v1-shared-CreateMailModulePresignedPostUrlRequest) | [.modules.mail.v1.shared.CreateMailModulePresignedPostUrlResponse](#modules-mail-v1-shared-CreateMailModulePresignedPostUrlResponse) |  |
 
  
 

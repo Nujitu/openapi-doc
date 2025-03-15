@@ -24,6 +24,11 @@
     - [SendMailRequest](#modules-mail-v1-shared-SendMailRequest)
     - [SendMailResponse](#modules-mail-v1-shared-SendMailResponse)
   
+- [modules/mail/v1/shared/uploader.proto](#modules_mail_v1_shared_uploader-proto)
+    - [CreateMailModulePresignedPostUrlRequest](#modules-mail-v1-shared-CreateMailModulePresignedPostUrlRequest)
+    - [CreateMailModulePresignedPostUrlResponse](#modules-mail-v1-shared-CreateMailModulePresignedPostUrlResponse)
+    - [Uploader](#modules-mail-v1-shared-Uploader)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -291,6 +296,70 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_mail_v1_shared_uploader-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/mail/v1/shared/uploader.proto
+
+
+
+<a name="modules-mail-v1-shared-CreateMailModulePresignedPostUrlRequest"></a>
+
+### CreateMailModulePresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [Uploader](#modules-mail-v1-shared-Uploader) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-CreateMailModulePresignedPostUrlResponse"></a>
+
+### CreateMailModulePresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-Uploader"></a>
+
+### Uploader
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| file_name | [string](#string) |  |  |
+| file_size | [int64](#int64) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
