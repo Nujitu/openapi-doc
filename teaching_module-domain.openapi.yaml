@@ -1752,6 +1752,76 @@
                 },
             },
         },
+      "/v1/study-material/{teaching_module_id}/{class_subject_id}":
+        {
+          get:
+            {
+              tags: [StudyMaterialService],
+              summary: Get study materials by teaching module ID and class subject ID,
+              description: Retrieves a list of study materials associated with the specified teaching module ID and class subject ID.,
+              operationId: StudyMaterialService_GetStudyMaterialByTeachingModuleAndClassSubject,
+              parameters:
+                [
+                  {
+                    name: teaching_module_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudyMaterialByTeachingModuleAndClassSubjectResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
@@ -2575,6 +2645,22 @@
                     },
                 },
             },
+          publicGetStudyMaterialByTeachingModuleAndClassSubjectResponse:
+            {
+              type: object,
+              properties:
+                {
+                  study_materials:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudyMaterial",
+                        },
+                      description: List of study materials associated with the teaching module and class subject,
+                    },
+                },
+            },
           publicGetStudyMaterialDetailResponse:
             {
               type: object,
@@ -2657,6 +2743,9 @@
                       type: string,
                       description: description from study material,
                     },
+                  class_subject_id:
+                    { type: string, description: ID of the class subject },
+                  subject_id: { type: string, description: ID of the subject },
                 },
               description: study material,
             },
