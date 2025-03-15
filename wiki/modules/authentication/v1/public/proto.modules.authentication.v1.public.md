@@ -10,6 +10,8 @@
     - [AdminUserService](#modules-authentication-v1-public-AdminUserService)
   
 - [modules/authentication/v1/public/auth.proto](#modules_authentication_v1_public_auth-proto)
+    - [ForceResetPasswordRequest](#modules-authentication-v1-public-ForceResetPasswordRequest)
+    - [ForceResetPasswordResponse](#modules-authentication-v1-public-ForceResetPasswordResponse)
     - [LoginRequest](#modules-authentication-v1-public-LoginRequest)
     - [LoginResponse](#modules-authentication-v1-public-LoginResponse)
     - [LogoutRequest](#modules-authentication-v1-public-LogoutRequest)
@@ -99,6 +101,37 @@ Service for user related feature
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/authentication/v1/public/auth.proto
+
+
+
+<a name="modules-authentication-v1-public-ForceResetPasswordRequest"></a>
+
+### ForceResetPasswordRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| current_password | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-ForceResetPasswordResponse"></a>
+
+### ForceResetPasswordResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
 
 
 
@@ -244,6 +277,7 @@ Response body of Logout
 | Logout | [LogoutRequest](#modules-authentication-v1-public-LogoutRequest) | [LogoutResponse](#modules-authentication-v1-public-LogoutResponse) | Logging out user by invalidating provided access token |
 | RefreshToken | [RefreshTokenRequest](#modules-authentication-v1-public-RefreshTokenRequest) | [RefreshTokenResponse](#modules-authentication-v1-public-RefreshTokenResponse) |  |
 | ResetPassword | [ResetPasswordRequest](#modules-authentication-v1-public-ResetPasswordRequest) | [ResetPasswordResponse](#modules-authentication-v1-public-ResetPasswordResponse) |  |
+| ForceResetPassword | [ForceResetPasswordRequest](#modules-authentication-v1-public-ForceResetPasswordRequest) | [ForceResetPasswordResponse](#modules-authentication-v1-public-ForceResetPasswordResponse) |  |
 
  
 
