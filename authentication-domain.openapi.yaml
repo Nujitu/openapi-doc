@@ -124,6 +124,47 @@
                 },
             },
         },
+      /v1/auth/force_reset_password:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Reset Password,
+              description: Reset user password without email confirmatioin,
+              operationId: AuthService_ForceResetPassword,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicForceResetPasswordRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicForceResetPasswordResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/auth/login:
         {
           post:
@@ -539,6 +580,25 @@
                     {
                       $ref: "#/components/schemas/sharedUser",
                     },
+                },
+            },
+          publicForceResetPasswordRequest:
+            {
+              type: object,
+              properties:
+                {
+                  key: { type: string, description: a key received from email },
+                  current_password:
+                    { type: string, description: User Password },
+                },
+            },
+          publicForceResetPasswordResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
                 },
             },
           publicLoginRequest:
