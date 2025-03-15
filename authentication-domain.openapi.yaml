@@ -587,7 +587,7 @@
               type: object,
               properties:
                 {
-                  key: { type: string, description: a key received from email },
+                  new_password: { type: string, description: New Password },
                   current_password:
                     { type: string, description: User Password },
                 },
