@@ -112,7 +112,7 @@ Service for user related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
+| new_password | [string](#string) |  |  |
 | current_password | [string](#string) |  |  |
 
 
