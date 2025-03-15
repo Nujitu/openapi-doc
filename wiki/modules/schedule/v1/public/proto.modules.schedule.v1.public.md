@@ -15,9 +15,6 @@
 - [modules/schedule/v1/public/subject_schedule.proto](#modules_schedule_v1_public_subject_schedule-proto)
     - [SubjectScheduleService](#modules-schedule-v1-public-SubjectScheduleService)
   
-- [modules/schedule/v1/public/uploader.proto](#modules_schedule_v1_public_uploader-proto)
-    - [UploaderService](#modules-schedule-v1-public-UploaderService)
-  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -130,32 +127,6 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateSubjectSchedule | [.modules.schedule.v1.shared.CreateSubjectScheduleRequest](#modules-schedule-v1-shared-CreateSubjectScheduleRequest) | [.modules.schedule.v1.shared.CreateSubjectScheduleResponse](#modules-schedule-v1-shared-CreateSubjectScheduleResponse) |  |
-
- 
-
-
-
-<a name="modules_schedule_v1_public_uploader-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## modules/schedule/v1/public/uploader.proto
-
-
- 
-
- 
-
- 
-
-
-<a name="modules-schedule-v1-public-UploaderService"></a>
-
-### UploaderService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateScheduleModulePresignedPostUrl | [.modules.schedule.v1.shared.CreateScheduleModulePresignedPostUrlRequest](#modules-schedule-v1-shared-CreateScheduleModulePresignedPostUrlRequest) | [.modules.schedule.v1.shared.CreateScheduleModulePresignedPostUrlResponse](#modules-schedule-v1-shared-CreateScheduleModulePresignedPostUrlResponse) |  |
 
  
 
