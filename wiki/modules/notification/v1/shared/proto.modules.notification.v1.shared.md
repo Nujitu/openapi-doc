@@ -5,6 +5,7 @@
 
 - [modules/notification/v1/shared/enum.proto](#modules_notification_v1_shared_enum-proto)
     - [NotificationType](#modules-notification-v1-shared-NotificationType)
+    - [RoleType](#modules-notification-v1-shared-RoleType)
   
 - [modules/notification/v1/shared/notification.proto](#modules_notification_v1_shared_notification-proto)
     - [Notification](#modules-notification-v1-shared-Notification)
@@ -38,6 +39,23 @@
 | STUDY_MATERIAL | 5 |  |
 
 
+
+<a name="modules-notification-v1-shared-RoleType"></a>
+
+### RoleType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNSPECIFIED | 0 |  |
+| STUDENT | 1 |  |
+| PARENT | 2 |  |
+| TEACHER | 3 |  |
+| STAFF | 4 |  |
+| ADMINISTRATOR | 5 |  |
+| SUPERADMINISTRATOR | 6 |  |
+
+
  
 
  
@@ -67,7 +85,10 @@
 | read | [bool](#bool) |  |  |
 | type | [NotificationType](#modules-notification-v1-shared-NotificationType) |  |  |
 | user_id | [string](#string) |  |  |
+| user_role | [RoleType](#modules-notification-v1-shared-RoleType) |  |  |
 | url | [string](#string) |  |  |
+| action | [string](#string) |  |  |
+| custom_payload | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
