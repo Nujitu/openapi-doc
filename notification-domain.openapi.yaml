@@ -206,9 +206,33 @@ paths:
           example: 123
           type: string
           description: User ID
+        user_role:
+          example: TEACHER
+          enum:
+            [
+              UNSPECIFIED,
+              STUDENT,
+              PARENT,
+              TEACHER,
+              STAFF,
+              ADMINISTRATOR,
+              SUPERADMINISTRATOR,
+            ]
+          type: string
+          description: User role type
+          format: enum
         url:
           type: string
           description: Notification url
+        action:
+          type: string
+          description: Notification action
+        custom_payload:
+          example:
+            "observation_id": "1234"
+            "observation_title": "Penilaian lompat jauh"
+          type: string
+          description: Custom payload to support notification details in stringify JSON format.
         created_at:
           example: "2020-01-01T00:00:00Z"
           type: string
