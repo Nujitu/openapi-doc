@@ -36,7 +36,10 @@
 | description | [string](#string) |  |  |
 | type | [modules.notification.v1.shared.NotificationType](#modules-notification-v1-shared-NotificationType) |  |  |
 | user_id | [string](#string) |  |  |
+| user_role | [modules.notification.v1.shared.RoleType](#modules-notification-v1-shared-RoleType) |  |  |
 | url | [string](#string) |  |  |
+| action | [string](#string) |  |  |
+| custom_payload | [string](#string) |  |  |
 
 
 
