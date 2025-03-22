@@ -2707,11 +2707,11 @@
                       type: string,
                       description: Instructions related to the study material,
                     },
-                  attachment_ids:
+                  attachments:
                     {
                       type: array,
                       items: { type: string },
-                      description: List of attachment IDs associated with the study material,
+                      description: List of attachments associated with the study material,
                     },
                   folder_id:
                     {

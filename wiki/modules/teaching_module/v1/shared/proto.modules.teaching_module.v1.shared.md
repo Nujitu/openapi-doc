@@ -182,7 +182,7 @@ study material
 | title | [string](#string) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | instruction | [string](#string) |  |  |
-| attachment_ids | [string](#string) | repeated |  |
+| attachments | [string](#string) | repeated |  |
 | folder_id | [string](#string) |  |  |
 | publish_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | teaching_module_id | [string](#string) |  |  |

@@ -19,6 +19,7 @@
     - [Assignment](#modules-report-v1-public-Assignment)
     - [BaseResponse](#modules-report-v1-public-BaseResponse)
     - [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest)
+    - [GetJournalAttendanceDetailRequest](#modules-report-v1-public-GetJournalAttendanceDetailRequest)
     - [GetJournalAttendanceRequest](#modules-report-v1-public-GetJournalAttendanceRequest)
     - [GetJournalAttendanceResponse](#modules-report-v1-public-GetJournalAttendanceResponse)
     - [LearningGoal](#modules-report-v1-public-LearningGoal)
@@ -267,6 +268,21 @@
 
 
 
+<a name="modules-report-v1-public-GetJournalAttendanceDetailRequest"></a>
+
+### GetJournalAttendanceDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| attendance_id | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-report-v1-public-GetJournalAttendanceRequest"></a>
 
 ### GetJournalAttendanceRequest
@@ -457,6 +473,7 @@
 | SubmitAttendance | [SubmitAttendanceRequest](#modules-report-v1-public-SubmitAttendanceRequest) | [.modules.report.v1.shared.Attendance](#modules-report-v1-shared-Attendance) |  |
 | SubmitJournalAttendance | [SubmitJournalAttendanceRequest](#modules-report-v1-public-SubmitJournalAttendanceRequest) | [BaseResponse](#modules-report-v1-public-BaseResponse) |  |
 | GetJournalAttendance | [GetJournalAttendanceRequest](#modules-report-v1-public-GetJournalAttendanceRequest) | [ListGetJournalAttendanceResponse](#modules-report-v1-public-ListGetJournalAttendanceResponse) |  |
+| GetJournalAttendanceDetail | [GetJournalAttendanceDetailRequest](#modules-report-v1-public-GetJournalAttendanceDetailRequest) | [GetJournalAttendanceResponse](#modules-report-v1-public-GetJournalAttendanceResponse) |  |
 | GetAttendance | [GetAttendanceRequest](#modules-report-v1-public-GetAttendanceRequest) | [.modules.report.v1.shared.Attendance](#modules-report-v1-shared-Attendance) |  |
 
  
