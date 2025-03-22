@@ -31,6 +31,8 @@
     - [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse)
     - [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest)
     - [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse)
+    - [UpdateClassSubjectDetailsStatusRequest](#modules-material-v1-public-UpdateClassSubjectDetailsStatusRequest)
+    - [UpdateClassSubjectDetailsStatusResponse](#modules-material-v1-public-UpdateClassSubjectDetailsStatusResponse)
   
     - [ClassGroupService](#modules-material-v1-public-ClassGroupService)
   
@@ -74,6 +76,8 @@
     - [GetSubjectListResponse](#modules-material-v1-public-GetSubjectListResponse)
     - [SubjectListResponse](#modules-material-v1-public-SubjectListResponse)
     - [UpdateSubjectRequest](#modules-material-v1-public-UpdateSubjectRequest)
+    - [UpdateSubjectStatusRequest](#modules-material-v1-public-UpdateSubjectStatusRequest)
+    - [UpdateSubjectStatusResponse](#modules-material-v1-public-UpdateSubjectStatusResponse)
   
     - [SubjectService](#modules-material-v1-public-SubjectService)
   
@@ -532,6 +536,37 @@
 
 
 
+
+<a name="modules-material-v1-public-UpdateClassSubjectDetailsStatusRequest"></a>
+
+### UpdateClassSubjectDetailsStatusRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| status | [modules.material.v1.shared.ClassSubjectDetailStatus](#modules-material-v1-shared-ClassSubjectDetailStatus) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateClassSubjectDetailsStatusResponse"></a>
+
+### UpdateClassSubjectDetailsStatusResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -559,6 +594,7 @@ Service for user related feature
 | GetTeacherCourses | [GetTeacherActiveSubjectsRequest](#modules-material-v1-public-GetTeacherActiveSubjectsRequest) | [GetTeacherActiveSubjectsResponse](#modules-material-v1-public-GetTeacherActiveSubjectsResponse) |  |
 | GetStudentCourses | [GetStudentCoursesRequest](#modules-material-v1-public-GetStudentCoursesRequest) | [GetStudentCoursesResponse](#modules-material-v1-public-GetStudentCoursesResponse) |  |
 | GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
+| UpdateClassSubjectDetailsStatus | [UpdateClassSubjectDetailsStatusRequest](#modules-material-v1-public-UpdateClassSubjectDetailsStatusRequest) | [UpdateClassSubjectDetailsStatusResponse](#modules-material-v1-public-UpdateClassSubjectDetailsStatusResponse) |  |
 
  
 
@@ -1098,6 +1134,37 @@ Service for user related feature
 
 
 
+
+<a name="modules-material-v1-public-UpdateSubjectStatusRequest"></a>
+
+### UpdateSubjectStatusRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| status | [modules.material.v1.shared.SubjectStatus](#modules-material-v1-shared-SubjectStatus) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateSubjectStatusResponse"></a>
+
+### UpdateSubjectStatusResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject | [modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |  |
+
+
+
+
+
  
 
  
@@ -1116,6 +1183,7 @@ Service for user related feature
 | UpdateSubject | [UpdateSubjectRequest](#modules-material-v1-public-UpdateSubjectRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectByID | [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectList | [GetSubjectListRequest](#modules-material-v1-public-GetSubjectListRequest) | [GetSubjectListResponse](#modules-material-v1-public-GetSubjectListResponse) |  |
+| UpdateSubjectStatus | [UpdateSubjectStatusRequest](#modules-material-v1-public-UpdateSubjectStatusRequest) | [UpdateSubjectStatusResponse](#modules-material-v1-public-UpdateSubjectStatusResponse) |  |
 
  
 

@@ -10,6 +10,7 @@
     - [TeacherClassCourses](#modules-material-v1-shared-TeacherClassCourses)
   
     - [ClassGroupType](#modules-material-v1-shared-ClassGroupType)
+    - [ClassSubjectDetailStatus](#modules-material-v1-shared-ClassSubjectDetailStatus)
   
 - [modules/material/v1/shared/curriculum.proto](#modules_material_v1_shared_curriculum-proto)
     - [Curriculum](#modules-material-v1-shared-Curriculum)
@@ -28,6 +29,7 @@
 - [modules/material/v1/shared/subject.proto](#modules_material_v1_shared_subject-proto)
     - [Subject](#modules-material-v1-shared-Subject)
   
+    - [SubjectStatus](#modules-material-v1-shared-SubjectStatus)
     - [SubjectType](#modules-material-v1-shared-SubjectType)
   
 - [Scalar Value Types](#scalar-value-types)
@@ -84,6 +86,7 @@
 | lesson_hours_per_week | [uint32](#uint32) |  |  |
 | lesson_minutes | [uint32](#uint32) |  |  |
 | subject_type | [SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
+| status | [ClassSubjectDetailStatus](#modules-material-v1-shared-ClassSubjectDetailStatus) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -149,6 +152,19 @@
 | CLASS_DEFAULT | 0 | Default value |
 | CLASS_GENERAL | 1 |  |
 | CLASS_COMBINED | 2 |  |
+
+
+
+<a name="modules-material-v1-shared-ClassSubjectDetailStatus"></a>
+
+### ClassSubjectDetailStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CLASS_SUBJECT_DETAIL_UNDEFINED | 0 | Default value |
+| CLASS_SUBJECT_DETAIL_ACTIVE | 1 |  |
+| CLASS_SUBJECT_DETAIL_INACTIVE | 2 |  |
 
 
  
@@ -341,6 +357,7 @@
 | subject_type | [SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
 | description | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
+| status | [SubjectStatus](#modules-material-v1-shared-SubjectStatus) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -351,6 +368,19 @@
  
 
 
+<a name="modules-material-v1-shared-SubjectStatus"></a>
+
+### SubjectStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| STATUS_UNDEFINED | 0 |  |
+| STATUS_ACTIVE | 1 |  |
+| STATUS_INACTIVE | 2 |  |
+
+
+
 <a name="modules-material-v1-shared-SubjectType"></a>
 
 ### SubjectType
@@ -358,9 +388,10 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SUBJECT_GENERAL | 0 |  |
-| SUBJECT_MAJOR | 1 |  |
-| SUBJECT_SELECTIVE | 2 |  |
+| SUBJECT_UNDEFINED | 0 |  |
+| SUBJECT_GENERAL | 1 |  |
+| SUBJECT_MAJOR | 2 |  |
+| SUBJECT_SELECTIVE | 3 |  |
 
 
  

@@ -502,7 +502,12 @@
                     schema:
                       {
                         enum:
-                          [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                          [
+                            SUBJECT_UNDEFINED,
+                            SUBJECT_GENERAL,
+                            SUBJECT_MAJOR,
+                            SUBJECT_SELECTIVE,
+                          ],
                         type: string,
                         format: enum,
                       },
@@ -551,6 +556,75 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetSubjectListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/subject/status:
+        {
+          patch:
+            {
+              tags: [SubjectService],
+              summary: Update Subject Status,
+              description: "Teacher update Subject Status, if the status set to inactive it will also update the class group subject to archived",
+              operationId: SubjectService_UpdateSubjectStatus,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateSubjectStatusRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateSubjectStatusResponse",
                                 },
                             },
                         },
@@ -1948,6 +2022,85 @@
                 },
             },
         },
+      "/v1/class-group/{id}/class-subject/status":
+        {
+          patch:
+            {
+              tags: [ClassGroupService],
+              summary: UpdateClassSubjectDetailsStatus,
+              description: Update class subject details status,
+              operationId: ClassGroupService_UpdateClassSubjectDetailsStatus,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: status,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            CLASS_SUBJECT_DETAIL_UNDEFINED,
+                            CLASS_SUBJECT_DETAIL_ACTIVE,
+                            CLASS_SUBJECT_DETAIL_INACTIVE,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateClassSubjectDetailsStatusResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/class-group/{id}/students":
         {
           get:
@@ -2323,7 +2476,13 @@
                     { example: MTK, type: string, description: Subject code },
                   subject_type:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      enum:
+                        [
+                          SUBJECT_UNDEFINED,
+                          SUBJECT_GENERAL,
+                          SUBJECT_MAJOR,
+                          SUBJECT_SELECTIVE,
+                        ],
                       type: string,
                       description: Subject type,
                       format: enum,
@@ -2381,12 +2540,44 @@
                     { example: MTK, type: string, description: Subject code },
                   subject_type:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      enum:
+                        [
+                          SUBJECT_UNDEFINED,
+                          SUBJECT_GENERAL,
+                          SUBJECT_MAJOR,
+                          SUBJECT_SELECTIVE,
+                        ],
                       type: string,
                       description: Subject type,
                       format: enum,
                     },
                   description: { type: string, description: Description },
+                },
+            },
+          publicUpdateSubjectStatusRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Subject ID },
+                  status:
+                    {
+                      enum: [STATUS_UNDEFINED, STATUS_ACTIVE, STATUS_INACTIVE],
+                      type: string,
+                      description: Subject status,
+                      format: enum,
+                    },
+                },
+            },
+          publicUpdateSubjectStatusResponse:
+            {
+              type: object,
+              properties:
+                {
+                  subject:
+                    {
+                      $ref: "#/components/schemas/sharedSubject",
+                    },
                 },
             },
           sharedSubject:
@@ -2420,13 +2611,26 @@
                     { example: MTK, type: string, description: Subject code },
                   subject_type:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      enum:
+                        [
+                          SUBJECT_UNDEFINED,
+                          SUBJECT_GENERAL,
+                          SUBJECT_MAJOR,
+                          SUBJECT_SELECTIVE,
+                        ],
                       type: string,
                       description: Subject type,
                       format: enum,
                     },
                   description: { type: string, description: Description },
                   instance_id: { type: string, description: Instance ID },
+                  status:
+                    {
+                      enum: [STATUS_UNDEFINED, STATUS_ACTIVE, STATUS_INACTIVE],
+                      type: string,
+                      description: Subject status,
+                      format: enum,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -2785,7 +2989,13 @@
                     },
                   subject_type:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      enum:
+                        [
+                          SUBJECT_UNDEFINED,
+                          SUBJECT_GENERAL,
+                          SUBJECT_MAJOR,
+                          SUBJECT_SELECTIVE,
+                        ],
                       type: string,
                       description: Subject type,
                       format: enum,
@@ -3077,6 +3287,12 @@
                   message: { type: string, description: response info },
                 },
             },
+          publicUpdateClassSubjectDetailsStatusResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: response info } },
+            },
           sharedClassGroup:
             {
               type: object,
@@ -3172,9 +3388,27 @@
                     },
                   subject_type:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      enum:
+                        [
+                          SUBJECT_UNDEFINED,
+                          SUBJECT_GENERAL,
+                          SUBJECT_MAJOR,
+                          SUBJECT_SELECTIVE,
+                        ],
                       type: string,
                       description: Subject type,
+                      format: enum,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          CLASS_SUBJECT_DETAIL_UNDEFINED,
+                          CLASS_SUBJECT_DETAIL_ACTIVE,
+                          CLASS_SUBJECT_DETAIL_INACTIVE,
+                        ],
+                      type: string,
+                      description: ClassSubjectDetail status,
                       format: enum,
                     },
                   created_at:

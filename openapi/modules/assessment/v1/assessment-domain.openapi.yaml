@@ -5123,7 +5123,13 @@
                     { example: MTK, type: string, description: Subject code },
                   subject_type:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      enum:
+                        [
+                          SUBJECT_UNDEFINED,
+                          SUBJECT_GENERAL,
+                          SUBJECT_MAJOR,
+                          SUBJECT_SELECTIVE,
+                        ],
                       type: string,
                       description: Subject type,
                       format: enum,
