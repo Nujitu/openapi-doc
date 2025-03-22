@@ -1560,6 +1560,75 @@
                 },
             },
         },
+      /v1/study-material/list:
+        {
+          post:
+            {
+              tags: [StudyMaterialService],
+              summary: Get study materials by teaching module ID and class subject ID,
+              description: Retrieves a list of study materials associated with the specified teaching module ID and class subject ID.,
+              operationId: StudyMaterialService_GetStudyMaterialByParam,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicGetStudyMaterialByTeachingModuleAndClassSubjectRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudyMaterialByTeachingModuleAndClassSubjectResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/study-material/{folder_id}":
         {
           get:
@@ -1717,76 +1786,6 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetStudyMaterialDetailResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/study-material/{teaching_module_id}/{class_subject_id}":
-        {
-          get:
-            {
-              tags: [StudyMaterialService],
-              summary: Get study materials by teaching module ID and class subject ID,
-              description: Retrieves a list of study materials associated with the specified teaching module ID and class subject ID.,
-              operationId: StudyMaterialService_GetStudyMaterialByTeachingModuleAndClassSubject,
-              parameters:
-                [
-                  {
-                    name: teaching_module_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: class_subject_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetStudyMaterialByTeachingModuleAndClassSubjectResponse",
                                 },
                             },
                         },
@@ -2642,6 +2641,23 @@
                           $ref: "#/components/schemas/sharedStudyMaterial",
                         },
                       description: List of study materials associated with the specified folder,
+                    },
+                },
+            },
+          publicGetStudyMaterialByTeachingModuleAndClassSubjectRequest:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module_id:
+                    {
+                      type: string,
+                      description: The ID of the teaching module to retrieve study materials for,
+                    },
+                  class_subject_id:
+                    {
+                      type: string,
+                      description: The ID of the class subject to retrieve study materials for,
                     },
                 },
             },
