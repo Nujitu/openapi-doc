@@ -394,6 +394,81 @@
                     },
                 },
             },
+          put:
+            {
+              tags: [TeacherService],
+              summary: Update Teacher,
+              description: Update Teacher,
+              operationId: TeacherService_UpdateTeacher,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/.UpdateTeacherRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.UpdateTeacherResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
         },
       /v1/user:
         {
@@ -794,6 +869,81 @@
                     },
                 },
             },
+          put:
+            {
+              tags: [StudentService],
+              summary: Update Student,
+              description: Update Student,
+              operationId: StudentService_UpdateStudent,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/.UpdateStudentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.UpdateStudentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
         },
     },
   "components":
@@ -1040,6 +1190,55 @@
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
+          .TeacherAchievement:
+            {
+              type: object,
+              properties:
+                {
+                  achievement_name: { type: string },
+                  achievement_date: { type: string },
+                  organization: { type: string },
+                  document: { type: string },
+                },
+            },
+          .TeacherEducation:
+            {
+              type: object,
+              properties:
+                {
+                  school: { type: string },
+                  title: { type: string },
+                  major: { type: string },
+                  year_start: { type: string },
+                  year_end: { type: string },
+                  gpa: { type: string },
+                  id_credential: { type: string },
+                  document: { type: string },
+                },
+            },
+          .TeacherInformation:
+            {
+              type: object,
+              properties:
+                {
+                  nuptk: { type: string },
+                  registration_number: { type: string },
+                  year_of_work: { type: string },
+                  instance_name: { type: string },
+                  status: { type: string },
+                },
+            },
+          .TeacherLicense:
+            {
+              type: object,
+              properties:
+                {
+                  license_name: { type: string },
+                  year_start: { type: string },
+                  year_end: { type: string },
+                  organization: { type: string },
+                },
+            },
           .TeacherResponse:
             {
               type: object,
@@ -1128,6 +1327,34 @@
                     },
                 },
             },
+          .UpdateTeacherRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  teacher_information:
+                    { $ref: "#/components/schemas/.TeacherInformation" },
+                  teacher_education:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/.TeacherEducation" },
+                    },
+                  teacher_license:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/.TeacherLicense" },
+                    },
+                  teacher_achievement:
+                    {
+                      type: array,
+                      items:
+                        { $ref: "#/components/schemas/.TeacherAchievement" },
+                    },
+                },
+            },
+          .UpdateTeacherResponse:
+            { type: object, properties: { message: { type: string } } },
           sharedAddress:
             {
               type: object,
@@ -1405,6 +1632,20 @@
                     },
                 },
             },
+          .UpdateStudentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  birth_date: { type: string, format: date-time },
+                  birth_place: { type: string },
+                  address: { type: string },
+                  gender: { type: string },
+                },
+            },
+          .UpdateStudentResponse:
+            { type: object, properties: { message: { type: string } } },
         },
       responses:
         {
