@@ -17,6 +17,8 @@
     - [GetStudentListRequest](#-GetStudentListRequest)
     - [GetStudentListResponse](#-GetStudentListResponse)
     - [StudentResponse](#-StudentResponse)
+    - [UpdateStudentRequest](#-UpdateStudentRequest)
+    - [UpdateStudentResponse](#-UpdateStudentResponse)
   
     - [StudentService](#-StudentService)
   
@@ -24,7 +26,13 @@
     - [GetTeacherByIDRequest](#-GetTeacherByIDRequest)
     - [GetTeacherListRequest](#-GetTeacherListRequest)
     - [GetTeacherListResponse](#-GetTeacherListResponse)
+    - [TeacherAchievement](#-TeacherAchievement)
+    - [TeacherEducation](#-TeacherEducation)
+    - [TeacherInformation](#-TeacherInformation)
+    - [TeacherLicense](#-TeacherLicense)
     - [TeacherResponse](#-TeacherResponse)
+    - [UpdateTeacherRequest](#-UpdateTeacherRequest)
+    - [UpdateTeacherResponse](#-UpdateTeacherResponse)
   
     - [TeacherService](#-TeacherService)
   
@@ -249,6 +257,40 @@
 
 
 
+
+<a name="-UpdateStudentRequest"></a>
+
+### UpdateStudentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| birth_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| birth_place | [string](#string) |  |  |
+| address | [string](#string) |  |  |
+| gender | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-UpdateStudentResponse"></a>
+
+### UpdateStudentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -265,6 +307,7 @@ Service for student related feature
 | ----------- | ------------ | ------------- | ------------|
 | GetStudentByID | [.GetStudentByIDRequest](#GetStudentByIDRequest) | [.StudentResponse](#StudentResponse) |  |
 | GetStudentList | [.GetStudentListRequest](#GetStudentListRequest) | [.GetStudentListResponse](#GetStudentListResponse) |  |
+| UpdateStudent | [.UpdateStudentRequest](#UpdateStudentRequest) | [.UpdateStudentResponse](#UpdateStudentResponse) |  |
 
  
 
@@ -330,6 +373,83 @@ Service for student related feature
 
 
 
+<a name="-TeacherAchievement"></a>
+
+### TeacherAchievement
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| achievement_name | [string](#string) |  |  |
+| achievement_date | [string](#string) |  |  |
+| organization | [string](#string) |  |  |
+| document | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-TeacherEducation"></a>
+
+### TeacherEducation
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| school | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| major | [string](#string) |  |  |
+| year_start | [string](#string) |  |  |
+| year_end | [string](#string) |  |  |
+| gpa | [string](#string) |  |  |
+| id_credential | [string](#string) |  |  |
+| document | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-TeacherInformation"></a>
+
+### TeacherInformation
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| nuptk | [string](#string) |  |  |
+| registration_number | [string](#string) |  |  |
+| year_of_work | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
+| status | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-TeacherLicense"></a>
+
+### TeacherLicense
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| license_name | [string](#string) |  |  |
+| year_start | [string](#string) |  |  |
+| year_end | [string](#string) |  |  |
+| organization | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="-TeacherResponse"></a>
 
 ### TeacherResponse
@@ -356,6 +476,40 @@ Service for student related feature
 
 
 
+
+<a name="-UpdateTeacherRequest"></a>
+
+### UpdateTeacherRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| teacher_information | [TeacherInformation](#TeacherInformation) |  |  |
+| teacher_education | [TeacherEducation](#TeacherEducation) |  |  |
+| teacher_license | [TeacherLicense](#TeacherLicense) |  |  |
+| teacher_achievement | [TeacherAchievement](#TeacherAchievement) |  |  |
+
+
+
+
+
+
+<a name="-UpdateTeacherResponse"></a>
+
+### UpdateTeacherResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -372,6 +526,7 @@ Service for teacher related feature
 | ----------- | ------------ | ------------- | ------------|
 | GetTeacherByID | [.GetTeacherByIDRequest](#GetTeacherByIDRequest) | [.TeacherResponse](#TeacherResponse) |  |
 | GetTeacherList | [.GetTeacherListRequest](#GetTeacherListRequest) | [.GetTeacherListResponse](#GetTeacherListResponse) |  |
+| UpdateTeacher | [.UpdateTeacherRequest](#UpdateTeacherRequest) | [.UpdateTeacherResponse](#UpdateTeacherResponse) |  |
 
  
 
