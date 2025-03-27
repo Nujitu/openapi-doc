@@ -4,12 +4,15 @@
 ## Table of Contents
 
 - [modules/user/v1/private/student.proto](#modules_user_v1_private_student-proto)
+    - [GetStudentByNISNsRequest](#modules-user-v1-private-GetStudentByNISNsRequest)
+    - [GetStudentByNISNsResponse](#modules-user-v1-private-GetStudentByNISNsResponse)
     - [GetStudentByUserIDRequest](#modules-user-v1-private-GetStudentByUserIDRequest)
     - [GetStudentByUserIDResponse](#modules-user-v1-private-GetStudentByUserIDResponse)
     - [GetStudentByUserIDsRequest](#modules-user-v1-private-GetStudentByUserIDsRequest)
     - [GetStudentByUserIDsResponse](#modules-user-v1-private-GetStudentByUserIDsResponse)
     - [RegisterRequest](#modules-user-v1-private-RegisterRequest)
     - [RegisterResponse](#modules-user-v1-private-RegisterResponse)
+    - [StudentDetailResponse](#modules-user-v1-private-StudentDetailResponse)
   
     - [StudentPrivateService](#modules-user-v1-private-StudentPrivateService)
   
@@ -29,6 +32,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/private/student.proto
+
+
+
+<a name="modules-user-v1-private-GetStudentByNISNsRequest"></a>
+
+### GetStudentByNISNsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| nisn | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByNISNsResponse"></a>
+
+### GetStudentByNISNsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| students | [StudentDetailResponse](#modules-user-v1-private-StudentDetailResponse) | repeated |  |
+
+
+
 
 
 
@@ -121,6 +154,33 @@
 
 
 
+
+<a name="modules-user-v1-private-StudentDetailResponse"></a>
+
+### StudentDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| nisn | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
+| status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| profile_pic | [string](#string) |  |  |
+| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
  
 
  
@@ -138,6 +198,7 @@
 | Register | [RegisterRequest](#modules-user-v1-private-RegisterRequest) | [RegisterResponse](#modules-user-v1-private-RegisterResponse) |  |
 | GetStudentByUserID | [GetStudentByUserIDRequest](#modules-user-v1-private-GetStudentByUserIDRequest) | [GetStudentByUserIDResponse](#modules-user-v1-private-GetStudentByUserIDResponse) |  |
 | GetStudentByUserIDs | [GetStudentByUserIDsRequest](#modules-user-v1-private-GetStudentByUserIDsRequest) | [GetStudentByUserIDsResponse](#modules-user-v1-private-GetStudentByUserIDsResponse) |  |
+| GetStudentByNISNs | [GetStudentByNISNsRequest](#modules-user-v1-private-GetStudentByNISNsRequest) | [GetStudentByNISNsResponse](#modules-user-v1-private-GetStudentByNISNsResponse) |  |
 
  
 
