@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [modules/user/v1/private/student.proto](#modules_user_v1_private_student-proto)
+    - [GetStudentByNISNsRequest](#modules-user-v1-private-GetStudentByNISNsRequest)
+    - [GetStudentByNISNsResponse](#modules-user-v1-private-GetStudentByNISNsResponse)
     - [GetStudentByUserIDRequest](#modules-user-v1-private-GetStudentByUserIDRequest)
     - [GetStudentByUserIDResponse](#modules-user-v1-private-GetStudentByUserIDResponse)
     - [GetStudentByUserIDsRequest](#modules-user-v1-private-GetStudentByUserIDsRequest)
@@ -29,6 +31,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/private/student.proto
+
+
+
+<a name="modules-user-v1-private-GetStudentByNISNsRequest"></a>
+
+### GetStudentByNISNsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| nisn | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-private-GetStudentByNISNsResponse"></a>
+
+### GetStudentByNISNsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| students | [modules.user.v1.shared.Student](#modules-user-v1-shared-Student) | repeated |  |
+
+
+
 
 
 
@@ -138,6 +170,7 @@
 | Register | [RegisterRequest](#modules-user-v1-private-RegisterRequest) | [RegisterResponse](#modules-user-v1-private-RegisterResponse) |  |
 | GetStudentByUserID | [GetStudentByUserIDRequest](#modules-user-v1-private-GetStudentByUserIDRequest) | [GetStudentByUserIDResponse](#modules-user-v1-private-GetStudentByUserIDResponse) |  |
 | GetStudentByUserIDs | [GetStudentByUserIDsRequest](#modules-user-v1-private-GetStudentByUserIDsRequest) | [GetStudentByUserIDsResponse](#modules-user-v1-private-GetStudentByUserIDsResponse) |  |
+| GetStudentByNISNs | [GetStudentByNISNsRequest](#modules-user-v1-private-GetStudentByNISNsRequest) | [GetStudentByNISNsResponse](#modules-user-v1-private-GetStudentByNISNsResponse) |  |
 
  
 
