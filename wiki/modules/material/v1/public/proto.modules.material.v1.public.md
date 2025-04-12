@@ -27,6 +27,7 @@
     - [RemoveStudentFromClassRequest](#modules-material-v1-public-RemoveStudentFromClassRequest)
     - [RemoveStudentFromClassResponse](#modules-material-v1-public-RemoveStudentFromClassResponse)
     - [StudentClass](#modules-material-v1-public-StudentClass)
+    - [StudentDetailResponse](#modules-material-v1-public-StudentDetailResponse)
     - [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest)
     - [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse)
     - [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest)
@@ -348,7 +349,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| students | [StudentClass](#modules-material-v1-public-StudentClass) | repeated |  |
+| students | [StudentDetailResponse](#modules-material-v1-public-StudentDetailResponse) | repeated |  |
 
 
 
@@ -456,6 +457,33 @@
 | ----- | ---- | ----- | ----------- |
 | student_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-StudentDetailResponse"></a>
+
+### StudentDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| instance_name | [string](#string) |  |  |
+| status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
+| student_name | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| profile_pic | [string](#string) |  |  |
+| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
