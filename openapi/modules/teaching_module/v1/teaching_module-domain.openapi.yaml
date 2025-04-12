@@ -1242,6 +1242,11 @@
                     required: true,
                     schema: { type: string },
                   },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                 ],
               responses:
                 {
@@ -2557,6 +2562,8 @@
                         },
                       description: score percentage,
                     },
+                  class_subject_id:
+                    { type: string, description: class subject id },
                 },
             },
           publicCreateLearningGoalResponse:
