@@ -326,6 +326,7 @@ study material
 | teacher_id | [string](#string) |  |  |
 | index_minimum | [int32](#int32) |  |  |
 | percentage_score | [PercentageScore](#modules-teaching_modules-v1-shared-PercentageScore) | repeated | list of percentage score must be 100 |
+| class_subject_id | [string](#string) |  |  |
 
 
 

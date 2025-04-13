@@ -702,6 +702,7 @@
 | ----- | ---- | ----- | ----------- |
 | subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 
 
 
