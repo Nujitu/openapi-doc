@@ -6,7 +6,6 @@
 - [modules/material/v1/public/class_group.proto](#modules_material_v1_public_class_group-proto)
     - [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest)
     - [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse)
-    - [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload)
     - [CreateClassGroupRequest](#modules-material-v1-public-CreateClassGroupRequest)
     - [GetClassGroupDetailRequest](#modules-material-v1-public-GetClassGroupDetailRequest)
     - [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse)
@@ -30,10 +29,11 @@
     - [StudentDetailResponse](#modules-material-v1-public-StudentDetailResponse)
     - [UpdateClassGroupRequest](#modules-material-v1-public-UpdateClassGroupRequest)
     - [UpdateClassGroupResponse](#modules-material-v1-public-UpdateClassGroupResponse)
-    - [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest)
-    - [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse)
   
     - [ClassGroupService](#modules-material-v1-public-ClassGroupService)
+  
+- [modules/material/v1/public/class_subject.proto](#modules_material_v1_public_class_subject-proto)
+    - [ClassSubjectService](#modules-material-v1-public-ClassSubjectService)
   
 - [modules/material/v1/public/curriculum.proto](#modules_material_v1_public_curriculum-proto)
     - [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest)
@@ -120,28 +120,6 @@
 
 
 
-<a name="modules-material-v1-public-ClassSubjectDetailPayload"></a>
-
-### ClassSubjectDetailPayload
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| subject_id | [string](#string) |  |  |
-| homeroom_teacher_id | [string](#string) |  |  |
-| subject_name | [string](#string) |  |  |
-| index_minimum | [uint32](#uint32) |  |  |
-| meetings_per_week | [uint32](#uint32) |  |  |
-| lesson_hours_per_week | [uint32](#uint32) |  |  |
-| lesson_minutes | [uint32](#uint32) |  |  |
-| subject_type | [modules.material.v1.shared.SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
-
-
-
-
-
-
 <a name="modules-material-v1-public-CreateClassGroupRequest"></a>
 
 ### CreateClassGroupRequest
@@ -158,7 +136,7 @@
 | group_subject_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | type | [modules.material.v1.shared.ClassGroupType](#modules-material-v1-shared-ClassGroupType) |  |  |
-| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload) | repeated |  |
 
 
 
@@ -506,7 +484,7 @@
 | homeroom_teacher | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | type | [modules.material.v1.shared.ClassGroupType](#modules-material-v1-shared-ClassGroupType) |  |  |
-| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload) | repeated |  |
 
 
 
@@ -523,38 +501,6 @@
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) |  |  |
 | class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
-
-
-
-
-
-
-<a name="modules-material-v1-public-UpdateClassSubjectDetailRequest"></a>
-
-### UpdateClassSubjectDetailRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| class_id | [string](#string) |  |  |
-| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
-
-
-
-
-
-
-<a name="modules-material-v1-public-UpdateClassSubjectDetailResponse"></a>
-
-### UpdateClassSubjectDetailResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-public-ClassSubjectDetailPayload) | repeated |  |
-| message | [string](#string) |  |  |
 
 
 
@@ -580,13 +526,41 @@ Service for user related feature
 | GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse) |  |
 | AddStudentToClass | [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest) | [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse) |  |
 | RemoveStudentFromClass | [RemoveStudentFromClassRequest](#modules-material-v1-public-RemoveStudentFromClassRequest) | [RemoveStudentFromClassResponse](#modules-material-v1-public-RemoveStudentFromClassResponse) |  |
-| UpdateClassSubjectDetail | [UpdateClassSubjectDetailRequest](#modules-material-v1-public-UpdateClassSubjectDetailRequest) | [UpdateClassSubjectDetailResponse](#modules-material-v1-public-UpdateClassSubjectDetailResponse) |  |
 | GetStudentClasses | [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest) | [GetStudentClassesResponse](#modules-material-v1-public-GetStudentClassesResponse) |  |
 | GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
 | GetStudentsInClass | [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest) | [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse) |  |
 | GetTeacherCourses | [GetTeacherActiveSubjectsRequest](#modules-material-v1-public-GetTeacherActiveSubjectsRequest) | [GetTeacherActiveSubjectsResponse](#modules-material-v1-public-GetTeacherActiveSubjectsResponse) |  |
 | GetStudentCourses | [GetStudentCoursesRequest](#modules-material-v1-public-GetStudentCoursesRequest) | [GetStudentCoursesResponse](#modules-material-v1-public-GetStudentCoursesResponse) |  |
 | GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_public_class_subject-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/public/class_subject.proto
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-public-ClassSubjectService"></a>
+
+### ClassSubjectService
+Service for user related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| UpdateClassSubjectDetail | [.modules.material.v1.shared.UpdateClassSubjectDetailRequest](#modules-material-v1-shared-UpdateClassSubjectDetailRequest) | [.modules.material.v1.shared.UpdateClassSubjectDetailResponse](#modules-material-v1-shared-UpdateClassSubjectDetailResponse) |  |
+| CreateClassSubjectAnnoucement | [.modules.material.v1.shared.CreateClassSubjectAnnoucementRequest](#modules-material-v1-shared-CreateClassSubjectAnnoucementRequest) | [.modules.material.v1.shared.CreateClassSubjectAnnoucementResponse](#modules-material-v1-shared-CreateClassSubjectAnnoucementResponse) |  |
+| DeleteClassSubjectAnnoucement | [.modules.material.v1.shared.DeleteClassSubjectAnnoucementRequest](#modules-material-v1-shared-DeleteClassSubjectAnnoucementRequest) | [.modules.material.v1.shared.DeleteClassSubjectAnnoucementResponse](#modules-material-v1-shared-DeleteClassSubjectAnnoucementResponse) |  |
+| GetClassSubjectAnnoucement | [.modules.material.v1.shared.GetClassSubjectAnnoucementRequest](#modules-material-v1-shared-GetClassSubjectAnnoucementRequest) | [.modules.material.v1.shared.GetClassSubjectAnnoucementResponse](#modules-material-v1-shared-GetClassSubjectAnnoucementResponse) |  |
 
  
 
