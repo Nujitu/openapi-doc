@@ -11,6 +11,18 @@
   
     - [ClassGroupType](#modules-material-v1-shared-ClassGroupType)
   
+- [modules/material/v1/shared/class_subject.proto](#modules_material_v1_shared_class_subject-proto)
+    - [ClassSubjectAnnouncement](#modules-material-v1-shared-ClassSubjectAnnouncement)
+    - [ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload)
+    - [CreateClassSubjectAnnouncementRequest](#modules-material-v1-shared-CreateClassSubjectAnnouncementRequest)
+    - [CreateClassSubjectAnnouncementResponse](#modules-material-v1-shared-CreateClassSubjectAnnouncementResponse)
+    - [DeleteClassSubjectAnnouncementRequest](#modules-material-v1-shared-DeleteClassSubjectAnnouncementRequest)
+    - [DeleteClassSubjectAnnouncementResponse](#modules-material-v1-shared-DeleteClassSubjectAnnouncementResponse)
+    - [GetClassSubjectAnnouncementRequest](#modules-material-v1-shared-GetClassSubjectAnnouncementRequest)
+    - [GetClassSubjectAnnouncementResponse](#modules-material-v1-shared-GetClassSubjectAnnouncementResponse)
+    - [UpdateClassSubjectDetailRequest](#modules-material-v1-shared-UpdateClassSubjectDetailRequest)
+    - [UpdateClassSubjectDetailResponse](#modules-material-v1-shared-UpdateClassSubjectDetailResponse)
+  
 - [modules/material/v1/shared/curriculum.proto](#modules_material_v1_shared_curriculum-proto)
     - [Curriculum](#modules-material-v1-shared-Curriculum)
   
@@ -150,6 +162,189 @@
 | CLASS_GENERAL | 1 |  |
 | CLASS_COMBINED | 2 |  |
 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_class_subject-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/class_subject.proto
+
+
+
+<a name="modules-material-v1-shared-ClassSubjectAnnouncement"></a>
+
+### ClassSubjectAnnouncement
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| announcement_id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-ClassSubjectDetailPayload"></a>
+
+### ClassSubjectDetailPayload
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject_id | [string](#string) |  |  |
+| homeroom_teacher_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
+| index_minimum | [uint32](#uint32) |  |  |
+| meetings_per_week | [uint32](#uint32) |  |  |
+| lesson_hours_per_week | [uint32](#uint32) |  |  |
+| lesson_minutes | [uint32](#uint32) |  |  |
+| subject_type | [SubjectType](#modules-material-v1-shared-SubjectType) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-CreateClassSubjectAnnouncementRequest"></a>
+
+### CreateClassSubjectAnnouncementRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-CreateClassSubjectAnnouncementResponse"></a>
+
+### CreateClassSubjectAnnouncementResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-DeleteClassSubjectAnnouncementRequest"></a>
+
+### DeleteClassSubjectAnnouncementRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| announcement_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-DeleteClassSubjectAnnouncementResponse"></a>
+
+### DeleteClassSubjectAnnouncementResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-GetClassSubjectAnnouncementRequest"></a>
+
+### GetClassSubjectAnnouncementRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| page | [uint32](#uint32) |  |  |
+| size | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-GetClassSubjectAnnouncementResponse"></a>
+
+### GetClassSubjectAnnouncementResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| announcements | [ClassSubjectAnnouncement](#modules-material-v1-shared-ClassSubjectAnnouncement) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-UpdateClassSubjectDetailRequest"></a>
+
+### UpdateClassSubjectDetailRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_id | [string](#string) |  |  |
+| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-UpdateClassSubjectDetailResponse"></a>
+
+### UpdateClassSubjectDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subjects | [ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload) | repeated |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
 
  
 
