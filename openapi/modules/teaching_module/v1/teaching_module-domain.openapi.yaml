@@ -1092,6 +1092,72 @@
                 },
             },
         },
+      "/v1/teaching-module/{class_subject_id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleService],
+              summary: Get teaching Module by class subject id,
+              description: get teaching module general infor by class subject id,
+              operationId: TeachingModuleService_GetTeachingModuleList,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: teacher_id, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/teaching-module/{id}":
         {
           delete:
@@ -1185,81 +1251,6 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedTeachingModule",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/teaching-module/{subject_id}/{teacher_id}":
-        {
-          get:
-            {
-              tags: [TeachingModuleService],
-              summary: Get teaching Module by subject id and teacher id,
-              description: get teaching module general infor by subject id and teacher id,
-              operationId: TeachingModuleService_GetTeachingModuleList,
-              parameters:
-                [
-                  {
-                    name: subject_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: teacher_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
                                 },
                             },
                         },
