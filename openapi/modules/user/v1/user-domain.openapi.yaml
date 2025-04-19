@@ -529,6 +529,72 @@
                     },
                 },
             },
+          put:
+            {
+              tags: [UserService],
+              summary: Update User,
+              description: Update user detail,
+              operationId: UserService_UpdateUser,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateUserRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateUserResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
         },
       /v1/user/invite:
         {
@@ -1448,6 +1514,35 @@
               properties:
                 { message: { type: string, description: Email Sent } },
             },
+          publicUpdateUserRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: User ID },
+                  date_of_birth:
+                    { type: string, description: User Date of Birth },
+                  address: { type: string, description: User Address },
+                  gender:
+                    {
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User Gender,
+                      format: enum,
+                    },
+                  place_of_birth:
+                    { type: string, description: User Place of Birth },
+                },
+            },
+          publicUpdateUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for updating result },
+                },
+            },
           sharedUser:
             {
               type: object,
@@ -1486,7 +1581,9 @@
                     },
                   address:
                     {
-                      $ref: "#/components/schemas/sharedAddress",
+                      example: jln jln,
+                      type: string,
+                      description: User address,
                     },
                   role_type:
                     {
@@ -1516,6 +1613,26 @@
                       type: string,
                       description: Time when user data updated,
                       format: date-time,
+                    },
+                  date_of_birth:
+                    {
+                      example: 2020-01-01,
+                      type: string,
+                      description: User Date of Birth,
+                    },
+                  place_of_birth:
+                    {
+                      example: Jakarta,
+                      type: string,
+                      description: User Place of Birth,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User Gender,
+                      format: enum,
                     },
                 },
               description: User entity,

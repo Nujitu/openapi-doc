@@ -242,10 +242,13 @@ User entity
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | profile_pic | [string](#string) |  |  |
-| address | [Address](#modules-user-v1-shared-Address) |  |  |
+| address | [string](#string) |  |  |
 | role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| date_of_birth | [string](#string) |  |  |
+| place_of_birth | [string](#string) |  |  |
+| gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
 
 
 

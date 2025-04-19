@@ -595,6 +595,14 @@
                     {
                       $ref: "#/components/schemas/sharedAddress",
                     },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
                   status:
                     {
                       enum:
