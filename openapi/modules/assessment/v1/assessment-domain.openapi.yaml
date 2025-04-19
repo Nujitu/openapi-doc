@@ -2433,6 +2433,16 @@
                   { name: subject_id, in: query, schema: { type: string } },
                   { name: subject_name, in: query, schema: { type: string } },
                   { name: exam_id, in: query, schema: { type: string } },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -2812,6 +2822,70 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicUpdateQuizSettingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/statistics/{quiz_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Statistics,
+              description: Will return quiz statistics,
+              operationId: QuizService_GetQuizStatistics,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizStatisticsResponse",
                                 },
                             },
                         },
@@ -6489,6 +6563,17 @@
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
+          publicGetQuizStatisticsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  statistics:
+                    {
+                      $ref: "#/components/schemas/sharedQuizStatistics",
+                    },
+                },
+            },
           publicGetQuizSubmissionByStudentIdResponse:
             {
               type: object,
@@ -6983,6 +7068,48 @@
                       description: Time when quiz data updated,
                       format: date-time,
                     },
+                },
+            },
+          sharedQuizStatistics:
+            {
+              type: object,
+              properties:
+                {
+                  total_submission:
+                    {
+                      example: 100,
+                      type: string,
+                      description: Total submission,
+                    },
+                  total_graded:
+                    { example: 80, type: string, description: Total graded },
+                  total_ungraded:
+                    { example: 20, type: string, description: Total ungraded },
+                  total_no_submission:
+                    {
+                      example: 10,
+                      type: string,
+                      description: Total no submission,
+                    },
+                  average_score:
+                    { example: 75, type: string, description: Average score },
+                  average_time_spent:
+                    {
+                      example: 30,
+                      type: string,
+                      description: Average time spent,
+                    },
+                  average_points:
+                    { example: 80, type: string, description: Average points },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
                 },
             },
           sharedQuizSubmission:
