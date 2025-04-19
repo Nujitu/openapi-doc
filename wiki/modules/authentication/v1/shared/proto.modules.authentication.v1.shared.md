@@ -13,6 +13,8 @@
     - [Address](#modules-authentication-v1-shared-Address)
     - [User](#modules-authentication-v1-shared-User)
   
+    - [Gender](#modules-authentication-v1-shared-Gender)
+  
 - [modules/authentication/v1/shared/permission.proto](#modules_authentication_v1_shared_permission-proto)
     - [Permission](#modules-authentication-v1-shared-Permission)
     - [UserPermission](#modules-authentication-v1-shared-UserPermission)
@@ -129,6 +131,9 @@ User entity
 | email | [string](#string) |  |  |
 | profile_pic | [string](#string) |  |  |
 | address | [Address](#modules-authentication-v1-shared-Address) |  |  |
+| gender | [Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| date_of_birth | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| place_of_birth | [string](#string) |  |  |
 | status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -138,6 +143,19 @@ User entity
 
 
  
+
+
+<a name="modules-authentication-v1-shared-Gender"></a>
+
+### Gender
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| GENDER_UNSPECIFIED | 0 | Unspecified gender |
+| MALE | 1 | Male gender |
+| FEMALE | 2 | Female gender |
+
 
  
 

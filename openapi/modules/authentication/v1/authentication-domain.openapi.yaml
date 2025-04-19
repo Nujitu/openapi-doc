@@ -595,6 +595,27 @@
                     {
                       $ref: "#/components/schemas/sharedAddress",
                     },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
+                  date_of_birth:
+                    {
+                      example: 2020-01-01,
+                      type: string,
+                      description: User Date of Birth,
+                      format: date-time,
+                    },
+                  place_of_birth:
+                    {
+                      example: Jakarta,
+                      type: string,
+                      description: User Place of Birth,
+                    },
                   status:
                     {
                       enum:
