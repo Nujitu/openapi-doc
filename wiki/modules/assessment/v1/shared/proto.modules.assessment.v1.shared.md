@@ -34,6 +34,7 @@
     - [QuizOption](#modules-assessment-v1-shared-QuizOption)
     - [QuizQuestion](#modules-assessment-v1-shared-QuizQuestion)
     - [QuizSettings](#modules-assessment-v1-shared-QuizSettings)
+    - [QuizStatistics](#modules-assessment-v1-shared-QuizStatistics)
     - [QuizSubmission](#modules-assessment-v1-shared-QuizSubmission)
     - [QuizSubmissionResult](#modules-assessment-v1-shared-QuizSubmissionResult)
     - [StudentAnswer](#modules-assessment-v1-shared-StudentAnswer)
@@ -689,6 +690,30 @@
 | until_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-QuizStatistics"></a>
+
+### QuizStatistics
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| total_submission | [string](#string) |  |  |
+| total_graded | [string](#string) |  |  |
+| total_ungraded | [string](#string) |  |  |
+| total_no_submission | [string](#string) |  |  |
+| average_score | [string](#string) |  |  |
+| average_time_spent | [string](#string) |  |  |
+| average_points | [string](#string) |  |  |
+| quiz_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
 
 
 

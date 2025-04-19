@@ -91,6 +91,8 @@
     - [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse)
     - [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest)
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
+    - [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest)
+    - [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse)
     - [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest)
     - [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse)
     - [GetQuizSubmissionListRequest](#modules-assessment-v1-public-GetQuizSubmissionListRequest)
@@ -1553,6 +1555,8 @@ Service for observation related feature
 | subject_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -1573,6 +1577,36 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetQuizStatisticsRequest"></a>
+
+### GetQuizStatisticsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetQuizStatisticsResponse"></a>
+
+### GetQuizStatisticsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| statistics | [modules.assessment.v1.shared.QuizStatistics](#modules-assessment-v1-shared-QuizStatistics) |  |  |
 
 
 
@@ -1982,6 +2016,7 @@ Service for quiz related feature
 | ManualGradingSubmission | [ManualGradingSubmissionRequest](#modules-assessment-v1-public-ManualGradingSubmissionRequest) | [ManualGradingSubmissionResponse](#modules-assessment-v1-public-ManualGradingSubmissionResponse) |  |
 | GetStudentAnswer | [GetStudentAnswerRequest](#modules-assessment-v1-public-GetStudentAnswerRequest) | [GetStudentAnswerResponse](#modules-assessment-v1-public-GetStudentAnswerResponse) |  |
 | GetStudentSubmissionDetails | [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest) | [GetStudentSubmissionDetailsResponse](#modules-assessment-v1-public-GetStudentSubmissionDetailsResponse) |  |
+| GetQuizStatistics | [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest) | [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse) |  |
 
  
 
