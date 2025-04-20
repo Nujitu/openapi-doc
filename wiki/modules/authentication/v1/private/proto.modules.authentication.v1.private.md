@@ -452,6 +452,10 @@ Request body of UpdateUser
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | status | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+| date_of_birth | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| address | [string](#string) |  |  |
+| gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| place_of_birth | [string](#string) |  |  |
 | update_mask | [google.protobuf.FieldMask](#google-protobuf-FieldMask) |  |  |
 
 
