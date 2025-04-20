@@ -525,36 +525,6 @@
                 },
               description: Response body of Register new user,
             },
-          sharedAddress:
-            {
-              type: object,
-              properties:
-                {
-                  address_line_1: { type: string, description: address detail },
-                  address_line_2: { type: string, description: address detail },
-                  ADMINISTRATORistrative_area_level_1:
-                    { type: string, description: province / provinsi },
-                  ADMINISTRATORistrative_area_level_2:
-                    { type: string, description: city / kota },
-                  ADMINISTRATORistrative_area_level_3:
-                    { type: string, description: area / kecamatan },
-                  ADMINISTRATORistrative_area_level_4:
-                    { type: string, description: district / kelurahan },
-                  postal_code:
-                    { type: string, description: postal code / kode pos },
-                  latitude:
-                    {
-                      type: string,
-                      description: stored latitude coordinate in decimal,
-                    },
-                  longitude:
-                    {
-                      type: string,
-                      description: stored longitude coordinate in decimal,
-                    },
-                },
-              description: "*\n Represents user's address",
-            },
           sharedUser:
             {
               type: object,
@@ -593,7 +563,30 @@
                     },
                   address:
                     {
-                      $ref: "#/components/schemas/sharedAddress",
+                      example: jln jln,
+                      type: string,
+                      description: User address,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
+                  date_of_birth:
+                    {
+                      example: 2020-01-01,
+                      type: string,
+                      description: User Date of Birth,
+                      format: date-time,
+                    },
+                  place_of_birth:
+                    {
+                      example: Jakarta,
+                      type: string,
+                      description: User Place of Birth,
                     },
                   status:
                     {

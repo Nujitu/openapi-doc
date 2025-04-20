@@ -45,6 +45,8 @@
     - [InviteUserResponse](#modules-user-v1-public-InviteUserResponse)
     - [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest)
     - [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse)
+    - [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest)
+    - [UpdateUserResponse](#modules-user-v1-public-UpdateUserResponse)
   
     - [UserService](#modules-user-v1-public-UserService)
   
@@ -249,7 +251,7 @@
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | profile_pic | [string](#string) |  |  |
-| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| address | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -468,7 +470,7 @@ Service for student related feature
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | profile_pic | [string](#string) |  |  |
-| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| address | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -667,6 +669,40 @@ Response body of Invite
 
 
 
+
+<a name="modules-user-v1-public-UpdateUserRequest"></a>
+
+### UpdateUserRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| date_of_birth | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| address | [string](#string) |  |  |
+| gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| place_of_birth | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-UpdateUserResponse"></a>
+
+### UpdateUserResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -685,6 +721,7 @@ Service for user related feature
 | InviteUser | [InviteUserRequest](#modules-user-v1-public-InviteUserRequest) | [InviteUserResponse](#modules-user-v1-public-InviteUserResponse) |  |
 | GetUserList | [GetUserListRequest](#modules-user-v1-public-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-public-GetUserListResponse) |  |
 | NewPassword | [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest) | [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse) |  |
+| UpdateUser | [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest) | [UpdateUserResponse](#modules-user-v1-public-UpdateUserResponse) |  |
 
  
 

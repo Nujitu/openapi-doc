@@ -173,7 +173,7 @@
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | profile_pic | [string](#string) |  |  |
-| address | [modules.user.v1.shared.Address](#modules-user-v1-shared-Address) |  |  |
+| address | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
