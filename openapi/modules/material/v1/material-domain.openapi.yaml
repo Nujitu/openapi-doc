@@ -5,7 +5,7 @@
     {
       title: Material Domain,
       version: v1,
-      description: "Skoola Curriculum Group Component Service, Skola Subject Service, Skoola Curriculum Service, Skoola Header Component Service, Skola Class Group Service",
+      description: "Skoola Curriculum Group Component Service, Skola Subject Service, Skoola Curriculum Service, Skoola Header Component Service, Skola Class Group Service, Skoola Class Subject Service",
     },
   servers:
     [
@@ -1603,84 +1603,6 @@
                 },
             },
         },
-      "/v1/class-group/subject/{class_id}":
-        {
-          patch:
-            {
-              tags: [ClassGroupService],
-              summary: Update Class Group Detail,
-              description: Update Class Group Detail,
-              operationId: ClassGroupService_UpdateClassSubjectDetail,
-              parameters:
-                [
-                  {
-                    name: class_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateClassSubjectDetailRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateClassSubjectDetailResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       "/v1/class-group/teacher/{teacher_id}":
         {
           get:
@@ -2105,6 +2027,303 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetTeacherActiveSubjectsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/class-group/subject/{class_id}":
+        {
+          patch:
+            {
+              tags: [ClassSubjectService],
+              summary: Update Class Group Detail,
+              description: Update Class Group Detail,
+              operationId: ClassSubjectService_UpdateClassSubjectDetail,
+              parameters:
+                [
+                  {
+                    name: class_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedUpdateClassSubjectDetailRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedUpdateClassSubjectDetailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/class-group/subject/{class_id}/announcements":
+        {
+          get:
+            {
+              tags: [ClassSubjectService],
+              summary: Get Class Subject Announcement,
+              description: Get Class Subject Announcement,
+              operationId: ClassSubjectService_GetClassSubjectAnnouncement,
+              parameters:
+                [
+                  {
+                    name: class_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: page,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: size,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetClassSubjectAnnouncementResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [ClassSubjectService],
+              summary: Create Class Subject Announcement,
+              description: Create Class Subject Announcement,
+              operationId: ClassSubjectService_CreateClassSubjectAnnouncement,
+              parameters:
+                [
+                  {
+                    name: class_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateClassSubjectAnnouncementRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateClassSubjectAnnouncementResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/class-group/subject/{class_id}/announcements/{announcement_id}":
+        {
+          delete:
+            {
+              tags: [ClassSubjectService],
+              summary: Get Class Subject Announcement,
+              description: Get Class Subject Announcement,
+              operationId: ClassSubjectService_DeleteClassSubjectAnnouncement,
+              parameters:
+                [
+                  {
+                    name: class_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: announcement_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteClassSubjectAnnouncementResponse",
                                 },
                             },
                         },
@@ -2744,54 +2963,6 @@
                     },
                 },
             },
-          publicClassSubjectDetailPayload:
-            {
-              type: object,
-              properties:
-                {
-                  subject_id:
-                    { example: 123, type: string, description: Subject ID },
-                  homeroom_teacher_id:
-                    { example: 123, type: string, description: teacher ID },
-                  subject_name:
-                    {
-                      example: Matematika,
-                      type: string,
-                      description: Subject name,
-                    },
-                  index_minimum:
-                    {
-                      type: integer,
-                      description: Index Minimum,
-                      format: uint32,
-                    },
-                  meetings_per_week:
-                    {
-                      type: integer,
-                      description: Subject meetings per week,
-                      format: uint32,
-                    },
-                  lesson_hours_per_week:
-                    {
-                      type: integer,
-                      description: Lesson Hours per week,
-                      format: uint32,
-                    },
-                  lesson_minutes:
-                    {
-                      type: integer,
-                      description: Lesson minutes,
-                      format: uint32,
-                    },
-                  subject_type:
-                    {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
-                      type: string,
-                      description: Subject type,
-                      format: enum,
-                    },
-                },
-            },
           publicCreateClassGroupRequest:
             {
               type: object,
@@ -2825,7 +2996,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
+                          $ref: "#/components/schemas/sharedClassSubjectDetailPayload",
                         },
                       description: Component of class,
                     },
@@ -3104,7 +3275,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
+                          $ref: "#/components/schemas/sharedClassSubjectDetailPayload",
                         },
                       description: Component of class,
                     },
@@ -3128,41 +3299,6 @@
                         },
                       description: list of class subjects,
                     },
-                },
-            },
-          publicUpdateClassSubjectDetailRequest:
-            {
-              type: object,
-              properties:
-                {
-                  class_id:
-                    { example: 123, type: string, description: Class ID },
-                  class_subjects:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
-                        },
-                      description: Component of class,
-                    },
-                },
-            },
-          publicUpdateClassSubjectDetailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  class_subjects:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicClassSubjectDetailPayload",
-                        },
-                      description: Component of class,
-                    },
-                  message: { type: string, description: response info },
                 },
             },
           sharedClassGroup:
@@ -3281,6 +3417,54 @@
                     },
                 },
             },
+          sharedClassSubjectDetailPayload:
+            {
+              type: object,
+              properties:
+                {
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  homeroom_teacher_id:
+                    { example: 123, type: string, description: teacher ID },
+                  subject_name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  index_minimum:
+                    {
+                      type: integer,
+                      description: Index Minimum,
+                      format: uint32,
+                    },
+                  meetings_per_week:
+                    {
+                      type: integer,
+                      description: Subject meetings per week,
+                      format: uint32,
+                    },
+                  lesson_hours_per_week:
+                    {
+                      type: integer,
+                      description: Lesson Hours per week,
+                      format: uint32,
+                    },
+                  lesson_minutes:
+                    {
+                      type: integer,
+                      description: Lesson minutes,
+                      format: uint32,
+                    },
+                  subject_type:
+                    {
+                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      type: string,
+                      description: Subject type,
+                      format: enum,
+                    },
+                },
+            },
           sharedStudentCourse:
             {
               type: object,
@@ -3390,6 +3574,141 @@
                 },
               description: "*\n Represents user's address",
             },
+          sharedClassSubjectAnnouncement:
+            {
+              type: object,
+              properties:
+                {
+                  announcement_id:
+                    {
+                      example: 123124,
+                      type: string,
+                      description: Announcement ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: e159dd7a-b4ea-4395-ad24,
+                      type: string,
+                      description: Class Subject Id,
+                    },
+                  teacher_id:
+                    { example: 5432123, type: string, description: Teacher Id },
+                  title:
+                    {
+                      example: Pengumuman sesi khusus materi barisan dan deret,
+                      type: string,
+                      description: Class ID,
+                    },
+                  description:
+                    {
+                      example: Sesi pembelajaran khusus untuk mengenal konsep dasar barisan dan deret.,
+                      type: string,
+                      description: Class ID,
+                    },
+                },
+            },
+          sharedCreateClassSubjectAnnouncementRequest:
+            {
+              type: object,
+              properties:
+                {
+                  class_id:
+                    { example: 123124, type: string, description: Class ID },
+                  teacher_id:
+                    {
+                      example: 12321412,
+                      type: string,
+                      description: Teacher ID,
+                    },
+                  title:
+                    {
+                      example: Pengumuman sesi khusus materi barisan dan deret,
+                      type: string,
+                      description: Title of the Announcement,
+                    },
+                  description:
+                    {
+                      example: Sesi pembelajaran khusus untuk mengenal konsep dasar barisan dan deret.,
+                      type: string,
+                      description: Description of the Announcement,
+                    },
+                },
+            },
+          sharedCreateClassSubjectAnnouncementResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the new Announcement,
+                    },
+                },
+            },
+          sharedDeleteClassSubjectAnnouncementResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming deletion of the Announcement,
+                    },
+                },
+            },
+          sharedGetClassSubjectAnnouncementResponse:
+            {
+              type: object,
+              properties:
+                {
+                  announcements:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedClassSubjectAnnouncement",
+                        },
+                      description: Class Announcements,
+                    },
+                },
+            },
+          sharedUpdateClassSubjectDetailRequest:
+            {
+              type: object,
+              properties:
+                {
+                  class_id:
+                    { example: 123, type: string, description: Class ID },
+                  class_subjects:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedClassSubjectDetailPayload",
+                        },
+                      description: Component of class,
+                    },
+                },
+            },
+          sharedUpdateClassSubjectDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  class_subjects:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedClassSubjectDetailPayload",
+                        },
+                      description: Component of class,
+                    },
+                  message: { type: string, description: response info },
+                },
+            },
         },
       responses:
         {
@@ -3425,5 +3744,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  security: [{ OAuth2: [TEACHER] }],
+  security: [{ OAuth2: [ADMIN] }],
 }
