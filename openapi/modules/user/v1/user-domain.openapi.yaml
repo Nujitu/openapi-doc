@@ -793,6 +793,75 @@
                 },
             },
         },
+      /v1/user/presigned-url:
+        {
+          post:
+            {
+              tags: [UserService],
+              summary: Create User Presigned Post URL,
+              description: Create an AWS S3 presigned URLs to upload user assets,
+              operationId: UserService_CreateUserPresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateUserPresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateUserPresignedPostUrlResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/student/list/{id}":
         {
           get:
@@ -1413,6 +1482,81 @@
             },
           .UpdateTeacherResponse:
             { type: object, properties: { message: { type: string } } },
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
+          v1S3PresignedUrlRequest:
+            {
+              type: object,
+              properties:
+                { filename: { type: string }, filesize: { type: string } },
+            },
+          v1S3PresignedUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  url: { type: string },
+                  values:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedValues",
+                    },
+                },
+            },
+          v1S3PresignedValues:
+            {
+              type: object,
+              properties:
+                {
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          publicCreateUserPresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlRequest",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                    },
+                },
+            },
+          publicCreateUserPresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
+                    },
+                },
+            },
           publicGetUserListResponse:
             {
               type: object,
@@ -1508,6 +1652,8 @@
                     },
                   place_of_birth:
                     { type: string, description: User Place of Birth },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
                 },
             },
           publicUpdateUserResponse:
@@ -1611,6 +1757,8 @@
                       description: User Gender,
                       format: enum,
                     },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
                 },
               description: User entity,
             },

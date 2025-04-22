@@ -474,6 +474,18 @@
     {
       "schemas":
         {
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
           publicRegisterRequest:
             {
               type: object,
@@ -600,6 +612,8 @@
                       description: Represent user status,
                       format: enum,
                     },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",

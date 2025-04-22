@@ -135,6 +135,7 @@ User entity
 | date_of_birth | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | place_of_birth | [string](#string) |  |  |
 | status | [UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

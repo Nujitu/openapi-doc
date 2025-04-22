@@ -22,6 +22,7 @@
 - [modules/user/v1/shared/user.proto](#modules_user_v1_shared_user-proto)
     - [Address](#modules-user-v1-shared-Address)
     - [User](#modules-user-v1-shared-User)
+    - [UserProfile](#modules-user-v1-shared-UserProfile)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -213,15 +214,11 @@ Represents user&#39;s address
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| address_line_1 | [string](#string) |  | address detail |
-| address_line_2 | [string](#string) |  | address detail |
-| ADMINISTRATORistrative_area_level_1 | [string](#string) |  | province / provinsi |
-| ADMINISTRATORistrative_area_level_2 | [string](#string) |  | city / kota |
-| ADMINISTRATORistrative_area_level_3 | [string](#string) |  | area / kecamatan |
-| ADMINISTRATORistrative_area_level_4 | [string](#string) |  | district / kelurahan |
-| postal_code | [string](#string) |  | postal code / kode pos |
-| latitude | [string](#string) |  | stored latitude coordinate in decimal |
-| longitude | [string](#string) |  | stored longitude coordinate in decimal |
+| street | [string](#string) |  |  |
+| city | [string](#string) |  |  |
+| state | [string](#string) |  |  |
+| country | [string](#string) |  |  |
+| postal_code | [string](#string) |  |  |
 
 
 
@@ -249,6 +246,23 @@ User entity
 | date_of_birth | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | place_of_birth | [string](#string) |  |  |
 | gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-shared-UserProfile"></a>
+
+### UserProfile
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 
 
 
