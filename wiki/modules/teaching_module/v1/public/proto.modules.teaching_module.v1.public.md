@@ -34,6 +34,7 @@
     - [LearningGoalService](#modules-teaching_module-v1-public-LearningGoalService)
   
 - [modules/teaching_module/v1/public/study_material.proto](#modules_teaching_module_v1_public_study_material-proto)
+    - [CreateStudyMaterialRequest](#modules-teaching_module-v1-public-CreateStudyMaterialRequest)
     - [CreateStudyMaterialResponse](#modules-teaching_module-v1-public-CreateStudyMaterialResponse)
     - [DeleteStudyMaterialRequest](#modules-teaching_module-v1-public-DeleteStudyMaterialRequest)
     - [DeleteStudyMaterialResponse](#modules-teaching_module-v1-public-DeleteStudyMaterialResponse)
@@ -43,6 +44,7 @@
     - [GetStudyMaterialByTeachingModuleAndClassSubjectResponse](#modules-teaching_module-v1-public-GetStudyMaterialByTeachingModuleAndClassSubjectResponse)
     - [GetStudyMaterialDetailRequest](#modules-teaching_module-v1-public-GetStudyMaterialDetailRequest)
     - [GetStudyMaterialDetailResponse](#modules-teaching_module-v1-public-GetStudyMaterialDetailResponse)
+    - [UpdateStudyMaterialRequest](#modules-teaching_module-v1-public-UpdateStudyMaterialRequest)
     - [UpdateStudyMaterialResponse](#modules-teaching_module-v1-public-UpdateStudyMaterialResponse)
   
     - [StudyMaterialService](#modules-teaching_module-v1-public-StudyMaterialService)
@@ -463,6 +465,29 @@
 
 
 
+<a name="modules-teaching_module-v1-public-CreateStudyMaterialRequest"></a>
+
+### CreateStudyMaterialRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| instruction | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| folder_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| class_group_id | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-teaching_module-v1-public-CreateStudyMaterialResponse"></a>
 
 ### CreateStudyMaterialResponse
@@ -599,6 +624,25 @@
 
 
 
+<a name="modules-teaching_module-v1-public-UpdateStudyMaterialRequest"></a>
+
+### UpdateStudyMaterialRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) | optional |  |
+| instruction | [string](#string) | optional |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| description | [string](#string) | optional |  |
+
+
+
+
+
+
 <a name="modules-teaching_module-v1-public-UpdateStudyMaterialResponse"></a>
 
 ### UpdateStudyMaterialResponse
@@ -627,11 +671,11 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateStudyMaterial | [.modules.teaching_modules.v1.shared.StudyMaterial](#modules-teaching_modules-v1-shared-StudyMaterial) | [CreateStudyMaterialResponse](#modules-teaching_module-v1-public-CreateStudyMaterialResponse) |  |
+| CreateStudyMaterial | [CreateStudyMaterialRequest](#modules-teaching_module-v1-public-CreateStudyMaterialRequest) | [CreateStudyMaterialResponse](#modules-teaching_module-v1-public-CreateStudyMaterialResponse) |  |
 | GetStudyMaterialByFolderID | [GetStudyMaterialByFolderIDRequest](#modules-teaching_module-v1-public-GetStudyMaterialByFolderIDRequest) | [GetStudyMaterialByFolderIDResponse](#modules-teaching_module-v1-public-GetStudyMaterialByFolderIDResponse) |  |
 | GetStudyMaterialByParam | [GetStudyMaterialByTeachingModuleAndClassSubjectRequest](#modules-teaching_module-v1-public-GetStudyMaterialByTeachingModuleAndClassSubjectRequest) | [GetStudyMaterialByTeachingModuleAndClassSubjectResponse](#modules-teaching_module-v1-public-GetStudyMaterialByTeachingModuleAndClassSubjectResponse) |  |
 | GetStudyMaterialDetail | [GetStudyMaterialDetailRequest](#modules-teaching_module-v1-public-GetStudyMaterialDetailRequest) | [GetStudyMaterialDetailResponse](#modules-teaching_module-v1-public-GetStudyMaterialDetailResponse) |  |
-| UpdateStudyMaterial | [.modules.teaching_modules.v1.shared.StudyMaterial](#modules-teaching_modules-v1-shared-StudyMaterial) | [UpdateStudyMaterialResponse](#modules-teaching_module-v1-public-UpdateStudyMaterialResponse) |  |
+| UpdateStudyMaterial | [UpdateStudyMaterialRequest](#modules-teaching_module-v1-public-UpdateStudyMaterialRequest) | [UpdateStudyMaterialResponse](#modules-teaching_module-v1-public-UpdateStudyMaterialResponse) |  |
 | DeleteStudyMaterial | [DeleteStudyMaterialRequest](#modules-teaching_module-v1-public-DeleteStudyMaterialRequest) | [DeleteStudyMaterialResponse](#modules-teaching_module-v1-public-DeleteStudyMaterialResponse) |  |
 
  
