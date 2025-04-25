@@ -180,17 +180,16 @@ study material
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
-| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | instruction | [string](#string) |  |  |
-| attachments | [string](#string) | repeated |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | folder_id | [string](#string) |  |  |
-| publish_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | teaching_module_id | [string](#string) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | description | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
+| class_group_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
