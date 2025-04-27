@@ -456,6 +456,7 @@ Request body of UpdateUser
 | address | [string](#string) |  |  |
 | gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
 | place_of_birth | [string](#string) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 | update_mask | [google.protobuf.FieldMask](#google-protobuf-FieldMask) |  |  |
 
 
