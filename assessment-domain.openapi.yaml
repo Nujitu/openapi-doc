@@ -3266,6 +3266,22 @@
                     in: query,
                     schema: { type: string },
                   },
+                  {
+                    name: state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
                 ],
               responses:
                 {
