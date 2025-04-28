@@ -1753,6 +1753,7 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | student_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 
 
 
