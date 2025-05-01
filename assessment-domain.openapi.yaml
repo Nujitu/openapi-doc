@@ -7597,6 +7597,22 @@
                       type: string,
                       description: Class subject ID,
                     },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Subject ID,
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
                 },
             },
         },
