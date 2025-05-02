@@ -594,6 +594,7 @@
 | student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1117,6 +1118,7 @@ Service for assignment related feature
 | student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |

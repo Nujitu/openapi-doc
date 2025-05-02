@@ -419,6 +419,11 @@
                         format: enum,
                       },
                   },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -1851,6 +1856,11 @@
                         type: string,
                         format: enum,
                       },
+                  },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
                   },
                   { name: sort, in: query, schema: { type: string } },
                   {
@@ -4105,6 +4115,12 @@
                       type: string,
                       description: "Class Subject ID, observation submission will be attached to specific class",
                     },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -4427,6 +4443,12 @@
                       example: 123,
                       type: string,
                       description: "Class Subject ID, observation submission will be attached to specific class",
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
                     },
                   created_at:
                     {
@@ -6193,6 +6215,12 @@
                       type: string,
                       description: "Class Subject ID, assignment submission will be attached to specific class",
                     },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -6470,6 +6498,12 @@
                       example: 123,
                       type: string,
                       description: "Class Subject ID, assignment submission will be attached to specific class",
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
                     },
                   created_at:
                     {
