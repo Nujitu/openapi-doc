@@ -3012,28 +3012,11 @@
               type: object,
               properties:
                 {
-                  address_line_1: { type: string, description: address detail },
-                  address_line_2: { type: string, description: address detail },
-                  ADMINISTRATORistrative_area_level_1:
-                    { type: string, description: province / provinsi },
-                  ADMINISTRATORistrative_area_level_2:
-                    { type: string, description: city / kota },
-                  ADMINISTRATORistrative_area_level_3:
-                    { type: string, description: area / kecamatan },
-                  ADMINISTRATORistrative_area_level_4:
-                    { type: string, description: district / kelurahan },
-                  postal_code:
-                    { type: string, description: postal code / kode pos },
-                  latitude:
-                    {
-                      type: string,
-                      description: stored latitude coordinate in decimal,
-                    },
-                  longitude:
-                    {
-                      type: string,
-                      description: stored longitude coordinate in decimal,
-                    },
+                  street: { type: string },
+                  city: { type: string },
+                  state: { type: string },
+                  country: { type: string },
+                  postal_code: { type: string },
                 },
               description: "*\n Represents user's address",
             },

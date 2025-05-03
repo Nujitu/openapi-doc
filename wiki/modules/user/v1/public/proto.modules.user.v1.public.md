@@ -37,6 +37,8 @@
     - [TeacherService](#-TeacherService)
   
 - [modules/user/v1/public/user.proto](#modules_user_v1_public_user-proto)
+    - [CreateUserPresignedPostUrlRequest](#modules-user-v1-public-CreateUserPresignedPostUrlRequest)
+    - [CreateUserPresignedPostUrlResponse](#modules-user-v1-public-CreateUserPresignedPostUrlResponse)
     - [GetUserListRequest](#modules-user-v1-public-GetUserListRequest)
     - [GetUserListResponse](#modules-user-v1-public-GetUserListResponse)
     - [GetUserRequest](#modules-user-v1-public-GetUserRequest)
@@ -541,6 +543,36 @@ Service for teacher related feature
 
 
 
+<a name="modules-user-v1-public-CreateUserPresignedPostUrlRequest"></a>
+
+### CreateUserPresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [common.v1.S3PresignedUrlRequest](#common-v1-S3PresignedUrlRequest) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-CreateUserPresignedPostUrlResponse"></a>
+
+### CreateUserPresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) | repeated |  |
+
+
+
+
+
+
 <a name="modules-user-v1-public-GetUserListRequest"></a>
 
 ### GetUserListRequest
@@ -683,6 +715,11 @@ Response body of Invite
 | address | [string](#string) |  |  |
 | gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
 | place_of_birth | [string](#string) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+| full_name | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
 
 
 
@@ -722,6 +759,7 @@ Service for user related feature
 | GetUserList | [GetUserListRequest](#modules-user-v1-public-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-public-GetUserListResponse) |  |
 | NewPassword | [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest) | [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse) |  |
 | UpdateUser | [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest) | [UpdateUserResponse](#modules-user-v1-public-UpdateUserResponse) |  |
+| CreateUserPresignedPostUrl | [CreateUserPresignedPostUrlRequest](#modules-user-v1-public-CreateUserPresignedPostUrlRequest) | [CreateUserPresignedPostUrlResponse](#modules-user-v1-public-CreateUserPresignedPostUrlResponse) |  |
 
  
 
