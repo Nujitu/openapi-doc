@@ -2164,6 +2164,10 @@
                       type: string,
                       description: Message confirming the creation of the study material,
                     },
+                  study_material:
+                    {
+                      $ref: "#/components/schemas/sharedStudyMaterial",
+                    },
                 },
             },
           publicDeleteStudyMaterialResponse:

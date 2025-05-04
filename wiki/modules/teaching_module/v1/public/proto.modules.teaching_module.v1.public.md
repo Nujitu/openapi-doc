@@ -497,6 +497,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+| study_material | [modules.teaching_modules.v1.shared.StudyMaterial](#modules-teaching_modules-v1-shared-StudyMaterial) |  |  |
 
 
 
