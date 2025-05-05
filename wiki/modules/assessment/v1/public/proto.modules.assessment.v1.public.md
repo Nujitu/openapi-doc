@@ -91,6 +91,7 @@
     - [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse)
     - [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest)
     - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
+    - [GetQuizListResponse.Quiz](#modules-assessment-v1-public-GetQuizListResponse-Quiz)
     - [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest)
     - [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse)
     - [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest)
@@ -1577,8 +1578,24 @@ Service for observation related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) | repeated |  |
+| quiz | [GetQuizListResponse.Quiz](#modules-assessment-v1-public-GetQuizListResponse-Quiz) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetQuizListResponse-Quiz"></a>
+
+### GetQuizListResponse.Quiz
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) |  |  |
+| settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 
 
 
