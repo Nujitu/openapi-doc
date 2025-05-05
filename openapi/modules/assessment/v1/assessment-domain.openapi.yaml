@@ -4,7 +4,7 @@
   info:
     {
       title: Assessment Domain,
-      description: "Skoola Observation Service, Skoola Rubric Service, Skoola Assignment Service, Skola Quiz Service",
+      description: "Skola Quiz Service, Skoola Observation Service, Skoola Rubric Service, Skoola Assignment Service",
       version: v1,
     },
   servers:
@@ -14,6 +14,1321 @@
     ],
   paths:
     {
+      /v1/quiz:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Create a new Quiz,
+              description: Teacher create a new Quiz,
+              operationId: QuizService_CreateQuiz,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateQuizRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateQuizResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/answer/{quiz_id}/submit":
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Questions,
+              description: Will return list of question for student to answer,
+              operationId: QuizService_SubmitStudentAnswer,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicSubmitStudentAnswerRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicSubmitStudentAnswerResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/list/{instance_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz List,
+              description: Get Quiz list will return list of quiz info,
+              operationId: QuizService_GetQuizList,
+              parameters:
+                [
+                  {
+                    name: instance_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: title, in: query, schema: { type: string } },
+                  {
+                    name: learning_goal_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: learning_goal_title,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: subject_name, in: query, schema: { type: string } },
+                  { name: exam_id, in: query, schema: { type: string } },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/questions:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Creating questions,
+              description: Teacher create a list of questions,
+              operationId: QuizService_CreateQuestions,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateQuestionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateQuestionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/questions/{quiz_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Questions,
+              description: Will return list of question for student to answer,
+              operationId: QuizService_GetQuestionList,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuestionListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [QuizService],
+              summary: Update Quiz Questions,
+              description: Teacher can update question and server will replace every question in db,
+              operationId: QuizService_EditQuestions,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicEditQuestionsRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicEditQuestionsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/setting:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Create a new Quiz,
+              description: Teacher create a new Quiz,
+              operationId: QuizService_CreateQuizSetting,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateQuizSettingRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateQuizSettingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/setting/{id}":
+        {
+          patch:
+            {
+              tags: [QuizService],
+              summary: Update Quiz Setting,
+              description: Update Quiz Setting,
+              operationId: QuizService_UpdateQuizSetting,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateQuizSettingRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateQuizSettingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/statistics/{quiz_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Statistics,
+              description: Will return quiz statistics,
+              operationId: QuizService_GetQuizStatistics,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizStatisticsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/student/submission:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get all student submission,
+              description: Will return student quiz submission in class,
+              operationId: QuizService_GetStudentSubmissions,
+              parameters:
+                [
+                  { name: student_id, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentSubmissionsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/submission/list/{class_subject_id}/{quiz_id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get all quiz submission,
+              description: Will return all quiz submission in class,
+              operationId: QuizService_GetQuizSubmissionList,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  { name: student_name, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizSubmissionListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/submission/manual-grading:
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Manual Grading Answer,
+              description: Teacher will manually grading student answer,
+              operationId: QuizService_ManualGradingSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicManualGradingSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicManualGradingSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/submission/student-id:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get an quiz submission by student id,
+              description: Will return quiz assessment by specified student id and quiz id,
+              operationId: QuizService_GetQuizSubmissionByStudentId,
+              parameters:
+                [
+                  { name: quiz_id, in: query, schema: { type: string } },
+                  { name: student_id, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/submission/student-id/bulk:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get bulk quiz submission by many student ids,
+              description: Will return multiple quiz assessment by specified student ids and quiz id,
+              operationId: QuizService_GetBulkQuizSubmissionByStudentId,
+              parameters:
+                [
+                  { name: quiz_id, in: query, schema: { type: string } },
+                  { name: student_ids, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetBulkQuizSubmissionByStudentIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/submission/{quiz_id}/{nisn}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Student Answer,
+              description: Will return all student answer for selected quiz,
+              operationId: QuizService_GetStudentAnswer,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: nisn,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentAnswerResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/submission_detail/{quiz_id}/{nisn}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Student Submission Details,
+              description: Will return all detail about student submission and the quiz,
+              operationId: QuizService_GetStudentSubmissionDetails,
+              parameters:
+                [
+                  {
+                    name: quiz_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: nisn,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetStudentSubmissionDetailsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/quiz/{id}":
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get Quiz Detail,
+              description: Get Quiz Detail will return both quiz information and settings,
+              operationId: QuizService_GetQuizDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetQuizDetailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [QuizService],
+              summary: Update Quiz,
+              description: Update Quiz Information,
+              operationId: QuizService_UpdateQuiz,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateQuizRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateQuizResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/observation:
         {
           get:
@@ -2590,1326 +3905,1247 @@
                 },
             },
         },
-      /v1/quiz:
-        {
-          post:
-            {
-              tags: [QuizService],
-              summary: Create a new Quiz,
-              description: Teacher create a new Quiz,
-              operationId: QuizService_CreateQuiz,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateQuizRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateQuizResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/answer/{quiz_id}/submit":
-        {
-          post:
-            {
-              tags: [QuizService],
-              summary: Get Quiz Questions,
-              description: Will return list of question for student to answer,
-              operationId: QuizService_SubmitStudentAnswer,
-              parameters:
-                [
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicSubmitStudentAnswerRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicSubmitStudentAnswerResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/list/{instance_id}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get Quiz List,
-              description: Get Quiz list will return list of quiz info,
-              operationId: QuizService_GetQuizList,
-              parameters:
-                [
-                  {
-                    name: instance_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  { name: title, in: query, schema: { type: string } },
-                  {
-                    name: learning_goal_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: learning_goal_title,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: subject_id, in: query, schema: { type: string } },
-                  { name: subject_name, in: query, schema: { type: string } },
-                  { name: exam_id, in: query, schema: { type: string } },
-                  {
-                    name: teaching_module_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: teaching_module_folder_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetQuizListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/questions:
-        {
-          post:
-            {
-              tags: [QuizService],
-              summary: Creating questions,
-              description: Teacher create a list of questions,
-              operationId: QuizService_CreateQuestions,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateQuestionRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateQuestionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/questions/{quiz_id}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get Quiz Questions,
-              description: Will return list of question for student to answer,
-              operationId: QuizService_GetQuestionList,
-              parameters:
-                [
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetQuestionListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [QuizService],
-              summary: Update Quiz Questions,
-              description: Teacher can update question and server will replace every question in db,
-              operationId: QuizService_EditQuestions,
-              parameters:
-                [
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicEditQuestionsRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicEditQuestionsResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/setting:
-        {
-          post:
-            {
-              tags: [QuizService],
-              summary: Create a new Quiz,
-              description: Teacher create a new Quiz,
-              operationId: QuizService_CreateQuizSetting,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateQuizSettingRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateQuizSettingResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/setting/{id}":
-        {
-          patch:
-            {
-              tags: [QuizService],
-              summary: Update Quiz Setting,
-              description: Update Quiz Setting,
-              operationId: QuizService_UpdateQuizSetting,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateQuizSettingRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateQuizSettingResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/statistics/{quiz_id}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get Quiz Statistics,
-              description: Will return quiz statistics,
-              operationId: QuizService_GetQuizStatistics,
-              parameters:
-                [
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetQuizStatisticsResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/student/submission:
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get all student submission,
-              description: Will return student quiz submission in class,
-              operationId: QuizService_GetStudentSubmissions,
-              parameters:
-                [
-                  { name: student_id, in: query, schema: { type: string } },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: state,
-                    in: query,
-                    schema:
-                      {
-                        enum:
-                          [
-                            UNKNOWN_SUBMISSON,
-                            NO_SUBMISSION,
-                            NEED_GRADING,
-                            GRADED,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetStudentSubmissionsResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/submission/list/{class_subject_id}/{quiz_id}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get all quiz submission,
-              description: Will return all quiz submission in class,
-              operationId: QuizService_GetQuizSubmissionList,
-              parameters:
-                [
-                  {
-                    name: class_subject_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: state,
-                    in: query,
-                    schema:
-                      {
-                        enum:
-                          [
-                            UNKNOWN_SUBMISSON,
-                            NO_SUBMISSION,
-                            NEED_GRADING,
-                            GRADED,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  { name: student_name, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetQuizSubmissionListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/submission/manual-grading:
-        {
-          post:
-            {
-              tags: [QuizService],
-              summary: Manual Grading Answer,
-              description: Teacher will manually grading student answer,
-              operationId: QuizService_ManualGradingSubmission,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicManualGradingSubmissionRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicManualGradingSubmissionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/submission/student-id:
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get an quiz submission by student id,
-              description: Will return quiz assessment by specified student id and quiz id,
-              operationId: QuizService_GetQuizSubmissionByStudentId,
-              parameters:
-                [
-                  { name: quiz_id, in: query, schema: { type: string } },
-                  { name: student_id, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetQuizSubmissionByStudentIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/submission/student-id/bulk:
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get bulk quiz submission by many student ids,
-              description: Will return multiple quiz assessment by specified student ids and quiz id,
-              operationId: QuizService_GetBulkQuizSubmissionByStudentId,
-              parameters:
-                [
-                  { name: quiz_id, in: query, schema: { type: string } },
-                  { name: student_ids, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetBulkQuizSubmissionByStudentIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/submission/{quiz_id}/{nisn}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get Student Answer,
-              description: Will return all student answer for selected quiz,
-              operationId: QuizService_GetStudentAnswer,
-              parameters:
-                [
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: nisn,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetStudentAnswerResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/submission_detail/{quiz_id}/{nisn}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get Student Submission Details,
-              description: Will return all detail about student submission and the quiz,
-              operationId: QuizService_GetStudentSubmissionDetails,
-              parameters:
-                [
-                  {
-                    name: quiz_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: nisn,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetStudentSubmissionDetailsResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/{id}":
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get Quiz Detail,
-              description: Get Quiz Detail will return both quiz information and settings,
-              operationId: QuizService_GetQuizDetail,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetQuizDetailResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [QuizService],
-              summary: Update Quiz,
-              description: Update Quiz Information,
-              operationId: QuizService_UpdateQuiz,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateQuizRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateQuizResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
     },
   "components":
     {
       "schemas":
         {
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          publicAnswer:
+            {
+              type: object,
+              properties:
+                {
+                  question_id:
+                    { example: 123, type: string, description: Question ID },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                  options:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                    },
+                },
+            },
+          publicCreateQuestionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicCreateQuestionResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicCreateQuizRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                },
+            },
+          publicCreateQuizResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          publicCreateQuizSettingRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { example: 123, type: string, description: Quiz },
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicQuizAssignee",
+                        },
+                    },
+                  folder_id: { type: string },
+                },
+            },
+          publicCreateQuizSettingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  setting:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                },
+            },
+          publicEditQuestionsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicEditQuestionsResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicGetBulkQuizSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmission",
+                        },
+                      description: Quiz submission details,
+                    },
+                },
+            },
+          publicGetQuestionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicGetQuizDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                  setting:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicGetQuizListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicGetQuizListResponseQuiz",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetQuizListResponseQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          publicGetQuizStatisticsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  statistics:
+                    {
+                      $ref: "#/components/schemas/sharedQuizStatistics",
+                    },
+                },
+            },
+          publicGetQuizSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSubmission",
+                    },
+                },
+            },
+          publicGetQuizSubmissionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission_list:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmissionResult",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetStudentAnswerResponse:
+            {
+              type: object,
+              properties:
+                {
+                  answers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAnswer",
+                        },
+                    },
+                },
+            },
+          publicGetStudentSubmissionDetailsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  submission_info:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSubmission",
+                    },
+                  answers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAnswer",
+                        },
+                    },
+                },
+            },
+          publicGetStudentSubmissionsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentSubmissions",
+                        },
+                    },
+                },
+            },
+          publicManualGradingSubmissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  body:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicManualGradingSubmissionRequestBody",
+                        },
+                    },
+                  quiz_id: { type: string },
+                  nisn: { type: string },
+                },
+            },
+          publicManualGradingSubmissionRequestBody:
+            {
+              type: object,
+              properties:
+                { score: { type: string }, answer_id: { type: string } },
+            },
+          publicManualGradingSubmissionResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicQuizAssignee:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string },
+                  student_name: { type: string },
+                },
+            },
+          publicSubmitStudentAnswerRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  student_id: { type: string },
+                  student_name: { type: string },
+                  submission_start_time: { type: string },
+                  subission_end_time: { type: string },
+                  answer:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAnswer",
+                        },
+                    },
+                },
+            },
+          publicSubmitStudentAnswerResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicUpdateQuizRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                },
+            },
+          publicUpdateQuizResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          publicUpdateQuizSettingRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Setting ID },
+                  quiz_id: { example: 123, type: string, description: Quiz },
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                    },
+                },
+            },
+          publicUpdateQuizSettingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  setting:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                },
+            },
+          sharedQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizOption:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  text: { type: string },
+                  value: { type: string },
+                  isAnswer: { type: boolean },
+                  priority: { type: string },
+                },
+            },
+          sharedQuizQuestion:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Question ID },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  question:
+                    {
+                      example: Choose the correct answer,
+                      type: string,
+                      description: Question,
+                    },
+                  questionType:
+                    {
+                      example: MULIPLE_ANSWER,
+                      enum:
+                        [
+                          ASSESSMENT_QUIZ_EMPTY,
+                          TEXT,
+                          ESSAY,
+                          MULTIPLE_ANSWER,
+                          SINGLE_ANSWER,
+                          FILE_UPLOAD,
+                          NUMERIC,
+                          TRUE_FALSE,
+                          SORTING,
+                          MATCHING,
+                          MULTIPLE_PARTIAL_ANSWER,
+                        ],
+                      type: string,
+                      description: question type,
+                      format: enum,
+                    },
+                  points:
+                    {
+                      example: 5,
+                      type: integer,
+                      description: question points,
+                      format: int32,
+                    },
+                  options:
+                    {
+                      example: 5,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                      description: question option answer,
+                    },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                },
+            },
+          sharedQuizSettings:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Setting ID },
+                  quiz_id: { example: 123, type: string, description: Quiz },
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                      format: date-time,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizStatistics:
+            {
+              type: object,
+              properties:
+                {
+                  total_submission:
+                    {
+                      example: 100,
+                      type: string,
+                      description: Total submission,
+                    },
+                  total_graded:
+                    { example: 80, type: string, description: Total graded },
+                  total_ungraded:
+                    { example: 20, type: string, description: Total ungraded },
+                  total_no_submission:
+                    {
+                      example: 10,
+                      type: string,
+                      description: Total no submission,
+                    },
+                  average_score:
+                    { example: 75, type: string, description: Average score },
+                  average_time_spent:
+                    {
+                      example: 30,
+                      type: string,
+                      description: Average time spent,
+                    },
+                  average_points:
+                    { example: 80, type: string, description: Average points },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                },
+            },
+          sharedQuizSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Quiz submission ID,
+                    },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  attempt:
+                    {
+                      example: 1,
+                      type: integer,
+                      description: Number of quiz submission attempt,
+                      format: int32,
+                    },
+                  time_spent:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time spent,
+                      format: int32,
+                    },
+                  score:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The score earned by students on scale of 0 to 100,
+                      format: float,
+                    },
+                  points:
+                    {
+                      example: 100,
+                      type: integer,
+                      description: The total point from students answer,
+                      format: int32,
+                    },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz submission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz submission is updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizSubmissionResult:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  total_score:
+                    { example: 100, type: string, description: Total score },
+                  correct_answer:
+                    { example: 100, type: string, description: Correct answer },
+                  duration:
+                    { example: 100, type: string, description: Duration },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                },
+            },
+          sharedStudentAnswer:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Question ID },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  question_id:
+                    { example: 123, type: string, description: Question ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    { example: John, type: string, description: Student Name },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                  points: { example: 7, type: string, description: points },
+                  options:
+                    {
+                      example: 5,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                      description: student answer option,
+                    },
+                  score_state:
+                    {
+                      enum: [UNKNOWN, NOT_SCORED, SCORED],
+                      type: string,
+                      format: enum,
+                    },
+                },
+            },
+          sharedStudentSubmissions:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_name:
+                    {
+                      example: Aljabar 101,
+                      type: string,
+                      description: Quiz Name,
+                    },
+                  learning_goal:
+                    {
+                      example: understanding aljabar,
+                      type: string,
+                      description: Learning goal,
+                    },
+                  due_date:
+                    {
+                      example: understanding aljabar,
+                      type: string,
+                      description: Learning goal,
+                    },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  score:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The score earned by students on scale of 0 to 100,
+                      format: float,
+                    },
+                  points:
+                    {
+                      example: 100,
+                      type: integer,
+                      description: The total point from students answer,
+                      format: int32,
+                    },
+                  quiz_id:
+                    { example: 123456, type: string, description: Quiz ID },
+                  submission_id:
+                    {
+                      example: 65324314,
+                      type: string,
+                      description: Submission ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 862435235,
+                      type: string,
+                      description: Class subject ID,
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Subject ID,
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
           sharedListObservation:
             {
               type: object,
@@ -4990,30 +6226,6 @@
                     {
                       $ref: "#/components/schemas/sharedObservationSubmission",
                     },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
                 },
             },
           publicCreateRubricRequest:
@@ -6518,1149 +7730,6 @@
                       type: string,
                       description: Time when assignment submission is updated,
                       format: date-time,
-                    },
-                },
-            },
-          v1CursorPagination:
-            {
-              type: object,
-              properties:
-                {
-                  limit: { type: integer, format: uint32 },
-                  next_cursor: { type: string },
-                  prev_cursor: { type: string },
-                  curr_cursor: { type: string },
-                },
-            },
-          v1OffsetPagination:
-            {
-              type: object,
-              properties:
-                {
-                  limit: { type: integer, format: uint32 },
-                  offset: { type: integer, format: uint32 },
-                  total: { type: integer, format: uint32 },
-                },
-            },
-          v1ResponseMetadata:
-            {
-              type: object,
-              properties:
-                {
-                  offset_pagination:
-                    { $ref: "#/components/schemas/v1OffsetPagination" },
-                  cursor_pagination:
-                    { $ref: "#/components/schemas/v1CursorPagination" },
-                },
-            },
-          publicAnswer:
-            {
-              type: object,
-              properties:
-                {
-                  question_id:
-                    { example: 123, type: string, description: Question ID },
-                  answer:
-                    { example: 7, type: string, description: question answer },
-                  options:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizOption",
-                        },
-                    },
-                },
-            },
-          publicCreateQuestionRequest:
-            {
-              type: object,
-              properties:
-                {
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicCreateQuestionResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicCreateQuizRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  instance_id: { type: string, description: Instance ID },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  exam_id: { example: 123, type: string, description: Exam ID },
-                },
-            },
-          publicCreateQuizResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                },
-            },
-          publicCreateQuizSettingRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { example: 123, type: string, description: Quiz },
-                  assessmentType:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  timeLimit:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time limit,
-                      format: int32,
-                    },
-                  randomArrangement:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Randomize the questions,
-                    },
-                  resultView:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Viewing the result,
-                    },
-                  indexMinimum:
-                    {
-                      example: 75,
-                      type: integer,
-                      description: minimum grade index,
-                      format: int32,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz deadline,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz until date,
-                    },
-                  assignee:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicQuizAssignee",
-                        },
-                    },
-                  folder_id: { type: string },
-                },
-            },
-          publicCreateQuizSettingResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  setting:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                },
-            },
-          publicEditQuestionsRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { type: string },
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicEditQuestionsResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicGetBulkQuizSubmissionByStudentIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_submissions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizSubmission",
-                        },
-                      description: Quiz submission details,
-                    },
-                },
-            },
-          publicGetQuestionListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicGetQuizDetailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                  setting:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicGetQuizListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicGetQuizListResponseQuiz",
-                        },
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicGetQuizListResponseQuiz:
-            {
-              type: object,
-              properties:
-                {
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                  settings:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                },
-            },
-          publicGetQuizStatisticsResponse:
-            {
-              type: object,
-              properties:
-                {
-                  statistics:
-                    {
-                      $ref: "#/components/schemas/sharedQuizStatistics",
-                    },
-                },
-            },
-          publicGetQuizSubmissionByStudentIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_submission:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSubmission",
-                    },
-                },
-            },
-          publicGetQuizSubmissionListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_submission_list:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizSubmissionResult",
-                        },
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicGetStudentAnswerResponse:
-            {
-              type: object,
-              properties:
-                {
-                  answers:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentAnswer",
-                        },
-                    },
-                },
-            },
-          publicGetStudentSubmissionDetailsResponse:
-            {
-              type: object,
-              properties:
-                {
-                  submission_info:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSubmission",
-                    },
-                  answers:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentAnswer",
-                        },
-                    },
-                },
-            },
-          publicGetStudentSubmissionsResponse:
-            {
-              type: object,
-              properties:
-                {
-                  submissions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentSubmissions",
-                        },
-                    },
-                },
-            },
-          publicManualGradingSubmissionRequest:
-            {
-              type: object,
-              properties:
-                {
-                  body:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicManualGradingSubmissionRequestBody",
-                        },
-                    },
-                  quiz_id: { type: string },
-                  nisn: { type: string },
-                },
-            },
-          publicManualGradingSubmissionRequestBody:
-            {
-              type: object,
-              properties:
-                { score: { type: string }, answer_id: { type: string } },
-            },
-          publicManualGradingSubmissionResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicQuizAssignee:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string },
-                  student_name: { type: string },
-                },
-            },
-          publicSubmitStudentAnswerRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { type: string },
-                  student_id: { type: string },
-                  student_name: { type: string },
-                  submission_start_time: { type: string },
-                  subission_end_time: { type: string },
-                  answer:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAnswer",
-                        },
-                    },
-                },
-            },
-          publicSubmitStudentAnswerResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicUpdateQuizRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Quiz ID },
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                },
-            },
-          publicUpdateQuizResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                },
-            },
-          publicUpdateQuizSettingRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Setting ID },
-                  quiz_id: { example: 123, type: string, description: Quiz },
-                  assessmentType:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  timeLimit:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time limit,
-                      format: int32,
-                    },
-                  randomArrangement:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Randomize the questions,
-                    },
-                  resultView:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Viewing the result,
-                    },
-                  indexMinimum:
-                    {
-                      example: 75,
-                      type: integer,
-                      description: minimum grade index,
-                      format: int32,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz deadline,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz until date,
-                    },
-                },
-            },
-          publicUpdateQuizSettingResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  setting:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                },
-            },
-          sharedQuiz:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Quiz ID },
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                  instance_id: { type: string, description: Instance ID },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  exam_id: { example: 123, type: string, description: Exam ID },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedQuizOption:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string },
-                  text: { type: string },
-                  value: { type: string },
-                  isAnswer: { type: boolean },
-                  priority: { type: string },
-                },
-            },
-          sharedQuizQuestion:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Question ID },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  question:
-                    {
-                      example: Choose the correct answer,
-                      type: string,
-                      description: Question,
-                    },
-                  questionType:
-                    {
-                      example: MULIPLE_ANSWER,
-                      enum:
-                        [
-                          ASSESSMENT_QUIZ_EMPTY,
-                          TEXT,
-                          ESSAY,
-                          MULTIPLE_ANSWER,
-                          SINGLE_ANSWER,
-                          FILE_UPLOAD,
-                          NUMERIC,
-                          TRUE_FALSE,
-                          SORTING,
-                          MATCHING,
-                          MULTIPLE_PARTIAL_ANSWER,
-                        ],
-                      type: string,
-                      description: question type,
-                      format: enum,
-                    },
-                  points:
-                    {
-                      example: 5,
-                      type: integer,
-                      description: question points,
-                      format: int32,
-                    },
-                  options:
-                    {
-                      example: 5,
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizOption",
-                        },
-                      description: question option answer,
-                    },
-                  answer:
-                    { example: 7, type: string, description: question answer },
-                },
-            },
-          sharedQuizSettings:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Setting ID },
-                  quiz_id: { example: 123, type: string, description: Quiz },
-                  assessmentType:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  timeLimit:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time limit,
-                      format: int32,
-                    },
-                  randomArrangement:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Randomize the questions,
-                    },
-                  resultView:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Viewing the result,
-                    },
-                  indexMinimum:
-                    {
-                      example: 75,
-                      type: integer,
-                      description: minimum grade index,
-                      format: int32,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz deadline,
-                      format: date-time,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz until date,
-                      format: date-time,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedQuizStatistics:
-            {
-              type: object,
-              properties:
-                {
-                  total_submission:
-                    {
-                      example: 100,
-                      type: string,
-                      description: Total submission,
-                    },
-                  total_graded:
-                    { example: 80, type: string, description: Total graded },
-                  total_ungraded:
-                    { example: 20, type: string, description: Total ungraded },
-                  total_no_submission:
-                    {
-                      example: 10,
-                      type: string,
-                      description: Total no submission,
-                    },
-                  average_score:
-                    { example: 75, type: string, description: Average score },
-                  average_time_spent:
-                    {
-                      example: 30,
-                      type: string,
-                      description: Average time spent,
-                    },
-                  average_points:
-                    { example: 80, type: string, description: Average points },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  class_subject_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Class Subject ID,
-                    },
-                  subject_id:
-                    { example: 123, type: string, description: Subject ID },
-                },
-            },
-          sharedQuizSubmission:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Quiz submission ID,
-                    },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    {
-                      example: John Doe,
-                      type: string,
-                      description: Student Name,
-                    },
-                  attempt:
-                    {
-                      example: 1,
-                      type: integer,
-                      description: Number of quiz submission attempt,
-                      format: int32,
-                    },
-                  time_spent:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time spent,
-                      format: int32,
-                    },
-                  score:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: The score earned by students on scale of 0 to 100,
-                      format: float,
-                    },
-                  points:
-                    {
-                      example: 100,
-                      type: integer,
-                      description: The total point from students answer,
-                      format: int32,
-                    },
-                  state:
-                    {
-                      example: NEED_GRADING,
-                      enum:
-                        [
-                          UNKNOWN_SUBMISSON,
-                          NO_SUBMISSION,
-                          NEED_GRADING,
-                          GRADED,
-                        ],
-                      type: string,
-                      description: Quiz submission state,
-                      format: enum,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz submission is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz submission is updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedQuizSubmissionResult:
-            {
-              type: object,
-              properties:
-                {
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    {
-                      example: John Doe,
-                      type: string,
-                      description: Student Name,
-                    },
-                  total_score:
-                    { example: 100, type: string, description: Total score },
-                  correct_answer:
-                    { example: 100, type: string, description: Correct answer },
-                  duration:
-                    { example: 100, type: string, description: Duration },
-                  state:
-                    {
-                      example: NEED_GRADING,
-                      enum:
-                        [
-                          UNKNOWN_SUBMISSON,
-                          NO_SUBMISSION,
-                          NEED_GRADING,
-                          GRADED,
-                        ],
-                      type: string,
-                      description: Quiz submission state,
-                      format: enum,
-                    },
-                },
-            },
-          sharedStudentAnswer:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Question ID },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  question_id:
-                    { example: 123, type: string, description: Question ID },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    { example: John, type: string, description: Student Name },
-                  answer:
-                    { example: 7, type: string, description: question answer },
-                  points: { example: 7, type: string, description: points },
-                  options:
-                    {
-                      example: 5,
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizOption",
-                        },
-                      description: student answer option,
-                    },
-                  score_state:
-                    {
-                      enum: [UNKNOWN, NOT_SCORED, SCORED],
-                      type: string,
-                      format: enum,
-                    },
-                },
-            },
-          sharedStudentSubmissions:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_name:
-                    {
-                      example: Aljabar 101,
-                      type: string,
-                      description: Quiz Name,
-                    },
-                  learning_goal:
-                    {
-                      example: understanding aljabar,
-                      type: string,
-                      description: Learning goal,
-                    },
-                  due_date:
-                    {
-                      example: understanding aljabar,
-                      type: string,
-                      description: Learning goal,
-                    },
-                  state:
-                    {
-                      example: NEED_GRADING,
-                      enum:
-                        [
-                          UNKNOWN_SUBMISSON,
-                          NO_SUBMISSION,
-                          NEED_GRADING,
-                          GRADED,
-                        ],
-                      type: string,
-                      description: Quiz submission state,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  score:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: The score earned by students on scale of 0 to 100,
-                      format: float,
-                    },
-                  points:
-                    {
-                      example: 100,
-                      type: integer,
-                      description: The total point from students answer,
-                      format: int32,
-                    },
-                  quiz_id:
-                    { example: 123456, type: string, description: Quiz ID },
-                  submission_id:
-                    {
-                      example: 65324314,
-                      type: string,
-                      description: Submission ID,
-                    },
-                  class_subject_id:
-                    {
-                      example: 862435235,
-                      type: string,
-                      description: Class subject ID,
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Subject ID,
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    {
-                      example: John Doe,
-                      type: string,
-                      description: Student Name,
                     },
                 },
             },

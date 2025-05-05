@@ -1594,8 +1594,22 @@ Service for observation related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) |  |  |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| info | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) | optional |  |
+| subject_name | [string](#string) |  |  |
+| learing_goal_id | [string](#string) |  |  |
+| learning_goal_title | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
