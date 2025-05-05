@@ -6837,11 +6837,26 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedQuiz",
+                          $ref: "#/components/schemas/publicGetQuizListResponseQuiz",
                         },
                     },
                   meta:
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetQuizListResponseQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
                 },
             },
           publicGetQuizStatisticsResponse:
