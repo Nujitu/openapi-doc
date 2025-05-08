@@ -411,10 +411,8 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | file_name | [string](#string) |  |  |
-| file_size | [int64](#int64) |  |  |
-| bucket_name | [string](#string) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| file_size | [uint64](#uint64) |  |  |
+| folder_name | [string](#string) |  |  |
 
 
 
