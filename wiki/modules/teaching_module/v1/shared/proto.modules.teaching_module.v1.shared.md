@@ -33,6 +33,8 @@
 - [modules/teaching_module/v1/shared/uploader.proto](#modules_teaching_module_v1_shared_uploader-proto)
     - [Uploader](#modules-teaching_modules-v1-shared-Uploader)
   
+    - [UsecaseUploader](#modules-teaching_modules-v1-shared-UsecaseUploader)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -410,17 +412,26 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| file_name | [string](#string) |  |  |
-| file_size | [int64](#int64) |  |  |
-| bucket_name | [string](#string) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| filename | [string](#string) |  |  |
+| filesize | [uint64](#uint64) |  |  |
+| usecase | [UsecaseUploader](#modules-teaching_modules-v1-shared-UsecaseUploader) |  |  |
 
 
 
 
 
  
+
+
+<a name="modules-teaching_modules-v1-shared-UsecaseUploader"></a>
+
+### UsecaseUploader
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| STUDY_MATERIAL | 0 |  |
+
 
  
 
