@@ -996,7 +996,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| files | [modules.teaching_modules.v1.shared.Uploader](#modules-teaching_modules-v1-shared-Uploader) |  |  |
+| files | [modules.teaching_modules.v1.shared.Uploader](#modules-teaching_modules-v1-shared-Uploader) | repeated |  |
 
 
 
@@ -1011,7 +1011,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) |  |  |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) | repeated |  |
 
 
 
