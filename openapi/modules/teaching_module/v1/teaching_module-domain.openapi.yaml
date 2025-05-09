@@ -2376,7 +2376,12 @@
                 {
                   files:
                     {
-                      $ref: "#/components/schemas/sharedUploader",
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedUploader",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
                     },
                 },
             },
@@ -2387,7 +2392,12 @@
                 {
                   presignedUrls:
                     {
-                      $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
                     },
                 },
             },
