@@ -3,98 +3,83 @@
 
 ## Table of Contents
 
-- [modules/material/v1/private/class_group.proto](#modules_material_v1_private_class_group-proto)
-    - [GetTeacherCoursesRequest](#modules-material-v1-private-GetTeacherCoursesRequest)
-    - [GetTeacherCoursesResponse](#modules-material-v1-private-GetTeacherCoursesResponse)
+- [modules/assessment/v1/private/quiz.proto](#modules_assessment_v1_private_quiz-proto)
+    - [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest)
+    - [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse)
+    - [GetQuizListResponse.Quiz](#modules-assessment-v1-public-GetQuizListResponse-Quiz)
   
-    - [ClassGroupService](#modules-material-v1-private-ClassGroupService)
-  
-- [modules/material/v1/private/curriculum.proto](#modules_material_v1_private_curriculum-proto)
-    - [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest)
-  
-    - [CurriculumService](#modules-material-v1-private-CurriculumService)
-  
-- [modules/material/v1/private/subject.proto](#modules_material_v1_private_subject-proto)
-    - [GetSubjectByIdRequest](#modules-material-v1-private-GetSubjectByIdRequest)
-  
-    - [SubjectService](#modules-material-v1-private-SubjectService)
+    - [PrivateQuizService](#modules-assessment-v1-public-PrivateQuizService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="modules_material_v1_private_class_group-proto"></a>
+<a name="modules_assessment_v1_private_quiz-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## modules/material/v1/private/class_group.proto
+## modules/assessment/v1/private/quiz.proto
 
 
 
-<a name="modules-material-v1-private-GetTeacherCoursesRequest"></a>
+<a name="modules-assessment-v1-public-GetQuizListRequest"></a>
 
-### GetTeacherCoursesRequest
+### GetQuizListRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| class_group_ids | [string](#string) | repeated |  |
+| class_subject_ids | [string](#string) | repeated |  |
 
 
 
 
 
 
-<a name="modules-material-v1-private-GetTeacherCoursesResponse"></a>
+<a name="modules-assessment-v1-public-GetQuizListResponse"></a>
 
-### GetTeacherCoursesResponse
+### GetQuizListResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) | repeated |  |
+| quiz | [GetQuizListResponse.Quiz](#modules-assessment-v1-public-GetQuizListResponse-Quiz) | repeated |  |
 
 
 
 
 
- 
 
- 
+<a name="modules-assessment-v1-public-GetQuizListResponse-Quiz"></a>
 
- 
-
-
-<a name="modules-material-v1-private-ClassGroupService"></a>
-
-### ClassGroupService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| GetTeacherCourses | [GetTeacherCoursesRequest](#modules-material-v1-private-GetTeacherCoursesRequest) | [GetTeacherCoursesResponse](#modules-material-v1-private-GetTeacherCoursesResponse) |  |
-
- 
-
-
-
-<a name="modules_material_v1_private_curriculum-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## modules/material/v1/private/curriculum.proto
-
-
-
-<a name="modules-material-v1-private-GetCurriculumByIdRequest"></a>
-
-### GetCurriculumByIdRequest
+### GetQuizListResponse.Quiz
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| info | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_id | [string](#string) | optional |  |
+| subject_name | [string](#string) |  |  |
+| learing_goal_id | [string](#string) |  |  |
+| learning_goal_title | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
+| settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| total_submission | [uint32](#uint32) |  |  |
+| total_graded | [uint32](#uint32) |  |  |
+| total_un_graded | [uint32](#uint32) |  |  |
+| total_no_submission | [uint32](#uint32) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
@@ -107,55 +92,14 @@
  
 
 
-<a name="modules-material-v1-private-CurriculumService"></a>
+<a name="modules-assessment-v1-public-PrivateQuizService"></a>
 
-### CurriculumService
+### PrivateQuizService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetCurriculumByID | [GetCurriculumByIdRequest](#modules-material-v1-private-GetCurriculumByIdRequest) | [.modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |
-
- 
-
-
-
-<a name="modules_material_v1_private_subject-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## modules/material/v1/private/subject.proto
-
-
-
-<a name="modules-material-v1-private-GetSubjectByIdRequest"></a>
-
-### GetSubjectByIdRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-
-
-
-
-
- 
-
- 
-
- 
-
-
-<a name="modules-material-v1-private-SubjectService"></a>
-
-### SubjectService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| GetSubjectByID | [GetSubjectByIdRequest](#modules-material-v1-private-GetSubjectByIdRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
+| GetCompleteQuizList | [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest) | [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse) |  |
 
  
 

@@ -825,6 +825,80 @@
                 },
             },
         },
+      "/v1/class-group/{teacher_id}/teacher/courses/stats":
+        {
+          get:
+            {
+              tags: [ClassGroupService],
+              summary: GetTeacherCoursesStats,
+              description: retrieves a list of subjects taught by the specified teacher.,
+              operationId: ClassGroupService_GetTeacherCoursesStats,
+              parameters:
+                [
+                  {
+                    name: teacher_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeacherCoursesStatsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/curriculum:
         {
           post:
@@ -2591,6 +2665,66 @@
                         },
                       description: Class group List,
                     },
+                },
+            },
+          publicGetTeacherCoursesStatsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicGetTeacherCoursesStatsResponseStats",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetTeacherCoursesStatsResponseStats:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Mathematics,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  subject:
+                    {
+                      example: Mathematics,
+                      type: string,
+                      description: Subject Title,
+                    },
+                  class_name:
+                    {
+                      example: Class Group 123,
+                      type: string,
+                      description: Class Name,
+                    },
+                  teaching_module:
+                    {
+                      example: Mathematics,
+                      type: string,
+                      description: Teaching Module,
+                    },
+                  due_date:
+                    {
+                      example: "2024-01-01T00:00:00Z",
+                      type: string,
+                      description: Due Date,
+                    },
+                  total_assigned:
+                    { example: 10, type: string, description: Total Assigned },
+                  total_completed:
+                    { example: 5, type: string, description: Total Completed },
+                  total_graded:
+                    { example: 5, type: string, description: Total Graded },
                 },
             },
           publicRemoveStudentFromClassResponse:
