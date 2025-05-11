@@ -6912,6 +6912,30 @@
                     {
                       $ref: "#/components/schemas/sharedQuizSettings",
                     },
+                  total_submission:
+                    {
+                      type: integer,
+                      description: Total submission,
+                      format: uint32,
+                    },
+                  total_graded:
+                    {
+                      type: integer,
+                      description: Total graded,
+                      format: uint32,
+                    },
+                  total_un_graded:
+                    {
+                      type: integer,
+                      description: Total ungraded,
+                      format: uint32,
+                    },
+                  total_no_submission:
+                    {
+                      type: integer,
+                      description: Total no submission,
+                      format: uint32,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",

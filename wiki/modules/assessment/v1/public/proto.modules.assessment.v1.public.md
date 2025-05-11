@@ -1608,6 +1608,10 @@ Service for observation related feature
 | teaching_module_folder_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| total_submission | [uint32](#uint32) |  |  |
+| total_graded | [uint32](#uint32) |  |  |
+| total_un_graded | [uint32](#uint32) |  |  |
+| total_no_submission | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
