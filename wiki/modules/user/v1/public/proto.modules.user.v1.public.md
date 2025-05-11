@@ -252,7 +252,7 @@
 | username | [string](#string) |  |  |
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
-| profile_pic | [string](#string) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 | address | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -471,7 +471,7 @@ Service for student related feature
 | username | [string](#string) |  |  |
 | phone_number | [string](#string) |  |  |
 | email | [string](#string) |  |  |
-| profile_pic | [string](#string) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 | address | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |

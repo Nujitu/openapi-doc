@@ -1502,12 +1502,8 @@
                       type: string,
                       description: User email,
                     },
-                  profile_pic:
-                    {
-                      example: profile.png,
-                      type: string,
-                      description: User profile pict name,
-                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
                   address:
                     {
                       example: jln jln,
@@ -1839,12 +1835,8 @@
                       type: string,
                       description: User email,
                     },
-                  profile_pic:
-                    {
-                      example: profile.png,
-                      type: string,
-                      description: User profile pict name,
-                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
                   address:
                     {
                       example: jln jln,
