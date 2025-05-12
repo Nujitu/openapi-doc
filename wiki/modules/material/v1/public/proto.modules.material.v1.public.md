@@ -23,6 +23,9 @@
     - [GetTeacherActiveSubjectsResponse](#modules-material-v1-public-GetTeacherActiveSubjectsResponse)
     - [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest)
     - [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse)
+    - [GetTeacherCoursesStatsRequest](#modules-material-v1-public-GetTeacherCoursesStatsRequest)
+    - [GetTeacherCoursesStatsResponse](#modules-material-v1-public-GetTeacherCoursesStatsResponse)
+    - [GetTeacherCoursesStatsResponse.Stats](#modules-material-v1-public-GetTeacherCoursesStatsResponse-Stats)
     - [RemoveStudentFromClassRequest](#modules-material-v1-public-RemoveStudentFromClassRequest)
     - [RemoveStudentFromClassResponse](#modules-material-v1-public-RemoveStudentFromClassResponse)
     - [StudentClass](#modules-material-v1-public-StudentClass)
@@ -394,6 +397,61 @@
 
 
 
+<a name="modules-material-v1-public-GetTeacherCoursesStatsRequest"></a>
+
+### GetTeacherCoursesStatsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teacher_id | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeacherCoursesStatsResponse"></a>
+
+### GetTeacherCoursesStatsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [GetTeacherCoursesStatsResponse.Stats](#modules-material-v1-public-GetTeacherCoursesStatsResponse-Stats) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeacherCoursesStatsResponse-Stats"></a>
+
+### GetTeacherCoursesStatsResponse.Stats
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| subject | [string](#string) |  |  |
+| class_name | [string](#string) |  |  |
+| teaching_module | [string](#string) |  |  |
+| due_date | [string](#string) |  |  |
+| total_assigned | [string](#string) |  |  |
+| total_completed | [string](#string) |  |  |
+| total_graded | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-RemoveStudentFromClassRequest"></a>
 
 ### RemoveStudentFromClassRequest
@@ -530,6 +588,7 @@ Service for user related feature
 | GetTeacherClasses | [GetTeacherClassesRequest](#modules-material-v1-public-GetTeacherClassesRequest) | [GetTeacherClassesResponse](#modules-material-v1-public-GetTeacherClassesResponse) |  |
 | GetStudentsInClass | [GetStudentsInClassRequest](#modules-material-v1-public-GetStudentsInClassRequest) | [GetStudentsInClassResponse](#modules-material-v1-public-GetStudentsInClassResponse) |  |
 | GetTeacherCourses | [GetTeacherActiveSubjectsRequest](#modules-material-v1-public-GetTeacherActiveSubjectsRequest) | [GetTeacherActiveSubjectsResponse](#modules-material-v1-public-GetTeacherActiveSubjectsResponse) |  |
+| GetTeacherCoursesStats | [GetTeacherCoursesStatsRequest](#modules-material-v1-public-GetTeacherCoursesStatsRequest) | [GetTeacherCoursesStatsResponse](#modules-material-v1-public-GetTeacherCoursesStatsResponse) |  |
 | GetStudentCourses | [GetStudentCoursesRequest](#modules-material-v1-public-GetStudentCoursesRequest) | [GetStudentCoursesResponse](#modules-material-v1-public-GetStudentCoursesResponse) |  |
 | GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
 

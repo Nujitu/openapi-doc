@@ -4,10 +4,8 @@
 ## Table of Contents
 
 - [modules/material/v1/private/class_group.proto](#modules_material_v1_private_class_group-proto)
-    - [GetClassGroupListRequest](#modules-material-v1-private-GetClassGroupListRequest)
-    - [GetClassGroupListResponse](#modules-material-v1-private-GetClassGroupListResponse)
-    - [GetClassGroupSubjectsRequest](#modules-material-v1-private-GetClassGroupSubjectsRequest)
-    - [GetClassGroupSubjectsResponse](#modules-material-v1-private-GetClassGroupSubjectsResponse)
+    - [GetTeacherCoursesRequest](#modules-material-v1-private-GetTeacherCoursesRequest)
+    - [GetTeacherCoursesResponse](#modules-material-v1-private-GetTeacherCoursesResponse)
   
     - [ClassGroupService](#modules-material-v1-private-ClassGroupService)
   
@@ -32,70 +30,30 @@
 
 
 
-<a name="modules-material-v1-private-GetClassGroupListRequest"></a>
+<a name="modules-material-v1-private-GetTeacherCoursesRequest"></a>
 
-### GetClassGroupListRequest
+### GetTeacherCoursesRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| grade_level | [string](#string) |  |  |
-| major | [string](#string) |  |  |
-| curriculum_id | [string](#string) |  |  |
-| academic_term | [string](#string) |  |  |
-| homeroom_teacher | [string](#string) |  |  |
-| sort | [string](#string) |  |  |
-| limit | [uint32](#uint32) |  |  |
-| offset | [uint32](#uint32) |  |  |
+| teacher_id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-material-v1-private-GetClassGroupListResponse"></a>
+<a name="modules-material-v1-private-GetTeacherCoursesResponse"></a>
 
-### GetClassGroupListResponse
+### GetTeacherCoursesResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_group | [modules.material.v1.shared.ClassGroup](#modules-material-v1-shared-ClassGroup) | repeated |  |
-| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
-
-
-
-
-
-
-<a name="modules-material-v1-private-GetClassGroupSubjectsRequest"></a>
-
-### GetClassGroupSubjectsRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| class_group_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-material-v1-private-GetClassGroupSubjectsResponse"></a>
-
-### GetClassGroupSubjectsResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) | repeated |  |
 
 
 
@@ -115,8 +73,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetClassGroupList | [GetClassGroupListRequest](#modules-material-v1-private-GetClassGroupListRequest) | [GetClassGroupListResponse](#modules-material-v1-private-GetClassGroupListResponse) |  |
-| GetClassGroupSubjects | [GetClassGroupSubjectsRequest](#modules-material-v1-private-GetClassGroupSubjectsRequest) | [GetClassGroupSubjectsResponse](#modules-material-v1-private-GetClassGroupSubjectsResponse) |  |
+| GetTeacherCourses | [GetTeacherCoursesRequest](#modules-material-v1-private-GetTeacherCoursesRequest) | [GetTeacherCoursesResponse](#modules-material-v1-private-GetTeacherCoursesResponse) |  |
 
  
 

@@ -1560,6 +1560,7 @@ Service for observation related feature
 | exam_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
