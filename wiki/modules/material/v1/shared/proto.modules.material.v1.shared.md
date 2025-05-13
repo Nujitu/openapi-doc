@@ -312,6 +312,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | announcements | [ClassSubjectAnnouncement](#modules-material-v1-shared-ClassSubjectAnnouncement) | repeated |  |
+| metadata | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  |  |
 
 
 
