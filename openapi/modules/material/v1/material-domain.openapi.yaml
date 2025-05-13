@@ -3808,6 +3808,8 @@
                         },
                       description: Class Announcements,
                     },
+                  metadata:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
           sharedUpdateClassSubjectDetailRequest:
