@@ -295,8 +295,8 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_id | [string](#string) |  |  |
-| page | [uint32](#uint32) |  |  |
-| size | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+| limit | [uint32](#uint32) |  |  |
 
 
 
