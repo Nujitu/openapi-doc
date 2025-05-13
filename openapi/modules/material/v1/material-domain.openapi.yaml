@@ -3710,6 +3710,12 @@
                     },
                   teacher_id:
                     { example: 5432123, type: string, description: Teacher Id },
+                  teacher_name:
+                    {
+                      example: Budi Santoso,
+                      type: string,
+                      description: Teacher Name,
+                    },
                   title:
                     {
                       example: Pengumuman sesi khusus materi barisan dan deret,
@@ -3721,6 +3727,13 @@
                       example: Sesi pembelajaran khusus untuk mengenal konsep dasar barisan dan deret.,
                       type: string,
                       description: Class ID,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when the announcement is created,
+                      format: date-time,
                     },
                 },
             },
@@ -3736,6 +3749,12 @@
                       example: 12321412,
                       type: string,
                       description: Teacher ID,
+                    },
+                  teacher_name:
+                    {
+                      example: Budi Santoso,
+                      type: string,
+                      description: Teacher Name,
                     },
                   title:
                     {
