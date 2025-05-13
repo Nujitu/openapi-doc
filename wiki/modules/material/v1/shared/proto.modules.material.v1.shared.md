@@ -312,6 +312,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | announcements | [ClassSubjectAnnouncement](#modules-material-v1-shared-ClassSubjectAnnouncement) | repeated |  |
+| offset_pagination | [common.v1.OffsetPagination](#common-v1-OffsetPagination) |  |  |
 
 
 

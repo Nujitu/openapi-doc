@@ -3808,6 +3808,8 @@
                         },
                       description: Class Announcements,
                     },
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
                 },
             },
           sharedUpdateClassSubjectDetailRequest:
