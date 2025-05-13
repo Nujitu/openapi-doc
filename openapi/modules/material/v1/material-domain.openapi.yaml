@@ -3722,6 +3722,13 @@
                       type: string,
                       description: Class ID,
                     },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when the announcement is created,
+                      format: date-time,
+                    },
                 },
             },
           sharedCreateClassSubjectAnnouncementRequest:
@@ -3736,6 +3743,12 @@
                       example: 12321412,
                       type: string,
                       description: Teacher ID,
+                    },
+                  teacher_name:
+                    {
+                      example: Budi Santoso,
+                      type: string,
+                      description: Teacher Name,
                     },
                   title:
                     {

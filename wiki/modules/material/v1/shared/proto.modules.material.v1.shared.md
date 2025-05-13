@@ -191,6 +191,7 @@
 | teacher_id | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
@@ -229,6 +230,7 @@
 | ----- | ---- | ----- | ----------- |
 | class_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| teacher_name | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 
