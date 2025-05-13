@@ -2231,12 +2231,12 @@
                     schema: { type: string },
                   },
                   {
-                    name: page,
+                    name: offset,
                     in: query,
                     schema: { type: integer, format: uint32 },
                   },
                   {
-                    name: size,
+                    name: limit,
                     in: query,
                     schema: { type: integer, format: uint32 },
                   },
