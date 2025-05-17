@@ -51,6 +51,7 @@
 | level | [EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
 | province | [string](#string) |  |  |
 | img_url | [string](#string) |  |  |
+| school_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
