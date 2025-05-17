@@ -743,6 +743,7 @@
 | score | [float](#float) |  |  |
 | points | [int32](#int32) |  |  |
 | state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

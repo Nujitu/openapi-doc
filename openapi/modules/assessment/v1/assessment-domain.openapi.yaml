@@ -7576,6 +7576,13 @@
                       description: Quiz submission state,
                       format: enum,
                     },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: due date,
+                      format: date-time,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
