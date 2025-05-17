@@ -3050,153 +3050,6 @@
                 },
             },
         },
-      /v1/quiz/setting:
-        {
-          post:
-            {
-              tags: [QuizService],
-              summary: Create a new Quiz,
-              description: Teacher create a new Quiz,
-              operationId: QuizService_CreateQuizSetting,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateQuizSettingRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateQuizSettingResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/quiz/setting/{id}":
-        {
-          patch:
-            {
-              tags: [QuizService],
-              summary: Update Quiz Setting,
-              description: Update Quiz Setting,
-              operationId: QuizService_UpdateQuizSetting,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateQuizSettingRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateQuizSettingResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       "/v1/quiz/statistics/{quiz_id}":
         {
           get:
@@ -3306,6 +3159,99 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetStudentSubmissionsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/quiz/submission/list:
+        {
+          get:
+            {
+              tags: [QuizService],
+              summary: Get all quiz submission,
+              description: Will return all quiz submission in class,
+              operationId: QuizService_GetAllSubmissionList,
+              parameters:
+                [
+                  { name: subject_name, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  { name: student_name, in: query, schema: { type: string } },
+                  { name: quiz_title, in: query, schema: { type: string } },
+                  { name: teacher_id, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAllSubmissionListResponse",
                                 },
                             },
                         },
@@ -6653,6 +6599,19 @@
                       description: Teaching Module Folder ID,
                     },
                   exam_id: { example: 123, type: string, description: Exam ID },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicQuizAssignee",
+                        },
+                      description: Quiz assignee,
+                    },
                 },
             },
           publicCreateQuizResponse:
@@ -6664,95 +6623,6 @@
                   quiz:
                     {
                       $ref: "#/components/schemas/sharedQuiz",
-                    },
-                },
-            },
-          publicCreateQuizSettingRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { example: 123, type: string, description: Quiz },
-                  assessmentType:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  timeLimit:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time limit,
-                      format: int32,
-                    },
-                  randomArrangement:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Randomize the questions,
-                    },
-                  resultView:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Viewing the result,
-                    },
-                  indexMinimum:
-                    {
-                      example: 75,
-                      type: integer,
-                      description: minimum grade index,
-                      format: int32,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz deadline,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz until date,
-                    },
-                  assignee:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicQuizAssignee",
-                        },
-                    },
-                  folder_id: { type: string },
-                },
-            },
-          publicCreateQuizSettingResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  setting:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
                     },
                 },
             },
@@ -6774,6 +6644,25 @@
             },
           publicEditQuestionsResponse:
             { type: object, properties: { message: { type: string } } },
+          publicGetAllSubmissionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      example: 20,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmission",
+                        },
+                      description: List of quiz submission,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
           publicGetBulkQuizSubmissionByStudentIdResponse:
             {
               type: object,
@@ -6813,10 +6702,6 @@
                   quiz:
                     {
                       $ref: "#/components/schemas/sharedQuiz",
-                    },
-                  setting:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
                     },
                   questions:
                     {
@@ -6912,30 +6797,6 @@
                   settings:
                     {
                       $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                  total_submission:
-                    {
-                      type: integer,
-                      description: Total submission,
-                      format: uint32,
-                    },
-                  total_graded:
-                    {
-                      type: integer,
-                      description: Total graded,
-                      format: uint32,
-                    },
-                  total_un_graded:
-                    {
-                      type: integer,
-                      description: Total ungraded,
-                      format: uint32,
-                    },
-                  total_no_submission:
-                    {
-                      type: integer,
-                      description: Total no submission,
-                      format: uint32,
                     },
                   created_at:
                     {
@@ -7133,6 +6994,10 @@
                       type: string,
                       description: Learing goal title,
                     },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
                 },
             },
           publicUpdateQuizResponse:
@@ -7144,87 +7009,6 @@
                   quiz:
                     {
                       $ref: "#/components/schemas/sharedQuiz",
-                    },
-                },
-            },
-          publicUpdateQuizSettingRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Setting ID },
-                  quiz_id: { example: 123, type: string, description: Quiz },
-                  assessmentType:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  timeLimit:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time limit,
-                      format: int32,
-                    },
-                  randomArrangement:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Randomize the questions,
-                    },
-                  resultView:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Viewing the result,
-                    },
-                  indexMinimum:
-                    {
-                      example: 75,
-                      type: integer,
-                      description: minimum grade index,
-                      format: int32,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz deadline,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz until date,
-                    },
-                },
-            },
-          publicUpdateQuizSettingResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  setting:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
                     },
                 },
             },
@@ -7292,6 +7076,10 @@
                       description: Teaching Module Folder ID,
                     },
                   exam_id: { example: 123, type: string, description: Exam ID },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -7380,8 +7168,6 @@
               type: object,
               properties:
                 {
-                  id: { example: 123, type: string, description: Setting ID },
-                  quiz_id: { example: 123, type: string, description: Quiz },
                   assessmentType:
                     {
                       example: SUMMATIVE,
@@ -7583,6 +7369,16 @@
                       description: due date,
                       format: date-time,
                     },
+                  quiz_title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  teacher_id:
+                    { example: 123, type: string, description: Teacher ID },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
