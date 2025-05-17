@@ -3194,7 +3194,7 @@
                 },
             },
         },
-      /v1/quiz/submission/list:
+      /v1/quiz/submission/all:
         {
           get:
             {
