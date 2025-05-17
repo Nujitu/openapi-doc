@@ -237,7 +237,6 @@ Response body of Logout
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
-| current_password | [string](#string) |  |  |
 | new_password | [string](#string) |  |  |
 
 
