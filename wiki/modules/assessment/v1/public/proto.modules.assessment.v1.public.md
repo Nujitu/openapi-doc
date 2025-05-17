@@ -1999,6 +1999,7 @@ Service for quiz related feature
 | EditQuestions | [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest) | [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse) |  |
 | GetQuestionList | [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest) | [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse) |  |
 | SubmitStudentAnswer | [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest) | [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse) |  |
+| GetAllSubmissionList | [GetAllSubmissionListRequest](#modules-assessment-v1-public-GetAllSubmissionListRequest) | [GetAllSubmissionListResponse](#modules-assessment-v1-public-GetAllSubmissionListResponse) |  |
 | GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
 | GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
 | GetStudentSubmissions | [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest) | [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse) |  |
@@ -2007,7 +2008,6 @@ Service for quiz related feature
 | GetStudentAnswer | [GetStudentAnswerRequest](#modules-assessment-v1-public-GetStudentAnswerRequest) | [GetStudentAnswerResponse](#modules-assessment-v1-public-GetStudentAnswerResponse) |  |
 | GetStudentSubmissionDetails | [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest) | [GetStudentSubmissionDetailsResponse](#modules-assessment-v1-public-GetStudentSubmissionDetailsResponse) |  |
 | GetQuizStatistics | [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest) | [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse) |  |
-| GetAllSubmissionList | [GetAllSubmissionListRequest](#modules-assessment-v1-public-GetAllSubmissionListRequest) | [GetAllSubmissionListResponse](#modules-assessment-v1-public-GetAllSubmissionListResponse) |  |
 
  
 
