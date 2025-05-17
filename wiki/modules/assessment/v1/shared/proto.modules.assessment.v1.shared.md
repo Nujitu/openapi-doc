@@ -626,6 +626,7 @@
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
+| settings | [QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -682,8 +683,6 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| quiz_id | [string](#string) |  |  |
 | assessmentType | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 | category | [AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory) |  |  |
 | timeLimit | [int32](#int32) |  |  |
@@ -744,6 +743,9 @@
 | points | [int32](#int32) |  |  |
 | state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| quiz_title | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
