@@ -79,10 +79,10 @@
     - [CreateQuestionResponse](#modules-assessment-v1-public-CreateQuestionResponse)
     - [CreateQuizRequest](#modules-assessment-v1-public-CreateQuizRequest)
     - [CreateQuizResponse](#modules-assessment-v1-public-CreateQuizResponse)
-    - [CreateQuizSettingRequest](#modules-assessment-v1-public-CreateQuizSettingRequest)
-    - [CreateQuizSettingResponse](#modules-assessment-v1-public-CreateQuizSettingResponse)
     - [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest)
     - [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse)
+    - [GetAllSubmissionListRequest](#modules-assessment-v1-public-GetAllSubmissionListRequest)
+    - [GetAllSubmissionListResponse](#modules-assessment-v1-public-GetAllSubmissionListResponse)
     - [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest)
     - [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse)
     - [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest)
@@ -114,8 +114,6 @@
     - [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse)
     - [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest)
     - [UpdateQuizResponse](#modules-assessment-v1-public-UpdateQuizResponse)
-    - [UpdateQuizSettingRequest](#modules-assessment-v1-public-UpdateQuizSettingRequest)
-    - [UpdateQuizSettingResponse](#modules-assessment-v1-public-UpdateQuizSettingResponse)
   
     - [QuizService](#modules-assessment-v1-public-QuizService)
   
@@ -1356,6 +1354,8 @@ Service for observation related feature
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
+| settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| assignee | [QuizAssignee](#modules-assessment-v1-public-QuizAssignee) | repeated |  |
 
 
 
@@ -1372,47 +1372,6 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
 | quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) |  |  |
-
-
-
-
-
-
-<a name="modules-assessment-v1-public-CreateQuizSettingRequest"></a>
-
-### CreateQuizSettingRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| quiz_id | [string](#string) |  |  |
-| assessmentType | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
-| category | [modules.assessment.v1.shared.AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory) |  |  |
-| timeLimit | [int32](#int32) |  |  |
-| randomArrangement | [bool](#bool) |  |  |
-| resultView | [bool](#bool) |  |  |
-| indexMinimum | [int32](#int32) |  |  |
-| due_date | [string](#string) |  |  |
-| until_date | [string](#string) |  |  |
-| assignee | [QuizAssignee](#modules-assessment-v1-public-QuizAssignee) | repeated |  |
-| folder_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-assessment-v1-public-CreateQuizSettingResponse"></a>
-
-### CreateQuizSettingResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  |  |
-| setting | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 
 
 
@@ -1444,6 +1403,43 @@ Service for observation related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetAllSubmissionListRequest"></a>
+
+### GetAllSubmissionListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject_name | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
+| student_name | [string](#string) |  |  |
+| quiz_title | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-GetAllSubmissionListResponse"></a>
+
+### GetAllSubmissionListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [modules.assessment.v1.shared.QuizSubmission](#modules-assessment-v1-shared-QuizSubmission) | repeated |  |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
 
 
 
@@ -1535,7 +1531,6 @@ Service for observation related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | quiz | [modules.assessment.v1.shared.Quiz](#modules-assessment-v1-shared-Quiz) |  |  |
-| setting | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 | questions | [modules.assessment.v1.shared.QuizQuestion](#modules-assessment-v1-shared-QuizQuestion) | repeated |  |
 
 
@@ -1609,10 +1604,6 @@ Service for observation related feature
 | teaching_module_folder_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
-| total_submission | [uint32](#uint32) |  |  |
-| total_graded | [uint32](#uint32) |  |  |
-| total_un_graded | [uint32](#uint32) |  |  |
-| total_no_submission | [uint32](#uint32) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -1963,6 +1954,7 @@ Service for observation related feature
 | info | [string](#string) |  |  |
 | learing_goal_id | [string](#string) |  |  |
 | learning_goal_title | [string](#string) |  |  |
+| settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 
 
 
@@ -1984,46 +1976,6 @@ Service for observation related feature
 
 
 
-
-<a name="modules-assessment-v1-public-UpdateQuizSettingRequest"></a>
-
-### UpdateQuizSettingRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| quiz_id | [string](#string) |  |  |
-| assessmentType | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
-| category | [modules.assessment.v1.shared.AssessmentQuizCategory](#modules-assessment-v1-shared-AssessmentQuizCategory) |  |  |
-| timeLimit | [int32](#int32) |  |  |
-| randomArrangement | [bool](#bool) |  |  |
-| resultView | [bool](#bool) |  |  |
-| indexMinimum | [int32](#int32) |  |  |
-| due_date | [string](#string) |  |  |
-| until_date | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-assessment-v1-public-UpdateQuizSettingResponse"></a>
-
-### UpdateQuizSettingResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  |  |
-| setting | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
-
-
-
-
-
  
 
  
@@ -2039,9 +1991,7 @@ Service for quiz related feature
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateQuiz | [CreateQuizRequest](#modules-assessment-v1-public-CreateQuizRequest) | [CreateQuizResponse](#modules-assessment-v1-public-CreateQuizResponse) |  |
-| CreateQuizSetting | [CreateQuizSettingRequest](#modules-assessment-v1-public-CreateQuizSettingRequest) | [CreateQuizSettingResponse](#modules-assessment-v1-public-CreateQuizSettingResponse) |  |
 | UpdateQuiz | [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest) | [UpdateQuizResponse](#modules-assessment-v1-public-UpdateQuizResponse) |  |
-| UpdateQuizSetting | [UpdateQuizSettingRequest](#modules-assessment-v1-public-UpdateQuizSettingRequest) | [UpdateQuizSettingResponse](#modules-assessment-v1-public-UpdateQuizSettingResponse) |  |
 | GetQuizDetail | [GetQuizDetailRequest](#modules-assessment-v1-public-GetQuizDetailRequest) | [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse) |  |
 | GetQuizList | [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest) | [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse) |  |
 | CreateQuestions | [CreateQuestionRequest](#modules-assessment-v1-public-CreateQuestionRequest) | [CreateQuestionResponse](#modules-assessment-v1-public-CreateQuestionResponse) |  |
@@ -2056,6 +2006,7 @@ Service for quiz related feature
 | GetStudentAnswer | [GetStudentAnswerRequest](#modules-assessment-v1-public-GetStudentAnswerRequest) | [GetStudentAnswerResponse](#modules-assessment-v1-public-GetStudentAnswerResponse) |  |
 | GetStudentSubmissionDetails | [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest) | [GetStudentSubmissionDetailsResponse](#modules-assessment-v1-public-GetStudentSubmissionDetailsResponse) |  |
 | GetQuizStatistics | [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest) | [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse) |  |
+| GetAllSubmissionList | [GetAllSubmissionListRequest](#modules-assessment-v1-public-GetAllSubmissionListRequest) | [GetAllSubmissionListResponse](#modules-assessment-v1-public-GetAllSubmissionListResponse) |  |
 
  
 
