@@ -180,6 +180,7 @@
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -268,6 +269,7 @@
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -467,6 +469,7 @@
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -580,6 +583,7 @@
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | class_subject_id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |

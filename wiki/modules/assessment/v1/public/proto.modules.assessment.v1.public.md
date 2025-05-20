@@ -10,8 +10,6 @@
     - [CreateAssignmentPresignedPostUrlResponse](#modules-assessment-v1-public-CreateAssignmentPresignedPostUrlResponse)
     - [CreateAssignmentRequest](#modules-assessment-v1-public-CreateAssignmentRequest)
     - [CreateAssignmentResponse](#modules-assessment-v1-public-CreateAssignmentResponse)
-    - [CreateAssignmentSubmissionRequest](#modules-assessment-v1-public-CreateAssignmentSubmissionRequest)
-    - [CreateAssignmentSubmissionResponse](#modules-assessment-v1-public-CreateAssignmentSubmissionResponse)
     - [DeleteAssignmentRequest](#modules-assessment-v1-public-DeleteAssignmentRequest)
     - [DeleteAssignmentResponse](#modules-assessment-v1-public-DeleteAssignmentResponse)
     - [DeleteAssignmentSubmissionRequest](#modules-assessment-v1-public-DeleteAssignmentSubmissionRequest)
@@ -249,41 +247,6 @@
 | ----- | ---- | ----- | ----------- |
 | assignment | [modules.assessment.v1.shared.Assignment](#modules-assessment-v1-shared-Assignment) |  |  |
 | message | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-assessment-v1-public-CreateAssignmentSubmissionRequest"></a>
-
-### CreateAssignmentSubmissionRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| assignment_id | [string](#string) |  |  |
-| student_user_id | [string](#string) |  |  |
-| answer_text | [string](#string) |  |  |
-| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
-| class_subject_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-assessment-v1-public-CreateAssignmentSubmissionResponse"></a>
-
-### CreateAssignmentSubmissionResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  |  |
-| assignment_submission | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) |  |  |
 
 
 
@@ -589,11 +552,12 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| assignment_id | [string](#string) |  |  |
-| student_user_id | [string](#string) |  |  |
-| class_subject_id | [string](#string) |  |  |
-| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
-| teaching_module_folder_id | [string](#string) |  |  |
+| assignment_id | [string](#string) | optional |  |
+| student_user_id | [string](#string) | optional |  |
+| class_subject_id | [string](#string) | optional |  |
+| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) | optional |  |
+| teaching_module_id | [string](#string) | optional |  |
+| teaching_module_folder_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -673,6 +637,8 @@
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | assignment_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| teaching_module_id | [string](#string) | optional |  |
+| teaching_module_folder_id | [string](#string) | optional |  |
 
 
 
@@ -746,7 +712,6 @@ Service for assignment related feature
 | DeleteAssignment | [DeleteAssignmentRequest](#modules-assessment-v1-public-DeleteAssignmentRequest) | [DeleteAssignmentResponse](#modules-assessment-v1-public-DeleteAssignmentResponse) |  |
 | GetAssignmentById | [GetAssignmentByIdRequest](#modules-assessment-v1-public-GetAssignmentByIdRequest) | [GetAssignmentByIdResponse](#modules-assessment-v1-public-GetAssignmentByIdResponse) |  |
 | ListAssignment | [ListAssignmentRequest](#modules-assessment-v1-public-ListAssignmentRequest) | [ListAssignmentResponse](#modules-assessment-v1-public-ListAssignmentResponse) |  |
-| CreateAssignmentSubmission | [CreateAssignmentSubmissionRequest](#modules-assessment-v1-public-CreateAssignmentSubmissionRequest) | [CreateAssignmentSubmissionResponse](#modules-assessment-v1-public-CreateAssignmentSubmissionResponse) |  |
 | UpdateAssignmentSubmission | [UpdateAssignmentSubmissionRequest](#modules-assessment-v1-public-UpdateAssignmentSubmissionRequest) | [UpdateAssignmentSubmissionResponse](#modules-assessment-v1-public-UpdateAssignmentSubmissionResponse) |  |
 | GetBulkAssignmentSubmissionByStudentUserId | [GetBulkAssignmentSubmissionByStudentUserIdRequest](#modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentUserIdRequest) | [GetBulkAssignmentSubmissionByStudentUserIdResponse](#modules-assessment-v1-public-GetBulkAssignmentSubmissionByStudentUserIdResponse) |  |
 | GetAssignmentSubmissionByStudentUserId | [GetAssignmentSubmissionByStudentUserIdRequest](#modules-assessment-v1-public-GetAssignmentSubmissionByStudentUserIdRequest) | [GetAssignmentSubmissionByStudentUserIdResponse](#modules-assessment-v1-public-GetAssignmentSubmissionByStudentUserIdResponse) |  |
@@ -1113,11 +1078,12 @@ Service for assignment related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| observation_id | [string](#string) |  |  |
-| student_user_id | [string](#string) |  |  |
-| class_subject_id | [string](#string) |  |  |
-| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
-| teaching_module_folder_id | [string](#string) |  |  |
+| observation_id | [string](#string) | optional |  |
+| student_user_id | [string](#string) | optional |  |
+| class_subject_id | [string](#string) | optional |  |
+| submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) | optional |  |
+| teaching_module_id | [string](#string) | optional |  |
+| teaching_module_folder_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1193,6 +1159,8 @@ Service for assignment related feature
 | rubric_id | [string](#string) | optional |  |
 | scoring_method | [modules.assessment.v1.shared.ScoringMethod](#modules-assessment-v1-shared-ScoringMethod) | optional |  |
 | observation_type | [modules.assessment.v1.shared.AssessmentType](#modules-assessment-v1-shared-AssessmentType) | optional |  |
+| teaching_module_id | [string](#string) | optional |  |
+| teaching_module_folder_id | [string](#string) | optional |  |
 
 
 
