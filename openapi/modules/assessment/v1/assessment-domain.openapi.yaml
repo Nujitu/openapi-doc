@@ -3090,6 +3090,11 @@
                         format: enum,
                       },
                   },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
+                  },
                 ],
               responses:
                 {
@@ -7502,6 +7507,20 @@
                       example: John Doe,
                       type: string,
                       description: Student Name,
+                    },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  assessment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
                     },
                 },
             },

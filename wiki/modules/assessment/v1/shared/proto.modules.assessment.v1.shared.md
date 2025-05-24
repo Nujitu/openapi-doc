@@ -823,6 +823,8 @@
 | subject_name | [string](#string) |  |  |
 | student_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| assessment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
 
 
 
