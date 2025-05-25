@@ -3095,6 +3095,8 @@
                     in: query,
                     schema: { type: string },
                   },
+                  { name: start_due_date, in: query, schema: { type: string } },
+                  { name: end_due_date, in: query, schema: { type: string } },
                 ],
               responses:
                 {
