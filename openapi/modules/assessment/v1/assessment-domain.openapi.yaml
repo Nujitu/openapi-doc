@@ -45,7 +45,11 @@
                     name: scoring_method,
                     in: query,
                     schema:
-                      { enum: [MANUAL, RUBRIC], type: string, format: enum },
+                      {
+                        enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
+                        type: string,
+                        format: enum,
+                      },
                   },
                   {
                     name: observation_type,
@@ -426,6 +430,11 @@
                   },
                   {
                     name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teacher_user_id,
                     in: query,
                     schema: { type: string },
                   },
@@ -1419,7 +1428,11 @@
                     name: scoring_method,
                     in: query,
                     schema:
-                      { enum: [MANUAL, RUBRIC], type: string, format: enum },
+                      {
+                        enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
+                        type: string,
+                        format: enum,
+                      },
                   },
                   {
                     name: assignment_type,
@@ -1869,6 +1882,11 @@
                   },
                   {
                     name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teacher_user_id,
                     in: query,
                     schema: { type: string },
                   },
@@ -3870,7 +3888,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Observation scoring method,
                       format: enum,
@@ -4027,6 +4045,12 @@
                       type: string,
                       description: Teaching Module Folder ID,
                     },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -4105,7 +4129,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Observation scoring method,
                       format: enum,
@@ -4209,7 +4233,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Observation scoring method,
                       format: enum,
@@ -4361,6 +4385,12 @@
                       example: 123,
                       type: string,
                       description: Teaching Module Folder ID,
+                    },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
                     },
                   created_at:
                     {
@@ -4557,7 +4587,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Observation scoring method,
                       format: enum,
@@ -4833,7 +4863,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Observation scoring method,
                       format: enum,
@@ -5356,7 +5386,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Assignment scoring method,
                       format: enum,
@@ -5622,7 +5652,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Assignment scoring method,
                       format: enum,
@@ -5656,6 +5686,10 @@
                       type: string,
                       description: Teaching Module Folder ID,
                     },
+                  remove_available_date:
+                    { type: boolean, description: Remove available date },
+                  remove_due_date:
+                    { type: boolean, description: Remove due date },
                 },
             },
           publicUpdateAssignmentResponse:
@@ -5792,7 +5826,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Assignment scoring method,
                       format: enum,
@@ -5921,7 +5955,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Assignment scoring method,
                       format: enum,
@@ -6115,6 +6149,19 @@
                       type: string,
                       description: Teaching Module Folder ID,
                     },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -6207,7 +6254,7 @@
                   scoring_method:
                     {
                       example: RUBRIC,
-                      enum: [MANUAL, RUBRIC],
+                      enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
                       type: string,
                       description: Assignment scoring method,
                       format: enum,
@@ -6404,6 +6451,19 @@
                       example: 123,
                       type: string,
                       description: Teaching Module Folder ID,
+                    },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: "Teacher User ID, the user ID of a teacher of the Class Subject and the maker of the assignment",
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Assignment deadline,
+                      format: date-time,
                     },
                   created_at:
                     {

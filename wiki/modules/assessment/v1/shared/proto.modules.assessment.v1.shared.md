@@ -182,6 +182,8 @@
 | class_subject_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -271,6 +273,8 @@
 | class_subject_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -366,8 +370,9 @@
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| MANUAL | 0 |  |
+| UNKNOWN_SCORING_METHOD | 0 |  |
 | RUBRIC | 1 |  |
+| MANUAL | 2 |  |
 
 
 
@@ -471,6 +476,7 @@
 | class_subject_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -585,6 +591,7 @@
 | class_subject_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

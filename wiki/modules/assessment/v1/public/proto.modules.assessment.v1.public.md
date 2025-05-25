@@ -558,6 +558,7 @@
 | submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) | optional |  |
 | teaching_module_id | [string](#string) | optional |  |
 | teaching_module_folder_id | [string](#string) | optional |  |
+| teacher_user_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -639,6 +640,8 @@
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | teaching_module_id | [string](#string) | optional |  |
 | teaching_module_folder_id | [string](#string) | optional |  |
+| remove_available_date | [bool](#bool) |  |  |
+| remove_due_date | [bool](#bool) |  |  |
 
 
 
@@ -1084,6 +1087,7 @@ Service for assignment related feature
 | submission_state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) | optional |  |
 | teaching_module_id | [string](#string) | optional |  |
 | teaching_module_folder_id | [string](#string) | optional |  |
+| teacher_user_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
