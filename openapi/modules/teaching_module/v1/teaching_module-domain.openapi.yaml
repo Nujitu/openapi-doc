@@ -2088,8 +2088,10 @@
               type: object,
               properties:
                 {
-                  message:
-                    { type: string, description: message for teaching module },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModule",
+                    },
                 },
             },
           sharedApprover:
