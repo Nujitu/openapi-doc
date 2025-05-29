@@ -16,6 +16,72 @@
     {
       /v1/school:
         {
+          put:
+            {
+              tags: [SchoolService],
+              summary: Update School Information,
+              description: Update School Information,
+              operationId: SchoolService_UpdateSchoolInfo,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateSchoolInfoRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateSchoolInfoResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           post:
             {
               tags: [SchoolService],
@@ -153,6 +219,75 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetSchoolListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/school/presigned-url:
+        {
+          post:
+            {
+              tags: [SchoolService],
+              summary: Create School Presigned Post URL,
+              description: Create an AWS S3 presigned URLs to upload user assets,
+              operationId: SchoolService_CreateSchoolPresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateSchoolPresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateSchoolPresignedPostUrlResponse",
                                 },
                             },
                         },
@@ -1085,6 +1220,18 @@
     {
       "schemas":
         {
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
           v1CursorPagination:
             {
               type: object,
@@ -1115,6 +1262,69 @@
                     { $ref: "#/components/schemas/v1OffsetPagination" },
                   cursor_pagination:
                     { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          v1S3PresignedUrlRequest:
+            {
+              type: object,
+              properties:
+                { filename: { type: string }, filesize: { type: string } },
+            },
+          v1S3PresignedUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  url: { type: string },
+                  values:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedValues",
+                    },
+                },
+            },
+          v1S3PresignedValues:
+            {
+              type: object,
+              properties:
+                {
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          publicCreateSchoolPresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlRequest",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                    },
+                },
+            },
+          publicCreateSchoolPresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
+                    },
                 },
             },
           publicCreateSchoolRequest:
@@ -1207,6 +1417,77 @@
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
+          publicUpdateSchoolInfoRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: School ID },
+                  name:
+                    {
+                      example: SDN 1 Chicago,
+                      type: string,
+                      description: School Name,
+                    },
+                  school_type:
+                    {
+                      example: Public/Private,
+                      enum:
+                        [
+                          SCHOOL_TYPE_UNSPECIFIED,
+                          SCHOOL_TYPE_PUBLIC,
+                          SCHOOL_TYPE_PRIVATE,
+                        ],
+                      type: string,
+                      description: School Type,
+                      format: enum,
+                    },
+                  phone_number:
+                    {
+                      example: (021) 1234567,
+                      type: string,
+                      description: School Phone Number,
+                    },
+                  email:
+                    {
+                      example: sekolah@edu.com,
+                      type: string,
+                      description: School Email,
+                    },
+                  education_level:
+                    {
+                      example: "elementary, highschool, senior highschool, college",
+                      enum:
+                        [
+                          EDUCATION_LEVEL_UNSPECIFIED,
+                          EDUCATION_LEVEL_ELEMENTARY,
+                          EDUCATION_LEVEL_JUNIOR_HIGH,
+                          EDUCATION_LEVEL_SENIOR_HIGH,
+                          EDUCATION_LEVEL_COLLEGE,
+                        ],
+                      type: string,
+                      description: Education Level,
+                      format: enum,
+                    },
+                  school_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  website:
+                    {
+                      example: "https://sdn1chicago.edu",
+                      type: string,
+                      description: School Website,
+                    },
+                },
+            },
+          publicUpdateSchoolInfoResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for updating result },
+                },
+            },
           sharedSchool:
             {
               type: object,
@@ -1271,6 +1552,8 @@
                       type: string,
                       description: School image,
                     },
+                  school_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -1425,18 +1708,6 @@
             },
           .UpdateStudentResponse:
             { type: object, properties: { message: { type: string } } },
-          v1AttachmentFile:
-            {
-              type: object,
-              properties:
-                {
-                  display_name: { type: string },
-                  unique_name: { type: string },
-                  file_extension: { type: string },
-                  file_size: { type: string },
-                  link: { type: string },
-                },
-            },
           .GetTeacherListResponse:
             {
               type: object,
@@ -1604,37 +1875,6 @@
             },
           .UpdateTeacherResponse:
             { type: object, properties: { message: { type: string } } },
-          v1S3PresignedUrlRequest:
-            {
-              type: object,
-              properties:
-                { filename: { type: string }, filesize: { type: string } },
-            },
-          v1S3PresignedUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  url: { type: string },
-                  values:
-                    {
-                      $ref: "#/components/schemas/v1S3PresignedValues",
-                    },
-                },
-            },
-          v1S3PresignedValues:
-            {
-              type: object,
-              properties:
-                {
-                  X_Amz_Algorithm: { type: string },
-                  X_Amz_Credential: { type: string },
-                  X_Amz_Date: { type: string },
-                  X_Amz_Signature: { type: string },
-                  key: { type: string },
-                  policy: { type: string },
-                },
-            },
           publicCreateUserPresignedPostUrlRequest:
             {
               type: object,

@@ -4,11 +4,15 @@
 ## Table of Contents
 
 - [modules/user/v1/public/school.proto](#modules_user_v1_public_school-proto)
+    - [CreateSchoolPresignedPostUrlRequest](#modules-user-v1-public-CreateSchoolPresignedPostUrlRequest)
+    - [CreateSchoolPresignedPostUrlResponse](#modules-user-v1-public-CreateSchoolPresignedPostUrlResponse)
     - [CreateSchoolRequest](#modules-user-v1-public-CreateSchoolRequest)
     - [CreateSchoolResponse](#modules-user-v1-public-CreateSchoolResponse)
     - [GetSchoolByIDRequest](#modules-user-v1-public-GetSchoolByIDRequest)
     - [GetSchoolListRequest](#modules-user-v1-public-GetSchoolListRequest)
     - [GetSchoolListResponse](#modules-user-v1-public-GetSchoolListResponse)
+    - [UpdateSchoolInfoRequest](#modules-user-v1-public-UpdateSchoolInfoRequest)
+    - [UpdateSchoolInfoResponse](#modules-user-v1-public-UpdateSchoolInfoResponse)
   
     - [SchoolService](#modules-user-v1-public-SchoolService)
   
@@ -60,6 +64,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/user/v1/public/school.proto
+
+
+
+<a name="modules-user-v1-public-CreateSchoolPresignedPostUrlRequest"></a>
+
+### CreateSchoolPresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [common.v1.S3PresignedUrlRequest](#common-v1-S3PresignedUrlRequest) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-CreateSchoolPresignedPostUrlResponse"></a>
+
+### CreateSchoolPresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) | repeated |  |
+
+
+
 
 
 
@@ -153,6 +187,43 @@
 
 
 
+
+<a name="modules-user-v1-public-UpdateSchoolInfoRequest"></a>
+
+### UpdateSchoolInfoRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| school_type | [modules.user.v1.shared.SchoolType](#modules-user-v1-shared-SchoolType) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| education_level | [modules.user.v1.shared.EducationLevel](#modules-user-v1-shared-EducationLevel) |  |  |
+| school_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+| website | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-UpdateSchoolInfoResponse"></a>
+
+### UpdateSchoolInfoResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -170,6 +241,8 @@
 | CreateSchool | [CreateSchoolRequest](#modules-user-v1-public-CreateSchoolRequest) | [CreateSchoolResponse](#modules-user-v1-public-CreateSchoolResponse) |  |
 | GetSchoolByID | [GetSchoolByIDRequest](#modules-user-v1-public-GetSchoolByIDRequest) | [.modules.user.v1.shared.School](#modules-user-v1-shared-School) |  |
 | GetSchoolList | [GetSchoolListRequest](#modules-user-v1-public-GetSchoolListRequest) | [GetSchoolListResponse](#modules-user-v1-public-GetSchoolListResponse) |  |
+| UpdateSchoolInfo | [UpdateSchoolInfoRequest](#modules-user-v1-public-UpdateSchoolInfoRequest) | [UpdateSchoolInfoResponse](#modules-user-v1-public-UpdateSchoolInfoResponse) |  |
+| CreateSchoolPresignedPostUrl | [CreateSchoolPresignedPostUrlRequest](#modules-user-v1-public-CreateSchoolPresignedPostUrlRequest) | [CreateSchoolPresignedPostUrlResponse](#modules-user-v1-public-CreateSchoolPresignedPostUrlResponse) |  |
 
  
 
