@@ -446,7 +446,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
                                 },
                             },
                         },
@@ -2089,7 +2089,10 @@
               properties:
                 {
                   message:
-                    { type: string, description: message for teaching module },
+                    {
+                      type: string,
+                      description: Teaching Module Response Message,
+                    },
                 },
             },
           sharedApprover:
