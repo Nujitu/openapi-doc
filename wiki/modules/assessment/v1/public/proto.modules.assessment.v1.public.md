@@ -1397,6 +1397,7 @@ Service for observation related feature
 | teacher_id | [string](#string) |  |  |
 | start_due_date | [string](#string) |  |  |
 | end_due_date | [string](#string) |  |  |
+| student_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 
