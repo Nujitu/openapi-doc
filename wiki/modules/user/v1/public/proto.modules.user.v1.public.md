@@ -546,6 +546,10 @@ Service for student related feature
 | email | [string](#string) |  |  |
 | profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
 | address | [string](#string) |  |  |
+| teacher_information | [TeacherInformation](#TeacherInformation) |  |  |
+| teacher_education | [TeacherEducation](#TeacherEducation) |  |  |
+| teacher_license | [TeacherLicense](#TeacherLicense) | repeated |  |
+| teacher_achievement | [TeacherAchievement](#TeacherAchievement) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -565,8 +569,8 @@ Service for student related feature
 | id | [string](#string) |  |  |
 | teacher_information | [TeacherInformation](#TeacherInformation) |  |  |
 | teacher_education | [TeacherEducation](#TeacherEducation) |  |  |
-| teacher_license | [TeacherLicense](#TeacherLicense) |  |  |
-| teacher_achievement | [TeacherAchievement](#TeacherAchievement) |  |  |
+| teacher_license | [TeacherLicense](#TeacherLicense) | repeated |  |
+| teacher_achievement | [TeacherAchievement](#TeacherAchievement) | repeated |  |
 
 
 
