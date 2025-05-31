@@ -686,6 +686,21 @@
                       type: string,
                       description: User Place of Birth,
                     },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
                   status:
                     {
                       enum:
