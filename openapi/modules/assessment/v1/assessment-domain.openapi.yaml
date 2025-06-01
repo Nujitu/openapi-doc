@@ -3627,6 +3627,7 @@
                   { name: start_due_date, in: query, schema: { type: string } },
                   { name: end_due_date, in: query, schema: { type: string } },
                   { name: student_id, in: query, schema: { type: string } },
+                  { name: quiz_id, in: query, schema: { type: string } },
                   {
                     name: limit,
                     in: query,
