@@ -4,7 +4,7 @@
   info:
     {
       title: Material Domain,
-      description: "Skoola Class Subject Service, Skoola Curriculum Group Component Service, Skola Class Group Service, Skoola Curriculum Service, Skoola Header Component Service, Skola Subject Service",
+      description: "Skoola Class Subject Service, Skola Major Service, Skoola Curriculum Group Component Service, Skola Class Group Service, Skoola Curriculum Service, Skoola Header Component Service, Skola Subject Service",
       version: v1,
     },
   servers:
@@ -276,6 +276,246 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedDeleteClassSubjectAnnouncementResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/major:
+        {
+          get:
+            {
+              tags: [MajorService],
+              summary: List major,
+              description: Return list of majors,
+              operationId: MajorService_ListMajor,
+              parameters:
+                [{ name: instance_id, in: query, schema: { type: string } }],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListMajorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [MajorService],
+              summary: Create a new Major,
+              description: Administrator add new Major,
+              operationId: MajorService_CreateMajor,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateMajorRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateMajorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [MajorService],
+              summary: Delete an major,
+              description: Delete an major,
+              operationId: MajorService_DeleteMajor,
+              parameters: [{ name: id, in: query, schema: { type: string } }],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteMajorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/major/detail/{id}":
+        {
+          get:
+            {
+              tags: [MajorService],
+              summary: Create a new major,
+              description: Teacher add new major,
+              operationId: MajorService_GetMajorByID,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetMajorByIDResponse",
                                 },
                             },
                         },
@@ -2696,6 +2936,104 @@
                   "message": { "title": "message", "type": "string" },
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
+                },
+            },
+          publicCreateMajorRequest:
+            {
+              type: object,
+              properties:
+                {
+                  name:
+                    {
+                      example: Bahasa,
+                      type: string,
+                      description: "Major name must be unique. For example: IPA, IPS, Bahasa, Akuntansi, etc.",
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                },
+            },
+          publicCreateMajorResponse:
+            {
+              type: object,
+              properties:
+                {
+                  major:
+                    {
+                      $ref: "#/components/schemas/sharedMajor",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating major,
+                    },
+                },
+            },
+          publicDeleteMajorResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting major,
+                    },
+                },
+            },
+          publicGetMajorByIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  major:
+                    {
+                      $ref: "#/components/schemas/sharedMajor",
+                    },
+                },
+            },
+          publicListMajorResponse:
+            {
+              type: object,
+              properties:
+                {
+                  majors:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMajor",
+                        },
+                      description: Major List,
+                    },
+                },
+            },
+          sharedMajor:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Major ID },
+                  name:
+                    {
+                      example: Bahasa,
+                      type: string,
+                      description: "Major name must be unique. For example: IPA, IPS, Bahasa, Akuntansi, etc.",
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
                 },
             },
           publicCreateCurriculumGroupComponentRequest:
