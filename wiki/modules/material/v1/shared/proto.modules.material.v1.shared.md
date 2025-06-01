@@ -37,6 +37,9 @@
 - [modules/material/v1/shared/header_component.proto](#modules_material_v1_shared_header_component-proto)
     - [HeaderComponent](#modules-material-v1-shared-HeaderComponent)
   
+- [modules/material/v1/shared/major.proto](#modules_material_v1_shared_major-proto)
+    - [Major](#modules-material-v1-shared-Major)
+  
 - [modules/material/v1/shared/subject.proto](#modules_material_v1_shared_subject-proto)
     - [Subject](#modules-material-v1-shared-Subject)
   
@@ -503,6 +506,41 @@
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
 | curriculum_id | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_major-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/major.proto
+
+
+
+<a name="modules-material-v1-shared-Major"></a>
+
+### Major
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 

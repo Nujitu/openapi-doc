@@ -1890,6 +1890,26 @@
                     in: query,
                     schema: { type: string },
                   },
+                  {
+                    name: due_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,

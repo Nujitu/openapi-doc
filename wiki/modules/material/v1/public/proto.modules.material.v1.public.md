@@ -71,6 +71,18 @@
   
     - [HeaderComponentService](#modules-material-v1-public-HeaderComponentService)
   
+- [modules/material/v1/public/major.proto](#modules_material_v1_public_major-proto)
+    - [CreateMajorRequest](#modules-material-v1-public-CreateMajorRequest)
+    - [CreateMajorResponse](#modules-material-v1-public-CreateMajorResponse)
+    - [DeleteMajorRequest](#modules-material-v1-public-DeleteMajorRequest)
+    - [DeleteMajorResponse](#modules-material-v1-public-DeleteMajorResponse)
+    - [GetMajorByIDRequest](#modules-material-v1-public-GetMajorByIDRequest)
+    - [GetMajorByIDResponse](#modules-material-v1-public-GetMajorByIDResponse)
+    - [ListMajorRequest](#modules-material-v1-public-ListMajorRequest)
+    - [ListMajorResponse](#modules-material-v1-public-ListMajorResponse)
+  
+    - [MajorService](#modules-material-v1-public-MajorService)
+  
 - [modules/material/v1/public/subject.proto](#modules_material_v1_public_subject-proto)
     - [CreateSubjectRequest](#modules-material-v1-public-CreateSubjectRequest)
     - [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest)
@@ -1029,6 +1041,157 @@ Service for user related feature
 | DeleteHeaderComponent | [DeleteHeaderComponentRequest](#modules-material-v1-public-DeleteHeaderComponentRequest) | [HeaderComponentResponse](#modules-material-v1-public-HeaderComponentResponse) |  |
 | GetHeaderComponentDetail | [GetHeaderComponentDetailRequest](#modules-material-v1-public-GetHeaderComponentDetailRequest) | [.modules.material.v1.shared.HeaderComponent](#modules-material-v1-shared-HeaderComponent) |  |
 | GetHeaderComponentByCurriculumID | [GetHeaderComponentByCurriculumIDRequest](#modules-material-v1-public-GetHeaderComponentByCurriculumIDRequest) | [GetHeaderComponentResponse](#modules-material-v1-public-GetHeaderComponentResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_public_major-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/public/major.proto
+
+
+
+<a name="modules-material-v1-public-CreateMajorRequest"></a>
+
+### CreateMajorRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CreateMajorResponse"></a>
+
+### CreateMajorResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| major | [modules.material.v1.shared.Major](#modules-material-v1-shared-Major) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteMajorRequest"></a>
+
+### DeleteMajorRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteMajorResponse"></a>
+
+### DeleteMajorResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetMajorByIDRequest"></a>
+
+### GetMajorByIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetMajorByIDResponse"></a>
+
+### GetMajorByIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| major | [modules.material.v1.shared.Major](#modules-material-v1-shared-Major) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-ListMajorRequest"></a>
+
+### ListMajorRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| instance_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-ListMajorResponse"></a>
+
+### ListMajorResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| majors | [modules.material.v1.shared.Major](#modules-material-v1-shared-Major) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-public-MajorService"></a>
+
+### MajorService
+Service for user related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateMajor | [CreateMajorRequest](#modules-material-v1-public-CreateMajorRequest) | [CreateMajorResponse](#modules-material-v1-public-CreateMajorResponse) |  |
+| GetMajorByID | [GetMajorByIDRequest](#modules-material-v1-public-GetMajorByIDRequest) | [GetMajorByIDResponse](#modules-material-v1-public-GetMajorByIDResponse) |  |
+| DeleteMajor | [DeleteMajorRequest](#modules-material-v1-public-DeleteMajorRequest) | [DeleteMajorResponse](#modules-material-v1-public-DeleteMajorResponse) |  |
+| ListMajor | [ListMajorRequest](#modules-material-v1-public-ListMajorRequest) | [ListMajorResponse](#modules-material-v1-public-ListMajorResponse) |  |
 
  
 
