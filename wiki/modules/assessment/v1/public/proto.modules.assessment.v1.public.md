@@ -1939,6 +1939,7 @@ Service for observation related feature
 | learing_goal_id | [string](#string) |  |  |
 | learning_goal_title | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| teaching_module_id | [string](#string) |  |  |
 
 
 
