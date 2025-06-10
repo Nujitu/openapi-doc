@@ -52,6 +52,9 @@
 - [modules/assessment/v1/shared/teaching_module.proto](#modules_assessment_v1_shared_teaching_module-proto)
     - [TeachingModuleSummary](#modules-assessment-v1-shared-TeachingModuleSummary)
   
+- [modules/assessment/v1/shared/user.proto](#modules_assessment_v1_shared_user-proto)
+    - [UserPublicDetails](#modules-assessment-v1-shared-UserPublicDetails)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -264,7 +267,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | assignment | [AssignmentDetails](#modules-assessment-v1-shared-AssignmentDetails) |  |  |
-| student_user_id | [string](#string) |  |  |
+| student_user | [UserPublicDetails](#modules-assessment-v1-shared-UserPublicDetails) |  |  |
 | answer_text | [string](#string) |  |  |
 | attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | point | [float](#float) |  |  |
@@ -469,7 +472,7 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | observation | [ObservationDetails](#modules-assessment-v1-shared-ObservationDetails) |  |  |
-| student_user_id | [string](#string) |  |  |
+| student_user | [UserPublicDetails](#modules-assessment-v1-shared-UserPublicDetails) |  |  |
 | point | [float](#float) |  |  |
 | RubricSubmission | [RubricSubmission](#modules-assessment-v1-shared-RubricSubmission) |  |  |
 | submission_state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
@@ -1002,6 +1005,47 @@
 | description | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
 | index_minimum | [int32](#int32) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_assessment_v1_shared_user-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/shared/user.proto
+
+
+
+<a name="modules-assessment-v1-shared-UserPublicDetails"></a>
+
+### UserPublicDetails
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| status | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 

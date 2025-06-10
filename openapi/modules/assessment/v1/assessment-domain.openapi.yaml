@@ -3850,6 +3850,18 @@
     {
       "schemas":
         {
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
           sharedListObservation:
             {
               type: object,
@@ -4018,11 +4030,9 @@
                     {
                       $ref: "#/components/schemas/sharedObservationDetails",
                     },
-                  student_user_id:
+                  student_user:
                     {
-                      example: 123,
-                      type: string,
-                      description: Student User ID,
+                      $ref: "#/components/schemas/sharedUserPublicDetails",
                     },
                   point:
                     {
@@ -4549,6 +4559,89 @@
                   teacher_id: { type: string, description: teacher id },
                   index_minimum:
                     { type: integer, description: teacher id, format: int32 },
+                },
+            },
+          sharedUserPublicDetails:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: Represent user status,
+                      format: enum,
+                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
                 },
             },
           publicCreateObservationRequest:
@@ -5221,18 +5314,6 @@
                       description: Time when Rubric data updated,
                       format: date-time,
                     },
-                },
-            },
-          v1AttachmentFile:
-            {
-              type: object,
-              properties:
-                {
-                  display_name: { type: string },
-                  unique_name: { type: string },
-                  file_extension: { type: string },
-                  file_size: { type: string },
-                  link: { type: string },
                 },
             },
           v1S3PresignedUrlRequest:
@@ -6414,11 +6495,9 @@
                     {
                       $ref: "#/components/schemas/sharedAssignmentDetails",
                     },
-                  student_user_id:
+                  student_user:
                     {
-                      example: 123,
-                      type: string,
-                      description: Student User ID,
+                      $ref: "#/components/schemas/sharedUserPublicDetails",
                     },
                   answer_text:
                     { example: 123, type: string, description: Student ID },
