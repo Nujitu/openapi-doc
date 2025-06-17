@@ -292,6 +292,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_subject_id | [string](#string) |  |  |
+| approver_user_id | [string](#string) |  |  |
 
 
 
@@ -315,6 +316,7 @@
 | leave | [int32](#int32) |  |  |
 | is_submitted | [bool](#bool) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| teacher_attendance | [string](#string) |  |  |
 
 
 
@@ -435,6 +437,8 @@
 | assignments | [Assignment](#modules-report-v1-public-Assignment) | repeated |  |
 | observations | [Observation](#modules-report-v1-public-Observation) | repeated |  |
 | note | [string](#string) |  |  |
+| journal_status | [string](#string) |  |  |
+| teacher_attendance | [string](#string) |  |  |
 
 
 

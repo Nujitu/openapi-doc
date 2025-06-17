@@ -5,7 +5,7 @@
     {
       title: Report Domain,
       version: v1,
-      description: "Skola Attendance Service, Skola Absence Service, Skoola Finalized Score Service",
+      description: "Skola Absence Service, Skola Attendance Service, Skoola Finalized Score Service",
     },
   servers:
     [
@@ -14,6 +14,164 @@
     ],
   paths:
     {
+      /v1/absence/history:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: Get absence history,
+              operationId: getAbsenceHistory,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicGetAbsenceHistoryRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAbsenceHistoryResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/absence/list:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: List absences,
+              operationId: listAbsences,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicListAbsencesRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAbsencesResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/absence/{id}":
+        {
+          delete:
+            {
+              tags: [AbsenceService],
+              summary: Delete absence,
+              operationId: deleteAbsence,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: date, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGeneralAbsenceResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/attendance:
         {
           post:
@@ -162,6 +320,11 @@
                 [
                   {
                     name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: approver_user_id,
                     in: query,
                     schema: { type: string },
                   },
@@ -344,164 +507,6 @@
                 },
             },
         },
-      /v1/absence/history:
-        {
-          post:
-            {
-              tags: [AbsenceService],
-              summary: Get absence history,
-              operationId: getAbsenceHistory,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicGetAbsenceHistoryRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAbsenceHistoryResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/absence/list:
-        {
-          post:
-            {
-              tags: [AbsenceService],
-              summary: List absences,
-              operationId: listAbsences,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicListAbsencesRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListAbsencesResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/absence/{id}":
-        {
-          delete:
-            {
-              tags: [AbsenceService],
-              summary: Delete absence,
-              operationId: deleteAbsence,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  { name: date, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGeneralAbsenceResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       "/v1/finalized-score/{class_group_id}/{task_id}":
         {
           get:
@@ -577,327 +582,6 @@
     {
       "schemas":
         {
-          publicAssignment:
-            {
-              type: object,
-              properties:
-                {
-                  assignment_id: { type: string, description: Assesment ID },
-                  name: { type: string, description: Assesment Name },
-                },
-            },
-          publicBaseResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for attendance },
-                },
-            },
-          publicGetAttendanceRequest:
-            {
-              type: object,
-              properties:
-                {
-                  schedule_id: { type: string, description: Schedule ID },
-                  class_subject_id: { type: string, description: Class ID },
-                  date:
-                    {
-                      type: string,
-                      description: Attendance date,
-                      format: date-time,
-                    },
-                  class_id: { type: string, description: Class Subject ID },
-                },
-            },
-          publicGetJournalAttendanceResponse:
-            {
-              type: object,
-              properties:
-                {
-                  attendance_id: { type: string, description: attendance ID },
-                  class_subject_id: { type: string, description: class ID },
-                  teaching_module:
-                    {
-                      $ref: "#/components/schemas/publicTeachingModule",
-                    },
-                  present:
-                    {
-                      type: integer,
-                      description: total Present,
-                      format: int32,
-                    },
-                  absent:
-                    { type: integer, description: total Absent, format: int32 },
-                  sick:
-                    { type: integer, description: total Sick, format: int32 },
-                  leave:
-                    { type: integer, description: total Leave, format: int32 },
-                  is_submitted: { type: boolean, description: IsSubmitted },
-                  date:
-                    {
-                      type: string,
-                      description: attendance date,
-                      format: date-time,
-                    },
-                },
-            },
-          publicLearningGoal:
-            {
-              type: object,
-              properties:
-                {
-                  learning_goals_id:
-                    { type: string, description: Learning Goals ID },
-                  name: { type: string, description: Learning Goals Name },
-                },
-            },
-          publicListGetJournalAttendanceResponse:
-            {
-              type: object,
-              properties:
-                {
-                  data:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicGetJournalAttendanceResponse",
-                        },
-                      description: List of journal attendance data,
-                    },
-                },
-            },
-          publicObservation:
-            {
-              type: object,
-              properties:
-                {
-                  observation_id: { type: string, description: Observation ID },
-                  name: { type: string, description: Observation Name },
-                },
-            },
-          publicQuiz:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { type: string, description: Quiz ID },
-                  name: { type: string, description: Quiz Name },
-                },
-            },
-          publicStudyMaterial:
-            {
-              type: object,
-              properties:
-                {
-                  study_material_id:
-                    { type: string, description: Study Material ID },
-                  name: { type: string, description: Study Material Name },
-                },
-            },
-          publicSubmitAttendanceRequest:
-            {
-              type: object,
-              properties:
-                {
-                  schedule_id: { type: string, description: Schedule ID },
-                  class_id: { type: string, description: Class Subject ID },
-                  date:
-                    {
-                      type: string,
-                      description: Attendance date,
-                      format: date-time,
-                    },
-                  student_attendance:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentAttendance",
-                        },
-                      description: list of student attendance details,
-                    },
-                  class_subject_id:
-                    { type: string, description: Class Subject ID },
-                },
-            },
-          publicSubmitJournalAttendanceRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: ID Attendance },
-                  teaching_module:
-                    {
-                      $ref: "#/components/schemas/publicTeachingModule",
-                    },
-                  learning_goals:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicLearningGoal",
-                        },
-                      description: learning goals,
-                    },
-                  study_materials:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicStudyMaterial",
-                        },
-                      description: study materials,
-                    },
-                  quizzes:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicQuiz",
-                        },
-                      description: quizzes,
-                    },
-                  assignments:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAssignment",
-                        },
-                      description: assignments,
-                    },
-                  observations:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicObservation",
-                        },
-                      description: observations,
-                    },
-                  note: { type: string, description: note },
-                },
-            },
-          publicTeachingModule:
-            {
-              type: object,
-              properties:
-                {
-                  teaching_module_id:
-                    { type: string, description: Teaching Module ID },
-                  name: { type: string, description: Teaching Module Name },
-                },
-            },
-          sharedAttendance:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    {
-                      example: class123_schedule456_010124,
-                      type: string,
-                      description: attendance id,
-                    },
-                  schedule_id: { type: string, description: schedule id },
-                  date: { type: string, description: attendance date },
-                  class_id: { type: string, description: class id },
-                  class_subject_id:
-                    { type: string, description: class subject id },
-                  present:
-                    {
-                      type: integer,
-                      description: number of present students,
-                      format: int32,
-                    },
-                  absent:
-                    {
-                      type: integer,
-                      description: number of absent students,
-                      format: int32,
-                    },
-                  sick:
-                    {
-                      type: integer,
-                      description: number of sick students,
-                      format: int32,
-                    },
-                  leave:
-                    {
-                      type: integer,
-                      description: number of students on leave,
-                      format: int32,
-                    },
-                  late:
-                    {
-                      type: integer,
-                      description: number of late students,
-                      format: int32,
-                    },
-                  student_attendance:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentAttendance",
-                        },
-                      description: list of student attendance details,
-                    },
-                  created_at:
-                    {
-                      type: string,
-                      description: created at,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      type: string,
-                      description: updated at,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedStudentAttendance:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string, description: student id },
-                  student_name: { type: string, description: student name },
-                  status:
-                    {
-                      type: string,
-                      description: "attendance status (Present, Absent, Sick, Leave, Late)",
-                    },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
           publicAbsenceDetail:
             {
               type: object,
@@ -1077,6 +761,332 @@
                           $ref: "#/components/schemas/publicAbsenceDetail",
                         },
                       description: Detailed absence records,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          publicAssignment:
+            {
+              type: object,
+              properties:
+                {
+                  assignment_id: { type: string, description: Assesment ID },
+                  name: { type: string, description: Assesment Name },
+                },
+            },
+          publicBaseResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for attendance },
+                },
+            },
+          publicGetAttendanceRequest:
+            {
+              type: object,
+              properties:
+                {
+                  schedule_id: { type: string, description: Schedule ID },
+                  class_subject_id: { type: string, description: Class ID },
+                  date:
+                    {
+                      type: string,
+                      description: Attendance date,
+                      format: date-time,
+                    },
+                  class_id: { type: string, description: Class Subject ID },
+                },
+            },
+          publicGetJournalAttendanceResponse:
+            {
+              type: object,
+              properties:
+                {
+                  attendance_id: { type: string, description: attendance ID },
+                  class_subject_id: { type: string, description: class ID },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/publicTeachingModule",
+                    },
+                  present:
+                    {
+                      type: integer,
+                      description: total Present,
+                      format: int32,
+                    },
+                  absent:
+                    { type: integer, description: total Absent, format: int32 },
+                  sick:
+                    { type: integer, description: total Sick, format: int32 },
+                  leave:
+                    { type: integer, description: total Leave, format: int32 },
+                  is_submitted: { type: boolean, description: IsSubmitted },
+                  date:
+                    {
+                      type: string,
+                      description: attendance date,
+                      format: date-time,
+                    },
+                  teacher_attendance:
+                    { type: string, description: Teacher attendance status },
+                },
+            },
+          publicLearningGoal:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goals_id:
+                    { type: string, description: Learning Goals ID },
+                  name: { type: string, description: Learning Goals Name },
+                },
+            },
+          publicListGetJournalAttendanceResponse:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicGetJournalAttendanceResponse",
+                        },
+                      description: List of journal attendance data,
+                    },
+                },
+            },
+          publicObservation:
+            {
+              type: object,
+              properties:
+                {
+                  observation_id: { type: string, description: Observation ID },
+                  name: { type: string, description: Observation Name },
+                },
+            },
+          publicQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string, description: Quiz ID },
+                  name: { type: string, description: Quiz Name },
+                },
+            },
+          publicStudyMaterial:
+            {
+              type: object,
+              properties:
+                {
+                  study_material_id:
+                    { type: string, description: Study Material ID },
+                  name: { type: string, description: Study Material Name },
+                },
+            },
+          publicSubmitAttendanceRequest:
+            {
+              type: object,
+              properties:
+                {
+                  schedule_id: { type: string, description: Schedule ID },
+                  class_id: { type: string, description: Class Subject ID },
+                  date:
+                    {
+                      type: string,
+                      description: Attendance date,
+                      format: date-time,
+                    },
+                  student_attendance:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAttendance",
+                        },
+                      description: list of student attendance details,
+                    },
+                  class_subject_id:
+                    { type: string, description: Class Subject ID },
+                },
+            },
+          publicSubmitJournalAttendanceRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: ID Attendance },
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/publicTeachingModule",
+                    },
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicLearningGoal",
+                        },
+                      description: learning goals,
+                    },
+                  study_materials:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicStudyMaterial",
+                        },
+                      description: study materials,
+                    },
+                  quizzes:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicQuiz",
+                        },
+                      description: quizzes,
+                    },
+                  assignments:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAssignment",
+                        },
+                      description: assignments,
+                    },
+                  observations:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicObservation",
+                        },
+                      description: observations,
+                    },
+                  note: { type: string, description: note },
+                  journal_status: { type: string, description: Journal status },
+                  teacher_attendance:
+                    { type: string, description: Teacher attendance status },
+                },
+            },
+          publicTeachingModule:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
+                  name: { type: string, description: Teaching Module Name },
+                },
+            },
+          sharedAttendance:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: class123_schedule456_010124,
+                      type: string,
+                      description: attendance id,
+                    },
+                  schedule_id: { type: string, description: schedule id },
+                  date: { type: string, description: attendance date },
+                  class_id: { type: string, description: class id },
+                  class_subject_id:
+                    { type: string, description: class subject id },
+                  present:
+                    {
+                      type: integer,
+                      description: number of present students,
+                      format: int32,
+                    },
+                  absent:
+                    {
+                      type: integer,
+                      description: number of absent students,
+                      format: int32,
+                    },
+                  sick:
+                    {
+                      type: integer,
+                      description: number of sick students,
+                      format: int32,
+                    },
+                  leave:
+                    {
+                      type: integer,
+                      description: number of students on leave,
+                      format: int32,
+                    },
+                  late:
+                    {
+                      type: integer,
+                      description: number of late students,
+                      format: int32,
+                    },
+                  student_attendance:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAttendance",
+                        },
+                      description: list of student attendance details,
+                    },
+                  created_at:
+                    {
+                      type: string,
+                      description: created at,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: updated at,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedStudentAttendance:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string, description: student id },
+                  student_name: { type: string, description: student name },
+                  status:
+                    {
+                      type: string,
+                      description: "attendance status (Present, Absent, Sick, Leave, Late)",
                     },
                 },
             },

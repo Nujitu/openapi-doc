@@ -83,92 +83,28 @@
                 },
             },
         },
-      /v1/mail/outgoing:
+      /v1/mail/presigned-url:
         {
-          get:
+          post:
             {
-              tags: [MailOutgoingService],
-              summary: Get mail inbox,
-              description: Get mail inbox,
-              operationId: MailOutgoingService_GetSentMail,
-              parameters:
-                [
-                  { name: user_id, in: query, schema: { type: string } },
-                  {
-                    name: page,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: size,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
+              tags: [MailUploaderService],
+              summary: Create mail module presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload mail module assets,
+              operationId: MailUploaderService_CreateMailModulePresignedPostUrl,
+              requestBody:
                 {
-                  "200":
+                  content:
                     {
-                      description: OK,
-                      content:
+                      application/json:
                         {
-                          application/json:
+                          schema:
                             {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetMailOutgoingResponse",
-                                },
+                              $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlRequest",
                             },
                         },
                     },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
+                  required: true,
                 },
-            },
-        },
-      "/v1/mail/outgoing/{id}":
-        {
-          delete:
-            {
-              tags: [MailOutgoingService],
-              summary: Delete sent email by id,
-              description: Delete sent email by id,
-              operationId: MailOutgoingService_DeleteSentMail,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
               responses:
                 {
                   "200":
@@ -180,7 +116,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedDeleteSentMailResponse",
+                                  $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlResponse",
                                 },
                             },
                         },
@@ -415,28 +351,28 @@
                 },
             },
         },
-      /v1/mail/presigned-url:
+      /v1/mail/outgoing:
         {
-          post:
+          get:
             {
-              tags: [MailUploaderService],
-              summary: Create mail module presigned URLs,
-              description: Create an AWS S3 presigned URLs to upload mail module assets,
-              operationId: MailUploaderService_CreateMailModulePresignedPostUrl,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
+              tags: [MailOutgoingService],
+              summary: Get mail inbox,
+              description: Get mail inbox,
+              operationId: MailOutgoingService_GetSentMail,
+              parameters:
+                [
+                  { name: user_id, in: query, schema: { type: string } },
+                  {
+                    name: page,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: size,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
               responses:
                 {
                   "200":
@@ -448,7 +384,71 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlResponse",
+                                  $ref: "#/components/schemas/sharedGetMailOutgoingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/outgoing/{id}":
+        {
+          delete:
+            {
+              tags: [MailOutgoingService],
+              summary: Delete sent email by id,
+              description: Delete sent email by id,
+              operationId: MailOutgoingService_DeleteSentMail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteSentMailResponse",
                                 },
                             },
                         },
@@ -576,75 +576,73 @@
                   "field": { "title": "field", "type": "string" },
                 },
             },
-          sharedDeleteSentMailResponse:
+          v1S3PresignedUrlResponse:
             {
               type: object,
               properties:
                 {
-                  message:
+                  url: { type: string },
+                  values:
                     {
-                      type: string,
-                      description: Message confirming succeed to delete the mail,
+                      $ref: "#/components/schemas/v1S3PresignedValues",
                     },
                 },
             },
-          sharedGetMailOutgoingResponse:
+          v1S3PresignedValues:
             {
               type: object,
               properties:
                 {
-                  mails:
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          sharedCreateMailModulePresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
                     {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedMail",
-                        },
-                      description: List of mail,
+                      $ref: "#/components/schemas/sharedUploader",
                     },
                 },
             },
-          sharedMail:
+          sharedCreateMailModulePresignedPostUrlResponse:
             {
               type: object,
               properties:
                 {
-                  id: { type: string, description: ID of the mail },
-                  no_ref:
+                  presignedUrls:
                     {
-                      example: 001/01/2025,
-                      type: string,
-                      description: No. Ref.,
+                      $ref: "#/components/schemas/v1S3PresignedUrlResponse",
                     },
-                  date:
+                },
+            },
+          sharedUploader:
+            {
+              type: object,
+              properties:
+                {
+                  file_name: { type: string, description: File Name },
+                  file_size: { type: string, description: File Size in bytes },
+                  created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
-                      description: Received date,
+                      description: Time when file is uploaded,
+                      format: date-time,
                     },
-                  from:
+                  updated_at:
                     {
-                      example: Dinas Pendidikan,
+                      example: "2020-01-01T00:00:00Z",
                       type: string,
-                      description: Sender of the mail,
-                    },
-                  mail_type:
-                    {
-                      example: Pemintaan Data/Permohonan/Surat Panggilan,
-                      type: string,
-                      description: Type of the mail,
-                    },
-                  mail_subject:
-                    {
-                      example: Undangan mengikuti pelatihan seluruh guru,
-                      type: string,
-                      description: Subject of the mail,
-                    },
-                  attachments:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of attachments,
+                      description: Time when file is updated,
+                      format: date-time,
                     },
                 },
             },
@@ -739,73 +737,75 @@
                     },
                 },
             },
-          v1S3PresignedUrlResponse:
+          sharedMail:
             {
               type: object,
               properties:
                 {
-                  url: { type: string },
-                  values:
+                  id: { type: string, description: ID of the mail },
+                  no_ref:
                     {
-                      $ref: "#/components/schemas/v1S3PresignedValues",
+                      example: 001/01/2025,
+                      type: string,
+                      description: No. Ref.,
                     },
-                },
-            },
-          v1S3PresignedValues:
-            {
-              type: object,
-              properties:
-                {
-                  X_Amz_Algorithm: { type: string },
-                  X_Amz_Credential: { type: string },
-                  X_Amz_Date: { type: string },
-                  X_Amz_Signature: { type: string },
-                  key: { type: string },
-                  policy: { type: string },
-                },
-            },
-          sharedCreateMailModulePresignedPostUrlRequest:
-            {
-              type: object,
-              properties:
-                {
-                  files:
-                    {
-                      $ref: "#/components/schemas/sharedUploader",
-                    },
-                },
-            },
-          sharedCreateMailModulePresignedPostUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  presignedUrls:
-                    {
-                      $ref: "#/components/schemas/v1S3PresignedUrlResponse",
-                    },
-                },
-            },
-          sharedUploader:
-            {
-              type: object,
-              properties:
-                {
-                  file_name: { type: string, description: File Name },
-                  file_size: { type: string, description: File Size in bytes },
-                  created_at:
+                  date:
                     {
                       example: "2020-01-01T00:00:00Z",
                       type: string,
-                      description: Time when file is uploaded,
-                      format: date-time,
+                      description: Received date,
                     },
-                  updated_at:
+                  from:
                     {
-                      example: "2020-01-01T00:00:00Z",
+                      example: Dinas Pendidikan,
                       type: string,
-                      description: Time when file is updated,
-                      format: date-time,
+                      description: Sender of the mail,
+                    },
+                  mail_type:
+                    {
+                      example: Pemintaan Data/Permohonan/Surat Panggilan,
+                      type: string,
+                      description: Type of the mail,
+                    },
+                  mail_subject:
+                    {
+                      example: Undangan mengikuti pelatihan seluruh guru,
+                      type: string,
+                      description: Subject of the mail,
+                    },
+                  attachments:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of attachments,
+                    },
+                },
+            },
+          sharedDeleteSentMailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming succeed to delete the mail,
+                    },
+                },
+            },
+          sharedGetMailOutgoingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mails:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMail",
+                        },
+                      description: List of mail,
                     },
                 },
             },
