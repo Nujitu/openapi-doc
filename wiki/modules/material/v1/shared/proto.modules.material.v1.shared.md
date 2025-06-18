@@ -45,6 +45,18 @@
   
     - [SubjectType](#modules-material-v1-shared-SubjectType)
   
+- [modules/material/v1/shared/teaching_tool_document.proto](#modules_material_v1_shared_teaching_tool_document-proto)
+    - [ListTeachingToolAttachment](#modules-material-v1-shared-ListTeachingToolAttachment)
+    - [ListTeachingToolDocument](#modules-material-v1-shared-ListTeachingToolDocument)
+    - [TeachingToolDocument](#modules-material-v1-shared-TeachingToolDocument)
+  
+- [modules/material/v1/shared/teaching_tools.proto](#modules_material_v1_shared_teaching_tools-proto)
+    - [TeachingToolComponent](#modules-material-v1-shared-TeachingToolComponent)
+    - [TeachingTools](#modules-material-v1-shared-TeachingTools)
+  
+- [modules/material/v1/shared/user.proto](#modules_material_v1_shared_user-proto)
+    - [UserPublicDetails](#modules-material-v1-shared-UserPublicDetails)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -601,6 +613,181 @@
 | SUBJECT_MAJOR | 1 |  |
 | SUBJECT_SELECTIVE | 2 |  |
 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_teaching_tool_document-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/teaching_tool_document.proto
+
+
+
+<a name="modules-material-v1-shared-ListTeachingToolAttachment"></a>
+
+### ListTeachingToolAttachment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| attachment_file | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-ListTeachingToolDocument"></a>
+
+### ListTeachingToolDocument
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| teaching_tools_id | [string](#string) |  |  |
+| teacher_user | [UserPublicDetails](#modules-material-v1-shared-UserPublicDetails) |  |  |
+| subject | [Subject](#modules-material-v1-shared-Subject) |  |  |
+| major_name | [string](#string) |  |  |
+| grade_level | [uint32](#uint32) |  |  |
+| attachment_files | [ListTeachingToolAttachment](#modules-material-v1-shared-ListTeachingToolAttachment) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-TeachingToolDocument"></a>
+
+### TeachingToolDocument
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| teaching_tools_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| major_name | [string](#string) |  |  |
+| grade_level | [uint32](#uint32) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_teaching_tools-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/teaching_tools.proto
+
+
+
+<a name="modules-material-v1-shared-TeachingToolComponent"></a>
+
+### TeachingToolComponent
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
+| notes | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-TeachingTools"></a>
+
+### TeachingTools
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| curriculum_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| components | [TeachingToolComponent](#modules-material-v1-shared-TeachingToolComponent) | repeated |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_material_v1_shared_user-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/shared/user.proto
+
+
+
+<a name="modules-material-v1-shared-UserPublicDetails"></a>
+
+### UserPublicDetails
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| fullname | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| gender | [modules.authentication.v1.shared.Gender](#modules-authentication-v1-shared-Gender) |  |  |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| status | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+| profile_picture | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
 
  
 

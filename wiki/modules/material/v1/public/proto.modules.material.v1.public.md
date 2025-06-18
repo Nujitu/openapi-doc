@@ -93,6 +93,32 @@
   
     - [SubjectService](#modules-material-v1-public-SubjectService)
   
+- [modules/material/v1/public/teaching_tools.proto](#modules_material_v1_public_teaching_tools-proto)
+    - [CreateTeachingToolDocumentPresignedPostUrlRequest](#modules-material-v1-public-CreateTeachingToolDocumentPresignedPostUrlRequest)
+    - [CreateTeachingToolDocumentPresignedPostUrlResponse](#modules-material-v1-public-CreateTeachingToolDocumentPresignedPostUrlResponse)
+    - [CreateTeachingToolDocumentRequest](#modules-material-v1-public-CreateTeachingToolDocumentRequest)
+    - [CreateTeachingToolDocumentResponse](#modules-material-v1-public-CreateTeachingToolDocumentResponse)
+    - [CreateTeachingToolsRequest](#modules-material-v1-public-CreateTeachingToolsRequest)
+    - [CreateTeachingToolsResponse](#modules-material-v1-public-CreateTeachingToolsResponse)
+    - [DeleteTeachingToolDocumentRequest](#modules-material-v1-public-DeleteTeachingToolDocumentRequest)
+    - [DeleteTeachingToolDocumentResponse](#modules-material-v1-public-DeleteTeachingToolDocumentResponse)
+    - [DeleteTeachingToolsRequest](#modules-material-v1-public-DeleteTeachingToolsRequest)
+    - [DeleteTeachingToolsResponse](#modules-material-v1-public-DeleteTeachingToolsResponse)
+    - [GetTeachingToolDocumentByIdRequest](#modules-material-v1-public-GetTeachingToolDocumentByIdRequest)
+    - [GetTeachingToolDocumentByIdResponse](#modules-material-v1-public-GetTeachingToolDocumentByIdResponse)
+    - [GetTeachingToolsByCurriculumIdRequest](#modules-material-v1-public-GetTeachingToolsByCurriculumIdRequest)
+    - [GetTeachingToolsByCurriculumIdResponse](#modules-material-v1-public-GetTeachingToolsByCurriculumIdResponse)
+    - [GetTeachingToolsByIdRequest](#modules-material-v1-public-GetTeachingToolsByIdRequest)
+    - [GetTeachingToolsByIdResponse](#modules-material-v1-public-GetTeachingToolsByIdResponse)
+    - [ListTeachingToolDocumentRequest](#modules-material-v1-public-ListTeachingToolDocumentRequest)
+    - [ListTeachingToolDocumentResponse](#modules-material-v1-public-ListTeachingToolDocumentResponse)
+    - [UpdateTeachingToolDocumentRequest](#modules-material-v1-public-UpdateTeachingToolDocumentRequest)
+    - [UpdateTeachingToolDocumentResponse](#modules-material-v1-public-UpdateTeachingToolDocumentResponse)
+    - [UpdateTeachingToolsRequest](#modules-material-v1-public-UpdateTeachingToolsRequest)
+    - [UpdateTeachingToolsResponse](#modules-material-v1-public-UpdateTeachingToolsResponse)
+  
+    - [TeachingToolsService](#modules-material-v1-public-TeachingToolsService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -1340,6 +1366,395 @@ Service for user related feature
 | UpdateSubject | [UpdateSubjectRequest](#modules-material-v1-public-UpdateSubjectRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectByID | [GetSubjectByIDRequest](#modules-material-v1-public-GetSubjectByIDRequest) | [.modules.material.v1.shared.Subject](#modules-material-v1-shared-Subject) |  |
 | GetSubjectList | [GetSubjectListRequest](#modules-material-v1-public-GetSubjectListRequest) | [GetSubjectListResponse](#modules-material-v1-public-GetSubjectListResponse) |  |
+
+ 
+
+
+
+<a name="modules_material_v1_public_teaching_tools-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/material/v1/public/teaching_tools.proto
+
+
+
+<a name="modules-material-v1-public-CreateTeachingToolDocumentPresignedPostUrlRequest"></a>
+
+### CreateTeachingToolDocumentPresignedPostUrlRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| files | [common.v1.S3PresignedUrlRequest](#common-v1-S3PresignedUrlRequest) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CreateTeachingToolDocumentPresignedPostUrlResponse"></a>
+
+### CreateTeachingToolDocumentPresignedPostUrlResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| presignedUrls | [common.v1.S3PresignedUrlResponse](#common-v1-S3PresignedUrlResponse) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CreateTeachingToolDocumentRequest"></a>
+
+### CreateTeachingToolDocumentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| teaching_tools_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| major_name | [string](#string) |  |  |
+| grade_level | [uint32](#uint32) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CreateTeachingToolDocumentResponse"></a>
+
+### CreateTeachingToolDocumentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tool_document | [modules.material.v1.shared.TeachingToolDocument](#modules-material-v1-shared-TeachingToolDocument) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CreateTeachingToolsRequest"></a>
+
+### CreateTeachingToolsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
+| components | [modules.material.v1.shared.TeachingToolComponent](#modules-material-v1-shared-TeachingToolComponent) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-CreateTeachingToolsResponse"></a>
+
+### CreateTeachingToolsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tools | [modules.material.v1.shared.TeachingTools](#modules-material-v1-shared-TeachingTools) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteTeachingToolDocumentRequest"></a>
+
+### DeleteTeachingToolDocumentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tool_document_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteTeachingToolDocumentResponse"></a>
+
+### DeleteTeachingToolDocumentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteTeachingToolsRequest"></a>
+
+### DeleteTeachingToolsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tools_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteTeachingToolsResponse"></a>
+
+### DeleteTeachingToolsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeachingToolDocumentByIdRequest"></a>
+
+### GetTeachingToolDocumentByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tool_document_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeachingToolDocumentByIdResponse"></a>
+
+### GetTeachingToolDocumentByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tool_document | [modules.material.v1.shared.TeachingToolDocument](#modules-material-v1-shared-TeachingToolDocument) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeachingToolsByCurriculumIdRequest"></a>
+
+### GetTeachingToolsByCurriculumIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeachingToolsByCurriculumIdResponse"></a>
+
+### GetTeachingToolsByCurriculumIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tools | [modules.material.v1.shared.TeachingTools](#modules-material-v1-shared-TeachingTools) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeachingToolsByIdRequest"></a>
+
+### GetTeachingToolsByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tools_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetTeachingToolsByIdResponse"></a>
+
+### GetTeachingToolsByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tools | [modules.material.v1.shared.TeachingTools](#modules-material-v1-shared-TeachingTools) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-ListTeachingToolDocumentRequest"></a>
+
+### ListTeachingToolDocumentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum_id | [string](#string) | optional |  |
+| teaching_tools_id | [string](#string) | optional |  |
+| teacher_user_id | [string](#string) | optional |  |
+| subject_id | [string](#string) | optional |  |
+| major_name | [string](#string) | optional |  |
+| grade_level | [uint32](#uint32) | optional |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-ListTeachingToolDocumentResponse"></a>
+
+### ListTeachingToolDocumentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tool_documents | [modules.material.v1.shared.ListTeachingToolDocument](#modules-material-v1-shared-ListTeachingToolDocument) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateTeachingToolDocumentRequest"></a>
+
+### UpdateTeachingToolDocumentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateTeachingToolDocumentResponse"></a>
+
+### UpdateTeachingToolDocumentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tool_document | [modules.material.v1.shared.TeachingToolDocument](#modules-material-v1-shared-TeachingToolDocument) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateTeachingToolsRequest"></a>
+
+### UpdateTeachingToolsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| components | [modules.material.v1.shared.TeachingToolComponent](#modules-material-v1-shared-TeachingToolComponent) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-UpdateTeachingToolsResponse"></a>
+
+### UpdateTeachingToolsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_tools | [modules.material.v1.shared.TeachingTools](#modules-material-v1-shared-TeachingTools) |  |  |
+| message | [string](#string) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-material-v1-public-TeachingToolsService"></a>
+
+### TeachingToolsService
+Service for teaching-tools related feature
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateTeachingTools | [CreateTeachingToolsRequest](#modules-material-v1-public-CreateTeachingToolsRequest) | [CreateTeachingToolsResponse](#modules-material-v1-public-CreateTeachingToolsResponse) |  |
+| UpdateTeachingTools | [UpdateTeachingToolsRequest](#modules-material-v1-public-UpdateTeachingToolsRequest) | [UpdateTeachingToolsResponse](#modules-material-v1-public-UpdateTeachingToolsResponse) |  |
+| DeleteTeachingTools | [DeleteTeachingToolsRequest](#modules-material-v1-public-DeleteTeachingToolsRequest) | [DeleteTeachingToolsResponse](#modules-material-v1-public-DeleteTeachingToolsResponse) |  |
+| GetTeachingToolsById | [GetTeachingToolsByIdRequest](#modules-material-v1-public-GetTeachingToolsByIdRequest) | [GetTeachingToolsByIdResponse](#modules-material-v1-public-GetTeachingToolsByIdResponse) |  |
+| GetTeachingToolsByCurriculumId | [GetTeachingToolsByCurriculumIdRequest](#modules-material-v1-public-GetTeachingToolsByCurriculumIdRequest) | [GetTeachingToolsByCurriculumIdResponse](#modules-material-v1-public-GetTeachingToolsByCurriculumIdResponse) |  |
+| CreateTeachingToolDocument | [CreateTeachingToolDocumentRequest](#modules-material-v1-public-CreateTeachingToolDocumentRequest) | [CreateTeachingToolDocumentResponse](#modules-material-v1-public-CreateTeachingToolDocumentResponse) |  |
+| UpdateTeachingToolDocument | [UpdateTeachingToolDocumentRequest](#modules-material-v1-public-UpdateTeachingToolDocumentRequest) | [UpdateTeachingToolDocumentResponse](#modules-material-v1-public-UpdateTeachingToolDocumentResponse) |  |
+| DeleteTeachingToolDocument | [DeleteTeachingToolDocumentRequest](#modules-material-v1-public-DeleteTeachingToolDocumentRequest) | [DeleteTeachingToolDocumentResponse](#modules-material-v1-public-DeleteTeachingToolDocumentResponse) |  |
+| GetTeachingToolDocumentById | [GetTeachingToolDocumentByIdRequest](#modules-material-v1-public-GetTeachingToolDocumentByIdRequest) | [GetTeachingToolDocumentByIdResponse](#modules-material-v1-public-GetTeachingToolDocumentByIdResponse) |  |
+| ListTeachingToolDocument | [ListTeachingToolDocumentRequest](#modules-material-v1-public-ListTeachingToolDocumentRequest) | [ListTeachingToolDocumentResponse](#modules-material-v1-public-ListTeachingToolDocumentResponse) |  |
+| CreateTeachingToolDocumentPresignedPostUrl | [CreateTeachingToolDocumentPresignedPostUrlRequest](#modules-material-v1-public-CreateTeachingToolDocumentPresignedPostUrlRequest) | [CreateTeachingToolDocumentPresignedPostUrlResponse](#modules-material-v1-public-CreateTeachingToolDocumentPresignedPostUrlResponse) |  |
 
  
 
