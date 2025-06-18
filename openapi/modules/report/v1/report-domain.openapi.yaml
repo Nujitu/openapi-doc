@@ -5,7 +5,7 @@
     {
       title: Report Domain,
       version: v1,
-      description: "Skola Attendance Service, Skola Absence Service, Skoola Finalized Score Service",
+      description: "Skola Absence Service, Skola Attendance Service, Skoola Finalized Score Service",
     },
   servers:
     [
@@ -14,6 +14,164 @@
     ],
   paths:
     {
+      /v1/absence/history:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: Get absence history,
+              operationId: getAbsenceHistory,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicGetAbsenceHistoryRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAbsenceHistoryResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/absence/list:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: List absences,
+              operationId: listAbsences,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicListAbsencesRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAbsencesResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/absence/{id}":
+        {
+          delete:
+            {
+              tags: [AbsenceService],
+              summary: Delete absence,
+              operationId: deleteAbsence,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: date, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGeneralAbsenceResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/attendance:
         {
           post:
@@ -344,164 +502,6 @@
                 },
             },
         },
-      /v1/absence/history:
-        {
-          post:
-            {
-              tags: [AbsenceService],
-              summary: Get absence history,
-              operationId: getAbsenceHistory,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicGetAbsenceHistoryRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAbsenceHistoryResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/absence/list:
-        {
-          post:
-            {
-              tags: [AbsenceService],
-              summary: List absences,
-              operationId: listAbsences,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicListAbsencesRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListAbsencesResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/absence/{id}":
-        {
-          delete:
-            {
-              tags: [AbsenceService],
-              summary: Delete absence,
-              operationId: deleteAbsence,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  { name: date, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGeneralAbsenceResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       "/v1/finalized-score/{class_group_id}/{task_id}":
         {
           get:
@@ -577,6 +577,212 @@
     {
       "schemas":
         {
+          publicAbsenceDetail:
+            {
+              type: object,
+              properties:
+                {
+                  date:
+                    {
+                      type: string,
+                      description: Date of the absence,
+                      format: date-time,
+                    },
+                  status:
+                    {
+                      type: string,
+                      description: "Status of attendance (present, sick, absent, leave, late)",
+                    },
+                },
+            },
+          publicGeneralAbsenceResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: Success message } },
+            },
+          publicGetAbsenceHistoryRequest:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string, description: Student ID },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start date for filtering,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End date for filtering,
+                      format: date-time,
+                    },
+                },
+            },
+          publicGetAbsenceHistoryResponse:
+            {
+              type: object,
+              properties:
+                {
+                  present:
+                    {
+                      type: integer,
+                      description: Total present records,
+                      format: int32,
+                    },
+                  absent:
+                    {
+                      type: integer,
+                      description: Total absent records,
+                      format: int32,
+                    },
+                  sick:
+                    {
+                      type: integer,
+                      description: Total sick records,
+                      format: int32,
+                    },
+                  leave:
+                    {
+                      type: integer,
+                      description: Total leave records,
+                      format: int32,
+                    },
+                  late:
+                    {
+                      type: integer,
+                      description: Total late records,
+                      format: int32,
+                    },
+                  absences:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAbsenceDetail",
+                        },
+                      description: Detailed absence records,
+                    },
+                  student_id: { type: string, description: Student name },
+                  student_name: { type: string, description: Student name },
+                },
+            },
+          publicListAbsencesRequest:
+            {
+              type: object,
+              properties:
+                {
+                  class_id: { type: string, description: Filter by class ID },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start date for filtering,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End date for filtering,
+                      format: date-time,
+                    },
+                },
+            },
+          publicListAbsencesResponse:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicStudentAbsenceData",
+                        },
+                      description: List of student absence data,
+                    },
+                },
+            },
+          publicStudentAbsenceData:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string, description: Student ID },
+                  student_name: { type: string, description: Student name },
+                  total:
+                    {
+                      type: integer,
+                      description: Total attendance records,
+                      format: int32,
+                    },
+                  sick:
+                    {
+                      type: integer,
+                      description: Number of sick days,
+                      format: int32,
+                    },
+                  present:
+                    {
+                      type: integer,
+                      description: Number of present days,
+                      format: int32,
+                    },
+                  absent:
+                    {
+                      type: integer,
+                      description: Number of absent days,
+                      format: int32,
+                    },
+                  leave:
+                    {
+                      type: integer,
+                      description: Number of leave days,
+                      format: int32,
+                    },
+                  late:
+                    {
+                      type: integer,
+                      description: Number of late arrivals,
+                      format: int32,
+                    },
+                  absences:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAbsenceDetail",
+                        },
+                      description: Detailed absence records,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
           publicAssignment:
             {
               type: object,
@@ -871,212 +1077,6 @@
                     {
                       type: string,
                       description: "attendance status (Present, Absent, Sick, Leave, Late)",
-                    },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
-          publicAbsenceDetail:
-            {
-              type: object,
-              properties:
-                {
-                  date:
-                    {
-                      type: string,
-                      description: Date of the absence,
-                      format: date-time,
-                    },
-                  status:
-                    {
-                      type: string,
-                      description: "Status of attendance (present, sick, absent, leave, late)",
-                    },
-                },
-            },
-          publicGeneralAbsenceResponse:
-            {
-              type: object,
-              properties:
-                { message: { type: string, description: Success message } },
-            },
-          publicGetAbsenceHistoryRequest:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string, description: Student ID },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start date for filtering,
-                      format: date-time,
-                    },
-                  end_date:
-                    {
-                      type: string,
-                      description: End date for filtering,
-                      format: date-time,
-                    },
-                },
-            },
-          publicGetAbsenceHistoryResponse:
-            {
-              type: object,
-              properties:
-                {
-                  present:
-                    {
-                      type: integer,
-                      description: Total present records,
-                      format: int32,
-                    },
-                  absent:
-                    {
-                      type: integer,
-                      description: Total absent records,
-                      format: int32,
-                    },
-                  sick:
-                    {
-                      type: integer,
-                      description: Total sick records,
-                      format: int32,
-                    },
-                  leave:
-                    {
-                      type: integer,
-                      description: Total leave records,
-                      format: int32,
-                    },
-                  late:
-                    {
-                      type: integer,
-                      description: Total late records,
-                      format: int32,
-                    },
-                  absences:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAbsenceDetail",
-                        },
-                      description: Detailed absence records,
-                    },
-                  student_id: { type: string, description: Student name },
-                  student_name: { type: string, description: Student name },
-                },
-            },
-          publicListAbsencesRequest:
-            {
-              type: object,
-              properties:
-                {
-                  class_id: { type: string, description: Filter by class ID },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start date for filtering,
-                      format: date-time,
-                    },
-                  end_date:
-                    {
-                      type: string,
-                      description: End date for filtering,
-                      format: date-time,
-                    },
-                },
-            },
-          publicListAbsencesResponse:
-            {
-              type: object,
-              properties:
-                {
-                  data:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicStudentAbsenceData",
-                        },
-                      description: List of student absence data,
-                    },
-                },
-            },
-          publicStudentAbsenceData:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string, description: Student ID },
-                  student_name: { type: string, description: Student name },
-                  total:
-                    {
-                      type: integer,
-                      description: Total attendance records,
-                      format: int32,
-                    },
-                  sick:
-                    {
-                      type: integer,
-                      description: Number of sick days,
-                      format: int32,
-                    },
-                  present:
-                    {
-                      type: integer,
-                      description: Number of present days,
-                      format: int32,
-                    },
-                  absent:
-                    {
-                      type: integer,
-                      description: Number of absent days,
-                      format: int32,
-                    },
-                  leave:
-                    {
-                      type: integer,
-                      description: Number of leave days,
-                      format: int32,
-                    },
-                  late:
-                    {
-                      type: integer,
-                      description: Number of late arrivals,
-                      format: int32,
-                    },
-                  absences:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAbsenceDetail",
-                        },
-                      description: Detailed absence records,
                     },
                 },
             },

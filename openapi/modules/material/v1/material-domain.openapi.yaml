@@ -4,7 +4,7 @@
   info:
     {
       title: Material Domain,
-      description: "Skoola Class Subject Service, Skola Major Service, Skoola Curriculum Group Component Service, Skola Class Group Service, Skoola Curriculum Service, Skoola Header Component Service, Skola Subject Service",
+      description: "Skoola Teaching Tools Service, Skoola Class Subject Service, Skoola Header Component Service, Skola Class Group Service, Skoola Curriculum Service, Skola Subject Service, Skola Major Service, Skoola Curriculum Group Component Service",
       version: v1,
     },
   servers:
@@ -14,6 +14,749 @@
     ],
   paths:
     {
+      /v1/teaching-tools:
+        {
+          post:
+            {
+              tags: [TeachingToolsService],
+              summary: Create teaching tools,
+              description: Create teaching tools,
+              operationId: TeachingToolsService_CreateTeachingTools,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateTeachingToolsRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingToolsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [TeachingToolsService],
+              summary: Update teaching tools,
+              description: Update teaching tools,
+              operationId: TeachingToolsService_UpdateTeachingTools,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateTeachingToolsRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateTeachingToolsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-tools/curriculum/{curriculum_id}":
+        {
+          get:
+            {
+              tags: [TeachingToolsService],
+              summary: Get a teaching tools by curriculum id,
+              description: Get teaching tools by curriculum id,
+              operationId: TeachingToolsService_GetTeachingToolsByCurriculumId,
+              parameters:
+                [
+                  {
+                    name: curriculum_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingToolsByCurriculumIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-tools/detail/{teaching_tools_id}":
+        {
+          get:
+            {
+              tags: [TeachingToolsService],
+              summary: Get a teaching tools,
+              description: Get teaching tools by id,
+              operationId: TeachingToolsService_GetTeachingToolsById,
+              parameters:
+                [
+                  {
+                    name: teaching_tools_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingToolsByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/teaching-tools/document:
+        {
+          get:
+            {
+              tags: [TeachingToolsService],
+              summary: List teaching tool document,
+              description: List teaching tool document,
+              operationId: TeachingToolsService_ListTeachingToolDocument,
+              parameters:
+                [
+                  { name: curriculum_id, in: query, schema: { type: string } },
+                  {
+                    name: teaching_tools_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  { name: major_name, in: query, schema: { type: string } },
+                  {
+                    name: grade_level,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListTeachingToolDocumentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [TeachingToolsService],
+              summary: Create teaching tool document,
+              description: Create teaching tool document,
+              operationId: TeachingToolsService_CreateTeachingToolDocument,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateTeachingToolDocumentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingToolDocumentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [TeachingToolsService],
+              summary: Update teaching tool document,
+              description: Update teaching tool document,
+              operationId: TeachingToolsService_UpdateTeachingToolDocument,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateTeachingToolDocumentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateTeachingToolDocumentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-tools/document/detail/{teaching_tool_document_id}":
+        {
+          get:
+            {
+              tags: [TeachingToolsService],
+              summary: Get a teaching tool document,
+              description: Get teaching tool document by id,
+              operationId: TeachingToolsService_GetTeachingToolDocumentById,
+              parameters:
+                [
+                  {
+                    name: teaching_tool_document_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingToolDocumentByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/teaching-tools/document/presigned-url:
+        {
+          post:
+            {
+              tags: [TeachingToolsService],
+              summary: Create teaching tool document presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload teaching tool document assets,
+              operationId: TeachingToolsService_CreateTeachingToolDocumentPresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateTeachingToolDocumentPresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingToolDocumentPresignedPostUrlResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-tools/document/{teaching_tool_document_id}":
+        {
+          delete:
+            {
+              tags: [TeachingToolsService],
+              summary: Delete a teaching tool document,
+              description: Delete a teaching tool document,
+              operationId: TeachingToolsService_DeleteTeachingToolDocument,
+              parameters:
+                [
+                  {
+                    name: teaching_tool_document_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteTeachingToolDocumentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-tools/{teaching_tools_id}":
+        {
+          delete:
+            {
+              tags: [TeachingToolsService],
+              summary: Delete a teaching-tools,
+              description: Delete a teaching-tools,
+              operationId: TeachingToolsService_DeleteTeachingTools,
+              parameters:
+                [
+                  {
+                    name: teaching_tools_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteTeachingToolsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/class-group/subject/{class_id}":
         {
           patch:
@@ -311,254 +1054,14 @@
                 },
             },
         },
-      /v1/major:
-        {
-          get:
-            {
-              tags: [MajorService],
-              summary: List major,
-              description: Return list of majors,
-              operationId: MajorService_ListMajor,
-              parameters:
-                [{ name: instance_id, in: query, schema: { type: string } }],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListMajorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [MajorService],
-              summary: Create a new Major,
-              description: Administrator add new Major,
-              operationId: MajorService_CreateMajor,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateMajorRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateMajorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          delete:
-            {
-              tags: [MajorService],
-              summary: Delete an major,
-              description: Delete an major,
-              operationId: MajorService_DeleteMajor,
-              parameters: [{ name: id, in: query, schema: { type: string } }],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteMajorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/major/detail/{id}":
-        {
-          get:
-            {
-              tags: [MajorService],
-              summary: Create a new major,
-              description: Teacher add new major,
-              operationId: MajorService_GetMajorByID,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetMajorByIDResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/curriculum-group-component:
+      /v1/header-component:
         {
           put:
             {
-              tags: [CurriculumGroupComponentService],
-              summary: Update new curriculum,
-              description: Admin update a new curriculum,
-              operationId: CurriculumGroupComponentService_UpdateCurriculumGroupComponent,
+              tags: [HeaderComponentService],
+              summary: Update new header component,
+              description: Admin update a new header component,
+              operationId: HeaderComponentService_UpdateHeaderComponent,
               requestBody:
                 {
                   content:
@@ -567,7 +1070,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicUpdateCurriculumGroupComponentRequest",
+                              $ref: "#/components/schemas/publicUpdateHeaderComponentRequest",
                             },
                         },
                     },
@@ -584,7 +1087,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
                                 },
                             },
                         },
@@ -621,10 +1124,10 @@
             },
           post:
             {
-              tags: [CurriculumGroupComponentService],
-              summary: Create a new curriculum group component,
-              description: Admin register a new curriculum group component,
-              operationId: CurriculumGroupComponentService_CreateCurriculumGroupComponent,
+              tags: [HeaderComponentService],
+              summary: Create header component,
+              description: Admin register a new header component,
+              operationId: HeaderComponentService_CreateHeaderComponent,
               requestBody:
                 {
                   content:
@@ -633,7 +1136,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicCreateCurriculumGroupComponentRequest",
+                              $ref: "#/components/schemas/publicCreateHeaderComponentRequest",
                             },
                         },
                     },
@@ -650,7 +1153,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
                                 },
                             },
                         },
@@ -686,18 +1189,18 @@
                 },
             },
         },
-      "/v1/curriculum-group-component/{header_id}":
+      "/v1/header-component/{curriculum_id}":
         {
           get:
             {
-              tags: [CurriculumGroupComponentService],
-              summary: get component list by header component ID,
-              description: get component list by header component ID,
-              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentByHeader,
+              tags: [HeaderComponentService],
+              summary: get header component by curriculum ID,
+              description: get header component list by curriculum ID,
+              operationId: HeaderComponentService_GetHeaderComponentByCurriculumID,
               parameters:
                 [
                   {
-                    name: header_id,
+                    name: curriculum_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -714,7 +1217,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetCurriculumGroupComponentResponse",
+                                  $ref: "#/components/schemas/publicGetHeaderComponentResponse",
                                 },
                             },
                         },
@@ -750,14 +1253,14 @@
                 },
             },
         },
-      "/v1/curriculum-group-component/{id}":
+      "/v1/header-component/{id}":
         {
           delete:
             {
-              tags: [CurriculumGroupComponentService],
-              summary: Delete a curriculum,
-              description: Admin deletes a curriculum by its ID,
-              operationId: CurriculumGroupComponentService_DeleteCurriculumGroupComponent,
+              tags: [HeaderComponentService],
+              summary: Delete a header component,
+              description: Admin deletes a header component by its ID,
+              operationId: HeaderComponentService_DeleteHeaderComponent,
               parameters:
                 [
                   {
@@ -778,7 +1281,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCurriculumGroupComponentResponse",
+                                  $ref: "#/components/schemas/publicHeaderComponentResponse",
                                 },
                             },
                         },
@@ -814,14 +1317,14 @@
                 },
             },
         },
-      "/v1/curriculum-group-component/{id}/detail":
+      "/v1/header-component/{id}/detail":
         {
           get:
             {
-              tags: [CurriculumGroupComponentService],
-              summary: get component detail,
-              description: get component detail,
-              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentDetail,
+              tags: [HeaderComponentService],
+              summary: get header component detail,
+              description: get header component detail,
+              operationId: HeaderComponentService_GetHeaderComponentDetail,
               parameters:
                 [
                   {
@@ -842,7 +1345,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                  $ref: "#/components/schemas/sharedHeaderComponent",
                                 },
                             },
                         },
@@ -2037,333 +2540,6 @@
                 },
             },
         },
-      /v1/header-component:
-        {
-          put:
-            {
-              tags: [HeaderComponentService],
-              summary: Update new header component,
-              description: Admin update a new header component,
-              operationId: HeaderComponentService_UpdateHeaderComponent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateHeaderComponentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedHeaderComponent",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [HeaderComponentService],
-              summary: Create header component,
-              description: Admin register a new header component,
-              operationId: HeaderComponentService_CreateHeaderComponent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateHeaderComponentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedHeaderComponent",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/header-component/{curriculum_id}":
-        {
-          get:
-            {
-              tags: [HeaderComponentService],
-              summary: get header component by curriculum ID,
-              description: get header component list by curriculum ID,
-              operationId: HeaderComponentService_GetHeaderComponentByCurriculumID,
-              parameters:
-                [
-                  {
-                    name: curriculum_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetHeaderComponentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/header-component/{id}":
-        {
-          delete:
-            {
-              tags: [HeaderComponentService],
-              summary: Delete a header component,
-              description: Admin deletes a header component by its ID,
-              operationId: HeaderComponentService_DeleteHeaderComponent,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicHeaderComponentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/header-component/{id}/detail":
-        {
-          get:
-            {
-              tags: [HeaderComponentService],
-              summary: get header component detail,
-              description: get header component detail,
-              operationId: HeaderComponentService_GetHeaderComponentDetail,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedHeaderComponent",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/subject:
         {
           post:
@@ -2673,11 +2849,1269 @@
                 },
             },
         },
+      /v1/major:
+        {
+          get:
+            {
+              tags: [MajorService],
+              summary: List major,
+              description: Return list of majors,
+              operationId: MajorService_ListMajor,
+              parameters:
+                [{ name: instance_id, in: query, schema: { type: string } }],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListMajorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [MajorService],
+              summary: Create a new Major,
+              description: Administrator add new Major,
+              operationId: MajorService_CreateMajor,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateMajorRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateMajorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/major/detail/{id}":
+        {
+          get:
+            {
+              tags: [MajorService],
+              summary: Create a new major,
+              description: Teacher add new major,
+              operationId: MajorService_GetMajorByID,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetMajorByIDResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/major/{id}":
+        {
+          delete:
+            {
+              tags: [MajorService],
+              summary: Delete an major,
+              description: Delete an major,
+              operationId: MajorService_DeleteMajor,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteMajorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/curriculum-group-component:
+        {
+          put:
+            {
+              tags: [CurriculumGroupComponentService],
+              summary: Update new curriculum,
+              description: Admin update a new curriculum,
+              operationId: CurriculumGroupComponentService_UpdateCurriculumGroupComponent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateCurriculumGroupComponentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [CurriculumGroupComponentService],
+              summary: Create a new curriculum group component,
+              description: Admin register a new curriculum group component,
+              operationId: CurriculumGroupComponentService_CreateCurriculumGroupComponent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateCurriculumGroupComponentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/curriculum-group-component/{header_id}":
+        {
+          get:
+            {
+              tags: [CurriculumGroupComponentService],
+              summary: get component list by header component ID,
+              description: get component list by header component ID,
+              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentByHeader,
+              parameters:
+                [
+                  {
+                    name: header_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetCurriculumGroupComponentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/curriculum-group-component/{id}":
+        {
+          delete:
+            {
+              tags: [CurriculumGroupComponentService],
+              summary: Delete a curriculum,
+              description: Admin deletes a curriculum by its ID,
+              operationId: CurriculumGroupComponentService_DeleteCurriculumGroupComponent,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCurriculumGroupComponentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/curriculum-group-component/{id}/detail":
+        {
+          get:
+            {
+              tags: [CurriculumGroupComponentService],
+              summary: get component detail,
+              description: get component detail,
+              operationId: CurriculumGroupComponentService_GetCurriculumGroupComponentDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
       "schemas":
         {
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
+          v1S3PresignedUrlRequest:
+            {
+              type: object,
+              properties:
+                { filename: { type: string }, filesize: { type: string } },
+            },
+          v1S3PresignedUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  url: { type: string },
+                  values:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedValues",
+                    },
+                },
+            },
+          v1S3PresignedValues:
+            {
+              type: object,
+              properties:
+                {
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          publicCreateTeachingToolDocumentPresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlRequest",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                    },
+                },
+            },
+          publicCreateTeachingToolDocumentPresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
+                    },
+                },
+            },
+          publicCreateTeachingToolDocumentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum_id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  teaching_tools_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tools ID,
+                    },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher user ID,
+                    },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  major_name:
+                    { example: IPA, type: string, description: Major name },
+                  grade_level:
+                    {
+                      example: 10,
+                      type: integer,
+                      description: Grade level,
+                      format: uint32,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                },
+            },
+          publicCreateTeachingToolDocumentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tool_document:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingToolDocument",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating teaching tool document,
+                    },
+                },
+            },
+          publicCreateTeachingToolsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum_id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingToolComponent",
+                        },
+                      description: The list of teaching tool components,
+                    },
+                },
+            },
+          publicCreateTeachingToolsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tools:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingTools",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating teaching tools,
+                    },
+                },
+            },
+          publicDeleteTeachingToolDocumentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting teaching tool document,
+                    },
+                },
+            },
+          publicDeleteTeachingToolsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting teaching tools,
+                    },
+                },
+            },
+          publicGetTeachingToolDocumentByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tool_document:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingToolDocument",
+                    },
+                },
+            },
+          publicGetTeachingToolsByCurriculumIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tools:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingTools",
+                    },
+                },
+            },
+          publicGetTeachingToolsByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tools:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingTools",
+                    },
+                },
+            },
+          publicListTeachingToolDocumentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tool_documents:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedListTeachingToolDocument",
+                        },
+                      description: List Teaching Tool Documents,
+                    },
+                },
+            },
+          publicUpdateTeachingToolDocumentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tool Documents ID,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                },
+            },
+          publicUpdateTeachingToolDocumentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tool_document:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingToolDocument",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating teaching tool document,
+                    },
+                },
+            },
+          publicUpdateTeachingToolsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tools ID,
+                    },
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingToolComponent",
+                        },
+                      description: The list of teaching tool components,
+                    },
+                },
+            },
+          publicUpdateTeachingToolsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_tools:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingTools",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating teaching tools,
+                    },
+                },
+            },
+          sharedListTeachingToolAttachment:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Analisis Keterkaitan CP dan TP,
+                      type: string,
+                      description: Component title,
+                    },
+                  attachment_file:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                },
+            },
+          sharedListTeachingToolDocument:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tool Documents ID,
+                    },
+                  curriculum_id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  teaching_tools_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tools ID,
+                    },
+                  teacher_user:
+                    {
+                      $ref: "#/components/schemas/sharedUserPublicDetails",
+                    },
+                  subject:
+                    {
+                      $ref: "#/components/schemas/sharedSubject",
+                    },
+                  major_name:
+                    { example: IPA, type: string, description: Major name },
+                  grade_level:
+                    {
+                      example: 10,
+                      type: integer,
+                      description: Grade level,
+                      format: uint32,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedListTeachingToolAttachment",
+                        },
+                      description: Attachment files,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when teaching tool documents is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when teaching tool documents data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedSubject:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Subject ID },
+                  teacher_id:
+                    { example: 123, type: string, description: Teacher ID },
+                  grade_level:
+                    {
+                      example: 1,
+                      type: string,
+                      description: Subject Grade Level,
+                    },
+                  major:
+                    {
+                      example: [IPA, IPS, BAHASA],
+                      type: array,
+                      items: { type: string },
+                      description: Subject listed major,
+                    },
+                  name:
+                    {
+                      example: Matematika,
+                      type: string,
+                      description: Subject name,
+                    },
+                  subject_code:
+                    { example: MTK, type: string, description: Subject code },
+                  subject_type:
+                    {
+                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
+                      type: string,
+                      description: Subject type,
+                      format: enum,
+                    },
+                  description: { type: string, description: Description },
+                  instance_id: { type: string, description: Instance ID },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedTeachingToolComponent:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Analisis Keterkaitan CP dan TP,
+                      type: string,
+                      description: Component title,
+                    },
+                  notes:
+                    {
+                      example: This component is optional,
+                      type: string,
+                      description: Component notes if any,
+                    },
+                },
+            },
+          sharedTeachingToolDocument:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tool Documents ID,
+                    },
+                  curriculum_id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  teaching_tools_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tools ID,
+                    },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher user ID,
+                    },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                  major_name:
+                    { example: IPA, type: string, description: Major name },
+                  grade_level:
+                    {
+                      example: 10,
+                      type: integer,
+                      description: Grade level,
+                      format: uint32,
+                    },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when teaching tool documents is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when teaching tool documents data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedTeachingTools:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Tools ID,
+                    },
+                  curriculum_id:
+                    { example: 123, type: string, description: Curriculum ID },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingToolComponent",
+                        },
+                      description: The list of teaching tool components,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedUserPublicDetails:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: Represent user status,
+                      format: enum,
+                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
           v1CursorPagination:
             {
               type: object,
@@ -2914,178 +4348,53 @@
                   message: { type: string, description: response info },
                 },
             },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
-          publicCreateMajorRequest:
+          publicCreateHeaderComponentRequest:
             {
               type: object,
               properties:
                 {
-                  name:
+                  header_component:
                     {
-                      example: Bahasa,
-                      type: string,
-                      description: "Major name must be unique. For example: IPA, IPS, Bahasa, Akuntansi, etc.",
+                      $ref: "#/components/schemas/sharedHeaderComponent",
                     },
-                  instance_id: { type: string, description: Instance ID },
                 },
             },
-          publicCreateMajorResponse:
+          publicGetHeaderComponentResponse:
             {
               type: object,
               properties:
                 {
-                  major:
-                    {
-                      $ref: "#/components/schemas/sharedMajor",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating major,
-                    },
-                },
-            },
-          publicDeleteMajorResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting major,
-                    },
-                },
-            },
-          publicGetMajorByIDResponse:
-            {
-              type: object,
-              properties:
-                {
-                  major:
-                    {
-                      $ref: "#/components/schemas/sharedMajor",
-                    },
-                },
-            },
-          publicListMajorResponse:
-            {
-              type: object,
-              properties:
-                {
-                  majors:
+                  header_components:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedMajor",
+                          $ref: "#/components/schemas/sharedHeaderComponent",
                         },
-                      description: Major List,
                     },
                 },
             },
-          sharedMajor:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Major ID },
-                  name:
-                    {
-                      example: Bahasa,
-                      type: string,
-                      description: "Major name must be unique. For example: IPA, IPS, Bahasa, Akuntansi, etc.",
-                    },
-                  instance_id: { type: string, description: Instance ID },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          publicCreateCurriculumGroupComponentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  curriculum_group_component:
-                    {
-                      $ref: "#/components/schemas/sharedCurriculumGroupComponent",
-                    },
-                },
-            },
-          publicCurriculumGroupComponentResponse:
+          publicHeaderComponentResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    {
-                      type: string,
-                      description: message for curriculum group component,
-                    },
+                    { type: string, description: message for header component },
                 },
             },
-          publicGetCurriculumGroupComponentResponse:
+          publicUpdateHeaderComponentRequest:
             {
               type: object,
               properties:
                 {
-                  components:
+                  header_component:
                     {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCurriculumGroupComponent",
-                        },
+                      $ref: "#/components/schemas/sharedHeaderComponent",
                     },
                 },
             },
-          publicUpdateCurriculumGroupComponentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  curriculum_group_component:
-                    {
-                      $ref: "#/components/schemas/sharedCurriculumGroupComponent",
-                    },
-                },
-            },
-          sharedCurriculumGroupComponent:
+          sharedHeaderComponent:
             {
               type: object,
               properties:
@@ -3094,36 +4403,25 @@
                     {
                       example: 123,
                       type: string,
-                      description: CurriculumGroupComponentID,
+                      description: HeaderComponentID,
+                    },
+                  title:
+                    {
+                      example: header group description,
+                      type: string,
+                      description: Header Component Description,
                     },
                   description:
                     {
-                      example: ini ada group component,
+                      example: header group description,
                       type: string,
-                      description: Curriculum Group Component Description,
+                      description: Header Component Description,
                     },
-                  component_type:
+                  curriculum_id:
                     {
-                      example: choose component type,
-                      enum:
-                        [
-                          DEFAULT,
-                          MULTIPLE_TEXT_INPUT,
-                          TEXT_DESCRIPTION,
-                          MULTIPLE_TEXT_DESCRIPTION,
-                          CHECKLIST,
-                          RADIO_BUTTON,
-                          TEXT_INPUT,
-                        ],
+                      example: header group description,
                       type: string,
-                      description: Component type,
-                      format: enum,
-                    },
-                  header_id:
-                    {
-                      example: Header Component ID,
-                      type: string,
-                      description: Header Component ID,
+                      description: Curriculum ID,
                     },
                 },
             },
@@ -3957,53 +5255,7 @@
                     },
                 },
             },
-          publicCreateHeaderComponentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  header_component:
-                    {
-                      $ref: "#/components/schemas/sharedHeaderComponent",
-                    },
-                },
-            },
-          publicGetHeaderComponentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  header_components:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedHeaderComponent",
-                        },
-                    },
-                },
-            },
-          publicHeaderComponentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for header component },
-                },
-            },
-          publicUpdateHeaderComponentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  header_component:
-                    {
-                      $ref: "#/components/schemas/sharedHeaderComponent",
-                    },
-                },
-            },
-          sharedHeaderComponent:
+          sharedCurriculumGroupComponent:
             {
               type: object,
               properties:
@@ -4012,25 +5264,36 @@
                     {
                       example: 123,
                       type: string,
-                      description: HeaderComponentID,
-                    },
-                  title:
-                    {
-                      example: header group description,
-                      type: string,
-                      description: Header Component Description,
+                      description: CurriculumGroupComponentID,
                     },
                   description:
                     {
-                      example: header group description,
+                      example: ini ada group component,
                       type: string,
-                      description: Header Component Description,
+                      description: Curriculum Group Component Description,
                     },
-                  curriculum_id:
+                  component_type:
                     {
-                      example: header group description,
+                      example: choose component type,
+                      enum:
+                        [
+                          DEFAULT,
+                          MULTIPLE_TEXT_INPUT,
+                          TEXT_DESCRIPTION,
+                          MULTIPLE_TEXT_DESCRIPTION,
+                          CHECKLIST,
+                          RADIO_BUTTON,
+                          TEXT_INPUT,
+                        ],
                       type: string,
-                      description: Curriculum ID,
+                      description: Component type,
+                      format: enum,
+                    },
+                  header_id:
+                    {
+                      example: Header Component ID,
+                      type: string,
+                      description: Header Component ID,
                     },
                 },
             },
@@ -4131,43 +5394,87 @@
                   description: { type: string, description: Description },
                 },
             },
-          sharedSubject:
+          publicCreateMajorRequest:
             {
               type: object,
               properties:
                 {
-                  id: { example: 123, type: string, description: Subject ID },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
-                  grade_level:
-                    {
-                      example: 1,
-                      type: string,
-                      description: Subject Grade Level,
-                    },
-                  major:
-                    {
-                      example: [IPA, IPS, BAHASA],
-                      type: array,
-                      items: { type: string },
-                      description: Subject listed major,
-                    },
                   name:
                     {
-                      example: Matematika,
+                      example: Bahasa,
                       type: string,
-                      description: Subject name,
+                      description: "Major name must be unique. For example: IPA, IPS, Bahasa, Akuntansi, etc.",
                     },
-                  subject_code:
-                    { example: MTK, type: string, description: Subject code },
-                  subject_type:
+                  instance_id: { type: string, description: Instance ID },
+                },
+            },
+          publicCreateMajorResponse:
+            {
+              type: object,
+              properties:
+                {
+                  major:
                     {
-                      enum: [SUBJECT_GENERAL, SUBJECT_MAJOR, SUBJECT_SELECTIVE],
-                      type: string,
-                      description: Subject type,
-                      format: enum,
+                      $ref: "#/components/schemas/sharedMajor",
                     },
-                  description: { type: string, description: Description },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating major,
+                    },
+                },
+            },
+          publicDeleteMajorResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting major,
+                    },
+                },
+            },
+          publicGetMajorByIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  major:
+                    {
+                      $ref: "#/components/schemas/sharedMajor",
+                    },
+                },
+            },
+          publicListMajorResponse:
+            {
+              type: object,
+              properties:
+                {
+                  majors:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMajor",
+                        },
+                      description: Major List,
+                    },
+                },
+            },
+          sharedMajor:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Major ID },
+                  name:
+                    {
+                      example: Bahasa,
+                      type: string,
+                      description: "Major name must be unique. For example: IPA, IPS, Bahasa, Akuntansi, etc.",
+                    },
                   instance_id: { type: string, description: Instance ID },
                   created_at:
                     {
@@ -4182,6 +5489,55 @@
                       type: string,
                       description: Time when Curriculum data updated,
                       format: date-time,
+                    },
+                },
+            },
+          publicCreateCurriculumGroupComponentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum_group_component:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                    },
+                },
+            },
+          publicCurriculumGroupComponentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message for curriculum group component,
+                    },
+                },
+            },
+          publicGetCurriculumGroupComponentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCurriculumGroupComponent",
+                        },
+                    },
+                },
+            },
+          publicUpdateCurriculumGroupComponentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum_group_component:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculumGroupComponent",
                     },
                 },
             },
@@ -4220,5 +5576,5 @@
       securitySchemes:
         { OAuth2: { type: http, scheme: bearer, bearerFormat: JWT } },
     },
-  security: [{ OAuth2: [TEACHER, STUDENT] }],
+  security: [{ OAuth2: [ADMIN] }],
 }
