@@ -641,6 +641,7 @@
 | teaching_module_folder_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
 | settings | [QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| class_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

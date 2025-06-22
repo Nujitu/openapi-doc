@@ -1332,6 +1332,7 @@ Service for observation related feature
 | exam_id | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 | assignee | [QuizAssignee](#modules-assessment-v1-public-QuizAssignee) | repeated |  |
+| class_id | [string](#string) |  |  |
 
 
 
@@ -1585,6 +1586,7 @@ Service for observation related feature
 | teaching_module_folder_id | [string](#string) |  |  |
 | exam_id | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
+| class_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
