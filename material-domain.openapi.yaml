@@ -3444,6 +3444,16 @@
                   link: { type: string },
                 },
             },
+          v1NullableAttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  is_null: { type: boolean },
+                  file:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                },
+            },
           v1S3PresignedUrlRequest:
             {
               type: object,
@@ -3544,7 +3554,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/v1AttachmentFile",
+                          $ref: "#/components/schemas/v1NullableAttachmentFile",
                         },
                       description: Attachment files,
                     },
@@ -3691,7 +3701,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/v1AttachmentFile",
+                          $ref: "#/components/schemas/v1NullableAttachmentFile",
                         },
                       description: Attachment files,
                     },
@@ -3763,7 +3773,9 @@
                       description: Component title,
                     },
                   attachment_file:
-                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                    {
+                      $ref: "#/components/schemas/v1NullableAttachmentFile",
+                    },
                 },
             },
           sharedListTeachingToolDocument:
@@ -3945,7 +3957,7 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/v1AttachmentFile",
+                          $ref: "#/components/schemas/v1NullableAttachmentFile",
                         },
                       description: Attachment files,
                     },
