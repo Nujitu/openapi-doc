@@ -22,6 +22,7 @@
     - [AttachmentFile](#common-v1-AttachmentFile)
     - [Dict](#common-v1-Dict)
     - [KeyArrayValues](#common-v1-KeyArrayValues)
+    - [NullableAttachmentFile](#common-v1-NullableAttachmentFile)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -285,6 +286,22 @@
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
 | value | [Dict](#common-v1-Dict) | repeated |  |
+
+
+
+
+
+
+<a name="common-v1-NullableAttachmentFile"></a>
+
+### NullableAttachmentFile
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| is_null | [bool](#bool) |  |  |
+| file | [AttachmentFile](#common-v1-AttachmentFile) |  |  |
 
 
 

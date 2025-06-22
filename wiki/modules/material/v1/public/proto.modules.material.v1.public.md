@@ -1423,7 +1423,7 @@ Service for user related feature
 | subject_id | [string](#string) |  |  |
 | major_name | [string](#string) |  |  |
 | grade_level | [uint32](#uint32) |  |  |
-| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| attachment_files | [common.v1.NullableAttachmentFile](#common-v1-NullableAttachmentFile) | repeated |  |
 
 
 
@@ -1676,7 +1676,7 @@ Service for user related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| attachment_files | [common.v1.NullableAttachmentFile](#common-v1-NullableAttachmentFile) | repeated |  |
 
 
 
