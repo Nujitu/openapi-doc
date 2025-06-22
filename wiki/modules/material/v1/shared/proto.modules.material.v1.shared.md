@@ -638,7 +638,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | title | [string](#string) |  |  |
-| attachment_file | [common.v1.AttachmentFile](#common-v1-AttachmentFile) |  |  |
+| attachment_file | [common.v1.NullableAttachmentFile](#common-v1-NullableAttachmentFile) |  |  |
 
 
 
@@ -686,7 +686,7 @@
 | subject_id | [string](#string) |  |  |
 | major_name | [string](#string) |  |  |
 | grade_level | [uint32](#uint32) |  |  |
-| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| attachment_files | [common.v1.NullableAttachmentFile](#common-v1-NullableAttachmentFile) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
