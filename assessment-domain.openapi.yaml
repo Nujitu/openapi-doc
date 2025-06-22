@@ -3994,6 +3994,12 @@
                         },
                       description: Quiz assignee,
                     },
+                  class_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class ID, quiz will be attached to specific class",
+                    },
                 },
             },
           publicCreateQuizResponse:
@@ -4179,6 +4185,12 @@
                   settings:
                     {
                       $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  class_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class ID, quiz will be attached to specific class",
                     },
                   created_at:
                     {
@@ -4467,6 +4479,12 @@
                   settings:
                     {
                       $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  class_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class ID, quiz will be attached to specific class",
                     },
                   created_at:
                     {
