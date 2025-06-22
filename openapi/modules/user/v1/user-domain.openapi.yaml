@@ -1856,9 +1856,8 @@
               properties:
                 {
                   achievement_name: { type: string },
-                  achievement_date: { type: string },
+                  achievement_date_time: { type: string, format: date-time },
                   organization: { type: string },
-                  document: { type: string },
                 },
             },
           .TeacherEducation:
@@ -1894,9 +1893,10 @@
               properties:
                 {
                   license_name: { type: string },
-                  year_start: { type: string },
-                  year_end: { type: string },
+                  year_start_date_time: { type: string, format: date-time },
+                  year_end_date_time: { type: string, format: date-time },
                   organization: { type: string },
+                  credential_id: { type: string },
                 },
             },
           .TeacherResponse:
