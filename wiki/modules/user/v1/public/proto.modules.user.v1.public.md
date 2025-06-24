@@ -453,15 +453,14 @@ Service for student related feature
 <a name="-TeacherAchievement"></a>
 
 ### TeacherAchievement
-
+TeacherAchievement represents a teacher&#39;s achievement
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | achievement_name | [string](#string) |  |  |
-| achievement_date | [string](#string) |  |  |
+| achievement_date_time | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | organization | [string](#string) |  |  |
-| document | [string](#string) |  |  |
 
 
 
@@ -518,9 +517,10 @@ Service for student related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | license_name | [string](#string) |  |  |
-| year_start | [string](#string) |  |  |
-| year_end | [string](#string) |  |  |
+| year_start_date_time | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| year_end_date_time | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | organization | [string](#string) |  |  |
+| credential_id | [string](#string) |  |  |
 
 
 
