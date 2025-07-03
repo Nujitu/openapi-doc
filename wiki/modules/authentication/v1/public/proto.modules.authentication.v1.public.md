@@ -18,6 +18,8 @@
     - [LogoutResponse](#modules-authentication-v1-public-LogoutResponse)
     - [RefreshTokenRequest](#modules-authentication-v1-public-RefreshTokenRequest)
     - [RefreshTokenResponse](#modules-authentication-v1-public-RefreshTokenResponse)
+    - [RegisterParentRequest](#modules-authentication-v1-public-RegisterParentRequest)
+    - [RegisterParentResponse](#modules-authentication-v1-public-RegisterParentResponse)
     - [ResetPasswordRequest](#modules-authentication-v1-public-ResetPasswordRequest)
     - [ResetPasswordResponse](#modules-authentication-v1-public-ResetPasswordResponse)
   
@@ -228,6 +230,43 @@ Response body of Logout
 
 
 
+<a name="modules-authentication-v1-public-RegisterParentRequest"></a>
+
+### RegisterParentRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| fullname | [string](#string) |  |  |
+| phone_number | [string](#string) |  |  |
+| username | [string](#string) |  |  |
+| email | [string](#string) |  |  |
+| password | [string](#string) |  |  |
+| relation_role_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-RegisterParentResponse"></a>
+
+### RegisterParentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| login_entity | [modules.authentication.v1.shared.LoginEntity](#modules-authentication-v1-shared-LoginEntity) |  |  |
+| redirect_to | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-authentication-v1-public-ResetPasswordRequest"></a>
 
 ### ResetPasswordRequest
@@ -277,6 +316,7 @@ Response body of Logout
 | RefreshToken | [RefreshTokenRequest](#modules-authentication-v1-public-RefreshTokenRequest) | [RefreshTokenResponse](#modules-authentication-v1-public-RefreshTokenResponse) |  |
 | ResetPassword | [ResetPasswordRequest](#modules-authentication-v1-public-ResetPasswordRequest) | [ResetPasswordResponse](#modules-authentication-v1-public-ResetPasswordResponse) |  |
 | ForceResetPassword | [ForceResetPasswordRequest](#modules-authentication-v1-public-ForceResetPasswordRequest) | [ForceResetPasswordResponse](#modules-authentication-v1-public-ForceResetPasswordResponse) |  |
+| RegisterParent | [RegisterParentRequest](#modules-authentication-v1-public-RegisterParentRequest) | [RegisterParentResponse](#modules-authentication-v1-public-RegisterParentResponse) |  |
 
  
 
