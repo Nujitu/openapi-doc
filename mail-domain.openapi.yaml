@@ -19,19 +19,26 @@
           get:
             {
               tags: [MailOutgoingService],
-              summary: Get mail inbox,
-              description: Get mail inbox,
-              operationId: MailOutgoingService_GetSentMail,
+              summary: List mail outgoing,
+              description: List mail outgoing,
+              operationId: MailOutgoingService_ListSentMail,
               parameters:
                 [
-                  { name: user_id, in: query, schema: { type: string } },
                   {
-                    name: page,
+                    name: receiver_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: instance_id, in: query, schema: { type: string } },
+                  { name: admin, in: query, schema: { type: boolean } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
                     in: query,
                     schema: { type: integer, format: uint32 },
                   },
                   {
-                    name: size,
+                    name: offset,
                     in: query,
                     schema: { type: integer, format: uint32 },
                   },
@@ -47,7 +54,71 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetMailOutgoingResponse",
+                                  $ref: "#/components/schemas/sharedListMailOutgoingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/outgoing/detail/{id}":
+        {
+          get:
+            {
+              tags: [MailOutgoingService],
+              summary: Get mail outgoing by ID,
+              description: Get mail outgoing by ID,
+              operationId: MailOutgoingService_GetSentMailById,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetMailOutgoingByIdResponse",
                                 },
                             },
                         },
@@ -221,19 +292,26 @@
           get:
             {
               tags: [MailInboxService],
-              summary: Get mail inbox,
-              description: Get mail inbox,
-              operationId: MailInboxService_GetMailInbox,
+              summary: List mail inbox,
+              description: List mail inbox,
+              operationId: MailInboxService_ListMailInbox,
               parameters:
                 [
-                  { name: user_id, in: query, schema: { type: string } },
                   {
-                    name: page,
+                    name: receiver_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: instance_id, in: query, schema: { type: string } },
+                  { name: admin, in: query, schema: { type: boolean } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
                     in: query,
                     schema: { type: integer, format: uint32 },
                   },
                   {
-                    name: size,
+                    name: offset,
                     in: query,
                     schema: { type: integer, format: uint32 },
                   },
@@ -249,7 +327,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetMailInboxResponse",
+                                  $ref: "#/components/schemas/sharedListMailInboxResponse",
                                 },
                             },
                         },
@@ -316,6 +394,70 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedCreateMailInboxResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/inbox/detail/{id}":
+        {
+          get:
+            {
+              tags: [MailInboxService],
+              summary: Get mail inbox by ID,
+              description: Get mail inbox by ID,
+              operationId: MailInboxService_GetMailInboxById,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetMailInboxByIdResponse",
                                 },
                             },
                         },
@@ -489,6 +631,18 @@
     {
       "schemas":
         {
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
           sharedDeleteSentMailResponse:
             {
               type: object,
@@ -501,7 +655,18 @@
                     },
                 },
             },
-          sharedGetMailOutgoingResponse:
+          sharedGetMailOutgoingByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mail:
+                    {
+                      $ref: "#/components/schemas/sharedMail",
+                    },
+                },
+            },
+          sharedListMailOutgoingResponse:
             {
               type: object,
               properties:
@@ -534,6 +699,7 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Received date,
+                      format: date-time,
                     },
                   from:
                     {
@@ -556,9 +722,14 @@
                   attachments:
                     {
                       type: array,
-                      items: { type: string },
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
                       description: List of attachments,
                     },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
                 },
             },
           "v1ErrorResponse":
@@ -639,20 +810,6 @@
                 {
                   file_name: { type: string, description: File Name },
                   file_size: { type: string, description: File Size in bytes },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when file is uploaded,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when file is updated,
-                      format: date-time,
-                    },
                 },
             },
           sharedCreateMailInboxRequest:
@@ -673,13 +830,13 @@
                       description: Received date,
                       format: date-time,
                     },
-                  from:
+                  sender_name:
                     {
                       example: Dinas Pendidikan,
                       type: string,
                       description: Sender of the mail,
                     },
-                  to:
+                  receiver_user_ids:
                     {
                       example: { Kepala_sekolah_id: "" },
                       type: array,
@@ -701,9 +858,14 @@
                   attachments:
                     {
                       type: array,
-                      items: { type: string },
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
                       description: List of attachments,
                     },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
                 },
             },
           sharedCreateMailInboxResponse:
@@ -730,7 +892,18 @@
                     },
                 },
             },
-          sharedGetMailInboxResponse:
+          sharedGetMailInboxByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mail:
+                    {
+                      $ref: "#/components/schemas/sharedMail",
+                    },
+                },
+            },
+          sharedListMailInboxResponse:
             {
               type: object,
               properties:
@@ -764,13 +937,13 @@
                       description: Received date,
                       format: date-time,
                     },
-                  from:
+                  sender_user_id:
                     {
                       example: Dinas Pendidikan,
                       type: string,
                       description: Sender of the mail,
                     },
-                  to:
+                  receiver_user_ids:
                     {
                       example: { Kepala_sekolah_id: "" },
                       type: array,
@@ -792,9 +965,14 @@
                   attachments:
                     {
                       type: array,
-                      items: { type: string },
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
                       description: List of attachments,
                     },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
                 },
             },
           sharedSendMailResponse:
