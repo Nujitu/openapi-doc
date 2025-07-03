@@ -14,28 +14,28 @@
     ],
   paths:
     {
-      /v1/mail/send:
+      /v1/mail/outgoing:
         {
-          post:
+          get:
             {
-              tags: [SendMailService],
-              summary: Trigger send email,
-              description: Trigger send email,
-              operationId: SendMailService_SendMail,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedSendMailRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
+              tags: [MailOutgoingService],
+              summary: Get mail inbox,
+              description: Get mail inbox,
+              operationId: MailOutgoingService_GetSentMail,
+              parameters:
+                [
+                  { name: user_id, in: query, schema: { type: string } },
+                  {
+                    name: page,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: size,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
               responses:
                 {
                   "200":
@@ -47,7 +47,71 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedSendMailResponse",
+                                  $ref: "#/components/schemas/sharedGetMailOutgoingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/outgoing/{id}":
+        {
+          delete:
+            {
+              tags: [MailOutgoingService],
+              summary: Delete sent email by id,
+              description: Delete sent email by id,
+              operationId: MailOutgoingService_DeleteSentMail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteSentMailResponse",
                                 },
                             },
                         },
@@ -351,92 +415,28 @@
                 },
             },
         },
-      /v1/mail/outgoing:
+      /v1/mail/send:
         {
-          get:
+          post:
             {
-              tags: [MailOutgoingService],
-              summary: Get mail inbox,
-              description: Get mail inbox,
-              operationId: MailOutgoingService_GetSentMail,
-              parameters:
-                [
-                  { name: user_id, in: query, schema: { type: string } },
-                  {
-                    name: page,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: size,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
+              tags: [SendMailService],
+              summary: Trigger send email,
+              description: Trigger send email,
+              operationId: SendMailService_SendMail,
+              requestBody:
                 {
-                  "200":
+                  content:
                     {
-                      description: OK,
-                      content:
+                      application/json:
                         {
-                          application/json:
+                          schema:
                             {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetMailOutgoingResponse",
-                                },
+                              $ref: "#/components/schemas/sharedSendMailRequest",
                             },
                         },
                     },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
+                  required: true,
                 },
-            },
-        },
-      "/v1/mail/outgoing/{id}":
-        {
-          delete:
-            {
-              tags: [MailOutgoingService],
-              summary: Delete sent email by id,
-              description: Delete sent email by id,
-              operationId: MailOutgoingService_DeleteSentMail,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
               responses:
                 {
                   "200":
@@ -448,7 +448,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedDeleteSentMailResponse",
+                                  $ref: "#/components/schemas/sharedSendMailResponse",
                                 },
                             },
                         },
@@ -489,11 +489,40 @@
     {
       "schemas":
         {
-          sharedSendMailRequest:
+          sharedDeleteSentMailResponse:
             {
               type: object,
               properties:
                 {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming succeed to delete the mail,
+                    },
+                },
+            },
+          sharedGetMailOutgoingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mails:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMail",
+                        },
+                      description: List of mail,
+                    },
+                },
+            },
+          sharedMail:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: ID of the mail },
                   no_ref:
                     {
                       example: 001/01/2025,
@@ -505,20 +534,12 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Received date,
-                      format: date-time,
                     },
                   from:
                     {
                       example: Dinas Pendidikan,
                       type: string,
                       description: Sender of the mail,
-                    },
-                  to:
-                    {
-                      example: { Kepala_sekolah_id: "" },
-                      type: array,
-                      items: { type: string },
-                      description: List of receiver id,
                     },
                   mail_type:
                     {
@@ -537,18 +558,6 @@
                       type: array,
                       items: { type: string },
                       description: List of attachments,
-                    },
-                },
-            },
-          sharedSendMailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the creation of the mail,
                     },
                 },
             },
@@ -737,12 +746,11 @@
                     },
                 },
             },
-          sharedMail:
+          sharedSendMailRequest:
             {
               type: object,
               properties:
                 {
-                  id: { type: string, description: ID of the mail },
                   no_ref:
                     {
                       example: 001/01/2025,
@@ -754,12 +762,20 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Received date,
+                      format: date-time,
                     },
                   from:
                     {
                       example: Dinas Pendidikan,
                       type: string,
                       description: Sender of the mail,
+                    },
+                  to:
+                    {
+                      example: { Kepala_sekolah_id: "" },
+                      type: array,
+                      items: { type: string },
+                      description: List of receiver id,
                     },
                   mail_type:
                     {
@@ -781,7 +797,7 @@
                     },
                 },
             },
-          sharedDeleteSentMailResponse:
+          sharedSendMailResponse:
             {
               type: object,
               properties:
@@ -789,23 +805,7 @@
                   message:
                     {
                       type: string,
-                      description: Message confirming succeed to delete the mail,
-                    },
-                },
-            },
-          sharedGetMailOutgoingResponse:
-            {
-              type: object,
-              properties:
-                {
-                  mails:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedMail",
-                        },
-                      description: List of mail,
+                      description: Message confirming the creation of the mail,
                     },
                 },
             },
