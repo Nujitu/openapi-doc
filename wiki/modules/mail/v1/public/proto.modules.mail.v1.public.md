@@ -40,7 +40,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateMailInbox | [.modules.mail.v1.shared.CreateMailInboxRequest](#modules-mail-v1-shared-CreateMailInboxRequest) | [.modules.mail.v1.shared.CreateMailInboxResponse](#modules-mail-v1-shared-CreateMailInboxResponse) |  |
-| GetMailInbox | [.modules.mail.v1.shared.GetMailInboxRequest](#modules-mail-v1-shared-GetMailInboxRequest) | [.modules.mail.v1.shared.GetMailInboxResponse](#modules-mail-v1-shared-GetMailInboxResponse) |  |
+| ListMailInbox | [.modules.mail.v1.shared.ListMailInboxRequest](#modules-mail-v1-shared-ListMailInboxRequest) | [.modules.mail.v1.shared.ListMailInboxResponse](#modules-mail-v1-shared-ListMailInboxResponse) |  |
+| GetMailInboxById | [.modules.mail.v1.shared.GetMailInboxByIdRequest](#modules-mail-v1-shared-GetMailInboxByIdRequest) | [.modules.mail.v1.shared.GetMailInboxByIdResponse](#modules-mail-v1-shared-GetMailInboxByIdResponse) |  |
 | DeleteMailInbox | [.modules.mail.v1.shared.DeleteMailInboxRequest](#modules-mail-v1-shared-DeleteMailInboxRequest) | [.modules.mail.v1.shared.DeleteMailInboxResponse](#modules-mail-v1-shared-DeleteMailInboxResponse) |  |
 
  
@@ -67,7 +68,8 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetSentMail | [.modules.mail.v1.shared.GetMailOutgoingRequest](#modules-mail-v1-shared-GetMailOutgoingRequest) | [.modules.mail.v1.shared.GetMailOutgoingResponse](#modules-mail-v1-shared-GetMailOutgoingResponse) |  |
+| ListSentMail | [.modules.mail.v1.shared.ListMailOutgoingRequest](#modules-mail-v1-shared-ListMailOutgoingRequest) | [.modules.mail.v1.shared.ListMailOutgoingResponse](#modules-mail-v1-shared-ListMailOutgoingResponse) |  |
+| GetSentMailById | [.modules.mail.v1.shared.GetMailOutgoingByIdRequest](#modules-mail-v1-shared-GetMailOutgoingByIdRequest) | [.modules.mail.v1.shared.GetMailOutgoingByIdResponse](#modules-mail-v1-shared-GetMailOutgoingByIdResponse) |  |
 | DeleteSentMail | [.modules.mail.v1.shared.DeleteSentMailRequest](#modules-mail-v1-shared-DeleteSentMailRequest) | [.modules.mail.v1.shared.DeleteSentMailResponse](#modules-mail-v1-shared-DeleteSentMailResponse) |  |
 
  

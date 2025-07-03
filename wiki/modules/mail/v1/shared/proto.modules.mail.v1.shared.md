@@ -11,14 +11,18 @@
     - [CreateMailInboxResponse](#modules-mail-v1-shared-CreateMailInboxResponse)
     - [DeleteMailInboxRequest](#modules-mail-v1-shared-DeleteMailInboxRequest)
     - [DeleteMailInboxResponse](#modules-mail-v1-shared-DeleteMailInboxResponse)
-    - [GetMailInboxRequest](#modules-mail-v1-shared-GetMailInboxRequest)
-    - [GetMailInboxResponse](#modules-mail-v1-shared-GetMailInboxResponse)
+    - [GetMailInboxByIdRequest](#modules-mail-v1-shared-GetMailInboxByIdRequest)
+    - [GetMailInboxByIdResponse](#modules-mail-v1-shared-GetMailInboxByIdResponse)
+    - [ListMailInboxRequest](#modules-mail-v1-shared-ListMailInboxRequest)
+    - [ListMailInboxResponse](#modules-mail-v1-shared-ListMailInboxResponse)
   
 - [modules/mail/v1/shared/mail_outgoing.proto](#modules_mail_v1_shared_mail_outgoing-proto)
     - [DeleteSentMailRequest](#modules-mail-v1-shared-DeleteSentMailRequest)
     - [DeleteSentMailResponse](#modules-mail-v1-shared-DeleteSentMailResponse)
-    - [GetMailOutgoingRequest](#modules-mail-v1-shared-GetMailOutgoingRequest)
-    - [GetMailOutgoingResponse](#modules-mail-v1-shared-GetMailOutgoingResponse)
+    - [GetMailOutgoingByIdRequest](#modules-mail-v1-shared-GetMailOutgoingByIdRequest)
+    - [GetMailOutgoingByIdResponse](#modules-mail-v1-shared-GetMailOutgoingByIdResponse)
+    - [ListMailOutgoingRequest](#modules-mail-v1-shared-ListMailOutgoingRequest)
+    - [ListMailOutgoingResponse](#modules-mail-v1-shared-ListMailOutgoingResponse)
   
 - [modules/mail/v1/shared/mail_send.proto](#modules_mail_v1_shared_mail_send-proto)
     - [SendMailRequest](#modules-mail-v1-shared-SendMailRequest)
@@ -50,11 +54,12 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | no_ref | [string](#string) |  |  |
-| date | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | from | [string](#string) |  |  |
 | mail_type | [string](#string) |  |  |
 | mail_subject | [string](#string) |  |  |
-| attachments | [string](#string) | repeated |  |
+| attachments | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| instance_id | [string](#string) |  |  |
 
 
 
@@ -87,11 +92,12 @@
 | ----- | ---- | ----- | ----------- |
 | no_ref | [string](#string) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| from | [string](#string) |  |  |
-| to | [string](#string) | repeated |  |
+| sender_name | [string](#string) |  |  |
+| receiver_user_ids | [string](#string) | repeated |  |
 | mail_type | [string](#string) |  |  |
 | mail_subject | [string](#string) |  |  |
-| attachments | [string](#string) | repeated |  |
+| attachments | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| instance_id | [string](#string) |  |  |
 
 
 
@@ -143,26 +149,59 @@
 
 
 
-<a name="modules-mail-v1-shared-GetMailInboxRequest"></a>
+<a name="modules-mail-v1-shared-GetMailInboxByIdRequest"></a>
 
-### GetMailInboxRequest
+### GetMailInboxByIdRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
-| page | [uint32](#uint32) |  |  |
-| size | [uint32](#uint32) |  |  |
+| id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-mail-v1-shared-GetMailInboxResponse"></a>
+<a name="modules-mail-v1-shared-GetMailInboxByIdResponse"></a>
 
-### GetMailInboxResponse
+### GetMailInboxByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| mail | [Mail](#modules-mail-v1-shared-Mail) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-ListMailInboxRequest"></a>
+
+### ListMailInboxRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| receiver_user_id | [string](#string) | optional |  |
+| instance_id | [string](#string) | optional |  |
+| admin | [bool](#bool) | optional |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-ListMailInboxResponse"></a>
+
+### ListMailInboxResponse
 
 
 
@@ -221,26 +260,59 @@
 
 
 
-<a name="modules-mail-v1-shared-GetMailOutgoingRequest"></a>
+<a name="modules-mail-v1-shared-GetMailOutgoingByIdRequest"></a>
 
-### GetMailOutgoingRequest
+### GetMailOutgoingByIdRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| user_id | [string](#string) |  |  |
-| page | [uint32](#uint32) |  |  |
-| size | [uint32](#uint32) |  |  |
+| id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-mail-v1-shared-GetMailOutgoingResponse"></a>
+<a name="modules-mail-v1-shared-GetMailOutgoingByIdResponse"></a>
 
-### GetMailOutgoingResponse
+### GetMailOutgoingByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| mail | [Mail](#modules-mail-v1-shared-Mail) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-ListMailOutgoingRequest"></a>
+
+### ListMailOutgoingRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| receiver_user_id | [string](#string) | optional |  |
+| instance_id | [string](#string) | optional |  |
+| admin | [bool](#bool) | optional |  |
+| sort | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-ListMailOutgoingResponse"></a>
+
+### ListMailOutgoingResponse
 
 
 
@@ -279,11 +351,12 @@
 | ----- | ---- | ----- | ----------- |
 | no_ref | [string](#string) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| from | [string](#string) |  |  |
-| to | [string](#string) | repeated |  |
+| sender_user_id | [string](#string) |  |  |
+| receiver_user_ids | [string](#string) | repeated |  |
 | mail_type | [string](#string) |  |  |
 | mail_subject | [string](#string) |  |  |
-| attachments | [string](#string) | repeated |  |
+| attachments | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+| instance_id | [string](#string) |  |  |
 
 
 
@@ -360,9 +433,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | file_name | [string](#string) |  |  |
-| file_size | [int64](#int64) |  |  |
-| created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| file_size | [uint64](#uint64) |  |  |
 
 
 
