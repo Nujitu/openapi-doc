@@ -4,7 +4,7 @@ info:
   title: Notification Domain
   description: "Notification Service"
   version: v1
-servers: [{ url: "https://staging-api.skola.co.id" }]
+servers: [{ url: "https://staging-api.simbiosa.co.id" }]
 paths:
   /v1/notification:
     get:
