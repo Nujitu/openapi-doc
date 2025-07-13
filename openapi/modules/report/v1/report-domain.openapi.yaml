@@ -9,7 +9,7 @@
     },
   servers:
     [
-      { url: "https://staging-api.skola.co.id" },
+      { url: "https://staging-api.simbiosa.co.id" },
       { url: "http://localhost:8080" },
     ],
   paths:
