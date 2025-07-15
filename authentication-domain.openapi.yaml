@@ -952,7 +952,7 @@
                       description: user data,
                     },
                   session_token: { type: string, description: session token },
-                  refesh_token: { type: string },
+                  refresh_token: { type: string },
                 },
               description: Login entity,
             },
