@@ -42,7 +42,7 @@ Login entity
 | ----- | ---- | ----- | ----------- |
 | user | [User](#modules-authentication-v1-shared-User) |  | user data |
 | session_token | [string](#string) |  | session token |
-| refesh_token | [string](#string) |  |  |
+| refresh_token | [string](#string) |  |  |
 
 
 
