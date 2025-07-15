@@ -1004,6 +1004,8 @@
                       type: string,
                       description: generated token after registered,
                     },
+                  refresh_token:
+                    { type: string, description: refresh token for the user },
                 },
               description: Response body of Register new user,
             },
