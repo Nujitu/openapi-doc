@@ -361,6 +361,7 @@ Response body of Register new user
 | message | [string](#string) |  |  |
 | user | [modules.authentication.v1.shared.User](#modules-authentication-v1-shared-User) |  |  |
 | token | [string](#string) |  |  |
+| refresh_token | [string](#string) |  |  |
 
 
 
