@@ -224,6 +224,7 @@ Response body of Logout
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_access_token | [string](#string) |  |  |
+| refresh_token | [string](#string) |  |  |
 
 
 

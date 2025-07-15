@@ -857,7 +857,12 @@
                   user_access_token:
                     {
                       type: string,
-                      description: access token of user to be invalidated,
+                      description: new access token for the user,
+                    },
+                  refresh_token:
+                    {
+                      type: string,
+                      description: new refresh token for the user,
                     },
                 },
             },
@@ -947,6 +952,7 @@
                       description: user data,
                     },
                   session_token: { type: string, description: session token },
+                  refesh_token: { type: string },
                 },
               description: Login entity,
             },
