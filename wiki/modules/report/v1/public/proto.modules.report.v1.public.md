@@ -415,6 +415,8 @@ Response for listing journal attendance
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | student_attendance | [modules.report.v1.shared.StudentAttendance](#modules-report-v1-shared-StudentAttendance) | repeated |  |
 | class_subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 
 
 

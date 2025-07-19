@@ -935,6 +935,8 @@
                     },
                   class_subject_id:
                     { type: string, description: Class Subject ID },
+                  teacher_id: { type: string, description: Teacher ID },
+                  instance_id: { type: string, description: Instance ID },
                 },
             },
           publicSubmitJournalAttendanceRequest:
@@ -1063,6 +1065,8 @@
                         },
                       description: list of student attendance details,
                     },
+                  teacher_id: { type: string, description: Teacher ID },
+                  instance_id: { type: string, description: Instance ID },
                   created_at:
                     {
                       type: string,

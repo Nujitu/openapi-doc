@@ -38,6 +38,8 @@
 | student_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | status | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -81,6 +83,8 @@
 | leave | [int32](#int32) |  |  |
 | late | [int32](#int32) |  |  |
 | student_attendance | [StudentAttendance](#modules-report-v1-shared-StudentAttendance) | repeated |  |
+| teacher_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
