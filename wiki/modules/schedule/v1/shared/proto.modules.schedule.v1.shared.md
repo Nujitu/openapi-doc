@@ -12,9 +12,9 @@
     - [CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse)
     - [DeleteEventRequest](#modules-schedule-v1-shared-DeleteEventRequest)
     - [DeleteEventResponse](#modules-schedule-v1-shared-DeleteEventResponse)
+    - [GetEventAndScheduleRequest](#modules-schedule-v1-shared-GetEventAndScheduleRequest)
+    - [GetEventAndScheduleResponse](#modules-schedule-v1-shared-GetEventAndScheduleResponse)
     - [GetEventDetailResponse](#modules-schedule-v1-shared-GetEventDetailResponse)
-    - [GetEventRequest](#modules-schedule-v1-shared-GetEventRequest)
-    - [GetEventResponse](#modules-schedule-v1-shared-GetEventResponse)
     - [UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest)
     - [UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse)
   
@@ -36,6 +36,8 @@
     - [GetScheduleTeacherByDayDetailResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse)
     - [GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest)
     - [GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse)
+    - [GetScheduleTeacherNowRequest](#modules-schedule-v1-shared-GetScheduleTeacherNowRequest)
+    - [GetScheduleTeacherNowResponse](#modules-schedule-v1-shared-GetScheduleTeacherNowResponse)
     - [GetScheduleTeacherRequest](#modules-schedule-v1-shared-GetScheduleTeacherRequest)
     - [GetScheduleTeacherResponse](#modules-schedule-v1-shared-GetScheduleTeacherResponse)
     - [ScheduleTeacherResponse](#modules-schedule-v1-shared-ScheduleTeacherResponse)
@@ -49,6 +51,7 @@
   
 - [modules/schedule/v1/shared/time_schedule.proto](#modules_schedule_v1_shared_time_schedule-proto)
     - [DutyTeacherDetail](#modules-schedule-v1-shared-DutyTeacherDetail)
+    - [GetScheduleDetailResponse](#modules-schedule-v1-shared-GetScheduleDetailResponse)
     - [TimeSchedule](#modules-schedule-v1-shared-TimeSchedule)
   
 - [Scalar Value Types](#scalar-value-types)
@@ -178,6 +181,38 @@
 
 
 
+<a name="modules-schedule-v1-shared-GetEventAndScheduleRequest"></a>
+
+### GetEventAndScheduleRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| from | [string](#string) |  |  |
+| to | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetEventAndScheduleResponse"></a>
+
+### GetEventAndScheduleResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| events | [GetEventDetailResponse](#modules-schedule-v1-shared-GetEventDetailResponse) | repeated |  |
+| schedules | [GetScheduleDetailResponse](#modules-schedule-v1-shared-GetScheduleDetailResponse) | repeated |  |
+
+
+
+
+
+
 <a name="modules-schedule-v1-shared-GetEventDetailResponse"></a>
 
 ### GetEventDetailResponse
@@ -192,39 +227,7 @@
 | schedule_type | [string](#string) |  |  |
 | start | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| detail_activity | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-schedule-v1-shared-GetEventRequest"></a>
-
-### GetEventRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| mode | [string](#string) |  |  |
-| from | [string](#string) |  |  |
-| to | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="modules-schedule-v1-shared-GetEventResponse"></a>
-
-### GetEventResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| events | [GetEventDetailResponse](#modules-schedule-v1-shared-GetEventDetailResponse) | repeated |  |
+| user_ids | [string](#string) | repeated |  |
 
 
 
@@ -541,6 +544,37 @@
 
 
 
+<a name="modules-schedule-v1-shared-GetScheduleTeacherNowRequest"></a>
+
+### GetScheduleTeacherNowRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| current_time | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetScheduleTeacherNowResponse"></a>
+
+### GetScheduleTeacherNowResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| day | [Day](#modules-schedule-v1-shared-Day) |  |  |
+| schedules | [GetScheduleTeacherByDayDetailResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayDetailResponse) |  |  |
+
+
+
+
+
+
 <a name="modules-schedule-v1-shared-GetScheduleTeacherRequest"></a>
 
 ### GetScheduleTeacherRequest
@@ -685,7 +719,7 @@
 | class_group_name | [string](#string) |  |  |
 | class_subject_detail_id | [string](#string) |  |  |
 | class_subject_detail_name | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 
 
 
@@ -718,6 +752,29 @@
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-GetScheduleDetailResponse"></a>
+
+### GetScheduleDetailResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_group_id | [string](#string) |  |  |
+| class_group_name | [string](#string) |  |  |
+| class_subject_detail_id | [string](#string) |  |  |
+| class_subject_detail_name | [string](#string) |  |  |
+| schedule_type | [string](#string) |  |  |
+| start | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| end | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| activity | [Activity](#modules-schedule-v1-shared-Activity) |  |  |
+| detail_activity | [string](#string) |  |  |
 
 
 

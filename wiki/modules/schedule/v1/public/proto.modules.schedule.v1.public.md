@@ -42,7 +42,7 @@
 | CreateEvent | [.modules.schedule.v1.shared.CreateEventRequest](#modules-schedule-v1-shared-CreateEventRequest) | [.modules.schedule.v1.shared.CreateEventResponse](#modules-schedule-v1-shared-CreateEventResponse) |  |
 | UpdateEvent | [.modules.schedule.v1.shared.UpdateEventRequest](#modules-schedule-v1-shared-UpdateEventRequest) | [.modules.schedule.v1.shared.UpdateEventResponse](#modules-schedule-v1-shared-UpdateEventResponse) |  |
 | DeleteEvent | [.modules.schedule.v1.shared.DeleteEventRequest](#modules-schedule-v1-shared-DeleteEventRequest) | [.modules.schedule.v1.shared.DeleteEventResponse](#modules-schedule-v1-shared-DeleteEventResponse) |  |
-| GetEvent | [.modules.schedule.v1.shared.GetEventRequest](#modules-schedule-v1-shared-GetEventRequest) | [.modules.schedule.v1.shared.GetEventResponse](#modules-schedule-v1-shared-GetEventResponse) |  |
+| GetEvent | [.modules.schedule.v1.shared.GetEventAndScheduleRequest](#modules-schedule-v1-shared-GetEventAndScheduleRequest) | [.modules.schedule.v1.shared.GetEventAndScheduleResponse](#modules-schedule-v1-shared-GetEventAndScheduleResponse) |  |
 
  
 
@@ -99,6 +99,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleTeacherByDay | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse) |  |
 | GetScheduleTeacherByDay | [.modules.schedule.v1.shared.GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse) |  |
+| GetScheduleTeacherNow | [.modules.schedule.v1.shared.GetScheduleTeacherNowRequest](#modules-schedule-v1-shared-GetScheduleTeacherNowRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherNowResponse](#modules-schedule-v1-shared-GetScheduleTeacherNowResponse) |  |
 | UpdateScheduleTeacher | [.modules.schedule.v1.shared.UpdateScheduleTeacherRequest](#modules-schedule-v1-shared-UpdateScheduleTeacherRequest) | [.modules.schedule.v1.shared.UpdateScheduleTeacherResponse](#modules-schedule-v1-shared-UpdateScheduleTeacherResponse) |  |
 | DeleteScheduleTeacher | [.modules.schedule.v1.shared.DeleteScheduleTeacherRequest](#modules-schedule-v1-shared-DeleteScheduleTeacherRequest) | [.modules.schedule.v1.shared.DeleteScheduleTeacherResponse](#modules-schedule-v1-shared-DeleteScheduleTeacherResponse) |  |
 

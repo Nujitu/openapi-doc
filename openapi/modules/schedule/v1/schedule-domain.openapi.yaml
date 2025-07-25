@@ -94,6 +94,66 @@
         },
       /v1/schedule/teacher:
         {
+          get:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Get teacher schedule now,
+              description: Get a duty teacher schedule for a specific time period of the day,
+              operationId: ScheduleTeacherService_GetScheduleTeacherNow,
+              parameters:
+                [
+                  {
+                    name: current_time,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleTeacherNowResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           post:
             {
               tags: [ScheduleTeacherService],
@@ -297,11 +357,10 @@
             {
               tags: [EventService],
               summary: Get list of events and schedules by date range,
-              description: "Get list of events and schedules by date range, e.g /v1/event?mode=admin&from=2024-09-01&to=2024-09-30 or /v1/event?mode={teacher_id}&from=2024-09-01&to=2024-09-30",
+              description: "Get list of events and schedules by date range, e.g /v1/event?from=2024-09-01&to=2024-09-30",
               operationId: EventService_GetEvent,
               parameters:
                 [
-                  { name: mode, in: query, schema: { type: string } },
                   { name: from, in: query, schema: { type: string } },
                   { name: to, in: query, schema: { type: string } },
                 ],
@@ -316,7 +375,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetEventResponse",
+                                  $ref: "#/components/schemas/sharedGetEventAndScheduleResponse",
                                 },
                             },
                         },
@@ -935,6 +994,7 @@
                 {
                   day:
                     {
+                      example: MONDAY,
                       enum:
                         [
                           MONDAY,
@@ -950,8 +1010,17 @@
                       format: enum,
                     },
                   start_time:
-                    { type: string, description: Start time activity },
-                  end_time: { type: string, description: End time activity },
+                    {
+                      example: "10:00",
+                      type: string,
+                      description: Start time activity,
+                    },
+                  end_time:
+                    {
+                      example: "11:00",
+                      type: string,
+                      description: End time activity,
+                    },
                   duty_teachers:
                     {
                       type: array,
@@ -1047,6 +1116,33 @@
                           $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
                         },
                       description: list of teacher time schedule,
+                    },
+                },
+            },
+          sharedGetScheduleTeacherNowResponse:
+            {
+              type: object,
+              properties:
+                {
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  schedules:
+                    {
+                      $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
                     },
                 },
             },
@@ -1180,6 +1276,31 @@
                     },
                 },
             },
+          sharedGetEventAndScheduleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  events:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedGetEventDetailResponse",
+                        },
+                      description: list of events,
+                    },
+                  schedules:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedGetScheduleDetailResponse",
+                        },
+                      description: list of schedules,
+                    },
+                },
+            },
           sharedGetEventDetailResponse:
             {
               type: object,
@@ -1209,24 +1330,64 @@
                       description: end time of event,
                       format: date-time,
                     },
-                  detail_activity:
-                    { type: string, description: detail activity },
+                  user_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: list of user id involved in the event,
+                    },
                 },
             },
-          sharedGetEventResponse:
+          sharedGetScheduleDetailResponse:
             {
               type: object,
               properties:
                 {
-                  events:
+                  class_group_id: { type: string, description: class group id },
+                  class_group_name:
+                    { type: string, description: class group name },
+                  class_subject_detail_id:
+                    { type: string, description: class subject detail id },
+                  class_subject_detail_name:
+                    { type: string, description: class subject detail name },
+                  schedule_type:
                     {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedGetEventDetailResponse",
-                        },
-                      description: list of schedules and events,
+                      example: "e.g. STUDENT, TEACHER, EVENT",
+                      type: string,
+                      description: description of the event,
                     },
+                  start:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: start time of event,
+                      format: date-time,
+                    },
+                  end:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: end time of event,
+                      format: date-time,
+                    },
+                  activity:
+                    {
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
+                      type: string,
+                      description: time schedule activity,
+                      format: enum,
+                    },
+                  detail_activity:
+                    { type: string, description: detail activity },
                 },
             },
           sharedUpdateEventRequest:
@@ -1335,7 +1496,8 @@
                     { type: string, description: class subject detail id },
                   class_subject_detail_name:
                     { type: string, description: class subject detail name },
-                  teacher_id: { type: string, description: teacher id },
+                  teacher_user_id:
+                    { type: string, description: teacher user id },
                 },
             },
           sharedCreateScheduleStudentByDayRequest:
