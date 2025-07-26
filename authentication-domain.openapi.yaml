@@ -4,7 +4,7 @@
   info:
     {
       title: Authentication Domain,
-      description: "Skoola Admin User Service, Skoola Auth Service, Skoola Identity Service",
+      description: "Skoola Admin User Service, Skoola Auth Service, Skoola Permission Service, Skoola Identity Service",
       version: v1,
     },
   servers:
@@ -462,6 +462,565 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicResetPasswordResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/permission:
+        {
+          get:
+            {
+              tags: [PermissionService],
+              summary: List Permissions,
+              description: List all permissions available for the authenticated user.,
+              operationId: PermissionService_ListPermission,
+              parameters:
+                [
+                  { name: name, in: query, schema: { type: string } },
+                  {
+                    name: role_type,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNSPECIFIED,
+                            STUDENT,
+                            PARENT,
+                            TEACHER,
+                            STAFF,
+                            ADMINISTRATOR,
+                            SUPERADMINISTRATOR,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: int32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: int32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListPermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [PermissionService],
+              summary: Create Permission,
+              description: Create a new permission for the authenticated user.,
+              operationId: PermissionService_CreatePermission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreatePermissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreatePermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/permission/assign:
+        {
+          post:
+            {
+              tags: [PermissionService],
+              summary: Assign Permission,
+              description: Assign a permission to a user or role.,
+              operationId: PermissionService_AssignPermission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicAssignUserPermissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicAssignUserPermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/permission/revoke:
+        {
+          post:
+            {
+              tags: [PermissionService],
+              summary: Revoke Permission,
+              description: Revoke a permission from a user or role.,
+              operationId: PermissionService_RevokePermission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRevokePermissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRevokePermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/user/{user_id}":
+        {
+          get:
+            {
+              tags: [PermissionService],
+              summary: Get User Permissions,
+              description: Retrieve all permissions assigned to a specific user.,
+              operationId: PermissionService_GetUserPermissions,
+              parameters:
+                [
+                  {
+                    name: user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetUserPermissionsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/permission/{id}":
+        {
+          get:
+            {
+              tags: [PermissionService],
+              summary: Get Permission,
+              description: Retrieve details of a specific permission by ID.,
+              operationId: PermissionService_GetPermission,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    description: id of permission,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetPermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [PermissionService],
+              summary: Delete Permission,
+              description: Delete a permission for the authenticated user.,
+              operationId: PermissionService_DeletePermission,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    description: id of permission,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeletePermissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [PermissionService],
+              summary: Update Permission,
+              description: Update an existing permission for the authenticated user.,
+              operationId: PermissionService_UpdatePermission,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    description: id of permission,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdatePermissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdatePermissionResponse",
                                 },
                             },
                         },
@@ -955,6 +1514,299 @@
                   refresh_token: { type: string },
                 },
               description: Login entity,
+            },
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          publicAssignUserPermissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id: { type: string, description: id of user },
+                  permission_id:
+                    { type: string, description: id of rule to be assigned },
+                },
+              description: Request body of AssignPermission,
+            },
+          publicAssignUserPermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message if permission is assigned to user,
+                    },
+                },
+              description: Response body of AssignUserPermission,
+            },
+          publicCreatePermissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  action: { type: string, description: action },
+                  permission_name: { type: string, description: resource name },
+                  description: { type: string, description: display name },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                },
+              description: Request body of CreatePermission,
+            },
+          publicCreatePermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  permission:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedPermission",
+                          },
+                        ],
+                      description: created permission data,
+                    },
+                },
+              description: Response body of CreatePermission,
+            },
+          publicDeletePermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: message if permission is successfully deleted from permission,
+                    },
+                },
+              description: Response body of DeletePermission,
+            },
+          publicGetPermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  permission:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedPermission",
+                          },
+                        ],
+                      description: permission data,
+                    },
+                },
+            },
+          publicGetUserPermissionsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user_permissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedPermission",
+                        },
+                      description: List of permissions assigned to the user,
+                    },
+                  meta:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/v1ResponseMetadata",
+                          },
+                        ],
+                      description: Metadata about the response,
+                    },
+                },
+            },
+          publicListPermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  permission:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedPermission",
+                        },
+                      description: permission data,
+                    },
+                  meta:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/v1ResponseMetadata",
+                          },
+                        ],
+                      description: metadata,
+                    },
+                },
+              description: Response body of ListPermission,
+            },
+          publicRevokePermissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id:
+                    {
+                      example: user-id-12345,
+                      type: string,
+                      description: ID of the user from whom the permission will be revoked,
+                    },
+                  permission_id:
+                    {
+                      example: permission-id-12345,
+                      type: string,
+                      description: ID of the permission to be revoked,
+                    },
+                },
+            },
+          publicRevokePermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message indicating the result of the revoke operation,
+                    },
+                },
+            },
+          publicUpdatePermissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: permission-id-12345,
+                      type: string,
+                      description: ID of the permission to update,
+                    },
+                  action: { type: string, description: action },
+                  permission_name: { type: string, description: resource name },
+                  description: { type: string, description: display name },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                },
+            },
+          publicUpdatePermissionResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message indicating the result of the update operation,
+                    },
+                  permission:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedPermission",
+                          },
+                        ],
+                      description: Updated permission data,
+                    },
+                },
+              description: Response body of UpdatePermission,
+            },
+          sharedPermission:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: id },
+                  action: { type: string, description: action },
+                  permission_name: { type: string, description: resource name },
+                  description: { type: string, description: display name },
+                  created_at:
+                    {
+                      type: string,
+                      description: when permission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: when permission is updated,
+                      format: date-time,
+                    },
+                },
+              description: Permission entity,
             },
           publicRegisterRequest:
             {
