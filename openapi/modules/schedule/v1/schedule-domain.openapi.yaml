@@ -785,6 +785,66 @@
         },
       /v1/schedule/student:
         {
+          get:
+            {
+              tags: [ScheduleStudentService],
+              summary: Get student schedule now,
+              description: Get a duty teacher schedule for a specific time period of the day,
+              operationId: ScheduleStudentService_GetScheduleStudentNow,
+              parameters:
+                [
+                  {
+                    name: current_time,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleStudentNowResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           post:
             {
               tags: [ScheduleStudentService],
@@ -1061,30 +1121,8 @@
               type: object,
               properties:
                 {
-                  id: { type: string, description: Duty teacher name },
-                  name: { type: string, description: Duty teacher id },
-                },
-            },
-          sharedGetScheduleTeacherByDayDetailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  time_schedule_id:
-                    { type: string, description: time schedule start time },
-                  start_time:
-                    { type: string, description: time schedule start time },
-                  end_time:
-                    { type: string, description: time schedule start time },
-                  duty_teachers:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
-                        },
-                      description: Duty teacher detail,
-                    },
+                  id: { type: string, description: Duty teacher id },
+                  name: { type: string, description: Duty teacher name },
                 },
             },
           sharedGetScheduleTeacherByDayResponse:
@@ -1113,9 +1151,31 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
+                          $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
                         },
                       description: list of teacher time schedule,
+                    },
+                },
+            },
+          sharedGetScheduleTeacherDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  time_schedule_id:
+                    { type: string, description: time schedule start time },
+                  start_time:
+                    { type: string, description: time schedule start time },
+                  end_time:
+                    { type: string, description: time schedule start time },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher detail,
                     },
                 },
             },
@@ -1142,7 +1202,7 @@
                     },
                   schedules:
                     {
-                      $ref: "#/components/schemas/sharedGetScheduleTeacherByDayDetailResponse",
+                      $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
                     },
                 },
             },
@@ -1597,6 +1657,33 @@
                           $ref: "#/components/schemas/sharedTimeSchedule",
                         },
                       description: List of time schedule,
+                    },
+                },
+            },
+          sharedGetScheduleStudentNowResponse:
+            {
+              type: object,
+              properties:
+                {
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  time_schedule:
+                    {
+                      $ref: "#/components/schemas/sharedTimeSchedule",
                     },
                 },
             },

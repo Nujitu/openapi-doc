@@ -70,6 +70,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleStudentByDay | [.modules.schedule.v1.shared.CreateScheduleStudentByDayRequest](#modules-schedule-v1-shared-CreateScheduleStudentByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleStudentByDayResponse](#modules-schedule-v1-shared-CreateScheduleStudentByDayResponse) |  |
 | GetScheduleStudentByDay | [.modules.schedule.v1.shared.GetScheduleStudentByDayRequest](#modules-schedule-v1-shared-GetScheduleStudentByDayRequest) | [.modules.schedule.v1.shared.GetScheduleStudentByDayResponse](#modules-schedule-v1-shared-GetScheduleStudentByDayResponse) |  |
+| GetScheduleStudentNow | [.modules.schedule.v1.shared.GetScheduleStudentNowRequest](#modules-schedule-v1-shared-GetScheduleStudentNowRequest) | [.modules.schedule.v1.shared.GetScheduleStudentNowResponse](#modules-schedule-v1-shared-GetScheduleStudentNowResponse) |  |
 | UpdateScheduleStudent | [.modules.schedule.v1.shared.UpdateScheduleStudentRequest](#modules-schedule-v1-shared-UpdateScheduleStudentRequest) | [.modules.schedule.v1.shared.UpdateScheduleStudentResponse](#modules-schedule-v1-shared-UpdateScheduleStudentResponse) |  |
 | DeleteScheduleStudent | [.modules.schedule.v1.shared.DeleteScheduleStudentRequest](#modules-schedule-v1-shared-DeleteScheduleStudentRequest) | [.modules.schedule.v1.shared.DeleteScheduleStudentResponse](#modules-schedule-v1-shared-DeleteScheduleStudentResponse) |  |
 
