@@ -692,6 +692,8 @@
                       description: End date for filtering,
                       format: date-time,
                     },
+                  instance_id: { type: string, description: Instance ID },
+                  status: { type: string, description: Status },
                 },
             },
           publicListAbsencesResponse:

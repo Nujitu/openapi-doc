@@ -147,6 +147,8 @@
 | class_id | [string](#string) |  |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| instance_id | [string](#string) |  |  |
+| status | [string](#string) |  |  |
 
 
 
