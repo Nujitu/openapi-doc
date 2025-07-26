@@ -31,6 +31,26 @@
   
     - [IdentityService](#modules-authentication-v1-public-IdentityService)
   
+- [modules/authentication/v1/public/permission.proto](#modules_authentication_v1_public_permission-proto)
+    - [AssignUserPermissionRequest](#modules-authentication-v1-public-AssignUserPermissionRequest)
+    - [AssignUserPermissionResponse](#modules-authentication-v1-public-AssignUserPermissionResponse)
+    - [CreatePermissionRequest](#modules-authentication-v1-public-CreatePermissionRequest)
+    - [CreatePermissionResponse](#modules-authentication-v1-public-CreatePermissionResponse)
+    - [DeletePermissionRequest](#modules-authentication-v1-public-DeletePermissionRequest)
+    - [DeletePermissionResponse](#modules-authentication-v1-public-DeletePermissionResponse)
+    - [GetPermissionRequest](#modules-authentication-v1-public-GetPermissionRequest)
+    - [GetPermissionResponse](#modules-authentication-v1-public-GetPermissionResponse)
+    - [GetUserPermissionsRequest](#modules-authentication-v1-public-GetUserPermissionsRequest)
+    - [GetUserPermissionsResponse](#modules-authentication-v1-public-GetUserPermissionsResponse)
+    - [ListPermissionRequest](#modules-authentication-v1-public-ListPermissionRequest)
+    - [ListPermissionResponse](#modules-authentication-v1-public-ListPermissionResponse)
+    - [RevokePermissionRequest](#modules-authentication-v1-public-RevokePermissionRequest)
+    - [RevokePermissionResponse](#modules-authentication-v1-public-RevokePermissionResponse)
+    - [UpdatePermissionRequest](#modules-authentication-v1-public-UpdatePermissionRequest)
+    - [UpdatePermissionResponse](#modules-authentication-v1-public-UpdatePermissionResponse)
+  
+    - [PermissionService](#modules-authentication-v1-public-PermissionService)
+  
 - [Scalar Value Types](#scalar-value-types)
 
 
@@ -382,6 +402,295 @@ IdentityService contains user identity management functionality such as register
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Register | [RegisterRequest](#modules-authentication-v1-public-RegisterRequest) | [RegisterResponse](#modules-authentication-v1-public-RegisterResponse) |  |
+
+ 
+
+
+
+<a name="modules_authentication_v1_public_permission-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/authentication/v1/public/permission.proto
+
+
+
+<a name="modules-authentication-v1-public-AssignUserPermissionRequest"></a>
+
+### AssignUserPermissionRequest
+Request body of AssignPermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  | id of user |
+| permission_id | [string](#string) |  | id of rule to be assigned |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-AssignUserPermissionResponse"></a>
+
+### AssignUserPermissionResponse
+Response body of AssignUserPermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  | message if permission is assigned to user |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-CreatePermissionRequest"></a>
+
+### CreatePermissionRequest
+Request body of CreatePermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| action | [string](#string) |  | action |
+| permission_name | [string](#string) |  | resource name |
+| description | [string](#string) |  | display name |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-CreatePermissionResponse"></a>
+
+### CreatePermissionResponse
+Response body of CreatePermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  | additional message |
+| permission | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) |  | created permission data |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-DeletePermissionRequest"></a>
+
+### DeletePermissionRequest
+Request body of DeletePermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | id of permission |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-DeletePermissionResponse"></a>
+
+### DeletePermissionResponse
+Response body of DeletePermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  | message if permission is successfully deleted from permission |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-GetPermissionRequest"></a>
+
+### GetPermissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | id of permission |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-GetPermissionResponse"></a>
+
+### GetPermissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| permission | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) |  | permission data |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-GetUserPermissionsRequest"></a>
+
+### GetUserPermissionsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-GetUserPermissionsResponse"></a>
+
+### GetUserPermissionsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_permissions | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) | repeated | user permissions data |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | metadata |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-ListPermissionRequest"></a>
+
+### ListPermissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| limit | [int32](#int32) |  |  |
+| offset | [int32](#int32) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-ListPermissionResponse"></a>
+
+### ListPermissionResponse
+Response body of ListPermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| permission | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) | repeated | permission data |
+| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | metadata |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-RevokePermissionRequest"></a>
+
+### RevokePermissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  | id of user |
+| permission_id | [string](#string) |  | id of rule to be revoked |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-RevokePermissionResponse"></a>
+
+### RevokePermissionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  | message if permission is successfully revoked from user |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-UpdatePermissionRequest"></a>
+
+### UpdatePermissionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  | id of permission |
+| action | [string](#string) |  | action |
+| permission_name | [string](#string) |  | resource name |
+| description | [string](#string) |  | display name |
+| role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-UpdatePermissionResponse"></a>
+
+### UpdatePermissionResponse
+Response body of UpdatePermission
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  | message if permission is successfully updated |
+| permission | [modules.authentication.v1.shared.Permission](#modules-authentication-v1-shared-Permission) |  | updated permission data |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-authentication-v1-public-PermissionService"></a>
+
+### PermissionService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| ListPermission | [ListPermissionRequest](#modules-authentication-v1-public-ListPermissionRequest) | [ListPermissionResponse](#modules-authentication-v1-public-ListPermissionResponse) |  |
+| CreatePermission | [CreatePermissionRequest](#modules-authentication-v1-public-CreatePermissionRequest) | [CreatePermissionResponse](#modules-authentication-v1-public-CreatePermissionResponse) |  |
+| UpdatePermission | [UpdatePermissionRequest](#modules-authentication-v1-public-UpdatePermissionRequest) | [UpdatePermissionResponse](#modules-authentication-v1-public-UpdatePermissionResponse) |  |
+| DeletePermission | [DeletePermissionRequest](#modules-authentication-v1-public-DeletePermissionRequest) | [DeletePermissionResponse](#modules-authentication-v1-public-DeletePermissionResponse) |  |
+| GetPermission | [GetPermissionRequest](#modules-authentication-v1-public-GetPermissionRequest) | [GetPermissionResponse](#modules-authentication-v1-public-GetPermissionResponse) |  |
+| AssignPermission | [AssignUserPermissionRequest](#modules-authentication-v1-public-AssignUserPermissionRequest) | [AssignUserPermissionResponse](#modules-authentication-v1-public-AssignUserPermissionResponse) |  |
+| RevokePermission | [RevokePermissionRequest](#modules-authentication-v1-public-RevokePermissionRequest) | [RevokePermissionResponse](#modules-authentication-v1-public-RevokePermissionResponse) |  |
+| GetUserPermissions | [GetUserPermissionsRequest](#modules-authentication-v1-public-GetUserPermissionsRequest) | [GetUserPermissionsResponse](#modules-authentication-v1-public-GetUserPermissionsResponse) |  |
 
  
 
