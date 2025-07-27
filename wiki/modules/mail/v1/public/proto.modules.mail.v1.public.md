@@ -97,6 +97,8 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | SendMail | [.modules.mail.v1.shared.SendMailRequest](#modules-mail-v1-shared-SendMailRequest) | [.modules.mail.v1.shared.SendMailResponse](#modules-mail-v1-shared-SendMailResponse) |  |
+| SendEmailTemplate | [.modules.mail.v1.shared.SendEmailTemplateRequest](#modules-mail-v1-shared-SendEmailTemplateRequest) | [.modules.mail.v1.shared.SendEmailTemplateResponse](#modules-mail-v1-shared-SendEmailTemplateResponse) |  |
+| CreateEmailTemplate | [.modules.mail.v1.shared.CreateEmailTemplateRequest](#modules-mail-v1-shared-CreateEmailTemplateRequest) | [.modules.mail.v1.shared.CreateEmailTemplateResponse](#modules-mail-v1-shared-CreateEmailTemplateResponse) |  |
 
  
 
