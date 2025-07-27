@@ -423,7 +423,7 @@ Request body of AssignPermission
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_id | [string](#string) |  | id of user |
-| permission_id | [string](#string) |  | id of rule to be assigned |
+| permission_ids | [string](#string) | repeated | id of rule to be assigned |
 
 
 

@@ -1553,8 +1553,12 @@
               properties:
                 {
                   user_id: { type: string, description: id of user },
-                  permission_id:
-                    { type: string, description: id of rule to be assigned },
+                  permission_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: id of rule to be assigned,
+                    },
                 },
               description: Request body of AssignPermission,
             },
