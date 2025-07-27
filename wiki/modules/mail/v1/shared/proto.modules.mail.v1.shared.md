@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [modules/mail/v1/shared/mail.proto](#modules_mail_v1_shared_mail-proto)
+    - [EmailTemplate](#modules-mail-v1-shared-EmailTemplate)
+    - [EmailTemplate.MetadataEntry](#modules-mail-v1-shared-EmailTemplate-MetadataEntry)
     - [Mail](#modules-mail-v1-shared-Mail)
   
 - [modules/mail/v1/shared/mail_inbox.proto](#modules_mail_v1_shared_mail_inbox-proto)
@@ -25,6 +27,14 @@
     - [ListMailOutgoingResponse](#modules-mail-v1-shared-ListMailOutgoingResponse)
   
 - [modules/mail/v1/shared/mail_send.proto](#modules_mail_v1_shared_mail_send-proto)
+    - [CreateEmailTemplateRequest](#modules-mail-v1-shared-CreateEmailTemplateRequest)
+    - [CreateEmailTemplateRequest.MetadataEntry](#modules-mail-v1-shared-CreateEmailTemplateRequest-MetadataEntry)
+    - [CreateEmailTemplateResponse](#modules-mail-v1-shared-CreateEmailTemplateResponse)
+    - [GetEmailTemplateRequest](#modules-mail-v1-shared-GetEmailTemplateRequest)
+    - [GetEmailTemplateResponse](#modules-mail-v1-shared-GetEmailTemplateResponse)
+    - [SendEmailTemplateRequest](#modules-mail-v1-shared-SendEmailTemplateRequest)
+    - [SendEmailTemplateRequest.MetadataEntry](#modules-mail-v1-shared-SendEmailTemplateRequest-MetadataEntry)
+    - [SendEmailTemplateResponse](#modules-mail-v1-shared-SendEmailTemplateResponse)
     - [SendMailRequest](#modules-mail-v1-shared-SendMailRequest)
     - [SendMailResponse](#modules-mail-v1-shared-SendMailResponse)
   
@@ -41,6 +51,41 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/mail/v1/shared/mail.proto
+
+
+
+<a name="modules-mail-v1-shared-EmailTemplate"></a>
+
+### EmailTemplate
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| template_name | [string](#string) |  |  |
+| content | [string](#string) |  |  |
+| metadata | [EmailTemplate.MetadataEntry](#modules-mail-v1-shared-EmailTemplate-MetadataEntry) | repeated |  |
+| created_at | [string](#string) |  |  |
+| updated_at | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-EmailTemplate-MetadataEntry"></a>
+
+### EmailTemplate.MetadataEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
+
+
+
 
 
 
@@ -338,6 +383,136 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/mail/v1/shared/mail_send.proto
+
+
+
+<a name="modules-mail-v1-shared-CreateEmailTemplateRequest"></a>
+
+### CreateEmailTemplateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| template_name | [string](#string) |  |  |
+| metadata | [CreateEmailTemplateRequest.MetadataEntry](#modules-mail-v1-shared-CreateEmailTemplateRequest-MetadataEntry) | repeated |  |
+| content | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-CreateEmailTemplateRequest-MetadataEntry"></a>
+
+### CreateEmailTemplateRequest.MetadataEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-CreateEmailTemplateResponse"></a>
+
+### CreateEmailTemplateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| email_template | [EmailTemplate](#modules-mail-v1-shared-EmailTemplate) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-GetEmailTemplateRequest"></a>
+
+### GetEmailTemplateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| template_name | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-GetEmailTemplateResponse"></a>
+
+### GetEmailTemplateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email_template | [EmailTemplate](#modules-mail-v1-shared-EmailTemplate) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendEmailTemplateRequest"></a>
+
+### SendEmailTemplateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| template_name | [string](#string) |  |  |
+| metadata | [SendEmailTemplateRequest.MetadataEntry](#modules-mail-v1-shared-SendEmailTemplateRequest-MetadataEntry) | repeated |  |
+| recepients | [string](#string) | repeated |  |
+| cc | [string](#string) | repeated |  |
+| bcc | [string](#string) | repeated |  |
+| attachments | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendEmailTemplateRequest-MetadataEntry"></a>
+
+### SendEmailTemplateRequest.MetadataEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendEmailTemplateResponse"></a>
+
+### SendEmailTemplateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
 
 
 
