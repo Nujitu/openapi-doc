@@ -14,6 +14,75 @@
     ],
   paths:
     {
+      /v1/mail/create-email-template:
+        {
+          post:
+            {
+              tags: [SendMailService],
+              summary: Create email template,
+              description: Create email template,
+              operationId: SendMailService_CreateEmailTemplate,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateEmailTemplateRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateEmailTemplateResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/mail/send:
         {
           post:
@@ -48,6 +117,75 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedSendMailResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/mail/send-email-template:
+        {
+          post:
+            {
+              tags: [SendMailService],
+              summary: Trigger send email,
+              description: Trigger send email,
+              operationId: SendMailService_SendEmailTemplate,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedSendEmailTemplateRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedSendEmailTemplateResponse",
                                 },
                             },
                         },
@@ -641,6 +779,108 @@
                   file_extension: { type: string },
                   file_size: { type: string },
                   link: { type: string },
+                },
+            },
+          sharedCreateEmailTemplateRequest:
+            {
+              type: object,
+              properties:
+                {
+                  template_name:
+                    {
+                      example: Undangan Pelatihan Guru,
+                      type: string,
+                      description: Name of the email template,
+                    },
+                  metadata:
+                    {
+                      example: "<p>Dear Teacher,</p><p>You are invited to attend a training session.</p>",
+                      type: object,
+                      additionalProperties: { type: string },
+                      description: Content of the email template,
+                    },
+                },
+            },
+          sharedCreateEmailTemplateResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the email template,
+                    },
+                  email_template:
+                    {
+                      $ref: "#/components/schemas/sharedEmailTemplate",
+                    },
+                },
+            },
+          sharedEmailTemplate:
+            {
+              type: object,
+              properties:
+                {
+                  template_name:
+                    {
+                      example: Undangan Pelatihan Guru,
+                      type: string,
+                      description: Name of the email template,
+                    },
+                  content:
+                    {
+                      example: "<p>Dear Teacher,</p><p>You are invited to attend a training session.</p>",
+                      type: string,
+                      description: Content of the email template,
+                    },
+                  metadata:
+                    {
+                      example: { "key1": "value1", "key2": "value2" },
+                      type: object,
+                      additionalProperties: { type: string },
+                      description: Data to fill the template,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Creation timestamp of the template,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-02T00:00:00Z",
+                      type: string,
+                      description: Last update timestamp of the template,
+                    },
+                },
+            },
+          sharedSendEmailTemplateRequest:
+            {
+              type: object,
+              properties:
+                {
+                  template_name:
+                    { example: 123, type: string, description: Template Name },
+                  metadata:
+                    {
+                      example: { "key1": "value1", "key2": "value2" },
+                      type: object,
+                      additionalProperties: { type: string },
+                      description: Data to fill the template,
+                    },
+                },
+            },
+          sharedSendEmailTemplateResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the sending of the email template,
+                    },
                 },
             },
           sharedSendMailRequest:
