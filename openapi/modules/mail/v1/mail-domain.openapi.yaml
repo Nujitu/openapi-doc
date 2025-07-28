@@ -834,6 +834,12 @@
                       type: string,
                       description: Name of the email template,
                     },
+                  title:
+                    {
+                      example: Undangan Pelatihan Guru,
+                      type: string,
+                      description: Title of the email template,
+                    },
                   content:
                     {
                       example: "<p>Dear Teacher,</p><p>You are invited to attend a training session.</p>",

@@ -63,6 +63,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | template_name | [string](#string) |  |  |
+| title | [string](#string) |  |  |
 | content | [string](#string) |  |  |
 | metadata | [EmailTemplate.MetadataEntry](#modules-mail-v1-shared-EmailTemplate-MetadataEntry) | repeated |  |
 | created_at | [string](#string) |  |  |
