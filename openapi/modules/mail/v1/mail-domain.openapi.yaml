@@ -781,6 +781,10 @@
                   link: { type: string },
                 },
             },
+          google.protobuf.Value:
+            {
+              description: "Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.",
+            },
           sharedCreateEmailTemplateRequest:
             {
               type: object,
@@ -796,7 +800,8 @@
                     {
                       example: "<p>Dear Teacher,</p><p>You are invited to attend a training session.</p>",
                       type: object,
-                      additionalProperties: { type: string },
+                      additionalProperties:
+                        { $ref: "#/components/schemas/google.protobuf.Value" },
                       description: Content of the email template,
                     },
                   content:
@@ -850,7 +855,8 @@
                     {
                       example: { "key1": "value1", "key2": "value2" },
                       type: object,
-                      additionalProperties: { type: string },
+                      additionalProperties:
+                        { $ref: "#/components/schemas/google.protobuf.Value" },
                       description: Data to fill the template,
                     },
                   created_at:
@@ -878,7 +884,8 @@
                     {
                       example: { "key1": "value1", "key2": "value2" },
                       type: object,
-                      additionalProperties: { type: string },
+                      additionalProperties:
+                        { $ref: "#/components/schemas/google.protobuf.Value" },
                       description: Data to fill the template,
                     },
                   recepients:

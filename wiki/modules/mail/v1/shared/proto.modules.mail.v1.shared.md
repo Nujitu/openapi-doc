@@ -83,7 +83,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
-| value | [string](#string) |  |  |
+| value | [google.protobuf.Value](#google-protobuf-Value) |  |  |
 
 
 
@@ -413,7 +413,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
-| value | [string](#string) |  |  |
+| value | [google.protobuf.Value](#google-protobuf-Value) |  |  |
 
 
 
@@ -495,7 +495,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) |  |  |
-| value | [string](#string) |  |  |
+| value | [google.protobuf.Value](#google-protobuf-Value) |  |  |
 
 
 
