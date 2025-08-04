@@ -5021,7 +5021,7 @@
             {
               type: object,
               properties:
-                { filename: { type: string }, filesize: { type: string } },
+                { file_name: { type: string }, file_size: { type: string } },
             },
           v1S3PresignedUrlResponse:
             {

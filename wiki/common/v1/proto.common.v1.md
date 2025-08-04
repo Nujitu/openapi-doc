@@ -181,8 +181,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| filename | [string](#string) |  |  |
-| filesize | [uint64](#uint64) |  |  |
+| file_name | [string](#string) |  |  |
+| file_size | [uint64](#uint64) |  |  |
 
 
 

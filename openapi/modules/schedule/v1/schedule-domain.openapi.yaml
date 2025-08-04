@@ -1121,7 +1121,7 @@
               type: object,
               properties:
                 {
-                  id: { type: string, description: Duty teacher id },
+                  id: { type: string, description: Duty teacher user id },
                   name: { type: string, description: Duty teacher name },
                 },
             },
