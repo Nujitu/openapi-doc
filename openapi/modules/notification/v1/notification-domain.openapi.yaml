@@ -198,7 +198,17 @@ paths:
         type:
           example: ATTENDANCE
           enum:
-            [DEFAULT, ASSIGNMENT, OBSERVATION, QUIZ, ATTENDANCE, STUDY_MATERIAL]
+            [
+              DEFAULT,
+              ASSIGNMENT,
+              OBSERVATION,
+              QUIZ,
+              ATTENDANCE,
+              STUDY_MATERIAL,
+              INBOX_MAIL,
+              OUTGOING_MAIL,
+              EVENT,
+            ]
           type: string
           description: Notification type
           format: enum

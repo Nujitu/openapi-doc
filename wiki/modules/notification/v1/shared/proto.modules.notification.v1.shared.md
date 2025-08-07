@@ -37,6 +37,9 @@
 | QUIZ | 3 |  |
 | ATTENDANCE | 4 |  |
 | STUDY_MATERIAL | 5 |  |
+| INBOX_MAIL | 6 |  |
+| OUTGOING_MAIL | 7 |  |
+| EVENT | 8 |  |
 
 
 
