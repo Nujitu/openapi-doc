@@ -293,6 +293,9 @@
 | ----- | ---- | ----- | ----------- |
 | class_subject_id | [string](#string) |  |  |
 | approver_user_id | [string](#string) |  |  |
+| date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
 
 
 
