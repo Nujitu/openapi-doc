@@ -14,697 +14,6 @@
     ],
   paths:
     {
-      "/v1/schedule/day/{day}/teacher":
-        {
-          get:
-            {
-              tags: [ScheduleTeacherService],
-              summary: Get schedule for teacher for each day,
-              description: "Get schedule for teacher for each day, e.g /v1/schedule/day/MONDAY/teacher, /v1/schedule/day/TUESDAY/teacher, /v1/schedule/day/SUNDAY/teacher",
-              operationId: ScheduleTeacherService_GetScheduleTeacherByDay,
-              parameters:
-                [
-                  {
-                    name: day,
-                    in: path,
-                    required: true,
-                    schema:
-                      {
-                        enum:
-                          [
-                            MONDAY,
-                            TUESDAY,
-                            WEDNESDAY,
-                            THURSDAY,
-                            FRIDAY,
-                            SATURDAY,
-                            SUNDAY,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetScheduleTeacherByDayResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/schedule/teacher:
-        {
-          get:
-            {
-              tags: [ScheduleTeacherService],
-              summary: Get teacher schedule now,
-              description: Get a duty teacher schedule for a specific time period of the day,
-              operationId: ScheduleTeacherService_GetScheduleTeacherNow,
-              parameters:
-                [
-                  {
-                    name: current_time,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetScheduleTeacherNowResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [ScheduleTeacherService],
-              summary: Insert new schedule for teacher,
-              description: Insert new schedule for teacher,
-              operationId: ScheduleTeacherService_CreateScheduleTeacherByDay,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [ScheduleTeacherService],
-              summary: Update schedule for teacher,
-              description: Update schedule for teacher,
-              operationId: ScheduleTeacherService_UpdateScheduleTeacher,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedUpdateScheduleTeacherRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedUpdateScheduleTeacherResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/schedule/teacher/{id}":
-        {
-          delete:
-            {
-              tags: [ScheduleTeacherService],
-              summary: Delete schedule for teacher,
-              description: Delete schedule for teacher,
-              operationId: ScheduleTeacherService_DeleteScheduleTeacher,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedDeleteScheduleTeacherResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/event:
-        {
-          get:
-            {
-              tags: [EventService],
-              summary: Get list of events and schedules by date range,
-              description: "Get list of events and schedules by date range, e.g /v1/event?from=2024-09-01&to=2024-09-30",
-              operationId: EventService_GetEvent,
-              parameters:
-                [
-                  { name: from, in: query, schema: { type: string } },
-                  { name: to, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetEventAndScheduleResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [EventService],
-              summary: Insert new event,
-              description: Insert new event,
-              operationId: EventService_CreateEvent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateEventRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCreateEventResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [EventService],
-              summary: Update an event by id,
-              description: Update event by id,
-              operationId: EventService_UpdateEvent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedUpdateEventRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedUpdateEventResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/event/{id}":
-        {
-          delete:
-            {
-              tags: [EventService],
-              summary: Delete an event by id,
-              description: Delete an event by id,
-              operationId: EventService_DeleteEvent,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedDeleteEventResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/schedule/day/{day}/time/{time_schedule_id}/subject":
-        {
-          post:
-            {
-              tags: [SubjectScheduleService],
-              summary: Insert new subject schedule,
-              description: "Insert new schedule, e.g. /v1/schedule/day/MONDAY/time/231241/subject",
-              operationId: SubjectScheduleService_CreateSubjectSchedule,
-              parameters:
-                [
-                  {
-                    name: day,
-                    in: path,
-                    required: true,
-                    schema:
-                      {
-                        enum:
-                          [
-                            MONDAY,
-                            TUESDAY,
-                            WEDNESDAY,
-                            THURSDAY,
-                            FRIDAY,
-                            SATURDAY,
-                            SUNDAY,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  {
-                    name: time_schedule_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateSubjectScheduleRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCreateSubjectScheduleResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       "/v1/schedule/day/{day}/student":
         {
           get:
@@ -1042,19 +351,709 @@
                 },
             },
         },
+      "/v1/schedule/day/{day}/time/{time_schedule_id}/subject":
+        {
+          post:
+            {
+              tags: [SubjectScheduleService],
+              summary: Insert new subject schedule,
+              description: "Insert new schedule, e.g. /v1/schedule/day/MONDAY/time/231241/subject",
+              operationId: SubjectScheduleService_CreateSubjectSchedule,
+              parameters:
+                [
+                  {
+                    name: day,
+                    in: path,
+                    required: true,
+                    schema:
+                      {
+                        enum:
+                          [
+                            MONDAY,
+                            TUESDAY,
+                            WEDNESDAY,
+                            THURSDAY,
+                            FRIDAY,
+                            SATURDAY,
+                            SUNDAY,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: time_schedule_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateSubjectScheduleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateSubjectScheduleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/event:
+        {
+          get:
+            {
+              tags: [EventService],
+              summary: Get list of events and schedules by date range,
+              description: "Get list of events and schedules by date range, e.g /v1/event?from=2024-09-01&to=2024-09-30",
+              operationId: EventService_GetEvent,
+              parameters:
+                [
+                  { name: from, in: query, schema: { type: string } },
+                  { name: to, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetEventAndScheduleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [EventService],
+              summary: Insert new event,
+              description: Insert new event,
+              operationId: EventService_CreateEvent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateEventRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [EventService],
+              summary: Update an event by id,
+              description: Update event by id,
+              operationId: EventService_UpdateEvent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedUpdateEventRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedUpdateEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/event/{id}":
+        {
+          delete:
+            {
+              tags: [EventService],
+              summary: Delete an event by id,
+              description: Delete an event by id,
+              operationId: EventService_DeleteEvent,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteEventResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/schedule/day/{day}/teacher":
+        {
+          get:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Get schedule for teacher for each day,
+              description: "Get schedule for teacher for each day, e.g /v1/schedule/day/MONDAY/teacher, /v1/schedule/day/TUESDAY/teacher, /v1/schedule/day/SUNDAY/teacher",
+              operationId: ScheduleTeacherService_GetScheduleTeacherByDay,
+              parameters:
+                [
+                  {
+                    name: day,
+                    in: path,
+                    required: true,
+                    schema:
+                      {
+                        enum:
+                          [
+                            MONDAY,
+                            TUESDAY,
+                            WEDNESDAY,
+                            THURSDAY,
+                            FRIDAY,
+                            SATURDAY,
+                            SUNDAY,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleTeacherByDayResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/schedule/teacher:
+        {
+          get:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Get teacher schedule now,
+              description: Get a duty teacher schedule for a specific time period of the day,
+              operationId: ScheduleTeacherService_GetScheduleTeacherNow,
+              parameters:
+                [
+                  {
+                    name: current_time,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleTeacherNowResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Insert new schedule for teacher,
+              description: Insert new schedule for teacher,
+              operationId: ScheduleTeacherService_CreateScheduleTeacherByDay,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Update schedule for teacher,
+              description: Update schedule for teacher,
+              operationId: ScheduleTeacherService_UpdateScheduleTeacher,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedUpdateScheduleTeacherRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedUpdateScheduleTeacherResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/schedule/teacher/{id}":
+        {
+          delete:
+            {
+              tags: [ScheduleTeacherService],
+              summary: Delete schedule for teacher,
+              description: Delete schedule for teacher,
+              operationId: ScheduleTeacherService_DeleteScheduleTeacher,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteScheduleTeacherResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
       "schemas":
         {
-          sharedCreateScheduleTeacherByDayRequest:
+          sharedCreateScheduleStudentByDayRequest:
             {
               type: object,
               properties:
                 {
                   day:
                     {
-                      example: MONDAY,
                       enum:
                         [
                           MONDAY,
@@ -1070,29 +1069,29 @@
                       format: enum,
                     },
                   start_time:
+                    { type: string, description: Start time activity },
+                  end_time: { type: string, description: End time activity },
+                  activity:
                     {
-                      example: "10:00",
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
                       type: string,
-                      description: Start time activity,
+                      description: Activity,
+                      format: enum,
                     },
-                  end_time:
-                    {
-                      example: "11:00",
-                      type: string,
-                      description: End time activity,
-                    },
-                  duty_teachers:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
-                        },
-                      description: Duty teacher detail,
-                    },
+                  detail_activity:
+                    { type: string, description: Detail activity },
                 },
             },
-          sharedCreateScheduleTeacherByDayResponse:
+          sharedCreateScheduleStudentByDayResponse:
             {
               type: object,
               properties:
@@ -1100,11 +1099,11 @@
                   message:
                     {
                       type: string,
-                      description: Message confirming the creation of the new duty teacher schedule,
+                      description: Message confirming the creation of the new schedule,
                     },
                 },
             },
-          sharedDeleteScheduleTeacherResponse:
+          sharedDeleteScheduleStudentResponse:
             {
               type: object,
               properties:
@@ -1125,7 +1124,7 @@
                   name: { type: string, description: Duty teacher name },
                 },
             },
-          sharedGetScheduleTeacherByDayResponse:
+          sharedGetScheduleStudentByDayResponse:
             {
               type: object,
               properties:
@@ -1146,28 +1145,98 @@
                       description: "Day e.g. SUNDAY, MONDAY",
                       format: enum,
                     },
-                  schedules:
+                  time_schedules:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
+                          $ref: "#/components/schemas/sharedTimeSchedule",
                         },
-                      description: list of teacher time schedule,
+                      description: List of time schedule,
                     },
                 },
             },
-          sharedGetScheduleTeacherDetailResponse:
+          sharedGetScheduleStudentNowResponse:
+            {
+              type: object,
+              properties:
+                {
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  time_schedule:
+                    {
+                      $ref: "#/components/schemas/sharedTimeSchedule",
+                    },
+                },
+            },
+          sharedSubjectSchedule:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: subject schedule id },
+                  class_group_id: { type: string, description: class group id },
+                  class_group_name:
+                    { type: string, description: class group name },
+                  class_subject_detail_id:
+                    { type: string, description: class subject detail id },
+                  class_subject_detail_name:
+                    { type: string, description: class subject detail name },
+                  teacher_user_id:
+                    { type: string, description: teacher user id },
+                },
+            },
+          sharedTimeSchedule:
             {
               type: object,
               properties:
                 {
                   time_schedule_id:
-                    { type: string, description: time schedule start time },
+                    { type: string, description: time schedule ID },
+                  schedule_id: { type: string, description: schedule ID },
                   start_time:
                     { type: string, description: time schedule start time },
                   end_time:
                     { type: string, description: time schedule start time },
+                  subject_schedule:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedSubjectSchedule",
+                        },
+                      description: list subject schedule,
+                    },
+                  activity:
+                    {
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
+                      type: string,
+                      description: time schedule activity,
+                      format: enum,
+                    },
                   duty_teachers:
                     {
                       type: array,
@@ -1175,43 +1244,16 @@
                         {
                           $ref: "#/components/schemas/sharedDutyTeacherDetail",
                         },
-                      description: Duty teacher detail,
+                      description: Duty teacher IDs,
                     },
                 },
             },
-          sharedGetScheduleTeacherNowResponse:
+          sharedUpdateScheduleStudentRequest:
             {
               type: object,
               properties:
                 {
-                  day:
-                    {
-                      enum:
-                        [
-                          MONDAY,
-                          TUESDAY,
-                          WEDNESDAY,
-                          THURSDAY,
-                          FRIDAY,
-                          SATURDAY,
-                          SUNDAY,
-                        ],
-                      type: string,
-                      description: "Day e.g. SUNDAY, MONDAY",
-                      format: enum,
-                    },
-                  schedules:
-                    {
-                      $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
-                    },
-                },
-            },
-          sharedUpdateScheduleTeacherRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: Id of the schedule teacher },
+                  id: { type: string, description: Id of schedule student },
                   day:
                     {
                       enum:
@@ -1231,18 +1273,25 @@
                   start_time:
                     { type: string, description: Start time activity },
                   end_time: { type: string, description: End time activity },
-                  duty_teachers:
+                  activity:
                     {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
-                        },
-                      description: Duty teacher detail,
+                      enum:
+                        [
+                          OTHERS,
+                          LEARNING,
+                          SCHOOL_EVENT,
+                          EXAM,
+                          CEREMONY,
+                          EXTRACURRICULAR,
+                          STAFF_DEVELOPMENT,
+                        ],
+                      type: string,
+                      description: Activity,
+                      format: enum,
                     },
                 },
             },
-          sharedUpdateScheduleTeacherResponse:
+          sharedUpdateScheduleStudentResponse:
             {
               type: object,
               properties:
@@ -1276,6 +1325,52 @@
                   "message": { "title": "message", "type": "string" },
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
+                },
+            },
+          sharedCreateSubjectScheduleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  time_schedule_id:
+                    { type: string, description: time schedule ID },
+                  subject_schedules:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedSubjectSchedule",
+                        },
+                      description: subject schedule object,
+                    },
+                },
+            },
+          sharedCreateSubjectScheduleResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the new subject schedule,
+                    },
                 },
             },
           sharedCreateEventRequest:
@@ -1497,76 +1592,14 @@
                     },
                 },
             },
-          sharedCreateSubjectScheduleRequest:
+          sharedCreateScheduleTeacherByDayRequest:
             {
               type: object,
               properties:
                 {
                   day:
                     {
-                      enum:
-                        [
-                          MONDAY,
-                          TUESDAY,
-                          WEDNESDAY,
-                          THURSDAY,
-                          FRIDAY,
-                          SATURDAY,
-                          SUNDAY,
-                        ],
-                      type: string,
-                      description: "Day e.g. SUNDAY, MONDAY",
-                      format: enum,
-                    },
-                  time_schedule_id:
-                    { type: string, description: time schedule ID },
-                  subject_schedules:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedSubjectSchedule",
-                        },
-                      description: subject schedule object,
-                    },
-                },
-            },
-          sharedCreateSubjectScheduleResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the creation of the new subject schedule,
-                    },
-                },
-            },
-          sharedSubjectSchedule:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: subject schedule id },
-                  class_group_id: { type: string, description: class group id },
-                  class_group_name:
-                    { type: string, description: class group name },
-                  class_subject_detail_id:
-                    { type: string, description: class subject detail id },
-                  class_subject_detail_name:
-                    { type: string, description: class subject detail name },
-                  teacher_user_id:
-                    { type: string, description: teacher user id },
-                },
-            },
-          sharedCreateScheduleStudentByDayRequest:
-            {
-              type: object,
-              properties:
-                {
-                  day:
-                    {
+                      example: MONDAY,
                       enum:
                         [
                           MONDAY,
@@ -1582,29 +1615,29 @@
                       format: enum,
                     },
                   start_time:
-                    { type: string, description: Start time activity },
-                  end_time: { type: string, description: End time activity },
-                  activity:
                     {
-                      enum:
-                        [
-                          OTHERS,
-                          LEARNING,
-                          SCHOOL_EVENT,
-                          EXAM,
-                          CEREMONY,
-                          EXTRACURRICULAR,
-                          STAFF_DEVELOPMENT,
-                        ],
+                      example: "10:00",
                       type: string,
-                      description: Activity,
-                      format: enum,
+                      description: Start time activity,
                     },
-                  detail_activity:
-                    { type: string, description: Detail activity },
+                  end_time:
+                    {
+                      example: "11:00",
+                      type: string,
+                      description: End time activity,
+                    },
+                  duty_teachers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher detail,
+                    },
                 },
             },
-          sharedCreateScheduleStudentByDayResponse:
+          sharedCreateScheduleTeacherByDayResponse:
             {
               type: object,
               properties:
@@ -1612,11 +1645,11 @@
                   message:
                     {
                       type: string,
-                      description: Message confirming the creation of the new schedule,
+                      description: Message confirming the creation of the new duty teacher schedule,
                     },
                 },
             },
-          sharedDeleteScheduleStudentResponse:
+          sharedDeleteScheduleTeacherResponse:
             {
               type: object,
               properties:
@@ -1628,7 +1661,7 @@
                     },
                 },
             },
-          sharedGetScheduleStudentByDayResponse:
+          sharedGetScheduleTeacherByDayResponse:
             {
               type: object,
               properties:
@@ -1649,81 +1682,28 @@
                       description: "Day e.g. SUNDAY, MONDAY",
                       format: enum,
                     },
-                  time_schedules:
+                  schedules:
                     {
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedTimeSchedule",
+                          $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
                         },
-                      description: List of time schedule,
+                      description: list of teacher time schedule,
                     },
                 },
             },
-          sharedGetScheduleStudentNowResponse:
-            {
-              type: object,
-              properties:
-                {
-                  day:
-                    {
-                      enum:
-                        [
-                          MONDAY,
-                          TUESDAY,
-                          WEDNESDAY,
-                          THURSDAY,
-                          FRIDAY,
-                          SATURDAY,
-                          SUNDAY,
-                        ],
-                      type: string,
-                      description: "Day e.g. SUNDAY, MONDAY",
-                      format: enum,
-                    },
-                  time_schedule:
-                    {
-                      $ref: "#/components/schemas/sharedTimeSchedule",
-                    },
-                },
-            },
-          sharedTimeSchedule:
+          sharedGetScheduleTeacherDetailResponse:
             {
               type: object,
               properties:
                 {
                   time_schedule_id:
-                    { type: string, description: time schedule ID },
-                  schedule_id: { type: string, description: schedule ID },
+                    { type: string, description: time schedule start time },
                   start_time:
                     { type: string, description: time schedule start time },
                   end_time:
                     { type: string, description: time schedule start time },
-                  subject_schedule:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedSubjectSchedule",
-                        },
-                      description: list subject schedule,
-                    },
-                  activity:
-                    {
-                      enum:
-                        [
-                          OTHERS,
-                          LEARNING,
-                          SCHOOL_EVENT,
-                          EXAM,
-                          CEREMONY,
-                          EXTRACURRICULAR,
-                          STAFF_DEVELOPMENT,
-                        ],
-                      type: string,
-                      description: time schedule activity,
-                      format: enum,
-                    },
                   duty_teachers:
                     {
                       type: array,
@@ -1731,16 +1711,43 @@
                         {
                           $ref: "#/components/schemas/sharedDutyTeacherDetail",
                         },
-                      description: Duty teacher IDs,
+                      description: Duty teacher detail,
                     },
                 },
             },
-          sharedUpdateScheduleStudentRequest:
+          sharedGetScheduleTeacherNowResponse:
             {
               type: object,
               properties:
                 {
-                  id: { type: string, description: Id of schedule student },
+                  day:
+                    {
+                      enum:
+                        [
+                          MONDAY,
+                          TUESDAY,
+                          WEDNESDAY,
+                          THURSDAY,
+                          FRIDAY,
+                          SATURDAY,
+                          SUNDAY,
+                        ],
+                      type: string,
+                      description: "Day e.g. SUNDAY, MONDAY",
+                      format: enum,
+                    },
+                  schedules:
+                    {
+                      $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
+                    },
+                },
+            },
+          sharedUpdateScheduleTeacherRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Id of the schedule teacher },
                   day:
                     {
                       enum:
@@ -1760,25 +1767,18 @@
                   start_time:
                     { type: string, description: Start time activity },
                   end_time: { type: string, description: End time activity },
-                  activity:
+                  duty_teachers:
                     {
-                      enum:
-                        [
-                          OTHERS,
-                          LEARNING,
-                          SCHOOL_EVENT,
-                          EXAM,
-                          CEREMONY,
-                          EXTRACURRICULAR,
-                          STAFF_DEVELOPMENT,
-                        ],
-                      type: string,
-                      description: Activity,
-                      format: enum,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedDutyTeacherDetail",
+                        },
+                      description: Duty teacher detail,
                     },
                 },
             },
-          sharedUpdateScheduleStudentResponse:
+          sharedUpdateScheduleTeacherResponse:
             {
               type: object,
               properties:

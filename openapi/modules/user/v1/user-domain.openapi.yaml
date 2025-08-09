@@ -4,8 +4,8 @@
   info:
     {
       title: User Domain,
+      description: "Skoola User Service, Skoola Teacher Service, Skola School Service, Skoola Student Service",
       version: v1,
-      description: "Skola School Service, Skoola Student Service, Skoola User Service, Skoola Teacher Service",
     },
   servers:
     [
@@ -14,597 +14,6 @@
     ],
   paths:
     {
-      /v1/school:
-        {
-          put:
-            {
-              tags: [SchoolService],
-              summary: Update School Information,
-              description: Update School Information,
-              operationId: SchoolService_UpdateSchoolInfo,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateSchoolInfoRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateSchoolInfoResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [SchoolService],
-              summary: Create a new School,
-              description: Admin register school basic info,
-              operationId: SchoolService_CreateSchool,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateSchoolRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateSchoolResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/school/list:
-        {
-          get:
-            {
-              tags: [SchoolService],
-              summary: Get School Detail,
-              description: Get School Detail,
-              operationId: SchoolService_GetSchoolList,
-              parameters:
-                [
-                  { name: name, in: query, schema: { type: string } },
-                  {
-                    name: type,
-                    in: query,
-                    schema:
-                      {
-                        enum:
-                          [
-                            SCHOOL_TYPE_UNSPECIFIED,
-                            SCHOOL_TYPE_PUBLIC,
-                            SCHOOL_TYPE_PRIVATE,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  { name: phone_number, in: query, schema: { type: string } },
-                  { name: email, in: query, schema: { type: string } },
-                  {
-                    name: level,
-                    in: query,
-                    schema:
-                      {
-                        enum:
-                          [
-                            EDUCATION_LEVEL_UNSPECIFIED,
-                            EDUCATION_LEVEL_ELEMENTARY,
-                            EDUCATION_LEVEL_JUNIOR_HIGH,
-                            EDUCATION_LEVEL_SENIOR_HIGH,
-                            EDUCATION_LEVEL_COLLEGE,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  { name: province, in: query, schema: { type: string } },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetSchoolListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/school/presigned-url:
-        {
-          post:
-            {
-              tags: [SchoolService],
-              summary: Create School Presigned Post URL,
-              description: Create an AWS S3 presigned URLs to upload user assets,
-              operationId: SchoolService_CreateSchoolPresignedPostUrl,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateSchoolPresignedPostUrlRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateSchoolPresignedPostUrlResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/school/{id}":
-        {
-          get:
-            {
-              tags: [SchoolService],
-              summary: Get School Detail,
-              description: Get School Detail,
-              operationId: SchoolService_GetSchoolByID,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedSchool",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/student/list/{id}":
-        {
-          get:
-            {
-              tags: [StudentService],
-              summary: Get Student list,
-              description: Get Student list in instance,
-              operationId: StudentService_GetStudentList,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  { name: nisn, in: query, schema: { type: string } },
-                  { name: fullname, in: query, schema: { type: string } },
-                  { name: username, in: query, schema: { type: string } },
-                  { name: phone_number, in: query, schema: { type: string } },
-                  { name: email, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/.GetStudentListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/student/{id}":
-        {
-          get:
-            {
-              tags: [StudentService],
-              summary: Get Student By ID,
-              description: Get Student details,
-              operationId: StudentService_GetStudentByID,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/.StudentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          put:
-            {
-              tags: [StudentService],
-              summary: Update Student,
-              description: Update Student,
-              operationId: StudentService_UpdateStudent,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/.UpdateStudentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/.UpdateStudentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/user:
         {
           get:
@@ -1215,6 +624,597 @@
                 },
             },
         },
+      /v1/school:
+        {
+          put:
+            {
+              tags: [SchoolService],
+              summary: Update School Information,
+              description: Update School Information,
+              operationId: SchoolService_UpdateSchoolInfo,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateSchoolInfoRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateSchoolInfoResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [SchoolService],
+              summary: Create a new School,
+              description: Admin register school basic info,
+              operationId: SchoolService_CreateSchool,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateSchoolRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateSchoolResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/school/list:
+        {
+          get:
+            {
+              tags: [SchoolService],
+              summary: Get School Detail,
+              description: Get School Detail,
+              operationId: SchoolService_GetSchoolList,
+              parameters:
+                [
+                  { name: name, in: query, schema: { type: string } },
+                  {
+                    name: type,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            SCHOOL_TYPE_UNSPECIFIED,
+                            SCHOOL_TYPE_PUBLIC,
+                            SCHOOL_TYPE_PRIVATE,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  { name: phone_number, in: query, schema: { type: string } },
+                  { name: email, in: query, schema: { type: string } },
+                  {
+                    name: level,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            EDUCATION_LEVEL_UNSPECIFIED,
+                            EDUCATION_LEVEL_ELEMENTARY,
+                            EDUCATION_LEVEL_JUNIOR_HIGH,
+                            EDUCATION_LEVEL_SENIOR_HIGH,
+                            EDUCATION_LEVEL_COLLEGE,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  { name: province, in: query, schema: { type: string } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetSchoolListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/school/presigned-url:
+        {
+          post:
+            {
+              tags: [SchoolService],
+              summary: Create School Presigned Post URL,
+              description: Create an AWS S3 presigned URLs to upload user assets,
+              operationId: SchoolService_CreateSchoolPresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateSchoolPresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateSchoolPresignedPostUrlResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/school/{id}":
+        {
+          get:
+            {
+              tags: [SchoolService],
+              summary: Get School Detail,
+              description: Get School Detail,
+              operationId: SchoolService_GetSchoolByID,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedSchool",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/student/list/{id}":
+        {
+          get:
+            {
+              tags: [StudentService],
+              summary: Get Student list,
+              description: Get Student list in instance,
+              operationId: StudentService_GetStudentList,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: nisn, in: query, schema: { type: string } },
+                  { name: fullname, in: query, schema: { type: string } },
+                  { name: username, in: query, schema: { type: string } },
+                  { name: phone_number, in: query, schema: { type: string } },
+                  { name: email, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.GetStudentListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/student/{id}":
+        {
+          get:
+            {
+              tags: [StudentService],
+              summary: Get Student By ID,
+              description: Get Student details,
+              operationId: StudentService_GetStudentByID,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.StudentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [StudentService],
+              summary: Update Student,
+              description: Update Student,
+              operationId: StudentService_UpdateStudent,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/.UpdateStudentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/.UpdateStudentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     },
   "components":
     {
@@ -1295,6 +1295,464 @@
                   policy: { type: string },
                 },
             },
+          publicCreateUserPresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlRequest",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                    },
+                },
+            },
+          publicCreateUserPresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
+                    },
+                },
+            },
+          publicGetUserListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedUser",
+                        },
+                      description: user information,
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                },
+              description: "*\n Represents user's detail",
+            },
+          publicInviteUserRequest:
+            {
+              type: object,
+              properties:
+                {
+                  email: { type: string, description: user email },
+                  instance: { type: string, description: user instance },
+                  role:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      description: user role,
+                      format: enum,
+                    },
+                  role_id: { type: string, description: either NIP or NISN },
+                },
+              description: Response body of Invite,
+            },
+          publicInviteUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for inviting result },
+                },
+              description: Response body of Invite,
+            },
+          publicNewPasswordResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: Email Sent } },
+            },
+          publicUpdateUserRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: User ID },
+                  date_of_birth:
+                    {
+                      type: string,
+                      description: User Date of Birth,
+                      format: date-time,
+                    },
+                  address: { type: string, description: User Address },
+                  gender:
+                    {
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User Gender,
+                      format: enum,
+                    },
+                  place_of_birth:
+                    { type: string, description: User Place of Birth },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  full_name: { type: string, description: User Full Name },
+                  username: { type: string, description: User Username },
+                  email: { type: string, description: User Email },
+                  phone_number:
+                    { type: string, description: User Phone Number },
+                },
+            },
+          publicUpdateUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for updating result },
+                },
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  profile_pic:
+                    {
+                      example: profile.png,
+                      type: string,
+                      description: User profile pict name,
+                    },
+                  address:
+                    {
+                      example: jln jln,
+                      type: string,
+                      description: User address,
+                    },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                  date_of_birth:
+                    {
+                      example: 2020-01-01,
+                      type: string,
+                      description: User Date of Birth,
+                      format: date-time,
+                    },
+                  place_of_birth:
+                    {
+                      example: Jakarta,
+                      type: string,
+                      description: User Place of Birth,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User Gender,
+                      format: enum,
+                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                },
+              description: User entity,
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          .GetTeacherListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teachers:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/.TeacherResponse" },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          .TeacherAchievement:
+            {
+              type: object,
+              properties:
+                {
+                  achievement_name: { type: string },
+                  achievement_date_time: { type: string, format: date-time },
+                  organization: { type: string },
+                },
+              description: TeacherAchievement represents a teacher's achievement,
+            },
+          .TeacherEducation:
+            {
+              type: object,
+              properties:
+                {
+                  school: { type: string },
+                  title: { type: string },
+                  major: { type: string },
+                  year_start: { type: string },
+                  year_end: { type: string },
+                  gpa: { type: string },
+                  id_credential: { type: string },
+                  document: { type: string },
+                },
+            },
+          .TeacherInformation:
+            {
+              type: object,
+              properties:
+                {
+                  nuptk: { type: string },
+                  registration_number: { type: string },
+                  year_of_work: { type: string },
+                  instance_name: { type: string },
+                  status: { type: string },
+                },
+            },
+          .TeacherLicense:
+            {
+              type: object,
+              properties:
+                {
+                  license_name: { type: string },
+                  year_start_date_time: { type: string, format: date-time },
+                  year_end_date_time: { type: string, format: date-time },
+                  organization: { type: string },
+                  credential_id: { type: string },
+                },
+            },
+          .TeacherResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user_id:
+                    {
+                      type: string,
+                      description: Teacher Registered user profile,
+                    },
+                  nip:
+                    {
+                      type: string,
+                      description: National registered teacher number,
+                    },
+                  instance_id:
+                    {
+                      type: string,
+                      description: ID of Instance where teacher is registered,
+                    },
+                  instance_name:
+                    {
+                      type: string,
+                      description: Name of Instance where teacher is registered,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          TEACHER_STATUS_UNSPECIFIED,
+                          TEACHER_STATUS_ACTIVE,
+                          TEACHER_STATUS_INACTIVE,
+                          TEACHER_STATUS_ALUMNI,
+                        ],
+                      type: string,
+                      description: Status of teacher,
+                      format: enum,
+                    },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  address:
+                    {
+                      example: jln jln,
+                      type: string,
+                      description: User address,
+                    },
+                  teacher_information:
+                    { $ref: "#/components/schemas/.TeacherInformation" },
+                  teacher_education:
+                    { $ref: "#/components/schemas/.TeacherEducation" },
+                  teacher_license:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/.TeacherLicense" },
+                      description: List of Teacher License,
+                    },
+                  teacher_achievement:
+                    {
+                      type: array,
+                      items:
+                        { $ref: "#/components/schemas/.TeacherAchievement" },
+                      description: List of Teacher Achievement,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          .UpdateTeacherRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  teacher_information:
+                    { $ref: "#/components/schemas/.TeacherInformation" },
+                  teacher_education:
+                    { $ref: "#/components/schemas/.TeacherEducation" },
+                  teacher_license:
+                    {
+                      type: array,
+                      items: { $ref: "#/components/schemas/.TeacherLicense" },
+                    },
+                  teacher_achievement:
+                    {
+                      type: array,
+                      items:
+                        { $ref: "#/components/schemas/.TeacherAchievement" },
+                    },
+                },
+            },
+          .UpdateTeacherResponse:
+            { type: object, properties: { message: { type: string } } },
           publicCreateSchoolPresignedPostUrlRequest:
             {
               type: object,
@@ -1570,30 +2028,6 @@
                     },
                 },
             },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
           .GetStudentListResponse:
             {
               type: object,
@@ -1707,440 +2141,6 @@
                 },
             },
           .UpdateStudentResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicCreateUserPresignedPostUrlRequest:
-            {
-              type: object,
-              properties:
-                {
-                  files:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/v1S3PresignedUrlRequest",
-                        },
-                      description: File data consists of the filename along with its extension and the file size in bytes.,
-                    },
-                },
-            },
-          publicCreateUserPresignedPostUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  presignedUrls:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
-                        },
-                      description: Presigned Urls,
-                    },
-                },
-            },
-          publicGetUserListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  user:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedUser",
-                        },
-                      description: user information,
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicGetUserResponse:
-            {
-              type: object,
-              properties:
-                {
-                  user:
-                    {
-                      $ref: "#/components/schemas/sharedUser",
-                    },
-                },
-              description: "*\n Represents user's detail",
-            },
-          publicInviteUserRequest:
-            {
-              type: object,
-              properties:
-                {
-                  email: { type: string, description: user email },
-                  instance: { type: string, description: user instance },
-                  role:
-                    {
-                      enum:
-                        [
-                          UNSPECIFIED,
-                          STUDENT,
-                          PARENT,
-                          TEACHER,
-                          STAFF,
-                          ADMINISTRATOR,
-                          SUPERADMINISTRATOR,
-                        ],
-                      type: string,
-                      description: user role,
-                      format: enum,
-                    },
-                  role_id: { type: string, description: either NIP or NISN },
-                },
-              description: Response body of Invite,
-            },
-          publicInviteUserResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for inviting result },
-                },
-              description: Response body of Invite,
-            },
-          publicNewPasswordResponse:
-            {
-              type: object,
-              properties:
-                { message: { type: string, description: Email Sent } },
-            },
-          publicUpdateUserRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: User ID },
-                  date_of_birth:
-                    {
-                      type: string,
-                      description: User Date of Birth,
-                      format: date-time,
-                    },
-                  address: { type: string, description: User Address },
-                  gender:
-                    {
-                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
-                      type: string,
-                      description: User Gender,
-                      format: enum,
-                    },
-                  place_of_birth:
-                    { type: string, description: User Place of Birth },
-                  profile_picture:
-                    { $ref: "#/components/schemas/v1AttachmentFile" },
-                  full_name: { type: string, description: User Full Name },
-                  username: { type: string, description: User Username },
-                  email: { type: string, description: User Email },
-                  phone_number:
-                    { type: string, description: User Phone Number },
-                },
-            },
-          publicUpdateUserResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for updating result },
-                },
-            },
-          sharedUser:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: User ID },
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  username:
-                    {
-                      example: JohnFD,
-                      type: string,
-                      description: User username,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  profile_pic:
-                    {
-                      example: profile.png,
-                      type: string,
-                      description: User profile pict name,
-                    },
-                  address:
-                    {
-                      example: jln jln,
-                      type: string,
-                      description: User address,
-                    },
-                  role_type:
-                    {
-                      enum:
-                        [
-                          UNSPECIFIED,
-                          STUDENT,
-                          PARENT,
-                          TEACHER,
-                          STAFF,
-                          ADMINISTRATOR,
-                          SUPERADMINISTRATOR,
-                        ],
-                      type: string,
-                      format: enum,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user data updated,
-                      format: date-time,
-                    },
-                  date_of_birth:
-                    {
-                      example: 2020-01-01,
-                      type: string,
-                      description: User Date of Birth,
-                      format: date-time,
-                    },
-                  place_of_birth:
-                    {
-                      example: Jakarta,
-                      type: string,
-                      description: User Place of Birth,
-                    },
-                  gender:
-                    {
-                      example: Male,
-                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
-                      type: string,
-                      description: User Gender,
-                      format: enum,
-                    },
-                  profile_picture:
-                    { $ref: "#/components/schemas/v1AttachmentFile" },
-                },
-              description: User entity,
-            },
-          .GetTeacherListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  teachers:
-                    {
-                      type: array,
-                      items: { $ref: "#/components/schemas/.TeacherResponse" },
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          .TeacherAchievement:
-            {
-              type: object,
-              properties:
-                {
-                  achievement_name: { type: string },
-                  achievement_date_time: { type: string, format: date-time },
-                  organization: { type: string },
-                },
-              description: TeacherAchievement represents a teacher's achievement,
-            },
-          .TeacherEducation:
-            {
-              type: object,
-              properties:
-                {
-                  school: { type: string },
-                  title: { type: string },
-                  major: { type: string },
-                  year_start: { type: string },
-                  year_end: { type: string },
-                  gpa: { type: string },
-                  id_credential: { type: string },
-                  document: { type: string },
-                },
-            },
-          .TeacherInformation:
-            {
-              type: object,
-              properties:
-                {
-                  nuptk: { type: string },
-                  registration_number: { type: string },
-                  year_of_work: { type: string },
-                  instance_name: { type: string },
-                  status: { type: string },
-                },
-            },
-          .TeacherLicense:
-            {
-              type: object,
-              properties:
-                {
-                  license_name: { type: string },
-                  year_start_date_time: { type: string, format: date-time },
-                  year_end_date_time: { type: string, format: date-time },
-                  organization: { type: string },
-                  credential_id: { type: string },
-                },
-            },
-          .TeacherResponse:
-            {
-              type: object,
-              properties:
-                {
-                  user_id:
-                    {
-                      type: string,
-                      description: Teacher Registered user profile,
-                    },
-                  nip:
-                    {
-                      type: string,
-                      description: National registered teacher number,
-                    },
-                  instance_id:
-                    {
-                      type: string,
-                      description: ID of Instance where teacher is registered,
-                    },
-                  instance_name:
-                    {
-                      type: string,
-                      description: Name of Instance where teacher is registered,
-                    },
-                  status:
-                    {
-                      enum:
-                        [
-                          TEACHER_STATUS_UNSPECIFIED,
-                          TEACHER_STATUS_ACTIVE,
-                          TEACHER_STATUS_INACTIVE,
-                          TEACHER_STATUS_ALUMNI,
-                        ],
-                      type: string,
-                      description: Status of teacher,
-                      format: enum,
-                    },
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  username:
-                    {
-                      example: JohnFD,
-                      type: string,
-                      description: User username,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  profile_picture:
-                    { $ref: "#/components/schemas/v1AttachmentFile" },
-                  address:
-                    {
-                      example: jln jln,
-                      type: string,
-                      description: User address,
-                    },
-                  teacher_information:
-                    { $ref: "#/components/schemas/.TeacherInformation" },
-                  teacher_education:
-                    { $ref: "#/components/schemas/.TeacherEducation" },
-                  teacher_license:
-                    {
-                      type: array,
-                      items: { $ref: "#/components/schemas/.TeacherLicense" },
-                      description: List of Teacher License,
-                    },
-                  teacher_achievement:
-                    {
-                      type: array,
-                      items:
-                        { $ref: "#/components/schemas/.TeacherAchievement" },
-                      description: List of Teacher Achievement,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          .UpdateTeacherRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string },
-                  teacher_information:
-                    { $ref: "#/components/schemas/.TeacherInformation" },
-                  teacher_education:
-                    { $ref: "#/components/schemas/.TeacherEducation" },
-                  teacher_license:
-                    {
-                      type: array,
-                      items: { $ref: "#/components/schemas/.TeacherLicense" },
-                    },
-                  teacher_achievement:
-                    {
-                      type: array,
-                      items:
-                        { $ref: "#/components/schemas/.TeacherAchievement" },
-                    },
-                },
-            },
-          .UpdateTeacherResponse:
             { type: object, properties: { message: { type: string } } },
         },
       responses:
