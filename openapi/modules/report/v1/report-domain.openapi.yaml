@@ -729,6 +729,52 @@
                     },
                   teacher_attendance:
                     { type: string, description: Teacher attendance status },
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicLearningGoal",
+                        },
+                      description: learning goals,
+                    },
+                  study_materials:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicStudyMaterial",
+                        },
+                      description: study materials,
+                    },
+                  quizzes:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicQuiz",
+                        },
+                      description: quizzes,
+                    },
+                  assignments:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAssignment",
+                        },
+                      description: assignments,
+                    },
+                  observations:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicObservation",
+                        },
+                      description: observations,
+                    },
+                  note: { type: string, description: note },
                 },
             },
           publicLearningGoal:
