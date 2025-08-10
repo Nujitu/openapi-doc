@@ -42,8 +42,12 @@
     - [CreateCurriculumRequest](#modules-material-v1-public-CreateCurriculumRequest)
     - [DeleteCurriculumRequest](#modules-material-v1-public-DeleteCurriculumRequest)
     - [DeleteCurriculumResponse](#modules-material-v1-public-DeleteCurriculumResponse)
+    - [GetActiveCurriculumRequest](#modules-material-v1-public-GetActiveCurriculumRequest)
+    - [GetActiveCurriculumResponse](#modules-material-v1-public-GetActiveCurriculumResponse)
     - [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest)
     - [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse)
+    - [SetActiveCurriculumRequest](#modules-material-v1-public-SetActiveCurriculumRequest)
+    - [SetActiveCurriculumResponse](#modules-material-v1-public-SetActiveCurriculumResponse)
     - [UpdateCurriculumRequest](#modules-material-v1-public-UpdateCurriculumRequest)
     - [UpdateCurriculumResponse](#modules-material-v1-public-UpdateCurriculumResponse)
   
@@ -715,6 +719,36 @@ Service for user related feature
 
 
 
+<a name="modules-material-v1-public-GetActiveCurriculumRequest"></a>
+
+### GetActiveCurriculumRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| instance_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetActiveCurriculumResponse"></a>
+
+### GetActiveCurriculumResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| curriculum | [modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) |  |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-GetCurriculumListRequest"></a>
 
 ### GetCurriculumListRequest
@@ -743,6 +777,36 @@ Service for user related feature
 | ----- | ---- | ----- | ----------- |
 | curriculums | [modules.material.v1.shared.Curriculum](#modules-material-v1-shared-Curriculum) | repeated |  |
 | meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
+
+
+
+
+
+
+<a name="modules-material-v1-public-SetActiveCurriculumRequest"></a>
+
+### SetActiveCurriculumRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-SetActiveCurriculumResponse"></a>
+
+### SetActiveCurriculumResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
 
 
 
@@ -797,6 +861,8 @@ Service for user related feature
 | GetCurriculumList | [GetCurriculumListRequest](#modules-material-v1-public-GetCurriculumListRequest) | [GetCurriculumListResponse](#modules-material-v1-public-GetCurriculumListResponse) |  |
 | DeleteCurriculum | [DeleteCurriculumRequest](#modules-material-v1-public-DeleteCurriculumRequest) | [DeleteCurriculumResponse](#modules-material-v1-public-DeleteCurriculumResponse) |  |
 | UpdateCurriculum | [UpdateCurriculumRequest](#modules-material-v1-public-UpdateCurriculumRequest) | [UpdateCurriculumResponse](#modules-material-v1-public-UpdateCurriculumResponse) |  |
+| SetActiveCurriculum | [SetActiveCurriculumRequest](#modules-material-v1-public-SetActiveCurriculumRequest) | [SetActiveCurriculumResponse](#modules-material-v1-public-SetActiveCurriculumResponse) |  |
+| GetActiveCurriculum | [GetActiveCurriculumRequest](#modules-material-v1-public-GetActiveCurriculumRequest) | [GetActiveCurriculumResponse](#modules-material-v1-public-GetActiveCurriculumResponse) |  |
 
  
 
