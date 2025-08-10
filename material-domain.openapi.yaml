@@ -2971,6 +2971,69 @@
                 },
             },
         },
+      "/v1/curriculum/active/{instance_id}":
+        {
+          get:
+            {
+              tags: [CurriculumService],
+              summary: Get Active Curriculum,
+              operationId: CurriculumService_GetActiveCurriculum,
+              parameters:
+                [
+                  {
+                    name: instance_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetActiveCurriculumResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/curriculum/list:
         {
           post:
@@ -3004,6 +3067,69 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetCurriculumListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/curriculum/set-active/{id}":
+        {
+          post:
+            {
+              tags: [CurriculumService],
+              summary: Set Active Curriculum,
+              operationId: CurriculumService_SetActiveCurriculum,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicSetActiveCurriculumResponse",
                                 },
                             },
                         },
@@ -5274,6 +5400,17 @@
             },
           publicDeleteCurriculumResponse:
             { type: object, properties: { message: { type: string } } },
+          publicGetActiveCurriculumResponse:
+            {
+              type: object,
+              properties:
+                {
+                  curriculum:
+                    {
+                      $ref: "#/components/schemas/sharedCurriculum",
+                    },
+                },
+            },
           publicGetCurriculumListRequest:
             {
               type: object,
@@ -5321,6 +5458,8 @@
                     { $ref: "#/components/schemas/v1ResponseMetadata" },
                 },
             },
+          publicSetActiveCurriculumResponse:
+            { type: object, properties: { message: { type: string } } },
           publicUpdateCurriculumRequest:
             {
               type: object,
