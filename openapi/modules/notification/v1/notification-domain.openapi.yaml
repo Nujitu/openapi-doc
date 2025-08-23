@@ -208,6 +208,7 @@ paths:
               INBOX_MAIL,
               OUTGOING_MAIL,
               EVENT,
+              ANNOUNCEMENT,
             ]
           type: string
           description: Notification type
