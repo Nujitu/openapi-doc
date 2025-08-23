@@ -668,6 +668,84 @@
                 },
             },
         },
+      "/v1/class-group/subject/{class_group_id}/announcements":
+        {
+          post:
+            {
+              tags: [ClassSubjectService],
+              summary: Create Class Subject Announcement,
+              description: Create Class Subject Announcement,
+              operationId: ClassSubjectService_CreateClassSubjectAnnouncement,
+              parameters:
+                [
+                  {
+                    name: class_group_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedCreateClassSubjectAnnouncementRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedCreateClassSubjectAnnouncementResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/class-group/subject/{class_id}":
         {
           patch:
@@ -785,81 +863,6 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/sharedGetClassSubjectAnnouncementResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          post:
-            {
-              tags: [ClassSubjectService],
-              summary: Create Class Subject Announcement,
-              description: Create Class Subject Announcement,
-              operationId: ClassSubjectService_CreateClassSubjectAnnouncement,
-              parameters:
-                [
-                  {
-                    name: class_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedCreateClassSubjectAnnouncementRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedCreateClassSubjectAnnouncementResponse",
                                 },
                             },
                         },
@@ -3793,11 +3796,17 @@
                       type: string,
                       description: Announcement ID,
                     },
+                  class_group_id:
+                    {
+                      example: e159dd7a-b4ea-4395-ad24,
+                      type: string,
+                      description: "Class Group ID. Ex: X-IPA-1",
+                    },
                   class_subject_id:
                     {
                       example: e159dd7a-b4ea-4395-ad24,
                       type: string,
-                      description: Class Subject Id,
+                      description: "Class Subject ID. Ex: Mathematics class of X-IPA-1",
                     },
                   teacher_id:
                     { example: 5432123, type: string, description: Teacher Id },
@@ -3811,13 +3820,13 @@
                     {
                       example: Pengumuman sesi khusus materi barisan dan deret,
                       type: string,
-                      description: Class ID,
+                      description: Announcement title,
                     },
                   description:
                     {
                       example: Sesi pembelajaran khusus untuk mengenal konsep dasar barisan dan deret.,
                       type: string,
-                      description: Class ID,
+                      description: Announcement description,
                     },
                   created_at:
                     {
@@ -3881,8 +3890,18 @@
               type: object,
               properties:
                 {
-                  class_id:
-                    { example: 123124, type: string, description: Class ID },
+                  class_group_id:
+                    {
+                      example: 123124,
+                      type: string,
+                      description: "Class Group ID. Ex: X-IPA-1",
+                    },
+                  class_subject_id:
+                    {
+                      example: 123124,
+                      type: string,
+                      description: "Class Subject ID. Ex: Mathematics class of X-IPA-1",
+                    },
                   teacher_id:
                     {
                       example: 12321412,
@@ -3918,6 +3937,10 @@
                     {
                       type: string,
                       description: Message confirming the creation of the new Announcement,
+                    },
+                  announcement:
+                    {
+                      $ref: "#/components/schemas/sharedClassSubjectAnnouncement",
                     },
                 },
             },
