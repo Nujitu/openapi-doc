@@ -320,6 +320,12 @@
 | is_submitted | [bool](#bool) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | teacher_attendance | [string](#string) |  |  |
+| learning_goals | [LearningGoal](#modules-report-v1-public-LearningGoal) | repeated |  |
+| study_materials | [StudyMaterial](#modules-report-v1-public-StudyMaterial) | repeated |  |
+| quizzes | [Quiz](#modules-report-v1-public-Quiz) | repeated |  |
+| assignments | [Assignment](#modules-report-v1-public-Assignment) | repeated |  |
+| observations | [Observation](#modules-report-v1-public-Observation) | repeated |  |
+| note | [string](#string) |  |  |
 
 
 
