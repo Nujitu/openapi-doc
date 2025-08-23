@@ -40,6 +40,7 @@
 | INBOX_MAIL | 6 |  |
 | OUTGOING_MAIL | 7 |  |
 | EVENT | 8 |  |
+| ANNOUNCEMENT | 9 |  |
 
 
 

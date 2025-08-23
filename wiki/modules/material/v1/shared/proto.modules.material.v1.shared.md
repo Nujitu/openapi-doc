@@ -202,6 +202,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | announcement_id | [string](#string) |  |  |
+| class_group_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
 | teacher_name | [string](#string) |  |  |
@@ -244,7 +245,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| class_id | [string](#string) |  |  |
+| class_group_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
 | teacher_name | [string](#string) |  |  |
 | title | [string](#string) |  |  |
@@ -264,6 +266,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+| announcement | [ClassSubjectAnnouncement](#modules-material-v1-shared-ClassSubjectAnnouncement) |  |  |
 
 
 
