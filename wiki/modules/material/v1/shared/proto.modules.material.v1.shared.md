@@ -204,7 +204,7 @@
 | announcement_id | [string](#string) |  |  |
 | class_group_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | teacher_name | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
@@ -247,7 +247,7 @@
 | ----- | ---- | ----- | ----------- |
 | class_group_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | teacher_name | [string](#string) |  |  |
 | title | [string](#string) |  |  |
 | description | [string](#string) |  |  |
