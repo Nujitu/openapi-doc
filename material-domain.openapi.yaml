@@ -3808,8 +3808,12 @@
                       type: string,
                       description: "Class Subject ID. Ex: Mathematics class of X-IPA-1",
                     },
-                  teacher_id:
-                    { example: 5432123, type: string, description: Teacher Id },
+                  teacher_user_id:
+                    {
+                      example: e159dd7a-b4ea-4395-ad24,
+                      type: string,
+                      description: Teacher User ID,
+                    },
                   teacher_name:
                     {
                       example: Budi Santoso,
@@ -3902,11 +3906,11 @@
                       type: string,
                       description: "Class Subject ID. Ex: Mathematics class of X-IPA-1",
                     },
-                  teacher_id:
+                  teacher_user_id:
                     {
                       example: 12321412,
                       type: string,
-                      description: Teacher ID,
+                      description: Teacher User ID,
                     },
                   teacher_name:
                     {
