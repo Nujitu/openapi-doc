@@ -5,23 +5,19 @@
     {
       title: Teaching_module Domain,
       version: v1,
-      description: "Skoola Teaching Module Service, Skoola Folder Task Management Service, Skoola Teaching Module Service, Exam Management Service, Study Material Management Service, Skoola Learning Goal Service, Skoola Folder Management Service",
+      description: "Skoola Folder Management Service, Skoola Teaching Module Service, Exam Management Service, Study Material Management Service, Skoola Teaching Module Service, Skoola Learning Goal Service, Skoola Folder Task Management Service",
     },
-  servers:
-    [
-      { url: "https://staging-api.simbiosa.co.id" },
-      { url: "http://localhost:8080" },
-    ],
+  servers: [{ url: "https://staging-api.simbiosa.co.id" }],
   paths:
     {
-      /v1/teaching-module/presigned-url:
+      /v1/teaching-module-folder:
         {
           post:
             {
-              tags: [UploaderService],
-              summary: Create teaching module presigned URLs,
-              description: Create an AWS S3 presigned URLs to upload teaching module assets,
-              operationId: UploaderService_CreateTeachingModulePresignedPostUrl,
+              tags: [TeachingModuleFolderService],
+              summary: Insert New Learning Goals separate with teaching module folder,
+              description: insert new teaching module folder,
+              operationId: TeachingModuleFolderService_CreateTeachingModuleFolder,
               requestBody:
                 {
                   content:
@@ -30,7 +26,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlRequest",
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
                             },
                         },
                     },
@@ -47,7 +43,73 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlResponse",
+                                  $ref: "#/components/schemas/publicCreateTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: Update New Learning Goals separate with teaching module folder,
+              description: update new teaching module folder,
+              operationId: TeachingModuleFolderService_UpdateTeachingModuleFolder,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateTeachingModuleFolderResponse",
                                 },
                             },
                         },
@@ -83,91 +145,16 @@
                 },
             },
         },
-      /v1/folder-task/task:
-        {
-          post:
-            {
-              tags: [FolderTaskService],
-              summary: Submit folder task,
-              description: submit folder task,
-              operationId: FolderTaskService_SubmitFolderTask,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicSubmitFolderTaskRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicSubmitFolderTaskResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/folder-task/task/{task_id}/{folder_id}":
+      "/v1/teaching-module-folder/{folder_id}":
         {
           delete:
             {
-              tags: [FolderTaskService],
-              summary: Delete folder task,
-              description: delete folder task using task_id and folder_id,
-              operationId: FolderTaskService_DeleteFolderTask,
+              tags: [TeachingModuleFolderService],
+              summary: Delete teaching module folder,
+              description: Delete teaching module folder by ID,
+              operationId: TeachingModuleFolderService_DeleteTeachingModuleFolder,
               parameters:
                 [
-                  {
-                    name: task_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
                   {
                     name: folder_id,
                     in: path,
@@ -186,7 +173,141 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicDeleteFolderTaskResponse",
+                                  $ref: "#/components/schemas/publicDeleteTeachingModuleFolderResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module-folder/{id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: get folder detail by id,
+              description: get folder detail by id,
+              operationId: TeachingModuleFolderService_GetTeachingModuleDetailByID,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderDetailByIDResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module-folder/{teaching_module_id}/{class_group_detail_id}":
+        {
+          get:
+            {
+              tags: [TeachingModuleFolderService],
+              summary: get folder list by class group detail ID,
+              description: get folder list by class group detail ID,
+              operationId: TeachingModuleFolderService_GetTeachingModuleFolderList,
+              parameters:
+                [
+                  {
+                    name: teaching_module_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_group_detail_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderListResponse",
                                 },
                             },
                         },
@@ -1349,6 +1470,75 @@
                 },
             },
         },
+      /v1/teaching-module/presigned-url:
+        {
+          post:
+            {
+              tags: [UploaderService],
+              summary: Create teaching module presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload teaching module assets,
+              operationId: UploaderService_CreateTeachingModulePresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/learning-goal:
         {
           post:
@@ -1484,14 +1674,14 @@
                 },
             },
         },
-      /v1/teaching-module-folder:
+      /v1/folder-task/task:
         {
           post:
             {
-              tags: [TeachingModuleFolderService],
-              summary: Insert New Learning Goals separate with teaching module folder,
-              description: insert new teaching module folder,
-              operationId: TeachingModuleFolderService_CreateTeachingModuleFolder,
+              tags: [FolderTaskService],
+              summary: Submit folder task,
+              description: submit folder task,
+              operationId: FolderTaskService_SubmitFolderTask,
               requestBody:
                 {
                   content:
@@ -1500,7 +1690,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                              $ref: "#/components/schemas/publicSubmitFolderTaskRequest",
                             },
                         },
                     },
@@ -1517,73 +1707,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateTeachingModuleFolderResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [TeachingModuleFolderService],
-              summary: Update New Learning Goals separate with teaching module folder,
-              description: update new teaching module folder,
-              operationId: TeachingModuleFolderService_UpdateTeachingModuleFolder,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/sharedTeachingModuleFolder",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateTeachingModuleFolderResponse",
+                                  $ref: "#/components/schemas/publicSubmitFolderTaskResponse",
                                 },
                             },
                         },
@@ -1619,16 +1743,22 @@
                 },
             },
         },
-      "/v1/teaching-module-folder/{folder_id}":
+      "/v1/folder-task/task/{task_id}/{folder_id}":
         {
           delete:
             {
-              tags: [TeachingModuleFolderService],
-              summary: Delete teaching module folder,
-              description: Delete teaching module folder by ID,
-              operationId: TeachingModuleFolderService_DeleteTeachingModuleFolder,
+              tags: [FolderTaskService],
+              summary: Delete folder task,
+              description: delete folder task using task_id and folder_id,
+              operationId: FolderTaskService_DeleteFolderTask,
               parameters:
                 [
+                  {
+                    name: task_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
                   {
                     name: folder_id,
                     in: path,
@@ -1647,141 +1777,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicDeleteTeachingModuleFolderResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/teaching-module-folder/{id}":
-        {
-          get:
-            {
-              tags: [TeachingModuleFolderService],
-              summary: get folder detail by id,
-              description: get folder detail by id,
-              operationId: TeachingModuleFolderService_GetTeachingModuleDetailByID,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderDetailByIDResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/teaching-module-folder/{teaching_module_id}/{class_group_detail_id}":
-        {
-          get:
-            {
-              tags: [TeachingModuleFolderService],
-              summary: get folder list by class group detail ID,
-              description: get folder list by class group detail ID,
-              operationId: TeachingModuleFolderService_GetTeachingModuleFolderList,
-              parameters:
-                [
-                  {
-                    name: teaching_module_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: class_group_detail_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetTeachingModuleFolderListResponse",
+                                  $ref: "#/components/schemas/publicDeleteFolderTaskResponse",
                                 },
                             },
                         },
@@ -1822,77 +1818,130 @@
     {
       "schemas":
         {
-          v1S3PresignedUrlResponse:
+          publicCreateTeachingModuleFolderResponse:
             {
               type: object,
               properties:
                 {
-                  url: { type: string },
-                  values:
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          publicDeleteTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  success:
                     {
-                      $ref: "#/components/schemas/v1S3PresignedValues",
+                      type: boolean,
+                      description: Whether the folder was successfully deleted,
                     },
                 },
             },
-          v1S3PresignedValues:
+          publicGetTeachingModuleFolderDetailByIDResponse:
             {
               type: object,
               properties:
                 {
-                  X_Amz_Algorithm: { type: string },
-                  X_Amz_Credential: { type: string },
-                  X_Amz_Date: { type: string },
-                  X_Amz_Signature: { type: string },
-                  key: { type: string },
-                  policy: { type: string },
-                },
-            },
-          publicCreateTeachingModulePresignedPostUrlRequest:
-            {
-              type: object,
-              properties:
-                {
-                  files:
+                  folder_id: { type: string, description: Folder ID },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
                     {
                       type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedUploader",
-                        },
-                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                      items: { type: string },
+                      description: List of Learning Goals,
                     },
-                },
-            },
-          publicCreateTeachingModulePresignedPostUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  presignedUrls:
+                  start_date:
                     {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
-                        },
-                      description: Presigned Urls,
-                    },
-                },
-            },
-          sharedUploader:
-            {
-              type: object,
-              properties:
-                {
-                  file_name:
-                    { example: 123.png, type: string, description: File name },
-                  file_size: { type: string, description: File size in bytes },
-                  folder_name:
-                    {
-                      example: study_material,
                       type: string,
-                      description: folder name for files in S3,
+                      description: Start Date,
+                      format: date-time,
                     },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
+                  class_group_detail_id:
+                    { type: string, description: class_group_detail_id },
+                  folder_tasks:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedFolderTask",
+                        },
+                      description: data from folder id requested,
+                    },
+                },
+            },
+          publicGetTeachingModuleFolderListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: get folder by class group detail ID,
+                    },
+                },
+            },
+          publicUpdateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          sharedFolderTask:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: folder task id },
+                  folder_id: { type: string, description: folder id },
+                  task_id: { type: string, description: task id },
+                  task_type: { type: string, description: task type },
+                  task_name: { type: string, description: task name },
+                  task_attachment:
+                    { type: string, description: task attachment },
+                  student_id: { type: string, description: student id },
+                  created_at: { type: string, description: created at },
+                  updated_at: { type: string, description: updated at },
+                },
+            },
+          sharedTeachingModuleFolder:
+            {
+              type: object,
+              properties:
+                {
+                  folder_id: { type: string, description: Folder ID },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of Learning Goals,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start Date,
+                      format: date-time,
+                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
+                  class_group_detail_id:
+                    { type: string, description: class_group_detail_id },
                 },
             },
           "v1ErrorResponse":
@@ -1917,45 +1966,6 @@
                   "message": { "title": "message", "type": "string" },
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
-                },
-            },
-          publicDeleteFolderTaskResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for folder task },
-                },
-            },
-          publicSubmitFolderTaskRequest:
-            {
-              type: object,
-              properties:
-                {
-                  folder_id: { type: string, description: folder id },
-                  task_id: { type: string, description: task id },
-                  task_type: { type: string, description: task type },
-                  task_name: { type: string, description: task name },
-                  task_attachment:
-                    { type: string, description: task attachment },
-                  student_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: student ids,
-                    },
-                  class_subject_id:
-                    { type: string, description: class_subject_id },
-                },
-            },
-          publicSubmitFolderTaskResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for folder task },
                 },
             },
           publicApproveteachingModuleRequest:
@@ -2235,33 +2245,6 @@
                     },
                   class_subject_id:
                     { type: string, description: class subject id },
-                },
-            },
-          sharedTeachingModuleFolder:
-            {
-              type: object,
-              properties:
-                {
-                  folder_id: { type: string, description: Folder ID },
-                  title: { type: string, description: Folder Name },
-                  learning_goal_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of Learning Goals,
-                    },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start Date,
-                      format: date-time,
-                    },
-                  end_date:
-                    { type: string, description: End Date, format: date-time },
-                  teaching_module_id:
-                    { type: string, description: Teaching Module ID },
-                  class_group_detail_id:
-                    { type: string, description: class_group_detail_id },
                 },
             },
           publicCreateExamRequest:
@@ -2705,6 +2688,79 @@
                     },
                 },
             },
+          v1S3PresignedUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  url: { type: string },
+                  values:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedValues",
+                    },
+                },
+            },
+          v1S3PresignedValues:
+            {
+              type: object,
+              properties:
+                {
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          publicCreateTeachingModulePresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedUploader",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                    },
+                },
+            },
+          publicCreateTeachingModulePresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
+                    },
+                },
+            },
+          sharedUploader:
+            {
+              type: object,
+              properties:
+                {
+                  file_name:
+                    { example: 123.png, type: string, description: File name },
+                  file_size: { type: string, description: File size in bytes },
+                  folder_name:
+                    {
+                      example: study_material,
+                      type: string,
+                      description: folder name for files in S3,
+                    },
+                },
+            },
           publicCreateLearningGoalResponse:
             {
               type: object,
@@ -2750,103 +2806,43 @@
                     { type: string, description: message for teaching module },
                 },
             },
-          publicCreateTeachingModuleFolderResponse:
+          publicDeleteFolderTaskResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    { type: string, description: message for teaching module },
+                    { type: string, description: message for folder task },
                 },
             },
-          publicDeleteTeachingModuleFolderResponse:
+          publicSubmitFolderTaskRequest:
             {
               type: object,
               properties:
                 {
-                  success:
-                    {
-                      type: boolean,
-                      description: Whether the folder was successfully deleted,
-                    },
-                },
-            },
-          publicGetTeachingModuleFolderDetailByIDResponse:
-            {
-              type: object,
-              properties:
-                {
-                  folder_id: { type: string, description: Folder ID },
-                  title: { type: string, description: Folder Name },
-                  learning_goal_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of Learning Goals,
-                    },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start Date,
-                      format: date-time,
-                    },
-                  end_date:
-                    { type: string, description: End Date, format: date-time },
-                  teaching_module_id:
-                    { type: string, description: Teaching Module ID },
-                  class_group_detail_id:
-                    { type: string, description: class_group_detail_id },
-                  folder_tasks:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedFolderTask",
-                        },
-                      description: data from folder id requested,
-                    },
-                },
-            },
-          publicGetTeachingModuleFolderListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  folders:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
-                        },
-                      description: get folder by class group detail ID,
-                    },
-                },
-            },
-          publicUpdateTeachingModuleFolderResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for teaching module },
-                },
-            },
-          sharedFolderTask:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: folder task id },
                   folder_id: { type: string, description: folder id },
                   task_id: { type: string, description: task id },
                   task_type: { type: string, description: task type },
                   task_name: { type: string, description: task name },
                   task_attachment:
                     { type: string, description: task attachment },
-                  student_id: { type: string, description: student id },
-                  created_at: { type: string, description: created at },
-                  updated_at: { type: string, description: updated at },
+                  student_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: student ids,
+                    },
+                  class_subject_id:
+                    { type: string, description: class_subject_id },
+                },
+            },
+          publicSubmitFolderTaskResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for folder task },
                 },
             },
         },
