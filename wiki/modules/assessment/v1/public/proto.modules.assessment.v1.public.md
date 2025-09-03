@@ -1769,6 +1769,8 @@ Service for observation related feature
 | teaching_module_id | [string](#string) |  |  |
 | start_due_date | [string](#string) |  |  |
 | end_due_date | [string](#string) |  |  |
+| limit | [uint32](#uint32) |  |  |
+| offset | [uint32](#uint32) |  |  |
 
 
 

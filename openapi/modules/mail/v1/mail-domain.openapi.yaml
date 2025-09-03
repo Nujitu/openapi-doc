@@ -14,14 +14,87 @@
     ],
   paths:
     {
-      /v1/mail/presigned-url:
+      /v1/mail/inbox:
         {
+          get:
+            {
+              tags: [MailInboxService],
+              summary: List mail inbox,
+              description: List mail inbox,
+              operationId: MailInboxService_ListMailInbox,
+              parameters:
+                [
+                  {
+                    name: receiver_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: instance_id, in: query, schema: { type: string } },
+                  { name: admin, in: query, schema: { type: boolean } },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedListMailInboxResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
           post:
             {
-              tags: [MailUploaderService],
-              summary: Create mail module presigned URLs,
-              description: Create an AWS S3 presigned URLs to upload mail module assets,
-              operationId: MailUploaderService_CreateMailModulePresignedPostUrl,
+              tags: [MailInboxService],
+              summary: Insert new inbox,
+              description: Insert new inbox,
+              operationId: MailInboxService_CreateMailInbox,
               requestBody:
                 {
                   content:
@@ -30,7 +103,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlRequest",
+                              $ref: "#/components/schemas/sharedCreateMailInboxRequest",
                             },
                         },
                     },
@@ -47,7 +120,135 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlResponse",
+                                  $ref: "#/components/schemas/sharedCreateMailInboxResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/inbox/detail/{id}":
+        {
+          get:
+            {
+              tags: [MailInboxService],
+              summary: Get mail inbox by ID,
+              description: Get mail inbox by ID,
+              operationId: MailInboxService_GetMailInboxById,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetMailInboxByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/mail/inbox/{id}":
+        {
+          delete:
+            {
+              tags: [MailInboxService],
+              summary: Delete inbox by id,
+              description: Delete inbox by id,
+              operationId: MailInboxService_DeleteMailInbox,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteMailInboxResponse",
                                 },
                             },
                         },
@@ -494,87 +695,14 @@
                 },
             },
         },
-      /v1/mail/inbox:
+      /v1/mail/presigned-url:
         {
-          get:
-            {
-              tags: [MailInboxService],
-              summary: List mail inbox,
-              description: List mail inbox,
-              operationId: MailInboxService_ListMailInbox,
-              parameters:
-                [
-                  {
-                    name: receiver_user_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: instance_id, in: query, schema: { type: string } },
-                  { name: admin, in: query, schema: { type: boolean } },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedListMailInboxResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           post:
             {
-              tags: [MailInboxService],
-              summary: Insert new inbox,
-              description: Insert new inbox,
-              operationId: MailInboxService_CreateMailInbox,
+              tags: [MailUploaderService],
+              summary: Create mail module presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload mail module assets,
+              operationId: MailUploaderService_CreateMailModulePresignedPostUrl,
               requestBody:
                 {
                   content:
@@ -583,7 +711,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedCreateMailInboxRequest",
+                              $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlRequest",
                             },
                         },
                     },
@@ -600,135 +728,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCreateMailInboxResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/mail/inbox/detail/{id}":
-        {
-          get:
-            {
-              tags: [MailInboxService],
-              summary: Get mail inbox by ID,
-              description: Get mail inbox by ID,
-              operationId: MailInboxService_GetMailInboxById,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetMailInboxByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/mail/inbox/{id}":
-        {
-          delete:
-            {
-              tags: [MailInboxService],
-              summary: Delete inbox by id,
-              description: Delete inbox by id,
-              operationId: MailInboxService_DeleteMailInbox,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedDeleteMailInboxResponse",
+                                  $ref: "#/components/schemas/sharedCreateMailModulePresignedPostUrlResponse",
                                 },
                             },
                         },
@@ -769,86 +769,6 @@
     {
       "schemas":
         {
-          v1S3PresignedUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  url: { type: string },
-                  values:
-                    {
-                      $ref: "#/components/schemas/v1S3PresignedValues",
-                    },
-                },
-            },
-          v1S3PresignedValues:
-            {
-              type: object,
-              properties:
-                {
-                  X_Amz_Algorithm: { type: string },
-                  X_Amz_Credential: { type: string },
-                  X_Amz_Date: { type: string },
-                  X_Amz_Signature: { type: string },
-                  key: { type: string },
-                  policy: { type: string },
-                },
-            },
-          sharedCreateMailModulePresignedPostUrlRequest:
-            {
-              type: object,
-              properties:
-                {
-                  files:
-                    {
-                      $ref: "#/components/schemas/sharedUploader",
-                    },
-                },
-            },
-          sharedCreateMailModulePresignedPostUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  presignedUrls:
-                    {
-                      $ref: "#/components/schemas/v1S3PresignedUrlResponse",
-                    },
-                },
-            },
-          sharedUploader:
-            {
-              type: object,
-              properties:
-                {
-                  file_name: { type: string, description: File Name },
-                  file_size: { type: string, description: File Size in bytes },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                },
-            },
           v1AttachmentFile:
             {
               type: object,
@@ -861,7 +781,75 @@
                   link: { type: string },
                 },
             },
-          sharedDeleteSentMailResponse:
+          sharedCreateMailInboxRequest:
+            {
+              type: object,
+              properties:
+                {
+                  no_ref:
+                    {
+                      example: 001/01/2025,
+                      type: string,
+                      description: No. Ref.,
+                    },
+                  date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Received date,
+                      format: date-time,
+                    },
+                  sender_name:
+                    {
+                      example: Dinas Pendidikan,
+                      type: string,
+                      description: Sender of the mail,
+                    },
+                  receiver_user_ids:
+                    {
+                      example: { Kepala_sekolah_id: "" },
+                      type: array,
+                      items: { type: string },
+                      description: List of receiver id,
+                    },
+                  mail_type:
+                    {
+                      example: Pemintaan Data/Permohonan/Surat Panggilan,
+                      type: string,
+                      description: Type of the mail,
+                    },
+                  mail_subject:
+                    {
+                      example: Undangan mengikuti pelatihan seluruh guru,
+                      type: string,
+                      description: Subject of the mail,
+                    },
+                  attachments:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: List of attachments,
+                    },
+                  instance_id:
+                    { example: 123, type: string, description: Instance ID },
+                },
+            },
+          sharedCreateMailInboxResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the creation of the mail,
+                    },
+                },
+            },
+          sharedDeleteMailInboxResponse:
             {
               type: object,
               properties:
@@ -873,7 +861,7 @@
                     },
                 },
             },
-          sharedGetMailOutgoingByIdResponse:
+          sharedGetMailInboxByIdResponse:
             {
               type: object,
               properties:
@@ -884,7 +872,7 @@
                     },
                 },
             },
-          sharedListMailOutgoingResponse:
+          sharedListMailInboxResponse:
             {
               type: object,
               properties:
@@ -948,6 +936,69 @@
                     },
                   instance_id:
                     { example: 123, type: string, description: Instance ID },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                },
+            },
+          sharedDeleteSentMailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming succeed to delete the mail,
+                    },
+                },
+            },
+          sharedGetMailOutgoingByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mail:
+                    {
+                      $ref: "#/components/schemas/sharedMail",
+                    },
+                },
+            },
+          sharedListMailOutgoingResponse:
+            {
+              type: object,
+              properties:
+                {
+                  mails:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedMail",
+                        },
+                      description: List of mail,
+                    },
                 },
             },
           sharedCreateEmailTemplateRequest:
@@ -1161,111 +1212,60 @@
                     },
                 },
             },
-          sharedCreateMailInboxRequest:
+          v1S3PresignedUrlResponse:
             {
               type: object,
               properties:
                 {
-                  no_ref:
+                  url: { type: string },
+                  values:
                     {
-                      example: 001/01/2025,
-                      type: string,
-                      description: No. Ref.,
-                    },
-                  date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Received date,
-                      format: date-time,
-                    },
-                  sender_name:
-                    {
-                      example: Dinas Pendidikan,
-                      type: string,
-                      description: Sender of the mail,
-                    },
-                  receiver_user_ids:
-                    {
-                      example: { Kepala_sekolah_id: "" },
-                      type: array,
-                      items: { type: string },
-                      description: List of receiver id,
-                    },
-                  mail_type:
-                    {
-                      example: Pemintaan Data/Permohonan/Surat Panggilan,
-                      type: string,
-                      description: Type of the mail,
-                    },
-                  mail_subject:
-                    {
-                      example: Undangan mengikuti pelatihan seluruh guru,
-                      type: string,
-                      description: Subject of the mail,
-                    },
-                  attachments:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/v1AttachmentFile",
-                        },
-                      description: List of attachments,
-                    },
-                  instance_id:
-                    { example: 123, type: string, description: Instance ID },
-                },
-            },
-          sharedCreateMailInboxResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: Message confirming the creation of the mail,
+                      $ref: "#/components/schemas/v1S3PresignedValues",
                     },
                 },
             },
-          sharedDeleteMailInboxResponse:
+          v1S3PresignedValues:
             {
               type: object,
               properties:
                 {
-                  message:
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                },
+            },
+          sharedCreateMailModulePresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
                     {
-                      type: string,
-                      description: Message confirming succeed to delete the mail,
+                      $ref: "#/components/schemas/sharedUploader",
                     },
                 },
             },
-          sharedGetMailInboxByIdResponse:
+          sharedCreateMailModulePresignedPostUrlResponse:
             {
               type: object,
               properties:
                 {
-                  mail:
+                  presignedUrls:
                     {
-                      $ref: "#/components/schemas/sharedMail",
+                      $ref: "#/components/schemas/v1S3PresignedUrlResponse",
                     },
                 },
             },
-          sharedListMailInboxResponse:
+          sharedUploader:
             {
               type: object,
               properties:
                 {
-                  mails:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedMail",
-                        },
-                      description: List of mail,
-                    },
+                  file_name: { type: string, description: File Name },
+                  file_size: { type: string, description: File Size in bytes },
                 },
             },
         },
