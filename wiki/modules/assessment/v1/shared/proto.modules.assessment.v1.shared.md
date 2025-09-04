@@ -30,6 +30,8 @@
     - [ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission)
   
 - [modules/assessment/v1/shared/quiz.proto](#modules_assessment_v1_shared_quiz-proto)
+    - [DeleteQuizAndAttributesRequest](#modules-assessment-v1-shared-DeleteQuizAndAttributesRequest)
+    - [DeleteQuizAndAttributesResponse](#modules-assessment-v1-shared-DeleteQuizAndAttributesResponse)
     - [Quiz](#modules-assessment-v1-shared-Quiz)
     - [QuizOption](#modules-assessment-v1-shared-QuizOption)
     - [QuizQuestion](#modules-assessment-v1-shared-QuizQuestion)
@@ -616,6 +618,37 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/assessment/v1/shared/quiz.proto
+
+
+
+<a name="modules-assessment-v1-shared-DeleteQuizAndAttributesRequest"></a>
+
+### DeleteQuizAndAttributesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| quiz_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-shared-DeleteQuizAndAttributesResponse"></a>
+
+### DeleteQuizAndAttributesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
 
 
 
