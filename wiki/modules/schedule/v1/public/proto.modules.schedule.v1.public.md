@@ -6,11 +6,11 @@
 - [modules/schedule/v1/public/event.proto](#modules_schedule_v1_public_event-proto)
     - [EventService](#modules-schedule-v1-public-EventService)
   
+- [modules/schedule/v1/public/schedule_duty_teacher.proto](#modules_schedule_v1_public_schedule_duty_teacher-proto)
+    - [ScheduleDutyTeacherService](#modules-schedule-v1-public-ScheduleDutyTeacherService)
+  
 - [modules/schedule/v1/public/schedule_student.proto](#modules_schedule_v1_public_schedule_student-proto)
     - [ScheduleStudentService](#modules-schedule-v1-public-ScheduleStudentService)
-  
-- [modules/schedule/v1/public/schedule_teacher.proto](#modules_schedule_v1_public_schedule_teacher-proto)
-    - [ScheduleTeacherService](#modules-schedule-v1-public-ScheduleTeacherService)
   
 - [modules/schedule/v1/public/subject_schedule.proto](#modules_schedule_v1_public_subject_schedule-proto)
     - [SubjectScheduleService](#modules-schedule-v1-public-SubjectScheduleService)
@@ -48,6 +48,36 @@
 
 
 
+<a name="modules_schedule_v1_public_schedule_duty_teacher-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/schedule/v1/public/schedule_duty_teacher.proto
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-schedule-v1-public-ScheduleDutyTeacherService"></a>
+
+### ScheduleDutyTeacherService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateScheduleDutyTeacherByDay | [.modules.schedule.v1.shared.CreateScheduleDutyTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleDutyTeacherByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleDutyTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleDutyTeacherByDayResponse) |  |
+| GetScheduleDutyTeacherByDay | [.modules.schedule.v1.shared.GetScheduleDutyTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleDutyTeacherByDayRequest) | [.modules.schedule.v1.shared.GetScheduleDutyTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleDutyTeacherByDayResponse) |  |
+| GetScheduleDutyTeacherNow | [.modules.schedule.v1.shared.GetScheduleDutyTeacherNowRequest](#modules-schedule-v1-shared-GetScheduleDutyTeacherNowRequest) | [.modules.schedule.v1.shared.GetScheduleDutyTeacherNowResponse](#modules-schedule-v1-shared-GetScheduleDutyTeacherNowResponse) |  |
+| UpdateScheduleDutyTeacher | [.modules.schedule.v1.shared.UpdateScheduleDutyTeacherRequest](#modules-schedule-v1-shared-UpdateScheduleDutyTeacherRequest) | [.modules.schedule.v1.shared.UpdateScheduleDutyTeacherResponse](#modules-schedule-v1-shared-UpdateScheduleDutyTeacherResponse) |  |
+| DeleteScheduleDutyTeacher | [.modules.schedule.v1.shared.DeleteScheduleDutyTeacherRequest](#modules-schedule-v1-shared-DeleteScheduleDutyTeacherRequest) | [.modules.schedule.v1.shared.DeleteScheduleDutyTeacherResponse](#modules-schedule-v1-shared-DeleteScheduleDutyTeacherResponse) |  |
+
+ 
+
+
+
 <a name="modules_schedule_v1_public_schedule_student-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -70,39 +100,10 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateScheduleStudentByDay | [.modules.schedule.v1.shared.CreateScheduleStudentByDayRequest](#modules-schedule-v1-shared-CreateScheduleStudentByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleStudentByDayResponse](#modules-schedule-v1-shared-CreateScheduleStudentByDayResponse) |  |
 | GetScheduleStudentByDay | [.modules.schedule.v1.shared.GetScheduleStudentByDayRequest](#modules-schedule-v1-shared-GetScheduleStudentByDayRequest) | [.modules.schedule.v1.shared.GetScheduleStudentByDayResponse](#modules-schedule-v1-shared-GetScheduleStudentByDayResponse) |  |
-| GetScheduleStudentNow | [.modules.schedule.v1.shared.GetScheduleStudentNowRequest](#modules-schedule-v1-shared-GetScheduleStudentNowRequest) | [.modules.schedule.v1.shared.GetScheduleStudentNowResponse](#modules-schedule-v1-shared-GetScheduleStudentNowResponse) |  |
+| GetScheduleStudentOngoingAll | [.modules.schedule.v1.shared.GetScheduleStudentOngoingRequest](#modules-schedule-v1-shared-GetScheduleStudentOngoingRequest) | [.modules.schedule.v1.shared.GetScheduleStudentOngoingResponse](#modules-schedule-v1-shared-GetScheduleStudentOngoingResponse) |  |
+| GetScheduleStudentOngoingOne | [.modules.schedule.v1.shared.GetScheduleStudentOngoingRequest](#modules-schedule-v1-shared-GetScheduleStudentOngoingRequest) | [.modules.schedule.v1.shared.GetScheduleStudentOngoingResponse](#modules-schedule-v1-shared-GetScheduleStudentOngoingResponse) |  |
 | UpdateScheduleStudent | [.modules.schedule.v1.shared.UpdateScheduleStudentRequest](#modules-schedule-v1-shared-UpdateScheduleStudentRequest) | [.modules.schedule.v1.shared.UpdateScheduleStudentResponse](#modules-schedule-v1-shared-UpdateScheduleStudentResponse) |  |
 | DeleteScheduleStudent | [.modules.schedule.v1.shared.DeleteScheduleStudentRequest](#modules-schedule-v1-shared-DeleteScheduleStudentRequest) | [.modules.schedule.v1.shared.DeleteScheduleStudentResponse](#modules-schedule-v1-shared-DeleteScheduleStudentResponse) |  |
-
- 
-
-
-
-<a name="modules_schedule_v1_public_schedule_teacher-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## modules/schedule/v1/public/schedule_teacher.proto
-
-
- 
-
- 
-
- 
-
-
-<a name="modules-schedule-v1-public-ScheduleTeacherService"></a>
-
-### ScheduleTeacherService
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateScheduleTeacherByDay | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayRequest](#modules-schedule-v1-shared-CreateScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.CreateScheduleTeacherByDayResponse](#modules-schedule-v1-shared-CreateScheduleTeacherByDayResponse) |  |
-| GetScheduleTeacherByDay | [.modules.schedule.v1.shared.GetScheduleTeacherByDayRequest](#modules-schedule-v1-shared-GetScheduleTeacherByDayRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherByDayResponse](#modules-schedule-v1-shared-GetScheduleTeacherByDayResponse) |  |
-| GetScheduleTeacherNow | [.modules.schedule.v1.shared.GetScheduleTeacherNowRequest](#modules-schedule-v1-shared-GetScheduleTeacherNowRequest) | [.modules.schedule.v1.shared.GetScheduleTeacherNowResponse](#modules-schedule-v1-shared-GetScheduleTeacherNowResponse) |  |
-| UpdateScheduleTeacher | [.modules.schedule.v1.shared.UpdateScheduleTeacherRequest](#modules-schedule-v1-shared-UpdateScheduleTeacherRequest) | [.modules.schedule.v1.shared.UpdateScheduleTeacherResponse](#modules-schedule-v1-shared-UpdateScheduleTeacherResponse) |  |
-| DeleteScheduleTeacher | [.modules.schedule.v1.shared.DeleteScheduleTeacherRequest](#modules-schedule-v1-shared-DeleteScheduleTeacherRequest) | [.modules.schedule.v1.shared.DeleteScheduleTeacherResponse](#modules-schedule-v1-shared-DeleteScheduleTeacherResponse) |  |
 
  
 

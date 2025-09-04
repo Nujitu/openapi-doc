@@ -448,66 +448,6 @@
         },
       /v1/schedule/student:
         {
-          get:
-            {
-              tags: [ScheduleStudentService],
-              summary: Get student schedule now,
-              description: Get a duty teacher schedule for a specific time period of the day,
-              operationId: ScheduleStudentService_GetScheduleStudentNow,
-              parameters:
-                [
-                  {
-                    name: current_time,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/sharedGetScheduleStudentNowResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           post:
             {
               tags: [ScheduleStudentService],
@@ -641,6 +581,132 @@
                 },
             },
         },
+      /v1/schedule/student/ongoing/all:
+        {
+          get:
+            {
+              tags: [ScheduleStudentService],
+              summary: Get all ongoing student schedule,
+              description: Get all ongoing student schedule for a specific time period of the day.,
+              operationId: ScheduleStudentService_GetScheduleStudentOngoingAll,
+              parameters:
+                [
+                  {
+                    name: current_time,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleStudentOngoingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/schedule/student/ongoing/one:
+        {
+          get:
+            {
+              tags: [ScheduleStudentService],
+              summary: Get one ongoing student schedule,
+              description: Get one ongoing student schedule for a specific time period of the day. This API will provide an ongoing schedule response for tokens with student and teacher roles.,
+              operationId: ScheduleStudentService_GetScheduleStudentOngoingOne,
+              parameters:
+                [
+                  {
+                    name: current_time,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedGetScheduleStudentOngoingResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/schedule/student/{id}":
         {
           delete:
@@ -709,10 +775,10 @@
         {
           get:
             {
-              tags: [ScheduleTeacherService],
-              summary: Get schedule for teacher for each day,
-              description: "Get schedule for teacher for each day, e.g /v1/schedule/day/MONDAY/teacher, /v1/schedule/day/TUESDAY/teacher, /v1/schedule/day/SUNDAY/teacher",
-              operationId: ScheduleTeacherService_GetScheduleTeacherByDay,
+              tags: [ScheduleDutyTeacherService],
+              summary: Get schedule for duty teacher for each day,
+              description: "Get schedule for duty teacher for each day, e.g /v1/schedule/day/MONDAY/teacher, /v1/schedule/day/TUESDAY/teacher, /v1/schedule/day/SUNDAY/teacher",
+              operationId: ScheduleDutyTeacherService_GetScheduleDutyTeacherByDay,
               parameters:
                 [
                   {
@@ -747,7 +813,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetScheduleTeacherByDayResponse",
+                                  $ref: "#/components/schemas/sharedGetScheduleDutyTeacherByDayResponse",
                                 },
                             },
                         },
@@ -787,10 +853,10 @@
         {
           get:
             {
-              tags: [ScheduleTeacherService],
-              summary: Get teacher schedule now,
+              tags: [ScheduleDutyTeacherService],
+              summary: Get duty teacher schedule now,
               description: Get a duty teacher schedule for a specific time period of the day,
-              operationId: ScheduleTeacherService_GetScheduleTeacherNow,
+              operationId: ScheduleDutyTeacherService_GetScheduleDutyTeacherNow,
               parameters:
                 [
                   {
@@ -810,7 +876,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedGetScheduleTeacherNowResponse",
+                                  $ref: "#/components/schemas/sharedGetScheduleDutyTeacherNowResponse",
                                 },
                             },
                         },
@@ -847,10 +913,10 @@
             },
           post:
             {
-              tags: [ScheduleTeacherService],
-              summary: Insert new schedule for teacher,
-              description: Insert new schedule for teacher,
-              operationId: ScheduleTeacherService_CreateScheduleTeacherByDay,
+              tags: [ScheduleDutyTeacherService],
+              summary: Insert new schedule for duty teacher,
+              description: Insert new schedule for duty teacher,
+              operationId: ScheduleDutyTeacherService_CreateScheduleDutyTeacherByDay,
               requestBody:
                 {
                   content:
@@ -859,7 +925,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayRequest",
+                              $ref: "#/components/schemas/sharedCreateScheduleDutyTeacherByDayRequest",
                             },
                         },
                     },
@@ -876,7 +942,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedCreateScheduleTeacherByDayResponse",
+                                  $ref: "#/components/schemas/sharedCreateScheduleDutyTeacherByDayResponse",
                                 },
                             },
                         },
@@ -913,10 +979,10 @@
             },
           patch:
             {
-              tags: [ScheduleTeacherService],
-              summary: Update schedule for teacher,
-              description: Update schedule for teacher,
-              operationId: ScheduleTeacherService_UpdateScheduleTeacher,
+              tags: [ScheduleDutyTeacherService],
+              summary: Update schedule for duty teacher,
+              description: Update schedule for duty teacher,
+              operationId: ScheduleDutyTeacherService_UpdateScheduleDutyTeacher,
               requestBody:
                 {
                   content:
@@ -925,7 +991,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/sharedUpdateScheduleTeacherRequest",
+                              $ref: "#/components/schemas/sharedUpdateScheduleDutyTeacherRequest",
                             },
                         },
                     },
@@ -942,7 +1008,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedUpdateScheduleTeacherResponse",
+                                  $ref: "#/components/schemas/sharedUpdateScheduleDutyTeacherResponse",
                                 },
                             },
                         },
@@ -982,10 +1048,10 @@
         {
           delete:
             {
-              tags: [ScheduleTeacherService],
-              summary: Delete schedule for teacher,
-              description: Delete schedule for teacher,
-              operationId: ScheduleTeacherService_DeleteScheduleTeacher,
+              tags: [ScheduleDutyTeacherService],
+              summary: Delete schedule for duty teacher,
+              description: Delete schedule for duty teacher,
+              operationId: ScheduleDutyTeacherService_DeleteScheduleDutyTeacher,
               parameters:
                 [
                   {
@@ -1006,7 +1072,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedDeleteScheduleTeacherResponse",
+                                  $ref: "#/components/schemas/sharedDeleteScheduleDutyTeacherResponse",
                                 },
                             },
                         },
@@ -1351,6 +1417,7 @@
                     { type: string, description: class subject detail name },
                   teacher_user_id:
                     { type: string, description: teacher user id },
+                  teacher_id: { type: string, description: teacher id },
                 },
             },
           sharedCreateScheduleStudentByDayRequest:
@@ -1462,7 +1529,7 @@
                     },
                 },
             },
-          sharedGetScheduleStudentNowResponse:
+          sharedGetScheduleStudentOngoingResponse:
             {
               type: object,
               properties:
@@ -1592,7 +1659,7 @@
                     },
                 },
             },
-          sharedCreateScheduleTeacherByDayRequest:
+          sharedCreateScheduleDutyTeacherByDayRequest:
             {
               type: object,
               properties:
@@ -1637,7 +1704,7 @@
                     },
                 },
             },
-          sharedCreateScheduleTeacherByDayResponse:
+          sharedCreateScheduleDutyTeacherByDayResponse:
             {
               type: object,
               properties:
@@ -1649,7 +1716,7 @@
                     },
                 },
             },
-          sharedDeleteScheduleTeacherResponse:
+          sharedDeleteScheduleDutyTeacherResponse:
             {
               type: object,
               properties:
@@ -1661,7 +1728,7 @@
                     },
                 },
             },
-          sharedGetScheduleTeacherByDayResponse:
+          sharedGetScheduleDutyTeacherByDayResponse:
             {
               type: object,
               properties:
@@ -1687,13 +1754,13 @@
                       type: array,
                       items:
                         {
-                          $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
+                          $ref: "#/components/schemas/sharedGetScheduleDutyTeacherDetailResponse",
                         },
                       description: list of teacher time schedule,
                     },
                 },
             },
-          sharedGetScheduleTeacherDetailResponse:
+          sharedGetScheduleDutyTeacherDetailResponse:
             {
               type: object,
               properties:
@@ -1715,7 +1782,7 @@
                     },
                 },
             },
-          sharedGetScheduleTeacherNowResponse:
+          sharedGetScheduleDutyTeacherNowResponse:
             {
               type: object,
               properties:
@@ -1738,11 +1805,11 @@
                     },
                   schedules:
                     {
-                      $ref: "#/components/schemas/sharedGetScheduleTeacherDetailResponse",
+                      $ref: "#/components/schemas/sharedGetScheduleDutyTeacherDetailResponse",
                     },
                 },
             },
-          sharedUpdateScheduleTeacherRequest:
+          sharedUpdateScheduleDutyTeacherRequest:
             {
               type: object,
               properties:
@@ -1778,7 +1845,7 @@
                     },
                 },
             },
-          sharedUpdateScheduleTeacherResponse:
+          sharedUpdateScheduleDutyTeacherResponse:
             {
               type: object,
               properties:
