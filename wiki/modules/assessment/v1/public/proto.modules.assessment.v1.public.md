@@ -1996,6 +1996,7 @@ Service for quiz related feature
 | GetStudentAnswer | [GetStudentAnswerRequest](#modules-assessment-v1-public-GetStudentAnswerRequest) | [GetStudentAnswerResponse](#modules-assessment-v1-public-GetStudentAnswerResponse) |  |
 | GetStudentSubmissionDetails | [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest) | [GetStudentSubmissionDetailsResponse](#modules-assessment-v1-public-GetStudentSubmissionDetailsResponse) |  |
 | GetQuizStatistics | [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest) | [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse) |  |
+| DeleteQuizAndAttributes | [.modules.assessment.v1.shared.DeleteQuizAndAttributesRequest](#modules-assessment-v1-shared-DeleteQuizAndAttributesRequest) | [.modules.assessment.v1.shared.DeleteQuizAndAttributesResponse](#modules-assessment-v1-shared-DeleteQuizAndAttributesResponse) |  |
 
  
 

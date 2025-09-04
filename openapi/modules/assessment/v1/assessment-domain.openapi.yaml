@@ -1297,6 +1297,75 @@
                 },
             },
         },
+      "/v1/quiz:delete":
+        {
+          post:
+            {
+              tags: [QuizService],
+              summary: Delete Quiz and it's attributees,
+              description: Delete Quiz and all entity that related to it,
+              operationId: QuizService_DeleteQuizAndAttributes,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/sharedDeleteQuizAndAttributesRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteQuizAndAttributesResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/rubric:
         {
           get:
@@ -4422,6 +4491,17 @@
                     },
                 },
             },
+          sharedDeleteQuizAndAttributesRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  class_subject_id: { type: string },
+                },
+            },
+          sharedDeleteQuizAndAttributesResponse:
+            { type: object, properties: { message: { type: string } } },
           sharedQuiz:
             {
               type: object,
