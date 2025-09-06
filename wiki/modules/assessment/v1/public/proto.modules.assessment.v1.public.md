@@ -79,8 +79,6 @@
     - [CreateQuizResponse](#modules-assessment-v1-public-CreateQuizResponse)
     - [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest)
     - [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse)
-    - [GetAllSubmissionListRequest](#modules-assessment-v1-public-GetAllSubmissionListRequest)
-    - [GetAllSubmissionListResponse](#modules-assessment-v1-public-GetAllSubmissionListResponse)
     - [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest)
     - [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse)
     - [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest)
@@ -1386,48 +1384,6 @@ Service for observation related feature
 
 
 
-<a name="modules-assessment-v1-public-GetAllSubmissionListRequest"></a>
-
-### GetAllSubmissionListRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| subject_name | [string](#string) |  |  |
-| class_subject_id | [string](#string) |  |  |
-| state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
-| student_name | [string](#string) |  |  |
-| quiz_title | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
-| start_due_date | [string](#string) |  |  |
-| end_due_date | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
-| quiz_id | [string](#string) |  |  |
-| limit | [uint32](#uint32) |  |  |
-| offset | [uint32](#uint32) |  |  |
-
-
-
-
-
-
-<a name="modules-assessment-v1-public-GetAllSubmissionListResponse"></a>
-
-### GetAllSubmissionListResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [modules.assessment.v1.shared.QuizSubmission](#modules-assessment-v1-shared-QuizSubmission) | repeated |  |
-| meta | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  | Contains offset pagination |
-
-
-
-
-
-
 <a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest"></a>
 
 ### GetBulkQuizSubmissionByStudentIdRequest
@@ -1769,6 +1725,7 @@ Service for observation related feature
 | teaching_module_id | [string](#string) |  |  |
 | start_due_date | [string](#string) |  |  |
 | end_due_date | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 
@@ -1987,7 +1944,6 @@ Service for quiz related feature
 | EditQuestions | [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest) | [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse) |  |
 | GetQuestionList | [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest) | [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse) |  |
 | SubmitStudentAnswer | [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest) | [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse) |  |
-| GetAllSubmissionList | [GetAllSubmissionListRequest](#modules-assessment-v1-public-GetAllSubmissionListRequest) | [GetAllSubmissionListResponse](#modules-assessment-v1-public-GetAllSubmissionListResponse) |  |
 | GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
 | GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
 | GetStudentSubmissions | [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest) | [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse) |  |

@@ -577,6 +577,7 @@
                   },
                   { name: start_due_date, in: query, schema: { type: string } },
                   { name: end_due_date, in: query, schema: { type: string } },
+                  { name: teacher_id, in: query, schema: { type: string } },
                   {
                     name: limit,
                     in: query,
@@ -1026,103 +1027,6 @@
                               schema:
                                 {
                                   $ref: "#/components/schemas/publicGetStudentSubmissionDetailsResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/quiz/submissions/list:
-        {
-          get:
-            {
-              tags: [QuizService],
-              summary: Get all quiz submission,
-              description: Will return all quiz submission in class,
-              operationId: QuizService_GetAllSubmissionList,
-              parameters:
-                [
-                  { name: subject_name, in: query, schema: { type: string } },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: state,
-                    in: query,
-                    schema:
-                      {
-                        enum:
-                          [
-                            UNKNOWN_SUBMISSON,
-                            NO_SUBMISSION,
-                            NEED_GRADING,
-                            GRADED,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  { name: student_name, in: query, schema: { type: string } },
-                  { name: quiz_title, in: query, schema: { type: string } },
-                  { name: teacher_id, in: query, schema: { type: string } },
-                  { name: start_due_date, in: query, schema: { type: string } },
-                  { name: end_due_date, in: query, schema: { type: string } },
-                  { name: student_id, in: query, schema: { type: string } },
-                  { name: quiz_id, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAllSubmissionListResponse",
                                 },
                             },
                         },
@@ -4111,25 +4015,6 @@
             },
           publicEditQuestionsResponse:
             { type: object, properties: { message: { type: string } } },
-          publicGetAllSubmissionListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  data:
-                    {
-                      example: 20,
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizSubmission",
-                        },
-                      description: List of quiz submission,
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
           publicGetBulkQuizSubmissionByStudentIdResponse:
             {
               type: object,
