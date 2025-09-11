@@ -7,6 +7,10 @@
     - [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest)
     - [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse)
     - [CreateClassGroupRequest](#modules-material-v1-public-CreateClassGroupRequest)
+    - [DeleteClassGroupRequest](#modules-material-v1-public-DeleteClassGroupRequest)
+    - [DeleteClassSubjectRequest](#modules-material-v1-public-DeleteClassSubjectRequest)
+    - [DeleteClassSubjectResponse](#modules-material-v1-public-DeleteClassSubjectResponse)
+    - [DeleteClassgroupResponse](#modules-material-v1-public-DeleteClassgroupResponse)
     - [GetClassGroupDetailRequest](#modules-material-v1-public-GetClassGroupDetailRequest)
     - [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse)
     - [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest)
@@ -182,6 +186,66 @@
 | instance_id | [string](#string) |  |  |
 | type | [modules.material.v1.shared.ClassGroupType](#modules-material-v1-shared-ClassGroupType) |  |  |
 | class_subjects | [modules.material.v1.shared.ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload) | repeated |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteClassGroupRequest"></a>
+
+### DeleteClassGroupRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteClassSubjectRequest"></a>
+
+### DeleteClassSubjectRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteClassSubjectResponse"></a>
+
+### DeleteClassSubjectResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-DeleteClassgroupResponse"></a>
+
+### DeleteClassgroupResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
 
 
 
@@ -633,6 +697,8 @@ Service for user related feature
 | GetTeacherCoursesStats | [GetTeacherCoursesStatsRequest](#modules-material-v1-public-GetTeacherCoursesStatsRequest) | [GetTeacherCoursesStatsResponse](#modules-material-v1-public-GetTeacherCoursesStatsResponse) |  |
 | GetStudentCourses | [GetStudentCoursesRequest](#modules-material-v1-public-GetStudentCoursesRequest) | [GetStudentCoursesResponse](#modules-material-v1-public-GetStudentCoursesResponse) |  |
 | GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
+| DeleteClassGroup | [DeleteClassGroupRequest](#modules-material-v1-public-DeleteClassGroupRequest) | [DeleteClassgroupResponse](#modules-material-v1-public-DeleteClassgroupResponse) |  |
+| DeleteClassSubject | [DeleteClassSubjectRequest](#modules-material-v1-public-DeleteClassSubjectRequest) | [DeleteClassSubjectResponse](#modules-material-v1-public-DeleteClassSubjectResponse) |  |
 
  
 
