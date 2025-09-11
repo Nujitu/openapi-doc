@@ -46,6 +46,8 @@
 - [modules/schedule/v1/shared/subject_schedule.proto](#modules_schedule_v1_shared_subject_schedule-proto)
     - [CreateSubjectScheduleRequest](#modules-schedule-v1-shared-CreateSubjectScheduleRequest)
     - [CreateSubjectScheduleResponse](#modules-schedule-v1-shared-CreateSubjectScheduleResponse)
+    - [DeleteSubjectScheduleByClassSubjectIdRequest](#modules-schedule-v1-shared-DeleteSubjectScheduleByClassSubjectIdRequest)
+    - [DeleteSubjectScheduleByClassSubjectIdResponse](#modules-schedule-v1-shared-DeleteSubjectScheduleByClassSubjectIdResponse)
     - [GetScheduleDetailResponse](#modules-schedule-v1-shared-GetScheduleDetailResponse)
     - [SubjectSchedule](#modules-schedule-v1-shared-SubjectSchedule)
   
@@ -675,6 +677,36 @@
 <a name="modules-schedule-v1-shared-CreateSubjectScheduleResponse"></a>
 
 ### CreateSubjectScheduleResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DeleteSubjectScheduleByClassSubjectIdRequest"></a>
+
+### DeleteSubjectScheduleByClassSubjectIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-schedule-v1-shared-DeleteSubjectScheduleByClassSubjectIdResponse"></a>
+
+### DeleteSubjectScheduleByClassSubjectIdResponse
 
 
 

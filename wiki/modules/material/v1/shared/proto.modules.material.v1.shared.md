@@ -16,7 +16,8 @@
     - [ClassSubjectDetailPayload](#modules-material-v1-shared-ClassSubjectDetailPayload)
     - [CreateClassSubjectAnnouncementRequest](#modules-material-v1-shared-CreateClassSubjectAnnouncementRequest)
     - [CreateClassSubjectAnnouncementResponse](#modules-material-v1-shared-CreateClassSubjectAnnouncementResponse)
-    - [DeleteClassSubjectAnnouncementRequest](#modules-material-v1-shared-DeleteClassSubjectAnnouncementRequest)
+    - [DeleteClassSubjectAnnouncementByClassSubjectIdRequest](#modules-material-v1-shared-DeleteClassSubjectAnnouncementByClassSubjectIdRequest)
+    - [DeleteClassSubjectAnnouncementByIdRequest](#modules-material-v1-shared-DeleteClassSubjectAnnouncementByIdRequest)
     - [DeleteClassSubjectAnnouncementResponse](#modules-material-v1-shared-DeleteClassSubjectAnnouncementResponse)
     - [GetClassSubjectAnnouncementRequest](#modules-material-v1-shared-GetClassSubjectAnnouncementRequest)
     - [GetClassSubjectAnnouncementResponse](#modules-material-v1-shared-GetClassSubjectAnnouncementResponse)
@@ -273,15 +274,30 @@
 
 
 
-<a name="modules-material-v1-shared-DeleteClassSubjectAnnouncementRequest"></a>
+<a name="modules-material-v1-shared-DeleteClassSubjectAnnouncementByClassSubjectIdRequest"></a>
 
-### DeleteClassSubjectAnnouncementRequest
+### DeleteClassSubjectAnnouncementByClassSubjectIdRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| class_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-DeleteClassSubjectAnnouncementByIdRequest"></a>
+
+### DeleteClassSubjectAnnouncementByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
 | announcement_id | [string](#string) |  |  |
 
 
