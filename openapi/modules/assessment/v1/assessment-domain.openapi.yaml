@@ -4297,6 +4297,7 @@
               properties:
                 {
                   quiz_id: { type: string },
+                  class_group_id: { type: string },
                   class_subject_id: { type: string },
                 },
             },

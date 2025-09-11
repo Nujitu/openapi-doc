@@ -630,6 +630,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | quiz_id | [string](#string) |  |  |
+| class_group_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 
 
