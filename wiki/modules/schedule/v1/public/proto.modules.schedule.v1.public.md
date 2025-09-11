@@ -130,6 +130,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateSubjectSchedule | [.modules.schedule.v1.shared.CreateSubjectScheduleRequest](#modules-schedule-v1-shared-CreateSubjectScheduleRequest) | [.modules.schedule.v1.shared.CreateSubjectScheduleResponse](#modules-schedule-v1-shared-CreateSubjectScheduleResponse) |  |
+| DeleteSubjectScheduleByClassSubjectId | [.modules.schedule.v1.shared.DeleteSubjectScheduleByClassSubjectIdRequest](#modules-schedule-v1-shared-DeleteSubjectScheduleByClassSubjectIdRequest) | [.modules.schedule.v1.shared.DeleteSubjectScheduleByClassSubjectIdResponse](#modules-schedule-v1-shared-DeleteSubjectScheduleByClassSubjectIdResponse) |  |
 
  
 

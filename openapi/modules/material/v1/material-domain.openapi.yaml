@@ -2199,18 +2199,82 @@
                 },
             },
         },
-      "/v1/class-group/subject/{class_id}/announcements/{announcement_id}":
+      "/v1/class-group/subject/{class_subject_id}/announcements":
         {
           delete:
             {
               tags: [ClassSubjectService],
-              summary: Get Class Subject Announcement,
-              description: Get Class Subject Announcement,
-              operationId: ClassSubjectService_DeleteClassSubjectAnnouncement,
+              summary: Delete Class Subject Announcement By Class Subject ID,
+              description: Delete Class Subject Announcement By Class Subject ID,
+              operationId: ClassSubjectService_DeleteClassSubjectAnnouncementByClassSubjectId,
               parameters:
                 [
                   {
-                    name: class_id,
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteClassSubjectAnnouncementResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/class-group/subject/{class_subject_id}/announcements/{announcement_id}":
+        {
+          delete:
+            {
+              tags: [ClassSubjectService],
+              summary: Delete Class Subject Announcement By Announcement ID,
+              description: Delete Class Subject Announcement By Announcement ID,
+              operationId: ClassSubjectService_DeleteClassSubjectAnnouncementById,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
                     in: path,
                     required: true,
                     schema: { type: string },
