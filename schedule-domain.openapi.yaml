@@ -270,6 +270,70 @@
                 },
             },
         },
+      "/v1/schedule/class-subject/{class_subject_id}":
+        {
+          delete:
+            {
+              tags: [SubjectScheduleService],
+              summary: Delete subject schedule by class subject ID,
+              description: This API will delete all subject schedules associated with the provided class subject ID. This also deletes all related subject schedule entries from the time schedule.,
+              operationId: SubjectScheduleService_DeleteSubjectScheduleByClassSubjectId,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedDeleteSubjectScheduleByClassSubjectIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       "/v1/schedule/day/{day}/time/{time_schedule_id}/subject":
         {
           post:
@@ -1399,6 +1463,18 @@
                     {
                       type: string,
                       description: Message confirming the creation of the new subject schedule,
+                    },
+                },
+            },
+          sharedDeleteSubjectScheduleByClassSubjectIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: Message confirming the deletion of the subject schedule,
                     },
                 },
             },
