@@ -707,6 +707,11 @@
                       description: End date for filtering,
                       format: date-time,
                     },
+                  status:
+                    {
+                      type: string,
+                      description: "Filter by status (present, sick, absent, leave, late)",
+                    },
                 },
             },
           publicListAbsencesResponse:
