@@ -1,0 +1,95 @@
+name: Deploy Tag Documentation
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  deploy-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Get tag name
+      - name: Get tag name
+        id: tag
+        run: echo "tag_name=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      # Step 3: Move YAML files to swagger-ui directory
+      - name: Move YAML files
+        run: |
+          find openapi/modules -name '*.yaml' -exec cp {} swagger-ui/ \;
+
+      # Step 4: Generate swagger initializer for this tag
+      - name: Generate Swagger UI initializer for tag
+        run: |
+          # Create a simple version without version selector for tag-specific docs
+          cat > generate-tag-initializer.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const baseUrl = './';
+          const openapiDir = path.join(__dirname, 'swagger-ui');
+
+          function getOpenAPIFiles(dir, fileList = []) {
+            const files = fs.readdirSync(dir);
+            files.forEach((file) => {
+              const filePath = path.join(dir, file);
+              const stat = fs.statSync(filePath);
+              if (stat.isFile() && (file.endsWith('.yaml') || file.endsWith('.yml'))) {
+                fileList.push(filePath);
+              }
+            });
+            return fileList;
+          }
+
+          function createSwaggerUrls(fileList) {
+            return fileList.map((file) => {
+              const filename = path.basename(file);
+              const urlPath = `${baseUrl}${filename}`;
+              const name = path.basename(file, path.extname(file));
+              return { url: urlPath, name: name.replace('-domain.openapi', '').replace('.domain.openapi', '') };
+            });
+          }
+
+          const openapiFiles = getOpenAPIFiles(openapiDir);
+          const swaggerUrls = createSwaggerUrls(openapiFiles);
+
+          const initializerTemplate = `
+            window.onload = function() {
+              // Add version info for tag
+              const versionInfo = document.createElement('div');
+              versionInfo.innerHTML = '<div style="padding: 15px; background: #f8f9fa; border-bottom: 2px solid #e9ecef; margin-bottom: 20px;"><h3 style="margin: 0; color: #333;">Version: ${process.env.TAG_NAME}</h3><a href="../" style="color: #007bff; text-decoration: none;">← Back to Main Documentation</a></div>';
+              document.body.insertBefore(versionInfo, document.getElementById('swagger-ui'));
+              
+              const ui = SwaggerUIBundle({
+                urls: ${JSON.stringify(swaggerUrls, null, 2)},
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                  SwaggerUIBundle.presets.apis,
+                  SwaggerUIStandalonePreset
+                ],
+                layout: "StandaloneLayout"
+              });
+              window.ui = ui;
+            };
+          `;
+
+          fs.writeFileSync('swagger-ui/swagger-initializer.js', initializerTemplate, 'utf8');
+          EOF
+
+          TAG_NAME=${{ steps.tag.outputs.tag_name }} node generate-tag-initializer.js
+
+      # Step 5: Deploy to GitHub Pages with tag-specific directory
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./swagger-ui
+          destination_dir: ${{ steps.tag.outputs.tag_name }}
+          keep_files: true
