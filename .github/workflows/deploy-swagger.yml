@@ -20,7 +20,10 @@ jobs:
         run: |
           # Fetch all tags and format as JSON array
           git fetch --tags
-          TAGS=$(git tag --sort=-version:refname | head -20 | jq -R . | jq -s .)
+          TAGS=$(git tag --sort=-version:refname | head -20 | grep -v '^$' | jq -R . | jq -s -c .)
+          if [ "$TAGS" = "[]" ] || [ -z "$TAGS" ]; then
+            TAGS="[]"
+          fi
           echo "tags=$TAGS" >> $GITHUB_OUTPUT
           echo "Available tags: $TAGS"
 
