@@ -59,14 +59,13 @@ function generateSwaggerInitializer(urls) {
                   <option value="current">Current (Main Branch)</option>
                   \${tagNames.map(tag => \`<option value="\${tag}">\${tag}</option>\`).join('')}
                 </select>
-                <button onclick="switchVersion()" style="margin-left: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Switch Version</button>
               </div>
             \`;
             document.body.insertBefore(versionSelector, document.getElementById('swagger-ui'));
             
-            window.switchVersion = function() {
-              const selector = document.getElementById('version-selector');
-              const selectedVersion = selector.value;
+            // Add event listener for automatic switching
+            document.getElementById('version-selector').addEventListener('change', function() {
+              const selectedVersion = this.value;
               
               let newUrls;
               if (selectedVersion === 'current') {
@@ -93,7 +92,7 @@ function generateSwaggerInitializer(urls) {
                 layout: "StandaloneLayout"
               });
               window.ui = ui;
-            };
+            });
           }
         } catch (error) {
           console.log('Could not fetch tags:', error);
