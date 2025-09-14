@@ -48,7 +48,7 @@ function generateSwaggerInitializer(urls, originalPaths) {
         try {
           const response = await fetch('https://api.github.com/repos/Nujitu/openapi-doc/tags');
           const tags = await response.json();
-          const tagNames = tags.slice(0, 100).map(tag => tag.name); // Get first 20 tags
+          const tagNames = tags.map(tag => tag.name); // Get all tags
           
           if (tagNames.length > 0) {
             const versionSelector = document.createElement('div');
