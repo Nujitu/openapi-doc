@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Base URL where your OpenAPI files are hosted in GitHub Pages
-const baseUrl = 'https://nujitu.github.io/openapi-doc/swagger-ui/';
+const baseUrl = 'https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/';
 
 // Directory to search for OpenAPI files
-const openapiDir = path.join(__dirname, 'openapi/modules');
+const openapiDir = path.join(__dirname, 'swagger-ui');
 
 // Get available tags from environment variable (passed by GitHub Actions)
 const availableTags = process.env.AVAILABLE_TAGS ? JSON.parse(process.env.AVAILABLE_TAGS) : [];
@@ -18,10 +18,7 @@ function getOpenAPIFiles(dir, fileList = []) {
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
 
-    if (stat.isDirectory()) {
-      // Recursively search subdirectories
-      getOpenAPIFiles(filePath, fileList);
-    } else if (stat.isFile() && (file.endsWith('.yaml') || file.endsWith('.yml'))) {
+    if (stat.isFile() && (file.endsWith('.yaml') || file.endsWith('.yml'))) {
       // Only process .yaml or .yml files
       fileList.push(filePath);
     }
@@ -33,12 +30,11 @@ function getOpenAPIFiles(dir, fileList = []) {
 // Create URLs for the Swagger UI configuration
 function createSwaggerUrls(fileList) {
   return fileList.map((file) => {
-    // Get just the filename for the URL since files will be flattened in swagger-ui directory
-    const filename = path.basename(file);
-    const urlPath = `${baseUrl}${filename}`;
+    // Construct URL path relative to the GitHub Pages base URL
+    const urlPath = `${baseUrl}${path.relative(openapiDir, file).replace(/\\/g, '/')}`;
 
     const name = path.basename(file, path.extname(file));
-    return { url: urlPath, name: name.replace('-domain.openapi', '').replace('.domain.openapi', '') };
+    return { url: urlPath, name: name.replace('.domain.openapi', '') };
   });
 }
 

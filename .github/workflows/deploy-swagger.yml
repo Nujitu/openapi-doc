@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 4: Fetch available tags
+      # Step 2: Fetch available tags
       - name: Fetch available tags
         id: get-tags
         run: |
@@ -27,7 +27,7 @@ jobs:
           echo "tags=$TAGS" >> $GITHUB_OUTPUT
           echo "Available tags: $TAGS"
 
-      # Step 5: Move YAML files to swagger-ui directory
+      # Step 3: Move YAML files to swagger-ui directory
       - name: Move YAML files
         run: |
           # Check the files in the openapi/modules directory
@@ -35,13 +35,13 @@ jobs:
           # Copy YAML files to the /swagger-ui directory
           find openapi/modules -name '*.yaml' -exec cp {} swagger-ui/ \;
 
-      # Step 6: Run the Node.js script to generate swagger-ui-initializer.js
+      # Step 4: Run the Node.js script to generate swagger-ui-initializer.js
       - name: Generate Swagger UI initializer
         env:
           AVAILABLE_TAGS: ${{ steps.get-tags.outputs.tags }}
         run: node generate-swagger-initializer.js
 
-      # Step 7: Deploy Swagger UI and OpenAPI files to GitHub Pages
+      # Step 5: Deploy Swagger UI and OpenAPI files to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
