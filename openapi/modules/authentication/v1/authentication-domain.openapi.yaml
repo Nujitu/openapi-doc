@@ -1319,6 +1319,7 @@
                   "message": { "title": "message", "type": "string" },
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
+                  "info": { "title": "info", "type": "string" },
                 },
             },
           v1CursorPagination:
