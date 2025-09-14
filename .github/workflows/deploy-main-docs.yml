@@ -1,0 +1,137 @@
+name: Deploy Main Branch Documentation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-main-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Copy OpenAPI files to swagger-ui directory
+        run: |
+          # Copy all OpenAPI files from the modules directory to swagger-ui for easy access
+          find openapi/modules -name "*.yaml" -o -name "*.yml" | while read file; do
+            # Get the filename without path
+            filename=$(basename "$file")
+            # Copy to swagger-ui directory with the original filename
+            cp "$file" "swagger-ui/$filename"
+          done
+
+      - name: Generate swagger initializer for main branch
+        run: |
+          # Use the existing generate-swagger-initializer.js but update it to work with local files
+          cat > generate-main-swagger-initializer.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          // For main branch, use GitHub Pages base URL
+          const baseUrl = 'https://nujitu.github.io/openapi-doc/swagger-ui/';
+
+          // Directory containing OpenAPI files
+          const openapiDir = path.join(__dirname, 'swagger-ui');
+
+          // Function to get OpenAPI files
+          function getOpenAPIFiles(dir) {
+            const files = fs.readdirSync(dir);
+            return files
+              .filter(file => file.endsWith('.yaml') || file.endsWith('.yml'))
+              .map(file => path.join(dir, file));
+          }
+
+          // Create URLs for the Swagger UI configuration
+          function createSwaggerUrls(fileList) {
+            return fileList.map((file) => {
+              const filename = path.basename(file);
+              const urlPath = `${baseUrl}${filename}`;
+              const name = path.basename(file, path.extname(file));
+              return { 
+                url: urlPath, 
+                name: name.replace('-domain.openapi', '').replace('.domain.openapi', '') 
+              };
+            });
+          }
+
+          // Generate the swagger-initializer.js file
+          function generateSwaggerInitializer(urls) {
+            const initializerTemplate = `
+          window.onload = function() {
+            // Add version info to the page
+            const versionInfo = document.createElement('div');
+            versionInfo.innerHTML = '<h3>Version: Main Branch (Latest)</h3><a href="../">← Back to version selector</a>';
+            versionInfo.style.cssText = 'padding: 10px; background: #f5f5f5; border-bottom: 1px solid #ddd; text-align: center;';
+            document.body.insertBefore(versionInfo, document.getElementById('swagger-ui'));
+            
+            const ui = SwaggerUIBundle({
+              urls: ${JSON.stringify(urls, null, 2)},
+              dom_id: '#swagger-ui',
+              deepLinking: true,
+              presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+              ],
+              layout: "StandaloneLayout"
+            });
+            window.ui = ui;
+          };
+            `;
+
+            const outputPath = path.join(__dirname, 'swagger-ui/swagger-initializer.js');
+            fs.writeFileSync(outputPath, initializerTemplate, 'utf8');
+            console.log('swagger-initializer.js file has been generated for main branch');
+          }
+
+          // Main logic
+          const openapiFiles = getOpenAPIFiles(openapiDir);
+          const swaggerUrls = createSwaggerUrls(openapiFiles);
+          generateSwaggerInitializer(swaggerUrls);
+          EOF
+
+          node generate-main-swagger-initializer.js
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-content
+          fetch-depth: 0
+
+      - name: Update main branch documentation
+        run: |
+          # Copy the main index.html (version selector) to gh-pages root
+          cp index.html gh-pages-content/
+
+          # Copy swagger-ui files to the swagger-ui directory in gh-pages
+          mkdir -p gh-pages-content/swagger-ui
+          cp -r swagger-ui/* gh-pages-content/swagger-ui/
+
+          # Ensure versions.json exists
+          cd gh-pages-content
+          if [ ! -f versions.json ]; then
+            echo '[]' > versions.json
+          fi
+
+      - name: Commit and push to gh-pages
+        run: |
+          cd gh-pages-content
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Deploy main branch documentation" || exit 0
+          git push origin gh-pages
