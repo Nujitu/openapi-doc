@@ -39,7 +39,9 @@ jobs:
       - name: Generate Swagger UI initializer
         env:
           AVAILABLE_TAGS: ${{ steps.get-tags.outputs.tags }}
-        run: node generate-swagger-initializer.js
+        run: |
+          echo "AVAILABLE_TAGS environment variable: $AVAILABLE_TAGS"
+          node generate-swagger-initializer.js
 
       # Step 5: Deploy Swagger UI and OpenAPI files to GitHub Pages
       - name: Deploy to GitHub Pages

@@ -1,0 +1,333 @@
+# Generated with gnostic protoc-gen-openapi
+openapi: 3.0.3
+info:
+  title: Notification Domain
+  description: "Notification Service"
+  version: v1
+servers: [{ url: "https://staging-api.simbiosa.co.id" }]
+paths:
+  /v1/notification:
+    get:
+      tags: [NotificationService]
+      summary: List notifications
+      description: List notifications
+      operationId: NotificationService_ListNotification
+      parameters:
+        [
+          { name: sort, in: query, schema: { type: string } },
+          { name: limit, in: query, schema: { type: integer, format: uint32 } },
+          {
+            name: offset,
+            in: query,
+            schema: { type: integer, format: uint32 },
+          },
+        ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicListNotificationResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+  /v1/notification/preference:
+    patch:
+      tags: [NotificationService]
+      summary: Update notification preference
+      description: Update notification preference
+      operationId: NotificationService_UpdateNotificationPreference
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicUpdateNotificationPreferenceRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicUpdateNotificationPreferenceResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+  /v1/notification/preference/user-id:
+    get:
+      tags: [NotificationService]
+      summary: Get notification preference
+      description: Get notification preference by user id
+      operationId: NotificationService_GetNotificationPreferenceByUserId
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicGetNotificationPreferenceByUserIdResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+  /v1/notification/read:
+    post:
+      tags: [NotificationService]
+      summary: Mark notification as read
+      description: Mark specified notification as read.
+      operationId: NotificationService_MarkNotificationAsRead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/publicMarkNotificationAsReadRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/publicMarkNotificationAsReadResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+        "401":
+          description: Unauthorized JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+"components":
+  "schemas":
+    publicGetNotificationPreferenceByUserIdResponse:
+      type: object
+      properties:
+        notification_preference:
+          $ref: "#/components/schemas/sharedNotificationPreference"
+    publicListNotificationResponse:
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref: "#/components/schemas/sharedNotification"
+          description: List Notifications
+    publicMarkNotificationAsReadRequest:
+      type: object
+      properties:
+        notification_ids:
+          type: array
+          items:
+            type: string
+          description: Notification IDs
+    publicMarkNotificationAsReadResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Response message of mark notification as read
+    publicUpdateNotificationPreferenceRequest:
+      type: object
+      properties:
+        fcm_token:
+          type: array
+          items:
+            type: string
+          description: List of FCM token
+        email_notification:
+          type: boolean
+          description: Email notification status
+        push_notification:
+          type: boolean
+          description: Push notification status
+    publicUpdateNotificationPreferenceResponse:
+      type: object
+      properties:
+        notification_preference:
+          $ref: "#/components/schemas/sharedNotificationPreference"
+        message:
+          type: string
+          description: response message of updating notification preference
+    sharedNotification:
+      type: object
+      properties:
+        id:
+          example: 123
+          type: string
+          description: Notification ID
+        title:
+          type: string
+          description: Notification title
+        description:
+          type: string
+          description: Notification description
+        read:
+          type: boolean
+          description: Notification read status
+        type:
+          example: ATTENDANCE
+          enum:
+            [
+              DEFAULT,
+              ASSIGNMENT,
+              OBSERVATION,
+              QUIZ,
+              ATTENDANCE,
+              STUDY_MATERIAL,
+              INBOX_MAIL,
+              OUTGOING_MAIL,
+              EVENT,
+              ANNOUNCEMENT,
+            ]
+          type: string
+          description: Notification type
+          format: enum
+        user_id:
+          example: 123
+          type: string
+          description: User ID
+        user_role:
+          example: TEACHER
+          enum:
+            [
+              UNSPECIFIED,
+              STUDENT,
+              PARENT,
+              TEACHER,
+              STAFF,
+              ADMINISTRATOR,
+              SUPERADMINISTRATOR,
+            ]
+          type: string
+          description: User role type
+          format: enum
+        url:
+          type: string
+          description: Notification url
+        action:
+          type: string
+          description: Notification action
+        custom_payload:
+          example:
+            "observation_id": "1234"
+            "observation_title": "Penilaian lompat jauh"
+          type: string
+          description: Custom payload to support notification details in stringify JSON format.
+        created_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when notification is created
+          format: date-time
+        updated_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when notification data updated
+          format: date-time
+    sharedNotificationPreference:
+      type: object
+      properties:
+        id:
+          example: 123
+          type: string
+          description: Notification Preference ID
+        user_id:
+          example: 123
+          type: string
+          description: User ID
+        fcm_token:
+          type: array
+          items:
+            type: string
+          description: List of FCM token
+        email_notification:
+          type: boolean
+          description: Email notification status
+        push_notification:
+          type: boolean
+          description: Push notification status
+        created_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when notification is created
+          format: date-time
+        updated_at:
+          example: "2020-01-01T00:00:00Z"
+          type: string
+          description: Time when notification data updated
+          format: date-time
+    "v1ErrorResponse":
+      "type": "object"
+      "properties":
+        "errors":
+          "title": "errors"
+          "type": "array"
+          "items":
+            "$ref": "#/components/schemas/v1ErrorInfo"
+    "v1ErrorInfo":
+      "type": "object"
+      "properties":
+        "message":
+          "title": "message"
+          "type": "string"
+        "code":
+          "title": "code"
+          "type": "string"
+        "field":
+          "title": "field"
+          "type": "string"
+  responses:
+    "500":
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+    "401":
+      description: Unauthorized JWT token.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/v1ErrorResponse"
+  securitySchemes:
+    OAuth2:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  [
+    {
+      OAuth2:
+        [UNSPECIFIEDSTUDENTPARENTTEACHERSTAFFADMINISTRATORSUPERADMINISTRATOR],
+    },
+  ]
