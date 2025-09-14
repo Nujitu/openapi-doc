@@ -24,10 +24,106 @@
             window.switchVersion = function() {
               const selector = document.getElementById('version-selector');
               const selectedVersion = selector.value;
-              if (selectedVersion !== 'current') {
-                // Redirect to tag-specific documentation
-                window.location.href = `https://nujitu.github.io/openapi-doc/${selectedVersion}/`;
+              
+              let newUrls;
+              if (selectedVersion === 'current') {
+                // Use current main branch URLs
+                newUrls = [
+  {
+    "url": "https://nujitu.github.io/openapi-doc/assessment-domain.openapi.yaml",
+    "name": "assessment-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/authentication-domain.openapi.yaml",
+    "name": "authentication-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/mail-domain.openapi.yaml",
+    "name": "mail-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/material-domain.openapi.yaml",
+    "name": "material-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/notification-domain.openapi.yaml",
+    "name": "notification-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/report-domain.openapi.yaml",
+    "name": "report-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/schedule-domain.openapi.yaml",
+    "name": "schedule-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/teaching_module-domain.openapi.yaml",
+    "name": "teaching_module-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/user-domain.openapi.yaml",
+    "name": "user-domain.openapi"
+  }
+];
+              } else {
+                // Create URLs for the selected tag
+                const tagBaseUrl = `https://nujitu.github.io/openapi-doc/${selectedVersion}/`;
+                newUrls = [
+  {
+    "url": "https://nujitu.github.io/openapi-doc/assessment-domain.openapi.yaml",
+    "name": "assessment-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/authentication-domain.openapi.yaml",
+    "name": "authentication-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/mail-domain.openapi.yaml",
+    "name": "mail-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/material-domain.openapi.yaml",
+    "name": "material-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/notification-domain.openapi.yaml",
+    "name": "notification-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/report-domain.openapi.yaml",
+    "name": "report-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/schedule-domain.openapi.yaml",
+    "name": "schedule-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/teaching_module-domain.openapi.yaml",
+    "name": "teaching_module-domain.openapi"
+  },
+  {
+    "url": "https://nujitu.github.io/openapi-doc/user-domain.openapi.yaml",
+    "name": "user-domain.openapi"
+  }
+].map(spec => ({
+                  ...spec,
+                  url: spec.url.replace('https://nujitu.github.io/openapi-doc/', tagBaseUrl)
+                }));
               }
+              
+              // Reinitialize Swagger UI with new URLs
+              const ui = SwaggerUIBundle({
+                urls: newUrls,
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                  SwaggerUIBundle.presets.apis,
+                  SwaggerUIStandalonePreset
+                ],
+                layout: "StandaloneLayout"
+              });
+              window.ui = ui;
             };
           }
         } catch (error) {

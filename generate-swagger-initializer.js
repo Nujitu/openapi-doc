@@ -67,10 +67,32 @@ function generateSwaggerInitializer(urls) {
             window.switchVersion = function() {
               const selector = document.getElementById('version-selector');
               const selectedVersion = selector.value;
-              if (selectedVersion !== 'current') {
-                // Redirect to tag-specific documentation
-                window.location.href = \`https://nujitu.github.io/openapi-doc/\${selectedVersion}/\`;
+              
+              let newUrls;
+              if (selectedVersion === 'current') {
+                // Use current main branch URLs
+                newUrls = ${JSON.stringify(urls, null, 2)};
+              } else {
+                // Create URLs for the selected tag
+                const tagBaseUrl = \`https://nujitu.github.io/openapi-doc/\${selectedVersion}/\`;
+                newUrls = ${JSON.stringify(urls, null, 2)}.map(spec => ({
+                  ...spec,
+                  url: spec.url.replace('https://nujitu.github.io/openapi-doc/', tagBaseUrl)
+                }));
               }
+              
+              // Reinitialize Swagger UI with new URLs
+              const ui = SwaggerUIBundle({
+                urls: newUrls,
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                  SwaggerUIBundle.presets.apis,
+                  SwaggerUIStandalonePreset
+                ],
+                layout: "StandaloneLayout"
+              });
+              window.ui = ui;
             };
           }
         } catch (error) {
