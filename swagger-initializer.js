@@ -3,40 +3,40 @@
       const ui = SwaggerUIBundle({
         urls: [
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/assessment-domain.openapi.yaml",
-    "name": "assessment-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/assessment-domain.openapi.yaml",
+    "name": "assessment"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/authentication-domain.openapi.yaml",
-    "name": "authentication-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/authentication-domain.openapi.yaml",
+    "name": "authentication"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/mail-domain.openapi.yaml",
-    "name": "mail-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/mail-domain.openapi.yaml",
+    "name": "mail"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/material-domain.openapi.yaml",
-    "name": "material-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/material-domain.openapi.yaml",
+    "name": "material"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/notification-domain.openapi.yaml",
-    "name": "notification-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/notification-domain.openapi.yaml",
+    "name": "notification"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/report-domain.openapi.yaml",
-    "name": "report-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/report-domain.openapi.yaml",
+    "name": "report"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/schedule-domain.openapi.yaml",
-    "name": "schedule-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/schedule-domain.openapi.yaml",
+    "name": "schedule"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/teaching_module-domain.openapi.yaml",
-    "name": "teaching_module-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/teaching_module-domain.openapi.yaml",
+    "name": "teaching_module"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/user-domain.openapi.yaml",
-    "name": "user-domain.openapi"
+    "url": "https://nujitu.github.io/openapi-doc/swagger-ui/user-domain.openapi.yaml",
+    "name": "user"
   }
 ],
         dom_id: '#swagger-ui',
