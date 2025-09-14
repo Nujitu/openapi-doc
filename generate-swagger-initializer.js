@@ -30,8 +30,9 @@ function getOpenAPIFiles(dir, fileList = []) {
 // Create URLs for the Swagger UI configuration
 function createSwaggerUrls(fileList) {
   return fileList.map((file) => {
-    // Construct URL path relative to the GitHub Pages base URL
-    const urlPath = `${baseUrl}${path.relative(openapiDir, file).replace(/\\/g, '/')}`;
+    // Since files are deployed to the root of gh-pages, just use the filename
+    const filename = path.basename(file);
+    const urlPath = `${baseUrl}${filename}`;
 
     const name = path.basename(file, path.extname(file));
     return { url: urlPath, name: name.replace('.domain.openapi', '') };
