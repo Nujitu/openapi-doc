@@ -72,12 +72,16 @@ function generateSwaggerInitializer(urls) {
                 // Use current main branch URLs
                 newUrls = ${JSON.stringify(urls, null, 2)};
               } else {
-                // Create URLs for the selected tag
-                const tagBaseUrl = \`https://nujitu.github.io/openapi-doc/\${selectedVersion}/\`;
-                newUrls = ${JSON.stringify(urls, null, 2)}.map(spec => ({
-                  ...spec,
-                  url: spec.url.replace('https://nujitu.github.io/openapi-doc/', tagBaseUrl)
-                }));
+                // Create URLs for the selected tag using raw GitHub URLs
+                // Use the original file paths from the discovered files
+                const originalFiles = ${JSON.stringify(openapiFiles.map(file => path.relative(__dirname, file)), null, 2)};
+                newUrls = ${JSON.stringify(urls, null, 2)}.map((spec, index) => {
+                  const originalPath = originalFiles[index];
+                  return {
+                    ...spec,
+                    url: \`https://raw.githubusercontent.com/Nujitu/openapi-doc/\${selectedVersion}/\${originalPath}\`
+                  };
+                });
               }
               
               // Reinitialize Swagger UI with new URLs
