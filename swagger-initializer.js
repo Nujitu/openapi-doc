@@ -66,8 +66,19 @@
   }
 ];
               } else {
-                // Create URLs for the selected tag
-                const tagBaseUrl = `https://nujitu.github.io/openapi-doc/${selectedVersion}/`;
+                // Create URLs for the selected tag using raw GitHub URLs
+                // Use the original file paths from the discovered files
+                const originalFiles = [
+  "swagger-ui/assessment-domain.openapi.yaml",
+  "swagger-ui/authentication-domain.openapi.yaml",
+  "swagger-ui/mail-domain.openapi.yaml",
+  "swagger-ui/material-domain.openapi.yaml",
+  "swagger-ui/notification-domain.openapi.yaml",
+  "swagger-ui/report-domain.openapi.yaml",
+  "swagger-ui/schedule-domain.openapi.yaml",
+  "swagger-ui/teaching_module-domain.openapi.yaml",
+  "swagger-ui/user-domain.openapi.yaml"
+];
                 newUrls = [
   {
     "url": "https://nujitu.github.io/openapi-doc/assessment-domain.openapi.yaml",
@@ -105,10 +116,13 @@
     "url": "https://nujitu.github.io/openapi-doc/user-domain.openapi.yaml",
     "name": "user-domain.openapi"
   }
-].map(spec => ({
-                  ...spec,
-                  url: spec.url.replace('https://nujitu.github.io/openapi-doc/', tagBaseUrl)
-                }));
+].map((spec, index) => {
+                  const originalPath = originalFiles[index];
+                  return {
+                    ...spec,
+                    url: `https://raw.githubusercontent.com/Nujitu/openapi-doc/${selectedVersion}/${originalPath}`
+                  };
+                });
               }
               
               // Reinitialize Swagger UI with new URLs
