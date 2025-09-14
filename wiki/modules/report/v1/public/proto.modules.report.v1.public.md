@@ -147,7 +147,7 @@
 | class_id | [string](#string) |  |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| status | [string](#string) |  |  |
+| status | [string](#string) | repeated |  |
 
 
 
@@ -295,6 +295,7 @@
 | class_subject_id | [string](#string) |  |  |
 | approver_user_id | [string](#string) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| teacher_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 

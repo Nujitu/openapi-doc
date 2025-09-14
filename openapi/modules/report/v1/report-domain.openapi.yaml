@@ -333,6 +333,7 @@
                     in: query,
                     schema: { type: string, format: date-time },
                   },
+                  { name: teacher_id, in: query, schema: { type: string } },
                   {
                     name: limit,
                     in: query,
@@ -709,7 +710,8 @@
                     },
                   status:
                     {
-                      type: string,
+                      type: array,
+                      items: { type: string },
                       description: "Filter by status (present, sick, absent, leave, late)",
                     },
                 },
