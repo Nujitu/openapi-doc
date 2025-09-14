@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Base URL where your OpenAPI files are hosted in GitHub Pages
-const baseUrl = 'https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/';
+// Base URL where your OpenAPI files are hosted in GitHub Pages (root of gh-pages)
+const baseUrl = 'https://nujitu.github.io/openapi-doc/';
 
 // Directory to search for OpenAPI files
 const openapiDir = path.join(__dirname, 'swagger-ui');
