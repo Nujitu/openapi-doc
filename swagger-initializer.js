@@ -67,17 +67,17 @@
 ];
               } else {
                 // Create URLs for the selected tag using raw GitHub URLs
-                // Use the original file paths from the discovered files
+                // Use the original file paths from the source modules
                 const originalFiles = [
-  "swagger-ui/assessment-domain.openapi.yaml",
-  "swagger-ui/authentication-domain.openapi.yaml",
-  "swagger-ui/mail-domain.openapi.yaml",
-  "swagger-ui/material-domain.openapi.yaml",
-  "swagger-ui/notification-domain.openapi.yaml",
-  "swagger-ui/report-domain.openapi.yaml",
-  "swagger-ui/schedule-domain.openapi.yaml",
-  "swagger-ui/teaching_module-domain.openapi.yaml",
-  "swagger-ui/user-domain.openapi.yaml"
+  "openapi/modules/assessment/v1/assessment-domain.openapi.yaml",
+  "openapi/modules/authentication/v1/authentication-domain.openapi.yaml",
+  "openapi/modules/mail/v1/mail-domain.openapi.yaml",
+  "openapi/modules/material/v1/material-domain.openapi.yaml",
+  "openapi/modules/notification/v1/notification-domain.openapi.yaml",
+  "openapi/modules/report/v1/report-domain.openapi.yaml",
+  "openapi/modules/schedule/v1/schedule-domain.openapi.yaml",
+  "openapi/modules/teaching_module/v1/teaching_module-domain.openapi.yaml",
+  "openapi/modules/user/v1/user-domain.openapi.yaml"
 ];
                 newUrls = [
   {
