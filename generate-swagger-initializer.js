@@ -40,7 +40,7 @@ function createSwaggerUrls(fileList) {
 }
 
 // Generate the swagger-ui-initializer.js file
-function generateSwaggerInitializer(urls) {
+function generateSwaggerInitializer(urls, originalPaths) {
   const initializerTemplate = `
     window.onload = function() {
       // Fetch available tags from GitHub API and create version selector
@@ -73,8 +73,8 @@ function generateSwaggerInitializer(urls) {
                 newUrls = ${JSON.stringify(urls, null, 2)};
               } else {
                 // Create URLs for the selected tag using raw GitHub URLs
-                // Use the original file paths from the discovered files
-                const originalFiles = ${JSON.stringify(openapiFiles.map(file => path.relative(__dirname, file)), null, 2)};
+                // Use the original file paths from the source modules
+                const originalFiles = ${JSON.stringify(originalPaths, null, 2)};
                 newUrls = ${JSON.stringify(urls, null, 2)}.map((spec, index) => {
                   const originalPath = originalFiles[index];
                   return {
@@ -130,6 +130,30 @@ function generateSwaggerInitializer(urls) {
 }
 
 // Main logic
+// Get original files from the modules directory to preserve paths
+const originalOpenapiDir = path.join(__dirname, 'openapi/modules');
+let originalPaths = [];
+
+try {
+  const originalOpenapiFiles = getOpenAPIFiles(originalOpenapiDir);
+  originalPaths = originalOpenapiFiles.map(file => path.relative(__dirname, file));
+} catch (error) {
+  console.log('Could not read original files, using fallback mapping');
+  // Fallback: create paths based on known structure
+  originalPaths = [];
+}
+
+// Get files from swagger-ui directory for URL generation
 const openapiFiles = getOpenAPIFiles(openapiDir);
 const swaggerUrls = createSwaggerUrls(openapiFiles);
-generateSwaggerInitializer(swaggerUrls);
+
+// If we couldn't get original paths, create them based on filenames
+if (originalPaths.length === 0) {
+  originalPaths = openapiFiles.map(file => {
+    const filename = path.basename(file);
+    const baseName = filename.replace('-domain.openapi.yaml', '');
+    return `openapi/modules/${baseName}/v1/${filename}`;
+  });
+}
+
+generateSwaggerInitializer(swaggerUrls, originalPaths);
