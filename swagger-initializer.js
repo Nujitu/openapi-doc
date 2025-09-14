@@ -28,39 +28,39 @@
       const ui = SwaggerUIBundle({
         urls: [
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/assessment-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/assessment-domain.openapi.yaml",
     "name": "assessment-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/authentication-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/authentication-domain.openapi.yaml",
     "name": "authentication-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/mail-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/mail-domain.openapi.yaml",
     "name": "mail-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/material-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/material-domain.openapi.yaml",
     "name": "material-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/notification-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/notification-domain.openapi.yaml",
     "name": "notification-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/report-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/report-domain.openapi.yaml",
     "name": "report-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/schedule-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/schedule-domain.openapi.yaml",
     "name": "schedule-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/teaching_module-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/teaching_module-domain.openapi.yaml",
     "name": "teaching_module-domain.openapi"
   },
   {
-    "url": "https://raw.githubusercontent.com/Nujitu/openapi-doc/gh-pages/user-domain.openapi.yaml",
+    "url": "https://nujitu.github.io/openapi-doc/user-domain.openapi.yaml",
     "name": "user-domain.openapi"
   }
 ],
