@@ -46,6 +46,7 @@
 | message | [string](#string) |  |  |
 | code | [string](#string) |  |  |
 | field | [string](#string) |  |  |
+| info | [string](#string) |  |  |
 
 
 
