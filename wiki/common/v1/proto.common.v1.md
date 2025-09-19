@@ -220,6 +220,7 @@
 | X_Amz_Signature | [string](#string) |  |  |
 | key | [string](#string) |  |  |
 | policy | [string](#string) |  |  |
+| Content_Type | [string](#string) |  |  |
 
 
 

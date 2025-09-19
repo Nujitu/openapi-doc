@@ -5168,6 +5168,7 @@
                   X_Amz_Signature: { type: string },
                   key: { type: string },
                   policy: { type: string },
+                  Content_Type: { type: string },
                 },
             },
           publicAssessAssignmentSubmissionRequest:
