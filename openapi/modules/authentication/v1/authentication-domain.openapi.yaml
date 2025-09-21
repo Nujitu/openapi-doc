@@ -1705,6 +1705,11 @@
                       type: string,
                       description: access token of user to be invalidated,
                     },
+                  custom_metadata:
+                    {
+                      type: object,
+                      description: Custom metadata as arbitrary key-value object,
+                    },
                 },
             },
           publicRefreshTokenResponse:

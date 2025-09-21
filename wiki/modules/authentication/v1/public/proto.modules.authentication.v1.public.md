@@ -229,6 +229,7 @@ Response body of Logout
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_access_token | [string](#string) |  |  |
+| custom_metadata | [google.protobuf.Struct](#google-protobuf-Struct) |  | Arbitrary metadata payload |
 
 
 
