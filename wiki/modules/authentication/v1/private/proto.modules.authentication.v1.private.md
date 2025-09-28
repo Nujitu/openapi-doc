@@ -20,6 +20,8 @@
     - [DeleteUserResponse](#modules-authentication-v1-private-DeleteUserResponse)
     - [GetUserByEmailRequest](#modules-authentication-v1-private-GetUserByEmailRequest)
     - [GetUserByEmailResponse](#modules-authentication-v1-private-GetUserByEmailResponse)
+    - [GetUserByEmailsRequest](#modules-authentication-v1-private-GetUserByEmailsRequest)
+    - [GetUserByEmailsResponse](#modules-authentication-v1-private-GetUserByEmailsResponse)
     - [GetUserByIDsRequest](#modules-authentication-v1-private-GetUserByIDsRequest)
     - [GetUserByIDsResponse](#modules-authentication-v1-private-GetUserByIDsResponse)
     - [GetUserByIdRequest](#modules-authentication-v1-private-GetUserByIdRequest)
@@ -275,6 +277,36 @@ Response body of GetUserByPhone
 
 
 
+<a name="modules-authentication-v1-private-GetUserByEmailsRequest"></a>
+
+### GetUserByEmailsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| emails | [string](#string) | repeated |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-private-GetUserByEmailsResponse"></a>
+
+### GetUserByEmailsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user | [modules.authentication.v1.shared.User](#modules-authentication-v1-shared-User) | repeated |  |
+
+
+
+
+
+
 <a name="modules-authentication-v1-private-GetUserByIDsRequest"></a>
 
 ### GetUserByIDsRequest
@@ -490,7 +522,8 @@ Response body of UpdateUser
 <a name="modules-authentication-v1-private-IdentityService"></a>
 
 ### IdentityService
-IdentityService contains user identity management functionality such as register/read/update/delete.
+IdentityService contains user identity management functionality such as
+register/read/update/delete.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
@@ -502,6 +535,7 @@ IdentityService contains user identity management functionality such as register
 | GetUserByEmail | [GetUserByEmailRequest](#modules-authentication-v1-private-GetUserByEmailRequest) | [GetUserByEmailResponse](#modules-authentication-v1-private-GetUserByEmailResponse) | GetUserByPhone get user by their phone. |
 | GetUserList | [GetUserListRequest](#modules-authentication-v1-private-GetUserListRequest) | [GetUserListResponse](#modules-authentication-v1-private-GetUserListResponse) | GetUserByPhone get user by their phone. |
 | GetUserByIDs | [GetUserByIDsRequest](#modules-authentication-v1-private-GetUserByIDsRequest) | [GetUserByIDsResponse](#modules-authentication-v1-private-GetUserByIDsResponse) | GetUserByPhone get user by their phone. |
+| GetUserByEmails | [GetUserByEmailsRequest](#modules-authentication-v1-private-GetUserByEmailsRequest) | [GetUserByEmailsResponse](#modules-authentication-v1-private-GetUserByEmailsResponse) |  |
 
  
 

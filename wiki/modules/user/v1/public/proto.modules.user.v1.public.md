@@ -49,6 +49,9 @@
     - [GetUserResponse](#modules-user-v1-public-GetUserResponse)
     - [InviteUserRequest](#modules-user-v1-public-InviteUserRequest)
     - [InviteUserResponse](#modules-user-v1-public-InviteUserResponse)
+    - [InviteUsersRequest](#modules-user-v1-public-InviteUsersRequest)
+    - [InviteUsersRequest.Data](#modules-user-v1-public-InviteUsersRequest-Data)
+    - [InviteUsersResponse](#modules-user-v1-public-InviteUsersResponse)
     - [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest)
     - [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse)
     - [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest)
@@ -749,6 +752,53 @@ Response body of Invite
 
 
 
+<a name="modules-user-v1-public-InviteUsersRequest"></a>
+
+### InviteUsersRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [InviteUsersRequest.Data](#modules-user-v1-public-InviteUsersRequest-Data) | repeated |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-InviteUsersRequest-Data"></a>
+
+### InviteUsersRequest.Data
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+| role | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| role_id | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-InviteUsersResponse"></a>
+
+### InviteUsersResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-user-v1-public-NewPasswordRequest"></a>
 
 ### NewPasswordRequest
@@ -833,6 +883,7 @@ Service for user related feature
 | ----------- | ------------ | ------------- | ------------|
 | GetUser | [GetUserRequest](#modules-user-v1-public-GetUserRequest) | [GetUserResponse](#modules-user-v1-public-GetUserResponse) |  |
 | InviteUser | [InviteUserRequest](#modules-user-v1-public-InviteUserRequest) | [InviteUserResponse](#modules-user-v1-public-InviteUserResponse) |  |
+| InviteUsers | [InviteUsersRequest](#modules-user-v1-public-InviteUsersRequest) | [InviteUsersResponse](#modules-user-v1-public-InviteUsersResponse) |  |
 | GetUserList | [GetUserListRequest](#modules-user-v1-public-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-public-GetUserListResponse) |  |
 | NewPassword | [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest) | [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse) |  |
 | UpdateUser | [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest) | [UpdateUserResponse](#modules-user-v1-public-UpdateUserResponse) |  |
