@@ -5,7 +5,7 @@
     {
       title: Report Domain,
       version: v1,
-      description: "Skola Absence Service, Skola Attendance Service, Skoola Finalized Score Service",
+      description: "Skola Absence Service, Skoola Finalized Score Service, Skola Attendance Service",
     },
   servers:
     [
@@ -158,6 +158,76 @@
                   "500":
                     {
                       description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/finalized-score/{class_group_id}/{task_id}":
+        {
+          get:
+            {
+              tags: [FinalizedScoreService],
+              summary: Get Finalized Score,
+              description: Retrieve Finalized Score,
+              operationId: FinalizedScoreService_GetFinalizedScoreList,
+              parameters:
+                [
+                  {
+                    name: class_group_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: task_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetFinalizedScoreListResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
                       content:
                         {
                           application/json:
@@ -523,76 +593,6 @@
                 },
             },
         },
-      "/v1/finalized-score/{class_group_id}/{task_id}":
-        {
-          get:
-            {
-              tags: [FinalizedScoreService],
-              summary: Get Finalized Score,
-              description: Retrieve Finalized Score,
-              operationId: FinalizedScoreService_GetFinalizedScoreList,
-              parameters:
-                [
-                  {
-                    name: class_group_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: task_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetFinalizedScoreListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
     },
   "components":
     {
@@ -809,6 +809,48 @@
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
                   "info": { "title": "info", "type": "string" },
+                },
+            },
+          publicGetFinalizedScoreListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  finalized_scores:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedFinalizedScore",
+                        },
+                      description: finalized score response,
+                    },
+                },
+            },
+          sharedFinalizedScore:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: id },
+                  task_id: { type: string, description: task id },
+                  task_type: { type: string, description: task type },
+                  final_score:
+                    { type: number, description: final_score, format: float },
+                  student_id: { type: string, description: student id },
+                  class_group_id: { type: string, description: class group id },
+                  created_at:
+                    {
+                      type: string,
+                      description: created at,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: updated at,
+                      format: date-time,
+                    },
                 },
             },
           publicAssignment:
@@ -1157,48 +1199,6 @@
                     {
                       type: string,
                       description: "attendance status (Present, Absent, Sick, Leave, Late)",
-                    },
-                },
-            },
-          publicGetFinalizedScoreListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  finalized_scores:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedFinalizedScore",
-                        },
-                      description: finalized score response,
-                    },
-                },
-            },
-          sharedFinalizedScore:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: id },
-                  task_id: { type: string, description: task id },
-                  task_type: { type: string, description: task type },
-                  final_score:
-                    { type: number, description: final_score, format: float },
-                  student_id: { type: string, description: student id },
-                  class_group_id: { type: string, description: class group id },
-                  created_at:
-                    {
-                      type: string,
-                      description: created at,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      type: string,
-                      description: updated at,
-                      format: date-time,
                     },
                 },
             },
