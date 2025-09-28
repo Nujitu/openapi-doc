@@ -3,7 +3,6 @@
 - [modules/assessment/v1/private](/modules/assessment/v1/private/proto.modules.assessment.v1.private)
 - [modules/assessment/v1/public](/modules/assessment/v1/public/proto.modules.assessment.v1.public)
 - [modules/assessment/v1/shared](/modules/assessment/v1/shared/proto.modules.assessment.v1.shared)
-- [modules/authentication/v1/private](/modules/authentication/v1/private/proto.modules.authentication.v1.private)
 - [modules/authentication/v1/public](/modules/authentication/v1/public/proto.modules.authentication.v1.public)
 - [modules/authentication/v1/shared](/modules/authentication/v1/shared/proto.modules.authentication.v1.shared)
 - [modules/mail/v1/private](/modules/mail/v1/private/proto.modules.mail.v1.private)
