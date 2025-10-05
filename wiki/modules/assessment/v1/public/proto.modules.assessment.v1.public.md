@@ -1693,6 +1693,7 @@ Service for observation related feature
 | start_due_date | [string](#string) |  |  |
 | end_due_date | [string](#string) |  |  |
 | teacher_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 
