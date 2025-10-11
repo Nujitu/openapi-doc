@@ -1437,6 +1437,20 @@
                   link: { type: string },
                 },
             },
+          google.protobuf.Any:
+            {
+              type: object,
+              properties:
+                {
+                  "@type":
+                    {
+                      type: string,
+                      description: The type of the serialized message.,
+                    },
+                },
+              additionalProperties: true,
+              description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.,
+            },
           publicForceResetPasswordRequest:
             {
               type: object,
@@ -1522,6 +1536,8 @@
                       type: string,
                       description: access token of user to be invalidated,
                     },
+                  custom_metadata:
+                    { $ref: "#/components/schemas/google.protobuf.Any" },
                 },
             },
           publicRefreshTokenResponse:
