@@ -32,6 +32,10 @@
     - [CreateEmailTemplateResponse](#modules-mail-v1-shared-CreateEmailTemplateResponse)
     - [GetEmailTemplateRequest](#modules-mail-v1-shared-GetEmailTemplateRequest)
     - [GetEmailTemplateResponse](#modules-mail-v1-shared-GetEmailTemplateResponse)
+    - [SendBulkEmailTemplateRequest](#modules-mail-v1-shared-SendBulkEmailTemplateRequest)
+    - [SendBulkEmailTemplateRequest.Data](#modules-mail-v1-shared-SendBulkEmailTemplateRequest-Data)
+    - [SendBulkEmailTemplateRequest.Data.MetadataEntry](#modules-mail-v1-shared-SendBulkEmailTemplateRequest-Data-MetadataEntry)
+    - [SendBulkEmailTemplateResponse](#modules-mail-v1-shared-SendBulkEmailTemplateResponse)
     - [SendEmailTemplateRequest](#modules-mail-v1-shared-SendEmailTemplateRequest)
     - [SendEmailTemplateRequest.MetadataEntry](#modules-mail-v1-shared-SendEmailTemplateRequest-MetadataEntry)
     - [SendEmailTemplateResponse](#modules-mail-v1-shared-SendEmailTemplateResponse)
@@ -460,6 +464,69 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | email_template | [EmailTemplate](#modules-mail-v1-shared-EmailTemplate) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendBulkEmailTemplateRequest"></a>
+
+### SendBulkEmailTemplateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| template_name | [string](#string) |  |  |
+| data | [SendBulkEmailTemplateRequest.Data](#modules-mail-v1-shared-SendBulkEmailTemplateRequest-Data) | repeated |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendBulkEmailTemplateRequest-Data"></a>
+
+### SendBulkEmailTemplateRequest.Data
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| metadata | [SendBulkEmailTemplateRequest.Data.MetadataEntry](#modules-mail-v1-shared-SendBulkEmailTemplateRequest-Data-MetadataEntry) | repeated |  |
+| recepient | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendBulkEmailTemplateRequest-Data-MetadataEntry"></a>
+
+### SendBulkEmailTemplateRequest.Data.MetadataEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-mail-v1-shared-SendBulkEmailTemplateResponse"></a>
+
+### SendBulkEmailTemplateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
 
 
 

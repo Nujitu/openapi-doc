@@ -31,6 +31,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | SendEmailTemplate | [.modules.mail.v1.shared.SendEmailTemplateRequest](#modules-mail-v1-shared-SendEmailTemplateRequest) | [.modules.mail.v1.shared.SendEmailTemplateResponse](#modules-mail-v1-shared-SendEmailTemplateResponse) | SendMail sends a mail to the recipient. |
+| SendBulkEmailTemplate | [.modules.mail.v1.shared.SendBulkEmailTemplateRequest](#modules-mail-v1-shared-SendBulkEmailTemplateRequest) | [.modules.mail.v1.shared.SendBulkEmailTemplateResponse](#modules-mail-v1-shared-SendBulkEmailTemplateResponse) |  |
 
  
 
