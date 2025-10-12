@@ -209,6 +209,75 @@
                 },
             },
         },
+      /v1/user/invite/batch:
+        {
+          post:
+            {
+              tags: [UserService],
+              summary: Invite users by emails,
+              description: Invite users by emails up to 30 users at a time per minutes,
+              operationId: UserService_InviteUsers,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicInviteUsersRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicInviteUsersResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/user/list:
         {
           get:
@@ -1394,6 +1463,52 @@
                     { type: string, description: message for inviting result },
                 },
               description: Response body of Invite,
+            },
+          publicInviteUsersRequest:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicInviteUsersRequestData",
+                        },
+                      description: User data,
+                    },
+                },
+            },
+          publicInviteUsersRequestData:
+            {
+              type: object,
+              properties:
+                {
+                  email: { type: string, description: User email },
+                  role:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      description: User role,
+                      format: enum,
+                    },
+                  role_id: { type: string, description: Either NIP or NISN },
+                },
+            },
+          publicInviteUsersResponse:
+            {
+              type: object,
+              properties: { message: { type: string, description: Message } },
             },
           publicNewPasswordResponse:
             {
