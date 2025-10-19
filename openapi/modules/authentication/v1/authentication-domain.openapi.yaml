@@ -5,7 +5,7 @@
     {
       title: Authentication Domain,
       version: v1,
-      description: "Skoola Permission Service, Skoola Auth Service, Skoola Identity Service, Skoola Admin User Service",
+      description: "Skoola Auth Service, Skoola Identity Service, Skoola Permission Service, Skoola Admin User Service",
     },
   servers:
     [
@@ -14,6 +14,461 @@
     ],
   paths:
     {
+      /v1/auth/force_reset_password:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Reset Password,
+              description: Reset user password without email confirmatioin,
+              operationId: AuthService_ForceResetPassword,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicForceResetPasswordRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicForceResetPasswordResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/login:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Logging in User by supported Authentication Factor,
+              description: "Logging in User by supported Authentication Factor, 'password' for password login flow and 'otp_key' for passwordless login flow.",
+              operationId: AuthService_Login,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicLoginRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicLoginResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/logout:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Logging out User,
+              description: Logging out User by invalidating provided access token. Only client that use the provided token will be logged out.,
+              operationId: AuthService_Logout,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicLogoutRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicLogoutResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/refresh:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Refresh Expired Token,
+              description: Extending user expired token,
+              operationId: AuthService_RefreshToken,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRefreshTokenRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRefreshTokenResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/register_parent:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Register Parent User,
+              description: register new parent user.,
+              operationId: AuthService_RegisterParent,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterParentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterParentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/auth/reset_password:
+        {
+          post:
+            {
+              tags: [AuthService],
+              summary: Reset Password,
+              description: Reset user password,
+              operationId: AuthService_ResetPassword,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicResetPasswordRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicResetPasswordResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/identity/register:
+        {
+          post:
+            {
+              tags: [IdentityService],
+              summary: Register New User,
+              description: register new user.,
+              operationId: IdentityService_Register,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/permission:
         {
           get:
@@ -574,461 +1029,6 @@
                 },
             },
         },
-      /v1/auth/force_reset_password:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Reset Password,
-              description: Reset user password without email confirmatioin,
-              operationId: AuthService_ForceResetPassword,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicForceResetPasswordRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicForceResetPasswordResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/auth/login:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Logging in User by supported Authentication Factor,
-              description: "Logging in User by supported Authentication Factor, 'password' for password login flow and 'otp_key' for passwordless login flow.",
-              operationId: AuthService_Login,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicLoginRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicLoginResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/auth/logout:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Logging out User,
-              description: Logging out User by invalidating provided access token. Only client that use the provided token will be logged out.,
-              operationId: AuthService_Logout,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicLogoutRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicLogoutResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/auth/refresh:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Refresh Expired Token,
-              description: Extending user expired token,
-              operationId: AuthService_RefreshToken,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRefreshTokenRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRefreshTokenResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/auth/register_parent:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Register Parent User,
-              description: register new parent user.,
-              operationId: AuthService_RegisterParent,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterParentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterParentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/auth/reset_password:
-        {
-          post:
-            {
-              tags: [AuthService],
-              summary: Reset Password,
-              description: Reset user password,
-              operationId: AuthService_ResetPassword,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicResetPasswordRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicResetPasswordResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/identity/register:
-        {
-          post:
-            {
-              tags: [IdentityService],
-              summary: Register New User,
-              description: register new user.,
-              operationId: IdentityService_Register,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
       /v1/user/admin:
         {
           post:
@@ -1103,6 +1103,404 @@
     {
       "schemas":
         {
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
+          publicForceResetPasswordRequest:
+            {
+              type: object,
+              properties:
+                {
+                  new_password: { type: string, description: New Password },
+                  current_password:
+                    { type: string, description: User Password },
+                },
+            },
+          publicForceResetPasswordResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                },
+            },
+          publicLoginRequest:
+            {
+              type: object,
+              properties:
+                {
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                },
+            },
+          publicLoginResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                  login_entity:
+                    {
+                      $ref: "#/components/schemas/sharedLoginEntity",
+                    },
+                  redirect_to:
+                    {
+                      type: string,
+                      description: url redirection when login is success or fail,
+                    },
+                },
+              description: Response body of Login,
+            },
+          publicLogoutRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_access_token:
+                    {
+                      type: string,
+                      description: access token of user to be invalidated,
+                    },
+                },
+              description: Request body of Logout,
+            },
+          publicLogoutResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message if logout is success },
+                },
+              description: Response body of Logout,
+            },
+          publicRefreshTokenRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_access_token:
+                    {
+                      type: string,
+                      description: access token of user to be invalidated,
+                    },
+                  custom_metadata:
+                    {
+                      type: string,
+                      description: Custom metadata as arbitrary value,
+                    },
+                },
+            },
+          publicRefreshTokenResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user_access_token:
+                    {
+                      type: string,
+                      description: new access token for the user,
+                    },
+                  refresh_token:
+                    {
+                      type: string,
+                      description: new refresh token for the user,
+                    },
+                },
+            },
+          publicRegisterParentRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                  relation_role_id:
+                    {
+                      example: role-id-12345,
+                      type: string,
+                      description: Role ID of the user/student,
+                    },
+                },
+            },
+          publicRegisterParentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                  login_entity:
+                    {
+                      $ref: "#/components/schemas/sharedLoginEntity",
+                    },
+                  redirect_to:
+                    {
+                      type: string,
+                      description: url redirection when login is success or fail,
+                    },
+                },
+            },
+          publicResetPasswordRequest:
+            {
+              type: object,
+              properties:
+                {
+                  key: { type: string, description: a key received from email },
+                  new_password:
+                    { type: string, description: User new Password },
+                },
+            },
+          publicResetPasswordResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                },
+            },
+          sharedLoginEntity:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      allOf:
+                        [
+                          {
+                            $ref: "#/components/schemas/sharedUser",
+                          },
+                        ],
+                      description: user data,
+                    },
+                  session_token: { type: string, description: session token },
+                  refresh_token: { type: string },
+                },
+              description: Login entity,
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  profile_pic:
+                    {
+                      example: profile.png,
+                      type: string,
+                      description: User profile pict name,
+                    },
+                  address:
+                    {
+                      example: jln jln,
+                      type: string,
+                      description: User address,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
+                  date_of_birth:
+                    {
+                      example: 2020-01-01,
+                      type: string,
+                      description: User Date of Birth,
+                      format: date-time,
+                    },
+                  place_of_birth:
+                    {
+                      example: Jakarta,
+                      type: string,
+                      description: User Place of Birth,
+                    },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: Represent user status,
+                      format: enum,
+                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+              description: User entity,
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                  "info": { "title": "info", "type": "string" },
+                },
+            },
+          publicRegisterRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                  login_challenge:
+                    {
+                      type: string,
+                      description: " login challenge from auth-server",
+                    },
+                },
+              description: Request body of Register new user,
+            },
+          publicRegisterResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                  token:
+                    {
+                      type: string,
+                      description: generated token after registered,
+                    },
+                  refresh_token:
+                    { type: string, description: refresh token for the user },
+                },
+              description: Response body of Register new user,
+            },
           v1CursorPagination:
             {
               type: object,
@@ -1399,399 +1797,6 @@
                     },
                 },
               description: Permission entity,
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                  "info": { "title": "info", "type": "string" },
-                },
-            },
-          v1AttachmentFile:
-            {
-              type: object,
-              properties:
-                {
-                  display_name: { type: string },
-                  unique_name: { type: string },
-                  file_extension: { type: string },
-                  file_size: { type: string },
-                  link: { type: string },
-                },
-            },
-          publicForceResetPasswordRequest:
-            {
-              type: object,
-              properties:
-                {
-                  new_password: { type: string, description: New Password },
-                  current_password:
-                    { type: string, description: User Password },
-                },
-            },
-          publicForceResetPasswordResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                },
-            },
-          publicLoginRequest:
-            {
-              type: object,
-              properties:
-                {
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                },
-            },
-          publicLoginResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                  login_entity:
-                    {
-                      $ref: "#/components/schemas/sharedLoginEntity",
-                    },
-                  redirect_to:
-                    {
-                      type: string,
-                      description: url redirection when login is success or fail,
-                    },
-                },
-              description: Response body of Login,
-            },
-          publicLogoutRequest:
-            {
-              type: object,
-              properties:
-                {
-                  user_access_token:
-                    {
-                      type: string,
-                      description: access token of user to be invalidated,
-                    },
-                },
-              description: Request body of Logout,
-            },
-          publicLogoutResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message if logout is success },
-                },
-              description: Response body of Logout,
-            },
-          publicRefreshTokenRequest:
-            {
-              type: object,
-              properties:
-                {
-                  user_access_token:
-                    {
-                      type: string,
-                      description: access token of user to be invalidated,
-                    },
-                },
-            },
-          publicRefreshTokenResponse:
-            {
-              type: object,
-              properties:
-                {
-                  user_access_token:
-                    {
-                      type: string,
-                      description: new access token for the user,
-                    },
-                  refresh_token:
-                    {
-                      type: string,
-                      description: new refresh token for the user,
-                    },
-                },
-            },
-          publicRegisterParentRequest:
-            {
-              type: object,
-              properties:
-                {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                  relation_role_id:
-                    {
-                      example: role-id-12345,
-                      type: string,
-                      description: Role ID of the user/student,
-                    },
-                },
-            },
-          publicRegisterParentResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                  login_entity:
-                    {
-                      $ref: "#/components/schemas/sharedLoginEntity",
-                    },
-                  redirect_to:
-                    {
-                      type: string,
-                      description: url redirection when login is success or fail,
-                    },
-                },
-            },
-          publicResetPasswordRequest:
-            {
-              type: object,
-              properties:
-                {
-                  key: { type: string, description: a key received from email },
-                  new_password:
-                    { type: string, description: User new Password },
-                },
-            },
-          publicResetPasswordResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: additional information },
-                },
-            },
-          sharedLoginEntity:
-            {
-              type: object,
-              properties:
-                {
-                  user:
-                    {
-                      allOf:
-                        [
-                          {
-                            $ref: "#/components/schemas/sharedUser",
-                          },
-                        ],
-                      description: user data,
-                    },
-                  session_token: { type: string, description: session token },
-                  refresh_token: { type: string },
-                },
-              description: Login entity,
-            },
-          sharedUser:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: User ID },
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  username:
-                    {
-                      example: JohnFD,
-                      type: string,
-                      description: User username,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  profile_pic:
-                    {
-                      example: profile.png,
-                      type: string,
-                      description: User profile pict name,
-                    },
-                  address:
-                    {
-                      example: jln jln,
-                      type: string,
-                      description: User address,
-                    },
-                  gender:
-                    {
-                      example: Male,
-                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
-                      type: string,
-                      description: User gender,
-                      format: enum,
-                    },
-                  date_of_birth:
-                    {
-                      example: 2020-01-01,
-                      type: string,
-                      description: User Date of Birth,
-                      format: date-time,
-                    },
-                  place_of_birth:
-                    {
-                      example: Jakarta,
-                      type: string,
-                      description: User Place of Birth,
-                    },
-                  role_type:
-                    {
-                      enum:
-                        [
-                          UNSPECIFIED,
-                          STUDENT,
-                          PARENT,
-                          TEACHER,
-                          STAFF,
-                          ADMINISTRATOR,
-                          SUPERADMINISTRATOR,
-                        ],
-                      type: string,
-                      format: enum,
-                    },
-                  status:
-                    {
-                      enum:
-                        [
-                          USER_STATUS_UNSPECIFIED,
-                          USER_STATUS_ACTIVE,
-                          USER_STATUS_INACTIVE,
-                        ],
-                      type: string,
-                      description: Represent user status,
-                      format: enum,
-                    },
-                  profile_picture:
-                    { $ref: "#/components/schemas/v1AttachmentFile" },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user data updated,
-                      format: date-time,
-                    },
-                },
-              description: User entity,
-            },
-          publicRegisterRequest:
-            {
-              type: object,
-              properties:
-                {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                  login_challenge:
-                    {
-                      type: string,
-                      description: " login challenge from auth-server",
-                    },
-                },
-              description: Request body of Register new user,
-            },
-          publicRegisterResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string, description: additional message },
-                  user:
-                    {
-                      $ref: "#/components/schemas/sharedUser",
-                    },
-                  token:
-                    {
-                      type: string,
-                      description: generated token after registered,
-                    },
-                  refresh_token:
-                    { type: string, description: refresh token for the user },
-                },
-              description: Response body of Register new user,
             },
           publicRegisterUserRequest:
             {
