@@ -4,7 +4,7 @@
   info:
     {
       title: Assessment Domain,
-      description: "Skoola Assignment Service, Skola Quiz Service, Skoola Rubric Service, Skoola Observation Service",
+      description: "Skoola Rubric Service, Skola Quiz Service, Skoola Assignment Service, Skoola Observation Service",
       version: v1,
     },
   servers:
@@ -14,99 +14,16 @@
     ],
   paths:
     {
-      /v1/assignment:
+      /v1/rubric:
         {
           get:
             {
-              tags: [AssignmentService],
-              summary: List assignments,
-              description: List assignments,
-              operationId: AssignmentService_ListAssignment,
+              tags: [RubricService],
+              summary: List rubrics,
+              description: List rubrics,
+              operationId: RubricService_ListRubric,
               parameters:
                 [
-                  {
-                    name: available_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: available_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: available_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: available_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: teaching_module_folder_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: rubric_id, in: query, schema: { type: string } },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: subject_id, in: query, schema: { type: string } },
-                  {
-                    name: teacher_user_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: scoring_method,
-                    in: query,
-                    schema:
-                      {
-                        enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  {
-                    name: assignment_type,
-                    in: query,
-                    schema:
-                      {
-                        enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  {
-                    name: teaching_module_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: exam_id, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -130,7 +47,73 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicListAssignmentResponse",
+                                  $ref: "#/components/schemas/publicListRubricResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [RubricService],
+              summary: Update a rubric,
+              description: Update a rubric,
+              operationId: RubricService_UpdateRubric,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateRubricRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateRubricResponse",
                                 },
                             },
                         },
@@ -167,10 +150,10 @@
             },
           post:
             {
-              tags: [AssignmentService],
-              summary: Create an assignment,
-              description: Create an assignment,
-              operationId: AssignmentService_CreateAssignment,
+              tags: [RubricService],
+              summary: Create a rubric,
+              description: Create a rubric,
+              operationId: RubricService_CreateRubric,
               requestBody:
                 {
                   content:
@@ -179,7 +162,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicCreateAssignmentRequest",
+                              $ref: "#/components/schemas/publicCreateRubricRequest",
                             },
                         },
                     },
@@ -196,73 +179,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateAssignmentResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [AssignmentService],
-              summary: Update an assignment,
-              description: Update an assignment,
-              operationId: AssignmentService_UpdateAssignment,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateAssignmentRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateAssignmentResponse",
+                                  $ref: "#/components/schemas/publicCreateRubricResponse",
                                 },
                             },
                         },
@@ -298,18 +215,18 @@
                 },
             },
         },
-      "/v1/assignment/detail/{assignment_id}":
+      "/v1/rubric/detail/{rubric_id}":
         {
           get:
             {
-              tags: [AssignmentService],
-              summary: Get an assignment,
-              description: Get assignment by id,
-              operationId: AssignmentService_GetAssignmentById,
+              tags: [RubricService],
+              summary: Get a rubric,
+              description: Get rubric by id,
+              operationId: RubricService_GetRubricById,
               parameters:
                 [
                   {
-                    name: assignment_id,
+                    name: rubric_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -326,7 +243,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetAssignmentByIdResponse",
+                                  $ref: "#/components/schemas/publicGetRubricByIdResponse",
                                 },
                             },
                         },
@@ -362,678 +279,18 @@
                 },
             },
         },
-      /v1/assignment/presigned-url:
-        {
-          post:
-            {
-              tags: [AssignmentService],
-              summary: Create assignment presigned URLs,
-              description: Create an AWS S3 presigned URLs to upload assignment assets,
-              operationId: AssignmentService_CreateAssignmentPresignedPostUrl,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateAssignmentPresignedPostUrlRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateAssignmentPresignedPostUrlResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/assignment/statistic/detail/{assignment_id}":
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get an assignment statistic,
-              description: Get assignment statistic by assignment id,
-              operationId: AssignmentService_GetAssignmentStatisticById,
-              parameters:
-                [
-                  {
-                    name: assignment_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAssignmentStatisticByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/assignment/submission:
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: List assignment submissions,
-              description: List assignment submissions,
-              operationId: AssignmentService_ListAssignmentSubmission,
-              parameters:
-                [
-                  { name: assignment_id, in: query, schema: { type: string } },
-                  {
-                    name: student_user_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: submission_state,
-                    in: query,
-                    schema:
-                      {
-                        enum:
-                          [
-                            UNKNOWN_SUBMISSON,
-                            NO_SUBMISSION,
-                            NEED_GRADING,
-                            GRADED,
-                          ],
-                        type: string,
-                        format: enum,
-                      },
-                  },
-                  {
-                    name: teaching_module_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: teaching_module_folder_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: teacher_user_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: due_date_gt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_gte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_lt,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  {
-                    name: due_date_lte,
-                    in: query,
-                    schema: { type: string, format: date-time },
-                  },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListAssignmentSubmissionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          patch:
-            {
-              tags: [AssignmentService],
-              summary: Update assignment submission,
-              description: Updates a student assignment submission.,
-              operationId: AssignmentService_UpdateAssignmentSubmission,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateAssignmentSubmissionRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateAssignmentSubmissionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/assignment/submission/assess:
-        {
-          post:
-            {
-              tags: [AssignmentService],
-              summary: Assess assignment submission,
-              description: Assesss a student assignment submission.,
-              operationId: AssignmentService_AssessAssignmentSubmission,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicAssessAssignmentSubmissionRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicAssessAssignmentSubmissionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/assignment/submission/detail/{submission_id}":
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get a submission of assignment assessment by id,
-              description: Get assignment submission by submission id,
-              operationId: AssignmentService_GetAssignmentSubmissionById,
-              parameters:
-                [
-                  {
-                    name: submission_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/assignment/submission/finalize:
-        {
-          post:
-            {
-              tags: [AssignmentService],
-              summary: Finalize assignment submission,
-              description: Finalizes an assignment submission of a student.,
-              operationId: AssignmentService_FinalizeAssignmentSubmission,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicFinalizeAssignmentSubmissionRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicFinalizeAssignmentSubmissionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/assignment/submission/student-id:
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get an assignment submission by student id,
-              description: Get assignment assessment by specified student id and assignment id,
-              operationId: AssignmentService_GetAssignmentSubmissionByStudentUserId,
-              parameters:
-                [
-                  { name: assignment_id, in: query, schema: { type: string } },
-                  {
-                    name: student_user_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByStudentUserIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/assignment/submission/student-id/bulk:
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: Get bulk assignment submission by many student ids,
-              description: Get bulk assignment assessment by specified student ids and assignment id,
-              operationId: AssignmentService_GetBulkAssignmentSubmissionByStudentUserId,
-              parameters:
-                [
-                  { name: assignment_id, in: query, schema: { type: string } },
-                  {
-                    name: student_user_ids,
-                    in: query,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetBulkAssignmentSubmissionByStudentUserIdResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/assignment/submission/{submission_id}":
+      "/v1/rubric/{rubric_id}":
         {
           delete:
             {
-              tags: [AssignmentService],
-              summary: Delete a submission,
-              description: Delete a submission,
-              operationId: AssignmentService_DeleteAssignmentSubmission,
+              tags: [RubricService],
+              summary: Delete a rubric,
+              description: Delete a rubric,
+              operationId: RubricService_DeleteRubric,
               parameters:
                 [
                   {
-                    name: submission_id,
+                    name: rubric_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -1050,150 +307,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicDeleteAssignmentSubmissionResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/assignment/to-review:
-        {
-          get:
-            {
-              tags: [AssignmentService],
-              summary: List assignment to review,
-              description: This API is used for teachers to see their to-do list for review.,
-              operationId: AssignmentService_ListAssignmentToReview,
-              parameters:
-                [
-                  {
-                    name: teacher_user_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  {
-                    name: class_subject_id,
-                    in: query,
-                    schema: { type: string },
-                  },
-                  { name: sort, in: query, schema: { type: string } },
-                  {
-                    name: limit,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                  {
-                    name: offset,
-                    in: query,
-                    schema: { type: integer, format: uint32 },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListAssignmentToReviewResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/assignment/{assignment_id}":
-        {
-          delete:
-            {
-              tags: [AssignmentService],
-              summary: Delete an assignment,
-              description: Delete an assignment,
-              operationId: AssignmentService_DeleteAssignment,
-              parameters:
-                [
-                  {
-                    name: assignment_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteAssignmentResponse",
+                                  $ref: "#/components/schemas/publicDeleteRubricResponse",
                                 },
                             },
                         },
@@ -2420,16 +1534,99 @@
                 },
             },
         },
-      /v1/rubric:
+      /v1/assignment:
         {
           get:
             {
-              tags: [RubricService],
-              summary: List rubrics,
-              description: List rubrics,
-              operationId: RubricService_ListRubric,
+              tags: [AssignmentService],
+              summary: List assignments,
+              description: List assignments,
+              operationId: AssignmentService_ListAssignment,
               parameters:
                 [
+                  {
+                    name: available_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: available_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: available_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: available_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: rubric_id, in: query, schema: { type: string } },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: scoring_method,
+                    in: query,
+                    schema:
+                      {
+                        enum: [UNKNOWN_SCORING_METHOD, RUBRIC, MANUAL],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: assignment_type,
+                    in: query,
+                    schema:
+                      {
+                        enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: exam_id, in: query, schema: { type: string } },
                   { name: sort, in: query, schema: { type: string } },
                   {
                     name: limit,
@@ -2453,73 +1650,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicListRubricResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-          put:
-            {
-              tags: [RubricService],
-              summary: Update a rubric,
-              description: Update a rubric,
-              operationId: RubricService_UpdateRubric,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicUpdateRubricRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicUpdateRubricResponse",
+                                  $ref: "#/components/schemas/publicListAssignmentResponse",
                                 },
                             },
                         },
@@ -2556,10 +1687,10 @@
             },
           post:
             {
-              tags: [RubricService],
-              summary: Create a rubric,
-              description: Create a rubric,
-              operationId: RubricService_CreateRubric,
+              tags: [AssignmentService],
+              summary: Create an assignment,
+              description: Create an assignment,
+              operationId: AssignmentService_CreateAssignment,
               requestBody:
                 {
                   content:
@@ -2568,7 +1699,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicCreateRubricRequest",
+                              $ref: "#/components/schemas/publicCreateAssignmentRequest",
                             },
                         },
                     },
@@ -2585,7 +1716,73 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateRubricResponse",
+                                  $ref: "#/components/schemas/publicCreateAssignmentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [AssignmentService],
+              summary: Update an assignment,
+              description: Update an assignment,
+              operationId: AssignmentService_UpdateAssignment,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateAssignmentRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateAssignmentResponse",
                                 },
                             },
                         },
@@ -2621,18 +1818,18 @@
                 },
             },
         },
-      "/v1/rubric/detail/{rubric_id}":
+      "/v1/assignment/detail/{assignment_id}":
         {
           get:
             {
-              tags: [RubricService],
-              summary: Get a rubric,
-              description: Get rubric by id,
-              operationId: RubricService_GetRubricById,
+              tags: [AssignmentService],
+              summary: Get an assignment,
+              description: Get assignment by id,
+              operationId: AssignmentService_GetAssignmentById,
               parameters:
                 [
                   {
-                    name: rubric_id,
+                    name: assignment_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -2649,7 +1846,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetRubricByIdResponse",
+                                  $ref: "#/components/schemas/publicGetAssignmentByIdResponse",
                                 },
                             },
                         },
@@ -2685,18 +1882,87 @@
                 },
             },
         },
-      "/v1/rubric/{rubric_id}":
+      /v1/assignment/presigned-url:
         {
-          delete:
+          post:
             {
-              tags: [RubricService],
-              summary: Delete a rubric,
-              description: Delete a rubric,
-              operationId: RubricService_DeleteRubric,
+              tags: [AssignmentService],
+              summary: Create assignment presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload assignment assets,
+              operationId: AssignmentService_CreateAssignmentPresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateAssignmentPresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicCreateAssignmentPresignedPostUrlResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/assignment/statistic/detail/{assignment_id}":
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get an assignment statistic,
+              description: Get assignment statistic by assignment id,
+              operationId: AssignmentService_GetAssignmentStatisticById,
               parameters:
                 [
                   {
-                    name: rubric_id,
+                    name: assignment_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -2713,7 +1979,741 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicDeleteRubricResponse",
+                                  $ref: "#/components/schemas/publicGetAssignmentStatisticByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: List assignment submissions,
+              description: List assignment submissions,
+              operationId: AssignmentService_ListAssignmentSubmission,
+              parameters:
+                [
+                  { name: assignment_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: submission_state,
+                    in: query,
+                    schema:
+                      {
+                        enum:
+                          [
+                            UNKNOWN_SUBMISSON,
+                            NO_SUBMISSION,
+                            NEED_GRADING,
+                            GRADED,
+                          ],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: teaching_module_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teaching_module_folder_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: due_date_gt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_gte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lt,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  {
+                    name: due_date_lte,
+                    in: query,
+                    schema: { type: string, format: date-time },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAssignmentSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [AssignmentService],
+              summary: Update assignment submission,
+              description: Updates a student assignment submission.,
+              operationId: AssignmentService_UpdateAssignmentSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateAssignmentSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateAssignmentSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/assess:
+        {
+          post:
+            {
+              tags: [AssignmentService],
+              summary: Assess assignment submission,
+              description: Assesss a student assignment submission.,
+              operationId: AssignmentService_AssessAssignmentSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicAssessAssignmentSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicAssessAssignmentSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/assignment/submission/detail/{submission_id}":
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get a submission of assignment assessment by id,
+              description: Get assignment submission by submission id,
+              operationId: AssignmentService_GetAssignmentSubmissionById,
+              parameters:
+                [
+                  {
+                    name: submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/finalize:
+        {
+          post:
+            {
+              tags: [AssignmentService],
+              summary: Finalize assignment submission,
+              description: Finalizes an assignment submission of a student.,
+              operationId: AssignmentService_FinalizeAssignmentSubmission,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicFinalizeAssignmentSubmissionRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicFinalizeAssignmentSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/student-id:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get an assignment submission by student id,
+              description: Get assignment assessment by specified student id and assignment id,
+              operationId: AssignmentService_GetAssignmentSubmissionByStudentUserId,
+              parameters:
+                [
+                  { name: assignment_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAssignmentSubmissionByStudentUserIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/submission/student-id/bulk:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: Get bulk assignment submission by many student ids,
+              description: Get bulk assignment assessment by specified student ids and assignment id,
+              operationId: AssignmentService_GetBulkAssignmentSubmissionByStudentUserId,
+              parameters:
+                [
+                  { name: assignment_id, in: query, schema: { type: string } },
+                  {
+                    name: student_user_ids,
+                    in: query,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetBulkAssignmentSubmissionByStudentUserIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/assignment/submission/{submission_id}":
+        {
+          delete:
+            {
+              tags: [AssignmentService],
+              summary: Delete a submission,
+              description: Delete a submission,
+              operationId: AssignmentService_DeleteAssignmentSubmission,
+              parameters:
+                [
+                  {
+                    name: submission_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteAssignmentSubmissionResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/assignment/to-review:
+        {
+          get:
+            {
+              tags: [AssignmentService],
+              summary: List assignment to review,
+              description: This API is used for teachers to see their to-do list for review.,
+              operationId: AssignmentService_ListAssignmentToReview,
+              parameters:
+                [
+                  {
+                    name: teacher_user_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  { name: sort, in: query, schema: { type: string } },
+                  {
+                    name: limit,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                  {
+                    name: offset,
+                    in: query,
+                    schema: { type: integer, format: uint32 },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAssignmentToReviewResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/assignment/{assignment_id}":
+        {
+          delete:
+            {
+              tags: [AssignmentService],
+              summary: Delete an assignment,
+              description: Delete an assignment,
+              operationId: AssignmentService_DeleteAssignment,
+              parameters:
+                [
+                  {
+                    name: assignment_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteAssignmentResponse",
                                 },
                             },
                         },
@@ -3768,6 +3768,1370 @@
     {
       "schemas":
         {
+          publicCreateRubricRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Rubrik penilaian presentasi sejarah,
+                      type: string,
+                      description: Rubric title,
+                    },
+                  description:
+                    { type: string, description: Rubric description },
+                  total_point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Rubric total point,
+                      format: float,
+                    },
+                  criteria:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCriterion",
+                        },
+                      description: The list of rubric criteria,
+                    },
+                },
+            },
+          publicCreateRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubric:
+                    {
+                      $ref: "#/components/schemas/sharedRubric",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of creating rubric,
+                    },
+                },
+            },
+          publicDeleteRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of deleting rubric,
+                    },
+                },
+            },
+          publicGetRubricByIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubric:
+                    {
+                      $ref: "#/components/schemas/sharedRubric",
+                    },
+                },
+            },
+          publicListRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubrics:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedRubric",
+                        },
+                      description: List Rubrics,
+                    },
+                },
+            },
+          publicUpdateRubricRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Rubric ID },
+                  title:
+                    {
+                      example: Rubrik penilaian presentasi sejarah,
+                      type: string,
+                      description: Rubric title,
+                    },
+                  description:
+                    { type: string, description: Rubric description },
+                  total_point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Rubric total point,
+                      format: float,
+                    },
+                  criteria:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCriterion",
+                        },
+                      description: The list of rubric criteria,
+                    },
+                },
+            },
+          publicUpdateRubricResponse:
+            {
+              type: object,
+              properties:
+                {
+                  rubric:
+                    {
+                      $ref: "#/components/schemas/sharedRubric",
+                    },
+                  message:
+                    {
+                      type: string,
+                      description: response message of updating rubric,
+                    },
+                },
+            },
+          sharedCriterion:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Ekspresi dan Interpretasi,
+                      type: string,
+                      description: Criterion title,
+                    },
+                  description:
+                    { type: string, description: Criterion description },
+                  levels:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedLevel",
+                        },
+                      description: The list of criteria levels,
+                    },
+                },
+            },
+          sharedLevel:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Sangat Baik,
+                      type: string,
+                      description: Level title,
+                    },
+                  description: { type: string, description: Level description },
+                  point:
+                    {
+                      example: 5.0,
+                      type: number,
+                      description: Level point,
+                      format: float,
+                    },
+                },
+            },
+          sharedRubric:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Rubric ID },
+                  title:
+                    {
+                      example: Rubrik penilaian presentasi sejarah,
+                      type: string,
+                      description: Rubric title,
+                    },
+                  description:
+                    { type: string, description: Rubric description },
+                  total_point:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: Rubric total point,
+                      format: float,
+                    },
+                  criteria:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedCriterion",
+                        },
+                      description: The list of rubric criteria,
+                    },
+                  teacher_user_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teacher User ID,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Rubric is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Rubric data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                  "info": { "title": "info", "type": "string" },
+                },
+            },
+          v1CursorPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  next_cursor: { type: string },
+                  prev_cursor: { type: string },
+                  curr_cursor: { type: string },
+                },
+            },
+          v1OffsetPagination:
+            {
+              type: object,
+              properties:
+                {
+                  limit: { type: integer, format: uint32 },
+                  offset: { type: integer, format: uint32 },
+                  total: { type: integer, format: uint32 },
+                },
+            },
+          v1ResponseMetadata:
+            {
+              type: object,
+              properties:
+                {
+                  offset_pagination:
+                    { $ref: "#/components/schemas/v1OffsetPagination" },
+                  cursor_pagination:
+                    { $ref: "#/components/schemas/v1CursorPagination" },
+                },
+            },
+          publicAnswer:
+            {
+              type: object,
+              properties:
+                {
+                  question_id:
+                    { example: 123, type: string, description: Question ID },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                  options:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                    },
+                },
+            },
+          publicCreateQuestionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicCreateQuestionResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicCreateQuizRequest:
+            {
+              type: object,
+              properties:
+                {
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  assignee:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicQuizAssignee",
+                        },
+                      description: Quiz assignee,
+                    },
+                  class_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class ID, quiz will be attached to specific class",
+                    },
+                },
+            },
+          publicCreateQuizResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          publicEditQuestionsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicEditQuestionsResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicGetBulkQuizSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmission",
+                        },
+                      description: Quiz submission details,
+                    },
+                },
+            },
+          publicGetQuestionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicGetQuizDetailResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                  questions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizQuestion",
+                        },
+                    },
+                },
+            },
+          publicGetQuizListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicGetQuizListResponseQuiz",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetQuizListResponseQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  class_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class ID, quiz will be attached to specific class",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          publicGetQuizStatisticsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  statistics:
+                    {
+                      $ref: "#/components/schemas/sharedQuizStatistics",
+                    },
+                },
+            },
+          publicGetQuizSubmissionByStudentIdResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSubmission",
+                    },
+                },
+            },
+          publicGetQuizSubmissionListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_submission_list:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizSubmissionResult",
+                        },
+                    },
+                  meta:
+                    { $ref: "#/components/schemas/v1ResponseMetadata" },
+                },
+            },
+          publicGetStudentSubmissionDetailsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  submission_info:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSubmission",
+                    },
+                  answers:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentAnswer",
+                        },
+                    },
+                },
+            },
+          publicGetStudentSubmissionsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  submissions:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedStudentSubmissions",
+                        },
+                    },
+                },
+            },
+          publicManualGradingSubmissionRequest:
+            {
+              type: object,
+              properties:
+                {
+                  body:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicManualGradingSubmissionRequestBody",
+                        },
+                    },
+                  quiz_id: { type: string },
+                  nisn: { type: string },
+                },
+            },
+          publicManualGradingSubmissionRequestBody:
+            {
+              type: object,
+              properties:
+                { score: { type: string }, answer_id: { type: string } },
+            },
+          publicManualGradingSubmissionResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicQuizAssignee:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string },
+                  student_name: { type: string },
+                },
+            },
+          publicSubmitStudentAnswerRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  student_id: { type: string },
+                  student_name: { type: string },
+                  submission_start_time: { type: string },
+                  subission_end_time: { type: string },
+                  answer:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAnswer",
+                        },
+                    },
+                },
+            },
+          publicSubmitStudentAnswerResponse:
+            { type: object, properties: { message: { type: string } } },
+          publicUpdateQuizRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                },
+            },
+          publicUpdateQuizResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string },
+                  quiz:
+                    {
+                      $ref: "#/components/schemas/sharedQuiz",
+                    },
+                },
+            },
+          sharedDeleteQuizAndAttributesRequest:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_id: { type: string },
+                  class_subject_id: { type: string },
+                },
+            },
+          sharedDeleteQuizAndAttributesResponse:
+            { type: object, properties: { message: { type: string } } },
+          sharedQuiz:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Quiz ID },
+                  title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  description:
+                    {
+                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Description,
+                    },
+                  info:
+                    {
+                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
+                      type: string,
+                      description: Instruction & Resource for Student,
+                    },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  learing_goal_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Learing goal ID,
+                    },
+                  learning_goal_title:
+                    {
+                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
+                      type: string,
+                      description: Learing goal title,
+                    },
+                  instance_id: { type: string, description: Instance ID },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  teaching_module_folder_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module Folder ID,
+                    },
+                  exam_id: { example: 123, type: string, description: Exam ID },
+                  settings:
+                    {
+                      $ref: "#/components/schemas/sharedQuizSettings",
+                    },
+                  class_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class ID, quiz will be attached to specific class",
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizOption:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string },
+                  text: { type: string },
+                  value: { type: string },
+                  isAnswer: { type: boolean },
+                  priority: { type: string },
+                },
+            },
+          sharedQuizQuestion:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Question ID },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  question:
+                    {
+                      example: Choose the correct answer,
+                      type: string,
+                      description: Question,
+                    },
+                  questionType:
+                    {
+                      example: MULIPLE_ANSWER,
+                      enum:
+                        [
+                          ASSESSMENT_QUIZ_EMPTY,
+                          TEXT,
+                          ESSAY,
+                          MULTIPLE_ANSWER,
+                          SINGLE_ANSWER,
+                          FILE_UPLOAD,
+                          NUMERIC,
+                          TRUE_FALSE,
+                          SORTING,
+                          MATCHING,
+                          MULTIPLE_PARTIAL_ANSWER,
+                        ],
+                      type: string,
+                      description: question type,
+                      format: enum,
+                    },
+                  points:
+                    {
+                      example: 5,
+                      type: integer,
+                      description: question points,
+                      format: int32,
+                    },
+                  options:
+                    {
+                      example: 5,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                      description: question option answer,
+                    },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                },
+            },
+          sharedQuizSettings:
+            {
+              type: object,
+              properties:
+                {
+                  assessmentType:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  timeLimit:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time limit,
+                      format: int32,
+                    },
+                  randomArrangement:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Randomize the questions,
+                    },
+                  resultView:
+                    {
+                      example: true,
+                      type: boolean,
+                      description: Viewing the result,
+                    },
+                  indexMinimum:
+                    {
+                      example: 75,
+                      type: integer,
+                      description: minimum grade index,
+                      format: int32,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz deadline,
+                      format: date-time,
+                    },
+                  until_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Quiz until date,
+                      format: date-time,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz data updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizStatistics:
+            {
+              type: object,
+              properties:
+                {
+                  total_submission:
+                    {
+                      example: 100,
+                      type: string,
+                      description: Total submission,
+                    },
+                  total_graded:
+                    { example: 80, type: string, description: Total graded },
+                  total_ungraded:
+                    { example: 20, type: string, description: Total ungraded },
+                  total_no_submission:
+                    {
+                      example: 10,
+                      type: string,
+                      description: Total no submission,
+                    },
+                  average_score:
+                    { example: 75, type: string, description: Average score },
+                  average_time_spent:
+                    {
+                      example: 30,
+                      type: string,
+                      description: Average time spent,
+                    },
+                  average_points:
+                    { example: 80, type: string, description: Average points },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  class_subject_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Class Subject ID,
+                    },
+                  subject_id:
+                    { example: 123, type: string, description: Subject ID },
+                },
+            },
+          sharedQuizSubmission:
+            {
+              type: object,
+              properties:
+                {
+                  id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Quiz submission ID,
+                    },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  class_subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Class Subject ID, quiz will be attached to specific class",
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
+                    },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  attempt:
+                    {
+                      example: 1,
+                      type: integer,
+                      description: Number of quiz submission attempt,
+                      format: int32,
+                    },
+                  time_spent:
+                    {
+                      example: 60,
+                      type: integer,
+                      description: Quiz time spent,
+                      format: int32,
+                    },
+                  score:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The score earned by students on scale of 0 to 100,
+                      format: float,
+                    },
+                  points:
+                    {
+                      example: 100,
+                      type: integer,
+                      description: The total point from students answer,
+                      format: int32,
+                    },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                  due_date:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: due date,
+                      format: date-time,
+                    },
+                  quiz_title:
+                    {
+                      example: Quiz Barisan & Deret Aritmatika,
+                      type: string,
+                      description: Quiz Title,
+                    },
+                  teacher_id:
+                    { example: 123, type: string, description: Teacher ID },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz submission is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when quiz submission is updated,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedQuizSubmissionResult:
+            {
+              type: object,
+              properties:
+                {
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  total_score:
+                    { example: 100, type: string, description: Total score },
+                  correct_answer:
+                    { example: 100, type: string, description: Correct answer },
+                  duration:
+                    { example: 100, type: string, description: Duration },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                },
+            },
+          sharedStudentAnswer:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: Question ID },
+                  quiz_id: { example: 123, type: string, description: Quiz ID },
+                  question_id:
+                    { example: 123, type: string, description: Question ID },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    { example: John, type: string, description: Student Name },
+                  answer:
+                    { example: 7, type: string, description: question answer },
+                  points: { example: 7, type: string, description: points },
+                  options:
+                    {
+                      example: 5,
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedQuizOption",
+                        },
+                      description: student answer option,
+                    },
+                  score_state:
+                    {
+                      enum: [UNKNOWN, NOT_SCORED, SCORED],
+                      type: string,
+                      format: enum,
+                    },
+                },
+            },
+          sharedStudentSubmissions:
+            {
+              type: object,
+              properties:
+                {
+                  quiz_name:
+                    {
+                      example: Aljabar 101,
+                      type: string,
+                      description: Quiz Name,
+                    },
+                  learning_goal:
+                    {
+                      example: understanding aljabar,
+                      type: string,
+                      description: Learning goal,
+                    },
+                  due_date:
+                    {
+                      example: understanding aljabar,
+                      type: string,
+                      description: Learning goal,
+                    },
+                  state:
+                    {
+                      example: NEED_GRADING,
+                      enum:
+                        [
+                          UNKNOWN_SUBMISSON,
+                          NO_SUBMISSION,
+                          NEED_GRADING,
+                          GRADED,
+                        ],
+                      type: string,
+                      description: Quiz submission state,
+                      format: enum,
+                    },
+                  category:
+                    {
+                      example: PRACTICE_QUIZ,
+                      enum:
+                        [
+                          ASSESSMENT_CATEGORY_EMPTY,
+                          PRACTICE_QUIZ,
+                          QUIZ,
+                          HOMEWORK,
+                        ],
+                      type: string,
+                      description: Assessment Quiz Category,
+                      format: enum,
+                    },
+                  score:
+                    {
+                      example: 100.0,
+                      type: number,
+                      description: The score earned by students on scale of 0 to 100,
+                      format: float,
+                    },
+                  points:
+                    {
+                      example: 100,
+                      type: integer,
+                      description: The total point from students answer,
+                      format: int32,
+                    },
+                  quiz_id:
+                    { example: 123456, type: string, description: Quiz ID },
+                  submission_id:
+                    {
+                      example: 65324314,
+                      type: string,
+                      description: Submission ID,
+                    },
+                  class_subject_id:
+                    {
+                      example: 862435235,
+                      type: string,
+                      description: Class subject ID,
+                    },
+                  subject_id:
+                    {
+                      example: 12312r12f23r,
+                      type: string,
+                      description: Subject ID,
+                    },
+                  subject_name:
+                    { example: MATH, type: string, description: Subject Name },
+                  student_id:
+                    { example: 123, type: string, description: Student ID },
+                  student_name:
+                    {
+                      example: John Doe,
+                      type: string,
+                      description: Student Name,
+                    },
+                  teaching_module_id:
+                    {
+                      example: 123,
+                      type: string,
+                      description: Teaching Module ID,
+                    },
+                  assessment_type:
+                    {
+                      example: SUMMATIVE,
+                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: Assessment Type,
+                      format: enum,
+                    },
+                },
+            },
           v1AttachmentFile:
             {
               type: object,
@@ -5247,1370 +6611,6 @@
                       example: "2020-01-01T00:00:00Z",
                       type: string,
                       description: Time when user data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                  "info": { "title": "info", "type": "string" },
-                },
-            },
-          v1CursorPagination:
-            {
-              type: object,
-              properties:
-                {
-                  limit: { type: integer, format: uint32 },
-                  next_cursor: { type: string },
-                  prev_cursor: { type: string },
-                  curr_cursor: { type: string },
-                },
-            },
-          v1OffsetPagination:
-            {
-              type: object,
-              properties:
-                {
-                  limit: { type: integer, format: uint32 },
-                  offset: { type: integer, format: uint32 },
-                  total: { type: integer, format: uint32 },
-                },
-            },
-          v1ResponseMetadata:
-            {
-              type: object,
-              properties:
-                {
-                  offset_pagination:
-                    { $ref: "#/components/schemas/v1OffsetPagination" },
-                  cursor_pagination:
-                    { $ref: "#/components/schemas/v1CursorPagination" },
-                },
-            },
-          publicAnswer:
-            {
-              type: object,
-              properties:
-                {
-                  question_id:
-                    { example: 123, type: string, description: Question ID },
-                  answer:
-                    { example: 7, type: string, description: question answer },
-                  options:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizOption",
-                        },
-                    },
-                },
-            },
-          publicCreateQuestionRequest:
-            {
-              type: object,
-              properties:
-                {
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicCreateQuestionResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicCreateQuizRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  instance_id: { type: string, description: Instance ID },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  exam_id: { example: 123, type: string, description: Exam ID },
-                  settings:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                  assignee:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicQuizAssignee",
-                        },
-                      description: Quiz assignee,
-                    },
-                  class_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class ID, quiz will be attached to specific class",
-                    },
-                },
-            },
-          publicCreateQuizResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                },
-            },
-          publicEditQuestionsRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { type: string },
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicEditQuestionsResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicGetBulkQuizSubmissionByStudentIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_submissions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizSubmission",
-                        },
-                      description: Quiz submission details,
-                    },
-                },
-            },
-          publicGetQuestionListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicGetQuizDetailResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                  questions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizQuestion",
-                        },
-                    },
-                },
-            },
-          publicGetQuizListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicGetQuizListResponseQuiz",
-                        },
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicGetQuizListResponseQuiz:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Quiz ID },
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                  instance_id: { type: string, description: Instance ID },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  exam_id: { example: 123, type: string, description: Exam ID },
-                  settings:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                  class_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class ID, quiz will be attached to specific class",
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          publicGetQuizStatisticsResponse:
-            {
-              type: object,
-              properties:
-                {
-                  statistics:
-                    {
-                      $ref: "#/components/schemas/sharedQuizStatistics",
-                    },
-                },
-            },
-          publicGetQuizSubmissionByStudentIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_submission:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSubmission",
-                    },
-                },
-            },
-          publicGetQuizSubmissionListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_submission_list:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizSubmissionResult",
-                        },
-                    },
-                  meta:
-                    { $ref: "#/components/schemas/v1ResponseMetadata" },
-                },
-            },
-          publicGetStudentSubmissionDetailsResponse:
-            {
-              type: object,
-              properties:
-                {
-                  submission_info:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSubmission",
-                    },
-                  answers:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentAnswer",
-                        },
-                    },
-                },
-            },
-          publicGetStudentSubmissionsResponse:
-            {
-              type: object,
-              properties:
-                {
-                  submissions:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedStudentSubmissions",
-                        },
-                    },
-                },
-            },
-          publicManualGradingSubmissionRequest:
-            {
-              type: object,
-              properties:
-                {
-                  body:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicManualGradingSubmissionRequestBody",
-                        },
-                    },
-                  quiz_id: { type: string },
-                  nisn: { type: string },
-                },
-            },
-          publicManualGradingSubmissionRequestBody:
-            {
-              type: object,
-              properties:
-                { score: { type: string }, answer_id: { type: string } },
-            },
-          publicManualGradingSubmissionResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicQuizAssignee:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string },
-                  student_name: { type: string },
-                },
-            },
-          publicSubmitStudentAnswerRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { type: string },
-                  student_id: { type: string },
-                  student_name: { type: string },
-                  submission_start_time: { type: string },
-                  subission_end_time: { type: string },
-                  answer:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAnswer",
-                        },
-                    },
-                },
-            },
-          publicSubmitStudentAnswerResponse:
-            { type: object, properties: { message: { type: string } } },
-          publicUpdateQuizRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Quiz ID },
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                  settings:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                },
-            },
-          publicUpdateQuizResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string },
-                  quiz:
-                    {
-                      $ref: "#/components/schemas/sharedQuiz",
-                    },
-                },
-            },
-          sharedDeleteQuizAndAttributesRequest:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_id: { type: string },
-                  class_subject_id: { type: string },
-                },
-            },
-          sharedDeleteQuizAndAttributesResponse:
-            { type: object, properties: { message: { type: string } } },
-          sharedQuiz:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Quiz ID },
-                  title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  description:
-                    {
-                      example: Peserta didik akan dinilai kemampuan & pemahaman terhadap materi Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Description,
-                    },
-                  info:
-                    {
-                      example: "Silahkan menjawab pertanyaan yang telah disediakan, berdoa terlebih dahulu",
-                      type: string,
-                      description: Instruction & Resource for Student,
-                    },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  learing_goal_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Learing goal ID,
-                    },
-                  learning_goal_title:
-                    {
-                      example: Menentukan suku ke-n barisan aritmatika dan jumlah suku ke-n deret aritmatika,
-                      type: string,
-                      description: Learing goal title,
-                    },
-                  instance_id: { type: string, description: Instance ID },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                  teaching_module_folder_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module Folder ID,
-                    },
-                  exam_id: { example: 123, type: string, description: Exam ID },
-                  settings:
-                    {
-                      $ref: "#/components/schemas/sharedQuizSettings",
-                    },
-                  class_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class ID, quiz will be attached to specific class",
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedQuizOption:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string },
-                  text: { type: string },
-                  value: { type: string },
-                  isAnswer: { type: boolean },
-                  priority: { type: string },
-                },
-            },
-          sharedQuizQuestion:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Question ID },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  question:
-                    {
-                      example: Choose the correct answer,
-                      type: string,
-                      description: Question,
-                    },
-                  questionType:
-                    {
-                      example: MULIPLE_ANSWER,
-                      enum:
-                        [
-                          ASSESSMENT_QUIZ_EMPTY,
-                          TEXT,
-                          ESSAY,
-                          MULTIPLE_ANSWER,
-                          SINGLE_ANSWER,
-                          FILE_UPLOAD,
-                          NUMERIC,
-                          TRUE_FALSE,
-                          SORTING,
-                          MATCHING,
-                          MULTIPLE_PARTIAL_ANSWER,
-                        ],
-                      type: string,
-                      description: question type,
-                      format: enum,
-                    },
-                  points:
-                    {
-                      example: 5,
-                      type: integer,
-                      description: question points,
-                      format: int32,
-                    },
-                  options:
-                    {
-                      example: 5,
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizOption",
-                        },
-                      description: question option answer,
-                    },
-                  answer:
-                    { example: 7, type: string, description: question answer },
-                },
-            },
-          sharedQuizSettings:
-            {
-              type: object,
-              properties:
-                {
-                  assessmentType:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  timeLimit:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time limit,
-                      format: int32,
-                    },
-                  randomArrangement:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Randomize the questions,
-                    },
-                  resultView:
-                    {
-                      example: true,
-                      type: boolean,
-                      description: Viewing the result,
-                    },
-                  indexMinimum:
-                    {
-                      example: 75,
-                      type: integer,
-                      description: minimum grade index,
-                      format: int32,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz deadline,
-                      format: date-time,
-                    },
-                  until_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Quiz until date,
-                      format: date-time,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz data updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedQuizStatistics:
-            {
-              type: object,
-              properties:
-                {
-                  total_submission:
-                    {
-                      example: 100,
-                      type: string,
-                      description: Total submission,
-                    },
-                  total_graded:
-                    { example: 80, type: string, description: Total graded },
-                  total_ungraded:
-                    { example: 20, type: string, description: Total ungraded },
-                  total_no_submission:
-                    {
-                      example: 10,
-                      type: string,
-                      description: Total no submission,
-                    },
-                  average_score:
-                    { example: 75, type: string, description: Average score },
-                  average_time_spent:
-                    {
-                      example: 30,
-                      type: string,
-                      description: Average time spent,
-                    },
-                  average_points:
-                    { example: 80, type: string, description: Average points },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  class_subject_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Class Subject ID,
-                    },
-                  subject_id:
-                    { example: 123, type: string, description: Subject ID },
-                },
-            },
-          sharedQuizSubmission:
-            {
-              type: object,
-              properties:
-                {
-                  id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Quiz submission ID,
-                    },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  class_subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Class Subject ID, quiz will be attached to specific class",
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: "Subject ID, quiz will be attached to all class that enrolled this subject",
-                    },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    {
-                      example: John Doe,
-                      type: string,
-                      description: Student Name,
-                    },
-                  attempt:
-                    {
-                      example: 1,
-                      type: integer,
-                      description: Number of quiz submission attempt,
-                      format: int32,
-                    },
-                  time_spent:
-                    {
-                      example: 60,
-                      type: integer,
-                      description: Quiz time spent,
-                      format: int32,
-                    },
-                  score:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: The score earned by students on scale of 0 to 100,
-                      format: float,
-                    },
-                  points:
-                    {
-                      example: 100,
-                      type: integer,
-                      description: The total point from students answer,
-                      format: int32,
-                    },
-                  state:
-                    {
-                      example: NEED_GRADING,
-                      enum:
-                        [
-                          UNKNOWN_SUBMISSON,
-                          NO_SUBMISSION,
-                          NEED_GRADING,
-                          GRADED,
-                        ],
-                      type: string,
-                      description: Quiz submission state,
-                      format: enum,
-                    },
-                  due_date:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: due date,
-                      format: date-time,
-                    },
-                  quiz_title:
-                    {
-                      example: Quiz Barisan & Deret Aritmatika,
-                      type: string,
-                      description: Quiz Title,
-                    },
-                  teacher_id:
-                    { example: 123, type: string, description: Teacher ID },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz submission is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when quiz submission is updated,
-                      format: date-time,
-                    },
-                },
-            },
-          sharedQuizSubmissionResult:
-            {
-              type: object,
-              properties:
-                {
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    {
-                      example: John Doe,
-                      type: string,
-                      description: Student Name,
-                    },
-                  total_score:
-                    { example: 100, type: string, description: Total score },
-                  correct_answer:
-                    { example: 100, type: string, description: Correct answer },
-                  duration:
-                    { example: 100, type: string, description: Duration },
-                  state:
-                    {
-                      example: NEED_GRADING,
-                      enum:
-                        [
-                          UNKNOWN_SUBMISSON,
-                          NO_SUBMISSION,
-                          NEED_GRADING,
-                          GRADED,
-                        ],
-                      type: string,
-                      description: Quiz submission state,
-                      format: enum,
-                    },
-                },
-            },
-          sharedStudentAnswer:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Question ID },
-                  quiz_id: { example: 123, type: string, description: Quiz ID },
-                  question_id:
-                    { example: 123, type: string, description: Question ID },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    { example: John, type: string, description: Student Name },
-                  answer:
-                    { example: 7, type: string, description: question answer },
-                  points: { example: 7, type: string, description: points },
-                  options:
-                    {
-                      example: 5,
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedQuizOption",
-                        },
-                      description: student answer option,
-                    },
-                  score_state:
-                    {
-                      enum: [UNKNOWN, NOT_SCORED, SCORED],
-                      type: string,
-                      format: enum,
-                    },
-                },
-            },
-          sharedStudentSubmissions:
-            {
-              type: object,
-              properties:
-                {
-                  quiz_name:
-                    {
-                      example: Aljabar 101,
-                      type: string,
-                      description: Quiz Name,
-                    },
-                  learning_goal:
-                    {
-                      example: understanding aljabar,
-                      type: string,
-                      description: Learning goal,
-                    },
-                  due_date:
-                    {
-                      example: understanding aljabar,
-                      type: string,
-                      description: Learning goal,
-                    },
-                  state:
-                    {
-                      example: NEED_GRADING,
-                      enum:
-                        [
-                          UNKNOWN_SUBMISSON,
-                          NO_SUBMISSION,
-                          NEED_GRADING,
-                          GRADED,
-                        ],
-                      type: string,
-                      description: Quiz submission state,
-                      format: enum,
-                    },
-                  category:
-                    {
-                      example: PRACTICE_QUIZ,
-                      enum:
-                        [
-                          ASSESSMENT_CATEGORY_EMPTY,
-                          PRACTICE_QUIZ,
-                          QUIZ,
-                          HOMEWORK,
-                        ],
-                      type: string,
-                      description: Assessment Quiz Category,
-                      format: enum,
-                    },
-                  score:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: The score earned by students on scale of 0 to 100,
-                      format: float,
-                    },
-                  points:
-                    {
-                      example: 100,
-                      type: integer,
-                      description: The total point from students answer,
-                      format: int32,
-                    },
-                  quiz_id:
-                    { example: 123456, type: string, description: Quiz ID },
-                  submission_id:
-                    {
-                      example: 65324314,
-                      type: string,
-                      description: Submission ID,
-                    },
-                  class_subject_id:
-                    {
-                      example: 862435235,
-                      type: string,
-                      description: Class subject ID,
-                    },
-                  subject_id:
-                    {
-                      example: 12312r12f23r,
-                      type: string,
-                      description: Subject ID,
-                    },
-                  subject_name:
-                    { example: MATH, type: string, description: Subject Name },
-                  student_id:
-                    { example: 123, type: string, description: Student ID },
-                  student_name:
-                    {
-                      example: John Doe,
-                      type: string,
-                      description: Student Name,
-                    },
-                  teaching_module_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teaching Module ID,
-                    },
-                  assessment_type:
-                    {
-                      example: SUMMATIVE,
-                      enum: [ASSESSMENT_EMPTY, FORMATIVE, SUMMATIVE, EXAM],
-                      type: string,
-                      description: Assessment Type,
-                      format: enum,
-                    },
-                },
-            },
-          publicCreateRubricRequest:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Rubrik penilaian presentasi sejarah,
-                      type: string,
-                      description: Rubric title,
-                    },
-                  description:
-                    { type: string, description: Rubric description },
-                  total_point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Rubric total point,
-                      format: float,
-                    },
-                  criteria:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCriterion",
-                        },
-                      description: The list of rubric criteria,
-                    },
-                },
-            },
-          publicCreateRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubric:
-                    {
-                      $ref: "#/components/schemas/sharedRubric",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of creating rubric,
-                    },
-                },
-            },
-          publicDeleteRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    {
-                      type: string,
-                      description: response message of deleting rubric,
-                    },
-                },
-            },
-          publicGetRubricByIdResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubric:
-                    {
-                      $ref: "#/components/schemas/sharedRubric",
-                    },
-                },
-            },
-          publicListRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubrics:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedRubric",
-                        },
-                      description: List Rubrics,
-                    },
-                },
-            },
-          publicUpdateRubricRequest:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Rubric ID },
-                  title:
-                    {
-                      example: Rubrik penilaian presentasi sejarah,
-                      type: string,
-                      description: Rubric title,
-                    },
-                  description:
-                    { type: string, description: Rubric description },
-                  total_point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Rubric total point,
-                      format: float,
-                    },
-                  criteria:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCriterion",
-                        },
-                      description: The list of rubric criteria,
-                    },
-                },
-            },
-          publicUpdateRubricResponse:
-            {
-              type: object,
-              properties:
-                {
-                  rubric:
-                    {
-                      $ref: "#/components/schemas/sharedRubric",
-                    },
-                  message:
-                    {
-                      type: string,
-                      description: response message of updating rubric,
-                    },
-                },
-            },
-          sharedCriterion:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Ekspresi dan Interpretasi,
-                      type: string,
-                      description: Criterion title,
-                    },
-                  description:
-                    { type: string, description: Criterion description },
-                  levels:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedLevel",
-                        },
-                      description: The list of criteria levels,
-                    },
-                },
-            },
-          sharedLevel:
-            {
-              type: object,
-              properties:
-                {
-                  title:
-                    {
-                      example: Sangat Baik,
-                      type: string,
-                      description: Level title,
-                    },
-                  description: { type: string, description: Level description },
-                  point:
-                    {
-                      example: 5.0,
-                      type: number,
-                      description: Level point,
-                      format: float,
-                    },
-                },
-            },
-          sharedRubric:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: Rubric ID },
-                  title:
-                    {
-                      example: Rubrik penilaian presentasi sejarah,
-                      type: string,
-                      description: Rubric title,
-                    },
-                  description:
-                    { type: string, description: Rubric description },
-                  total_point:
-                    {
-                      example: 100.0,
-                      type: number,
-                      description: Rubric total point,
-                      format: float,
-                    },
-                  criteria:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedCriterion",
-                        },
-                      description: The list of rubric criteria,
-                    },
-                  teacher_user_id:
-                    {
-                      example: 123,
-                      type: string,
-                      description: Teacher User ID,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Rubric is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Rubric data updated,
                       format: date-time,
                     },
                 },
