@@ -4,9 +4,8 @@
 ## Table of Contents
 
 - [modules/report/v1/private/finalized_score.proto](#modules_report_v1_private_finalized_score-proto)
-    - [StudentScores](#modules-report-v1-private-StudentScores)
-    - [SubmitFinalizedScoreRequest](#modules-report-v1-private-SubmitFinalizedScoreRequest)
-    - [SubmitFinalizedScoreResponse](#modules-report-v1-private-SubmitFinalizedScoreResponse)
+    - [GetSubjectFinalizedScoreByStudentUserIDRequest](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDRequest)
+    - [GetSubjectFinalizedScoreByStudentUserIDResponse](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDResponse)
   
     - [FinalizedScoreService](#modules-report-v1-private-FinalizedScoreService)
   
@@ -21,49 +20,31 @@
 
 
 
-<a name="modules-report-v1-private-StudentScores"></a>
+<a name="modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDRequest"></a>
 
-### StudentScores
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
-| final_score | [float](#float) |  |  |
-
-
-
-
-
-
-<a name="modules-report-v1-private-SubmitFinalizedScoreRequest"></a>
-
-### SubmitFinalizedScoreRequest
+### GetSubjectFinalizedScoreByStudentUserIDRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| task_id | [string](#string) |  |  |
-| task_type | [string](#string) |  |  |
-| class_group_id | [string](#string) |  |  |
-| student_scores | [StudentScores](#modules-report-v1-private-StudentScores) | repeated |  |
+| class_subject_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-report-v1-private-SubmitFinalizedScoreResponse"></a>
+<a name="modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDResponse"></a>
 
-### SubmitFinalizedScoreResponse
+### GetSubjectFinalizedScoreByStudentUserIDResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| message | [string](#string) |  |  |
+| finalized_score | [modules.report.v1.shared.FinalizedScore](#modules-report-v1-shared-FinalizedScore) |  |  |
 
 
 
@@ -83,7 +64,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SubmitFinalizedScore | [SubmitFinalizedScoreRequest](#modules-report-v1-private-SubmitFinalizedScoreRequest) | [SubmitFinalizedScoreResponse](#modules-report-v1-private-SubmitFinalizedScoreResponse) |  |
+| GetSubjectFinalizedScoreByStudentUserID | [GetSubjectFinalizedScoreByStudentUserIDRequest](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDRequest) | [GetSubjectFinalizedScoreByStudentUserIDResponse](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDResponse) |  |
 
  
 

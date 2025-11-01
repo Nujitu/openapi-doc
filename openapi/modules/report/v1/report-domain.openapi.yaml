@@ -5,7 +5,7 @@
     {
       title: Report Domain,
       version: v1,
-      description: "Skola Attendance Service, Skola Absence Service, Skoola Finalized Score Service",
+      description: "Skola Absence Service, Skoola Finalized Score Service, Skola Attendance Service",
     },
   servers:
     [
@@ -14,6 +14,369 @@
     ],
   paths:
     {
+      /v1/absence/history:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: Get absence history,
+              operationId: getAbsenceHistory,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicGetAbsenceHistoryRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetAbsenceHistoryResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/absence/list:
+        {
+          post:
+            {
+              tags: [AbsenceService],
+              summary: List absences,
+              operationId: listAbsences,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicListAbsencesRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicListAbsencesResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/absence/{id}":
+        {
+          delete:
+            {
+              tags: [AbsenceService],
+              summary: Delete absence,
+              operationId: deleteAbsence,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: date, in: query, schema: { type: string } },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGeneralAbsenceResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/finalized-score/bulk:
+        {
+          get:
+            {
+              tags: [FinalizedScoreService],
+              summary: Get Subject Finalized Score By Student ID,
+              description: Retrieve Finalized Score of one student in a class subject.,
+              operationId: FinalizedScoreService_GetBulkSubjectFinalizedScoreByStudentUserIDs,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                  {
+                    name: student_user_ids,
+                    in: query,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetBulkSubjectFinalizedScoreByStudentUserIDsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/finalized-score/{class_subject_id}/student/{student_user_id}":
+        {
+          get:
+            {
+              tags: [FinalizedScoreService],
+              summary: Get Subject Finalized Score By Student ID,
+              description: Retrieve Finalized Score of one student in a class subject.,
+              operationId: FinalizedScoreService_GetSubjectFinalizedScoreByStudentUserID,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: student_user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetSubjectFinalizedScoreByStudentUserIDResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [FinalizedScoreService],
+              summary: Generate Subject Finalized Score For One Student,
+              description: To start calculating the final Score of one student in a class subject.,
+              operationId: FinalizedScoreService_GenerateSubjectFinalizedScoreForOneStudent,
+              parameters:
+                [
+                  {
+                    name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: student_user_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGenerateSubjectFinalizedScoreForOneStudentResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/attendance:
         {
           post:
@@ -365,239 +728,457 @@
                 },
             },
         },
-      /v1/absence/history:
-        {
-          post:
-            {
-              tags: [AbsenceService],
-              summary: Get absence history,
-              operationId: getAbsenceHistory,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicGetAbsenceHistoryRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetAbsenceHistoryResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/absence/list:
-        {
-          post:
-            {
-              tags: [AbsenceService],
-              summary: List absences,
-              operationId: listAbsences,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicListAbsencesRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicListAbsencesResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/absence/{id}":
-        {
-          delete:
-            {
-              tags: [AbsenceService],
-              summary: Delete absence,
-              operationId: deleteAbsence,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  { name: date, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGeneralAbsenceResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/finalized-score/{class_group_id}/{task_id}":
-        {
-          get:
-            {
-              tags: [FinalizedScoreService],
-              summary: Get Finalized Score,
-              description: Retrieve Finalized Score,
-              operationId: FinalizedScoreService_GetFinalizedScoreList,
-              parameters:
-                [
-                  {
-                    name: class_group_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: task_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicGetFinalizedScoreListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
     },
   "components":
     {
       "schemas":
         {
+          publicAbsenceDetail:
+            {
+              type: object,
+              properties:
+                {
+                  date:
+                    {
+                      type: string,
+                      description: Date of the absence,
+                      format: date-time,
+                    },
+                  status:
+                    {
+                      type: string,
+                      description: "Status of attendance (present, sick, absent, leave, late)",
+                    },
+                },
+            },
+          publicGeneralAbsenceResponse:
+            {
+              type: object,
+              properties:
+                { message: { type: string, description: Success message } },
+            },
+          publicGetAbsenceHistoryRequest:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string, description: Student ID },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start date for filtering,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End date for filtering,
+                      format: date-time,
+                    },
+                },
+            },
+          publicGetAbsenceHistoryResponse:
+            {
+              type: object,
+              properties:
+                {
+                  present:
+                    {
+                      type: integer,
+                      description: Total present records,
+                      format: int32,
+                    },
+                  absent:
+                    {
+                      type: integer,
+                      description: Total absent records,
+                      format: int32,
+                    },
+                  sick:
+                    {
+                      type: integer,
+                      description: Total sick records,
+                      format: int32,
+                    },
+                  leave:
+                    {
+                      type: integer,
+                      description: Total leave records,
+                      format: int32,
+                    },
+                  late:
+                    {
+                      type: integer,
+                      description: Total late records,
+                      format: int32,
+                    },
+                  absences:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAbsenceDetail",
+                        },
+                      description: Detailed absence records,
+                    },
+                  student_id: { type: string, description: Student name },
+                  student_name: { type: string, description: Student name },
+                },
+            },
+          publicListAbsencesRequest:
+            {
+              type: object,
+              properties:
+                {
+                  class_id: { type: string, description: Filter by class ID },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start date for filtering,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End date for filtering,
+                      format: date-time,
+                    },
+                  status:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: "Filter by status (present, sick, absent, leave, late)",
+                    },
+                },
+            },
+          publicListAbsencesResponse:
+            {
+              type: object,
+              properties:
+                {
+                  data:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicStudentAbsenceData",
+                        },
+                      description: List of student absence data,
+                    },
+                },
+            },
+          publicStudentAbsenceData:
+            {
+              type: object,
+              properties:
+                {
+                  student_id: { type: string, description: Student ID },
+                  student_name: { type: string, description: Student name },
+                  total:
+                    {
+                      type: integer,
+                      description: Total attendance records,
+                      format: int32,
+                    },
+                  sick:
+                    {
+                      type: integer,
+                      description: Number of sick days,
+                      format: int32,
+                    },
+                  present:
+                    {
+                      type: integer,
+                      description: Number of present days,
+                      format: int32,
+                    },
+                  absent:
+                    {
+                      type: integer,
+                      description: Number of absent days,
+                      format: int32,
+                    },
+                  leave:
+                    {
+                      type: integer,
+                      description: Number of leave days,
+                      format: int32,
+                    },
+                  late:
+                    {
+                      type: integer,
+                      description: Number of late arrivals,
+                      format: int32,
+                    },
+                  absences:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/publicAbsenceDetail",
+                        },
+                      description: Detailed absence records,
+                    },
+                },
+            },
+          "v1ErrorResponse":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "errors":
+                    {
+                      "title": "errors",
+                      "type": "array",
+                      "items":
+                        { "$ref": "#/components/schemas/v1ErrorInfo" },
+                    },
+                },
+            },
+          "v1ErrorInfo":
+            {
+              "type": "object",
+              "properties":
+                {
+                  "message": { "title": "message", "type": "string" },
+                  "code": { "title": "code", "type": "string" },
+                  "field": { "title": "field", "type": "string" },
+                  "info": { "title": "info", "type": "string" },
+                },
+            },
+          publicGenerateSubjectFinalizedScoreForOneStudentResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    {
+                      type: string,
+                      description: response message of finalized score generation,
+                    },
+                  finalized_score_id:
+                    { type: string, description: finalized score id },
+                },
+            },
+          publicGetBulkSubjectFinalizedScoreByStudentUserIDsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  finalized_scores:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedFinalizedScore",
+                        },
+                      description: finalized score details,
+                    },
+                },
+            },
+          publicGetSubjectFinalizedScoreByStudentUserIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  finalized_score:
+                    {
+                      $ref: "#/components/schemas/sharedFinalizedScore",
+                    },
+                },
+            },
+          sharedAssessmentDetail:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModuleAssessment",
+                    },
+                  mid_term:
+                    {
+                      $ref: "#/components/schemas/sharedExamAssessment",
+                    },
+                  final_term:
+                    {
+                      $ref: "#/components/schemas/sharedExamAssessment",
+                    },
+                },
+            },
+          sharedAssessmentMethodDetail:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: assessment id },
+                  submission_id:
+                    { type: string, description: assessment submission id },
+                  title: { type: string, description: assessment title },
+                  assessment_method:
+                    {
+                      enum:
+                        [
+                          UNKNOWN_ASSESSMENT_METHOD,
+                          ASSIGNMENT,
+                          OBSERVATION,
+                          QUIZ,
+                        ],
+                      type: string,
+                      description: "assessment method (e.g., QUIZ, ASSIGNMENT, OBSERVATION)",
+                      format: enum,
+                    },
+                  score:
+                    {
+                      type: number,
+                      description: score of the assessment,
+                      format: float,
+                    },
+                },
+            },
+          sharedExamAssessment:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: exam assessment id },
+                  final_score:
+                    {
+                      type: number,
+                      description: final score of all assessments in this exam,
+                      format: float,
+                    },
+                  assessment_method_details:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedAssessmentMethodDetail",
+                        },
+                      description: assessment details grouped by method,
+                    },
+                },
+            },
+          sharedFinalizedScore:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: id },
+                  final_score:
+                    { type: number, description: final_score, format: float },
+                  student_user_id:
+                    { type: string, description: student user id },
+                  class_subject_id:
+                    { type: string, description: class subject id },
+                  subject_name: { type: string, description: subject name },
+                  state:
+                    {
+                      enum: [UNKNOWN, PROCESSING, FAILED, COMPLETED],
+                      type: string,
+                      description: finalize score state,
+                      format: enum,
+                    },
+                  assessment_detail:
+                    {
+                      $ref: "#/components/schemas/sharedAssessmentDetail",
+                    },
+                  created_at:
+                    {
+                      type: string,
+                      description: created at,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      type: string,
+                      description: updated at,
+                      format: date-time,
+                    },
+                },
+            },
+          sharedTeachingModuleAssessment:
+            {
+              type: object,
+              properties:
+                {
+                  final_score:
+                    {
+                      type: number,
+                      description: final score of all teaching module assessments,
+                      format: float,
+                    },
+                  teaching_module_details:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleAssessmentDetail",
+                        },
+                      description: teaching module assessment details,
+                    },
+                },
+            },
+          sharedTeachingModuleAssessmentDetail:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: teaching module id },
+                  title: { type: string, description: teaching module title },
+                  score:
+                    {
+                      type: number,
+                      description: score of all assessments in this module,
+                      format: float,
+                    },
+                  assessment_type_details:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleAssessmentTypeDetail",
+                        },
+                      description: assessment details grouped by type,
+                    },
+                },
+            },
+          sharedTeachingModuleAssessmentTypeDetail:
+            {
+              type: object,
+              properties:
+                {
+                  assessment_type:
+                    {
+                      enum:
+                        [UNKNOWN_ASSESSMENT_TYPE, FORMATIVE, SUMMATIVE, EXAM],
+                      type: string,
+                      description: "assessment type (e.g., SUMMATIVE, FORMATIVE)",
+                      format: enum,
+                    },
+                  percentage:
+                    {
+                      type: number,
+                      description: percentage score of this assessment type,
+                      format: float,
+                    },
+                  score:
+                    {
+                      type: number,
+                      description: score of this assessment type,
+                      format: float,
+                    },
+                  assessment_method_details:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedAssessmentMethodDetail",
+                        },
+                      description: assessment details grouped by method,
+                    },
+                },
+            },
           publicAssignment:
             {
               type: object,
@@ -944,261 +1525,6 @@
                     {
                       type: string,
                       description: "attendance status (Present, Absent, Sick, Leave, Late)",
-                    },
-                },
-            },
-          "v1ErrorResponse":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "errors":
-                    {
-                      "title": "errors",
-                      "type": "array",
-                      "items":
-                        { "$ref": "#/components/schemas/v1ErrorInfo" },
-                    },
-                },
-            },
-          "v1ErrorInfo":
-            {
-              "type": "object",
-              "properties":
-                {
-                  "message": { "title": "message", "type": "string" },
-                  "code": { "title": "code", "type": "string" },
-                  "field": { "title": "field", "type": "string" },
-                  "info": { "title": "info", "type": "string" },
-                },
-            },
-          publicAbsenceDetail:
-            {
-              type: object,
-              properties:
-                {
-                  date:
-                    {
-                      type: string,
-                      description: Date of the absence,
-                      format: date-time,
-                    },
-                  status:
-                    {
-                      type: string,
-                      description: "Status of attendance (present, sick, absent, leave, late)",
-                    },
-                },
-            },
-          publicGeneralAbsenceResponse:
-            {
-              type: object,
-              properties:
-                { message: { type: string, description: Success message } },
-            },
-          publicGetAbsenceHistoryRequest:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string, description: Student ID },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start date for filtering,
-                      format: date-time,
-                    },
-                  end_date:
-                    {
-                      type: string,
-                      description: End date for filtering,
-                      format: date-time,
-                    },
-                },
-            },
-          publicGetAbsenceHistoryResponse:
-            {
-              type: object,
-              properties:
-                {
-                  present:
-                    {
-                      type: integer,
-                      description: Total present records,
-                      format: int32,
-                    },
-                  absent:
-                    {
-                      type: integer,
-                      description: Total absent records,
-                      format: int32,
-                    },
-                  sick:
-                    {
-                      type: integer,
-                      description: Total sick records,
-                      format: int32,
-                    },
-                  leave:
-                    {
-                      type: integer,
-                      description: Total leave records,
-                      format: int32,
-                    },
-                  late:
-                    {
-                      type: integer,
-                      description: Total late records,
-                      format: int32,
-                    },
-                  absences:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAbsenceDetail",
-                        },
-                      description: Detailed absence records,
-                    },
-                  student_id: { type: string, description: Student name },
-                  student_name: { type: string, description: Student name },
-                },
-            },
-          publicListAbsencesRequest:
-            {
-              type: object,
-              properties:
-                {
-                  class_id: { type: string, description: Filter by class ID },
-                  start_date:
-                    {
-                      type: string,
-                      description: Start date for filtering,
-                      format: date-time,
-                    },
-                  end_date:
-                    {
-                      type: string,
-                      description: End date for filtering,
-                      format: date-time,
-                    },
-                  status:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: "Filter by status (present, sick, absent, leave, late)",
-                    },
-                },
-            },
-          publicListAbsencesResponse:
-            {
-              type: object,
-              properties:
-                {
-                  data:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicStudentAbsenceData",
-                        },
-                      description: List of student absence data,
-                    },
-                },
-            },
-          publicStudentAbsenceData:
-            {
-              type: object,
-              properties:
-                {
-                  student_id: { type: string, description: Student ID },
-                  student_name: { type: string, description: Student name },
-                  total:
-                    {
-                      type: integer,
-                      description: Total attendance records,
-                      format: int32,
-                    },
-                  sick:
-                    {
-                      type: integer,
-                      description: Number of sick days,
-                      format: int32,
-                    },
-                  present:
-                    {
-                      type: integer,
-                      description: Number of present days,
-                      format: int32,
-                    },
-                  absent:
-                    {
-                      type: integer,
-                      description: Number of absent days,
-                      format: int32,
-                    },
-                  leave:
-                    {
-                      type: integer,
-                      description: Number of leave days,
-                      format: int32,
-                    },
-                  late:
-                    {
-                      type: integer,
-                      description: Number of late arrivals,
-                      format: int32,
-                    },
-                  absences:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/publicAbsenceDetail",
-                        },
-                      description: Detailed absence records,
-                    },
-                },
-            },
-          publicGetFinalizedScoreListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  finalized_scores:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedFinalizedScore",
-                        },
-                      description: finalized score response,
-                    },
-                },
-            },
-          sharedFinalizedScore:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: id },
-                  task_id: { type: string, description: task id },
-                  task_type: { type: string, description: task type },
-                  final_score:
-                    { type: number, description: final_score, format: float },
-                  student_id: { type: string, description: student id },
-                  class_group_id: { type: string, description: class group id },
-                  created_at:
-                    {
-                      type: string,
-                      description: created at,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      type: string,
-                      description: updated at,
-                      format: date-time,
                     },
                 },
             },

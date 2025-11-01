@@ -4,6 +4,8 @@
 ## Table of Contents
 
 - [modules/material/v1/private/class_group.proto](#modules_material_v1_private_class_group-proto)
+    - [GetClassSubjectDetailsRequest](#modules-material-v1-private-GetClassSubjectDetailsRequest)
+    - [GetClassSubjectDetailsResponse](#modules-material-v1-private-GetClassSubjectDetailsResponse)
     - [GetTeacherCoursesRequest](#modules-material-v1-private-GetTeacherCoursesRequest)
     - [GetTeacherCoursesResponse](#modules-material-v1-private-GetTeacherCoursesResponse)
   
@@ -27,6 +29,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/material/v1/private/class_group.proto
+
+
+
+<a name="modules-material-v1-private-GetClassSubjectDetailsRequest"></a>
+
+### GetClassSubjectDetailsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-private-GetClassSubjectDetailsResponse"></a>
+
+### GetClassSubjectDetailsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subjects | [modules.material.v1.shared.ClassSubjectDetail](#modules-material-v1-shared-ClassSubjectDetail) |  |  |
+
+
+
 
 
 
@@ -74,6 +106,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetTeacherCourses | [GetTeacherCoursesRequest](#modules-material-v1-private-GetTeacherCoursesRequest) | [GetTeacherCoursesResponse](#modules-material-v1-private-GetTeacherCoursesResponse) |  |
+| GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-private-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-private-GetClassSubjectDetailsResponse) |  |
 
  
 

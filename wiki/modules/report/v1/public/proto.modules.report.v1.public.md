@@ -34,8 +34,12 @@
     - [AttendanceService](#modules-report-v1-public-AttendanceService)
   
 - [modules/report/v1/public/finalized_score.proto](#modules_report_v1_public_finalized_score-proto)
-    - [GetFinalizedScoreListRequest](#modules-report-v1-public-GetFinalizedScoreListRequest)
-    - [GetFinalizedScoreListResponse](#modules-report-v1-public-GetFinalizedScoreListResponse)
+    - [GenerateSubjectFinalizedScoreForOneStudentRequest](#modules-report-v1-public-GenerateSubjectFinalizedScoreForOneStudentRequest)
+    - [GenerateSubjectFinalizedScoreForOneStudentResponse](#modules-report-v1-public-GenerateSubjectFinalizedScoreForOneStudentResponse)
+    - [GetBulkSubjectFinalizedScoreByStudentUserIDsRequest](#modules-report-v1-public-GetBulkSubjectFinalizedScoreByStudentUserIDsRequest)
+    - [GetBulkSubjectFinalizedScoreByStudentUserIDsResponse](#modules-report-v1-public-GetBulkSubjectFinalizedScoreByStudentUserIDsResponse)
+    - [GetSubjectFinalizedScoreByStudentUserIDRequest](#modules-report-v1-public-GetSubjectFinalizedScoreByStudentUserIDRequest)
+    - [GetSubjectFinalizedScoreByStudentUserIDResponse](#modules-report-v1-public-GetSubjectFinalizedScoreByStudentUserIDResponse)
   
     - [FinalizedScoreService](#modules-report-v1-public-FinalizedScoreService)
   
@@ -502,31 +506,94 @@ Response for listing journal attendance
 
 
 
-<a name="modules-report-v1-public-GetFinalizedScoreListRequest"></a>
+<a name="modules-report-v1-public-GenerateSubjectFinalizedScoreForOneStudentRequest"></a>
 
-### GetFinalizedScoreListRequest
+### GenerateSubjectFinalizedScoreForOneStudentRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| class_group_id | [string](#string) |  |  |
-| task_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-report-v1-public-GetFinalizedScoreListResponse"></a>
+<a name="modules-report-v1-public-GenerateSubjectFinalizedScoreForOneStudentResponse"></a>
 
-### GetFinalizedScoreListResponse
+### GenerateSubjectFinalizedScoreForOneStudentResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+| finalized_score_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetBulkSubjectFinalizedScoreByStudentUserIDsRequest"></a>
+
+### GetBulkSubjectFinalizedScoreByStudentUserIDsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+| student_user_ids | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetBulkSubjectFinalizedScoreByStudentUserIDsResponse"></a>
+
+### GetBulkSubjectFinalizedScoreByStudentUserIDsResponse
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | finalized_scores | [modules.report.v1.shared.FinalizedScore](#modules-report-v1-shared-FinalizedScore) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetSubjectFinalizedScoreByStudentUserIDRequest"></a>
+
+### GetSubjectFinalizedScoreByStudentUserIDRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-public-GetSubjectFinalizedScoreByStudentUserIDResponse"></a>
+
+### GetSubjectFinalizedScoreByStudentUserIDResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| finalized_score | [modules.report.v1.shared.FinalizedScore](#modules-report-v1-shared-FinalizedScore) |  |  |
 
 
 
@@ -546,7 +613,9 @@ Response for listing journal attendance
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetFinalizedScoreList | [GetFinalizedScoreListRequest](#modules-report-v1-public-GetFinalizedScoreListRequest) | [GetFinalizedScoreListResponse](#modules-report-v1-public-GetFinalizedScoreListResponse) |  |
+| GenerateSubjectFinalizedScoreForOneStudent | [GenerateSubjectFinalizedScoreForOneStudentRequest](#modules-report-v1-public-GenerateSubjectFinalizedScoreForOneStudentRequest) | [GenerateSubjectFinalizedScoreForOneStudentResponse](#modules-report-v1-public-GenerateSubjectFinalizedScoreForOneStudentResponse) |  |
+| GetBulkSubjectFinalizedScoreByStudentUserIDs | [GetBulkSubjectFinalizedScoreByStudentUserIDsRequest](#modules-report-v1-public-GetBulkSubjectFinalizedScoreByStudentUserIDsRequest) | [GetBulkSubjectFinalizedScoreByStudentUserIDsResponse](#modules-report-v1-public-GetBulkSubjectFinalizedScoreByStudentUserIDsResponse) |  |
+| GetSubjectFinalizedScoreByStudentUserID | [GetSubjectFinalizedScoreByStudentUserIDRequest](#modules-report-v1-public-GetSubjectFinalizedScoreByStudentUserIDRequest) | [GetSubjectFinalizedScoreByStudentUserIDResponse](#modules-report-v1-public-GetSubjectFinalizedScoreByStudentUserIDResponse) |  |
 
  
 
