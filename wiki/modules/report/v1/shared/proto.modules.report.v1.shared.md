@@ -6,9 +6,22 @@
 - [modules/report/v1/shared/absence.proto](#modules_report_v1_shared_absence-proto)
     - [Absence](#modules-report-v1-shared-Absence)
   
+- [modules/report/v1/shared/assessment_detail.proto](#modules_report_v1_shared_assessment_detail-proto)
+    - [AssessmentDetail](#modules-report-v1-shared-AssessmentDetail)
+    - [AssessmentMethodDetail](#modules-report-v1-shared-AssessmentMethodDetail)
+    - [ExamAssessment](#modules-report-v1-shared-ExamAssessment)
+    - [TeachingModuleAssessment](#modules-report-v1-shared-TeachingModuleAssessment)
+    - [TeachingModuleAssessmentDetail](#modules-report-v1-shared-TeachingModuleAssessmentDetail)
+    - [TeachingModuleAssessmentTypeDetail](#modules-report-v1-shared-TeachingModuleAssessmentTypeDetail)
+  
 - [modules/report/v1/shared/attendance.proto](#modules_report_v1_shared_attendance-proto)
     - [Attendance](#modules-report-v1-shared-Attendance)
     - [StudentAttendance](#modules-report-v1-shared-StudentAttendance)
+  
+- [modules/report/v1/shared/enum.proto](#modules_report_v1_shared_enum-proto)
+    - [AssessmentMethod](#modules-report-v1-shared-AssessmentMethod)
+    - [AssessmentType](#modules-report-v1-shared-AssessmentType)
+    - [FinalizeScoreState](#modules-report-v1-shared-FinalizeScoreState)
   
 - [modules/report/v1/shared/finalized_score.proto](#modules_report_v1_shared_finalized_score-proto)
     - [FinalizedScore](#modules-report-v1-shared-FinalizedScore)
@@ -40,6 +53,127 @@
 | status | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="modules_report_v1_shared_assessment_detail-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/shared/assessment_detail.proto
+
+
+
+<a name="modules-report-v1-shared-AssessmentDetail"></a>
+
+### AssessmentDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_module | [TeachingModuleAssessment](#modules-report-v1-shared-TeachingModuleAssessment) |  |  |
+| mid_term | [ExamAssessment](#modules-report-v1-shared-ExamAssessment) |  |  |
+| final_term | [ExamAssessment](#modules-report-v1-shared-ExamAssessment) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-shared-AssessmentMethodDetail"></a>
+
+### AssessmentMethodDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| submission_id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| assessment_method | [AssessmentMethod](#modules-report-v1-shared-AssessmentMethod) |  |  |
+| score | [float](#float) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-shared-ExamAssessment"></a>
+
+### ExamAssessment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| final_score | [float](#float) |  |  |
+| assessment_method_details | [AssessmentMethodDetail](#modules-report-v1-shared-AssessmentMethodDetail) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-shared-TeachingModuleAssessment"></a>
+
+### TeachingModuleAssessment
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| final_score | [float](#float) |  |  |
+| teaching_module_details | [TeachingModuleAssessmentDetail](#modules-report-v1-shared-TeachingModuleAssessmentDetail) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-shared-TeachingModuleAssessmentDetail"></a>
+
+### TeachingModuleAssessmentDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| score | [float](#float) |  |  |
+| assessment_type_details | [TeachingModuleAssessmentTypeDetail](#modules-report-v1-shared-TeachingModuleAssessmentTypeDetail) | repeated |  |
+
+
+
+
+
+
+<a name="modules-report-v1-shared-TeachingModuleAssessmentTypeDetail"></a>
+
+### TeachingModuleAssessmentTypeDetail
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assessment_type | [AssessmentType](#modules-report-v1-shared-AssessmentType) |  |  |
+| percentage | [float](#float) |  |  |
+| score | [float](#float) |  |  |
+| assessment_method_details | [AssessmentMethodDetail](#modules-report-v1-shared-AssessmentMethodDetail) | repeated |  |
 
 
 
@@ -115,6 +249,64 @@
 
 
 
+<a name="modules_report_v1_shared_enum-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/report/v1/shared/enum.proto
+
+
+ 
+
+
+<a name="modules-report-v1-shared-AssessmentMethod"></a>
+
+### AssessmentMethod
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNKNOWN_ASSESSMENT_METHOD | 0 |  |
+| ASSIGNMENT | 1 |  |
+| OBSERVATION | 2 |  |
+| QUIZ | 3 |  |
+
+
+
+<a name="modules-report-v1-shared-AssessmentType"></a>
+
+### AssessmentType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNKNOWN_ASSESSMENT_TYPE | 0 |  |
+| FORMATIVE | 1 |  |
+| SUMMATIVE | 2 |  |
+| EXAM | 3 |  |
+
+
+
+<a name="modules-report-v1-shared-FinalizeScoreState"></a>
+
+### FinalizeScoreState
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNKNOWN | 0 |  |
+| PROCESSING | 1 |  |
+| FAILED | 2 |  |
+| COMPLETED | 3 |  |
+
+
+ 
+
+ 
+
+ 
+
+
+
 <a name="modules_report_v1_shared_finalized_score-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -131,11 +323,12 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| task_id | [string](#string) |  |  |
-| task_type | [string](#string) |  |  |
 | final_score | [float](#float) |  |  |
-| student_id | [string](#string) |  |  |
-| class_group_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
+| state | [FinalizeScoreState](#modules-report-v1-shared-FinalizeScoreState) |  |  |
+| assessment_detail | [AssessmentDetail](#modules-report-v1-shared-AssessmentDetail) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 

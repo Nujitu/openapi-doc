@@ -3,6 +3,12 @@
 
 ## Table of Contents
 
+- [modules/teaching_module/v1/private/exam.proto](#modules_teaching_module_v1_private_exam-proto)
+    - [ListExamRequest](#modules-teaching_module-v1-private-ListExamRequest)
+    - [ListExamResponse](#modules-teaching_module-v1-private-ListExamResponse)
+  
+    - [ExamPrivateService](#modules-teaching_module-v1-private-ExamPrivateService)
+  
 - [modules/teaching_module/v1/private/folder_task.proto](#modules_teaching_module_v1_private_folder_task-proto)
     - [DeleteFolderTaskRequest](#modules-teaching_module-v1-private-DeleteFolderTaskRequest)
     - [DeleteFolderTaskResponse](#modules-teaching_module-v1-private-DeleteFolderTaskResponse)
@@ -12,11 +18,70 @@
     - [FolderTaskService](#modules-teaching_module-v1-private-FolderTaskService)
   
 - [modules/teaching_module/v1/private/teaching_module.proto](#modules_teaching_module_v1_private_teaching_module-proto)
+    - [GetTeachingModuleListRequest](#modules-teaching_module-v1-private-GetTeachingModuleListRequest)
     - [GetTeachingModuleSummaryByIdRequest](#modules-teaching_module-v1-private-GetTeachingModuleSummaryByIdRequest)
+    - [TeachingModuleListResponse](#modules-teaching_module-v1-private-TeachingModuleListResponse)
   
-    - [TeachingModuleService](#modules-teaching_module-v1-private-TeachingModuleService)
+    - [TeachingModulePrivateService](#modules-teaching_module-v1-private-TeachingModulePrivateService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_teaching_module_v1_private_exam-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/teaching_module/v1/private/exam.proto
+
+
+
+<a name="modules-teaching_module-v1-private-ListExamRequest"></a>
+
+### ListExamRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-private-ListExamResponse"></a>
+
+### ListExamResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| exams | [modules.teaching_modules.v1.shared.Exam](#modules-teaching_modules-v1-shared-Exam) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-teaching_module-v1-private-ExamPrivateService"></a>
+
+### ExamPrivateService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| ListExam | [ListExamRequest](#modules-teaching_module-v1-private-ListExamRequest) | [ListExamResponse](#modules-teaching_module-v1-private-ListExamResponse) |  |
+
+ 
 
 
 
@@ -121,6 +186,24 @@ Insert Folder Task Request
 
 
 
+<a name="modules-teaching_module-v1-private-GetTeachingModuleListRequest"></a>
+
+### GetTeachingModuleListRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subject_id | [string](#string) |  |  |
+| teacher_id | [string](#string) |  |  |
+| class_subject_id | [string](#string) |  |  |
+| sort | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-teaching_module-v1-private-GetTeachingModuleSummaryByIdRequest"></a>
 
 ### GetTeachingModuleSummaryByIdRequest
@@ -135,21 +218,37 @@ Insert Folder Task Request
 
 
 
- 
+
+<a name="modules-teaching_module-v1-private-TeachingModuleListResponse"></a>
+
+### TeachingModuleListResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_modules | [modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) | repeated |  |
+
+
+
+
 
  
 
  
 
+ 
 
-<a name="modules-teaching_module-v1-private-TeachingModuleService"></a>
 
-### TeachingModuleService
+<a name="modules-teaching_module-v1-private-TeachingModulePrivateService"></a>
+
+### TeachingModulePrivateService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetTeachingModuleSummaryByID | [GetTeachingModuleSummaryByIdRequest](#modules-teaching_module-v1-private-GetTeachingModuleSummaryByIdRequest) | [.modules.teaching_modules.v1.shared.TeachingModule](#modules-teaching_modules-v1-shared-TeachingModule) |  |
+| GetTeachingModuleList | [GetTeachingModuleListRequest](#modules-teaching_module-v1-private-GetTeachingModuleListRequest) | [TeachingModuleListResponse](#modules-teaching_module-v1-private-TeachingModuleListResponse) |  |
 
  
 

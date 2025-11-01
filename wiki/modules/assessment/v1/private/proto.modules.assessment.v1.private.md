@@ -3,10 +3,204 @@
 
 ## Table of Contents
 
+- [modules/assessment/v1/private/assignment.proto](#modules_assessment_v1_private_assignment-proto)
+    - [GetAssignmentByIdRequest](#modules-assessment-v1-private-GetAssignmentByIdRequest)
+    - [GetAssignmentByIdResponse](#modules-assessment-v1-private-GetAssignmentByIdResponse)
+    - [GetAssignmentSubmissionsRequest](#modules-assessment-v1-private-GetAssignmentSubmissionsRequest)
+    - [GetAssignmentSubmissionsResponse](#modules-assessment-v1-private-GetAssignmentSubmissionsResponse)
+  
+    - [AssignmentPrivateService](#modules-assessment-v1-private-AssignmentPrivateService)
+  
+- [modules/assessment/v1/private/observation.proto](#modules_assessment_v1_private_observation-proto)
+    - [GetObservationByIdRequest](#modules-assessment-v1-private-GetObservationByIdRequest)
+    - [GetObservationByIdResponse](#modules-assessment-v1-private-GetObservationByIdResponse)
+    - [GetObservationSubmissionsRequest](#modules-assessment-v1-private-GetObservationSubmissionsRequest)
+    - [GetObservationSubmissionsResponse](#modules-assessment-v1-private-GetObservationSubmissionsResponse)
+  
+    - [ObservationPrivateService](#modules-assessment-v1-private-ObservationPrivateService)
+  
 - [modules/assessment/v1/private/quiz.proto](#modules_assessment_v1_private_quiz-proto)
     - [QuizPrivateService](#modules-assessment-v1-private-QuizPrivateService)
   
 - [Scalar Value Types](#scalar-value-types)
+
+
+
+<a name="modules_assessment_v1_private_assignment-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/private/assignment.proto
+
+
+
+<a name="modules-assessment-v1-private-GetAssignmentByIdRequest"></a>
+
+### GetAssignmentByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-private-GetAssignmentByIdResponse"></a>
+
+### GetAssignmentByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment | [modules.assessment.v1.shared.Assignment](#modules-assessment-v1-shared-Assignment) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-private-GetAssignmentSubmissionsRequest"></a>
+
+### GetAssignmentSubmissionsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_module_ids | [string](#string) | repeated |  |
+| exam_ids | [string](#string) | repeated |  |
+| student_user_id | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-private-GetAssignmentSubmissionsResponse"></a>
+
+### GetAssignmentSubmissionsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assignment_submissions | [modules.assessment.v1.shared.AssignmentSubmission](#modules-assessment-v1-shared-AssignmentSubmission) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-assessment-v1-private-AssignmentPrivateService"></a>
+
+### AssignmentPrivateService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetAssignmentSubmissions | [GetAssignmentSubmissionsRequest](#modules-assessment-v1-private-GetAssignmentSubmissionsRequest) | [GetAssignmentSubmissionsResponse](#modules-assessment-v1-private-GetAssignmentSubmissionsResponse) |  |
+| GetAssignmentById | [GetAssignmentByIdRequest](#modules-assessment-v1-private-GetAssignmentByIdRequest) | [GetAssignmentByIdResponse](#modules-assessment-v1-private-GetAssignmentByIdResponse) |  |
+
+ 
+
+
+
+<a name="modules_assessment_v1_private_observation-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## modules/assessment/v1/private/observation.proto
+
+
+
+<a name="modules-assessment-v1-private-GetObservationByIdRequest"></a>
+
+### GetObservationByIdRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-private-GetObservationByIdResponse"></a>
+
+### GetObservationByIdResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation | [modules.assessment.v1.shared.Observation](#modules-assessment-v1-shared-Observation) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-private-GetObservationSubmissionsRequest"></a>
+
+### GetObservationSubmissionsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| teaching_module_ids | [string](#string) | repeated |  |
+| exam_ids | [string](#string) | repeated |  |
+| student_user_id | [string](#string) | optional |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-private-GetObservationSubmissionsResponse"></a>
+
+### GetObservationSubmissionsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| observation_submissions | [modules.assessment.v1.shared.ObservationSubmission](#modules-assessment-v1-shared-ObservationSubmission) | repeated |  |
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+<a name="modules-assessment-v1-private-ObservationPrivateService"></a>
+
+### ObservationPrivateService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetObservationSubmissions | [GetObservationSubmissionsRequest](#modules-assessment-v1-private-GetObservationSubmissionsRequest) | [GetObservationSubmissionsResponse](#modules-assessment-v1-private-GetObservationSubmissionsResponse) |  |
+| GetObservationById | [GetObservationByIdRequest](#modules-assessment-v1-private-GetObservationByIdRequest) | [GetObservationByIdResponse](#modules-assessment-v1-private-GetObservationByIdResponse) |  |
+
+ 
 
 
 

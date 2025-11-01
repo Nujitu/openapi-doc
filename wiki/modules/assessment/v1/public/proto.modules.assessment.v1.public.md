@@ -559,6 +559,7 @@
 | due_date_gte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
 | due_date_lt | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
 | due_date_lte | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
+| exam_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1088,6 +1089,7 @@ Service for assignment related feature
 | teaching_module_id | [string](#string) | optional |  |
 | teaching_module_folder_id | [string](#string) | optional |  |
 | teacher_user_id | [string](#string) | optional |  |
+| exam_id | [string](#string) | optional |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |

@@ -189,6 +189,7 @@
 | teaching_module_folder_id | [string](#string) |  |  |
 | teacher_user_id | [string](#string) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -280,6 +281,7 @@
 | teaching_module_folder_id | [string](#string) |  |  |
 | teacher_user_id | [string](#string) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -482,6 +484,7 @@
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | teacher_user_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -597,6 +600,7 @@
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | teacher_user_id | [string](#string) |  |  |
+| exam_id | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
