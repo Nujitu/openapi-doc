@@ -4,10 +4,12 @@
 ## Table of Contents
 
 - [modules/report/v1/private/finalized_score.proto](#modules_report_v1_private_finalized_score-proto)
+    - [CheckSubjectFinalScoreAvailabilityRequest](#modules-report-v1-private-CheckSubjectFinalScoreAvailabilityRequest)
+    - [CheckSubjectFinalScoreAvailabilityResponse](#modules-report-v1-private-CheckSubjectFinalScoreAvailabilityResponse)
     - [GetSubjectFinalizedScoreByStudentUserIDRequest](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDRequest)
     - [GetSubjectFinalizedScoreByStudentUserIDResponse](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDResponse)
   
-    - [FinalizedScoreService](#modules-report-v1-private-FinalizedScoreService)
+    - [FinalizedScorePrivateService](#modules-report-v1-private-FinalizedScorePrivateService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -17,6 +19,36 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/report/v1/private/finalized_score.proto
+
+
+
+<a name="modules-report-v1-private-CheckSubjectFinalScoreAvailabilityRequest"></a>
+
+### CheckSubjectFinalScoreAvailabilityRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-report-v1-private-CheckSubjectFinalScoreAvailabilityResponse"></a>
+
+### CheckSubjectFinalScoreAvailabilityResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| finalized_score | [modules.report.v1.shared.FinalizedScore](#modules-report-v1-shared-FinalizedScore) |  |  |
+
+
+
 
 
 
@@ -57,14 +89,15 @@
  
 
 
-<a name="modules-report-v1-private-FinalizedScoreService"></a>
+<a name="modules-report-v1-private-FinalizedScorePrivateService"></a>
 
-### FinalizedScoreService
+### FinalizedScorePrivateService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetSubjectFinalizedScoreByStudentUserID | [GetSubjectFinalizedScoreByStudentUserIDRequest](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDRequest) | [GetSubjectFinalizedScoreByStudentUserIDResponse](#modules-report-v1-private-GetSubjectFinalizedScoreByStudentUserIDResponse) |  |
+| CheckSubjectFinalScoreAvailability | [CheckSubjectFinalScoreAvailabilityRequest](#modules-report-v1-private-CheckSubjectFinalScoreAvailabilityRequest) | [CheckSubjectFinalScoreAvailabilityResponse](#modules-report-v1-private-CheckSubjectFinalScoreAvailabilityResponse) |  |
 
  
 
