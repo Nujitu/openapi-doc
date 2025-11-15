@@ -523,6 +523,8 @@
               operationId: getJournalAttendance,
               parameters:
                 [
+                  { name: id, in: query, schema: { type: string } },
+                  { name: attendance_id, in: query, schema: { type: string } },
                   {
                     name: class_subject_id,
                     in: query,
@@ -539,6 +541,7 @@
                     schema: { type: string, format: date-time },
                   },
                   { name: teacher_id, in: query, schema: { type: string } },
+                  { name: instance_id, in: query, schema: { type: string } },
                   {
                     name: limit,
                     in: query,
@@ -597,7 +600,7 @@
                 },
             },
         },
-      "/v1/attendance/journal/report/detail/{attendance_id}":
+      "/v1/attendance/journal/report/detail/{id}":
         {
           get:
             {
@@ -607,7 +610,7 @@
               parameters:
                 [
                   {
-                    name: attendance_id,
+                    name: id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -1379,7 +1382,8 @@
               type: object,
               properties:
                 {
-                  id: { type: string, description: ID Attendance },
+                  id: { type: string, description: ID Journal Attendance },
+                  attendance_id: { type: string, description: ID Attendance },
                   teaching_module:
                     {
                       $ref: "#/components/schemas/publicTeachingModule",
