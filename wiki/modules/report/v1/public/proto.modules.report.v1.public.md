@@ -281,7 +281,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| attendance_id | [string](#string) |  |  |
+| id | [string](#string) |  |  |
 
 
 
@@ -296,10 +296,13 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| attendance_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | approver_user_id | [string](#string) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | teacher_id | [string](#string) |  |  |
+| instance_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 
@@ -316,6 +319,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
 | attendance_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | teaching_module | [TeachingModule](#modules-report-v1-public-TeachingModule) |  |  |
@@ -445,6 +449,7 @@ Response for listing journal attendance
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
+| attendance_id | [string](#string) |  |  |
 | teaching_module | [TeachingModule](#modules-report-v1-public-TeachingModule) |  |  |
 | learning_goals | [LearningGoal](#modules-report-v1-public-LearningGoal) | repeated |  |
 | study_materials | [StudyMaterial](#modules-report-v1-public-StudyMaterial) | repeated |  |
