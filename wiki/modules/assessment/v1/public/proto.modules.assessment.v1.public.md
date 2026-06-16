@@ -73,14 +73,16 @@
   
 - [modules/assessment/v1/public/quiz.proto](#modules_assessment_v1_public_quiz-proto)
     - [Answer](#modules-assessment-v1-public-Answer)
+    - [AssignQuizModuleRequest](#modules-assessment-v1-public-AssignQuizModuleRequest)
+    - [AssignQuizModuleResponse](#modules-assessment-v1-public-AssignQuizModuleResponse)
     - [CreateQuestionRequest](#modules-assessment-v1-public-CreateQuestionRequest)
     - [CreateQuestionResponse](#modules-assessment-v1-public-CreateQuestionResponse)
     - [CreateQuizRequest](#modules-assessment-v1-public-CreateQuizRequest)
     - [CreateQuizResponse](#modules-assessment-v1-public-CreateQuizResponse)
     - [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest)
     - [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse)
-    - [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest)
-    - [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse)
+    - [GetBulkQuizSubmissionByStudentUserIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentUserIdRequest)
+    - [GetBulkQuizSubmissionByStudentUserIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentUserIdResponse)
     - [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest)
     - [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse)
     - [GetQuizDetailRequest](#modules-assessment-v1-public-GetQuizDetailRequest)
@@ -90,8 +92,8 @@
     - [GetQuizListResponse.Quiz](#modules-assessment-v1-public-GetQuizListResponse-Quiz)
     - [GetQuizStatisticsRequest](#modules-assessment-v1-public-GetQuizStatisticsRequest)
     - [GetQuizStatisticsResponse](#modules-assessment-v1-public-GetQuizStatisticsResponse)
-    - [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest)
-    - [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse)
+    - [GetQuizSubmissionByStudentUserIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentUserIdRequest)
+    - [GetQuizSubmissionByStudentUserIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentUserIdResponse)
     - [GetQuizSubmissionListRequest](#modules-assessment-v1-public-GetQuizSubmissionListRequest)
     - [GetQuizSubmissionListResponse](#modules-assessment-v1-public-GetQuizSubmissionListResponse)
     - [GetStudentSubmissionDetailsRequest](#modules-assessment-v1-public-GetStudentSubmissionDetailsRequest)
@@ -1278,6 +1280,38 @@ Service for observation related feature
 
 
 
+<a name="modules-assessment-v1-public-AssignQuizModuleRequest"></a>
+
+### AssignQuizModuleRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-assessment-v1-public-AssignQuizModuleResponse"></a>
+
+### AssignQuizModuleResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-assessment-v1-public-CreateQuestionRequest"></a>
 
 ### CreateQuestionRequest
@@ -1384,25 +1418,25 @@ Service for observation related feature
 
 
 
-<a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest"></a>
+<a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentUserIdRequest"></a>
 
-### GetBulkQuizSubmissionByStudentIdRequest
+### GetBulkQuizSubmissionByStudentUserIdRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | quiz_id | [string](#string) |  |  |
-| student_ids | [string](#string) |  |  |
+| student_user_ids | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse"></a>
+<a name="modules-assessment-v1-public-GetBulkQuizSubmissionByStudentUserIdResponse"></a>
 
-### GetBulkQuizSubmissionByStudentIdResponse
+### GetBulkQuizSubmissionByStudentUserIdResponse
 
 
 
@@ -1493,7 +1527,7 @@ Service for observation related feature
 | exam_id | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
@@ -1581,25 +1615,25 @@ Service for observation related feature
 
 
 
-<a name="modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest"></a>
+<a name="modules-assessment-v1-public-GetQuizSubmissionByStudentUserIdRequest"></a>
 
-### GetQuizSubmissionByStudentIdRequest
+### GetQuizSubmissionByStudentUserIdRequest
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | quiz_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse"></a>
+<a name="modules-assessment-v1-public-GetQuizSubmissionByStudentUserIdResponse"></a>
 
-### GetQuizSubmissionByStudentIdResponse
+### GetQuizSubmissionByStudentUserIdResponse
 
 
 
@@ -1688,13 +1722,13 @@ Service for observation related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | state | [modules.assessment.v1.shared.SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | start_due_date | [string](#string) |  |  |
 | end_due_date | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | teaching_module_folder_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
@@ -1775,7 +1809,7 @@ Service for observation related feature
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 
 
@@ -1809,7 +1843,7 @@ Service for observation related feature
 | ----- | ---- | ----- | ----------- |
 | quiz_id | [string](#string) |  |  |
 | action | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | submission_start_time | [string](#string) |  |  |
 | subission_end_time | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
@@ -1829,7 +1863,7 @@ Service for observation related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | quiz_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | submission_start_time | [string](#string) |  |  |
 | subission_end_time | [string](#string) |  |  |
@@ -1871,6 +1905,7 @@ Service for observation related feature
 | learning_goal_title | [string](#string) |  |  |
 | settings | [modules.assessment.v1.shared.QuizSettings](#modules-assessment-v1-shared-QuizSettings) |  |  |
 | teaching_module_id | [string](#string) |  |  |
+| teaching_module_folder_id | [string](#string) |  |  |
 
 
 
@@ -1908,14 +1943,15 @@ Service for quiz related feature
 | ----------- | ------------ | ------------- | ------------|
 | CreateQuiz | [CreateQuizRequest](#modules-assessment-v1-public-CreateQuizRequest) | [CreateQuizResponse](#modules-assessment-v1-public-CreateQuizResponse) |  |
 | UpdateQuiz | [UpdateQuizRequest](#modules-assessment-v1-public-UpdateQuizRequest) | [UpdateQuizResponse](#modules-assessment-v1-public-UpdateQuizResponse) |  |
+| AssignQuizModule | [AssignQuizModuleRequest](#modules-assessment-v1-public-AssignQuizModuleRequest) | [AssignQuizModuleResponse](#modules-assessment-v1-public-AssignQuizModuleResponse) |  |
 | GetQuizDetail | [GetQuizDetailRequest](#modules-assessment-v1-public-GetQuizDetailRequest) | [GetQuizDetailResponse](#modules-assessment-v1-public-GetQuizDetailResponse) |  |
 | GetQuizList | [GetQuizListRequest](#modules-assessment-v1-public-GetQuizListRequest) | [GetQuizListResponse](#modules-assessment-v1-public-GetQuizListResponse) |  |
 | CreateQuestions | [CreateQuestionRequest](#modules-assessment-v1-public-CreateQuestionRequest) | [CreateQuestionResponse](#modules-assessment-v1-public-CreateQuestionResponse) |  |
 | EditQuestions | [EditQuestionsRequest](#modules-assessment-v1-public-EditQuestionsRequest) | [EditQuestionsResponse](#modules-assessment-v1-public-EditQuestionsResponse) |  |
 | GetQuestionList | [GetQuestionListRequest](#modules-assessment-v1-public-GetQuestionListRequest) | [GetQuestionListResponse](#modules-assessment-v1-public-GetQuestionListResponse) |  |
 | SubmitStudentAnswer | [SubmitStudentAnswerRequest](#modules-assessment-v1-public-SubmitStudentAnswerRequest) | [SubmitStudentAnswerResponse](#modules-assessment-v1-public-SubmitStudentAnswerResponse) |  |
-| GetBulkQuizSubmissionByStudentId | [GetBulkQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdRequest) | [GetBulkQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentIdResponse) |  |
-| GetQuizSubmissionByStudentId | [GetQuizSubmissionByStudentIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdRequest) | [GetQuizSubmissionByStudentIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentIdResponse) |  |
+| GetBulkQuizSubmissionByStudentUserId | [GetBulkQuizSubmissionByStudentUserIdRequest](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentUserIdRequest) | [GetBulkQuizSubmissionByStudentUserIdResponse](#modules-assessment-v1-public-GetBulkQuizSubmissionByStudentUserIdResponse) |  |
+| GetQuizSubmissionByStudentUserId | [GetQuizSubmissionByStudentUserIdRequest](#modules-assessment-v1-public-GetQuizSubmissionByStudentUserIdRequest) | [GetQuizSubmissionByStudentUserIdResponse](#modules-assessment-v1-public-GetQuizSubmissionByStudentUserIdResponse) |  |
 | GetStudentSubmissions | [GetStudentSubmissionsRequest](#modules-assessment-v1-public-GetStudentSubmissionsRequest) | [GetStudentSubmissionsResponse](#modules-assessment-v1-public-GetStudentSubmissionsResponse) |  |
 | GetQuizSubmissionList | [GetQuizSubmissionListRequest](#modules-assessment-v1-public-GetQuizSubmissionListRequest) | [GetQuizSubmissionListResponse](#modules-assessment-v1-public-GetQuizSubmissionListResponse) |  |
 | ManualGradingSubmission | [ManualGradingSubmissionRequest](#modules-assessment-v1-public-ManualGradingSubmissionRequest) | [ManualGradingSubmissionResponse](#modules-assessment-v1-public-ManualGradingSubmissionResponse) |  |

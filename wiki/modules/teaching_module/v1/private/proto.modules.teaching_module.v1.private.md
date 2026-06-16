@@ -136,7 +136,7 @@ Insert Folder Task Request
 | task_type | [string](#string) |  |  |
 | task_name | [string](#string) |  |  |
 | task_attachment | [string](#string) |  |  |
-| student_ids | [string](#string) | repeated |  |
+| student_user_ids | [string](#string) | repeated |  |
 | class_group_detail_id | [string](#string) |  |  |
 
 
@@ -195,7 +195,7 @@ Insert Folder Task Request
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
 

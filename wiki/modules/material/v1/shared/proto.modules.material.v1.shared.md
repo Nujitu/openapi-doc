@@ -21,6 +21,10 @@
     - [DeleteClassSubjectAnnouncementResponse](#modules-material-v1-shared-DeleteClassSubjectAnnouncementResponse)
     - [GetClassSubjectAnnouncementRequest](#modules-material-v1-shared-GetClassSubjectAnnouncementRequest)
     - [GetClassSubjectAnnouncementResponse](#modules-material-v1-shared-GetClassSubjectAnnouncementResponse)
+    - [GetScoreCompositionRequest](#modules-material-v1-shared-GetScoreCompositionRequest)
+    - [ScoreComposition](#modules-material-v1-shared-ScoreComposition)
+    - [ScoreCompositionResponse](#modules-material-v1-shared-ScoreCompositionResponse)
+    - [SetScoreCompositionRequest](#modules-material-v1-shared-SetScoreCompositionRequest)
     - [UpdateClassSubjectDetailRequest](#modules-material-v1-shared-UpdateClassSubjectDetailRequest)
     - [UpdateClassSubjectDetailResponse](#modules-material-v1-shared-UpdateClassSubjectDetailResponse)
   
@@ -105,7 +109,7 @@
 | id | [string](#string) |  |  |
 | classgroup_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| homeroom_teacher_id | [string](#string) |  |  |
+| homeroom_teacher_user_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
 | index_minimum | [uint32](#uint32) |  |  |
 | meetings_per_week | [uint32](#uint32) |  |  |
@@ -131,7 +135,7 @@
 | id | [string](#string) |  |  |
 | classgroup_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| homeroom_teacher_id | [string](#string) |  |  |
+| homeroom_teacher_user_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
 | classgroup_name | [string](#string) |  |  |
 | major | [string](#string) |  |  |
@@ -153,7 +157,7 @@
 | id | [string](#string) |  |  |
 | classgroup_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| homeroom_teacher_id | [string](#string) |  |  |
+| homeroom_teacher_user_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
 | classgroup_name | [string](#string) |  |  |
 | total_students | [string](#string) |  |  |
@@ -225,7 +229,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | subject_id | [string](#string) |  |  |
-| homeroom_teacher_id | [string](#string) |  |  |
+| homeroom_teacher_user_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
 | index_minimum | [uint32](#uint32) |  |  |
 | meetings_per_week | [uint32](#uint32) |  |  |
@@ -347,6 +351,69 @@
 | ----- | ---- | ----- | ----------- |
 | announcements | [ClassSubjectAnnouncement](#modules-material-v1-shared-ClassSubjectAnnouncement) | repeated |  |
 | metadata | [common.v1.ResponseMetadata](#common-v1-ResponseMetadata) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-GetScoreCompositionRequest"></a>
+
+### GetScoreCompositionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-ScoreComposition"></a>
+
+### ScoreComposition
+Weight of one component (module / uts / uas) in a class subject&#39;s final score.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| component | [string](#string) |  |  |
+| weight | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-ScoreCompositionResponse"></a>
+
+### ScoreCompositionResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| score_composition | [ScoreComposition](#modules-material-v1-shared-ScoreComposition) | repeated |  |
+| index_minimum | [uint32](#uint32) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-shared-SetScoreCompositionRequest"></a>
+
+### SetScoreCompositionRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| score_composition | [ScoreComposition](#modules-material-v1-shared-ScoreComposition) | repeated |  |
 
 
 
@@ -603,7 +670,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | grade_level | [string](#string) |  |  |
 | major | [string](#string) | repeated |  |
 | name | [string](#string) |  |  |

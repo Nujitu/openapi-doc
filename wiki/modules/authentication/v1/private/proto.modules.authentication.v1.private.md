@@ -412,6 +412,7 @@ Request body of GetUserList
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 | ids | [string](#string) | repeated |  |
+| statuses | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) | repeated |  |
 
 
 

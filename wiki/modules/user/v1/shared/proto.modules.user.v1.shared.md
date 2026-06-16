@@ -242,6 +242,7 @@ User entity
 | profile_pic | [string](#string) |  |  |
 | address | [string](#string) |  |  |
 | role_type | [modules.authentication.v1.shared.RoleType](#modules-authentication-v1-shared-RoleType) |  |  |
+| status | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | date_of_birth | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |

@@ -5,7 +5,7 @@
     {
       title: Teaching_module Domain,
       version: v1,
-      description: "Skoola Folder Task Management Service, Exam Management Service, Skoola Folder Management Service, Skoola Learning Goal Service, Skoola Teaching Module Service, Study Material Management Service, Skoola Teaching Module Service",
+      description: "Skoola Teaching Module Service, Skoola Folder Management Service, Skoola Learning Goal Service, Exam Management Service, Study Material Management Service, Skoola Folder Task Management Service, Skoola Teaching Module Service",
     },
   servers:
     [
@@ -14,14 +14,14 @@
     ],
   paths:
     {
-      /v1/folder-task/task:
+      /v1/teaching-module:
         {
-          post:
+          put:
             {
-              tags: [FolderTaskService],
-              summary: Submit folder task,
-              description: submit folder task,
-              operationId: FolderTaskService_SubmitFolderTask,
+              tags: [TeachingModuleService],
+              summary: Update New Teaching Module,
+              description: update new teaching module,
+              operationId: TeachingModuleService_UpdateTeachingModule,
               requestBody:
                 {
                   content:
@@ -30,7 +30,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicSubmitFolderTaskRequest",
+                              $ref: "#/components/schemas/publicTeachingModuleRequest",
                             },
                         },
                     },
@@ -47,7 +47,73 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicSubmitFolderTaskResponse",
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          post:
+            {
+              tags: [TeachingModuleService],
+              summary: Insert New Teaching Module,
+              description: insert new teaching module,
+              operationId: TeachingModuleService_CreateTeachingModule,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicTeachingModuleRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedTeachingModule",
                                 },
                             },
                         },
@@ -83,150 +149,14 @@
                 },
             },
         },
-      "/v1/folder-task/task/{task_id}/{folder_id}":
+      /v1/teaching-module/approval:
         {
-          delete:
-            {
-              tags: [FolderTaskService],
-              summary: Delete folder task,
-              description: delete folder task using task_id and folder_id,
-              operationId: FolderTaskService_DeleteFolderTask,
-              parameters:
-                [
-                  {
-                    name: task_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  {
-                    name: folder_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicDeleteFolderTaskResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/exam:
-        {
-          post:
-            {
-              tags: [ExamService],
-              summary: Create new exam,
-              description: Creates a new exam.,
-              operationId: ExamService_CreateExam,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicCreateExamRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicCreateExamResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           patch:
             {
-              tags: [ExamService],
-              summary: Update existing exam,
-              description: Updates an existing exam.,
-              operationId: ExamService_UpdateExam,
+              tags: [TeachingModuleService],
+              summary: Insert New Teaching Module,
+              description: insert new teaching module,
+              operationId: TeachingModuleService_ApproveTeachingModule,
               requestBody:
                 {
                   content:
@@ -235,7 +165,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicUpdateExamRequest",
+                              $ref: "#/components/schemas/publicApproveteachingModuleRequest",
                             },
                         },
                     },
@@ -252,7 +182,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicUpdateExamResponse",
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
                                 },
                             },
                         },
@@ -288,28 +218,25 @@
                 },
             },
         },
-      /v1/exam/type:
+      "/v1/teaching-module/{class_subject_id}":
         {
           get:
             {
-              tags: [ExamService],
-              summary: Get an exam by their type,
-              description: Get exam by specified exam type and class subject id,
-              operationId: ExamService_GetExamByType,
+              tags: [TeachingModuleService],
+              summary: Get teaching Module by class subject id,
+              description: get teaching module general infor by class subject id,
+              operationId: TeachingModuleService_GetTeachingModuleList,
               parameters:
                 [
-                  {
-                    name: exam_type,
-                    in: query,
-                    schema:
-                      {
-                        enum: [FINAL_EXAM, MIDTERM_EXAM],
-                        type: string,
-                        format: enum,
-                      },
-                  },
                   {
                     name: class_subject_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  { name: subject_id, in: query, schema: { type: string } },
+                  {
+                    name: teacher_user_id,
                     in: query,
                     schema: { type: string },
                   },
@@ -325,7 +252,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetExamByTypeResponse",
+                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
                                 },
                             },
                         },
@@ -361,14 +288,14 @@
                 },
             },
         },
-      "/v1/exam/{id}":
+      "/v1/teaching-module/{id}":
         {
-          get:
+          delete:
             {
-              tags: [ExamService],
-              summary: Get an exam,
-              description: Get exam by id,
-              operationId: ExamService_GetExamById,
+              tags: [TeachingModuleService],
+              summary: Delete Teaching Module,
+              description: Delete teaching module by ID,
+              operationId: TeachingModuleService_DeleteTeachingModule,
               parameters:
                 [
                   {
@@ -389,7 +316,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicGetExamByIdResponse",
+                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
                                 },
                             },
                         },
@@ -424,12 +351,15 @@
                     },
                 },
             },
-          delete:
+        },
+      "/v1/teaching-module/{id}/attachments":
+        {
+          get:
             {
-              tags: [ExamService],
-              summary: Delete exam,
-              description: Deletes an exam by its ID.,
-              operationId: ExamService_DeleteExam,
+              tags: [TeachingModuleService],
+              summary: Get teaching module attachment files,
+              description: Get the attachment files stored on a teaching module,
+              operationId: TeachingModuleService_GetTeachingModuleAttachments,
               parameters:
                 [
                   {
@@ -450,7 +380,146 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicDeleteExamResponse",
+                                  $ref: "#/components/schemas/publicTeachingModuleAttachmentsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          put:
+            {
+              tags: [TeachingModuleService],
+              summary: Replace teaching module attachment files,
+              description: Replace the attachment files stored on a teaching module,
+              operationId: TeachingModuleService_SetTeachingModuleAttachments,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicSetTeachingModuleAttachmentsRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicTeachingModuleAttachmentsResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/teaching-module/{id}/details":
+        {
+          get:
+            {
+              tags: [TeachingModuleService],
+              summary: Get teaching Module by id,
+              description: get teaching module general info by id,
+              operationId: TeachingModuleService_GetTeachingModuleDetail,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/sharedTeachingModule",
                                 },
                             },
                         },
@@ -954,14 +1023,14 @@
                 },
             },
         },
-      /v1/teaching-module/presigned-url:
+      /v1/exam:
         {
           post:
             {
-              tags: [UploaderService],
-              summary: Create teaching module presigned URLs,
-              description: Create an AWS S3 presigned URLs to upload teaching module assets,
-              operationId: UploaderService_CreateTeachingModulePresignedPostUrl,
+              tags: [ExamService],
+              summary: Create new exam,
+              description: Creates a new exam.,
+              operationId: ExamService_CreateExam,
               requestBody:
                 {
                   content:
@@ -970,7 +1039,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlRequest",
+                              $ref: "#/components/schemas/publicCreateExamRequest",
                             },
                         },
                     },
@@ -987,7 +1056,271 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlResponse",
+                                  $ref: "#/components/schemas/publicCreateExamResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          patch:
+            {
+              tags: [ExamService],
+              summary: Update existing exam,
+              description: Updates an existing exam.,
+              operationId: ExamService_UpdateExam,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicUpdateExamRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicUpdateExamResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/exam/type:
+        {
+          get:
+            {
+              tags: [ExamService],
+              summary: Get an exam by their type,
+              description: Get exam by specified exam type and class subject id,
+              operationId: ExamService_GetExamByType,
+              parameters:
+                [
+                  {
+                    name: exam_type,
+                    in: query,
+                    schema:
+                      {
+                        enum: [FINAL_EXAM, MIDTERM_EXAM],
+                        type: string,
+                        format: enum,
+                      },
+                  },
+                  {
+                    name: class_subject_id,
+                    in: query,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetExamByTypeResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/v1/exam/{id}":
+        {
+          get:
+            {
+              tags: [ExamService],
+              summary: Get an exam,
+              description: Get exam by id,
+              operationId: ExamService_GetExamById,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicGetExamByIdResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          delete:
+            {
+              tags: [ExamService],
+              summary: Delete exam,
+              description: Deletes an exam by its ID.,
+              operationId: ExamService_DeleteExam,
+              parameters:
+                [
+                  {
+                    name: id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                ],
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicDeleteExamResponse",
                                 },
                             },
                         },
@@ -1419,80 +1752,14 @@
                 },
             },
         },
-      /v1/teaching-module:
+      /v1/folder-task/task:
         {
-          put:
-            {
-              tags: [TeachingModuleService],
-              summary: Update New Teaching Module,
-              description: update new teaching module,
-              operationId: TeachingModuleService_UpdateTeachingModule,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicTeachingModuleRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
           post:
             {
-              tags: [TeachingModuleService],
-              summary: Insert New Teaching Module,
-              description: insert new teaching module,
-              operationId: TeachingModuleService_CreateTeachingModule,
+              tags: [FolderTaskService],
+              summary: Submit folder task,
+              description: submit folder task,
+              operationId: FolderTaskService_SubmitFolderTask,
               requestBody:
                 {
                   content:
@@ -1501,7 +1768,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicTeachingModuleRequest",
+                              $ref: "#/components/schemas/publicSubmitFolderTaskRequest",
                             },
                         },
                     },
@@ -1518,7 +1785,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedTeachingModule",
+                                  $ref: "#/components/schemas/publicSubmitFolderTaskResponse",
                                 },
                             },
                         },
@@ -1554,153 +1821,24 @@
                 },
             },
         },
-      /v1/teaching-module/approval:
-        {
-          patch:
-            {
-              tags: [TeachingModuleService],
-              summary: Insert New Teaching Module,
-              description: insert new teaching module,
-              operationId: TeachingModuleService_ApproveTeachingModule,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicApproveteachingModuleRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/teaching-module/{class_subject_id}":
-        {
-          get:
-            {
-              tags: [TeachingModuleService],
-              summary: Get teaching Module by class subject id,
-              description: get teaching module general infor by class subject id,
-              operationId: TeachingModuleService_GetTeachingModuleList,
-              parameters:
-                [
-                  {
-                    name: class_subject_id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                  { name: subject_id, in: query, schema: { type: string } },
-                  { name: teacher_id, in: query, schema: { type: string } },
-                ],
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicTeachingModuleListResponse",
-                                },
-                            },
-                        },
-                    },
-                  "500":
-                    {
-                      description: Internal Server Error,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                  "401":
-                    {
-                      description: Unauthorized JWT token.,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/v1ErrorResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      "/v1/teaching-module/{id}":
+      "/v1/folder-task/task/{task_id}/{folder_id}":
         {
           delete:
             {
-              tags: [TeachingModuleService],
-              summary: Delete Teaching Module,
-              description: Delete teaching module by ID,
-              operationId: TeachingModuleService_DeleteTeachingModule,
+              tags: [FolderTaskService],
+              summary: Delete folder task,
+              description: delete folder task using task_id and folder_id,
+              operationId: FolderTaskService_DeleteFolderTask,
               parameters:
                 [
                   {
-                    name: id,
+                    name: task_id,
+                    in: path,
+                    required: true,
+                    schema: { type: string },
+                  },
+                  {
+                    name: folder_id,
                     in: path,
                     required: true,
                     schema: { type: string },
@@ -1717,7 +1855,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicTeachingModuleResponse",
+                                  $ref: "#/components/schemas/publicDeleteFolderTaskResponse",
                                 },
                             },
                         },
@@ -1753,23 +1891,28 @@
                 },
             },
         },
-      "/v1/teaching-module/{id}/details":
+      /v1/teaching-module/presigned-url:
         {
-          get:
+          post:
             {
-              tags: [TeachingModuleService],
-              summary: Get teaching Module by id,
-              description: get teaching module general info by id,
-              operationId: TeachingModuleService_GetTeachingModuleDetail,
-              parameters:
-                [
-                  {
-                    name: id,
-                    in: path,
-                    required: true,
-                    schema: { type: string },
-                  },
-                ],
+              tags: [UploaderService],
+              summary: Create teaching module presigned URLs,
+              description: Create an AWS S3 presigned URLs to upload teaching module assets,
+              operationId: UploaderService_CreateTeachingModulePresignedPostUrl,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
               responses:
                 {
                   "200":
@@ -1781,7 +1924,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/sharedTeachingModule",
+                                  $ref: "#/components/schemas/publicCreateTeachingModulePresignedPostUrlResponse",
                                 },
                             },
                         },
@@ -1822,43 +1965,355 @@
     {
       "schemas":
         {
-          publicDeleteFolderTaskResponse:
+          v1AttachmentFile:
+            {
+              type: object,
+              properties:
+                {
+                  display_name: { type: string },
+                  unique_name: { type: string },
+                  file_extension: { type: string },
+                  file_size: { type: string },
+                  link: { type: string },
+                },
+            },
+          publicApproveteachingModuleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module_id:
+                    { type: string, description: teaching module id },
+                  teacher_user_id: { type: string, description: teacher id },
+                  is_approved: { type: boolean, description: approval request },
+                },
+            },
+          publicSetTeachingModuleAttachmentsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: Teaching module ID },
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files to store on the teaching module,
+                    },
+                },
+            },
+          publicTeachingModuleAttachmentsResponse:
+            {
+              type: object,
+              properties:
+                {
+                  attachment_files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1AttachmentFile",
+                        },
+                      description: Attachment files stored on the teaching module,
+                    },
+                },
+            },
+          publicTeachingModuleListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_modules:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModule",
+                        },
+                      description: Teaching Module Body,
+                    },
+                },
+            },
+          publicTeachingModuleRequest:
+            {
+              type: object,
+              properties:
+                {
+                  teaching_module:
+                    {
+                      $ref: "#/components/schemas/sharedTeachingModule",
+                    },
+                },
+            },
+          publicTeachingModuleResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    { type: string, description: message for folder task },
+                    {
+                      type: string,
+                      description: Teaching Module Response Message,
+                    },
                 },
             },
-          publicSubmitFolderTaskRequest:
+          sharedApprover:
             {
               type: object,
               properties:
                 {
-                  folder_id: { type: string, description: folder id },
-                  task_id: { type: string, description: task id },
-                  task_type: { type: string, description: task type },
-                  task_name: { type: string, description: task name },
-                  task_attachment:
-                    { type: string, description: task attachment },
-                  student_ids:
+                  teacher_user_id:
+                    {
+                      type: string,
+                      description: Teacher who approve new teaching module,
+                    },
+                  is_approved: { type: boolean, description: approve status },
+                },
+            },
+          sharedComponent:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: header component id },
+                  title: { type: string, description: title },
+                  curriculum_id: { type: string, description: curriculum id },
+                  description:
+                    {
+                      type: string,
+                      description: description header component id,
+                    },
+                  group_components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedGroupComponent",
+                        },
+                      description: group component,
+                    },
+                },
+            },
+          sharedContent:
+            {
+              type: object,
+              properties:
+                {
+                  text:
+                    { type: string, description: CurriculumGroupComponentID },
+                  value:
+                    {
+                      type: boolean,
+                      description: Curriculum Group Component Description,
+                    },
+                },
+            },
+          sharedGroupComponent:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: component id },
+                  parent_id:
+                    {
+                      type: string,
+                      description: parent component id from curriculum,
+                    },
+                  description:
+                    {
+                      type: string,
+                      description: Curriculum Group Component Description,
+                    },
+                  component_type:
+                    {
+                      enum:
+                        [
+                          DEFAULT,
+                          MULTIPLE_TEXT_INPUT,
+                          TEXT_DESCRIPTION,
+                          MULTIPLE_TEXT_DESCRIPTION,
+                          CHECKLIST,
+                          RADIO_BUTTON,
+                          TEXT_INPUT,
+                        ],
+                      type: string,
+                      description: Component type,
+                      format: enum,
+                    },
+                  content:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedContent",
+                        },
+                      description: list of content,
+                    },
+                },
+            },
+          sharedLearningGoal:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goal_id:
+                    { type: string, description: Learning Profile ID },
+                  goal: { type: string, description: goal description },
+                  teaching_module_id:
+                    { type: string, description: teaching module id },
+                },
+            },
+          sharedPercentageScore:
+            {
+              type: object,
+              properties:
+                {
+                  name: { type: string, description: name of percentage score },
+                  value:
+                    {
+                      type: integer,
+                      description: value of percentage score,
+                      format: int32,
+                    },
+                },
+            },
+          sharedTeachingModule:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: teaching module id },
+                  title:
+                    { type: string, description: Title for teaching module },
+                  learning_profile:
                     {
                       type: array,
                       items: { type: string },
-                      description: student ids,
+                      description: Learning Profile associated with teaching module,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Star Date for teaching module,
+                      format: date-time,
+                    },
+                  end_date:
+                    {
+                      type: string,
+                      description: End Date for teaching module,
+                      format: date-time,
+                    },
+                  subject_id:
+                    {
+                      type: string,
+                      description: Subject id that related teaching module,
+                    },
+                  approver:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedApprover",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedLearningGoal",
+                        },
+                      description: List of approver for teaching module,
+                    },
+                  components:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedComponent",
+                        },
+                      description: Curriculum instance,
+                    },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when Curriculum data updated,
+                      format: date-time,
+                    },
+                  cover_image:
+                    {
+                      type: string,
+                      description: Cover Image for teaching module,
+                    },
+                  time_allocation:
+                    {
+                      type: string,
+                      description: Time allocated for teaching module,
+                    },
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: List of folder for teaching module,
+                    },
+                  curriculum_id: { type: string, description: curriculum ID },
+                  description: { type: string, description: Description },
+                  teacher_user_id: { type: string, description: teacher id },
+                  index_minimum:
+                    { type: integer, description: teacher id, format: int32 },
+                  percentage_score:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedPercentageScore",
+                        },
+                      description: score percentage,
                     },
                   class_subject_id:
-                    { type: string, description: class_subject_id },
+                    { type: string, description: class subject id },
                 },
             },
-          publicSubmitFolderTaskResponse:
+          sharedTeachingModuleFolder:
             {
               type: object,
               properties:
                 {
-                  message:
-                    { type: string, description: message for folder task },
+                  folder_id: { type: string, description: Folder ID },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of Learning Goals,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start Date,
+                      format: date-time,
+                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
+                  class_group_detail_id:
+                    { type: string, description: class_group_detail_id },
                 },
             },
           "v1ErrorResponse":
@@ -1884,6 +2339,150 @@
                   "code": { "title": "code", "type": "string" },
                   "field": { "title": "field", "type": "string" },
                   "info": { "title": "info", "type": "string" },
+                },
+            },
+          publicCreateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          publicDeleteTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  success:
+                    {
+                      type: boolean,
+                      description: Whether the folder was successfully deleted,
+                    },
+                },
+            },
+          publicGetTeachingModuleFolderDetailByIDResponse:
+            {
+              type: object,
+              properties:
+                {
+                  folder_id: { type: string, description: Folder ID },
+                  title: { type: string, description: Folder Name },
+                  learning_goal_ids:
+                    {
+                      type: array,
+                      items: { type: string },
+                      description: List of Learning Goals,
+                    },
+                  start_date:
+                    {
+                      type: string,
+                      description: Start Date,
+                      format: date-time,
+                    },
+                  end_date:
+                    { type: string, description: End Date, format: date-time },
+                  teaching_module_id:
+                    { type: string, description: Teaching Module ID },
+                  class_group_detail_id:
+                    { type: string, description: class_group_detail_id },
+                  folder_tasks:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedFolderTask",
+                        },
+                      description: data from folder id requested,
+                    },
+                },
+            },
+          publicGetTeachingModuleFolderListResponse:
+            {
+              type: object,
+              properties:
+                {
+                  folders:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
+                        },
+                      description: get folder by class group detail ID,
+                    },
+                },
+            },
+          publicUpdateTeachingModuleFolderResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          sharedFolderTask:
+            {
+              type: object,
+              properties:
+                {
+                  id: { type: string, description: folder task id },
+                  folder_id: { type: string, description: folder id },
+                  task_id: { type: string, description: task id },
+                  task_type: { type: string, description: task type },
+                  task_name: { type: string, description: task name },
+                  task_attachment:
+                    { type: string, description: task attachment },
+                  student_user_id: { type: string, description: student id },
+                  created_at: { type: string, description: created at },
+                  updated_at: { type: string, description: updated at },
+                },
+            },
+          publicCreateLearningGoalResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
+                },
+            },
+          publicCreateLearningGoalsRequest:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goals:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedLearningGoal",
+                        },
+                      description: insert multiple data learning goal,
+                    },
+                },
+            },
+          publicUpdateLearningGoalRequest:
+            {
+              type: object,
+              properties:
+                {
+                  learning_goals:
+                    {
+                      $ref: "#/components/schemas/sharedLearningGoal",
+                    },
+                },
+            },
+          publicUpdateLearningGoalResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for teaching module },
                 },
             },
           publicCreateExamRequest:
@@ -2007,6 +2606,15 @@
                       description: Index minimum on scale of 0 to 100,
                       format: float,
                     },
+                  score_weights:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedScoreWeight",
+                        },
+                      description: Per-assessment scoring weights for the exam final score,
+                    },
                 },
             },
           publicUpdateExamResponse:
@@ -2069,6 +2677,15 @@
                       description: Index minimum on scale of 0 to 100,
                       format: float,
                     },
+                  score_weights:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedScoreWeight",
+                        },
+                      description: Per-assessment scoring weights used to compute the exam's final score,
+                    },
                   created_at:
                     {
                       example: "2020-01-01T00:00:00Z",
@@ -2085,273 +2702,27 @@
                     },
                 },
             },
-          publicCreateTeachingModuleFolderResponse:
+          sharedScoreWeight:
             {
               type: object,
               properties:
                 {
-                  message:
-                    { type: string, description: message for teaching module },
-                },
-            },
-          publicDeleteTeachingModuleFolderResponse:
-            {
-              type: object,
-              properties:
-                {
-                  success:
-                    {
-                      type: boolean,
-                      description: Whether the folder was successfully deleted,
-                    },
-                },
-            },
-          publicGetTeachingModuleFolderDetailByIDResponse:
-            {
-              type: object,
-              properties:
-                {
-                  folder_id: { type: string, description: Folder ID },
-                  title: { type: string, description: Folder Name },
-                  learning_goal_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of Learning Goals,
-                    },
-                  start_date:
+                  assessment_id:
                     {
                       type: string,
-                      description: Start Date,
-                      format: date-time,
+                      description: Assessment ID (quiz / assignment / observation) attached to the exam,
                     },
-                  end_date:
-                    { type: string, description: End Date, format: date-time },
-                  teaching_module_id:
-                    { type: string, description: Teaching Module ID },
-                  class_group_detail_id:
-                    { type: string, description: class_group_detail_id },
-                  folder_tasks:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedFolderTask",
-                        },
-                      description: data from folder id requested,
-                    },
-                },
-            },
-          publicGetTeachingModuleFolderListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  folders:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
-                        },
-                      description: get folder by class group detail ID,
-                    },
-                },
-            },
-          publicUpdateTeachingModuleFolderResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for teaching module },
-                },
-            },
-          sharedFolderTask:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: folder task id },
-                  folder_id: { type: string, description: folder id },
-                  task_id: { type: string, description: task id },
-                  task_type: { type: string, description: task type },
-                  task_name: { type: string, description: task name },
-                  task_attachment:
-                    { type: string, description: task attachment },
-                  student_id: { type: string, description: student id },
-                  created_at: { type: string, description: created at },
-                  updated_at: { type: string, description: updated at },
-                },
-            },
-          sharedTeachingModuleFolder:
-            {
-              type: object,
-              properties:
-                {
-                  folder_id: { type: string, description: Folder ID },
-                  title: { type: string, description: Folder Name },
-                  learning_goal_ids:
-                    {
-                      type: array,
-                      items: { type: string },
-                      description: List of Learning Goals,
-                    },
-                  start_date:
+                  kind:
                     {
                       type: string,
-                      description: Start Date,
-                      format: date-time,
+                      description: "Assessment kind: quiz | assignment | observation",
                     },
-                  end_date:
-                    { type: string, description: End Date, format: date-time },
-                  teaching_module_id:
-                    { type: string, description: Teaching Module ID },
-                  class_group_detail_id:
-                    { type: string, description: class_group_detail_id },
-                },
-            },
-          publicCreateLearningGoalResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for teaching module },
-                },
-            },
-          publicCreateLearningGoalsRequest:
-            {
-              type: object,
-              properties:
-                {
-                  learning_goals:
+                  weight:
                     {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedLearningGoal",
-                        },
-                      description: insert multiple data learning goal,
+                      type: integer,
+                      description: Weight percentage (0-100) of this assessment in the exam final,
+                      format: int32,
                     },
-                },
-            },
-          publicUpdateLearningGoalRequest:
-            {
-              type: object,
-              properties:
-                {
-                  learning_goals:
-                    {
-                      $ref: "#/components/schemas/sharedLearningGoal",
-                    },
-                },
-            },
-          publicUpdateLearningGoalResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message:
-                    { type: string, description: message for teaching module },
-                },
-            },
-          sharedLearningGoal:
-            {
-              type: object,
-              properties:
-                {
-                  learning_goal_id:
-                    { type: string, description: Learning Profile ID },
-                  goal: { type: string, description: goal description },
-                  teaching_module_id:
-                    { type: string, description: teaching module id },
-                },
-            },
-          v1S3PresignedUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  url: { type: string },
-                  values:
-                    {
-                      $ref: "#/components/schemas/v1S3PresignedValues",
-                    },
-                },
-            },
-          v1S3PresignedValues:
-            {
-              type: object,
-              properties:
-                {
-                  X_Amz_Algorithm: { type: string },
-                  X_Amz_Credential: { type: string },
-                  X_Amz_Date: { type: string },
-                  X_Amz_Signature: { type: string },
-                  key: { type: string },
-                  policy: { type: string },
-                  Content_Type: { type: string },
-                },
-            },
-          publicCreateTeachingModulePresignedPostUrlRequest:
-            {
-              type: object,
-              properties:
-                {
-                  files:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedUploader",
-                        },
-                      description: File data consists of the filename along with its extension and the file size in bytes.,
-                    },
-                },
-            },
-          publicCreateTeachingModulePresignedPostUrlResponse:
-            {
-              type: object,
-              properties:
-                {
-                  presignedUrls:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
-                        },
-                      description: Presigned Urls,
-                    },
-                },
-            },
-          sharedUploader:
-            {
-              type: object,
-              properties:
-                {
-                  file_name:
-                    { example: 123.png, type: string, description: File name },
-                  file_size: { type: string, description: File size in bytes },
-                  folder_name:
-                    {
-                      example: study_material,
-                      type: string,
-                      description: folder name for files in S3,
-                    },
-                },
-            },
-          v1AttachmentFile:
-            {
-              type: object,
-              properties:
-                {
-                  display_name: { type: string },
-                  unique_name: { type: string },
-                  file_extension: { type: string },
-                  file_size: { type: string },
-                  link: { type: string },
                 },
             },
           publicCreateStudyMaterialRequest:
@@ -2584,271 +2955,117 @@
                     },
                 },
             },
-          publicApproveteachingModuleRequest:
-            {
-              type: object,
-              properties:
-                {
-                  teaching_module_id:
-                    { type: string, description: teaching module id },
-                  teacher_id: { type: string, description: teacher id },
-                  is_approved: { type: boolean, description: approval request },
-                },
-            },
-          publicTeachingModuleListResponse:
-            {
-              type: object,
-              properties:
-                {
-                  teaching_modules:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedTeachingModule",
-                        },
-                      description: Teaching Module Body,
-                    },
-                },
-            },
-          publicTeachingModuleRequest:
-            {
-              type: object,
-              properties:
-                {
-                  teaching_module:
-                    {
-                      $ref: "#/components/schemas/sharedTeachingModule",
-                    },
-                },
-            },
-          publicTeachingModuleResponse:
+          publicDeleteFolderTaskResponse:
             {
               type: object,
               properties:
                 {
                   message:
-                    {
-                      type: string,
-                      description: Teaching Module Response Message,
-                    },
+                    { type: string, description: message for folder task },
                 },
             },
-          sharedApprover:
+          publicSubmitFolderTaskRequest:
             {
               type: object,
               properties:
                 {
-                  teacher_id:
-                    {
-                      type: string,
-                      description: Teacher who approve new teaching module,
-                    },
-                  is_approved: { type: boolean, description: approve status },
-                },
-            },
-          sharedComponent:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: header component id },
-                  title: { type: string, description: title },
-                  curriculum_id: { type: string, description: curriculum id },
-                  description:
-                    {
-                      type: string,
-                      description: description header component id,
-                    },
-                  group_components:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedGroupComponent",
-                        },
-                      description: group component,
-                    },
-                },
-            },
-          sharedContent:
-            {
-              type: object,
-              properties:
-                {
-                  text:
-                    { type: string, description: CurriculumGroupComponentID },
-                  value:
-                    {
-                      type: boolean,
-                      description: Curriculum Group Component Description,
-                    },
-                },
-            },
-          sharedGroupComponent:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: component id },
-                  parent_id:
-                    {
-                      type: string,
-                      description: parent component id from curriculum,
-                    },
-                  description:
-                    {
-                      type: string,
-                      description: Curriculum Group Component Description,
-                    },
-                  component_type:
-                    {
-                      enum:
-                        [
-                          DEFAULT,
-                          MULTIPLE_TEXT_INPUT,
-                          TEXT_DESCRIPTION,
-                          MULTIPLE_TEXT_DESCRIPTION,
-                          CHECKLIST,
-                          RADIO_BUTTON,
-                          TEXT_INPUT,
-                        ],
-                      type: string,
-                      description: Component type,
-                      format: enum,
-                    },
-                  content:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedContent",
-                        },
-                      description: list of content,
-                    },
-                },
-            },
-          sharedPercentageScore:
-            {
-              type: object,
-              properties:
-                {
-                  name: { type: string, description: name of percentage score },
-                  value:
-                    {
-                      type: integer,
-                      description: value of percentage score,
-                      format: int32,
-                    },
-                },
-            },
-          sharedTeachingModule:
-            {
-              type: object,
-              properties:
-                {
-                  id: { type: string, description: teaching module id },
-                  title:
-                    { type: string, description: Title for teaching module },
-                  learning_profile:
+                  folder_id: { type: string, description: folder id },
+                  task_id: { type: string, description: task id },
+                  task_type: { type: string, description: task type },
+                  task_name: { type: string, description: task name },
+                  task_attachment:
+                    { type: string, description: task attachment },
+                  student_user_ids:
                     {
                       type: array,
                       items: { type: string },
-                      description: Learning Profile associated with teaching module,
-                    },
-                  start_date:
-                    {
-                      type: string,
-                      description: Star Date for teaching module,
-                      format: date-time,
-                    },
-                  end_date:
-                    {
-                      type: string,
-                      description: End Date for teaching module,
-                      format: date-time,
-                    },
-                  subject_id:
-                    {
-                      type: string,
-                      description: Subject id that related teaching module,
-                    },
-                  approver:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedApprover",
-                        },
-                      description: List of approver for teaching module,
-                    },
-                  learning_goals:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedLearningGoal",
-                        },
-                      description: List of approver for teaching module,
-                    },
-                  components:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedComponent",
-                        },
-                      description: Curriculum instance,
-                    },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when Curriculum data updated,
-                      format: date-time,
-                    },
-                  cover_image:
-                    {
-                      type: string,
-                      description: Cover Image for teaching module,
-                    },
-                  time_allocation:
-                    {
-                      type: string,
-                      description: Time allocated for teaching module,
-                    },
-                  folders:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedTeachingModuleFolder",
-                        },
-                      description: List of folder for teaching module,
-                    },
-                  curriculum_id: { type: string, description: curriculum ID },
-                  description: { type: string, description: Description },
-                  teacher_id: { type: string, description: teacher id },
-                  index_minimum:
-                    { type: integer, description: teacher id, format: int32 },
-                  percentage_score:
-                    {
-                      type: array,
-                      items:
-                        {
-                          $ref: "#/components/schemas/sharedPercentageScore",
-                        },
-                      description: score percentage,
+                      description: student ids,
                     },
                   class_subject_id:
-                    { type: string, description: class subject id },
+                    { type: string, description: class_subject_id },
+                },
+            },
+          publicSubmitFolderTaskResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: message for folder task },
+                },
+            },
+          v1S3PresignedUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  url: { type: string },
+                  values:
+                    {
+                      $ref: "#/components/schemas/v1S3PresignedValues",
+                    },
+                },
+            },
+          v1S3PresignedValues:
+            {
+              type: object,
+              properties:
+                {
+                  X_Amz_Algorithm: { type: string },
+                  X_Amz_Credential: { type: string },
+                  X_Amz_Date: { type: string },
+                  X_Amz_Signature: { type: string },
+                  key: { type: string },
+                  policy: { type: string },
+                  Content_Type: { type: string },
+                },
+            },
+          publicCreateTeachingModulePresignedPostUrlRequest:
+            {
+              type: object,
+              properties:
+                {
+                  files:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/sharedUploader",
+                        },
+                      description: File data consists of the filename along with its extension and the file size in bytes.,
+                    },
+                },
+            },
+          publicCreateTeachingModulePresignedPostUrlResponse:
+            {
+              type: object,
+              properties:
+                {
+                  presignedUrls:
+                    {
+                      type: array,
+                      items:
+                        {
+                          $ref: "#/components/schemas/v1S3PresignedUrlResponse",
+                        },
+                      description: Presigned Urls,
+                    },
+                },
+            },
+          sharedUploader:
+            {
+              type: object,
+              properties:
+                {
+                  file_name:
+                    { example: 123.png, type: string, description: File name },
+                  file_size: { type: string, description: File size in bytes },
+                  folder_name:
+                    {
+                      example: study_material,
+                      type: string,
+                      description: folder name for files in S3,
+                    },
                 },
             },
         },
