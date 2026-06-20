@@ -787,7 +787,7 @@
 | quiz_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | attempt | [int32](#int32) |  |  |
 | time_spent | [int32](#int32) |  |  |
@@ -796,7 +796,7 @@
 | state | [SubmissionState](#modules-assessment-v1-shared-SubmissionState) |  |  |
 | due_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | quiz_title | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -814,7 +814,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | total_score | [string](#string) |  |  |
 | correct_answer | [string](#string) |  |  |
@@ -837,7 +837,7 @@
 | id | [string](#string) |  |  |
 | quiz_id | [string](#string) |  |  |
 | question_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | answer | [string](#string) |  |  |
 | points | [string](#string) |  |  |
@@ -869,7 +869,7 @@
 | class_subject_id | [string](#string) |  |  |
 | subject_id | [string](#string) |  |  |
 | subject_name | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | teaching_module_id | [string](#string) |  |  |
 | assessment_type | [AssessmentType](#modules-assessment-v1-shared-AssessmentType) |  |  |
@@ -1041,7 +1041,7 @@
 | time_allocation | [string](#string) |  |  |
 | curriculum_id | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | index_minimum | [int32](#int32) |  |  |
 
 

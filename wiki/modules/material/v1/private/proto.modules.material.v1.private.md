@@ -70,7 +70,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 
 
 

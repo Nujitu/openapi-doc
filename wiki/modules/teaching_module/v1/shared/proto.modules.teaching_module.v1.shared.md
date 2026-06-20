@@ -5,6 +5,7 @@
 
 - [modules/teaching_module/v1/shared/exam.proto](#modules_teaching_module_v1_shared_exam-proto)
     - [Exam](#modules-teaching_modules-v1-shared-Exam)
+    - [ScoreWeight](#modules-teaching_modules-v1-shared-ScoreWeight)
   
     - [ExamType](#modules-teaching_modules-v1-shared-ExamType)
   
@@ -62,8 +63,26 @@
 | curriculum_id | [string](#string) |  |  |
 | teacher_user_id | [string](#string) |  |  |
 | index_minimum | [float](#float) |  |  |
+| score_weights | [ScoreWeight](#modules-teaching_modules-v1-shared-ScoreWeight) | repeated |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | updated_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_modules-v1-shared-ScoreWeight"></a>
+
+### ScoreWeight
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| assessment_id | [string](#string) |  |  |
+| kind | [string](#string) |  |  |
+| weight | [int32](#int32) |  |  |
 
 
 
@@ -112,7 +131,7 @@
 | task_type | [string](#string) |  |  |
 | task_name | [string](#string) |  |  |
 | task_attachment | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | created_at | [string](#string) |  |  |
 | updated_at | [string](#string) |  |  |
 
@@ -220,7 +239,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | is_approved | [bool](#bool) |  |  |
 
 
@@ -322,7 +341,7 @@
 | folders | [TeachingModuleFolder](#modules-teaching_modules-v1-shared-TeachingModuleFolder) | repeated |  |
 | curriculum_id | [string](#string) |  |  |
 | description | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | index_minimum | [int32](#int32) |  |  |
 | percentage_score | [PercentageScore](#modules-teaching_modules-v1-shared-PercentageScore) | repeated | list of percentage score must be 100 |
 | class_subject_id | [string](#string) |  |  |

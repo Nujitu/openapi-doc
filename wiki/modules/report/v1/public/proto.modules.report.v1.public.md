@@ -109,9 +109,10 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+| class_subject_id | [string](#string) |  |  |
 
 
 
@@ -132,7 +133,7 @@
 | leave | [int32](#int32) |  |  |
 | late | [int32](#int32) |  |  |
 | absences | [AbsenceDetail](#modules-report-v1-public-AbsenceDetail) | repeated |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 
 
@@ -152,6 +153,7 @@
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | end_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | status | [string](#string) | repeated |  |
+| class_subject_id | [string](#string) |  |  |
 
 
 
@@ -181,7 +183,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | total | [int32](#int32) |  |  |
 | sick | [int32](#int32) |  |  |
@@ -299,7 +301,7 @@
 | class_subject_id | [string](#string) |  |  |
 | approver_user_id | [string](#string) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 

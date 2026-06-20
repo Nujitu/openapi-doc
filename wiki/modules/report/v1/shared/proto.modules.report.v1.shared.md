@@ -48,7 +48,7 @@
 | id | [string](#string) |  |  |
 | date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 | class_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | status | [string](#string) |  |  |
 | created_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
@@ -231,7 +231,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 | status | [string](#string) |  |  |
 

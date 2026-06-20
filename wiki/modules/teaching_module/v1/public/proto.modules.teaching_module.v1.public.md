@@ -52,8 +52,11 @@
 - [modules/teaching_module/v1/public/teaching_module.proto](#modules_teaching_module_v1_public_teaching_module-proto)
     - [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest)
     - [DeleteTeachingModuleRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleRequest)
+    - [GetTeachingModuleAttachmentsRequest](#modules-teaching_module-v1-public-GetTeachingModuleAttachmentsRequest)
     - [GetTeachingModuleDetailRequest](#modules-teaching_module-v1-public-GetTeachingModuleDetailRequest)
     - [GetTeachingModuleListRequest](#modules-teaching_module-v1-public-GetTeachingModuleListRequest)
+    - [SetTeachingModuleAttachmentsRequest](#modules-teaching_module-v1-public-SetTeachingModuleAttachmentsRequest)
+    - [TeachingModuleAttachmentsResponse](#modules-teaching_module-v1-public-TeachingModuleAttachmentsResponse)
     - [TeachingModuleListResponse](#modules-teaching_module-v1-public-TeachingModuleListResponse)
     - [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest)
     - [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse)
@@ -232,6 +235,7 @@
 | learning_goal_ids | [string](#string) | repeated |  |
 | start_date | [google.protobuf.Timestamp](#google-protobuf-Timestamp) | optional |  |
 | index_minimum | [float](#float) | optional |  |
+| score_weights | [modules.teaching_modules.v1.shared.ScoreWeight](#modules-teaching_modules-v1-shared-ScoreWeight) | repeated |  |
 
 
 
@@ -328,7 +332,7 @@
 | task_type | [string](#string) |  |  |
 | task_name | [string](#string) |  |  |
 | task_attachment | [string](#string) |  |  |
-| student_ids | [string](#string) | repeated |  |
+| student_user_ids | [string](#string) | repeated |  |
 | class_subject_id | [string](#string) |  |  |
 
 
@@ -699,7 +703,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | teaching_module_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | is_approved | [bool](#bool) |  |  |
 
 
@@ -710,6 +714,21 @@
 <a name="modules-teaching_module-v1-public-DeleteTeachingModuleRequest"></a>
 
 ### DeleteTeachingModuleRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-GetTeachingModuleAttachmentsRequest"></a>
+
+### GetTeachingModuleAttachmentsRequest
 
 
 
@@ -746,8 +765,39 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | subject_id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | class_subject_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-SetTeachingModuleAttachmentsRequest"></a>
+
+### SetTeachingModuleAttachmentsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
+
+
+
+
+
+
+<a name="modules-teaching_module-v1-public-TeachingModuleAttachmentsResponse"></a>
+
+### TeachingModuleAttachmentsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| attachment_files | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 
 
 
@@ -818,6 +868,8 @@
 | ApproveTeachingModule | [ApproveteachingModuleRequest](#modules-teaching_module-v1-public-ApproveteachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 | UpdateTeachingModule | [TeachingModuleRequest](#modules-teaching_module-v1-public-TeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
 | DeleteTeachingModule | [DeleteTeachingModuleRequest](#modules-teaching_module-v1-public-DeleteTeachingModuleRequest) | [TeachingModuleResponse](#modules-teaching_module-v1-public-TeachingModuleResponse) |  |
+| GetTeachingModuleAttachments | [GetTeachingModuleAttachmentsRequest](#modules-teaching_module-v1-public-GetTeachingModuleAttachmentsRequest) | [TeachingModuleAttachmentsResponse](#modules-teaching_module-v1-public-TeachingModuleAttachmentsResponse) |  |
+| SetTeachingModuleAttachments | [SetTeachingModuleAttachmentsRequest](#modules-teaching_module-v1-public-SetTeachingModuleAttachmentsRequest) | [TeachingModuleAttachmentsResponse](#modules-teaching_module-v1-public-TeachingModuleAttachmentsResponse) |  |
 
  
 

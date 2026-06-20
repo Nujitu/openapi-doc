@@ -43,6 +43,8 @@
 - [modules/user/v1/public/user.proto](#modules_user_v1_public_user-proto)
     - [CreateUserPresignedPostUrlRequest](#modules-user-v1-public-CreateUserPresignedPostUrlRequest)
     - [CreateUserPresignedPostUrlResponse](#modules-user-v1-public-CreateUserPresignedPostUrlResponse)
+    - [DeleteUserRequest](#modules-user-v1-public-DeleteUserRequest)
+    - [DeleteUserResponse](#modules-user-v1-public-DeleteUserResponse)
     - [GetUserListRequest](#modules-user-v1-public-GetUserListRequest)
     - [GetUserListResponse](#modules-user-v1-public-GetUserListResponse)
     - [GetUserRequest](#modules-user-v1-public-GetUserRequest)
@@ -56,6 +58,10 @@
     - [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse)
     - [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest)
     - [UpdateUserResponse](#modules-user-v1-public-UpdateUserResponse)
+    - [UpdateUserStatusRequest](#modules-user-v1-public-UpdateUserStatusRequest)
+    - [UpdateUserStatusResponse](#modules-user-v1-public-UpdateUserStatusResponse)
+    - [ValidateInvitationRequest](#modules-user-v1-public-ValidateInvitationRequest)
+    - [ValidateInvitationResponse](#modules-user-v1-public-ValidateInvitationResponse)
   
     - [UserService](#modules-user-v1-public-UserService)
   
@@ -653,6 +659,36 @@ Service for teacher related feature
 
 
 
+<a name="modules-user-v1-public-DeleteUserRequest"></a>
+
+### DeleteUserRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-DeleteUserResponse"></a>
+
+### DeleteUserResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="modules-user-v1-public-GetUserListRequest"></a>
 
 ### GetUserListRequest
@@ -664,6 +700,7 @@ Request body of GetUserList
 | name | [string](#string) |  |  |
 | email | [string](#string) |  |  |
 | sort | [string](#string) |  |  |
+| statuses | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) | repeated |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 
@@ -867,6 +904,69 @@ Response body of Invite
 
 
 
+
+<a name="modules-user-v1-public-UpdateUserStatusRequest"></a>
+
+### UpdateUserStatusRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+| status | [modules.authentication.v1.shared.UserStatus](#modules-authentication-v1-shared-UserStatus) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-UpdateUserStatusResponse"></a>
+
+### UpdateUserStatusResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-ValidateInvitationRequest"></a>
+
+### ValidateInvitationRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| email | [string](#string) |  |  |
+| challenge | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-user-v1-public-ValidateInvitationResponse"></a>
+
+### ValidateInvitationResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| valid | [bool](#bool) |  |  |
+| reason | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -887,7 +987,10 @@ Service for user related feature
 | GetUserList | [GetUserListRequest](#modules-user-v1-public-GetUserListRequest) | [GetUserListResponse](#modules-user-v1-public-GetUserListResponse) |  |
 | NewPassword | [NewPasswordRequest](#modules-user-v1-public-NewPasswordRequest) | [NewPasswordResponse](#modules-user-v1-public-NewPasswordResponse) |  |
 | UpdateUser | [UpdateUserRequest](#modules-user-v1-public-UpdateUserRequest) | [UpdateUserResponse](#modules-user-v1-public-UpdateUserResponse) |  |
+| UpdateUserStatus | [UpdateUserStatusRequest](#modules-user-v1-public-UpdateUserStatusRequest) | [UpdateUserStatusResponse](#modules-user-v1-public-UpdateUserStatusResponse) |  |
+| DeleteUser | [DeleteUserRequest](#modules-user-v1-public-DeleteUserRequest) | [DeleteUserResponse](#modules-user-v1-public-DeleteUserResponse) |  |
 | CreateUserPresignedPostUrl | [CreateUserPresignedPostUrlRequest](#modules-user-v1-public-CreateUserPresignedPostUrlRequest) | [CreateUserPresignedPostUrlResponse](#modules-user-v1-public-CreateUserPresignedPostUrlResponse) |  |
+| ValidateInvitation | [ValidateInvitationRequest](#modules-user-v1-public-ValidateInvitationRequest) | [ValidateInvitationResponse](#modules-user-v1-public-ValidateInvitationResponse) |  |
 
  
 
