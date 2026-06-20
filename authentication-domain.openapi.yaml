@@ -5,7 +5,7 @@
     {
       title: Authentication Domain,
       version: v1,
-      description: "Skoola Permission Service, Skoola Auth Service, Skoola Identity Service, Skoola Admin User Service",
+      description: "Skoola Permission Service, Skoola Admin User Service, Skoola Identity Service, Skoola Auth Service",
     },
   servers:
     [
@@ -574,6 +574,116 @@
                 },
             },
         },
+      /v1/user/admin:
+        {
+          post:
+            {
+              tags: [AdminUserService],
+              summary: Register new user,
+              description: Admin register a new user,
+              operationId: AdminUserService_RegisterUser,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterUserRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterUserResponse",
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      description: Internal Server Error,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      description: Unauthorized JWT token.,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/v1ErrorResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      /v1/identity/register:
+        {
+          post:
+            {
+              tags: [IdentityService],
+              summary: Register New User,
+              description: register new user.,
+              operationId: IdentityService_Register,
+              requestBody:
+                {
+                  content:
+                    {
+                      application/json:
+                        {
+                          schema:
+                            {
+                              $ref: "#/components/schemas/publicRegisterRequest",
+                            },
+                        },
+                    },
+                  required: true,
+                },
+              responses:
+                {
+                  "200":
+                    {
+                      description: OK,
+                      content:
+                        {
+                          application/json:
+                            {
+                              schema:
+                                {
+                                  $ref: "#/components/schemas/publicRegisterResponse",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
       /v1/auth/force_reset_password:
         {
           post:
@@ -988,14 +1098,14 @@
                 },
             },
         },
-      /v1/identity/register:
+      /v1/user/admin/reset-password:
         {
           post:
             {
-              tags: [IdentityService],
-              summary: Register New User,
-              description: register new user.,
-              operationId: IdentityService_Register,
+              tags: [AuthService],
+              summary: Admin reset user password,
+              description: Reset a target user's password to the default value. Staff/admin only.,
+              operationId: AuthService_AdminResetPassword,
               requestBody:
                 {
                   content:
@@ -1004,7 +1114,7 @@
                         {
                           schema:
                             {
-                              $ref: "#/components/schemas/publicRegisterRequest",
+                              $ref: "#/components/schemas/publicAdminResetPasswordRequest",
                             },
                         },
                     },
@@ -1021,48 +1131,7 @@
                             {
                               schema:
                                 {
-                                  $ref: "#/components/schemas/publicRegisterResponse",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-      /v1/user/admin:
-        {
-          post:
-            {
-              tags: [AdminUserService],
-              summary: Register new user,
-              description: Admin register a new user,
-              operationId: AdminUserService_RegisterUser,
-              requestBody:
-                {
-                  content:
-                    {
-                      application/json:
-                        {
-                          schema:
-                            {
-                              $ref: "#/components/schemas/publicRegisterUserRequest",
-                            },
-                        },
-                    },
-                  required: true,
-                },
-              responses:
-                {
-                  "200":
-                    {
-                      description: OK,
-                      content:
-                        {
-                          application/json:
-                            {
-                              schema:
-                                {
-                                  $ref: "#/components/schemas/publicRegisterUserResponse",
+                                  $ref: "#/components/schemas/publicAdminResetPasswordResponse",
                                 },
                             },
                         },
@@ -1437,6 +1506,263 @@
                   link: { type: string },
                 },
             },
+          publicRegisterUserRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  register_as:
+                    {
+                      example: student,
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      description: registered user role,
+                      format: enum,
+                    },
+                  instance_id:
+                    {
+                      example: 123455,
+                      type: string,
+                      description: registered user instance,
+                    },
+                  nisn:
+                    {
+                      example: 123455,
+                      type: string,
+                      description: required if user is student,
+                    },
+                  nip:
+                    {
+                      example: 123455,
+                      type: string,
+                      description: required if user is teacher,
+                    },
+                  password: { type: string, description: User Password },
+                },
+              description: Request body of Register new user,
+            },
+          publicRegisterUserResponse:
+            {
+              type: object,
+              properties:
+                {
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                },
+            },
+          sharedUser:
+            {
+              type: object,
+              properties:
+                {
+                  id: { example: 123, type: string, description: User ID },
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  username:
+                    {
+                      example: JohnFD,
+                      type: string,
+                      description: User username,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  profile_pic:
+                    {
+                      example: profile.png,
+                      type: string,
+                      description: User profile pict name,
+                    },
+                  address:
+                    {
+                      example: jln jln,
+                      type: string,
+                      description: User address,
+                    },
+                  gender:
+                    {
+                      example: Male,
+                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
+                      type: string,
+                      description: User gender,
+                      format: enum,
+                    },
+                  date_of_birth:
+                    {
+                      example: 2020-01-01,
+                      type: string,
+                      description: User Date of Birth,
+                      format: date-time,
+                    },
+                  place_of_birth:
+                    {
+                      example: Jakarta,
+                      type: string,
+                      description: User Place of Birth,
+                    },
+                  role_type:
+                    {
+                      enum:
+                        [
+                          UNSPECIFIED,
+                          STUDENT,
+                          PARENT,
+                          TEACHER,
+                          STAFF,
+                          ADMINISTRATOR,
+                          SUPERADMINISTRATOR,
+                        ],
+                      type: string,
+                      format: enum,
+                    },
+                  status:
+                    {
+                      enum:
+                        [
+                          USER_STATUS_UNSPECIFIED,
+                          USER_STATUS_ACTIVE,
+                          USER_STATUS_INACTIVE,
+                        ],
+                      type: string,
+                      description: Represent user status,
+                      format: enum,
+                    },
+                  profile_picture:
+                    { $ref: "#/components/schemas/v1AttachmentFile" },
+                  created_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user is created,
+                      format: date-time,
+                    },
+                  updated_at:
+                    {
+                      example: "2020-01-01T00:00:00Z",
+                      type: string,
+                      description: Time when user data updated,
+                      format: date-time,
+                    },
+                },
+              description: User entity,
+            },
+          publicRegisterRequest:
+            {
+              type: object,
+              properties:
+                {
+                  fullname:
+                    {
+                      example: John F. Doe,
+                      type: string,
+                      description: User full name,
+                    },
+                  phone_number:
+                    {
+                      example: +628790909321,
+                      type: string,
+                      description: User phone number,
+                    },
+                  username: { type: string, description: Username },
+                  email:
+                    {
+                      example: john.fd@gmail.com,
+                      type: string,
+                      description: User email,
+                    },
+                  password: { type: string, description: User Password },
+                  login_challenge:
+                    {
+                      type: string,
+                      description: " login challenge from auth-server",
+                    },
+                },
+              description: Request body of Register new user,
+            },
+          publicRegisterResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message: { type: string, description: additional message },
+                  user:
+                    {
+                      $ref: "#/components/schemas/sharedUser",
+                    },
+                  token:
+                    {
+                      type: string,
+                      description: generated token after registered,
+                    },
+                  refresh_token:
+                    { type: string, description: refresh token for the user },
+                },
+              description: Response body of Register new user,
+            },
+          publicAdminResetPasswordRequest:
+            {
+              type: object,
+              properties:
+                {
+                  user_id:
+                    {
+                      type: string,
+                      description: ID of the user whose password is reset,
+                    },
+                },
+            },
+          publicAdminResetPasswordResponse:
+            {
+              type: object,
+              properties:
+                {
+                  message:
+                    { type: string, description: additional information },
+                },
+            },
           publicForceResetPasswordRequest:
             {
               type: object,
@@ -1635,242 +1961,6 @@
                   refresh_token: { type: string },
                 },
               description: Login entity,
-            },
-          sharedUser:
-            {
-              type: object,
-              properties:
-                {
-                  id: { example: 123, type: string, description: User ID },
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  username:
-                    {
-                      example: JohnFD,
-                      type: string,
-                      description: User username,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  profile_pic:
-                    {
-                      example: profile.png,
-                      type: string,
-                      description: User profile pict name,
-                    },
-                  address:
-                    {
-                      example: jln jln,
-                      type: string,
-                      description: User address,
-                    },
-                  gender:
-                    {
-                      example: Male,
-                      enum: [GENDER_UNSPECIFIED, MALE, FEMALE],
-                      type: string,
-                      description: User gender,
-                      format: enum,
-                    },
-                  date_of_birth:
-                    {
-                      example: 2020-01-01,
-                      type: string,
-                      description: User Date of Birth,
-                      format: date-time,
-                    },
-                  place_of_birth:
-                    {
-                      example: Jakarta,
-                      type: string,
-                      description: User Place of Birth,
-                    },
-                  role_type:
-                    {
-                      enum:
-                        [
-                          UNSPECIFIED,
-                          STUDENT,
-                          PARENT,
-                          TEACHER,
-                          STAFF,
-                          ADMINISTRATOR,
-                          SUPERADMINISTRATOR,
-                        ],
-                      type: string,
-                      format: enum,
-                    },
-                  status:
-                    {
-                      enum:
-                        [
-                          USER_STATUS_UNSPECIFIED,
-                          USER_STATUS_ACTIVE,
-                          USER_STATUS_INACTIVE,
-                        ],
-                      type: string,
-                      description: Represent user status,
-                      format: enum,
-                    },
-                  profile_picture:
-                    { $ref: "#/components/schemas/v1AttachmentFile" },
-                  created_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user is created,
-                      format: date-time,
-                    },
-                  updated_at:
-                    {
-                      example: "2020-01-01T00:00:00Z",
-                      type: string,
-                      description: Time when user data updated,
-                      format: date-time,
-                    },
-                },
-              description: User entity,
-            },
-          publicRegisterRequest:
-            {
-              type: object,
-              properties:
-                {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  password: { type: string, description: User Password },
-                  login_challenge:
-                    {
-                      type: string,
-                      description: " login challenge from auth-server",
-                    },
-                },
-              description: Request body of Register new user,
-            },
-          publicRegisterResponse:
-            {
-              type: object,
-              properties:
-                {
-                  message: { type: string, description: additional message },
-                  user:
-                    {
-                      $ref: "#/components/schemas/sharedUser",
-                    },
-                  token:
-                    {
-                      type: string,
-                      description: generated token after registered,
-                    },
-                  refresh_token:
-                    { type: string, description: refresh token for the user },
-                },
-              description: Response body of Register new user,
-            },
-          publicRegisterUserRequest:
-            {
-              type: object,
-              properties:
-                {
-                  fullname:
-                    {
-                      example: John F. Doe,
-                      type: string,
-                      description: User full name,
-                    },
-                  phone_number:
-                    {
-                      example: +628790909321,
-                      type: string,
-                      description: User phone number,
-                    },
-                  username: { type: string, description: Username },
-                  email:
-                    {
-                      example: john.fd@gmail.com,
-                      type: string,
-                      description: User email,
-                    },
-                  register_as:
-                    {
-                      example: student,
-                      enum:
-                        [
-                          UNSPECIFIED,
-                          STUDENT,
-                          PARENT,
-                          TEACHER,
-                          STAFF,
-                          ADMINISTRATOR,
-                          SUPERADMINISTRATOR,
-                        ],
-                      type: string,
-                      description: registered user role,
-                      format: enum,
-                    },
-                  instance_id:
-                    {
-                      example: 123455,
-                      type: string,
-                      description: registered user instance,
-                    },
-                  nisn:
-                    {
-                      example: 123455,
-                      type: string,
-                      description: required if user is student,
-                    },
-                  nip:
-                    {
-                      example: 123455,
-                      type: string,
-                      description: required if user is teacher,
-                    },
-                  password: { type: string, description: User Password },
-                },
-              description: Request body of Register new user,
-            },
-          publicRegisterUserResponse:
-            {
-              type: object,
-              properties:
-                {
-                  user:
-                    {
-                      $ref: "#/components/schemas/sharedUser",
-                    },
-                },
             },
         },
       responses:
