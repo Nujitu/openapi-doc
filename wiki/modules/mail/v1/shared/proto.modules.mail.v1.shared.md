@@ -148,6 +148,8 @@
 | mail_subject | [string](#string) |  |  |
 | attachments | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | instance_id | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| receiver_names | [string](#string) | repeated |  |
 
 
 
@@ -600,6 +602,9 @@
 | mail_subject | [string](#string) |  |  |
 | attachments | [common.v1.AttachmentFile](#common-v1-AttachmentFile) | repeated |  |
 | instance_id | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| sender_name | [string](#string) |  |  |
+| receiver_names | [string](#string) | repeated |  |
 
 
 

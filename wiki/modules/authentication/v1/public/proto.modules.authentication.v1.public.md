@@ -10,6 +10,8 @@
     - [AdminUserService](#modules-authentication-v1-public-AdminUserService)
   
 - [modules/authentication/v1/public/auth.proto](#modules_authentication_v1_public_auth-proto)
+    - [AdminResetPasswordRequest](#modules-authentication-v1-public-AdminResetPasswordRequest)
+    - [AdminResetPasswordResponse](#modules-authentication-v1-public-AdminResetPasswordResponse)
     - [ForceResetPasswordRequest](#modules-authentication-v1-public-ForceResetPasswordRequest)
     - [ForceResetPasswordResponse](#modules-authentication-v1-public-ForceResetPasswordResponse)
     - [LoginRequest](#modules-authentication-v1-public-LoginRequest)
@@ -123,6 +125,36 @@ Service for user related feature
 <p align="right"><a href="#top">Top</a></p>
 
 ## modules/authentication/v1/public/auth.proto
+
+
+
+<a name="modules-authentication-v1-public-AdminResetPasswordRequest"></a>
+
+### AdminResetPasswordRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-authentication-v1-public-AdminResetPasswordResponse"></a>
+
+### AdminResetPasswordResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| message | [string](#string) |  |  |
+
+
+
 
 
 
@@ -338,6 +370,7 @@ Response body of Logout
 | RefreshToken | [RefreshTokenRequest](#modules-authentication-v1-public-RefreshTokenRequest) | [RefreshTokenResponse](#modules-authentication-v1-public-RefreshTokenResponse) |  |
 | ResetPassword | [ResetPasswordRequest](#modules-authentication-v1-public-ResetPasswordRequest) | [ResetPasswordResponse](#modules-authentication-v1-public-ResetPasswordResponse) |  |
 | ForceResetPassword | [ForceResetPasswordRequest](#modules-authentication-v1-public-ForceResetPasswordRequest) | [ForceResetPasswordResponse](#modules-authentication-v1-public-ForceResetPasswordResponse) |  |
+| AdminResetPassword | [AdminResetPasswordRequest](#modules-authentication-v1-public-AdminResetPasswordRequest) | [AdminResetPasswordResponse](#modules-authentication-v1-public-AdminResetPasswordResponse) |  |
 | RegisterParent | [RegisterParentRequest](#modules-authentication-v1-public-RegisterParentRequest) | [RegisterParentResponse](#modules-authentication-v1-public-RegisterParentResponse) |  |
 
  

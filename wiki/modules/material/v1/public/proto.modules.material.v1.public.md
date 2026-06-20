@@ -6,6 +6,7 @@
 - [modules/material/v1/public/class_group.proto](#modules_material_v1_public_class_group-proto)
     - [AddStudentToClassRequest](#modules-material-v1-public-AddStudentToClassRequest)
     - [AddStudentToClassResponse](#modules-material-v1-public-AddStudentToClassResponse)
+    - [ClassGroupSubject](#modules-material-v1-public-ClassGroupSubject)
     - [CreateClassGroupRequest](#modules-material-v1-public-CreateClassGroupRequest)
     - [DeleteClassGroupRequest](#modules-material-v1-public-DeleteClassGroupRequest)
     - [DeleteClassSubjectRequest](#modules-material-v1-public-DeleteClassSubjectRequest)
@@ -15,6 +16,8 @@
     - [GetClassGroupDetailResponse](#modules-material-v1-public-GetClassGroupDetailResponse)
     - [GetClassGroupListRequest](#modules-material-v1-public-GetClassGroupListRequest)
     - [GetClassGroupListResponse](#modules-material-v1-public-GetClassGroupListResponse)
+    - [GetClassGroupSubjectsRequest](#modules-material-v1-public-GetClassGroupSubjectsRequest)
+    - [GetClassGroupSubjectsResponse](#modules-material-v1-public-GetClassGroupSubjectsResponse)
     - [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest)
     - [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse)
     - [GetStudentClassesRequest](#modules-material-v1-public-GetStudentClassesRequest)
@@ -163,6 +166,26 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-ClassGroupSubject"></a>
+
+### ClassGroupSubject
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| subject_id | [string](#string) |  |  |
+| subject_name | [string](#string) |  |  |
+| index_minimum | [uint32](#uint32) |  |  |
+| homeroom_teacher_user_id | [string](#string) |  |  |
+| homeroom_teacher_name | [string](#string) |  |  |
 
 
 
@@ -323,6 +346,36 @@
 
 
 
+<a name="modules-material-v1-public-GetClassGroupSubjectsRequest"></a>
+
+### GetClassGroupSubjectsRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="modules-material-v1-public-GetClassGroupSubjectsResponse"></a>
+
+### GetClassGroupSubjectsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| subjects | [ClassGroupSubject](#modules-material-v1-public-ClassGroupSubject) | repeated |  |
+
+
+
+
+
+
 <a name="modules-material-v1-public-GetClassSubjectDetailsRequest"></a>
 
 ### GetClassSubjectDetailsRequest
@@ -361,7 +414,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
@@ -391,7 +444,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
@@ -451,7 +504,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 
 
 
@@ -481,7 +534,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 
 
 
@@ -511,7 +564,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | limit | [uint32](#uint32) |  |  |
 | offset | [uint32](#uint32) |  |  |
 
@@ -567,7 +620,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | class_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 
 
 
@@ -597,7 +650,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | student_name | [string](#string) |  |  |
 
 
@@ -614,7 +667,7 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | user_id | [string](#string) |  |  |
-| student_id | [string](#string) |  |  |
+| student_user_id | [string](#string) |  |  |
 | instance_id | [string](#string) |  |  |
 | instance_name | [string](#string) |  |  |
 | status | [modules.user.v1.shared.StudentStatus](#modules-user-v1-shared-StudentStatus) |  |  |
@@ -699,6 +752,7 @@ Service for user related feature
 | GetClassSubjectDetails | [GetClassSubjectDetailsRequest](#modules-material-v1-public-GetClassSubjectDetailsRequest) | [GetClassSubjectDetailsResponse](#modules-material-v1-public-GetClassSubjectDetailsResponse) |  |
 | DeleteClassGroup | [DeleteClassGroupRequest](#modules-material-v1-public-DeleteClassGroupRequest) | [DeleteClassgroupResponse](#modules-material-v1-public-DeleteClassgroupResponse) |  |
 | DeleteClassSubject | [DeleteClassSubjectRequest](#modules-material-v1-public-DeleteClassSubjectRequest) | [DeleteClassSubjectResponse](#modules-material-v1-public-DeleteClassSubjectResponse) |  |
+| GetClassGroupSubjects | [GetClassGroupSubjectsRequest](#modules-material-v1-public-GetClassGroupSubjectsRequest) | [GetClassGroupSubjectsResponse](#modules-material-v1-public-GetClassGroupSubjectsResponse) |  |
 
  
 
@@ -725,6 +779,8 @@ Service for user related feature
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | UpdateClassSubjectDetail | [.modules.material.v1.shared.UpdateClassSubjectDetailRequest](#modules-material-v1-shared-UpdateClassSubjectDetailRequest) | [.modules.material.v1.shared.UpdateClassSubjectDetailResponse](#modules-material-v1-shared-UpdateClassSubjectDetailResponse) |  |
+| GetClassSubjectScoreComposition | [.modules.material.v1.shared.GetScoreCompositionRequest](#modules-material-v1-shared-GetScoreCompositionRequest) | [.modules.material.v1.shared.ScoreCompositionResponse](#modules-material-v1-shared-ScoreCompositionResponse) |  |
+| SetClassSubjectScoreComposition | [.modules.material.v1.shared.SetScoreCompositionRequest](#modules-material-v1-shared-SetScoreCompositionRequest) | [.modules.material.v1.shared.ScoreCompositionResponse](#modules-material-v1-shared-ScoreCompositionResponse) |  |
 | CreateClassSubjectAnnouncement | [.modules.material.v1.shared.CreateClassSubjectAnnouncementRequest](#modules-material-v1-shared-CreateClassSubjectAnnouncementRequest) | [.modules.material.v1.shared.CreateClassSubjectAnnouncementResponse](#modules-material-v1-shared-CreateClassSubjectAnnouncementResponse) |  |
 | DeleteClassSubjectAnnouncementByClassSubjectId | [.modules.material.v1.shared.DeleteClassSubjectAnnouncementByClassSubjectIdRequest](#modules-material-v1-shared-DeleteClassSubjectAnnouncementByClassSubjectIdRequest) | [.modules.material.v1.shared.DeleteClassSubjectAnnouncementResponse](#modules-material-v1-shared-DeleteClassSubjectAnnouncementResponse) |  |
 | DeleteClassSubjectAnnouncementById | [.modules.material.v1.shared.DeleteClassSubjectAnnouncementByIdRequest](#modules-material-v1-shared-DeleteClassSubjectAnnouncementByIdRequest) | [.modules.material.v1.shared.DeleteClassSubjectAnnouncementResponse](#modules-material-v1-shared-DeleteClassSubjectAnnouncementResponse) |  |
@@ -1372,7 +1428,7 @@ Service for user related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | grade_level | [string](#string) |  |  |
 | major | [string](#string) | repeated |  |
 | name | [string](#string) |  |  |
@@ -1410,7 +1466,7 @@ Service for user related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| teacher_id | [string](#string) |  |  |
+| teacher_user_id | [string](#string) |  |  |
 | grade_level | [string](#string) |  |  |
 | major | [string](#string) | repeated |  |
 | name | [string](#string) |  |  |
@@ -1469,7 +1525,7 @@ Service for user related feature
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
-| teacher_id | [string](#string) | optional |  |
+| teacher_user_id | [string](#string) | optional |  |
 | grade_level | [string](#string) | optional |  |
 | major | [string](#string) | repeated |  |
 | name | [string](#string) | optional |  |
